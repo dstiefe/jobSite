@@ -25,7 +25,7 @@ app.controller("Login", function ($scope, Login) {
                 ValiDatedTokenObject.issued = RequestResult.data.issued;
                 ValiDatedTokenObject.expires = RequestResult.data.expires;
                 sessionStorage.setItem("ValiDatedTokenObject", JSON.stringify(ValiDatedTokenObject));
-                window.location = "/Jobs/dashboard.html";
+                window.location = "Jobs/dashboard.html";
             }
         },
         function (error) {

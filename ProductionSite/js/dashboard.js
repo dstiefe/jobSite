@@ -19,6 +19,6 @@ $(document).ready(function () {
 $(function () {
     $('#cmd_Logout').click(function () {
         sessionStorage.setItem("ValiDatedTokenObject", null);
-        window.location = "/login.html";
+        window.location = "../login.html";
     })
 })

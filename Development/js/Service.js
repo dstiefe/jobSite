@@ -17,3 +17,17 @@ app.service("Login", function ($http) {
     }; 
 
 })
+
+
+app.service("Registration", function ($http) {
+
+    this.UserRegister = function (data) {
+        var request = $http({
+            method: "post",
+            url: ServicesURL + "api/v1/account/register",
+            data: data
+        });
+        return request;
+    };
+
+})

@@ -10,7 +10,7 @@
 app.controller("Login", function ($scope, Login) {
 
     $scope.UserLogin = function () {
-        debugger;
+        console.log("login click");
         var username = $scope.username;
         var password = $scope.password;
         var data = 'grant_type=password&username=' + username + '&password=' + password + '';

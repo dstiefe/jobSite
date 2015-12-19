@@ -1,7 +1,6 @@
 
 
 $(document).ready(function () {
-    debugger;
     if (typeof (Storage) !== "undefined") {
 
         ValiDatedTokenObject = JSON.parse(sessionStorage.getItem("ValiDatedTokenObject"));
@@ -21,4 +20,16 @@ $(function () {
         sessionStorage.setItem("ValiDatedTokenObject", null);
         window.location = "../login.html";
     })
+})
+
+
+/// <reference path="angular.min.js" />  
+/// <reference path="Module.js" />  
+/// <reference path="Service.js" />  
+
+
+
+
+app.controller("dashboardController", function ($scope, Login) {
+
 })

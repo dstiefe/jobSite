@@ -1,7 +1,7 @@
 angular
     .module('Jobsite').controller("ViewJobDetailsController", function ($scope, Login, $http, $location) {
-        $url = $location.protocol() + '://' + $location.host() + ':' + $location.port() + '/';
-        viewJobId= $location.absUrl().replace($url, "").replace("#/viewjobdetails?id=", "");
+        var parts = $location.absUrl().split("viewjobdetails?id=");
+        viewJobId= parts[1];   
         console.log(viewJobId);
         var req = {
             method: 'GET',

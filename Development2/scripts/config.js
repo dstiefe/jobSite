@@ -70,6 +70,14 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
                 pageTitle: 'Register'
             }
         })
+         // Register
+        .state('viewjobdetails', {
+            url: "/viewjobdetails",
+            templateUrl: "views/viewjobdetails.html",
+            data: {
+                pageTitle: 'Job Details'
+            }
+        })
     }
 
 angular

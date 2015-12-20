@@ -1,7 +1,6 @@
 angular
-    .module('Jobsite')
-    .controller("AddjobformController", function($scope, Login, $sce, $location, $http, ValiDatedTokenObject) {
-        debugger;
+    .module('Jobsite').controller("AddjobformController", function($scope, Login, $sce, $location, $http, ValiDatedTokenObject) {
+       
 
         ValiDatedTokenObject.ValiDatedTokenObject = JSON.parse(sessionStorage.getItem("ValiDatedTokenObject"));
         if (ValiDatedTokenObject.ValiDatedTokenObject == null || ValiDatedTokenObject.ValiDatedTokenObject.access_token == "") {

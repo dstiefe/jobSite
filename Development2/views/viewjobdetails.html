@@ -1,0 +1,94 @@
+<div ng-controller="ViewJobDetailsController">
+    <!--[if lt IE 7]>
+    <p class="alert alert-danger">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <!-- Header -->
+    <div id="header" ng-include="'views/head.html'">
+    </div>
+    <!-- Main Wrapper -->
+    <div id="wrapper" style="margin:0; ">
+        <br/>
+        <div class="page-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="box">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="box-header">
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                        <button class="btn btn-primary btn-md pull-right" data-ng-click="onApply()">Apply</button>
+                                                        <div>
+                                                            <h3>{{jobTitle}}</h3>  <h4>{{jobLocation}}</h4> 
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-8">
+                                            <div class="box-description">
+                                                <h3>JOB DESCRIPTION</h3>
+                                                <div>{{jobDescription}}</div>
+                                            </div>
+                                            <div class="box-description">
+                                                <h3>JOB REQUIREMENTS</h3>
+                                                <div>{{jobRequirements}}</div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="box-description">
+                                                <b>Share With</b>
+                                                <br>
+                                                <g:plusone></g:plusone>
+                                                <a class="twitter-share-button" href="https://twitter.com/intent/tweet">Tweet</a>
+                                            </div>
+                                            <div class="box-description">
+                                                <h3>JOB SNAPSHOT</h3>
+                                                <p>
+                                                    <i class="fa fa-clock-o"></i> Employee Type
+                                                    <br>
+                                                    <span class="color-theme">{{employeeType}}</span>
+                                                </p>
+                                                <p>
+                                                    <i class="fa fa-map-marker"></i> Location:
+                                                    <br>
+                                                    <span class="color-theme">{{ location }}</span>
+                                                </p>
+                                                <p>
+                                                    <i class="fa fa-briefcase"></i> Job Type
+                                                    <br>
+                                                    <span class="color-theme">{{jobtype}}</span>
+                                                </p>
+                                                <p>
+                                                    <i class="fa fa-suitcase"></i> Experience
+                                                    <br>
+                                                    <span class="color-theme">{{experience}}</span>
+                                                </p>
+                                                <p>
+                                                    <i class="fa fa-calendar"></i> Date Posted
+                                                    <br>
+                                                    <span class="color-theme">{{ posteddate | date : "M/d/yyyy" }}</span>
+                                                </p>
+                                            </div>
+                                            <div class="box-description">
+                                                <h3>ABOUT US</h3>
+                                                <div>{{jobAboutus}}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                               <!--  include here if you want category section -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>

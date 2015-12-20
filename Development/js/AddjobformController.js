@@ -24,7 +24,7 @@ app.directive('contenteditable', function ($sce) {
         $http({ method: 'GET', url: ServicesURL + 'api/v1/locations', headers: { 'Content-Type': 'application/json' } }).success(function (response) { $scope.locations = response; });
         $http({ method: 'GET', url: ServicesURL + 'api/v1/categories', headers: { 'Content-Type': 'application/json' } }).success(function (response) { $scope.categories = response; });
         if ($scope.id != "Jobs/jobmanagement.html") {
-            $http({ method: 'GET', url: ServicesURL + 'api/v1/jobs/' + $scope.id, headers: { 'Content-Type': 'application/json', 'Connection': 'keep-alive', 'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1bmlxdWVfbmFtZSI6Iml2YW4zNDQ1IiwibmFtZWlkIjoiZDFkYzRhYjAtNmFmOS00NTNiLWEwNzMtMDEwZTgwZWQ3OTRkIiwic3ViIjoiaXZhbjM0NDUiLCJyb2xlIjoiQWRtaW4iLCJpc3MiOiJodHRwOi8vbmF2aWdhdG9ybGl0aWdhdGlvbi5jb20vSWRlbnRpdHlTZXJ2ZXIvdHJ1c3QiLCJhdWQiOiJ1cm46bmF2aWdhdG9ybGl0aWdhdGlvbmFwaSIsImV4cCI6MTQ1Mjg4NDgwMCwibmJmIjoxNDUwMjkyODAwfQ.YSKqQ87fVgmvGdrL7v-_V2ZNpLleZKoWCWScp47RSWA' } })
+            $http({ method: 'GET', url: ServicesURL + 'api/v1/jobs/' + $scope.id, headers: { 'Content-Type': 'application/json', 'Connection': 'keep-alive', 'Authorization': Authorizationtoken } })
                 .success(function (response) {
                     $scope.categoryID = response["categoryId"];
                     $scope.locationID = response["locationId"];
@@ -109,13 +109,13 @@ app.directive('contenteditable', function ($sce) {
             var postsavedata = { "title": $scope.jobTitleLocationHtmlContent, "description": $scope.jobDescriptionHtmlContent, "locationId": $scope.locationID, "type": $scope.jobtype, "requirements": $scope.jobRequirementsHtmlContent, "aboutUs": $scope.aboutUsHtmlContent, "experience": $scope.experience, "categoryId": $scope.categoryID, "tags": $scope.tags, "employeeType": $scope.employeeType };
             if ($scope.id != "Jobs/jobmanagement.html") {
 
-                $http({ method: 'PUT', url: ServicesURL + 'api/v1/jobs/' + $scope.id, data: postsavedata, headers: { 'Content-Type': 'application/json', 'Connection': 'keep-alive', 'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1bmlxdWVfbmFtZSI6Iml2YW4zNDQ1IiwibmFtZWlkIjoiZDFkYzRhYjAtNmFmOS00NTNiLWEwNzMtMDEwZTgwZWQ3OTRkIiwic3ViIjoiaXZhbjM0NDUiLCJyb2xlIjoiQWRtaW4iLCJpc3MiOiJodHRwOi8vbmF2aWdhdG9ybGl0aWdhdGlvbi5jb20vSWRlbnRpdHlTZXJ2ZXIvdHJ1c3QiLCJhdWQiOiJ1cm46bmF2aWdhdG9ybGl0aWdhdGlvbmFwaSIsImV4cCI6MTQ1Mjg4NDgwMCwibmJmIjoxNDUwMjkyODAwfQ.YSKqQ87fVgmvGdrL7v-_V2ZNpLleZKoWCWScp47RSWA' } })
+                $http({ method: 'PUT', url: ServicesURL + 'api/v1/jobs/' + $scope.id, data: postsavedata, headers: { 'Content-Type': 'application/json', 'Connection': 'keep-alive', 'Authorization': Authorizationtoken } })
               .success(function (response) {
                   window.location = "/jobs/jobslist.html";
               });
 
             } else {
-                $http({ method: 'POST', url: ServicesURL + 'api/v1/jobs', data: postsavedata, headers: { 'Content-Type': 'application/json', 'Connection': 'keep-alive', 'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1bmlxdWVfbmFtZSI6Iml2YW4zNDQ1IiwibmFtZWlkIjoiZDFkYzRhYjAtNmFmOS00NTNiLWEwNzMtMDEwZTgwZWQ3OTRkIiwic3ViIjoiaXZhbjM0NDUiLCJyb2xlIjoiQWRtaW4iLCJpc3MiOiJodHRwOi8vbmF2aWdhdG9ybGl0aWdhdGlvbi5jb20vSWRlbnRpdHlTZXJ2ZXIvdHJ1c3QiLCJhdWQiOiJ1cm46bmF2aWdhdG9ybGl0aWdhdGlvbmFwaSIsImV4cCI6MTQ1Mjg4NDgwMCwibmJmIjoxNDUwMjkyODAwfQ.YSKqQ87fVgmvGdrL7v-_V2ZNpLleZKoWCWScp47RSWA' } })
+                $http({ method: 'POST', url: ServicesURL + 'api/v1/jobs', data: postsavedata, headers: { 'Content-Type': 'application/json', 'Connection': 'keep-alive', 'Authorization': Authorizationtoken } })
              .success(function (response) {
                  window.location = "/jobs/jobslist.html";
              });
@@ -123,7 +123,7 @@ app.directive('contenteditable', function ($sce) {
             }
         }
         $scope.removechanges = function () {
-            $http({ method: 'DELETE', url: ServicesURL + 'api/v1/jobs/' + $scope.id, headers: { 'Content-Type': 'application/json', 'Connection': 'keep-alive', 'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1bmlxdWVfbmFtZSI6Iml2YW4zNDQ1IiwibmFtZWlkIjoiZDFkYzRhYjAtNmFmOS00NTNiLWEwNzMtMDEwZTgwZWQ3OTRkIiwic3ViIjoiaXZhbjM0NDUiLCJyb2xlIjoiQWRtaW4iLCJpc3MiOiJodHRwOi8vbmF2aWdhdG9ybGl0aWdhdGlvbi5jb20vSWRlbnRpdHlTZXJ2ZXIvdHJ1c3QiLCJhdWQiOiJ1cm46bmF2aWdhdG9ybGl0aWdhdGlvbmFwaSIsImV4cCI6MTQ1Mjg4NDgwMCwibmJmIjoxNDUwMjkyODAwfQ.YSKqQ87fVgmvGdrL7v-_V2ZNpLleZKoWCWScp47RSWA' } })
+            $http({ method: 'DELETE', url: ServicesURL + 'api/v1/jobs/' + $scope.id, headers: { 'Content-Type': 'application/json', 'Connection': 'keep-alive', 'Authorization': Authorizationtoken } })
                 .success(function (response) {
                     window.location = "/jobs/jobslist.html";
                 });

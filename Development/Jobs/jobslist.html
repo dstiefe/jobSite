@@ -71,7 +71,7 @@
                                                 <td>{{data.category}}</td>
                                                 <td>{{data.location}}</td>
                                                 <td>
-                                                    {{ data.publishedDate | date : "M/d/yyyy" }}
+                                                    {{ data.publishedDate*1000 | date : "M/d/yyyy" }}
                                                 </td>
                                                 <td>{{data.applicantsIds.count}}</td>
                                                 <td>
@@ -109,6 +109,7 @@
         </section>
         <!-- Right sidebar -->
         <!-- Footer-->
+        <div style="clear:both;"><br /><br /></div>
         <footer class="footer">
             <span class="pull-right">
                 Example text

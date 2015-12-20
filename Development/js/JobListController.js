@@ -11,7 +11,7 @@ app.controller("JobListController", function ($scope, Login, $http, $timeout) {
     } 
     var req = {
         method: 'GET', url: ServicesURL + 'api/v1/jobs/my',
-        headers: { 'Content-Type': 'application/json', 'Connection': 'keep-alive', 'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1bmlxdWVfbmFtZSI6Iml2YW4zNDQ1IiwibmFtZWlkIjoiZDFkYzRhYjAtNmFmOS00NTNiLWEwNzMtMDEwZTgwZWQ3OTRkIiwic3ViIjoiaXZhbjM0NDUiLCJyb2xlIjoiQWRtaW4iLCJpc3MiOiJodHRwOi8vbmF2aWdhdG9ybGl0aWdhdGlvbi5jb20vSWRlbnRpdHlTZXJ2ZXIvdHJ1c3QiLCJhdWQiOiJ1cm46bmF2aWdhdG9ybGl0aWdhdGlvbmFwaSIsImV4cCI6MTQ1Mjg4NDgwMCwibmJmIjoxNDUwMjkyODAwfQ.YSKqQ87fVgmvGdrL7v-_V2ZNpLleZKoWCWScp47RSWA' }
+        headers: { 'Content-Type': 'application/json', 'Connection': 'keep-alive', 'Authorization': Authorizationtoken }
     } 
     $http(req).then(function (data) {
         if (data.status == "200") {
@@ -27,7 +27,7 @@ app.controller("JobListController", function ($scope, Login, $http, $timeout) {
         console.log(id);
         $http({
             method: 'DELETE', url: ServicesURL + 'api/v1/jobs/' + id, 
-            headers: { 'Content-Type': 'application/json', 'Connection': 'keep-alive', 'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1bmlxdWVfbmFtZSI6Iml2YW4zNDQ1IiwibmFtZWlkIjoiZDFkYzRhYjAtNmFmOS00NTNiLWEwNzMtMDEwZTgwZWQ3OTRkIiwic3ViIjoiaXZhbjM0NDUiLCJyb2xlIjoiQWRtaW4iLCJpc3MiOiJodHRwOi8vbmF2aWdhdG9ybGl0aWdhdGlvbi5jb20vSWRlbnRpdHlTZXJ2ZXIvdHJ1c3QiLCJhdWQiOiJ1cm46bmF2aWdhdG9ybGl0aWdhdGlvbmFwaSIsImV4cCI6MTQ1Mjg4NDgwMCwibmJmIjoxNDUwMjkyODAwfQ.YSKqQ87fVgmvGdrL7v-_V2ZNpLleZKoWCWScp47RSWA' }
+            headers: { 'Content-Type': 'application/json', 'Connection': 'keep-alive', 'Authorization': Authorizationtoken }
         }).
    success(function (response) {
        $http(req).then(function (data) {

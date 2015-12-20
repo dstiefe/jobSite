@@ -7,7 +7,7 @@ angular
             //$location.path("/login");
         }
         $url = $location.protocol() + '://' + $location.host() + ':' + $location.port() + '/';
-        $scope.id = $location.absUrl().replace($url, "").replace("views/jobmanagement.html?id=", "");
+        $scope.id = $location.absUrl().replace($url, "").replace("#/jobmanagement?id=", "");
         console.log($scope.id);
         $http({
             method: 'GET',
@@ -27,7 +27,7 @@ angular
         }).success(function(response) {
             $scope.categories = response;
         });
-        if ($scope.id != "views/jobmanagement.html") {
+        if ($scope.id != "#/jobmanagement") {
             $http({
                     method: 'GET',
                     url: ServicesURL + 'api/v1/jobs/' + $scope.id,
@@ -46,17 +46,17 @@ angular
                     $scope.jobDescriptionContentEditable = false;
                     $scope.jobRequirementsContentEditable = false;
                     $scope.aboutUsEditable = false;
-                    $scope.aboutUsHtmlContent = " " + response["aboutUs"];
+                    $scope.aboutUsHtmlContent = response["aboutUs"] == "" ? "  <br> " + response["aboutUs"] : response["aboutUs"];
                     $scope.posteddate = response["publishedDate"];
                     $scope.employeeType = response["employeeType"];
                     $scope.experience = response["experience"];
                     $scope.jobtype = response["type"];
                     $scope.aboutUsContent = $sce.trustAsHtml($scope.aboutUsHtmlContent);
-                    $scope.jobTitleLocationHtmlContent = " " + response["title"];
+                    $scope.jobTitleLocationHtmlContent = response["title"] == "" ? "<br>" + response["title"] : response["title"];
                     $scope.jobTitleLocationContent = $sce.trustAsHtml($scope.jobTitleLocationHtmlContent);
-                    $scope.jobDescriptionHtmlContent = " " + response["description"];
+                    $scope.jobDescriptionHtmlContent = response["description"]==""?"<br>"+response["description"]:response["description"];
                     $scope.jobDescriptionContent = $sce.trustAsHtml($scope.jobDescriptionHtmlContent);
-                    $scope.jobRequirementsHtmlContent = " " + response["requirements"];
+                    $scope.jobRequirementsHtmlContent = response["requirements"] == "" ? " <br>" + response["requirements"] : response["requirements"];
                     $scope.jobRequirementsContent = $sce.trustAsHtml($scope.jobRequirementsHtmlContent);
                     console.log(response);
                 });
@@ -141,7 +141,7 @@ angular
                 "tags": $scope.tags,
                 "employeeType": $scope.employeeType
             };
-            if ($scope.id != "views/jobmanagement.html") {
+            if ($scope.id != "#/jobmanagement") {
 
                 $http({
                         method: 'PUT',

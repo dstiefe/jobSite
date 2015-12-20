@@ -4,13 +4,12 @@ angular
         $scope.searchtext = "";
         var req = {
             method: 'GET',
-            url: ServicesURL + 'api/v1/jobs/search?text=IT',
+            url: ServicesURL + 'api/v1/jobs/search',
             headers: {
                 'Content-Type': 'application/json'
             }
         }
-        $http(req).then(function(data) {
-            debugger;
+        $http(req).then(function(data) { 
             if (data.status == "200") {
                 $scope.list = data.data;
                 var locations = [];
@@ -58,17 +57,14 @@ angular
         $scope.searchjob = function() {
             var searchtext = "";
             if ($scope.searchtext != "") {
-                searchtext += 'text=' + $scope.searchtext;
-            } else {
-                searchtext = 'text=IT';
-            }
+                searchtext += '?text=' + $scope.searchtext;
+            } 
             if ($scope.searchlocation != "") {
-                searchtext += '&location=' + $scope.searchlocation;
-            }
-            console.log(searchtext);
+                searchtext += (searchtext == "") ? '?location=' + $scope.searchlocation : '&location=' + $scope.searchlocation;
+            } 
             var req1 = {
                 method: 'GET',
-                url: ServicesURL + 'api/v1/jobs/search?' + searchtext + '',
+                url: ServicesURL + 'api/v1/jobs/search' + searchtext + '',
                 headers: {
                     'Content-Type': 'application/json'
                 }

@@ -1,0 +1,110 @@
+﻿<div ng-controller="searchjobController">
+      <!-- Header -->
+    <div id="header" ng-include="'views/head.html'">
+    </div>
+    <!-- Main Wrapper -->
+    <div id="wrapper" style="margin:0; ">
+        <br />
+        <div id="header" style="margin:0 auto; width:95%;">
+            <div class="col-md-1">
+                <h3 style="margin: 0;padding: 0.7em 1em 1em 0.8em;"> Jobs:</h3>
+            </div>
+            <div class="col-md-5">
+                <div class="clear"><br /></div>
+                <input type="text" class="form-control" ng-model="searchtext" placeholder="Job Title or Category">
+            </div>
+            <div class="col-md-5">
+                <div class="clear"><br /></div>
+                <input type="text" class="form-control" ng-model="searchlocation" placeholder="City,State or Zipcode">
+            </div>
+            <div class="col-md-1">
+                <div class="clear">
+                    <br />
+                </div> <a class="btn btn-primary btn-block m-b-md" ng-click="searchjob()" href="#">Search</a>
+            </div>
+        </div>
+        <section id="content">
+            <div class="container">
+                <div class="right_col" role="main">
+                    <div class="row">
+                        <div class="container">
+                            <br />
+                            <div class="row">
+                                <div class="col-sm-3"><div class="btn btn-primary btn-block m-b-md col-sm-12">Narrow Search</div> 
+                                    <div class="narrowsearch-container">
+
+                                        <div class="hpanel">
+                                            <div class="panel-body">  
+                                                <h3><b>Category</b></h3>
+                                                <ul class="list-group mailbox-list">
+                                                    <li class="list-group-item" ng-repeat="category in categories"><a ng-click="searchbycategory(category.category)" href="#">{{ category.category}}({{ category.count}})</a></li>
+                                                </ul>
+                                                <hr>
+                                                <h3><b>Location</b></h3>
+                                                <ul class="list-group mailbox-list">
+                                                    <li class="list-group-item" ng-repeat="location in locations"><a ng-click="searchbylocation(location.location)" href="#">{{ location.location}}({{ location.count}})</a></li>
+                                                 </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-9" >
+                                    <div class="hpanel">
+                                        <div class="panel-body">
+                                            <div class="col-sm-6"> PageSize:<select ng-model="entryLimit" style="width:100px" class="form-control"><option>5</option><option>10</option><option>20</option><option>50</option><option>100</option></select></div>
+                                            <div class="col-sm-6" style="vertical-align:bottom;text-align:right"><input type="text" ng-model="search" ng-change="filter()" placeholder="Filter" class="form-control" /> <h5>Filtered {{ filtered.length }} of {{ totalItems}} Total Jobs</h5></div><div class="col-md-12" style="text-align:right;">
+                                                <br /><br /> 
+                                            </div>
+                                            <table ng-show="filteredItems > 0" class="table table-striped table-bordered">
+                                                <thead>
+                                                <th>Job Title&nbsp;<a ng-click="sort_by('title');"><i class="glyphicon glyphicon-sort"></i></a></th>
+                                                <th>Job Location&nbsp;<a ng-click="sort_by('location');"><i class="glyphicon glyphicon-sort"></i></a></th>
+                                                <th>Posted Date&nbsp;<a ng-click="sort_by('publishedDate');"><i class="glyphicon glyphicon-sort"></i></a></th>
+                                                <th> </th>
+                                                </thead>
+                                                <tbody>
+                                                    <tr ng-repeat="data in filtered = (list | filter:search | orderBy : predicate :reverse) | startFrom:(currentPage-1)*entryLimit | limitTo:entryLimit">
+                                                        <td>{{data.title}}</td>
+                                                        <td>{{data.location}}</td>
+                                                        <td>
+                                                            {{ data.publishedDate*1000 | date : "M/d/yyyy" }}
+                                                        </td>
+                                                        <td>
+                                                            <a href="jobmanagement.html?id={{data.id}}" class="btn btn-primary btn-block m-b-md"><span class="glyphicon glyphicon-triangle-right"></span> View</a>
+
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <div class="col-md-12" style="text-align:right;" ng-show="filteredItems > 0">
+                                                <div pagination="" page="currentPage" on-select-page="setPage(page)" boundary-links="true" total-items="filteredItems" items-per-page="entryLimit" class="pagination-small" previous-text="&laquo;" next-text="&raquo;"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12" ng-show="filteredItems == 0">
+                                    <div class="col-md-12">
+                                        <h4>No Jobs found</h4>
+                                    </div>
+                                </div> 
+                                <div class="col-md-1">
+                                    <br />
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Right sidebar -->
+        <!-- Footer-->
+        <div style="clear:both;"><br /><br /></div>
+        <footer class="footer">
+            <span class="pull-right">
+                Example text
+            </span>
+            Company 2015-2020
+        </footer>
+    </div>
+</div>

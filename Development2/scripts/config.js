@@ -31,11 +31,11 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
             }
         })
         // Searchprojects
-        .state('searchprojects', {
-            url: "/searchprojects",
-            templateUrl: "views/Searchprojects.html",
+        .state('searchjobs', {
+            url: "/searchjobs",
+            templateUrl: "views/searchjobs.html",
             data: {
-                pageTitle: 'Search Projects'
+                pageTitle: 'Search Jobs'
             }
         })
         // Jobmanagement
@@ -70,7 +70,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
                 pageTitle: 'Register'
             }
         })
-}
+    }
 
 angular
     .module('Jobsite')

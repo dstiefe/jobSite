@@ -6,8 +6,10 @@ angular
         if (ValiDatedTokenObject.ValiDatedTokenObject == null || ValiDatedTokenObject.ValiDatedTokenObject.access_token == "") {
             //$location.path("/login");
         }
-        $url = $location.protocol() + '://' + $location.host() + ':' + $location.port() + '/';
-        $scope.id = $location.absUrl().replace($url, "").replace("#/jobmanagement?id=", "");
+        var parts = $location.absUrl().split("jobmanagemen");
+        if (parts[1] == "t")
+        { $scope.id = ""; } else { $scope.id = parts[1].replace("t?id=",""); }
+         
         console.log($scope.id);
         $http({
             method: 'GET',
@@ -27,7 +29,7 @@ angular
         }).success(function(response) {
             $scope.categories = response;
         });
-        if ($scope.id != "#/jobmanagement") {
+        if ($scope.id != "") {
             $http({
                     method: 'GET',
                     url: ServicesURL + 'api/v1/jobs/' + $scope.id,
@@ -141,7 +143,7 @@ angular
                 "tags": $scope.tags,
                 "employeeType": $scope.employeeType
             };
-            if ($scope.id != "#/jobmanagement") {
+            if ($scope.id != "") {
 
                 $http({
                         method: 'PUT',

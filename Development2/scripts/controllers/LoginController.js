@@ -6,7 +6,7 @@
 
 
 angular
-    .module('Jobsite').controller("Login", function($scope, Login, $location, ValiDatedTokenObject) {
+    .module('Jobsite').controller("Login", function($scope, Login, $location, ValiDatedTokenObject, locationHistoryService) {
 
         $scope.UserLogin = function() {
             console.log("login click");
@@ -16,7 +16,6 @@ angular
             //$('.splash').show();
             var PostRequest = Login.AuthorizeToken(data);
             PostRequest.then(function(RequestResult) {
-                    debugger;
                     if (RequestResult.status === 200) {
                         ValiDatedTokenObject.ValiDatedTokenObject.access_token = RequestResult.data.access_token;
                         ValiDatedTokenObject.ValiDatedTokenObject.token_type = RequestResult.data.token_type;
@@ -25,7 +24,13 @@ angular
                         ValiDatedTokenObject.ValiDatedTokenObject.issued = RequestResult.data.issued;
                         ValiDatedTokenObject.ValiDatedTokenObject.expires = RequestResult.data.expires;
                         sessionStorage.setItem("ValiDatedTokenObject", JSON.stringify(ValiDatedTokenObject.ValiDatedTokenObject));
-                        $location.path("/dashboard");
+                        var parts = $location.absUrl().split("login?id=");
+                        var previousLocationPath = locationHistoryService.get().split('/').pop().split("?");
+                        if ((previousLocationPath[0] == "viewjobdetails") && (parts[1] != undefined)) {
+                            $location.path("/applyjob");
+                        } else {
+                            $location.path("/dashboard");
+                        }
                     }
                 },
                 function(error) {

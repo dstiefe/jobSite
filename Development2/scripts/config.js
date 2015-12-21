@@ -78,6 +78,14 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
                 pageTitle: 'Job Details'
             }
         })
+         // ApplyJob
+        .state('applyjob', {
+            url: "/applyjob",
+            templateUrl: "views/applyjob.html",
+            data: {
+                pageTitle: 'Apply Job'
+            }
+        })
     }
 
 angular

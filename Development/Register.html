@@ -1,10 +1,18 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html data-ng-app="Jobsite">
 <head>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
+    <script src="https://apis.google.com/js/api:client.js"></script>
+
+    <style type="text/css">
+        .hidden_ln_login_holder {
+            visibility: hidden;
+        }
+    </style>
 
     <!-- Page title -->
     <title>HOMER | WebApp admin theme</title>
@@ -26,65 +34,77 @@
         api_key: 77q1g8nbpf35zl
         authorize: true
         onLoad: onLinkedInLoad
+        scope: r_basicprofile r_emailaddress
     </script>
     <script type="text/javascript">
 
-        // Setup an event listener to make an API call once auth is complete
         function onLinkedInLoad() {
-            IN.Event.on(IN, "auth", getProfileData);
+            IN.Event.on(IN, "auth", onLinkedInAuth);
+        }
+        function onLinkedInAuth() {
+            IN.API.Profile("me")
+            .fields("firstName", "lastName", "industry", "location:(name)", "picture-url", "headline", "summary", "num-connections", "public-profile-url", "distance", "positions", "email-address", "educations", "date-of-birth")
+            .result(displayProfiles)
+            .error(displayProfilesErrors);
         }
 
-        // Handle the successful return from the API call
-        function onSuccess(data) {
-            console.log("LinkedIn " + data);
+        function displayProfiles(profiles) {
+            member = profiles.values[0];
+            $('#txtfirstname').val(member.firstName)
+            $('#txtlastname').val(member.lastName)
+            $('#txtEmail').val(member.emailAddress)
+            $('#txtcemail').val(member.emailAddress)
         }
-
-        // Handle an error response from the API call
-        function onError(error) {
-            console.log("eRROR IN linkedIn", error);
-        }
-
-        // Use the API call wrapper to request the member's basic profile data
-        function getProfileData() {
-            IN.API.Raw("/people/~").result(onSuccess).error(onError);
+        function displayProfilesErrors(error) {
+            profilesDiv = document.getElementById("profiles");
+            profilesDiv.innerHTML = error.message;
+            console.log(error);
         }
 
     </script>
 
 
     <script type="text/javascript">
-        (function () {
-            window.onSignIn = function (authResult) {
-                if (authResult.access_token) {
-                    console.log('Gmail success');
-                    gapi.client.load('plus', 'v1', function () {
-                        var request = gapi.client.plus.people.get({ 'userId': 'me' });
-                        request.execute(function (response) {
-                            $('#txtfirstname').val(response.name.givenName); 
-                            $('#txtlastname').val(response.name.familyName); 
 
-                            console.log(response);
-                            console.log('ID: ' + response.id);
-                            console.log('Display Name: ' + response.displayName);
-                            console.log('Image URL: ' + response.image.url);
-                            console.log('Profile URL: ' + response.url);
-                        });
-                    });
-                } else if (authResult.error) {
-                    console.log('Gmail There was an error: ' + authResult.error);
-                }
-            };
-            var po = document.createElement('script'); po.type = 'text/javascript';
-            po.async = true;
-            po.src = 'https://apis.google.com/js/client:plusone.js';
-            var s = document.getElementsByTagName('script')[0];
-            s.parentNode.insertBefore(po, s);
-        })();
+
+
+        var googleUser = {};
+        var startApp = function () {
+            gapi.load('auth2', function () {
+                // Retrieve the singleton for the GoogleAuth library and set up the client.
+                auth2 = gapi.auth2.init({
+                    client_id: '593946543327-rtpt1uoktelggfa6t4he1l37mkhse4lg.apps.googleusercontent.com',
+                    cookiepolicy: 'single_host_origin',
+                    // Request scopes in addition to 'profile' and 'email'
+                    //scope: 'additional_scope'
+                });
+                attachSignin(document.getElementById('customBtn'));
+            });
+        };
+
+        function attachSignin(element) {
+            console.log(element.id);
+            auth2.attachClickHandler(element, {},
+                function (googleUser) {
+                    $('#txtfirstname').val(googleUser.getBasicProfile().Ph);
+                    $('#txtlastname').val(googleUser.getBasicProfile().hg);
+                    $('#txtEmail').val(googleUser.getBasicProfile().getEmail());
+                    $('#txtcemail').val(googleUser.getBasicProfile().getEmail());
+
+                }, function (error) {
+                    alert(JSON.stringify(error, undefined, 2));
+                });
+        }
+
+        startApp();
+
+
     </script>
 
     <script type="text/javascript">
         var IsAllFieldsValidated = true;
         var vIsEmployer = false;
+
 
 
     </script>
@@ -152,24 +172,29 @@
                                     Also add jobs
                                 </div>
                                 <div class="checkbox col-lg-12">
-                                    <span style="color:#f00; " id="lblMessage"></span>
+                                    <span style="color:#f00; " id="lblMessage">{{error_Description}}</span>
                                 </div>
                             </div>
                             <div class="text-center">
+
+
+                                <button class="btn btn-success" id="cmd_Register" ng-click="Register()">Register</button>
+
+                                <div id="customBtn" class="customGPlusSignIn btn btn-success">
+                                    <span class="buttonText">Register with Google </span>
+                                </div>
+
+
+
+                                <!--<button class="g-signin btn btn-success">Register with Gmail</button>-->
                                 <script type="in/Login">
                                 </script>
-                                <button class="btn btn-success" id="cmd_Register" ng-click="Register()">Register</button>
-                                <button class="g-signin btn btn-success"
-                                        data-scope="https://www.googleapis.com/auth/plus.login"
-                                        data-clientid="593946543327-rtpt1uoktelggfa6t4he1l37mkhse4lg.apps.googleusercontent.com"
-                                        data-callback="onSignIn"
-                                        data-theme="dark"
-                                        data-cookiepolicy="single_host_origin"
-                                        data-requestvisibleactions="http://schemas.google.com/AddActivity"
-                                        data-width="wide">
-                                    Register with Gmail
-                                </button>
-                                <button class="btn btn-success" onclick="onLinkedInLoad()">Register with LinkedIn</button>
+
+                                <!--<a href="#" class="btn btn-success ln_auth_link" id="cmd_LinkedIn">Register with LinkedIn</a>-->
+                                <!--<div class="hidden_ln_login_holder">
+                                    <script type="in/Login">
+                                    </script>
+                                </div>-->
                                 <!--<button class="btn btn-default">Cancel</button>-->
                             </div>
                         </div>
@@ -196,10 +221,14 @@
     <!-- App scripts -->
     <script src="scripts/homer.js"></script>
     <script src="js/Common.js"></script>
-
     <script src="js/angular.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.1/angular-sanitize.js"></script>
+    <script src="js/angular-route.min.js"></script>
     <script src="js/ui-bootstrap-tpls-0.10.0.min.js"></script>
+    <script type="text/javascript" src="js/angular-sanitize.min.js"></script>
+    <script src="vendor/datatables/media/js/jquery.dataTables.min.js"></script>
+    <script src="vendor/datatables_plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
+    <script src="vendor/angular-datatables/dist/angular-datatables.min.js"></script>
+
     <script src="JS/Module.js"></script>
     <script src="js/Register.js"></script>
     <script src="JS/Service.js"></script>

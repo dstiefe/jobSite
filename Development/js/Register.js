@@ -89,9 +89,9 @@ app.controller("Registration", function ($scope, Registration) {
     $scope.Register = function () {
         var UserInfo =
         {
-            FirstName: $scope.firstname,
-            LastName: $scope.lastname,
-            Email: $scope.email,
+            FirstName: $('#txtfirstname').val(),
+            LastName: $('#txtlastname').val(),
+            Email: $('#txtEmail').val(),
             UserName: $scope.username,
             password: $scope.password,
             IsEmployer: $('.icheckbox_square-green').hasClass('checked'),
@@ -100,16 +100,20 @@ app.controller("Registration", function ($scope, Registration) {
         console.log(UserInfo);
 
         if (IsAllFieldsValidated === true) {
+            $('.splash').show();
             var PostRequest = Registration.UserRegister(UserInfo);
             PostRequest.then(function (RequestResult) {
                 if (RequestResult.status === 200) {
-                    alert("You have successfully register");
+                    $('#lblMessage').text("You have successfully register");
+                    $('#lblMessage').css('color', 'blue');
+                    $('.splash').hide();
                 }
             },
             function (error) {
                 $('.splash').hide();
                 if (error.status === 400) {
-                    $scope.error_Description = error.data.error_description;
+                    var er = parseErrors(error.data);
+                    $scope.error_Description = er[0];
                 }
 
                 console.log("Error", error);
@@ -121,3 +125,12 @@ app.controller("Registration", function ($scope, Registration) {
     }
 
 });
+
+
+$(function () {
+    $('.ln_auth_link').click(function () {
+        DIV = $(this).next();
+        console.log(DIV);
+        $('a span:first', DIV).click(function () { return true; });
+    });
+})

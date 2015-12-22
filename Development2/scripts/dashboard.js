@@ -30,7 +30,7 @@ $(function() {
 angular
     .module('Jobsite').controller("dashboardController", function($scope, Login, $modal) {
             var parts = $location.absUrl().split("dashboard?id=");
-            if ((parts[1] != undefined) {
+            if (parts[1] != undefined) {
                     $modal.open({
                         templateUrl: 'views/applyjob.html',
                         controller: ApplyJobController

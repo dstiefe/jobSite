@@ -1,5 +1,5 @@
 angular
-    .module('Jobsite').controller("ViewJobDetailsController", function ($scope, Login, $http, $location) {
+    .module('Jobsite').controller("ViewJobDetailsController", function ($scope, Login, $http, $location) {debugger;
         var parts = $location.absUrl().split("viewjobdetails?id=");
         var viewJobId= parts[1];   
         var req = {

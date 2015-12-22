@@ -7,7 +7,7 @@ angular
 
         $scope.ValidateToken = function() {
             var data = 'grant_type=password&username=ivan&password=123456';
-            var PostRequest = Login.AuthorizeToken(data);
+            var PostRequest = AuthController.AuthorizeToken(data);
             PostRequest.then(function(RequestResult) {
                     debugger;
                 },

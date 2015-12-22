@@ -28,7 +28,7 @@ $(function() {
 
 
 angular
-    .module('Jobsite').controller("dashboardController", function($scope, Login, $modal) {
+    .module('Jobsite').controller("dashboardController", function($scope, Login,$location, $modal) {
             var parts = $location.absUrl().split("dashboard?id=");
             if (parts[1] != undefined) {
                     $modal.open({

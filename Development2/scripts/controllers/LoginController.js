@@ -27,7 +27,7 @@ angular
                         var parts = $location.absUrl().split("login?id=");
                         var previousLocationPath = locationHistoryService.get().split('/').pop().split("?");
                         if ((previousLocationPath[0] == "viewjobdetails") && (parts[1] != undefined)) {
-                            $location.path("/applyjob");
+                            $location.path("/dashboard");
                         } else {
                             $location.path("/dashboard");
                         }

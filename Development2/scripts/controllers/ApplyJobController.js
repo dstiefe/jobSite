@@ -2,7 +2,7 @@ angular
     .module('Jobsite')
     .controller('ApplyJobController', ApplyJobController);
 
-function ApplyJobController($scope, Login, $http, $location) {
+function ApplyJobController($scope, Login, $http, $location, $modalInstance) {
     debugger;
     $scope.includeCoverLetter = false;
 
@@ -49,7 +49,7 @@ function ApplyJobController($scope, Login, $http, $location) {
     }
 
     $scope.onSubmit = function() {debugger;
-        var parts = $location.absUrl().split("applyjob?id=");
+        var parts = $location.absUrl().split("dashboard?id=");
         var viewJobId= parts[1];
         var postresumedata = {
                 "note": $scope.coverLetterNote,
@@ -76,7 +76,7 @@ function ApplyJobController($scope, Login, $http, $location) {
     }
 
     $scope.onClose = function(){
-        $location.path("/dashboard");
+        $modalInstance.close();
     }      
 
 

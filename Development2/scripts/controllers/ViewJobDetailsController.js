@@ -11,7 +11,7 @@ angular
                 'Authorization': Authorizationtoken
             }
         }
-        $http(req).then(function(data) {
+        $http(req).then(function(data) {debugger;
             if (data.status == "200") {
                 $scope.jobTitle = data.data.title;
                 $scope.jobLocation = data.data.location;

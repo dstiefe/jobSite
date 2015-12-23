@@ -9,8 +9,8 @@ angular
             expires_in: "",
             userName: "",
             issued: "",
-            expires: ""
-            ,role: "",
+            expires: "",
+            role: "",
             id: ""
         }
 

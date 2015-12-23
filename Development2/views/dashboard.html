@@ -10,16 +10,37 @@
         <br />
         <div id="header" style="margin:0 auto; width:95%;">
             <h3 style="margin: 0;padding: 0.7em 1em 1em 0.8em;">
-                Jobs Applied To
+                {{headingmessage}}
             </h3>
         </div>
-        <!-- Right sidebar -->
-        <!-- Footer-->
-      
+        <!-- Right sidebar --> 
+        <section id="content">
+            <div class="container">
+                <div ng-repeat="data in  list" class="col-lg-6" style="">
+                    <div class="hpanel">
+                        <div class="panel-body list">
+                            <div class="table-responsive project-list">
+                                <table class="table table-striped">
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <h4> {{data.title}}({{data.location}})</h4>
+                                            </td>
+                                            <td><a class="btn btn-primary" href="/#/viewjobdetails?id={{data.id}}">{{viewtext}}</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <p>  {{data.description}} </p>
+                                            </td>
+                                            <td>Date:{{data.publishedDate*1000 | date : "M/d/yyyy"}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
 </div>
-<footer class="footer">
-    <span class="pull-right">
-        Example text
-    </span> Company 2015-2020
-</footer>

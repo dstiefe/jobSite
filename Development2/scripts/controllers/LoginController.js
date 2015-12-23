@@ -23,6 +23,8 @@ angular
                         ValiDatedTokenObject.ValiDatedTokenObject.userName = RequestResult.data.userName;
                         ValiDatedTokenObject.ValiDatedTokenObject.issued = RequestResult.data.issued;
                         ValiDatedTokenObject.ValiDatedTokenObject.expires = RequestResult.data.expires;
+                        ValiDatedTokenObject.ValiDatedTokenObject.role = RequestResult.data.expires;
+                        ValiDatedTokenObject.ValiDatedTokenObject.id = RequestResult.data.userId;
                         sessionStorage.setItem("ValiDatedTokenObject", JSON.stringify(ValiDatedTokenObject.ValiDatedTokenObject));
                         var parts = $location.absUrl().split("login?id=");
                         var previousLocationPath = locationHistoryService.get().split('/').pop().split("?");

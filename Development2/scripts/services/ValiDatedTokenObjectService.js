@@ -10,6 +10,8 @@ angular
             userName: "",
             issued: "",
             expires: ""
+            ,role: "",
+            id: ""
         }
 
         return {

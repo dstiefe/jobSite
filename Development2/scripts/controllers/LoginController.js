@@ -6,8 +6,8 @@
 
 
 angular
-    .module('Jobsite').controller("Login", function($scope, Login, $location, ValiDatedTokenObject, locationHistoryService) {
-
+    .module('Jobsite').controller("Login", function($scope, Login, $location, locationHistoryService,ValiDatedTokenObject) {
+        sessionStorage.removeItem("ValiDatedTokenObject");
         $scope.UserLogin = function() {
             console.log("login click");
             var username = $scope.username;
@@ -26,13 +26,7 @@ angular
                         ValiDatedTokenObject.ValiDatedTokenObject.role = RequestResult.data.expires;
                         ValiDatedTokenObject.ValiDatedTokenObject.id = RequestResult.data.userId;
                         sessionStorage.setItem("ValiDatedTokenObject", JSON.stringify(ValiDatedTokenObject.ValiDatedTokenObject));
-                        var parts = $location.absUrl().split("login?id=");
-                        var previousLocationPath = locationHistoryService.get().split('/').pop().split("?");
-                        if ((previousLocationPath[0] == "viewjobdetails") && (parts[1] != undefined)) {
-                            $location.path("/dashboard");
-                        } else {
-                            $location.path("/dashboard");
-                        }
+                        $location.path("/dashboard");
                     }
                 },
                 function(error) {

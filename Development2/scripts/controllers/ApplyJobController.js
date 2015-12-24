@@ -15,22 +15,6 @@ angular
         };
     }]);
 
-/*angular
-    .module('Jobsite').service('fileUpload', ['$http', function($http) {
-        this.uploadFileToUrl = function(file, uploadUrl) {
-            var fd = new FormData();
-            fd.append('file', file);
-            $http.post(uploadUrl, fd, {
-                    transformRequest: angular.identity,
-                    headers: {
-                        'Content-Type': undefined
-                    }
-                })
-                .success(function() {})
-                .error(function() {});
-        }
-    }]);*/
-
 angular
     .module('Jobsite')
     .controller('ApplyJobController', ApplyJobController);
@@ -38,6 +22,7 @@ angular
 function ApplyJobController($scope, Login, $http, $location, $modalInstance) {
     debugger;
     $scope.includeCoverLetter = false;
+
     var resumeFileUrl;
 
     var req = {
@@ -75,27 +60,29 @@ function ApplyJobController($scope, Login, $http, $location, $modalInstance) {
     };
 
     $scope.uploadFile = function() {
+        $scope.loading = true;
         var file = $scope.myFile;
         console.log('file is ');
         console.dir(file);
         var uploadUrl = ServicesURL + 'api/v1/resumes/upload';
-        //ileUpload.uploadFileToUrl(file, uploadUrl);
         var fd = new FormData();
-            fd.append('file', file);
-           $http.post(uploadUrl, fd, {
-                    transformRequest: angular.identity,
-                    headers: {
-                        'Content-Type': undefined,
-                        'Authorization': Authorizationtoken
-                    }
-                })
-                .success(function(response) {debugger;
-                    resumeFileUrl = response.storageLocationNative;
-                    alert('Resume upload success');
-                })
-                .error(function(response) {
-                    alert('Resume upload failed');
-                });
+        fd.append('file', file);
+        $http.post(uploadUrl, fd, {
+                transformRequest: angular.identity,
+                headers: {
+                    'Content-Type': undefined,
+                    'Authorization': Authorizationtoken
+                }
+            })
+            .success(function(response) {
+                resumeFileUrl = response.storageLocationNative;
+
+                alert('Resume upload success');
+            })
+            .error(function(response) {
+                $scope.loading = false;
+                alert('Resume upload failed');
+            });
 
     };
 
@@ -105,7 +92,7 @@ function ApplyJobController($scope, Login, $http, $location, $modalInstance) {
         var viewJobId = parts[1];
         var postresumedata = {
             "note": $scope.coverLetterNote,
-            "sourceUrl": resumeFileUrl,
+            "storageLocationNative": resumeFileUrl,
             "firstName": $scope.accountFirstName,
             "lastName": $scope.accountLastName,
             "email": $scope.accountEmail

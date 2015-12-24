@@ -5,6 +5,8 @@
     <!-- Header -->
     <div id="header" ng-include="'views/head.html'">
     </div>
+    <div class="alert alert-success text-center" ng-show="jobYouOwnAlert" role="alert">You Cannot Apply to the Jobs As you are the owner of this job</div>
+    <div class="alert alert-danger text-center" ng-show="jobAlreadyAppliedAlert" role="alert">Job Already Applied</div>   
     <!-- Main Wrapper -->
     <div id="wrapper" style="margin:0; ">
         <br />

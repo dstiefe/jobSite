@@ -10,7 +10,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
     $compileProvider.debugInfoEnabled(true);
 
     // Set default state
-    $urlRouterProvider.otherwise("/test");
+    $urlRouterProvider.otherwise("/searchjobs");
     $stateProvider
 
 

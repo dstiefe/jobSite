@@ -27,7 +27,8 @@ angular
             }
         });
         $scope.onApply = function() {
-            $location.path("/login");
+
+            $location.path("/dashboard");
         }
 
     });

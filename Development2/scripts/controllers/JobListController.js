@@ -4,8 +4,13 @@
 
 angular
     .module('Jobsite').controller("JobListController", function($scope, Login, $http, $timeout, $location, ValiDatedTokenObject) {
-        ValiDatedTokenObject.ValiDatedTokenObject = JSON.parse(sessionStorage.getItem("ValiDatedTokenObject"));
-        if (ValiDatedTokenObject.ValiDatedTokenObject == null || ValiDatedTokenObject.ValiDatedTokenObject.access_token == "") {
+        /*ValiDatedTokenObject.ValiDatedTokenObject = JSON.parse(sessionStorage.getItem("ValiDatedTokenObject"));
+         if (ValiDatedTokenObject.ValiDatedTokenObject == null || ValiDatedTokenObject.ValiDatedTokenObject.access_token == "") {
+            $location.path("/login");
+        }*/
+
+         ValiDatedTokenObject.setValiDatedTokenObject(JSON.parse(sessionStorage.getItem("ValiDatedTokenObject")));
+        if (ValiDatedTokenObject.getValiDatedTokenObject() == null || ValiDatedTokenObject.getValiDatedTokenObject().access_token == "") {
             $location.path("/login");
         }
         var req = {
@@ -14,7 +19,7 @@ angular
             headers: {
                 'Content-Type': 'application/json',
                 'Connection': 'keep-alive',
-                'Authorization': Authorizationtoken
+                'Authorization': ValiDatedTokenObject.getValiDatedTokenObject().token_type+" "+ValiDatedTokenObject.getValiDatedTokenObject().access_token
             }
         }
         $http(req).then(function(data) {
@@ -35,7 +40,7 @@ angular
                 headers: {
                     'Content-Type': 'application/json',
                     'Connection': 'keep-alive',
-                    'Authorization': Authorizationtoken
+                    'Authorization': ValiDatedTokenObject.getValiDatedTokenObject().token_type+" "+ValiDatedTokenObject.getValiDatedTokenObject().access_token
                 }
             }).
             success(function(response) {

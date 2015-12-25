@@ -1,17 +1,15 @@
 angular
-    .module('Jobsite').controller("ViewJobDetailsController", function ($scope, Login, $http, $location) {debugger;
+    .module('Jobsite').controller("ViewJobDetailsController", function ($scope, Login, ValiDatedTokenObject, $http, $location) {debugger;
         var parts = $location.absUrl().split("viewjobdetails?id=");
         var viewJobId= parts[1];   
         var req = {
             method: 'GET',
             url: ServicesURL + 'api/v1/jobs/' + viewJobId,
             headers: {
-                'Content-Type': 'application/json',
-                'Connection': 'keep-alive',
-                'Authorization': Authorizationtoken
-            }
+                'Content-Type': 'application/json'
+                  }
         }
-        $http(req).then(function(data) {debugger;
+        $http(req).then(function(data) {
             if (data.status == "200") {
                 $scope.jobTitle = data.data.title;
                 $scope.jobLocation = data.data.location;

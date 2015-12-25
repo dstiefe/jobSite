@@ -19,7 +19,7 @@ angular
     .module('Jobsite')
     .controller('ApplyJobController', ApplyJobController);
 
-function ApplyJobController($scope, Login, $http, $location, $modalInstance) {
+function ApplyJobController($scope, Login, ValiDatedTokenObject, $http, $location, $modalInstance) {
     debugger;
     $scope.includeCoverLetter = false;
 
@@ -31,7 +31,7 @@ function ApplyJobController($scope, Login, $http, $location, $modalInstance) {
         headers: {
             'Content-Type': 'application/json',
             'Connection': 'keep-alive',
-            'Authorization': Authorizationtoken
+            'Authorization': ValiDatedTokenObject.getValiDatedTokenObject().token_type+" "+ValiDatedTokenObject.getValiDatedTokenObject().access_token
         }
     }
     $http(req).then(function(data) {
@@ -71,7 +71,7 @@ function ApplyJobController($scope, Login, $http, $location, $modalInstance) {
                 transformRequest: angular.identity,
                 headers: {
                     'Content-Type': undefined,
-                    'Authorization': Authorizationtoken
+                    'Authorization': ValiDatedTokenObject.getValiDatedTokenObject().token_type+" "+ValiDatedTokenObject.getValiDatedTokenObject().access_token
                 }
             })
             .success(function(response) {
@@ -104,7 +104,7 @@ function ApplyJobController($scope, Login, $http, $location, $modalInstance) {
                 headers: {
                     'Content-Type': 'application/json',
                     'Connection': 'keep-alive',
-                    'Authorization': Authorizationtoken
+                    'Authorization': ValiDatedTokenObject.getValiDatedTokenObject().token_type+" "+ValiDatedTokenObject.getValiDatedTokenObject().access_token
                 }
             })
             .success(function(response) {

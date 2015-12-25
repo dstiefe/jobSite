@@ -2,8 +2,14 @@
 <div class="color-line">
 </div>
 <nav role="navigation">
+<div class="navbar-left">
+        <ul class="nav navbar-nav no-borders">
+        <li>
+                <a class="btn btn-default btn-md pull-left" ui-sref="searchjobs">Find Jobs</a>
+            </li></ul></div>
     <div class="navbar-right">
         <ul class="nav navbar-nav no-borders">
+        
             <li class="dropdown">
                 <a class="dropdown-toggle" href="#" data-toggle="dropdown">
                     <i class="pe-7s-speaker"></i>
@@ -27,6 +33,7 @@
                     <li class="summary"><a href="#">See all notifications</a></li>
                 </ul>
             </li>
+            
             <li class="dropdown">
                 <a class="dropdown-toggle" href="#" data-toggle="dropdown">
                     <i class="pe-7s-keypad"></i>
@@ -36,7 +43,7 @@
                         <tbody>
                             <tr>
                                 <td>
-                                    <a href="#/jobslist">
+                                    <a ui-sref="jobslist">
                                         <i class="pe pe-7s-portfolio text-info"></i>
                                         <h5>Jobs</h5>
                                     </a>
@@ -80,7 +87,7 @@
             </li>
 
             <li class="dropdown">
-                <a href="#/login" id="cmd_Logout">
+                <a ui-sref="login" id="cmd_Logout">
                     <i class="pe-7s-upload pe-rotate-90"></i>
                 </a>
             </li>

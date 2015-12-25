@@ -2,9 +2,15 @@ angular
     .module('Jobsite').controller("AddjobformController", function($scope, Login, $sce, $location, $http, ValiDatedTokenObject) {
        
 
-        ValiDatedTokenObject.ValiDatedTokenObject = JSON.parse(sessionStorage.getItem("ValiDatedTokenObject"));
+        /*ValiDatedTokenObject.ValiDatedTokenObject = JSON.parse(sessionStorage.getItem("ValiDatedTokenObject"));
+         
         if (ValiDatedTokenObject.ValiDatedTokenObject == null || ValiDatedTokenObject.ValiDatedTokenObject.access_token == "") {
             //$location.path("/login");
+        }*/
+
+        ValiDatedTokenObject.setValiDatedTokenObject(JSON.parse(sessionStorage.getItem("ValiDatedTokenObject")));
+        if (ValiDatedTokenObject.getValiDatedTokenObject() == null || ValiDatedTokenObject.getValiDatedTokenObject().access_token == "") {
+            $location.path("/login");
         }
         var parts = $location.absUrl().split("jobmanagemen");
         if (parts[1] == "t")
@@ -36,7 +42,7 @@ angular
                     headers: {
                         'Content-Type': 'application/json',
                         'Connection': 'keep-alive',
-                        'Authorization': Authorizationtoken
+                        'Authorization': ValiDatedTokenObject.getValiDatedTokenObject().token_type+" "+ValiDatedTokenObject.getValiDatedTokenObject().access_token
                     }
                 })
                 .success(function(response) {
@@ -152,7 +158,7 @@ angular
                         headers: {
                             'Content-Type': 'application/json',
                             'Connection': 'keep-alive',
-                            'Authorization': Authorizationtoken
+                            'Authorization': ValiDatedTokenObject.getValiDatedTokenObject().token_type+" "+ValiDatedTokenObject.getValiDatedTokenObject().access_token
                         }
                     })
                     .success(function(response) {
@@ -167,7 +173,7 @@ angular
                         headers: {
                             'Content-Type': 'application/json',
                             'Connection': 'keep-alive',
-                            'Authorization': Authorizationtoken
+                            'Authorization': ValiDatedTokenObject.getValiDatedTokenObject().token_type+" "+ValiDatedTokenObject.getValiDatedTokenObject().access_token
                         }
                     })
                     .success(function(response) {
@@ -183,7 +189,7 @@ angular
                     headers: {
                         'Content-Type': 'application/json',
                         'Connection': 'keep-alive',
-                        'Authorization': Authorizationtoken
+                        'Authorization': ValiDatedTokenObject.getValiDatedTokenObject().token_type+" "+ValiDatedTokenObject.ValiDatedTokenObject.access_token
                     }
                 })
                 .success(function(response) {

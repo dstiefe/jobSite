@@ -38,7 +38,9 @@ angular
         if (ValiDatedTokenObject.getValiDatedTokenObject() == null || ValiDatedTokenObject.getValiDatedTokenObject().access_token == "") {
             $location.path("/login");
         }
-        $scope.jobYouOwnAlert = false;
+
+
+    $scope.jobYouOwnAlert = false;
         $scope.jobAlreadyAppliedAlert = false;
         $scope.jobAppliedSuccessfullyAlert = false;
         var previousLocationPath = locationHistoryService.get().split('/').pop().split("?");

@@ -36,6 +36,9 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
             templateUrl: "views/searchjobs.html",
             data: {
                 pageTitle: 'Search Jobs'
+            },
+            resolve: {
+                factory: checkRouting
             }
         })
         // Jobmanagement
@@ -77,6 +80,9 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
             data: {
                 pageTitle: 'Job Details'
             }
+            , resolve: {
+                factory: checkRouting
+            }
         })
          // ApplyJob
         .state('applyjob', {
@@ -94,4 +100,17 @@ angular
     .run(function($rootScope, $state, editableOptions) {
         $rootScope.$state = $state;
         editableOptions.theme = 'bs3';
+
     });
+var checkRouting= function ($q, $rootScope, $location, ValiDatedTokenObject) {
+    ValiDatedTokenObject.setValiDatedTokenObject(JSON.parse(sessionStorage.getItem("ValiDatedTokenObject")));
+    if (ValiDatedTokenObject.getValiDatedTokenObject())
+    {
+        var role = ValiDatedTokenObject.getValiDatedTokenObject().roles;
+        if(role == 'Admin') {
+            $location.path("/dashboard");
+            return $q.reject(); // Отменит старый роутинг.
+        }
+    }
+    return true;
+};

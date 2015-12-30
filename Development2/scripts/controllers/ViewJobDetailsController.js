@@ -1,5 +1,14 @@
 angular
-    .module('Jobsite').controller("ViewJobDetailsController", function ($scope, Login, ValiDatedTokenObject, $http, $location) {debugger;
+    .module('Jobsite').controller("ViewJobDetailsController", function ($scope, Login, ValiDatedTokenObject,$location, $http, $location) {debugger;
+    //     ValiDatedTokenObject.setValiDatedTokenObject(JSON.parse(sessionStorage.getItem("ValiDatedTokenObject")));
+    //if (ValiDatedTokenObject.getValiDatedTokenObject())
+    //{
+    //    var role = ValiDatedTokenObject.getValiDatedTokenObject().roles;
+    //    if(role == 'Admin') $location.path("/dashboard");
+    //}
+
+
+
         var parts = $location.absUrl().split("viewjobdetails?id=");
         var viewJobId= parts[1];   
         var req = {

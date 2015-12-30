@@ -1,5 +1,13 @@
 angular
-    .module('Jobsite').controller("searchjobController", function($scope, Login, $http, $timeout) {
+    .module('Jobsite').controller("searchjobController", function($scope, Login,ValiDatedTokenObject, $location,$http, $timeout) {
+
+    //ValiDatedTokenObject.setValiDatedTokenObject(JSON.parse(sessionStorage.getItem("ValiDatedTokenObject")));
+    //if (ValiDatedTokenObject.getValiDatedTokenObject())
+    //{
+    //    var role = ValiDatedTokenObject.getValiDatedTokenObject().roles;
+    //    if(role == 'Admin') $location.path("/dashboard");
+    //}
+
         $scope.searchlocation = "";
         $scope.searchtext = "";
         var req = {

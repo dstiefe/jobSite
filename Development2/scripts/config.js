@@ -36,10 +36,11 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
             templateUrl: "views/searchjobs.html",
             data: {
                 pageTitle: 'Search Jobs'
-            },
-            resolve: {
-                factory: checkRouting
             }
+            //,
+            //resolve: {
+            //    factory: checkRouting
+            //}
         })
         // Jobmanagement
         .state('jobmanagement', {
@@ -80,9 +81,9 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
             data: {
                 pageTitle: 'Job Details'
             }
-            , resolve: {
-                factory: checkRouting
-            }
+            //, resolve: {
+            //    factory: checkRouting
+            //}
         })
          // ApplyJob
         .state('applyjob', {
@@ -102,15 +103,15 @@ angular
         editableOptions.theme = 'bs3';
 
     });
-var checkRouting= function ($q, $rootScope, $location, ValiDatedTokenObject) {
-    ValiDatedTokenObject.setValiDatedTokenObject(JSON.parse(sessionStorage.getItem("ValiDatedTokenObject")));
-    if (ValiDatedTokenObject.getValiDatedTokenObject())
-    {
-        var role = ValiDatedTokenObject.getValiDatedTokenObject().roles;
-        if(role == 'Admin') {
-            $location.path("/dashboard");
-            return $q.reject(); // Отменит старый роутинг.
-        }
-    }
-    return true;
-};
+//var checkRouting= function ($q, $rootScope, $location, ValiDatedTokenObject) {
+//    ValiDatedTokenObject.setValiDatedTokenObject(JSON.parse(sessionStorage.getItem("ValiDatedTokenObject")));
+//    if (ValiDatedTokenObject.getValiDatedTokenObject())
+//    {
+//        var role = ValiDatedTokenObject.getValiDatedTokenObject().roles;
+//        if(role == 'Admin') {
+//            $location.path("/dashboard");
+//            return $q.reject(); // Отменит старый роутинг.
+//        }
+//    }
+//    return true;
+//};

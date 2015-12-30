@@ -86,7 +86,7 @@ angular.module('Jobsite').controller("Registration", function ($scope, Registrat
             Email: $('#txtEmail').val(),
             UserName: $scope.username,
             password: $scope.password,
-            IsEmployer: $('.icheckbox_square-green').hasClass('checked'),
+            IsEmployer: $('#IsEmployer').is(':checked'),
         }
 
         

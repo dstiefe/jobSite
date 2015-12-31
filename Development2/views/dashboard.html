@@ -8,7 +8,7 @@
     <div class="alert alert-success text-center" ng-show="jobYouOwnAlert" role="alert">You Cannot Apply to the Jobs As you are the owner of this job</div>
     <div class="alert alert-danger text-center" ng-show="jobAlreadyAppliedAlert" role="alert">Job Already Applied</div>   
     <!-- Main Wrapper -->
-    <div id="wrapper" style="margin:0; ">
+    <div id="wrapper" >
         <br />
         <div id="header" style="margin:0 auto; width:95%;">
             <h3 style="margin: 0;padding: 0.7em 1em 1em 0.8em;">
@@ -17,7 +17,7 @@
         </div>
         <!-- Right sidebar --> 
         <section id="content">
-            <div class="container">
+            <div class="col-lg-12">
                 <div ng-repeat="data in  list" class="col-lg-6" style="">
                     <div class="hpanel">
                         <div class="panel-body list">

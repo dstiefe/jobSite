@@ -8,11 +8,14 @@ angular
          if (ValiDatedTokenObject.ValiDatedTokenObject == null || ValiDatedTokenObject.ValiDatedTokenObject.access_token == "") {
             $location.path("/login");
         }*/
-
+        if (sessionStorage.getItem("ValiDatedTokenObject") == null || sessionStorage.getItem("ValiDatedTokenObject")=="") {
+            $location.path("/login");
+        }
          ValiDatedTokenObject.setValiDatedTokenObject(JSON.parse(sessionStorage.getItem("ValiDatedTokenObject")));
         if (ValiDatedTokenObject.getValiDatedTokenObject() == null || ValiDatedTokenObject.getValiDatedTokenObject().access_token == "") {
             $location.path("/login");
         }
+        $scope.role = ValiDatedTokenObject.getValiDatedTokenObject().roles;
         var req = {
             method: 'GET',
             url: ServicesURL + 'api/v1/jobs/my',

@@ -7,7 +7,7 @@ angular
     //    var role = ValiDatedTokenObject.getValiDatedTokenObject().roles;
     //    if(role == 'Admin') $location.path("/dashboard");
     //}
-
+        $scope.role = ValiDatedTokenObject.getValiDatedTokenObject().roles;
         $scope.searchlocation = "";
         $scope.searchtext = "";
         var req = {

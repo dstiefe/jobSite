@@ -10,10 +10,8 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
     $compileProvider.debugInfoEnabled(true);
 
     // Set default state
-    $urlRouterProvider.otherwise("/searchjobs");
-    $stateProvider
-
-
+    $urlRouterProvider.otherwise("/searchjobs"); 
+    $stateProvider  
         // Dashboard - Main page
         .state('test', {
             url: "/test",
@@ -28,6 +26,13 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
             templateUrl: "views/dashboard.html",
             data: {
                 pageTitle: 'Dashboard'
+            }
+        })
+        .state('logout', {
+            url: "/logout",
+            templateUrl: "views/logout.html",
+            data: {
+                pageTitle: 'logout'
             }
         })
         // Searchprojects

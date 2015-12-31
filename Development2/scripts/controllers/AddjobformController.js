@@ -12,6 +12,7 @@ angular
         if (ValiDatedTokenObject.getValiDatedTokenObject() == null || ValiDatedTokenObject.getValiDatedTokenObject().access_token == "") {
             $location.path("/login");
         }
+        $scope.role = ValiDatedTokenObject.getValiDatedTokenObject().roles;
         var parts = $location.absUrl().split("jobmanagemen");
         if (parts[1] == "t")
         { $scope.id = ""; } else { $scope.id = parts[1].replace("t?id=",""); }

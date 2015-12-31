@@ -38,7 +38,7 @@ angular
         if (ValiDatedTokenObject.getValiDatedTokenObject() == null || ValiDatedTokenObject.getValiDatedTokenObject().access_token == "") {
             $location.path("/login");
         }
-
+        $scope.role = ValiDatedTokenObject.getValiDatedTokenObject().roles;
 
     $scope.jobYouOwnAlert = false;
         $scope.jobAlreadyAppliedAlert = false;
@@ -72,9 +72,7 @@ angular
                 }
             });
 
-        }
-
-        console.log(ValiDatedTokenObject);
+        } 
         var req = {
             method: 'GET',
             url: ServicesURL + 'api/v1/jobs/all/applied',
@@ -85,11 +83,11 @@ angular
             }
         }
         $http(req).then(function(data) {
-            debugger;
+            $scope.list = [];
             if (data.status == "200") {
-                if (ValiDatedTokenObject.role == "User") {
+                if (ValiDatedTokenObject.getValiDatedTokenObject().roles == "User") {
                     for (var k = 0; k < data.data.length; k++) {
-                        if (data.data[k].userId == ValiDatedTokenObject.id) {
+                        if (data.data[k].userId == ValiDatedTokenObject.getValiDatedTokenObject().userId) {
                             $scope.list.push(data.data[k]);
                         }
                     }
@@ -99,8 +97,7 @@ angular
                     $scope.list = data.data;
                     $scope.headingmessage = "Jobs Posted";
                     $scope.viewtext = "View Applicants";
-                }
-                console.log($scope.list);
+                } 
                 $scope.currentPage = 1; //current page
                 $scope.entryLimit = 10; //max no of items to display in a page
                 $scope.filteredItems = $scope.list.length; //Initially for no filter  

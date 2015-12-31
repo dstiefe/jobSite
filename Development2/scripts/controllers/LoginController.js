@@ -43,3 +43,9 @@ angular
 
 
     })
+angular
+    .module('Jobsite').controller("logoutcontroller",
+    function ($scope, Login, $location, locationHistoryService, ValiDatedTokenObject) {
+        sessionStorage.removeItem("ValiDatedTokenObject");
+        $location.path('/searchjobs');
+    });

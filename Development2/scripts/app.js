@@ -27,6 +27,7 @@
         'ui.footable',              // FooTable
         'angular-chartist',         // Chartist
         'ui.codemirror'             // Ui Codemirror
+        , 'textAngular'             //Text editor
     ])
 })();
 

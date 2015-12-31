@@ -2610,6 +2610,54 @@
     <Content Include="libs\sweetalert\lib\sweet-alert.js" />
     <Content Include="libs\sweetalert\lib\sweet-alert.min.js" />
     <Content Include="libs\sweetalert\sweetalert.gif" />
+    <Content Include="libs\textAngular-1.4.6\dist\textAngular-rangy.min.js" />
+    <Content Include="libs\textAngular-1.4.6\dist\textAngular-sanitize.js" />
+    <Content Include="libs\textAngular-1.4.6\dist\textAngular-sanitize.min.js" />
+    <Content Include="libs\textAngular-1.4.6\dist\textAngular.css" />
+    <Content Include="libs\textAngular-1.4.6\dist\textAngular.js" />
+    <Content Include="libs\textAngular-1.4.6\dist\textAngular.min.js" />
+    <Content Include="libs\textAngular-1.4.6\dist\textAngularSetup.js" />
+    <Content Include="libs\textAngular-1.4.6\src\demo\demo.html" />
+    <Content Include="libs\textAngular-1.4.6\src\demo\static-demo.html" />
+    <Content Include="libs\textAngular-1.4.6\src\demo\textAngular.com.html" />
+    <Content Include="libs\textAngular-1.4.6\src\DOM.js" />
+    <Content Include="libs\textAngular-1.4.6\src\factories.js" />
+    <Content Include="libs\textAngular-1.4.6\src\globals.js" />
+    <Content Include="libs\textAngular-1.4.6\src\main.js" />
+    <Content Include="libs\textAngular-1.4.6\src\taBind.js" />
+    <Content Include="libs\textAngular-1.4.6\src\textAngular-sanitize.js" />
+    <Content Include="libs\textAngular-1.4.6\src\textAngular.css" />
+    <Content Include="libs\textAngular-1.4.6\src\textAngularSetup.js" />
+    <Content Include="libs\textAngular-1.4.6\src\validators.js" />
+    <Content Include="libs\textAngular-1.4.6\test\helpers.js" />
+    <Content Include="libs\textAngular-1.4.6\test\taBind\taBind.%24formatters.spec.js" />
+    <Content Include="libs\textAngular-1.4.6\test\taBind\taBind.display.spec.js" />
+    <Content Include="libs\textAngular-1.4.6\test\taBind\taBind.events.spec.js" />
+    <Content Include="libs\textAngular-1.4.6\test\taBind\taBind.sanitize.spec.js" />
+    <Content Include="libs\textAngular-1.4.6\test\taBind\taBind.spec.js" />
+    <Content Include="libs\textAngular-1.4.6\test\taBind\taBind.taReadOnly.spec.js" />
+    <Content Include="libs\textAngular-1.4.6\test\taBind\taBind.undoManager.spec.js" />
+    <Content Include="libs\textAngular-1.4.6\test\taBind\taBind.validation.spec.js" />
+    <Content Include="libs\textAngular-1.4.6\test\taBind\taBind.wordPaste.spec.js" />
+    <Content Include="libs\textAngular-1.4.6\test\taBind\taBind._taBlankTest.spec.js" />
+    <Content Include="libs\textAngular-1.4.6\test\taBrowserTag.spec.js" />
+    <Content Include="libs\textAngular-1.4.6\test\taDOM.spec.js" />
+    <Content Include="libs\textAngular-1.4.6\test\taExecCommand\taExecCommand.formatBlock.spec.js" />
+    <Content Include="libs\textAngular-1.4.6\test\taExecCommand\taExecCommand.lists.spec.js" />
+    <Content Include="libs\textAngular-1.4.6\test\taExecCommand\taExecCommand.spec.js" />
+    <Content Include="libs\textAngular-1.4.6\test\taFixChrome.spec.js" />
+    <Content Include="libs\textAngular-1.4.6\test\taMaxText.spec.js" />
+    <Content Include="libs\textAngular-1.4.6\test\taMinText.spec.js" />
+    <Content Include="libs\textAngular-1.4.6\test\taRegisterTool.spec.js" />
+    <Content Include="libs\textAngular-1.4.6\test\taSanitize.spec.js" />
+    <Content Include="libs\textAngular-1.4.6\test\taToolFunctions.spec.js" />
+    <Content Include="libs\textAngular-1.4.6\test\taTools.spec.js" />
+    <Content Include="libs\textAngular-1.4.6\test\textAngular.spec.js" />
+    <Content Include="libs\textAngular-1.4.6\test\textAngularManager.spec.js" />
+    <Content Include="libs\textAngular-1.4.6\test\textAngularSanitize\linky.spec.js" />
+    <Content Include="libs\textAngular-1.4.6\test\textAngularSanitize\ngBindHtml.spec.js" />
+    <Content Include="libs\textAngular-1.4.6\test\textAngularSanitize\sanitize.spec.js" />
+    <Content Include="libs\textAngular-1.4.6\test\textAngularToolbar.spec.js" />
     <Content Include="libs\ui-select\dist\select.css" />
     <Content Include="libs\ui-select\dist\select.js" />
     <Content Include="libs\ui-select\dist\select.min.css" />
@@ -2706,6 +2754,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="views\applyjob.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="views\logout.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="views\dashboard.html">

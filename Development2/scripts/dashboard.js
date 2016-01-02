@@ -86,11 +86,7 @@ angular
             $scope.list = [];
             if (data.status == "200") {
                 if (ValiDatedTokenObject.getValiDatedTokenObject().roles == "User") {
-                    for (var k = 0; k < data.data.length; k++) {
-                        if (data.data[k].userId == ValiDatedTokenObject.getValiDatedTokenObject().userId) {
-                            $scope.list.push(data.data[k]);
-                        }
-                    }
+                    $scope.list = data.data;
                     $scope.headingmessage = "Jobs Applied To";
                     $scope.viewtext = "Jobs Job";
                 } else {

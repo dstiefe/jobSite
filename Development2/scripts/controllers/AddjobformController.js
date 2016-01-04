@@ -201,7 +201,7 @@ angular
                     headers: {
                         'Content-Type': 'application/json',
                         'Connection': 'keep-alive',
-                        'Authorization': ValiDatedTokenObject.getValiDatedTokenObject().token_type+" "+ValiDatedTokenObject.ValiDatedTokenObject.access_token
+                        'Authorization': ValiDatedTokenObject.getValiDatedTokenObject().token_type+" "+ValiDatedTokenObject.getValiDatedTokenObject().access_token
                     }
                 })
                 .success(function(response) {

@@ -26,8 +26,9 @@
         'ui.sortable',              // AngularJS ui-sortable
         'ui.footable',              // FooTable
         'angular-chartist',         // Chartist
-        'ui.codemirror'             // Ui Codemirror
-        , 'textAngular'             //Text editor
+        'ui.codemirror',             // Ui Codemirror
+        'textAngular',             //Text editor
+        'permission' // Permission
     ]).constant('RESOURCES', (function() {
 
             // Define your variable

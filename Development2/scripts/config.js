@@ -9,8 +9,14 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
     // Optimize load start with remove binding information inside the DOM element
     $compileProvider.debugInfoEnabled(true);
 
+    //$urlRouterProvider.otherwise('/searchjobs');
+
     // Set default state
-    $urlRouterProvider.otherwise("/searchjobs"); 
+    $urlRouterProvider.otherwise( function($injector) {
+        var $state = $injector.get("$state");
+        $state.go('searchjobs');
+    });
+
     $stateProvider  
         // Dashboard - Main page
         .state('test', {
@@ -32,7 +38,11 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
             url: "/logout",
             templateUrl: "views/logout.html",
             data: {
-                pageTitle: 'logout'
+                pageTitle: 'logout',
+                permissions: {
+                    only: ['Admin', 'User'],
+                 //   redirectTo: 'login'
+                }
             }
         })
         // Searchprojects
@@ -40,7 +50,11 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
             url: "/searchjobs",
             templateUrl: "views/searchjobs.html",
             data: {
-                pageTitle: 'Search Jobs'
+                pageTitle: 'Search Jobs',
+                permissions: {
+                    except: ['Admin'],
+                    redirectTo: 'dashboard'
+                }
             }
             //,
             //resolve: {
@@ -49,10 +63,14 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
         })
         // Jobmanagement
         .state('jobmanagement', {
-            url: "/jobmanagement",
+            url: "/jobmanagement?id",
             templateUrl: "views/jobmanagement.html",
             data: {
-                pageTitle: 'Job Management'
+                pageTitle: 'Job Management',
+                permissions: {
+                    only: ['Admin'],
+                 //   redirectTo: 'login'
+                }
             }
         })
         // Jobslist
@@ -60,7 +78,11 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
             url: "/jobslist",
             templateUrl: "views/jobslist.html",
             data: {
-                pageTitle: 'Jobs List'
+                pageTitle: 'Jobs List',
+                permissions: {
+                    only: ['Admin'],
+                 //   redirectTo: 'login'
+                }
             }
         })
         // Login
@@ -81,10 +103,14 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
         })
          // Register
         .state('viewjobdetails', {
-            url: "/viewjobdetails",
+            url: "/viewjobdetails?id",
             templateUrl: "views/viewjobdetails.html",
             data: {
-                pageTitle: 'Job Details'
+                pageTitle: 'Job Details',
+                permissions: {
+                    only: ['Admin', 'User'],
+                    redirectTo: 'login'
+                }
             }
             //, resolve: {
             //    factory: checkRouting
@@ -95,7 +121,11 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
             url: "/applyjob",
             templateUrl: "views/applyjob.html",
             data: {
-                pageTitle: 'Apply Job'
+                pageTitle: 'Apply Job',
+                permissions: {
+                    only: ['User'],
+                  //  redirectTo: 'login'
+                }
             }
         })
     }
@@ -103,9 +133,55 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
 angular
     .module('Jobsite')
     .config(configState)
-    .run(function($rootScope, $state, editableOptions) {
+    .run(function($rootScope, $state, editableOptions, Permission, ValiDatedTokenObject) {
         $rootScope.$state = $state;
         editableOptions.theme = 'bs3';
+
+        // Define anonymous role
+        Permission.defineRole('anonymous', function (stateParams) {
+            if (!sessionStorage.getItem("ValiDatedTokenObject"))
+            {
+                return true;
+            }
+
+            ValiDatedTokenObject.setValiDatedTokenObject(JSON.parse(sessionStorage.getItem("ValiDatedTokenObject")));
+            if (!ValiDatedTokenObject.getValiDatedTokenObject())
+            {
+                return true;
+            }
+            return false;
+        })
+         .defineRole('User', function (stateParams) {
+             if (!sessionStorage.getItem("ValiDatedTokenObject"))
+             {
+                 return false;
+             }
+
+            ValiDatedTokenObject.setValiDatedTokenObject(JSON.parse(sessionStorage.getItem("ValiDatedTokenObject")));
+            if (ValiDatedTokenObject.getValiDatedTokenObject())
+            {
+                var role = ValiDatedTokenObject.getValiDatedTokenObject().roles;
+                if(role == 'User') {
+                    return true;
+                }
+            }
+             return false;
+            })
+            .defineRole('Admin', function (stateParams) {
+                if (!sessionStorage.getItem("ValiDatedTokenObject"))
+                {
+                    return false;
+                }
+                ValiDatedTokenObject.setValiDatedTokenObject(JSON.parse(sessionStorage.getItem("ValiDatedTokenObject")));
+                if (ValiDatedTokenObject.getValiDatedTokenObject())
+                {
+                    var role = ValiDatedTokenObject.getValiDatedTokenObject().roles;
+                    if(role == 'Admin') {
+                        return true;
+                    }
+                }
+                return false;
+            });
 
     });
 //var checkRouting= function ($q, $rootScope, $location, ValiDatedTokenObject) {

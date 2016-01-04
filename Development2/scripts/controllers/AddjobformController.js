@@ -1,6 +1,6 @@
 angular
-    .module('Jobsite').controller("AddjobformController", function($scope, Login, $sce, $location, $http, ValiDatedTokenObject) {
-       
+    .module('Jobsite').controller("AddjobformController", function($scope, Login, $sce, $location, $http, ValiDatedTokenObject, RESOURCES) {
+
 
         /*ValiDatedTokenObject.ValiDatedTokenObject = JSON.parse(sessionStorage.getItem("ValiDatedTokenObject"));
          
@@ -72,6 +72,7 @@ angular
                     $scope.jobDescriptionResultContent = response["description"];
                     $scope.aboutUsResultContent = response["aboutUs"];
                     $scope.jobRequirementsResultContent = response["requirements"];
+                    $scope.EmployeeTypes = RESOURCES.EMPLOYEE_TYPES;
                 });
         } else {
 
@@ -80,7 +81,7 @@ angular
             $scope.location = "";
             $scope.posteddate = new Date();
             $scope.experience = "";
-            $scope.employeeType = "";
+           // $scope.employeeType = -1;
             $scope.jobtype = "";
             $scope.jobTitleLocationEditable = true;
             $scope.jobDescriptionContentEditable = true;
@@ -100,6 +101,7 @@ angular
             $scope.aboutUsResultContent = "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis nihil ad, dicta cumque eum. Quos, laborum recusandae tempore commodi, facilis odit, quibusdam quidem alias magnam aspernatur exercitationem maxime autem culpa.</p> <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero qui, consequatur, minima enim, voluptates, laboriosam sint architecto dignissimos ex molestiae possimus voluptatibus ipsa porro ducimus harum. Sed iusto, facilis delectus.</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero qui, consequatur, minima enim, voluptates, laboriosam sint architecto dignissimos ex molestiae possimus voluptatibus ipsa porro ducimus harum. Sed iusto, facilis delectus.</p>";
             $scope.jobRequirementsResultContent = "<p><ul><li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex voluptas, quod excepturi natus! Consequatur ut ipsam.</li><li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex voluptas, quod excepturi natus! Consequatur ut ipsam.</li><li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex voluptas, quod excepturi natus! Consequatur ut ipsam.</li><li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex voluptas, quod excepturi natus! Consequatur ut ipsam.</li></ul></p>";
             $scope.tags = [];
+            $scope.EmployeeTypes = RESOURCES.EMPLOYEE_TYPES;
         }
         $scope.toggleEdit = function(param) {
             if ("jobTitleLocationEditable" == param) {

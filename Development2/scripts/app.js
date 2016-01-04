@@ -28,6 +28,23 @@
         'angular-chartist',         // Chartist
         'ui.codemirror'             // Ui Codemirror
         , 'textAngular'             //Text editor
-    ])
+    ]).constant('RESOURCES', (function() {
+
+            // Define your variable
+        var EmployeeTypes = {
+            FullTime : {value: "FullTime", name: "Full Time"},
+            PartTime: {value: "PartTime", name: "Part Time"},
+            Casual : {value: "Casual", name: "Casual"},
+            Shiftworkers : {value: "Shiftworkers", name: "Shift workers"},
+            DailyAndWeeklyHire : {value: "DailyAndWeeklyHire", name: "Daily And Weekly Hire"},
+            Probation : {value: "Probation", name: "Probation"},
+            Outworkers : {value: "Outworkers", name: "Out workers"}
+        };
+
+            // Use the variable in your constants
+            return {
+                EMPLOYEE_TYPES: EmployeeTypes
+            }
+        })())
 })();
 

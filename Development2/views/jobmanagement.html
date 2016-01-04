@@ -102,7 +102,12 @@
                                                 <p>
                                                     <i class="fa fa-clock-o"></i> Employee Type
                                                     <br>
-                                                    <span class="color-theme"><input type="text" required ng-model="employeeType"></span>
+                                                        <span class="color-theme">
+                                                    <select ng-model="employeeType" required class="form-control" id="employeeType">
+                                                        <option value="">Select Employee Type</option>
+                                                        <option ng-repeat="_employeeType in EmployeeTypes" ng-selected="_employeeType.value==employeeType" value="{{_employeeType.value}}">{{_employeeType.name}}</option>
+                                                    </select>
+                                                </span>
                                                 </p>
                                                 <p>
                                                     <i class="fa fa-map-marker"></i> Location:

@@ -22,11 +22,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="viewjobdetails.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="viewjobdetails.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/views/viewjobdetails.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.5879447">
+              <caret line="74" column="119" selection-start-line="74" selection-start-column="119" selection-end-line="74" selection-end-column="119" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ViewJobDetailsController.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/scripts/controllers/ViewJobDetailsController.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="29" column="48" selection-start-line="29" selection-start-column="48" selection-end-line="29" selection-end-column="48" />
               <folding />
             </state>
           </provider>
@@ -84,11 +94,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="jobmanagement.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="jobmanagement.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/jobmanagement.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.8063241">
-              <caret line="129" column="91" selection-start-line="129" selection-start-column="81" selection-end-line="129" selection-end-column="91" />
+            <state vertical-scroll-proportion="-28.115385">
+              <caret line="124" column="122" selection-start-line="124" selection-start-column="122" selection-end-line="124" selection-end-column="122" />
               <folding />
             </state>
           </provider>
@@ -97,8 +107,8 @@
       <file leaf-file-name="AddjobformController.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/scripts/controllers/AddjobformController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-11.586206">
-              <caret line="58" column="37" selection-start-line="58" selection-start-column="33" selection-end-line="58" selection-end-column="37" />
+            <state vertical-scroll-proportion="-28.724138">
+              <caret line="58" column="63" selection-start-line="58" selection-start-column="50" selection-end-line="58" selection-end-column="63" />
               <folding />
             </state>
           </provider>
@@ -124,13 +134,14 @@
         <option value="$PROJECT_DIR$/scripts/register.js" />
         <option value="$PROJECT_DIR$/scripts/dashboard.js" />
         <option value="$PROJECT_DIR$/scripts/controllers/searchjobsController.js" />
-        <option value="$PROJECT_DIR$/scripts/controllers/ViewJobDetailsController.js" />
         <option value="chrome-extension://chklaanhfefbnpoihckbnefhakgolnmc/content.js" />
         <option value="chrome-extension://aadgmnobpdmgmigaicncghmmoeflnamj/inject.js" />
         <option value="$PROJECT_DIR$/scripts/config.js" />
-        <option value="$PROJECT_DIR$/scripts/controllers/AddjobformController.js" />
-        <option value="$PROJECT_DIR$/views/jobmanagement.html" />
         <option value="$PROJECT_DIR$/scripts/app.js" />
+        <option value="$PROJECT_DIR$/scripts/controllers/AddjobformController.js" />
+        <option value="$PROJECT_DIR$/scripts/controllers/ViewJobDetailsController.js" />
+        <option value="$PROJECT_DIR$/views/jobmanagement.html" />
+        <option value="$PROJECT_DIR$/views/viewjobdetails.html" />
       </list>
     </option>
   </component>
@@ -671,14 +682,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/controllers/ViewJobDetailsController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="1" column="107" selection-start-line="1" selection-start-column="87" selection-end-line="1" selection-end-column="107" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/login.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.57114625">
@@ -728,14 +731,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/viewjobdetails.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/scripts/app.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -744,18 +739,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/controllers/ViewJobDetailsController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="29" column="48" selection-start-line="29" selection-start-column="48" selection-end-line="29" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/scripts/controllers/AddjobformController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.586206">
-          <caret line="58" column="37" selection-start-line="58" selection-start-column="33" selection-end-line="58" selection-end-column="37" />
+        <state vertical-scroll-proportion="-28.724138">
+          <caret line="58" column="63" selection-start-line="58" selection-start-column="50" selection-end-line="58" selection-end-column="63" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/views/jobmanagement.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8063241">
-          <caret line="129" column="91" selection-start-line="129" selection-start-column="81" selection-end-line="129" selection-end-column="91" />
+        <state vertical-scroll-proportion="-28.115385">
+          <caret line="124" column="122" selection-start-line="124" selection-start-column="122" selection-end-line="124" selection-end-column="122" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/viewjobdetails.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5879447">
+          <caret line="74" column="119" selection-start-line="74" selection-start-column="119" selection-end-line="74" selection-end-column="119" />
           <folding />
         </state>
       </provider>

@@ -79,7 +79,7 @@ angular
             $scope.categoryID = "";
             $scope.locationID = "";
             $scope.location = "";
-            $scope.posteddate = new Date();
+            $scope.posteddate = (new Date()).getTime() / 1000;
             $scope.experience = "";
            // $scope.employeeType = -1;
             $scope.jobtype = "";

@@ -50,7 +50,7 @@ angular
                     $scope.categoryID = response["categoryId"];
                     $scope.locationID = response["locationId"];
                     $scope.location = response["location"];
-                    $scope.tags = response["tags"];
+                    $scope.tags = response["tags"] == null ? [] : response["tags"];
                     $scope.jobTitleLocationEditable = false;
                     $scope.jobDescriptionContentEditable = false;
                     $scope.jobRequirementsContentEditable = false;

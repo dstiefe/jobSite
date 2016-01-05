@@ -1,0 +1,44 @@
+﻿<div class="blank" ng-controller="associateController">
+    <!--[if lt IE 7]>
+    <p class="alert alert-danger">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <div class="color-line"></div>
+    <div class="login-container">
+
+
+
+        <div class="row">
+    <div class="col-md-1">
+        &nbsp;
+    </div>
+    <div class="col-md-8">
+        <h3>Associate your {{registerData.provider}} Account</h3>
+        <hr />
+        <p class="text-success">You have successfully autheticated with <strong>{{registerData.provider}} </strong>. Please enter a user name below for this site and click the Register button to log in.</p>
+        <div class="row">
+            <div class="col-md-1">
+                &nbsp;
+            </div>
+            <div class="col-md-10">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Username" data-ng-model="registerData.userName" required autofocus>
+                    <input type="text" class="form-control" placeholder="E-mail" data-ng-model="registerData.email" required autofocus>
+                    <button class="btn btn-sm btn-info btn-block" type="button" style="margin-top:10px;" data-ng-click="registerExternal()">Register</button>
+                </div>
+                <div data-ng-hide="message == ''" data-ng-class="(savedSuccessfully) ? 'alert alert-success' : 'alert alert-danger'">
+                    {{message}}
+                </div>
+            </div>
+            <div class="col-md-1">
+                &nbsp;
+            </div>
+        </div>
+    </div>
+    <div class="col-md-1">
+        &nbsp;
+    </div>
+</div>
+
+
+    </div>
+</div>

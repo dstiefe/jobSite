@@ -3,6 +3,12 @@
  * version 1.8
  *
  */
+
+//var apiBasePath = 'http://ec2-52-0-227-162.compute-1.amazonaws.com:81/jobapi_dev/api/v1/';
+
+var apiBasePath = 'http://localhost:41656/api/v1/';
+
+var clientId ="P600Us6Y476QiK331u5yEzb22dpX_y6NS75!9I-a";
 (function () {
     angular.module('Jobsite', [
         'ui.router',                // Angular flexible routing
@@ -44,7 +50,9 @@
 
             // Use the variable in your constants
             return {
-                EMPLOYEE_TYPES: EmployeeTypes
+                EMPLOYEE_TYPES: EmployeeTypes,
+                API_BASE_PATH: apiBasePath,
+                CLIENT_ID: clientId
             }
         })())
 })();

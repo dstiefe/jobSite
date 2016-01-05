@@ -26,6 +26,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
                 pageTitle: 'Test'
             }
         })
+
         // Dashboard - Main page
         .state('dashboard', {
             url: "/dashboard",
@@ -93,6 +94,13 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
                 pageTitle: 'Login'
             }
         })
+        .state('associate', {
+            url: "/associate",
+            templateUrl: "views/associate.html",
+            data: {
+                pageTitle: 'Associate'
+            }
+        })
         // Register
         .state('register', {
             url: "/register",
@@ -133,7 +141,10 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
 angular
     .module('Jobsite')
     .config(configState)
-    .run(function($rootScope, $state, editableOptions, Permission, ValiDatedTokenObject) {
+    .run(function($rootScope, $state, editableOptions, Permission, ValiDatedTokenObject, AuthService) {
+        debugger;
+        AuthService.fillAuthData();
+
         $rootScope.$state = $state;
         editableOptions.theme = 'bs3';
 

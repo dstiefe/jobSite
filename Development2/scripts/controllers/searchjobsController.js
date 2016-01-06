@@ -6,8 +6,10 @@ angular
     //{
     //    var role = ValiDatedTokenObject.getValiDatedTokenObject().roles;
     //    if(role == 'Admin') $location.path("/dashboard");
-    //}
-        $scope.role = ValiDatedTokenObject.getValiDatedTokenObject().roles;
+        //}
+        if (sessionStorage.getItem("ValiDatedTokenObject") == null) { } else {
+            $scope.role = ValiDatedTokenObject.getValiDatedTokenObject().roles;
+        }
         $scope.searchlocation = "";
         $scope.searchtext = "";
         var req = {

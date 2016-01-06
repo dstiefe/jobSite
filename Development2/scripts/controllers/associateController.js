@@ -8,7 +8,9 @@
         userName: AuthService.externalAuthData.userName,
         email: '',
         provider: AuthService.externalAuthData.provider,
-        externalAccessToken: AuthService.externalAuthData.externalAccessToken
+        externalAccessToken: AuthService.externalAuthData.externalAccessToken,
+        isEmployer: false,
+        industryId: ""
     };
 
     $scope.registerExternal = function () {

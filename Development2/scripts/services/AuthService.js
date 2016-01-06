@@ -42,9 +42,8 @@ angular.module('Jobsite').factory("AuthService", ['$http', '$q', 'ValiDatedToken
 
         $http.post(serviceBase + 'token', data, { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }).success(function (response) {
 
-            var roles = JSON.parse(response.roles);
-            var isUser = isInArray("User", roles);
-            var isAdministrator = isInArray("Admin", roles);
+            var isUser = response.roles == "User";
+            var isAdministrator = response.roles == "Admin";
 
             response['isUser'] = isUser;
             response['isAdministrator'] = isAdministrator;

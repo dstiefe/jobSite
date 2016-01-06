@@ -73,7 +73,7 @@ function Validation() {
 }
 
 // Angular JS controller
-angular.module('Jobsite').controller("Registration", function ($scope, Registration) {
+angular.module('Jobsite').controller("Registration", function ($scope, AuthService) {
 
     $scope.IsEmployer = vIsEmployer;
 
@@ -93,26 +93,27 @@ angular.module('Jobsite').controller("Registration", function ($scope, Registrat
         IsAllFieldsValidated = Validation();
         if (IsAllFieldsValidated === true) {
             $('.splash').show();
-            var PostRequest = Registration.UserRegister(UserInfo);
-            PostRequest.then(function (RequestResult) {
-                if (RequestResult.status === 200) {
+
+            AuthService.saveRegistration(UserInfo).then(function (response) {
+
                     $('.splash').hide();
                     $('#lblMessage').text("You have successfully register");
                     $('#lblMessage').css('color', 'blue');
                     $('.splash').hide();
-                }
-            },
-            function (error) {
-                $('.splash').hide();
-                if (error.status === 400) {
-                    $scope.error_Description = error.data.error_description;
-                }
 
-                console.log("Error", error);
+                },
+                function (response) {
+                    $('.splash').hide();
+                    var errors = [];
+                    for (var key in response.data.ModelState) {
+                        for (var i = 0; i < response.data.ModelState[key].length; i++) {
+                            errors.push(response.data.ModelState[key][i]);
+                        }
+                    }
+                    $('#lblMessage').text("Failed to register user due to: " + errors.join(' '));
 
-
-            })
-
+                    //$scope.error_Description = "Failed to register user due to: " + errors.join(' ');
+                });
         }
     }
 

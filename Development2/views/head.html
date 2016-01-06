@@ -8,10 +8,12 @@
                 <a class="btn btn-default btn-md pull-left" ui-sref="searchjobs"><span ng-show="role == 'Admin' ">Jobs</span><span ng-hide="role == 'Admin' ">Find Jobs</span></a>
             </li></ul></div>
     <div class="navbar-right">
-        <ul class="nav navbar-nav no-borders">
-        <li><a class="dropdown-toggle" href="#" data-toggle="dropdown">
-                <i class="pe-7s-user"></i>
-            </a></li>
+        <ul ng-show="role == 'Admin'  || role == 'User'" class="nav navbar-nav no-borders">
+            <li>
+                <a class="dropdown-toggle" href="#" data-toggle="dropdown">
+                    <i class="pe-7s-user"></i>
+                </a>
+            </li>
             <li class="dropdown">
                 <a class="dropdown-toggle" href="#" data-toggle="dropdown">
                     <i class="pe-7s-mail"></i>
@@ -35,7 +37,7 @@
                     <li class="summary"><a href="#">See all notifications</a></li>
                 </ul>
             </li>
-            
+
             <li class="dropdown">
                 <a class="dropdown-toggle" href="#" data-toggle="dropdown">
                     <i class="pe-7s-keypad"></i>
@@ -88,13 +90,16 @@
                 </div>
             </li>
 
-            <li class="dropdown">
-
+            <li class="dropdown"> 
                 <a ng-show="role == 'Admin'  || role == 'User'" ui-sref="logout" id="cmd_Logout">
                     <i class="pe-7s-upload pe-rotate-90"></i>
-                </a>
+                </a> 
+            </li>
+        </ul>
+        <ul ng-hide="role == 'Admin'  || role == 'User'" class="nav navbar-nav no-borders"> 
+            <li class="dropdown">  
                 <a ng-hide="role == 'Admin'  || role == 'User'" ui-sref="login" id="cmd_Logout">
-                    <i class="pe-7s-upload pe-rotate-90"></i>
+                    <i class="pe-7s-upload pe-rotate-270"></i>
                 </a>
             </li>
         </ul>

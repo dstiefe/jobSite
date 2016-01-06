@@ -9,10 +9,12 @@
             </li></ul></div>
     <div class="navbar-right">
         <ul class="nav navbar-nav no-borders">
-        
+        <li><a class="dropdown-toggle" href="#" data-toggle="dropdown">
+                <i class="pe-7s-user"></i>
+            </a></li>
             <li class="dropdown">
                 <a class="dropdown-toggle" href="#" data-toggle="dropdown">
-                    <i class="pe-7s-speaker"></i>
+                    <i class="pe-7s-mail"></i>
                 </a>
                 <ul class="dropdown-menu hdropdown notification animated flipInX">
                     <li>
@@ -87,7 +89,11 @@
             </li>
 
             <li class="dropdown">
-                <a ui-sref="login" id="cmd_Logout">
+
+                <a ng-show="role == 'Admin'  || role == 'User'" ui-sref="logout" id="cmd_Logout">
+                    <i class="pe-7s-upload pe-rotate-90"></i>
+                </a>
+                <a ng-hide="role == 'Admin'  || role == 'User'" ui-sref="login" id="cmd_Logout">
                     <i class="pe-7s-upload pe-rotate-90"></i>
                 </a>
             </li>

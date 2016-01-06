@@ -39,11 +39,11 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
             url: "/logout",
             templateUrl: "views/logout.html",
             data: {
-                pageTitle: 'logout',
-                permissions: {
+                pageTitle: 'logout'
+               /* permissions: {
                     only: ['Admin', 'User'],
-                 //   redirectTo: 'login'
-                }
+                redirectTo: 'login'
+                }*/
             }
         })
         // Searchprojects

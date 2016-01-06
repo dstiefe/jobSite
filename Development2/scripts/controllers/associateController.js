@@ -6,9 +6,11 @@
 
     $scope.registerData = {
         userName: AuthService.externalAuthData.userName,
-        email: '',
+        email:AuthService.externalAuthData.email,
         provider: AuthService.externalAuthData.provider,
         externalAccessToken: AuthService.externalAuthData.externalAccessToken,
+        firstName: AuthService.externalAuthData.firstName,
+        lastName: AuthService.externalAuthData.lastName,
         isEmployer: false,
         industryId: ""
     };

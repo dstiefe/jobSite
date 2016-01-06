@@ -21,7 +21,10 @@ angular.module('Jobsite').factory("AuthService", ['$http', '$q', 'ValiDatedToken
     var _externalAuthData = {
         provider: "",
         userName: "",
-        externalAccessToken: ""
+        externalAccessToken: "",
+        email: "",
+        firstName: "",
+        lastName: ""
     };
 
     var _saveRegistration = function (registration) {

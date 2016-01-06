@@ -54,7 +54,10 @@ debugger;
                 AuthService.externalAuthData = {
                     provider: fragment.provider,
                     userName: fragment.external_user_name,
-                    externalAccessToken: fragment.external_access_token
+                    externalAccessToken: fragment.external_access_token,
+                    email: fragment.email,
+                    firstName: fragment.first_name,
+                    lastName: fragment.last_name
                 };
 
                 $location.path('/associate');

@@ -52,10 +52,10 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
             templateUrl: "views/searchjobs.html",
             data: {
                 pageTitle: 'Search Jobs',
-                permissions: {
-                    except: ['Admin'],
-                    redirectTo: 'dashboard'
-                }
+                //permissions: {
+                //    except: ['Admin'],
+                //    redirectTo: 'dashboard'
+                //}
             }
             //,
             //resolve: {

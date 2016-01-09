@@ -51,7 +51,7 @@
                                             <tr ng-repeat="data in filtered = (list | filter:search | orderBy : predicate :reverse) | startFrom:(currentPage-1)*entryLimit | limitTo:entryLimit">
                                                 <td>{{data.title}}</td>
                                                 <td>{{data.category}}</td>
-                                                <td>{{data.location}}</td>
+                                                <td class="text-info font-bold">{{data.location}}</td>
                                                 <td>
                                                     {{ data.publishedDate*1000 | date : "M/d/yyyy" }}
                                                 </td>

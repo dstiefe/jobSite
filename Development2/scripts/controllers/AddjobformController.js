@@ -145,6 +145,7 @@ angular
             if (!angular.isUndefined($scope.jobRequirementsResultContent)) {
                 $scope.jobRequirementsHtmlContent = $scope.jobRequirementsResultContent;
             }
+            debugger;
             $scope.jobTitleLocationEditable = false;
             $scope.jobDescriptionContentEditable = false;
             $scope.jobRequirementsContentEditable = false;

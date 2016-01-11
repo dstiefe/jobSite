@@ -8,6 +8,7 @@ angular
     //    if(role == 'Admin') $location.path("/dashboard");
         //}
         if (sessionStorage.getItem("ValiDatedTokenObject") == null) { } else {
+            ValiDatedTokenObject.setValiDatedTokenObject(JSON.parse(sessionStorage.getItem("ValiDatedTokenObject")));
             $scope.role = ValiDatedTokenObject.getValiDatedTokenObject().roles;
         }
         $scope.searchlocation = "";

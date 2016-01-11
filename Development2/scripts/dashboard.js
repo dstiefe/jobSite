@@ -72,10 +72,16 @@ angular
                 }
             });
 
-        } 
+        }
+
+    var serviceUrl = ServicesURL + 'api/v1/jobs/all/applied';
+    if (ValiDatedTokenObject.getValiDatedTokenObject().roles == "Admin") {
+        serviceUrl =ServicesURL + 'api/v1/jobs/my';
+
+    }
         var req = {
             method: 'GET',
-            url: ServicesURL + 'api/v1/jobs/all/applied',
+            url: serviceUrl,
             headers: {
                 'Content-Type': 'application/json',
                 'Connection': 'keep-alive',

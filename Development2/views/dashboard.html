@@ -3,7 +3,7 @@
     <p class="alert alert-danger">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
     <!-- Header -->
-    <div id="header" ng-include="'views/head.html'">
+    <div id="header" ng-include="'views/head.html'"  >
     </div>
     <div class="alert alert-success text-center" ng-show="jobYouOwnAlert" role="alert">You Cannot Apply to the Jobs As you are the owner of this job</div>
     <div class="alert alert-danger text-center" ng-show="jobAlreadyAppliedAlert" role="alert">Job Already Applied</div>   
@@ -31,7 +31,7 @@
                                                 <td>
                                                     <h4> {{data.title}}({{data.location}})</h4>
                                                 </td>
-                                                <td><!-- <a class="btn btn-primary" href="#viewjobdetails?id={{data.id}}">{{viewtext}}</a> --></td>
+                                                <td><a ng-show="role=='Admin'" class="btn btn-primary" href="#viewjobdetails?id={{data.id}}">{{viewtext}}</a> </td>
                                             </tr>
                                             <tr>
                                                 <td>

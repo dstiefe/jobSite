@@ -5,10 +5,11 @@
 <div class="navbar-left">
         <ul class="nav navbar-nav no-borders">
         <li>
-                <a class="btn btn-default btn-md pull-left" ui-sref="searchjobs" ng-hide="role == 'Admin' "><span >Find Jobs</span></a>
+
+                <a class="btn btn-default btn-md pull-left" ui-sref="searchjobs" ng-hide="role=='Admin'"><span >Find Jobs</span></a>
             </li>
             <li>
-                <a class="btn btn-default btn-md pull-left" ui-sref="jobslist" ng-show="role == 'Admin' "><span>Jobs</span></a>
+                <a class="btn btn-default btn-md pull-left" ui-sref="jobslist" ng-show="role=='Admin'"><span>Jobs</span></a>
             </li></ul></div>
     <div class="navbar-right">
         <ul ng-show="role == 'Admin'  || role == 'User'" class="nav navbar-nav no-borders">
@@ -55,14 +56,20 @@
                                         <h5>Dashboard</h5>
                                     </a>
                                 </td>
-                                <td>
+                                <td ng-hide="role=='Admin'">
                                     <a ui-sref="searchjobs">
                                         <i class="pe pe-7s-portfolio text-info"></i>
                                         <h5>Find Jobs</h5>
                                     </a>
                                 </td>
+                                <td ng-show="role=='Admin'">
+                                    <a ui-sref="jobslist">
+                                        <i class="pe pe-7s-portfolio text-info"></i>
+                                        <h5>Jobs</h5>
+                                    </a>
+                                </td>
                                 <td>
-                                    <a href="#">
+                                    <a >
                                         <i class="pe pe-7s-file text-success"></i>
                                         <h5>Resume</h5>
                                     </a>

@@ -8,7 +8,7 @@
     <div class="alert alert-success text-center" ng-show="jobYouOwnAlert" role="alert">You Cannot Apply to the Jobs As you are the owner of this job</div>
     <div class="alert alert-danger text-center" ng-show="jobAlreadyAppliedAlert" role="alert">Job Already Applied</div>   
     <!-- Main Wrapper -->
-    <div id="wrapper" style="margin:0; ">
+    <div id="wrapper" >
         <br />
         <div id="header" style="margin:0 auto; width:95%;">
             <h3 style="margin: 0;padding: 0.7em 1em 1em 0.8em;">
@@ -17,32 +17,35 @@
         </div>
         <!-- Right sidebar --> 
         <section id="content">
-            <div class="container">
-                <div ng-repeat="data in  list" class="col-lg-6" style="">
-                    <div class="hpanel">
-                        <div class="panel-body list">
-                            <div class="table-responsive project-list">
-                                <table class="table table-striped">
-                                    <tbody>
-                                        <tr>
-                                            <td>
-                                                <h4> {{data.title}}({{data.location}})</h4>
-                                            </td>
-                                            <td><a class="btn btn-primary" href="/#/viewjobdetails?id={{data.id}}">{{viewtext}}</a></td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <p>  {{data.description}} </p>
-                                            </td>
-                                            <td>Date:{{data.publishedDate*1000 | date : "M/d/yyyy"}}</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+            <div class="col-lg-12"> 
+                <div ng-show="!list.length" class="col-lg-6" style="">
+                    <h1>No Jobs found</h1>
+                </div>
+                    <div ng-repeat="data in  list" class="col-lg-6" style="">
+                        <div class="hpanel">
+                            <div class="panel-body list">
+                                <div class="table-responsive project-list">
+                                    <table class="table table-striped">
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <h4> {{data.title}}({{data.location}})</h4>
+                                                </td>
+                                                <td><!-- <a class="btn btn-primary" href="#viewjobdetails?id={{data.id}}">{{viewtext}}</a> --></td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <p>  {{data.description}} </p>
+                                                </td>
+                                                <td>Date:{{data.publishedDate*1000 | date : "M/d/yyyy"}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
         </section>
     </div>
 </div>

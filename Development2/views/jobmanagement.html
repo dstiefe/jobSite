@@ -18,16 +18,16 @@
                 <button ng-hide="id == ''" data-ng-click="removechanges()" class=" btn btn-danger btn-md pull-right">Delete Job</button>
             </div>
             <div class="col-md-1">
-                <br />&nbsp;
-            </div>
-            <div class="col-md-1">
                 <div class="clear">
                     <br />
-                    <button class="btn btn-primary btn-md pull-right" data-ng-click="saveChanges()">Save Changes</button>
+                    <button style="margin:0 -25px 0 0;" class="btn btn-primary btn-md pull-right" data-ng-click="saveChanges()">Save Changes</button>
                 </div>
             </div>
-        </div><div  style="height:25px;clear:both;">
-        &nbsp;<br>
+            <div class="col-md-1">
+                <br />&nbsp;
+            </div>
+        </div><div style="height:25px;clear:both;">
+            &nbsp;<br>
         </div>
         <div class="page-content">
             <div class="container">
@@ -35,13 +35,13 @@
                     <div class="col-sm-12">
                         <div class="box">
                             <div class="row">
-                                <div class="col-sm-10">
+                                <div class="col-sm-12">
                                     <div class="row">
                                         <div class="col-sm-12">
                                             <div class="box-header">
                                                 <div class="row">
                                                     <div class="col-sm-12">
-                                                        <a href="#" data-ng-click="toggleEdit('jobTitleLocationEditable')"> <i class="fa fa-edit fa-lg pull-right"></i></a>
+                                                        <a   data-ng-click="toggleEdit('jobTitleLocationEditable')"> <i class="fa fa-edit fa-lg pull-right"></i></a>
                                                         <h3>
                                                             <div name="jobTitleLocationResultContent" ng-model="jobTitleLocationResultContent" ng-bind-html="jobTitleLocationContent" strip-br="true" contenteditable="{{jobTitleLocationEditable}}" required></div>
                                                         </h3>
@@ -51,31 +51,63 @@
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-sm-8">
+                                        <div class="col-sm-9">
                                             <div class="box-description">
                                                 <h3>JOB DESCRIPTION</h3>
-                                                <a href="#" data-ng-click="toggleEdit('jobDescriptionContentEditable')"> <i class="fa fa-edit fa-lg pull-right"></i></a>
-                                                <div name="jobDescriptionResultContent" ng-model="jobDescriptionResultContent" ng-bind-html="jobDescriptionContent" strip-br="true" contenteditable="{{jobDescriptionContentEditable}}" required></div>
+                                                <div ng-show="jobDescriptionContentEditable" text-angular ng-model="jobDescriptionResultContent" name="demo-editor" ta-text-editor-class="border-around" ta-html-editor-class="border-around"></div>
+                                                <a   ng-hide="jobDescriptionContentEditable" data-ng-click="toggleEdit('jobDescriptionContentEditable')"> <i class="fa fa-edit fa-lg pull-right"></i></a>
+                                                <div ng-hide="jobDescriptionContentEditable" name="jobDescriptionResultContent" ng-model="jobDescriptionResultContent" ng-bind-html="jobDescriptionContent" strip-br="true" contenteditable="{{jobDescriptionContentEditable}}" required></div>
                                             </div>
                                             <div class="box-description">
                                                 <h3>JOB REQUIREMENTS</h3>
-                                                <a href="#" data-ng-click="toggleEdit('jobRequirementsContentEditable')"> <i class="fa fa-edit fa-lg pull-right"></i> </a>
-                                                <div name="jobRequirementsResultContent" ng-model="jobRequirementsResultContent" ng-bind-html="jobRequirementsContent" strip-br="true" contenteditable="{{jobRequirementsContentEditable}}" required></div>
+                                                <div ng-show="jobRequirementsContentEditable" text-angular ng-model="jobRequirementsResultContent" name="demo-editor1" ta-text-editor-class="border-around" ta-html-editor-class="border-around"></div>
+                                                <a ng-hide="jobRequirementsContentEditable"  data-ng-click="toggleEdit('jobRequirementsContentEditable')"> <i class="fa fa-edit fa-lg pull-right"></i> </a>
+                                                <div ng-hide="jobRequirementsContentEditable" name="jobRequirementsResultContent" ng-model="jobRequirementsResultContent" ng-bind-html="jobRequirementsContent" strip-br="true" contenteditable="{{jobRequirementsContentEditable}}" required></div>
+                                            </div>
+                                            <div class="box-description">
+                                                <h3>ABOUT US</h3>
+                                                <div ng-show="aboutUsEditable" text-angular ng-model="aboutUsResultContent" name="demo-editor2" ta-text-editor-class="border-around" ta-html-editor-class="border-around"></div>
+                                                <a ng-hide="aboutUsEditable"  data-ng-click="toggleEdit('aboutUsEditable')"> <i class="fa fa-edit fa-lg pull-right"></i></a>
+                                                <div ng-hide="aboutUsEditable" name="aboutUsResultContent" ng-model="aboutUsResultContent" ng-bind-html="aboutUsContent" strip-br="true" contenteditable="{{aboutUsEditable}}" required></div>
                                             </div>
                                         </div>
-                                        <div class="col-sm-4">
+                                        <div class="col-sm-3">
                                             <div class="box-description">
-                                                <b>Share With</b>
-                                                <br>
-                                                <g:plusone></g:plusone>
-                                                <a class="twitter-share-button" href="https://twitter.com/intent/tweet">Tweet</a>
+                                                <form role="form">
+                                                    <div class="form-group">
+                                                        <label for="Category">Category</label>
+                                                        <select ng-model="categoryID" class="form-control" id="Category">
+                                                            <option value="">Select Category</option>
+                                                            <option ng-repeat="category in categories" ng-selected="category.id==categoryID" value="{{category.id}}">{{category.name}}</option>
+                                                        </select>
+                                                        <br>
+                                                        <label for="Location">Location</label>
+                                                        <select ng-model="locationID" ng-change="changeValue()" class="form-control" id="Location">
+                                                            <option value="">Select Location</option>
+                                                            <option ng-repeat="location in locations" ng-selected="location.id==locationID" value="{{location.id}}">{{location.name}}</option>
+                                                        </select>
+                                                        <br>
+                                                        <label for="tags">Tags</label>
+                                                        <input class="form-control" style="width:70%;float:right;" ng-model="tag" id="tags" type="text"><a href="" ng-click="addtags()"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
+                                                        <br>
+                                                        <br>
+                                                        <ul class="list-group">
+                                                            <li class="list-group-item" ng-repeat="tagname in tags">{{ tagname }}<a style="float:right;" href="" ng-click="removetag($index)"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></a></li>
+                                                        </ul>
+                                                    </div>
+                                                </form>
                                             </div>
                                             <div class="box-description">
                                                 <h3>JOB SNAPSHOT</h3>
                                                 <p>
                                                     <i class="fa fa-clock-o"></i> Employee Type
                                                     <br>
-                                                    <span class="color-theme"><input type="text" required ng-model="employeeType"></span>
+                                                        <span class="color-theme">
+                                                    <select ng-model="employeeType" required class="form-control" id="employeeType">
+                                                        <option value="">Select Employee Type</option>
+                                                        <option ng-repeat="_employeeType in EmployeeTypes" ng-selected="_employeeType.value==employeeType" value="{{_employeeType.value}}">{{_employeeType.name}}</option>
+                                                    </select>
+                                                </span>
                                                 </p>
                                                 <p>
                                                     <i class="fa fa-map-marker"></i> Location:
@@ -95,55 +127,30 @@
                                                 <p>
                                                     <i class="fa fa-calendar"></i> Date Posted
                                                     <br>
-                                                    <span class="color-theme">{{ posteddate | date : "M/d/yyyy" }}</span>
+                                                    <span class="color-theme">{{ posteddate*1000 | date : "M/d/yyyy" }}</span>
                                                 </p>
                                             </div>
                                             <div class="box-description">
-                                                <a href="#" data-ng-click="toggleEdit('aboutUsEditable')"> <i class="fa fa-edit fa-lg pull-right"></i></a>
-                                                <h3>ABOUT US</h3>
-                                                <div name="aboutUsResultContent" ng-model="aboutUsResultContent" ng-bind-html="aboutUsContent" strip-br="true" contenteditable="{{aboutUsEditable}}" required></div>
+                                                <b>Share With</b>
+                                                <br>
+                                                <g:plusone></g:plusone>
+                                                <a class="twitter-share-button" href="https://twitter.com/intent/tweet">Tweet</a>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-sm-2">
-                                    <div class="box-description">
-                                        <form role="form">
-                                            <div class="form-group">
-                                                <label for="Category">Category</label>
-                                                <select ng-model="categoryID" class="form-control" id="Category">
-                                                    <option value="">Select Category</option>
-                                                    <option ng-repeat="category in categories" ng-selected="category.id==categoryID" value="{{category.id}}">{{category.name}}</option>
-                                                </select>
-                                                <br>
-                                                <label for="Location">Location</label>
-                                                <select ng-model="locationID" ng-change="changeValue()" class="form-control" id="Location">
-                                                    <option value="">Select Location</option>
-                                                    <option ng-repeat="location in locations" ng-selected="location.id==locationID" value="{{location.id}}">{{location.name}}</option>
-                                                </select>
-                                                <br>
-                                                <label for="tags">Tags</label>
-                                                <input class="form-control" style="width:70%;float:right;" ng-model="tag" id="tags" type="text"><a href="#" ng-click="addtags()"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
-                                                <br>
-                                                <br>
-                                                <ul class="list-group">
-                                                    <li class="list-group-item" ng-repeat="tagname in tags">{{ tagname }}<a style="float:right;" href="#" ng-click="removetag($index)"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></a></li>
-                                                </ul>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
                             </div>
-                            <div style="clear:both;">
-                                <br />
-                                <br />
-                                <br />
-                                <br />
-                            </div>
+                        </div>
+                        <div style="clear:both;">
+                            <br />
+                            <br />
+                            <br />
+                            <br />
                         </div>
                     </div>
                 </div>
             </div>
-        </div> 
+        </div>
     </div>
+</div>
 </div>

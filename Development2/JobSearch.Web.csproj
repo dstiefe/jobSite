@@ -2610,6 +2610,13 @@
     <Content Include="libs\sweetalert\lib\sweet-alert.js" />
     <Content Include="libs\sweetalert\lib\sweet-alert.min.js" />
     <Content Include="libs\sweetalert\sweetalert.gif" />
+    <Content Include="libs\textAngular-1.4.6\dist\textAngular-rangy.min.js" />
+    <Content Include="libs\textAngular-1.4.6\dist\textAngular-sanitize.js" />
+    <Content Include="libs\textAngular-1.4.6\dist\textAngular-sanitize.min.js" />
+    <Content Include="libs\textAngular-1.4.6\dist\textAngular.css" />
+    <Content Include="libs\textAngular-1.4.6\dist\textAngular.js" />
+    <Content Include="libs\textAngular-1.4.6\dist\textAngular.min.js" />
+    <Content Include="libs\textAngular-1.4.6\dist\textAngularSetup.js" />
     <Content Include="libs\ui-select\dist\select.css" />
     <Content Include="libs\ui-select\dist\select.js" />
     <Content Include="libs\ui-select\dist\select.min.css" />
@@ -2706,6 +2713,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="views\applyjob.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="views\logout.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="views\dashboard.html">
@@ -3482,9 +3492,6 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <TypeScriptCompile Include="libs\angular-ui-router\api\angular-ui-router.d.ts" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

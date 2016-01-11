@@ -5,14 +5,21 @@
 <div class="navbar-left">
         <ul class="nav navbar-nav no-borders">
         <li>
-                <a class="btn btn-default btn-md pull-left" ui-sref="searchjobs">Find Jobs</a>
+                <a class="btn btn-default btn-md pull-left" ui-sref="searchjobs" ng-hide="role == 'Admin' "><span >Find Jobs</span></a>
+            </li>
+            <li>
+                <a class="btn btn-default btn-md pull-left" ui-sref="jobslist" ng-show="role == 'Admin' "><span>Jobs</span></a>
             </li></ul></div>
     <div class="navbar-right">
-        <ul class="nav navbar-nav no-borders">
-        
+        <ul ng-show="role == 'Admin'  || role == 'User'" class="nav navbar-nav no-borders">
+            <li>
+                <a class="dropdown-toggle"   data-toggle="dropdown">
+                    <i class="pe-7s-user"></i>
+                </a>
+            </li>
             <li class="dropdown">
-                <a class="dropdown-toggle" href="#" data-toggle="dropdown">
-                    <i class="pe-7s-speaker"></i>
+                <a class="dropdown-toggle"   data-toggle="dropdown">
+                    <i class="pe-7s-mail"></i>
                 </a>
                 <ul class="dropdown-menu hdropdown notification animated flipInX">
                     <li>
@@ -33,35 +40,35 @@
                     <li class="summary"><a href="#">See all notifications</a></li>
                 </ul>
             </li>
-            
+
             <li class="dropdown">
-                <a class="dropdown-toggle" href="#" data-toggle="dropdown">
+                <a class="dropdown-toggle"   data-toggle="dropdown">
                     <i class="pe-7s-keypad"></i>
                 </a>
                 <div class="dropdown-menu hdropdown bigmenu animated flipInX">
                     <table>
                         <tbody>
-                            <tr>
+                            <tr>                                
                                 <td>
-                                    <a ui-sref="jobslist">
+                                    <a ui-sref="dashboard">
+                                        <i class="pe pe-7s-home text-warning"></i>
+                                        <h5>Dashboard</h5>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a ui-sref="searchjobs">
                                         <i class="pe pe-7s-portfolio text-info"></i>
-                                        <h5>Jobs</h5>
+                                        <h5>Find Jobs</h5>
                                     </a>
                                 </td>
                                 <td>
-                                    <a href="mailbox.html">
-                                        <i class="pe pe-7s-mail text-warning"></i>
-                                        <h5>Email</h5>
-                                    </a>
-                                </td>
-                                <td>
-                                    <a href="contacts.html">
-                                        <i class="pe pe-7s-users text-success"></i>
-                                        <h5>Contacts</h5>
+                                    <a href="#">
+                                        <i class="pe pe-7s-file text-success"></i>
+                                        <h5>Resume</h5>
                                     </a>
                                 </td>
                             </tr>
-                            <tr>
+                           <!--  <tr>
                                 <td>
                                     <a href="forum.html">
                                         <i class="pe pe-7s-comment text-info"></i>
@@ -75,20 +82,27 @@
                                     </a>
                                 </td>
                                 <td>
-                                    <a href="file_manager.html">
-                                        <i class="pe pe-7s-box1 text-success"></i>
-                                        <h5>Files</h5>
+                                    <a ui-sref="logout">
+                                        <i class="pe pe-7s-power text-success"></i>
+                                        <h5>Logout</h5>
                                     </a>
                                 </td>
-                            </tr>
+                            </tr> -->
                         </tbody>
                     </table>
                 </div>
             </li>
 
-            <li class="dropdown">
-                <a ui-sref="login" id="cmd_Logout">
+            <li class="dropdown"> 
+                <a ng-show="role == 'Admin'  || role == 'User'" ui-sref="login" id="cmd_Logout">
                     <i class="pe-7s-upload pe-rotate-90"></i>
+                </a> 
+            </li>
+        </ul>
+        <ul ng-hide="role == 'Admin'  || role == 'User'" class="nav navbar-nav no-borders"> 
+            <li class="dropdown">  
+                <a ng-hide="role == 'Admin'  || role == 'User'" ui-sref="login" id="cmd_Logout">
+                    <i class="pe-7s-upload pe-rotate-270"></i>
                 </a>
             </li>
         </ul>

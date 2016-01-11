@@ -20,7 +20,7 @@
                                             <div class="box-header">
                                                 <div class="row">
                                                     <div class="col-sm-12">
-                                                        <button class="btn btn-primary btn-md pull-right" data-ng-click="onApply()">Apply</button>
+                                                        <button class="btn btn-primary btn-md pull-right" ng-hide="role == 'Admin'" data-ng-click="onApply()">Apply</button>
                                                         <div>
                                                             <h3>{{jobTitle}}</h3>  <h4>{{jobLocation}}</h4> 
                                                         </div>
@@ -33,11 +33,11 @@
                                         <div class="col-sm-8">
                                             <div class="box-description">
                                                 <h3>JOB DESCRIPTION</h3>
-                                                <div>{{jobDescription}}</div>
+                                                <div ng-bind-html="jobDescription"> </div>
                                             </div>
                                             <div class="box-description">
                                                 <h3>JOB REQUIREMENTS</h3>
-                                                <div>{{jobRequirements}}</div>
+                                                <div ng-bind-html="jobRequirements"> </div>
                                             </div>
                                         </div>
                                         <div class="col-sm-4">
@@ -72,12 +72,12 @@
                                                 <p>
                                                     <i class="fa fa-calendar"></i> Date Posted
                                                     <br>
-                                                    <span class="color-theme">{{ posteddate | date : "M/d/yyyy" }}</span>
+                                                    <span class="color-theme">{{ posteddate*1000 | date : "M/d/yyyy" }}</span>
                                                 </p>
                                             </div>
                                             <div class="box-description">
                                                 <h3>ABOUT US</h3>
-                                                <div>{{jobAboutus}}</div>
+                                                <div ng-bind-html="jobAboutus"> </div>
                                             </div>
                                         </div>
                                     </div>

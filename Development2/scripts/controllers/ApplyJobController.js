@@ -34,6 +34,7 @@ function ApplyJobController($scope, Login, ValiDatedTokenObject, $http, $locatio
             'Authorization': ValiDatedTokenObject.getValiDatedTokenObject().token_type+" "+ValiDatedTokenObject.getValiDatedTokenObject().access_token
         }
     }
+    $scope.role = ValiDatedTokenObject.getValiDatedTokenObject().roles;
     $http(req).then(function(data) {
         if (data.status == "200") {
             $scope.accountFirstName = data.data.firstName;

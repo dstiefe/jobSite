@@ -12,7 +12,7 @@
             <div class="col-md-1">
                 <h3 style="margin: 0;padding: 0.7em 1em 1em 0.8em;"> Jobs:</h3>
             </div>
-            <div class="col-md-10">
+            <div class="col-md-9">
                 <div class="clear">
                     <br />
                 </div>
@@ -51,7 +51,7 @@
                                             <tr ng-repeat="data in filtered = (list | filter:search | orderBy : predicate :reverse) | startFrom:(currentPage-1)*entryLimit | limitTo:entryLimit">
                                                 <td>{{data.title}}</td>
                                                 <td>{{data.category}}</td>
-                                                <td>{{data.location}}</td>
+                                                <td class="text-info font-bold">{{data.location}}</td>
                                                 <td>
                                                     {{ data.publishedDate*1000 | date : "M/d/yyyy" }}
                                                 </td>
@@ -70,7 +70,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-10" ng-show="filteredItems > 0">
-                                    <div pagination="" page="currentPage" on-select-page="setPage(page)" boundary-links="true" total-items="filteredItems" items-per-page="entryLimit" class="pagination-small" previous-text="&laquo;" next-text="&raquo;"></div>
+                                    <div pagination="" ng-model="current" ng-change="changed()" boundary-links="true" total-items="filteredItems" items-per-page="entryLimit" class="pagination-small" previous-text="&laquo;" next-text="&raquo;"></div>
                                 </div>
                                 <div class="col-md-1">
                                     <br /> PageSize:
@@ -92,3 +92,6 @@
        
     </div>
 </div>
+<style>
+    .footer{position:relative;}
+</style>

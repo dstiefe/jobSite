@@ -34,8 +34,7 @@
                                                 <td><a ng-show="role=='Admin'" class="btn btn-primary" href="#viewjobdetails?id={{data.id}}">{{viewtext}}</a> </td>
                                             </tr>
                                             <tr>
-                                                <td>
-                                                    <p>  {{data.description}} </p>
+                                                <td ng-bind-html="data.description">
                                                 </td>
                                                 <td>Date:{{data.publishedDate*1000 | date : "M/d/yyyy"}}</td>
                                             </tr>

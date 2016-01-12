@@ -11,14 +11,17 @@ angular
 
     $scope.role = ValiDatedTokenObject.getValiDatedTokenObject().roles;
         var parts = $location.absUrl().split("viewjobdetails?id=");
-        var viewJobId= parts[1];   
+        var viewJobId= parts[1];
+
         var req = {
             method: 'GET',
             url: ServicesURL + 'api/v1/jobs/' + viewJobId,
             headers: {
-                'Content-Type': 'application/json'
-                  }
+                'Content-Type': 'application/json',
+                'Authorization': ValiDatedTokenObject.getValiDatedTokenObject().token_type+" "+ValiDatedTokenObject.getValiDatedTokenObject().access_token
+            }
         }
+
         $http(req).then(function(data) {
             if (data.status == "200") {
                 $scope.jobTitle =  $sce.trustAsHtml(data.data.title);
@@ -31,6 +34,8 @@ angular
                 $scope.experience = data.data.experience;
                 $scope.posteddate = data.data.publishedDate;
                 $scope.jobAboutus = $sce.trustAsHtml( data.data.aboutUs);
+                $scope.applicants = data.data.applicants;
+                $scope.isOwn = data.data.isOwn;
 
             }
         });

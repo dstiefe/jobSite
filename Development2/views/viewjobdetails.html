@@ -39,6 +39,27 @@
                                                 <h3>JOB REQUIREMENTS</h3>
                                                 <div ng-bind-html="jobRequirements"> </div>
                                             </div>
+                                            <div class="box-description" ng-if="isOwn">
+                                                <h3>APPLICANTS</h3>
+                                                <div>
+                                                    <table class="table">
+                                                        <thead>
+                                                            <tr> <th>#</th><th>Apply Date</th><th>First Name</th> <th>Last Name</th> <th>E-mail</th><th>Cover Letter</th> </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr ng-repeat="applicant in applicants">
+                                                                <th scope="row">{{$index + 1}}</th>
+                                                                <td>{{applicant.applyDate*1000 | date : "M/d/yyyy" }}</td>
+                                                                <td>{{applicant.firstName}}</td>
+                                                                <td>{{applicant.lastName}}</td>
+                                                                <td>{{applicant.email}}</td>
+                                                                <td>{{applicant.note}}</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+
                                         </div>
                                         <div class="col-sm-4">
                                             <div class="box-description">
@@ -47,7 +68,7 @@
                                                 <g:plusone></g:plusone>
                                                 <a class="twitter-share-button" href="https://twitter.com/intent/tweet">Tweet</a>
                                             </div>
-                                            <div class="box-description">
+                                                     <div class="box-description">
                                                 <h3>JOB SNAPSHOT</h3>
                                                 <p>
                                                     <i class="fa fa-clock-o"></i> Employee Type

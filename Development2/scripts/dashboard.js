@@ -94,7 +94,7 @@ angular
                 if (ValiDatedTokenObject.getValiDatedTokenObject().roles == "User") {
                     $scope.list = data.data;
                     $scope.headingmessage = "Jobs Applied To";
-                    $scope.viewtext = "Jobs Job";
+                    $scope.viewtext = "View Job";
                 } else {
                     $scope.list = data.data;
                     $scope.headingmessage = "Jobs Posted";

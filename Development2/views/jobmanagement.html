@@ -2,11 +2,17 @@
     <!--[if lt IE 7]>
     <p class="alert alert-danger">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
+
+
+
     <!-- Header -->
     <div id="header" ng-include="'views/head.html'">
     </div>
     <!-- Main Wrapper -->
     <div id="wrapper" style="margin:0; ">
+
+
+        <form name="userForm" ng-submit="saveChanges(userForm.$valid)" novalidate>
         <br />
         <div style="margin:0 auto; width:95%;">
             <div class="col-md-1">
@@ -20,7 +26,7 @@
             <div class="col-md-1">
                 <div class="clear">
                     <br />
-                    <button style="margin:0 -25px 0 0;" class="btn btn-primary btn-md pull-right" data-ng-click="saveChanges()">Save Changes</button>
+                    <button style="margin:0 -25px 0 0;" class="btn btn-primary btn-md pull-right" type="submit">Save Changes</button>
                 </div>
             </div>
             <div class="col-md-1">
@@ -45,6 +51,7 @@
                                                         <h3>
                                                             <div name="jobTitleLocationResultContent" ng-model="jobTitleLocationResultContent" ng-bind-html="jobTitleLocationContent" strip-br="true" contenteditable="{{jobTitleLocationEditable}}" required></div>
                                                         </h3>
+                                                        <span ng-show="userForm.jobTitleLocationResultContent.$error.required">Title is required.</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -54,21 +61,24 @@
                                         <div class="col-sm-9">
                                             <div class="box-description">
                                                 <h3>JOB DESCRIPTION</h3>
-                                                <div ng-show="jobDescriptionContentEditable" text-angular ng-model="jobDescriptionResultContent" name="demo-editor" ta-text-editor-class="border-around" ta-html-editor-class="border-around"></div>
-                                                <a   ng-hide="jobDescriptionContentEditable" data-ng-click="toggleEdit('jobDescriptionContentEditable')"> <i class="fa fa-edit fa-lg pull-right"></i></a>
+                                                <div ng-show="jobDescriptionContentEditable" text-angular ng-model="jobDescriptionResultContent" required name="demo-editor" ta-text-editor-class="border-around" ta-html-editor-class="border-around"></div>
+                                                <a ng-hide="jobDescriptionContentEditable" data-ng-click="toggleEdit('jobDescriptionContentEditable')"> <i class="fa fa-edit fa-lg pull-right"></i></a>
                                                 <div ng-hide="jobDescriptionContentEditable" name="jobDescriptionResultContent" ng-model="jobDescriptionResultContent" ng-bind-html="jobDescriptionContent" strip-br="true" contenteditable="{{jobDescriptionContentEditable}}" required></div>
+                                                <span class="color-theme" ng-show="userForm.jobDescriptionResultContent.$error.required">JOB DESCRIPTION is required.</span>
                                             </div>
                                             <div class="box-description">
                                                 <h3>JOB REQUIREMENTS</h3>
                                                 <div ng-show="jobRequirementsContentEditable" text-angular ng-model="jobRequirementsResultContent" name="demo-editor1" ta-text-editor-class="border-around" ta-html-editor-class="border-around"></div>
                                                 <a ng-hide="jobRequirementsContentEditable"  data-ng-click="toggleEdit('jobRequirementsContentEditable')"> <i class="fa fa-edit fa-lg pull-right"></i> </a>
                                                 <div ng-hide="jobRequirementsContentEditable" name="jobRequirementsResultContent" ng-model="jobRequirementsResultContent" ng-bind-html="jobRequirementsContent" strip-br="true" contenteditable="{{jobRequirementsContentEditable}}" required></div>
+                                                <span class="color-theme" ng-show="userForm.jobRequirementsResultContent.$error.required">JOB REQUIREMENTS is required.</span>
                                             </div>
                                             <div class="box-description">
                                                 <h3>ABOUT US</h3>
                                                 <div ng-show="aboutUsEditable" text-angular ng-model="aboutUsResultContent" name="demo-editor2" ta-text-editor-class="border-around" ta-html-editor-class="border-around"></div>
                                                 <a ng-hide="aboutUsEditable"  data-ng-click="toggleEdit('aboutUsEditable')"> <i class="fa fa-edit fa-lg pull-right"></i></a>
                                                 <div ng-hide="aboutUsEditable" name="aboutUsResultContent" ng-model="aboutUsResultContent" ng-bind-html="aboutUsContent" strip-br="true" contenteditable="{{aboutUsEditable}}" required></div>
+                                                <span class="color-theme" ng-show="userForm.aboutUsResultContent.$error.required">ABOUT US is required.</span>
                                             </div>
                                         </div>
                                         <div class="col-sm-3">
@@ -76,24 +86,30 @@
                                                 <form role="form">
                                                     <div class="form-group">
                                                         <label for="Category">Category</label>
-                                                        <select ng-model="categoryID" class="form-control" id="Category">
+                                                        <select ng-model="categoryID" class="form-control" id="Category" name="Category" required>
                                                             <option value="">Select Category</option>
                                                             <option ng-repeat="category in categories" ng-selected="category.id==categoryID" value="{{category.id}}">{{category.name}}</option>
                                                         </select>
+                                                        <span class="color-theme" ng-show="userForm.Category.$error.required">Category is required.</span>
                                                         <br>
                                                         <label for="Location">Location</label>
-                                                        <select ng-model="locationID" ng-change="changeValue()" class="form-control" id="Location">
+                                                        <select ng-model="locationID" ng-change="changeValue()" class="form-control" id="Location" name="Location" required>
                                                             <option value="">Select Location</option>
                                                             <option ng-repeat="location in locations" ng-selected="location.id==locationID" value="{{location.id}}">{{location.name}}</option>
                                                         </select>
+                                                        <span class="color-theme" ng-show="userForm.Location.$error.required">Location is required.</span>
                                                         <br>
                                                         <label for="tags">Tags</label>
                                                         <input class="form-control" style="width:70%;float:right;" ng-model="tag" id="tags" type="text"><a href="" ng-click="addtags()"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
                                                         <br>
                                                         <br>
+
                                                         <ul class="list-group">
                                                             <li class="list-group-item" ng-repeat="tagname in tags">{{ tagname }}<a style="float:right;" href="" ng-click="removetag($index)"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></a></li>
-                                                        </ul>
+                                                         </ul>
+
+                                                        <span class="color-theme" ng-show="!tags.length">Tags are required.</span>
+
                                                     </div>
                                                 </form>
                                             </div>
@@ -103,10 +119,19 @@
                                                     <i class="fa fa-clock-o"></i> Employee Type
                                                     <br>
                                                         <span class="color-theme">
-                                                    <select ng-model="employeeType" required class="form-control" id="employeeType">
+                                                    <select
+                                                            id="employeeType"
+                                                            name="employeeType"
+                                                            ng-model="employeeType"
+                                                            required
+                                                            class="form-control"
+                                                    >
                                                         <option value="">Select Employee Type</option>
                                                         <option ng-repeat="_employeeType in EmployeeTypes" ng-selected="_employeeType.value==employeeType" value="{{_employeeType.value}}">{{_employeeType.name}}</option>
                                                     </select>
+                                                    <span ng-show="userForm.employeeType.$error.required">EmployeeType is required.</span>
+
+
                                                 </span>
                                                 </p>
                                                 <p>
@@ -117,12 +142,20 @@
                                                 <p>
                                                     <i class="fa fa-briefcase"></i> Job Type
                                                     <br>
-                                                    <span class="color-theme"><input type="text" required ng-model="jobtype"></span>
+                                                    <span class="color-theme">
+                                                        <input type="text" id="jobtype" name="jobtype" ng-model="jobtype" required>
+                                                        <br />
+                                                        <span ng-show="userForm.jobtype.$error.required">Job Type is required.</span>
+                                                    </span>
                                                 </p>
                                                 <p>
                                                     <i class="fa fa-suitcase"></i> Experience
                                                     <br>
-                                                    <span class="color-theme"><input type="text" required ng-model="experience"></span>
+                                                    <span class="color-theme">
+                                                        <input type="text" id="experience" name="experience" required ng-model="experience">
+                                                        <br />
+                                                        <span ng-show="userForm.experience.$error.required">Experience is required.</span>
+                                                    </span>
                                                 </p>
                                                 <p>
                                                     <i class="fa fa-calendar"></i> Date Posted
@@ -151,6 +184,7 @@
                 </div>
             </div>
         </div>
+            </form>
     </div>
 </div>
 </div>

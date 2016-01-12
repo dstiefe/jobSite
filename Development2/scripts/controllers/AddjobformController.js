@@ -87,19 +87,19 @@ angular
             $scope.jobDescriptionContentEditable = true;
             $scope.jobRequirementsContentEditable = true;
             $scope.aboutUsEditable = true;
-            $scope.aboutUsHtmlContent = "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis nihil ad, dicta cumque eum. Quos, laborum recusandae tempore commodi, facilis odit, quibusdam quidem alias magnam aspernatur exercitationem maxime autem culpa.</p> <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero qui, consequatur, minima enim, voluptates, laboriosam sint architecto dignissimos ex molestiae possimus voluptatibus ipsa porro ducimus harum. Sed iusto, facilis delectus.</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero qui, consequatur, minima enim, voluptates, laboriosam sint architecto dignissimos ex molestiae possimus voluptatibus ipsa porro ducimus harum. Sed iusto, facilis delectus.</p>";
+            $scope.aboutUsHtmlContent = "";
             $scope.aboutUsContent = $sce.trustAsHtml($scope.aboutUsHtmlContent);
             $scope.jobTitleLocationHtmlContent = " Job Title <small>At Location Name</small> ";
             $scope.jobTitleLocationContent = $sce.trustAsHtml($scope.jobTitleLocationHtmlContent);
            
-            $scope.jobDescriptionHtmlContent = "<p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora doloremque dolore minus possimus, ex aut rem quod dignissimos commodi aliquam labore dicta quis asperiores fuga eveniet ea odio officia voluptates? </p><p><b>COMPANY PROFILE</b><ul><li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non neque exercitationem minus suscipit.</li><li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non neque exercitationem minus suscipit.</li><li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non neque exercitationem minus suscipit.</li></ul></p><p><b>WHAT THIS COMPANY OFFERS YOU</b><ul><li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non neque exercitationem minus suscipit.</li><li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non neque exercitationem minus suscipit.</li><li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non neque exercitationem minus suscipit.</li></ul></p><p><b>LOCATION</b><ul><li>Columbus, OH</li></ul></p><p><b>THE ROLE YOU WILL PLAY</b><ul><li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus at aliquid alias reprehenderit non quas culpa quibusdam totam mollitia quo.</li><li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus at aliquid alias reprehenderit non quas culpa quibusdam totam mollitia quo.</li><li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus at aliquid alias reprehenderit non quas culpa quibusdam totam mollitia quo.</li><li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus at aliquid alias reprehenderit non quas culpa quibusdam totam mollitia quo.</li><li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus at aliquid alias reprehenderit non quas culpa quibusdam totam mollitia quo.</li></ul></p>";
+            $scope.jobDescriptionHtmlContent = "";
             $scope.jobDescriptionContent = $sce.trustAsHtml($scope.jobDescriptionHtmlContent);
-            $scope.jobRequirementsHtmlContent = "<p><ul><li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex voluptas, quod excepturi natus! Consequatur ut ipsam.</li><li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex voluptas, quod excepturi natus! Consequatur ut ipsam.</li><li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex voluptas, quod excepturi natus! Consequatur ut ipsam.</li><li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex voluptas, quod excepturi natus! Consequatur ut ipsam.</li></ul></p>";
+            $scope.jobRequirementsHtmlContent = "";
             $scope.jobRequirementsContent = $sce.trustAsHtml($scope.jobRequirementsHtmlContent);
             $scope.jobTitleLocationResultContent = " Job Title <small>At Location Name</small> ";
-            $scope.jobDescriptionResultContent = "<p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora doloremque dolore minus possimus, ex aut rem quod dignissimos commodi aliquam labore dicta quis asperiores fuga eveniet ea odio officia voluptates? </p><p><b>COMPANY PROFILE</b><ul><li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non neque exercitationem minus suscipit.</li><li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non neque exercitationem minus suscipit.</li><li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non neque exercitationem minus suscipit.</li></ul></p><p><b>WHAT THIS COMPANY OFFERS YOU</b><ul><li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non neque exercitationem minus suscipit.</li><li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non neque exercitationem minus suscipit.</li><li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non neque exercitationem minus suscipit.</li></ul></p><p><b>LOCATION</b><ul><li>Columbus, OH</li></ul></p><p><b>THE ROLE YOU WILL PLAY</b><ul><li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus at aliquid alias reprehenderit non quas culpa quibusdam totam mollitia quo.</li><li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus at aliquid alias reprehenderit non quas culpa quibusdam totam mollitia quo.</li><li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus at aliquid alias reprehenderit non quas culpa quibusdam totam mollitia quo.</li><li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus at aliquid alias reprehenderit non quas culpa quibusdam totam mollitia quo.</li><li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus at aliquid alias reprehenderit non quas culpa quibusdam totam mollitia quo.</li></ul></p>";
-            $scope.aboutUsResultContent = "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis nihil ad, dicta cumque eum. Quos, laborum recusandae tempore commodi, facilis odit, quibusdam quidem alias magnam aspernatur exercitationem maxime autem culpa.</p> <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero qui, consequatur, minima enim, voluptates, laboriosam sint architecto dignissimos ex molestiae possimus voluptatibus ipsa porro ducimus harum. Sed iusto, facilis delectus.</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero qui, consequatur, minima enim, voluptates, laboriosam sint architecto dignissimos ex molestiae possimus voluptatibus ipsa porro ducimus harum. Sed iusto, facilis delectus.</p>";
-            $scope.jobRequirementsResultContent = "<p><ul><li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex voluptas, quod excepturi natus! Consequatur ut ipsam.</li><li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex voluptas, quod excepturi natus! Consequatur ut ipsam.</li><li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex voluptas, quod excepturi natus! Consequatur ut ipsam.</li><li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex voluptas, quod excepturi natus! Consequatur ut ipsam.</li></ul></p>";
+            $scope.jobDescriptionResultContent = "";
+            $scope.aboutUsResultContent = "";
+            $scope.jobRequirementsResultContent = "";
             $scope.tags = [];
             $scope.EmployeeTypes = RESOURCES.EMPLOYEE_TYPES;
         }
@@ -132,7 +132,12 @@ angular
                 $scope.location = "";
             }
         };
-        $scope.saveChanges = function() {
+        $scope.saveChanges = function(isValid) {
+
+            debugger;
+            if (!isValid || !$scope.tags.length){
+                return;
+            }
             if (!angular.isUndefined($scope.aboutUsResultContent)) {
                 $scope.aboutUsHtmlContent = $scope.aboutUsResultContent;
             }
@@ -145,7 +150,7 @@ angular
             if (!angular.isUndefined($scope.jobRequirementsResultContent)) {
                 $scope.jobRequirementsHtmlContent = $scope.jobRequirementsResultContent;
             }
-            debugger;
+
             $scope.jobTitleLocationEditable = false;
             $scope.jobDescriptionContentEditable = false;
             $scope.jobRequirementsContentEditable = false;

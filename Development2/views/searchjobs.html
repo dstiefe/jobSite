@@ -9,13 +9,9 @@
             <div class="col-md-1">
                 <h3 style="margin: 0;padding: 0.7em 1em 1em 0.8em;"> Jobs:</h3>
             </div>
-            <div class="col-md-5">
+            <div class="col-md-10">
                 <div class="clear"><br /></div>
                 <input type="text" class="form-control" ng-model="searchtext" placeholder="Job Title or Category">
-            </div>
-            <div class="col-md-5">
-                <div class="clear"><br /></div>
-                <input type="text" class="form-control" ng-model="searchlocation" placeholder="City,State or Zipcode">
             </div>
             <div class="col-md-1">
                 <div class="clear">
@@ -37,12 +33,12 @@
                                     <div class="panel-body">
                                         <h3><b>Category</b></h3>
                                         <ul class="list-group mailbox-list">
-                                            <li class="list-group-item" ng-repeat="category in categories"><a ng-click="searchbycategory(category.category)" href="#">{{ category.category}}({{ category.count}})</a></li>
+                                            <li class="list-group-item" ng-repeat="category in categories"><a ng-click="searchbycategory(category.id)" href="#">{{ category.category}}({{ category.count}})</a></li>
                                         </ul>
                                         <hr>
                                         <h3><b>Location</b></h3>
                                         <ul class="list-group mailbox-list">
-                                            <li class="list-group-item" ng-repeat="location in locations"><a ng-click="searchbylocation(location.location)" href="#">{{ location.location}}({{ location.count}})</a></li>
+                                            <li class="list-group-item" ng-repeat="location in locations"><a ng-click="searchbylocation(location.id)" href="#">{{ location.location}}({{ location.count}})</a></li>
                                         </ul>
                                     </div>
                                 </div>

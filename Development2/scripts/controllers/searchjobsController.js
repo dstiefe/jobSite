@@ -11,7 +11,7 @@ angular
             ValiDatedTokenObject.setValiDatedTokenObject(JSON.parse(sessionStorage.getItem("ValiDatedTokenObject")));
             $scope.role = ValiDatedTokenObject.getValiDatedTokenObject().roles;
         }
-        $scope.searchlocation = "";
+
         $scope.searchtext = "";
         var req = {
             method: 'GET',
@@ -37,6 +37,7 @@ angular
                     if (visibleornot) {
                         locations.push({
                             location: data.data[k].location,
+                            id: data.data[k].locationId,
                             count: 1
                         });
                     }
@@ -53,6 +54,7 @@ angular
                     if (visibleornot) {
                         categories.push({
                             category: data.data[k].category,
+                            id: data.data[k].categoryId,
                             count: 1
                         });
                     }
@@ -69,9 +71,6 @@ angular
             var searchtext = "";
             if ($scope.searchtext != "") {
                 searchtext += '?text=' + $scope.searchtext;
-            } 
-            if ($scope.searchlocation != "") {
-                searchtext += (searchtext == "") ? '?location=' + $scope.searchlocation : '&location=' + $scope.searchlocation;
             } 
             var req1 = {
                 method: 'GET',
@@ -96,6 +95,7 @@ angular
                         if (visibleornot) {
                             locations.push({
                                 location: data.data[k].location,
+                                id: data.data[k].locationId,
                                 count: 1
                             });
                         }
@@ -112,6 +112,7 @@ angular
                         if (visibleornot) {
                             categories.push({
                                 category: data.data[k].category,
+                                id: data.data[k].categoryId,
                                 count: 1
                             });
                         }
@@ -125,10 +126,10 @@ angular
                 }
             });
         };
-        $scope.searchbycategory = function(categoryname) {
+        $scope.searchbycategory = function(categoryid) {
             var req1 = {
                 method: 'GET',
-                url: ServicesURL + 'api/v1/jobs/search?text=' + categoryname + '',
+                url: ServicesURL + 'api/v1/jobs/search?categoryId=' + categoryid + '',
                 headers: {
                     'Content-Type': 'application/json'
                 }
@@ -149,6 +150,7 @@ angular
                         if (visibleornot) {
                             locations.push({
                                 location: data.data[k].location,
+                                id: data.data[k].locationId,
                                 count: 1
                             });
                         }
@@ -165,6 +167,7 @@ angular
                         if (visibleornot) {
                             categories.push({
                                 category: data.data[k].category,
+                                id: data.data[k].categoryId,
                                 count: 1
                             });
                         }
@@ -178,10 +181,10 @@ angular
                 }
             });
         };
-        $scope.searchbylocation = function(locationname) {
+        $scope.searchbylocation = function(locationId) {
             var req1 = {
                 method: 'GET',
-                url: ServicesURL + 'api/v1/jobs/search?location=' + locationname + '',
+                url: ServicesURL + 'api/v1/jobs/search?locationId=' + locationId + '',
                 headers: {
                     'Content-Type': 'application/json'
                 }
@@ -203,6 +206,7 @@ angular
                         if (visibleornot) {
                             locations.push({
                                 location: data.data[k].location,
+                                id: data.data[k].locationId,
                                 count: 1
                             });
                         }
@@ -219,6 +223,7 @@ angular
                         if (visibleornot) {
                             categories.push({
                                 category: data.data[k].category,
+                                id: data.data[k].categoryId,
                                 count: 1
                             });
                         }

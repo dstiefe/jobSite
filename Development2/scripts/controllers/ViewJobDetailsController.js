@@ -36,7 +36,7 @@ angular
                 $scope.jobAboutus = $sce.trustAsHtml( data.data.aboutUs);
                 $scope.applicants = data.data.applicants;
                 $scope.isOwn = data.data.isOwn;
-
+                $scope.isApplied = data.data.isApplied;
             }
         });
         $scope.onApply = function() {

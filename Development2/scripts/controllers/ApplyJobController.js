@@ -23,7 +23,7 @@ function ApplyJobController($scope, Login, ValiDatedTokenObject, $http, $locatio
     debugger;
     $scope.includeCoverLetter = false;
 
-    var resumeFileUrl;
+    $scope.resumeFileUrl = '';
 
     var req = {
         method: 'GET',
@@ -60,9 +60,9 @@ function ApplyJobController($scope, Login, ValiDatedTokenObject, $http, $locatio
         }
     };
 
-    $scope.uploadFile = function() {
+    $scope.uploadFile = function(event) {
         $scope.loading = true;
-        var file = $scope.myFile;
+        var file = event.target.files[0];
         console.log('file is ');
         console.dir(file);
         var uploadUrl = ServicesURL + 'api/v1/resumes/upload';
@@ -76,9 +76,8 @@ function ApplyJobController($scope, Login, ValiDatedTokenObject, $http, $locatio
                 }
             })
             .success(function(response) {
-                resumeFileUrl = response.storageLocationNative;
-
-                alert('Resume upload success');
+                $scope.resumeFileUrl = response.storageLocationNative;
+                $scope.wizard.next();
             })
             .error(function(response) {
                 $scope.loading = false;
@@ -93,7 +92,7 @@ function ApplyJobController($scope, Login, ValiDatedTokenObject, $http, $locatio
         var viewJobId = parts[1];
         var postresumedata = {
             "note": $scope.coverLetterNote,
-            "storageLocationNative": resumeFileUrl,
+            "storageLocationNative": $scope.resumeFileUrl,
             "firstName": $scope.accountFirstName,
             "lastName": $scope.accountLastName,
             "email": $scope.accountEmail

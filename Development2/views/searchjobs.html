@@ -33,12 +33,12 @@
                                     <div class="panel-body">
                                         <h3><b>Category</b></h3>
                                         <ul class="list-group mailbox-list">
-                                            <li class="list-group-item" ng-repeat="category in categories"><a ng-click="searchbycategory(category.id)" href="#">{{ category.category}}({{ category.count}})</a></li>
+                                            <li class="list-group-item" ng-repeat="category in categories"><a ng-click="searchbycategory(category.id)" href="#"><span data-ng-bind-html="category.category"></span> ({{ category.count}})</a></li>
                                         </ul>
                                         <hr>
                                         <h3><b>Location</b></h3>
                                         <ul class="list-group mailbox-list">
-                                            <li class="list-group-item" ng-repeat="location in locations"><a ng-click="searchbylocation(location.id)" href="#">{{ location.location}}({{ location.count}})</a></li>
+                                            <li class="list-group-item" ng-repeat="location in locations"><a ng-click="searchbylocation(location.id)" href="#"><span data-ng-bind-html="location.location"></span> ({{ location.count}})</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -60,8 +60,8 @@
                                         </thead>
                                         <tbody>
                                             <tr ng-repeat="data in filtered = (list | filter:search | orderBy : predicate :reverse) | startFrom:(currentPage-1)*entryLimit | limitTo:entryLimit">
-                                                <td>{{data.title}}</td>
-                                                <td class="text-info font-bold">{{data.location}}</td>
+                                                <td data-ng-bind-html="data.title"></td>
+                                                <td class="text-info font-bold" data-ng-bind-html="data.location"></td>
                                                 <td>
                                                     {{ data.publishedDate*1000 | date : "M/d/yyyy" }}
                                                 </td>

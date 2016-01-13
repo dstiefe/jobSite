@@ -13,6 +13,8 @@ angular
         }
 
         $scope.searchtext = "";
+    $scope.categoryId = '';
+    $scope.locationId = '';
         var req = {
             method: 'GET',
             url: ServicesURL + 'api/v1/jobs/search',
@@ -69,9 +71,13 @@ angular
         });
         $scope.searchjob = function() {
             var searchtext = "";
+            $scope.categoryId = '';
+            $scope.locationId = '';
+
             if ($scope.searchtext != "") {
                 searchtext += '?text=' + $scope.searchtext;
-            } 
+            }
+
             var req1 = {
                 method: 'GET',
                 url: ServicesURL + 'api/v1/jobs/search' + searchtext + '',
@@ -127,9 +133,16 @@ angular
             });
         };
         $scope.searchbycategory = function(categoryid) {
+            $scope.categoryId = categoryid;
+
+            var serviceUrl = ServicesURL + 'api/v1/jobs/search?categoryId=' + categoryid;
+            if ($scope.locationId != '') {
+                serviceUrl += '&locationId=' + $scope.locationId;
+            }
+
             var req1 = {
                 method: 'GET',
-                url: ServicesURL + 'api/v1/jobs/search?categoryId=' + categoryid + '',
+                url: serviceUrl,
                 headers: {
                     'Content-Type': 'application/json'
                 }
@@ -182,9 +195,16 @@ angular
             });
         };
         $scope.searchbylocation = function(locationId) {
+            $scope.locationId = locationId;
+
+            var serviceUrl = ServicesURL + 'api/v1/jobs/search?locationId=' + locationId;
+            if ($scope.categoryId != '') {
+                serviceUrl += '&categoryId=' + $scope.categoryId;
+            }
+
             var req1 = {
                 method: 'GET',
-                url: ServicesURL + 'api/v1/jobs/search?locationId=' + locationId + '',
+                url: serviceUrl,
                 headers: {
                     'Content-Type': 'application/json'
                 }

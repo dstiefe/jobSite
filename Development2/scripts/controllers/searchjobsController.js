@@ -133,12 +133,29 @@ angular
             });
         };
         $scope.searchbycategory = function(categoryid) {
-            $scope.categoryId = categoryid;
 
-            var serviceUrl = ServicesURL + 'api/v1/jobs/search?categoryId=' + categoryid;
-            if ($scope.locationId != '') {
-                serviceUrl += '&locationId=' + $scope.locationId;
+            if ($scope.categoryId != categoryid){
+                $scope.categoryId = categoryid;
+            }else{
+                $scope.categoryId = '';
             }
+
+
+            var params = {};
+            if ($scope.locationId != '') {
+                params['locationId'] = $scope.locationId;
+            }
+
+            if ($scope.categoryId != '') {
+                params['categoryId'] = $scope.categoryId;
+            }
+
+            if ($scope.searchtext != ''){
+                params['text'] = $scope.searchtext;
+            }
+
+            var query = jQuery.param(params);
+            var serviceUrl = ServicesURL + 'api/v1/jobs/search?'+query;
 
             var req1 = {
                 method: 'GET',
@@ -195,12 +212,27 @@ angular
             });
         };
         $scope.searchbylocation = function(locationId) {
-            $scope.locationId = locationId;
 
-            var serviceUrl = ServicesURL + 'api/v1/jobs/search?locationId=' + locationId;
-            if ($scope.categoryId != '') {
-                serviceUrl += '&categoryId=' + $scope.categoryId;
+            if ($scope.locationId != locationId){
+                $scope.locationId = locationId;
+            }else{
+                $scope.locationId = '';
             }
+            var params = {};
+            if ($scope.locationId != '') {
+                params['locationId'] = $scope.locationId;
+               }
+
+            if ($scope.categoryId != '') {
+                params['categoryId'] = $scope.categoryId;
+            }
+
+            if ($scope.searchtext != ''){
+                params['text'] = $scope.searchtext;
+            }
+
+            var query = jQuery.param(params);
+            var serviceUrl = ServicesURL + 'api/v1/jobs/search?'+query;
 
             var req1 = {
                 method: 'GET',

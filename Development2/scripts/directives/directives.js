@@ -16,6 +16,21 @@ angular
     .directive('smallHeader', smallHeader)
     .directive('animatePanel', animatePanel)
     .directive('landingScrollspy', landingScrollspy)
+    .directive('ngEnter', ngEnterHandler)
+
+function ngEnterHandler() {
+    return function(scope, element, attrs) {
+        element.bind("keydown keypress", function(event) {
+            if(event.which === 13) {
+                scope.$apply(function(){
+                    scope.$eval(attrs.ngEnter, {'event': event});
+                });
+
+                event.preventDefault();
+            }
+        });
+    };
+}
 
 /**
  * pageTitle - Directive for set Page title - mata title

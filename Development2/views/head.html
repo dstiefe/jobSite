@@ -1,47 +1,22 @@
 ﻿
 <div class="color-line">
 </div>
-<nav role="navigation">
+<nav role="navigation"  ng-controller="HeaderController">
 <div class="navbar-left">
         <ul class="nav navbar-nav no-borders">
-        <li>
-
-                <a class="btn btn-default btn-md pull-left" ui-sref="searchjobs" ng-hide="role=='Admin'"><span >Find Jobs</span></a>
+            <li>
+                <a class="btn btn-default btn-md pull-left" ui-sref="searchjobs" ng-show="isActive('/searchjobs') && !isAdministrator"><span >Find Jobs</span></a>
             </li>
             <li>
-                <a class="btn btn-default btn-md pull-left" ui-sref="jobslist" ng-show="role=='Admin'"><span>Jobs</span></a>
-            </li></ul></div>
-    <div class="navbar-right">
-        <ul ng-show="role == 'Admin'  || role == 'User'" class="nav navbar-nav no-borders">
-            <!--<li>-->
-                <!--<a class="dropdown-toggle"   data-toggle="dropdown">-->
-                    <!--<i class="pe-7s-user"></i>-->
-                <!--</a>-->
-            <!--</li>-->
-            <!--<li class="dropdown">-->
-                <!--<a class="dropdown-toggle"   data-toggle="dropdown">-->
-                    <!--<i class="pe-7s-mail"></i>-->
-                <!--</a>-->
-                <!--<ul class="dropdown-menu hdropdown notification animated flipInX">-->
-                    <!--<li>-->
-                        <!--<a>-->
-                            <!--<span class="label label-success">NEW</span> It is a long established.-->
-                        <!--</a>-->
-                    <!--</li>-->
-                    <!--<li>-->
-                        <!--<a>-->
-                            <!--<span class="label label-warning">WAR</span> There are many variations.-->
-                        <!--</a>-->
-                    <!--</li>-->
-                    <!--<li>-->
-                        <!--<a>-->
-                            <!--<span class="label label-danger">ERR</span> Contrary to popular belief.-->
-                        <!--</a>-->
-                    <!--</li>-->
-                    <!--<li class="summary"><a href="#">See all notifications</a></li>-->
-                <!--</ul>-->
-            <!--</li>-->
-
+                <a class="btn btn-default btn-md pull-left" ui-sref="jobslist" ng-show="isActive('/jobslist') && isAdministrator"><span>Jobs</span></a>
+            </li>
+            <li>
+                <a class="btn btn-default btn-md pull-left" ui-sref="dashboard" ng-show="isActive('/dashboard')"><span>Dashboard</span></a>
+            </li>
+        </ul>
+</div>
+ <div class="navbar-right">
+        <ul ng-show="isAuth" class="nav navbar-nav no-borders">
             <li class="dropdown">
                 <a class="dropdown-toggle"   data-toggle="dropdown">
                     <i class="pe-7s-keypad"></i>
@@ -56,13 +31,13 @@
                                         <h5>Dashboard</h5>
                                     </a>
                                 </td>
-                                <td ng-hide="role=='Admin'">
+                                <td ng-hide="isAdministrator">
                                     <a ui-sref="searchjobs">
                                         <i class="pe pe-7s-portfolio text-info"></i>
                                         <h5>Find Jobs</h5>
                                     </a>
                                 </td>
-                                <td ng-show="role=='Admin'">
+                                <td ng-show="isAdministrator">
                                     <a ui-sref="jobslist">
                                         <i class="pe pe-7s-portfolio text-info"></i>
                                         <h5>Jobs</h5>
@@ -75,40 +50,21 @@
                                     </a>
                                 </td>
                             </tr>
-                           <!--  <tr>
-                                <td>
-                                    <a href="forum.html">
-                                        <i class="pe pe-7s-comment text-info"></i>
-                                        <h5>Forum</h5>
-                                    </a>
-                                </td>
-                                <td>
-                                    <a href="analytics.html">
-                                        <i class="pe pe-7s-graph1 text-danger"></i>
-                                        <h5>Analytics</h5>
-                                    </a>
-                                </td>
-                                <td>
-                                    <a ui-sref="logout">
-                                        <i class="pe pe-7s-power text-success"></i>
-                                        <h5>Logout</h5>
-                                    </a>
-                                </td>
-                            </tr> -->
                         </tbody>
                     </table>
                 </div>
             </li>
 
             <li class="dropdown"> 
-                <a ng-show="role == 'Admin'  || role == 'User'" ui-sref="login" id="cmd_Logout">
+                <a ng-show="isAuth" ui-sref="logout" id="cmd_Logout">
                     <i class="pe-7s-upload pe-rotate-90"></i>
                 </a> 
             </li>
         </ul>
-        <ul ng-hide="role == 'Admin'  || role == 'User'" class="nav navbar-nav no-borders"> 
+
+        <ul ng-hide="isAuth" class="nav navbar-nav no-borders">
             <li class="dropdown">  
-                <a ng-hide="role == 'Admin'  || role == 'User'" ui-sref="login" id="cmd_Logout">
+                <a ui-sref="login" id="cmd_Logout">
                     <i class="pe-7s-upload pe-rotate-270"></i>
                 </a>
             </li>

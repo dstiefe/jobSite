@@ -1,10 +1,12 @@
-﻿<div ng-controller="JobListController">
-    <!--[if lt IE 7]>
-    <p class="alert alert-danger">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-    <![endif]-->
-    <!-- Header -->
-    <div id="header" ng-include="'views/head.html'">
-    </div>
+﻿<!--[if lt IE 7]>
+<p class="alert alert-danger">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
+<!-- Header -->
+<div id="header" ng-include="'views/head.html'">
+</div>
+
+<div ng-controller="JobListController">
+
     <!-- Main Wrapper -->
     <div id="wrapper" style="margin:0; ">
         <br />
@@ -58,7 +60,7 @@
                                                 <td>{{data.applicantsIds.count}}</td>
                                                 <td>
                                                     <a href="#jobmanagement?id={{data.id}}" class="btn btn-info btn-warning"><span class="glyphicon glyphicon-edit"></span> Edit</a> &nbsp;&nbsp;&nbsp;
-                                                    <a href="#" ng-click="deleterecords(data.id)" class="btn btn-info btn-danger"><span class="glyphicon glyphicon-remove"></span> Delete</a>
+                                                    <a ng-click="deleterecords(data.id)" class="btn btn-info btn-danger"><span class="glyphicon glyphicon-remove"></span> Delete</a>
                                                 </td>
                                             </tr>
                                         </tbody>

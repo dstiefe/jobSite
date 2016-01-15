@@ -40,7 +40,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
             controller: function($state, $rootScope, AuthService) {
                 AuthService.logOut();
                 $rootScope.UpdateMenu();
-                $state.go('searchjobs');
+                $state.go('login');
             },
             data: {
                 pageTitle: 'logout'

@@ -1798,9 +1798,8 @@ h3,
 }
 
 html {
-    margin: 0;
-    padding: 0;
-    height: 100%;
+    position: relative;
+    min-height: 100%;
     overflow-x: hidden!important
 }
 

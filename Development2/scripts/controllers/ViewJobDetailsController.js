@@ -1,5 +1,5 @@
 angular
-    .module('Jobsite').controller("ViewJobDetailsController", function ($scope, Login, ValiDatedTokenObject, $location, $http, $location, $sce) {
+    .module('Jobsite').controller("ViewJobDetailsController", function ($scope, Login, ValiDatedTokenObject, $location, $modal, $http, $location, $sce) {
         
          ValiDatedTokenObject.setValiDatedTokenObject(JSON.parse(sessionStorage.getItem("ValiDatedTokenObject")));
     //if (ValiDatedTokenObject.getValiDatedTokenObject())
@@ -39,9 +39,13 @@ angular
                 $scope.isApplied = data.data.isApplied;
             }
         });
-        $scope.onApply = function() {
 
-            $location.path("/dashboard");
+        $scope.onApply = function() {
+            $modal.open({
+                templateUrl: 'views/applyjob.html',
+                controller: ApplyJobController
+            });
+            //$location.path("/dashboard");
         }
 
     });

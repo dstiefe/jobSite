@@ -117,6 +117,4 @@ function ApplyJobController($scope, Login, ValiDatedTokenObject, $http, $locatio
     $scope.onClose = function() {
         $modalInstance.close();
     }
-
-
 }

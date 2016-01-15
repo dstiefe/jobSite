@@ -42,9 +42,8 @@ angular
         $scope.onApply = function() {
             $modal.open({
                 templateUrl: 'views/applyjob.html',
-                controller: ApplyJobController
+                controller: ApplyJobController,
+                scope: $scope
             });
-            //$location.path("/dashboard");
         }
-
     });

@@ -25,6 +25,8 @@ function ApplyJobController($scope, Login, ValiDatedTokenObject, $http, $locatio
 
     $scope.resumeFileUrl = '';
 
+
+
     var req = {
         method: 'GET',
         url: ServicesURL + 'api/v1/account/userinfo',
@@ -110,6 +112,7 @@ function ApplyJobController($scope, Login, ValiDatedTokenObject, $http, $locatio
             .success(function(response) {
                 $scope.jobAppliedDate = response.applyDate;
                 $scope.step = 3;
+                $scope.$parent.isApplied = true;
 
             });
     }

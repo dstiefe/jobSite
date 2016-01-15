@@ -40,39 +40,9 @@ angular
         }
         $scope.role = ValiDatedTokenObject.getValiDatedTokenObject().roles;
 
-    $scope.jobYouOwnAlert = false;
-        $scope.jobAlreadyAppliedAlert = false;
-        $scope.jobAppliedSuccessfullyAlert = false;
-        var previousLocationPath = locationHistoryService.get().split('/').pop().split("?");
-        var parts = $location.absUrl().split("dashboard?id=");
-        if (((previousLocationPath[0] == "login") || (previousLocationPath[0] == "viewjobdetails")) && (parts[1] != undefined)) {
-            var reqForJobAlreadyApplied = {
-                method: 'GET',
-                url: ServicesURL + 'api/v1/jobs/' + parts[1],
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Connection': 'keep-alive',
-                    'Authorization': ValiDatedTokenObject.getValiDatedTokenObject().token_type+" "+ValiDatedTokenObject.getValiDatedTokenObject().access_token
-                }
-            }
-            $http(reqForJobAlreadyApplied).then(function(data) {
-                if (data.status == "200") {
-                    if (data.data.isOwn) {
-                        $scope.jobYouOwnAlert = true;
-                    } else 
-                    if (data.data.isApplied) {
-                        $scope.jobAlreadyAppliedAlert = true;
-                    } else {
-                        $modal.open({
-                            templateUrl: 'views/applyjob.html',
-                            controller: ApplyJobController
-                        });
-                    }
 
-                }
-            });
 
-        }
+
 
     var serviceUrl = ServicesURL + 'api/v1/jobs/all/applied';
     if (ValiDatedTokenObject.getValiDatedTokenObject().roles == "Admin") {

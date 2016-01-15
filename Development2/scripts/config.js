@@ -37,7 +37,11 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
         })
         .state('logout', {
             url: "/logout",
-            templateUrl: "views/logout.html",
+            controller: function($state, $rootScope, AuthService) {
+                AuthService.logOut();
+                $rootScope.UpdateMenu();
+                $state.go('searchjobs');
+            },
             data: {
                 pageTitle: 'logout'
                /*permissions: {
@@ -136,6 +140,18 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
                 }
             }
         })
+        .state('applicants', {
+            url: "/applicants/:id",
+            templateUrl: "views/applicants.html",
+            data: {
+                pageTitle: 'Applicants',
+                permissions: {
+                    only: ['Admin'],
+                    //  redirectTo: 'login'
+                }
+            }
+        })
+
     }
 
 angular
@@ -195,6 +211,10 @@ angular
             });
 
     });
+
+angular.isUndefinedOrNull = function(val) {
+    return angular.isUndefined(val) || val === null
+}
 //var checkRouting= function ($q, $rootScope, $location, ValiDatedTokenObject) {
 //    ValiDatedTokenObject.setValiDatedTokenObject(JSON.parse(sessionStorage.getItem("ValiDatedTokenObject")));
 //    if (ValiDatedTokenObject.getValiDatedTokenObject())

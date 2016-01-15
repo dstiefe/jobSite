@@ -1,5 +1,5 @@
 ﻿angular
-    .module('Jobsite').controller('associateController', ['$scope', '$location','$timeout','AuthService', function ($scope, $location,$timeout, AuthService) {
+    .module('Jobsite').controller('associateController', ['$scope', '$rootScope','$location','$timeout','AuthService', function ($scope, $rootScope, $location,$timeout, AuthService) {
     debugger;
     $scope.savedSuccessfully = false;
     $scope.message = "";
@@ -21,8 +21,8 @@
 
             $scope.savedSuccessfully = true;
             $scope.message = "User has been registered successfully, you will be redicted to orders page in 2 seconds.";
+            $rootScope.UpdateMenu();
             startTimer();
-
         },
           function (response) {
               var errors = [];
@@ -36,6 +36,7 @@
     var startTimer = function () {
         var timer = $timeout(function () {
             $timeout.cancel(timer);
+
             $location.path('/dashboard');
         }, 2000);
     }

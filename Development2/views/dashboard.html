@@ -1,90 +1,44 @@
-﻿<!--[if lt IE 7]>
-<p class="alert alert-danger">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-<![endif]-->
-<!-- Header -->
-<div id="header" ng-include="'views/head.html'"  >
-</div>
-
-<div ng-controller="dashboardController">
-
-    <div class="alert alert-success text-center" ng-show="jobYouOwnAlert" role="alert">You Cannot Apply to the Jobs As you are the owner of this job</div>
-    <div class="alert alert-danger text-center" ng-show="jobAlreadyAppliedAlert" role="alert">Job Already Applied</div>   
+﻿<div ng-controller="dashboardController">
     <!-- Main Wrapper -->
     <div class="wrapper" >
-
         <br />
-
-
         <div class="row">
             <div class="col-lg-12 headertable">
                 <h3 style="margin: 0;padding: 0.7em 1em 1em 0.8em;">
                     {{headingmessage}}
                 </h3>
-
             </div>
         </div>
-
-
         <!-- Right sidebar -->
         <div class="row">
             <div ng-show="!list.length" class="col-lg-12" style="">
                 <h1>No Jobs found</h1>
             </div>
-
         </div>
         <div class="row">
-            <br />
-            <div class="col-lg-6" ng-repeat="data in list"  >
+                <br />
+                <div class="col-lg-6" ng-repeat="data in list"  >
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
 
+                                <h3 class="panel-title pull-left">{{data.title}}({{data.location}})</h3>
 
-                    <div class="panel panel-default">
+                                <a class="btn btn-primary pull-right" ui-sref="applicants({id:data.id})" ng-show = "role == 'Admin'">
+                                    {{viewtext}}
+                                    <span class="badge badge-success" ng-show="!isUndefinedOrNull(data.applicantsIds) && data.applicantsIds.length > 0" >{{data.applicantsIds.length}}</span>
+                                </a>
+                                <a class="btn btn-primary pull-right" href="#viewjobdetails?id={{data.id}}" ng-hide = "role == 'Admin'">
+                                    {{viewtext}}
+                                </a>
+                                <div class="clearfix"></div>
 
+                            </div>
+                            <div class="panel-body crop" ng-bind-html="data.description">
 
-                        <div class="panel-heading">
-
-                            <h3 class="panel-title pull-left">{{data.title}}({{data.location}})</h3>
-
-                            <a class="btn btn-primary pull-right" href="#viewjobdetails?id={{data.id}}">{{viewtext}}</a>
-                            <div class="clearfix"></div>
-
-
+                            </div>
+                            <div class="panel-footer">Date:{{data.publishedDate*1000 | date : "M/d/yyyy"}}</div>
                         </div>
-
-                        <!--<div class="panel-heading"><a class="btn btn-primary" href="#viewjobdetails?id={{data.id}}">{{viewtext}}</a> </div>-->
-                        <div class="panel-body crop" ng-bind-html="data.description">
-
-                        </div>
-
-                        <div class="panel-footer">Date:{{data.publishedDate*1000 | date : "M/d/yyyy"}}</div>
-                    </div>
-
-
-                <!--<div class="col-lg-12" style="">-->
-                        <!--<div class="hpanel" ng-repeat="data in list" >-->
-                            <!--<div class="panel-body list">-->
-                                <!--<div class="table-responsive project-list">-->
-                                    <!--<table class="table table-striped">-->
-                                        <!--<tbody>-->
-                                            <!--<tr>-->
-                                                <!--<td>-->
-                                                    <!--<h4> {{data.title}}({{data.location}})</h4>-->
-                                                <!--</td>-->
-                                                <!--<td><a class="btn btn-primary" href="#viewjobdetails?id={{data.id}}">{{viewtext}}</a> </td>-->
-                                            <!--</tr>-->
-                                            <!--<tr>-->
-                                                <!--<td ng-bind-html="data.description">-->
-                                                <!--</td>-->
-                                                <!--<td>Date:{{data.publishedDate*1000 | date : "M/d/yyyy"}}</td>-->
-                                            <!--</tr>-->
-                                        <!--</tbody>-->
-                                    <!--</table>-->
-                                <!--</div>-->
-                            <!--</div>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                <!--</div>-->
+                </div>
             </div>
-            </div>
-
     </div>
 </div>

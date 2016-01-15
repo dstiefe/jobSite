@@ -1,9 +1,3 @@
-<!--[if lt IE 7]>
-<p class="alert alert-danger">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-<![endif]-->
-<!-- Header -->
-<div id="header" ng-include="'views/head.html'">
-</div>
 <div ng-controller="ViewJobDetailsController">
 
     <!-- Main Wrapper -->
@@ -46,7 +40,7 @@
                                                 <div>
                                                     <table class="table">
                                                         <thead>
-                                                            <tr> <th>#</th><th>Apply Date</th><th>First Name</th> <th>Last Name</th> <th>E-mail</th><th>Cover Letter</th> </tr>
+                                                            <tr> <th>#</th><th>Apply Date</th><th>First Name</th> <th>Last Name</th> <th>E-mail</th><th>Cover Letter</th> <th>Action</th> </tr>
                                                         </thead>
                                                         <tbody>
                                                             <tr ng-repeat="applicant in applicants">
@@ -56,6 +50,7 @@
                                                                 <td>{{applicant.lastName}}</td>
                                                                 <td>{{applicant.email}}</td>
                                                                 <td>{{applicant.note}}</td>
+                                                                <td> <a  ui-sref="resume({id:data.id})" class="btn btn-info btn-warning"><span class="glyphicon glyphicon-edit"></span> View</a></td>
                                                             </tr>
                                                         </tbody>
                                                     </table>

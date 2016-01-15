@@ -3,7 +3,7 @@
 /// <reference path="Service.js" />  
 
 
-angular.module('Jobsite').controller("Login", function($scope, Login, $location, locationHistoryService,ValiDatedTokenObject, AuthService, RESOURCES) {
+angular.module('Jobsite').controller("Login", function($scope, $rootScope, Login, $location, locationHistoryService,ValiDatedTokenObject, AuthService, RESOURCES) {
 debugger;
         $scope.UserLogin = function() {
             var loginData = {
@@ -12,6 +12,7 @@ debugger;
             };
 
             AuthService.login(loginData).then(function (response) {
+                    $rootScope.UpdateMenu();
                     $location.path('/dashboard');
                 },
                 function (err) {
@@ -67,7 +68,7 @@ debugger;
                 //Obtain access token and redirect to orders
                 var externalData = { provider: fragment.provider, externalAccessToken: fragment.external_access_token };
                 AuthService.obtainAccessToken(externalData).then(function (response) {
-
+                        $rootScope.UpdateMenu();
                         $location.path('/dashboard');
 
                     },
@@ -80,9 +81,10 @@ debugger;
     };
 
     })
-angular
-    .module('Jobsite').controller("logoutcontroller",
-    function ($scope, Login, $location, locationHistoryService, ValiDatedTokenObject, AuthService) {
-        AuthService.logOut();
-        $location.path('/searchjobs');
-    });
+//angular
+//    .module('Jobsite').controller("logoutcontroller",
+//    function ($scope, Login, $location, locationHistoryService, ValiDatedTokenObject, AuthService) {
+//        AuthService.logOut();
+//        $location.path('/searchjobs');
+//        if(!$scope.$$phase) $scope.$apply();
+//    });

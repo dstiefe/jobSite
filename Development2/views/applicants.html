@@ -1,11 +1,11 @@
-﻿<div ng-controller="JobListController">
+<div ng-controller="ApplicantsController">
 
     <!-- Main Wrapper -->
     <div id="wrapper" style="margin:0; ">
         <br />
         <div id="header" style="margin:0 auto; width:95%;">
             <div class="col-md-1">
-                <h3 style="margin: 0;padding: 0.7em 1em 1em 0.8em;"> Jobs:</h3>
+                <h3 style="margin: 0;padding: 0.7em 1em 1em 0.8em;"> Applicants:</h3>
             </div>
             <div class="col-md-9">
                 <div class="clear">
@@ -16,7 +16,7 @@
             <div class="col-md-1">
                 <div class="clear">
                     <br />
-                </div><a class="btn btn-info btn-primary" ui-sref="jobmanagement">Create Job</a></div>
+                </div><a class="btn btn-info btn-primary" ui-sref="">Filter</a></div>
         </div>
         <section id="content">
             <div class="container">
@@ -27,7 +27,7 @@
                                 <div class="col-md-12" style="text-align:right;">
                                     <br />
                                     <br />
-                                    <h5>Filtered {{ filtered.length }} of {{ totalItems}} Total Jobs</h5>
+                                    <h5>Filtered {{ filtered.length }} of {{ totalItems}} Total Applicants</h5>
                                 </div>
                             </div>
                             <br />
@@ -35,27 +35,27 @@
                                 <div class="col-md-12" ng-show="filteredItems > 0">
                                     <table class="table table-striped table-bordered">
                                         <thead>
-                                            <th>Job Name&nbsp;<a ng-click="sort_by('title');"><i class="glyphicon glyphicon-sort"></i></a></th>
-                                            <th>Job Category&nbsp;<a ng-click="sort_by('category');"><i class="glyphicon glyphicon-sort"></i></a></th>
-                                            <th>Job Location&nbsp;<a ng-click="sort_by('location');"><i class="glyphicon glyphicon-sort"></i></a></th>
-                                            <th>Posted Date&nbsp;<a ng-click="sort_by('publishedDate');"><i class="glyphicon glyphicon-sort"></i></a></th>
-                                            <th># of Candidates </th>
-                                            <th>Admin </th>
+                                        <th>First Name&nbsp;<a ng-click="sort_by('title');"><i class="glyphicon glyphicon-sort"></i></a></th>
+                                        <th>Last Name&nbsp;<a ng-click="sort_by('category');"><i class="glyphicon glyphicon-sort"></i></a></th>
+                                        <th>E-mail&nbsp;<a ng-click="sort_by('location');"><i class="glyphicon glyphicon-sort"></i></a></th>
+                                        <th>Cover Letter&nbsp;<a ng-click="sort_by('location');"><i class="glyphicon glyphicon-sort"></i></a></th>
+                                        <th>Date Applied&nbsp;<a ng-click="sort_by('publishedDate');"><i class="glyphicon glyphicon-sort"></i></a></th>
+                                        <th>Action</th>
                                         </thead>
                                         <tbody>
-                                            <tr ng-repeat="data in filtered = (list | filter:search | orderBy : predicate :reverse) | startFrom:(currentPage-1)*entryLimit | limitTo:entryLimit">
-                                                <td>{{data.title}}</td>
-                                                <td>{{data.category}}</td>
-                                                <td class="text-info font-bold">{{data.location}}</td>
-                                                <td>
-                                                    {{ data.publishedDate*1000 | date : "M/d/yyyy" }}
-                                                </td>
-                                                <td>{{data.applicantsIds.length}}</td>
-                                                <td>
-                                                    <a href="#jobmanagement?id={{data.id}}" class="btn btn-info btn-warning"><span class="glyphicon glyphicon-edit"></span> Edit</a> &nbsp;&nbsp;&nbsp;
-                                                    <a ng-click="deleterecords(data.id)" class="btn btn-info btn-danger"><span class="glyphicon glyphicon-remove"></span> Delete</a>
-                                                </td>
-                                            </tr>
+                                        <tr ng-repeat="data in filtered = (list | filter:search | orderBy : predicate :reverse) | startFrom:(currentPage-1)*entryLimit | limitTo:entryLimit">
+                                            <td>{{data.firstName}}</td>
+                                            <td>{{data.lastName}}</td>
+                                            <td class="text-info font-bold">{{data.email}}</td>
+                                            <td>{{data.note}}</td>
+                                            <td>
+                                                {{ data.applyDate*1000 | date : "M/d/yyyy" }}
+                                            </td>
+
+                                            <td>
+                                                <a  ui-sref="resume({id:data.id})" class="btn btn-info btn-warning"><span class="glyphicon glyphicon-edit"></span> View</a>
+                                            </td>
+                                        </tr>
                                         </tbody>
                                     </table>
                                 </div>
@@ -84,7 +84,7 @@
             </div>
         </section>
         <!-- Right sidebar -->
-       
+
     </div>
 </div>
 <style>

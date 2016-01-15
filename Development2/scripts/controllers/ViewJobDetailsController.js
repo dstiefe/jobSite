@@ -12,8 +12,7 @@ angular
     $scope.role = ValiDatedTokenObject.getValiDatedTokenObject().roles;
         var parts = $location.absUrl().split("viewjobdetails?id=");
         var viewJobId= parts[1];
-
-        var req = {
+          var req = {
             method: 'GET',
             url: ServicesURL + 'api/v1/jobs/' + viewJobId,
             headers: {

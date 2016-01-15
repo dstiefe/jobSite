@@ -88,7 +88,7 @@ function ApplyJobController($scope, Login, ValiDatedTokenObject, $http, $locatio
 
     $scope.onSubmit = function() {
         debugger;
-        var parts = $location.absUrl().split("dashboard?id=");
+        var parts = $location.absUrl().split("?id=");
         var viewJobId = parts[1];
         var postresumedata = {
             "note": $scope.coverLetterNote,

@@ -4407,3 +4407,29 @@ ul.h-list li:hover a {
      padding-left: 0px !important;
 
 }
+
+/*SearchResumesHome*/
+.vertical-center {
+    min-height: 70%;  /* Fallback for browsers do NOT support vh unit */
+    min-height: 70vh; /* These two lines are counted as one :-)       */
+
+    display: flex;
+    align-items: center;
+}
+
+.jumbotron{
+    background-color: #f1f3f6;
+}
+
+.searchhome input {
+    height: auto;
+    padding: 20px 30px;
+    font-size: 18px;
+    line-height: 1.3333333;
+}
+
+.searchhome button {
+    padding: 20px 30px;
+    font-size: 18px;
+    line-height: 1.3333333;
+}

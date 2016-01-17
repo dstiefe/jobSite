@@ -21,7 +21,6 @@
 
             $scope.savedSuccessfully = true;
             $scope.message = "User has been registered successfully, you will be redicted to orders page in 2 seconds.";
-            $rootScope.UpdateMenu();
             startTimer();
         },
           function (response) {

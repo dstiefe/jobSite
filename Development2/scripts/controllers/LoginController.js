@@ -12,7 +12,6 @@ debugger;
             };
 
             AuthService.login(loginData).then(function (response) {
-                    $rootScope.UpdateMenu();
                     $location.path('/dashboard');
                 },
                 function (err) {
@@ -68,7 +67,6 @@ debugger;
                 //Obtain access token and redirect to orders
                 var externalData = { provider: fragment.provider, externalAccessToken: fragment.external_access_token };
                 AuthService.obtainAccessToken(externalData).then(function (response) {
-                        $rootScope.UpdateMenu();
                         $location.path('/dashboard');
 
                     },

@@ -39,7 +39,6 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
             url: "/logout",
             controller: function($state, $rootScope, AuthService) {
                 AuthService.logOut();
-                $rootScope.UpdateMenu();
                 $state.go('login');
             },
             data: {
@@ -151,8 +150,29 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
                 }
             }
         })
-
-    }
+        //Search resumes home
+        .state('searchresumeshome', {
+            url: "/searchresumeshome",
+            templateUrl: "views/SearchResumesHome.html",
+            data: {
+                pageTitle: 'Search Resumes Home',
+                permissions: {
+                    only: ['Admin'],
+                }
+            }
+        })
+        //Search resumes
+        .state('searchresumes', {
+            url: "/searchresumes",
+            templateUrl: "views/SearchResumes.html",
+            data: {
+                pageTitle: 'Search Resumes',
+                permissions: {
+                    only: ['Admin'],
+                }
+            }
+        })
+}
 
 angular
     .module('Jobsite')

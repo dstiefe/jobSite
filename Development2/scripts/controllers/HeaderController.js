@@ -10,10 +10,6 @@ angular.module('Jobsite').controller("HeaderController", function($rootScope, Au
     $rootScope.isActive = function (viewLocation) {
         return viewLocation === $location.path();
     };
-    $rootScope.UpdateMenu = function () {
-        _updateMenu();
-    };
-
 
 
 })

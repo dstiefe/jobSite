@@ -4421,15 +4421,56 @@ ul.h-list li:hover a {
     background-color: #f1f3f6;
 }
 
-.searchhome input {
+.searchresumehomeform input {
     height: auto;
+    padding: 20px 30px;
+    font-size: 18px;
+    line-height: 1.3333333;
+    width: 100% !important;
+}
+
+.searchresumehomeform button {
     padding: 20px 30px;
     font-size: 18px;
     line-height: 1.3333333;
 }
 
-.searchhome button {
-    padding: 20px 30px;
-    font-size: 18px;
+.resumes_parameters_panel{
+    border: 1px solid rgba(0, 0, 0, 0.027451);
+    overflow: hidden;
+    position: relative;
+    display: none;
+    background-color: rgba(128, 128, 128, 0.0588235);
+}
+
+.searchresumeform input {
+    height: auto;
+    padding: 11px 25px;
+    font-size: 17px;
     line-height: 1.3333333;
+    /*width: 100% !important;*/
+    width: 500px !important;
+}
+
+.searchresumeform button {
+    padding: 11px 25px;
+    font-size: 17px;
+    line-height: 1.3333333;
+}
+.searchresumeform{
+ margin-bottom: 0 !important;
+    margin-top: 3px !important;
+}
+
+.navbar-custom {
+    background-color:#ffffff;
+    color:#ffffff;
+    border-bottom: 1px solid #e4e5e7;
+
+}
+.navbar-center
+{
+    display:block;
+    text-align:center;
+
 }

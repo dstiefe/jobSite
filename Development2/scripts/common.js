@@ -45,3 +45,15 @@ function validateEmail(email) {
     var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(email);
 }
+
+//Search resumes
+jQuery(document).ready(function () {
+    $("#resumes_filter").on('click', function () {
+        if ($(".resumes_parameters_panel").is(":hidden")) {
+            $(".resumes_parameters_panel").slideDown(300);
+        }
+        else {
+            $(".resumes_parameters_panel").slideUp(300);
+        }
+    });
+});

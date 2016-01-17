@@ -1,0 +1,98 @@
+<div class="panel panel-success panel-success_popup modal-document col-md-12 col-sm-12 col-xs-12" id="detailViewPage">
+
+    <!--Header Begin-->
+
+    <div class="panel-heading panel-heading_custom row resume_detail_view_color">
+        <div style="max-width: 1440px; margin: 0 auto; ">
+
+            <div id="native-title-view" class="pull-left row">
+
+                <div class="col-md-4">
+                    <span class="glyphicon glyphicon-image" id="icon-native-view" style="font-size: 42px; margin: 13px 0;"><img src="http://ec2-52-0-227-162.compute-1.amazonaws.com:82/images/rightpanel-native-one.png" style="width: 42px;"></span>
+                    <span class="glyphicon glyphicon-image" id="icon-native-view-entire" style="font-size: 42px; display: none; margin: 13px 0;"><img src="http://ec2-52-0-227-162.compute-1.amazonaws.com:82/images/rightpanel-native-many.png" style="width: 42px;"></span>
+                </div>
+
+                <div class="col-md-3" style="white-space:nowrap;">
+                    <label id="native-view-total-pages" style="margin: 25px 0;">{{resume.totalPages}}</label>
+                </div>
+
+                <div class="col-md-5">
+                    <label id="native-view-info" style="font-size: 12px; display: none; margin: 13px 0;">This may take a few minutes. Please wait.</label>
+                </div>
+
+            </div>
+
+            <div id="pagination-view" class="col-md-3 col-sm-3 col-xs-3"></div>
+
+
+            <div id="searchbox-view" class="form-group col-md-5 col-sm-5 col-xs-5 input-at-header" >
+                <input type="text" class="form-control" placeholder="Fetch text in document" id="search-quick-inner" ng-enter="search()" ng-model="searchText">
+            </div>
+
+            <div class="pull-right">
+                <span class="glyphicon close-icon hoverClick" ng-click="close()">&#215;</span>
+            </div>
+
+
+
+        </div>
+    </div>
+    <!--Header End-->
+
+    <div class="panel-body open-document-container" style="max-width: 1440px; margin: 0 auto;">
+        <aside class="scroller-for-popup">
+
+            <!--Document Area Begin-->
+            <div class="content-of-document transition-class short">
+
+
+
+                <div class="document-go-here">
+
+
+
+
+                        <div id="native-content" style="white-space: normal;">
+                            <iframe id="pdfViewer" class="pdfViewer" ng-src="{{resumeSource | trusted}}" ></iframe>
+                            <!--<div id="errViewer"  class="alert alert-danger" role="alert"><strong>Attention!</strong>&nbsp;Can't view the file in this format</div>-->
+                        </div>
+
+
+
+                </div>
+            </div>
+
+            <!--Document Area End-->
+
+            <!--Right Panel Begin-->
+            <div class="right-panel transition-class wide short">
+                <div class="right-panel-buttons icons">
+                    <span class="glyphicon glyphicon-image" onclick="openShare();return false;"><img src="http://ec2-52-0-227-162.compute-1.amazonaws.com:82/images/rightpanel-share.png" alt="share link"></span>
+                    <span class="glyphicon glyphicon-image" id="native-view-button-close"><img src="http://ec2-52-0-227-162.compute-1.amazonaws.com:82/images/rightpanel-html.png"></span>
+                    <span class="glyphicon glyphicon-image" id="native-view-button-open"><img src="http://ec2-52-0-227-162.compute-1.amazonaws.com:82/images/rightpanel-native-one.png"></span>
+                    <span class="icon-saved-searches-small glyphicon glyphicon-floppy-disk" style="color: red; font-size: 23px;"></span>
+                    <span class="glyphicon glyphicon-pushpin lock"></span>
+                </div>
+                <!--&lt;!&ndash;Share Box Begin&ndash;&gt;-->
+                <!--@Html.Partial("Partial/ShareBox", Model)-->
+                <!--&lt;!&ndash;Share Box End&ndash;&gt;-->
+                <!--&lt;!&ndash;Tag Box Begin&ndash;&gt;-->
+                <!--@Html.Partial("Partial/TagsBox", Model)-->
+                <!--Tag Box End-->
+
+                <div class="panel panel-success" id="fetch_results">
+                    <div class="panel-heading resume_detail_view_color" >
+                        <h3 class="panel-title">Fetch Results</h3>
+                    </div>
+                    <div class="list-group" id="neighbors_pages_bar" style="max-height: 700px; overflow-y: scroll;">
+                    </div>
+                </div>
+            </div>
+            <!--Right Panel End-->
+
+        </aside>
+    </div>
+</div>
+</div>
+<script  type="text/javascript" src="scripts/resumes.js"></script>
+<link rel="stylesheet" href="styles/resumes.css" />

@@ -178,7 +178,7 @@ angular
     .module('Jobsite')
     .config(configState)
     .run(function($rootScope, $state, editableOptions, Permission, ValiDatedTokenObject, AuthService) {
-        debugger;
+
         AuthService.fillAuthData();
 
         $rootScope.$state = $state;

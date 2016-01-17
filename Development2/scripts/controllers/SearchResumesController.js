@@ -1,7 +1,7 @@
 /**
  * Created by Van on 17.01.2016.
  */
-angular.module('Jobsite').controller("SearchResumesController", function($scope, AuthService, $location, SearchResumesParameters, ResumesService) {
+angular.module('Jobsite').controller("SearchResumesController", function($scope, AuthService, $location, SearchResumesParameters, ResumesService, $modal) {
 
     $scope.isAuth = AuthService.authentication.isAuth;
     $scope.isAdministrator = AuthService.authentication.isAdministrator;
@@ -15,10 +15,7 @@ angular.module('Jobsite').controller("SearchResumesController", function($scope,
     $scope.page = 0;
     $scope.count = 10;
 
-
-
     var _search = function () {
-        debugger;
         skip = $scope.page * $scope.count;
         _count = skip + $scope.count;
         ResumesService.searchResumes($scope.searchText, skip, _count).then(function (results) {
@@ -27,10 +24,29 @@ angular.module('Jobsite').controller("SearchResumesController", function($scope,
             console.log(error.data.message);
         });
     }
+    _search();
 
     $scope.search = function () {
         _search();
     };
 
-    _search();
-})
+    $scope.detailViewShow = function (data) {
+        debugger;
+        var modalInstance = $modal.open({
+            animation: true,
+            templateUrl: 'views/ResumeDetailView.html',
+            controller: 'ResumeDetailController',
+            //size: 'fullscreen',
+            windowClass : 'modal-fullscreen',
+            resolve: {
+                resume: function () {
+                    return data;
+                },
+                text: function () {
+                    return $scope.searchText;
+                }
+            }
+        });
+    };
+
+});

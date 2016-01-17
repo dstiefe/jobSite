@@ -4474,3 +4474,26 @@ ul.h-list li:hover a {
     text-align:center;
 
 }
+
+.resumecrop {
+    height: 100px;
+}
+
+
+.media img+span.badge {
+    position: relative;
+    top: -15px;
+    left: 6px;
+}
+.panel-heading .media{
+    margin-top: 0px !important;
+}
+.panel-heading .media img{
+    height: 20px;
+}
+.panel-heading a:hover
+{
+    text-decoration: underline;
+}
+
+

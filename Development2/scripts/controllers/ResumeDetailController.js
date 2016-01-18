@@ -31,10 +31,10 @@ angular.module('Jobsite').controller('ResumeDetailController', function ($scope,
 
     $scope.search = function () {
 
-        ResumesService.searchIntoResume($scope.id, $scope.searchText).then(function (results) {
+        ResumesService.searchIntoPageResume($scope.id, $scope.currentPage, $scope.searchText).then(function (results) {
             $scope.resume = results.data;
-            $scope.currentPage = resume.pageNumber;
-            $scope.totalPages = resume.totalPages;
+            $scope.currentPage = $scope.resume.pageNumber;
+            $scope.totalPages = $scope.resume.totalPages;
             _getResumeSource();
         }, function (error) {
             console.log(error.data.message);

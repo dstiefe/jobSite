@@ -70,11 +70,18 @@ angular.module('Jobsite').factory('ResumesService', ['$http', '$q', 'RESOURCES',
     };
 
     var _searchIntoPageResume = function(id, page, text){
-        text = typeof text !== 'undefined' ? text : '';
+        params={};
+
+        if (typeof text !== 'undefined' && text !=='')
+        {
+            params['text'] = text;
+        }
         return $http.get(serviceBase + 'resumes/' + id + '/' + page + '/search',{
-            params: {
-                text: text
-            }
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': ValiDatedTokenObject.getValiDatedTokenObject().token_type+" "+ValiDatedTokenObject.getValiDatedTokenObject().access_token
+            },
+            params: params
         }).then(function (results) {
             return results;
         });

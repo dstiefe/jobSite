@@ -82,11 +82,14 @@
                 <!--@Html.Partial("Partial/TagsBox", Model)-->
                 <!--Tag Box End-->
 
-                <div class="panel panel-success" id="fetch_results">
+                <div class="panel panel-success" id="fetch_results" ng-show="resume.neighborsPages.length" >
                     <div class="panel-heading resume_detail_view_color" >
                         <h3 class="panel-title">Fetch Results</h3>
                     </div>
                     <div class="list-group" id="neighbors_pages_bar" style="max-height: 700px; overflow-y: scroll;">
+                        <a href="#" ng-repeat="neighborPage in resume.neighborsPages" class="list-group-item" ng-click="ClickOnNeighborsPage(neighborPage.pageNumber, neighborPage.totalPages)">
+                            Page {{neighborPage.pageNumber}}: <span ng-bind-html="neighborPage.textFragment"></span>
+                        </a>
                     </div>
                 </div>
             </div>

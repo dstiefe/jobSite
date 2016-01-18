@@ -18,10 +18,8 @@ angular.module('Jobsite').controller('ResumeDetailController', function ($scope,
             if (location.pathname.indexOf('Development2') != -1){
                 host = location.protocol + '//' + location.host + '/Development2';
             }
-            if (!$scope.red){
-                _url ='http://ec2-52-0-227-162.compute-1.amazonaws.com:82/Home/DownloadFromBlob?FileString=datageekslaw%2Fbox6c46727b-f59b-472a-8165-6d85012c986a%2Fload4%2Fprocessed%2Fdoc%2FEXHIBIT%2057%2FpdfPages%2FEXHIBIT_57-001.pdf&caseId=6c46727b-f59b-472a-8165-6d85012c986a&oq=http://ec2-52-0-227-162.compute-1.amazonaws.com:82/Home/DownloadFromBlob?FileString=datageekslaw%2Fbox6c46727b-f59b-472a-8165-6d85012c986a%2Fload4%2Fprocessed%2Fdoc%2FEXHIBIT%2057%2FpdfPages%2FEXHIBIT_57-001.pdf&caseId=6c46727b-f59b-472a-8165-6d85012c986a';
-            }
-            var viewrUrl = host + "/pdf-viewer/web/viewer.html?file=" + window.escape(_url) + "#page=" + $scope.currentPage + "&zoom=page-fit&search=" + $scope.searchText + "&phrase=false&phrase=false&hlall=true";
+
+            var viewrUrl = host + "/pdf-viewer/web/viewer.html?file=" + window.escape(_url) + "#page=1&zoom=page-fit&search=" + $scope.searchText + "&phrase=false&hlall=true";
            // $scope.resumeSource = 'about:blank';
            // $('#pdfViewer').val('');
            // $('#pdfViewer').empty();
@@ -75,7 +73,7 @@ angular.module('Jobsite').controller('ResumeDetailController', function ($scope,
     };
 
     $scope.pageChanged = function() {
-        $scope.red =true;
+
 
         _getResumeSource();
     };

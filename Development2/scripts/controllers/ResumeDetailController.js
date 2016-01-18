@@ -40,6 +40,7 @@ angular.module('Jobsite').controller('ResumeDetailController', function ($scope,
             console.log(error.data.message);
         });
 
+
     };
 
 

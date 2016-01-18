@@ -15,11 +15,11 @@ angular.module('Jobsite').factory('ResumesService', ['$http', '$q', 'RESOURCES',
         }
         if (typeof skip !== 'undefined')
         {
-            params['skip'] = 0;
+            params['skip'] = skip;
         }
         if (typeof count !== 'undefined')
         {
-            params['count'] = 10;
+            params['count'] = count;
         }
 
         return $http.get(serviceBase + 'resumes/search',{
@@ -27,6 +27,28 @@ angular.module('Jobsite').factory('ResumesService', ['$http', '$q', 'RESOURCES',
                 'Content-Type': 'application/json',
                 'Authorization': ValiDatedTokenObject.getValiDatedTokenObject().token_type+" "+ValiDatedTokenObject.getValiDatedTokenObject().access_token
             },
+            params: params
+        }).then(function (results) {
+            return results;
+        });
+    };
+
+    var _searchResumesCount = function (text) {
+        params={};
+        if (typeof text !== 'undefined' && text !=='')
+        {
+            params['text'] = text;
+        }
+
+        return $http.get(serviceBase + 'resumes/search/count',{
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': ValiDatedTokenObject.getValiDatedTokenObject().token_type+" "+ValiDatedTokenObject.getValiDatedTokenObject().access_token
+            },
+            transformResponse: function (data, headersGetter, status) {
+                //This was implemented since the REST service is returning a plain/text response
+                //and angularJS $http module can't parse the response like that.
+                return {content: data};},
             params: params
         }).then(function (results) {
             return results;
@@ -91,6 +113,7 @@ angular.module('Jobsite').factory('ResumesService', ['$http', '$q', 'RESOURCES',
     resumesServiceFactory.searchIntoResume = _searchIntoResume;
     resumesServiceFactory.searchIntoPageResume = _searchIntoPageResume;
     resumesServiceFactory.getPageUrl = _getPageUrl;
+    resumesServiceFactory.searchResumesCount = _searchResumesCount;
 
     return resumesServiceFactory;
 }]);

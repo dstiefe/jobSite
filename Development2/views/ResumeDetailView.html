@@ -13,7 +13,7 @@
                 </div>
 
                 <div class="col-md-3" style="white-space:nowrap;">
-                    <label id="native-view-total-pages" style="margin: 25px 0;">{{resume.totalPages}}</label>
+                    <label id="native-view-total-pages" style="margin: 25px 0;">{{resume.totalPages}} pages</label>
                 </div>
 
                 <div class="col-md-5">
@@ -22,7 +22,9 @@
 
             </div>
 
-            <div id="pagination-view" class="col-md-3 col-sm-3 col-xs-3"></div>
+            <div id="pagination-view" class="col-md-3 col-sm-3 col-xs-3">
+                <pagination total-items="totalPages"  ng-change="pageChanged()" ng-model="currentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" rotate="false" num-pages="numPages" items-per-page="itemsPerPage"></pagination>
+            </div>
 
 
             <div id="searchbox-view" class="form-group col-md-5 col-sm-5 col-xs-5 input-at-header" >

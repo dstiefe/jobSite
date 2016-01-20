@@ -1,7 +1,7 @@
 /**
  * Created by Van on 16.01.2016.
  */
-angular.module('Jobsite').controller("ApplicantsController", function($scope, $http, $timeout, ValiDatedTokenObject, $location, AuthService, RESOURCES, $stateParams) {
+angular.module('Jobsite').controller("ApplicantsController", function($scope, $http, $timeout, ValiDatedTokenObject, $location, AuthService, RESOURCES, $stateParams, ResumesService, $modal) {
     var serviceBase = RESOURCES.API_BASE_PATH;
     var jobId = $stateParams.id;
     var req = {
@@ -62,4 +62,28 @@ angular.module('Jobsite').controller("ApplicantsController", function($scope, $h
         $scope.reverse = !$scope.reverse;
     };
 
+    $scope.detailViewShow = function(id) {
+
+        ResumesService.searchIntoPageResume(id, 1, '').then(function (results) {
+
+            var data = results.data;
+            var modalInstance = $modal.open({
+                animation: true,
+                templateUrl: 'views/ResumeDetailView.html',
+                controller: 'ResumeDetailController',
+                windowClass : 'modal-fullscreen',
+                resolve: {
+                    resume: function () {
+                        return data;
+                    },
+                    text: function () {
+                        return '';
+                    }
+                }
+            });
+
+        }, function (error) {
+            console.log(error.data.message);
+        });
+    };
 })

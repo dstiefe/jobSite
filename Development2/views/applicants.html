@@ -54,9 +54,8 @@
                                             <td>
                                                 {{ data.applyDate*1000 | date : "M/d/yyyy" }}
                                             </td>
-
                                             <td>
-                                                <a  ui-sref="resume({id:data.id})" class="btn btn-info btn-warning"><span class="glyphicon glyphicon-edit"></span> View</a>
+                                                <a  href="" ng-click="detailViewShow(data.id)" class="btn btn-info btn-warning"><span class="glyphicon glyphicon-edit"></span> View</a>
                                             </td>
                                         </tr>
                                         </tbody>

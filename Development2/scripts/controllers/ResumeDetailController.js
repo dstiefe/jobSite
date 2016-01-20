@@ -1,7 +1,7 @@
 /**
  * Created by Van on 17.01.2016.
  */
-angular.module('Jobsite').controller('ResumeDetailController', function ($scope, $modalInstance, resume, text, ResumesService, $sce, $timeout,$document) {
+angular.module('Jobsite').controller('ResumeDetailController', function ($scope, $modalInstance, ResumesService, $sce, $timeout, $document, resume, text) {
 
     $scope.searchText = (!angular.isUndefinedOrNull(text))? text :'';
     $scope.id = resume.parentDocumentId;
@@ -28,9 +28,7 @@ angular.module('Jobsite').controller('ResumeDetailController', function ($scope,
     }
     _getResumeSource();
 
-
     $scope.search = function () {
-
         ResumesService.searchIntoPageResume($scope.id, $scope.currentPage, $scope.searchText).then(function (results) {
             $scope.resume = results.data;
             $scope.currentPage = $scope.resume.pageNumber;
@@ -39,15 +37,11 @@ angular.module('Jobsite').controller('ResumeDetailController', function ($scope,
         }, function (error) {
             console.log(error.data.message);
         });
-
-
     };
-
 
     $scope.pageChanged = function() {
         _getResumeSource();
     };
-
 
     $scope.ClickOnNeighborsPage = function(page, total) {
         $scope.currentPage = page;
@@ -57,5 +51,4 @@ angular.module('Jobsite').controller('ResumeDetailController', function ($scope,
     $scope.close = function () {
         $modalInstance.close();
     };
-
 });

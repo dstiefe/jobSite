@@ -12,22 +12,36 @@ angular.module('Jobsite').controller("SearchResumesController", function($scope,
 
     $scope.searchText = SearchResumesParameters.searchText;
     $scope.resumes = [];
-    $scope.page = 0;
-    $scope.count = 10;
+    $scope.currentPage = 1;
+    $scope.maxSize = 10;
+    $scope.itemsPerPage = 10;
+    $scope.totalItems = 0;
 
+    angular.isUndefinedOrNull()
+    $scope.maxSize = 5;
+
+    var _countS = function () {
+        ResumesService.searchResumesCount($scope.searchText).then(function (results) {
+            $scope.totalItems = results.data.content;
+        }, function (error) {
+            console.log(error.data.message);
+        });
+    }
     var _search = function () {
-        skip = $scope.page * $scope.count;
-        _count = skip + $scope.count;
-        ResumesService.searchResumes($scope.searchText, skip, _count).then(function (results) {
+        skip = ($scope.currentPage - 1) * $scope.itemsPerPage;
+debugger;
+        ResumesService.searchResumes($scope.searchText, skip, $scope.itemsPerPage).then(function (results) {
             $scope.resumes = results.data;
         }, function (error) {
             console.log(error.data.message);
         });
     }
     _search();
+    _countS();
 
     $scope.search = function () {
         _search();
+        _countS();
     };
 
     $scope.detailViewShow = function (data) {
@@ -48,5 +62,10 @@ angular.module('Jobsite').controller("SearchResumesController", function($scope,
             }
         });
     };
+
+    $scope.pageChanged = function() {
+        _search();
+    };
+
 
 });

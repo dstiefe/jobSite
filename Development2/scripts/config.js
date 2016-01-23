@@ -214,7 +214,7 @@ angular
             }
              return false;
             })
-            .defineRole('Admin', function (stateParams) {
+         .defineRole('Admin', function (stateParams) {
                 if (!sessionStorage.getItem("ValiDatedTokenObject"))
                 {
                     return false;
@@ -235,15 +235,3 @@ angular
 angular.isUndefinedOrNull = function(val) {
     return angular.isUndefined(val) || val === null
 }
-//var checkRouting= function ($q, $rootScope, $location, ValiDatedTokenObject) {
-//    ValiDatedTokenObject.setValiDatedTokenObject(JSON.parse(sessionStorage.getItem("ValiDatedTokenObject")));
-//    if (ValiDatedTokenObject.getValiDatedTokenObject())
-//    {
-//        var role = ValiDatedTokenObject.getValiDatedTokenObject().roles;
-//        if(role == 'Admin') {
-//            $location.path("/dashboard");
-//            return $q.reject(); // Отменит старый роутинг.
-//        }
-//    }
-//    return true;
-//};

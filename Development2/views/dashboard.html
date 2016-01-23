@@ -20,7 +20,7 @@
         </div>
         <div class="row">
                 <br />
-                <div class="col-lg-6" ng-repeat="data in list"  >
+                <div class="col-lg-6" ng-repeat="data in list | startFrom:(currentPage-1)*entryLimit | limitTo:entryLimit"  >
                         <div class="panel panel-default">
                             <div class="panel-heading">
 
@@ -43,5 +43,16 @@
                         </div>
                 </div>
             </div>
+    </div>
+    <div class="row" ng-show="list.length > 0">
+
+        <div class="col-md-9 col-lg-offset-1" ng-show="list.length > 0">
+            <div pagination="" ng-model="currentPage" ng-change="changed()" boundary-links="true" total-items="filteredItems" items-per-page="entryLimit" class="pagination-small" previous-text="&laquo;" next-text="&raquo;"></div>
+        </div>
+        <div class="col-md-1">
+            PageSize: <select ng-model="entryLimit" class="form-control" ng-options="c for c in entryLimits">
+            </select>
+        </div>
+        <div class="col-md-1"> </div>
     </div>
 </div>

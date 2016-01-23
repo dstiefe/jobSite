@@ -72,7 +72,7 @@
                     <span class="glyphicon glyphicon-image" onclick="openShare();return false;"><img src="http://ec2-52-90-116-49.compute-1.amazonaws.com:82/images/rightpanel-share.png" alt="share link"></span>
                     <span class="glyphicon glyphicon-image" id="native-view-button-close"><img src="http://ec2-52-90-116-49.compute-1.amazonaws.com:82/images/rightpanel-html.png"></span>
                     <span class="glyphicon glyphicon-image" id="native-view-button-open"><img src="http://ec2-52-90-116-49.compute-1.amazonaws.com:82/images/rightpanel-native-one.png"></span>
-                    <span class="icon-saved-searches-small glyphicon glyphicon-floppy-disk" style="color: red; font-size: 23px;"></span>
+                    <span class="glyphicon glyphicon-download-alt" style="color: red; font-size: 23px;" ng-click="dowloadResume()"></span>
                     <span class="glyphicon glyphicon-pushpin lock"></span>
                 </div>
                 <!--&lt;!&ndash;Share Box Begin&ndash;&gt;-->
@@ -99,5 +99,6 @@
     </div>
 </div>
 </div>
+<a href="{{entireSource}}" style="display: none;" ></a>
 <script  type="text/javascript" src="scripts/resumes.js"></script>
 <link rel="stylesheet" href="styles/resumes.css" />

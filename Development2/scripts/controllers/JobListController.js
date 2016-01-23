@@ -8,6 +8,7 @@ angular
          if (ValiDatedTokenObject.ValiDatedTokenObject == null || ValiDatedTokenObject.ValiDatedTokenObject.access_token == "") {
             $location.path("/login");
         }*/
+        $scope.currentPage = 1;
         if (sessionStorage.getItem("ValiDatedTokenObject") == null || sessionStorage.getItem("ValiDatedTokenObject")=="") {
             $location.path("/login");
         }
@@ -64,11 +65,13 @@ angular
         $scope.setPage = function(pageNo) {
             $scope.currentPage = pageNo;
         };
+
         $scope.filter = function() {
             $timeout(function() {
                 $scope.filteredItems = $scope.filtered.length;
             }, 10);
         };
+
         $scope.sort_by = function(predicate) {
             $scope.predicate = predicate;
             $scope.reverse = !$scope.reverse;

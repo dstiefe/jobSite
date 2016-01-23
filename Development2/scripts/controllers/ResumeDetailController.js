@@ -51,4 +51,17 @@ angular.module('Jobsite').controller('ResumeDetailController', function ($scope,
     $scope.close = function () {
         $modalInstance.close();
     };
+
+    $scope.dowloadResume = function () {
+        ResumesService.getNativeUrl($scope.id).then(function (results) {
+            var _url = results.data.content;
+
+            var downloadLink = angular.element('<a></a>');
+            downloadLink.attr('href',_url);
+            downloadLink[0].click();
+
+        }, function (error) {
+            console.log(error.data.message);
+        });
+    };
 });

@@ -42,7 +42,7 @@
                                             <th>Job Category&nbsp;<a ng-click="sort_by('category');"><i class="glyphicon glyphicon-sort"></i></a></th>
                                             <th>Job Location&nbsp;<a ng-click="sort_by('location');"><i class="glyphicon glyphicon-sort"></i></a></th>
                                             <th>Posted Date&nbsp;<a ng-click="sort_by('publishedDate');"><i class="glyphicon glyphicon-sort"></i></a></th>
-                                            <th># of Candidates </th>
+                                            <th># of Candidates&nbsp;<a ng-click="sort_by('applicantsIds.length');"><i class="glyphicon glyphicon-sort"></i></a></th>
                                             <th>Admin </th>
                                         </thead>
                                         <tbody>
@@ -68,7 +68,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-10" ng-show="filteredItems > 0">
-                                    <div pagination="" ng-model="current" ng-change="changed()" boundary-links="true" total-items="filteredItems" items-per-page="entryLimit" class="pagination-small" previous-text="&laquo;" next-text="&raquo;"></div>
+                                    <div pagination="" ng-model="currentPage" ng-change="changed()" boundary-links="true" total-items="filteredItems" items-per-page="entryLimit" class="pagination-small" previous-text="&laquo;" next-text="&raquo;"></div>
                                 </div>
                                 <div class="col-md-1">
                                     <br /> PageSize:

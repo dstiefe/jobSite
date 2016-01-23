@@ -1,6 +1,6 @@
 ﻿angular
     .module('Jobsite').controller('associateController', ['$scope', '$rootScope','$location','$timeout','AuthService', function ($scope, $rootScope, $location,$timeout, AuthService) {
-    debugger;
+
     $scope.savedSuccessfully = false;
     $scope.message = "";
 

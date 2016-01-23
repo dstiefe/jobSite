@@ -17,7 +17,7 @@ angular.module('Jobsite').controller("SearchResumesController", function($scope,
     $scope.itemsPerPage = 10;
     $scope.totalItems = 0;
 
-    angular.isUndefinedOrNull()
+
     $scope.maxSize = 5;
 
     var _countS = function () {
@@ -29,7 +29,7 @@ angular.module('Jobsite').controller("SearchResumesController", function($scope,
     }
     var _search = function () {
         skip = ($scope.currentPage - 1) * $scope.itemsPerPage;
-debugger;
+
         ResumesService.searchResumes($scope.searchText, skip, $scope.itemsPerPage).then(function (results) {
             $scope.resumes = results.data;
         }, function (error) {
@@ -45,7 +45,7 @@ debugger;
     };
 
     $scope.detailViewShow = function (data) {
-        debugger;
+
         var modalInstance = $modal.open({
             animation: true,
             templateUrl: 'views/ResumeDetailView.html',

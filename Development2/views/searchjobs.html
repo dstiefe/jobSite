@@ -41,6 +41,17 @@
                                         <ul class="list-group mailbox-list">
                                             <li class="list-group-item" ng-repeat="location in locations"><a ng-click="searchbylocation(location.id)" href="#"><span data-ng-bind-html="location.location"></span> ({{ location.count}})</a></li>
                                         </ul>
+                                        <h3><b>Employee Type</b></h3>
+                                        <select
+                                                id="employeeType"
+                                                name="employeeType"
+                                                ng-model="employeeType"
+                                                class="form-control mailbox-list"
+                                                ng-change="searchByFilter()"
+                                        >
+                                            <option value="">Select Employee Type</option>
+                                            <option ng-repeat="_employeeType in EmployeeTypes" ng-selected="_employeeType.value==employeeType" value="{{_employeeType.value}}">{{_employeeType.name}}</option>
+                                        </select>
                                     </div>
                                 </div>
                             </div>

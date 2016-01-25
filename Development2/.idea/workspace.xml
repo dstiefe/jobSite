@@ -25,8 +25,47 @@
       <file leaf-file-name="searchjobsController.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/scripts/controllers/searchjobsController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-1.6969697">
-              <caret line="223" column="35" selection-start-line="223" selection-start-column="35" selection-end-line="223" selection-end-column="35" />
+            <state vertical-scroll-proportion="0.4848485">
+              <caret line="16" column="32" selection-start-line="16" selection-start-column="32" selection-end-line="16" selection-end-column="32" />
+              <folding>
+                <element signature="e#832#3636#0" expanded="false" />
+                <element signature="e#3676#3830#0" expanded="false" />
+                <element signature="e#3887#4101#0" expanded="false" />
+                <element signature="e#4158#4372#0" expanded="false" />
+                <element signature="e#4416#4458#0" expanded="false" />
+                <element signature="e#4503#4555#0" expanded="false" />
+                <element signature="e#4592#4720#0" expanded="false" />
+                <element signature="e#4767#4866#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AddjobformController.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/scripts/controllers/AddjobformController.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-34.58621">
+              <caret line="83" column="35" selection-start-line="83" selection-start-column="14" selection-end-line="83" selection-end-column="35" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="jobmanagement.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/jobmanagement.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-11.769231">
+              <caret line="125" column="61" selection-start-line="116" selection-start-column="50" selection-end-line="125" selection-end-column="61" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="searchjobs.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/searchjobs.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-10.769231">
+              <caret line="49" column="73" selection-start-line="49" selection-start-column="59" selection-end-line="49" selection-end-column="73" />
               <folding />
             </state>
           </provider>
@@ -49,11 +88,6 @@
               <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
               <folding>
                 <element signature="e#0#40#0" expanded="false" />
-                <marker date="1453710725684" expanded="true" signature="1473:1975" placeholder="{...}" />
-                <marker date="1453710725684" expanded="true" signature="1514:1967" placeholder="{&quot;animation&quot;: true...}" />
-                <marker date="1453710725684" expanded="true" signature="1752:1957" placeholder="{...}" />
-                <marker date="1453710725684" expanded="true" signature="1790:1842" placeholder="{...}" />
-                <marker date="1453710725684" expanded="true" signature="1878:1943" placeholder="{...}" />
               </folding>
             </state>
           </provider>
@@ -111,7 +145,6 @@
         <option value="$PROJECT_DIR$/scripts/controllers/LoginController.js" />
         <option value="$PROJECT_DIR$/scripts/controllers/JobListController.js" />
         <option value="$PROJECT_DIR$/views/jobslist.html" />
-        <option value="$PROJECT_DIR$/views/searchjobs.html" />
         <option value="$PROJECT_DIR$/views/login.html" />
         <option value="$PROJECT_DIR$/views/Register.html" />
         <option value="$PROJECT_DIR$/scripts/config.js" />
@@ -123,6 +156,7 @@
         <option value="$PROJECT_DIR$/views/dashboard.html" />
         <option value="$PROJECT_DIR$/scripts/dashboard.js" />
         <option value="$PROJECT_DIR$/scripts/controllers/SearchResumesController.js" />
+        <option value="$PROJECT_DIR$/views/searchjobs.html" />
         <option value="$PROJECT_DIR$/scripts/controllers/searchjobsController.js" />
       </list>
     </option>
@@ -327,7 +361,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1066" extended-state="7" />
+    <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24427083" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -483,7 +517,7 @@
           <option name="timeStamp" value="87" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="90" />
+      <option name="time" value="91" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="JavascriptDebugType">
@@ -699,20 +733,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/searchjobs.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4696707">
-          <caret line="76" column="80" selection-start-line="76" selection-start-column="80" selection-end-line="76" selection-end-column="80" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/jobmanagement.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.0918545">
-          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/head.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -724,14 +744,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-86.96154">
           <caret line="133" column="68" selection-start-line="133" selection-start-column="68" selection-end-line="133" selection-end-column="98" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/controllers/AddjobformController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="136" column="0" selection-start-line="136" selection-start-column="0" selection-end-line="136" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -843,21 +855,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/controllers/SearchResumesController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#40#0" expanded="false" />
-            <marker date="1453710725684" expanded="true" signature="1473:1975" placeholder="{...}" />
-            <marker date="1453710725684" expanded="true" signature="1514:1967" placeholder="{&quot;animation&quot;: true...}" />
-            <marker date="1453710725684" expanded="true" signature="1752:1957" placeholder="{...}" />
-            <marker date="1453710725684" expanded="true" signature="1790:1842" placeholder="{...}" />
-            <marker date="1453710725684" expanded="true" signature="1878:1943" placeholder="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/scripts/app.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -866,11 +863,54 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/controllers/SearchResumesController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#40#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/searchjobs.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-10.769231">
+          <caret line="49" column="73" selection-start-line="49" selection-start-column="59" selection-end-line="49" selection-end-column="73" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/jobmanagement.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-11.769231">
+          <caret line="125" column="61" selection-start-line="116" selection-start-column="50" selection-end-line="125" selection-end-column="61" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/controllers/AddjobformController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-34.58621">
+          <caret line="83" column="35" selection-start-line="83" selection-start-column="14" selection-end-line="83" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/scripts/controllers/searchjobsController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.6969697">
-          <caret line="223" column="35" selection-start-line="223" selection-start-column="35" selection-end-line="223" selection-end-column="35" />
-          <folding />
+        <state vertical-scroll-proportion="0.4848485">
+          <caret line="16" column="32" selection-start-line="16" selection-start-column="32" selection-end-line="16" selection-end-column="32" />
+          <folding>
+            <element signature="e#832#3636#0" expanded="false" />
+            <element signature="e#3676#3830#0" expanded="false" />
+            <element signature="e#3887#4101#0" expanded="false" />
+            <element signature="e#4158#4372#0" expanded="false" />
+            <element signature="e#4416#4458#0" expanded="false" />
+            <element signature="e#4503#4555#0" expanded="false" />
+            <element signature="e#4592#4720#0" expanded="false" />
+            <element signature="e#4767#4866#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

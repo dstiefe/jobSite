@@ -17,7 +17,7 @@ angular
 
         var req = {
             method: 'GET',
-            url: ServicesURL + 'api/v1/jobs/search',
+            url: ServicesURL + 'api/v1/jobs/search?count=1000',
             headers: {
                 'Content-Type': 'application/json'
             }
@@ -71,12 +71,12 @@ angular
             }
         });
         $scope.searchjob = function() {
-            var searchtext = "";
+            var searchtext = "?count=1000";
             $scope.categoryId = '';
             $scope.locationId = '';
 
             if ($scope.searchtext != "") {
-                searchtext += '?text=' + $scope.searchtext;
+                searchtext += '&text=' + $scope.searchtext;
             }
 
             var req1 = {
@@ -143,6 +143,7 @@ angular
 
 
             var params = {};
+            params['count'] = 1000;
             if ($scope.locationId != '') {
                 params['locationId'] = $scope.locationId;
             }
@@ -220,6 +221,7 @@ angular
                 $scope.locationId = '';
             }
             var params = {};
+            params['count'] = 1000;
             if ($scope.locationId != '') {
                 params['locationId'] = $scope.locationId;
                }

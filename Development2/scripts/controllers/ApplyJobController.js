@@ -20,7 +20,7 @@ angular
     .controller('ApplyJobController', ApplyJobController);
 
 function ApplyJobController($scope, Login, ValiDatedTokenObject, $http, $location, $modalInstance) {
-    debugger;
+
     $scope.includeCoverLetter = false;
 
     $scope.resumeFileUrl = '';
@@ -89,7 +89,7 @@ function ApplyJobController($scope, Login, ValiDatedTokenObject, $http, $locatio
     };
 
     $scope.onSubmit = function() {
-        debugger;
+
         var parts = $location.absUrl().split("?id=");
         var viewJobId = parts[1];
         var postresumedata = {

@@ -78,7 +78,6 @@ angular.module('Jobsite').controller("Registration", function ($scope, AuthServi
     $scope.IsEmployer = vIsEmployer;
 
     $scope.Register = function () {
-        debugger;
         var UserInfo =
         {
             FirstName: $('#txtfirstname').val(),

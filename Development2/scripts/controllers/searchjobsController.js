@@ -1,27 +1,28 @@
 angular
     .module('Jobsite').controller("searchjobController", function($scope, Login,ValiDatedTokenObject, $location,$http, $timeout) {
 
-    //ValiDatedTokenObject.setValiDatedTokenObject(JSON.parse(sessionStorage.getItem("ValiDatedTokenObject")));
-    //if (ValiDatedTokenObject.getValiDatedTokenObject())
-    //{
-    //    var role = ValiDatedTokenObject.getValiDatedTokenObject().roles;
-    //    if(role == 'Admin') $location.path("/dashboard");
-        //}
         if (sessionStorage.getItem("ValiDatedTokenObject") == null) { } else {
             ValiDatedTokenObject.setValiDatedTokenObject(JSON.parse(sessionStorage.getItem("ValiDatedTokenObject")));
             $scope.role = ValiDatedTokenObject.getValiDatedTokenObject().roles;
         }
 
         $scope.searchtext = "";
-    $scope.categoryId = '';
-    $scope.locationId = '';
+        $scope.categoryId = '';
+        $scope.locationId = '';
+        //$scope.currentPage = 1;
+        //$scope.maxSize = 10;
+        //$scope.itemsPerPage = 10;
+        //$scope.totalItems = 0;
+        //$scope.maxSize = 5;
+
         var req = {
             method: 'GET',
             url: ServicesURL + 'api/v1/jobs/search',
             headers: {
                 'Content-Type': 'application/json'
             }
-        }
+        };
+
         $http(req).then(function(data) { 
             if (data.status == "200") {
                 $scope.list = data.data;
@@ -302,4 +303,4 @@ angular
             $scope.reverse = !$scope.reverse;
         };
 
-    })
+    });

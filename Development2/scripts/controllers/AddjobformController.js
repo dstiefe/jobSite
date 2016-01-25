@@ -134,7 +134,6 @@ angular
         };
         $scope.saveChanges = function(isValid) {
 
-            debugger;
             if (!isValid || !$scope.tags.length){
                 return;
             }

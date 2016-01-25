@@ -44,6 +44,7 @@ angular
 
 
 
+    $scope.entryLimits = [5,10,15,20,25];
     var serviceUrl = ServicesURL + 'api/v1/jobs/all/applied';
     if (ValiDatedTokenObject.getValiDatedTokenObject().roles == "Admin") {
         serviceUrl =ServicesURL + 'api/v1/jobs/my';

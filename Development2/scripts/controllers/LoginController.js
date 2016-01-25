@@ -4,7 +4,7 @@
 
 
 angular.module('Jobsite').controller("Login", function($scope, $rootScope, Login, $location, locationHistoryService,ValiDatedTokenObject, AuthService, RESOURCES) {
-debugger;
+
         $scope.UserLogin = function() {
             var loginData = {
                 userName: $scope.username,

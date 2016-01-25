@@ -41,15 +41,15 @@ var clientId ="P600Us6Y476QiK331u5yEzb22dpX_y6NS75!9I-a";
     ]).constant('RESOURCES', (function() {
 
             // Define your variable
-        var EmployeeTypes = {
-            FullTime : {value: "FullTime", name: "Full Time"},
-            PartTime: {value: "PartTime", name: "Part Time"},
-            Casual : {value: "Casual", name: "Casual"},
-            Shiftworkers : {value: "Shiftworkers", name: "Shift workers"},
-            DailyAndWeeklyHire : {value: "DailyAndWeeklyHire", name: "Daily And Weekly Hire"},
-            Probation : {value: "Probation", name: "Probation"},
-            Outworkers : {value: "Outworkers", name: "Out workers"}
-        };
+        var EmployeeTypes = [
+             {value: "FullTime", name: "Full Time"},
+            {value: "PartTime", name: "Part Time"},
+             {value: "Casual", name: "Casual"},
+             {value: "Shiftworkers", name: "Shift workers"},
+            {value: "DailyAndWeeklyHire", name: "Daily And Weekly Hire"},
+            {value: "Probation", name: "Probation"},
+            {value: "Outworkers", name: "Out workers"}
+        ];
 
             // Use the variable in your constants
             return {

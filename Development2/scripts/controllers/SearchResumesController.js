@@ -13,11 +13,9 @@ angular.module('Jobsite').controller("SearchResumesController", function($scope,
     $scope.searchText = SearchResumesParameters.searchText;
     $scope.resumes = [];
     $scope.currentPage = 1;
-    $scope.maxSize = 10;
+
     $scope.itemsPerPage = 10;
     $scope.totalItems = 0;
-
-
     $scope.maxSize = 5;
 
     var _countS = function () {

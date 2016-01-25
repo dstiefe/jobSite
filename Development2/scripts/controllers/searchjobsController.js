@@ -11,6 +11,8 @@ angular
         $scope.locationId = '';
         $scope.employeeType = '';
         $scope.EmployeeTypes = RESOURCES.EMPLOYEE_TYPES;
+        $scope.dateFrom ='';
+        $scope.dateTo ='';
         //$scope.currentPage = 1;
         //$scope.maxSize = 10;
         //$scope.itemsPerPage = 10;
@@ -36,6 +38,14 @@ angular
         if ($scope.employeeType != '') {
             params['employeeType'] = $scope.employeeType;
         }
+
+        if ($scope.dateFrom != '' && $scope.dateFrom != 0) {
+                params['dateFrom'] = new Date($scope.dateFrom).getTime()/1000;
+        }
+
+        if ($scope.dateTo != ''&& $scope.dateTo != 0) {
+                params['dateTo'] = new Date($scope.dateTo).getTime()/1000;
+         }
 
         var query = jQuery.param(params);
         var serviceUrl = ServicesURL + 'api/v1/jobs/search?'+query;
@@ -101,6 +111,8 @@ angular
             $scope.categoryId = '';
             $scope.locationId = '';
             $scope.employeeType = '';
+            $scope.dateFrom ='';
+            $scope.dateTo ='';
 
             _searchByFilter();
         };
@@ -140,4 +152,27 @@ angular
         };
 
         _searchByFilter();
+
+
+
+
+
+        $scope.open0 = function($event) {
+            $event.preventDefault();
+            $event.stopPropagation();
+            $scope.status0.opened = true;
+
+        };
+        $scope.open1 = function($event) {
+            $event.preventDefault();
+            $event.stopPropagation();
+            $scope.status1.opened = true;
+        };
+        $scope.status0 = {
+            opened: false
+        };
+        $scope.status1 = {
+            opened: false
+        };
+
     });

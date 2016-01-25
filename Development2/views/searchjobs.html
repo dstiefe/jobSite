@@ -52,6 +52,29 @@
                                             <option value="">Select Employee Type</option>
                                             <option ng-repeat="_employeeType in EmployeeTypes" ng-selected="_employeeType.value==employeeType" value="{{_employeeType.value}}">{{_employeeType.name}}</option>
                                         </select>
+                                        <h3><b>Published date</b></h3>
+
+
+
+                                                Date from: <p class="input-group">
+
+                                                   <input type="text" class="form-control" datepicker-popup="yyyy/MM/dd" ng-change="searchByFilter()" ng-model="dateFrom" is-open="status0.opened"  close-text="Close" />
+              <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="open0($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+              </span>
+                                                </p>
+
+
+                                                Date to: <p class="input-group">
+                                                  <input type="text" class="form-control" datepicker-popup="yyyy/MM/dd" ng-model="dateTo" ng-change="searchByFilter()" is-open="status1.opened"   close-text="Close" />
+              <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="open1($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+              </span>
+                                                </p>
+
+
+
+
                                     </div>
                                 </div>
                             </div>

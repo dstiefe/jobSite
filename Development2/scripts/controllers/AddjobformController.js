@@ -89,14 +89,14 @@ angular
             $scope.aboutUsEditable = true;
             $scope.aboutUsHtmlContent = "";
             $scope.aboutUsContent = $sce.trustAsHtml($scope.aboutUsHtmlContent);
-            $scope.jobTitleLocationHtmlContent = " Job Title <small>At Location Name</small> ";
+            $scope.jobTitleLocationHtmlContent = "Enter Job Title";
             $scope.jobTitleLocationContent = $sce.trustAsHtml($scope.jobTitleLocationHtmlContent);
            
             $scope.jobDescriptionHtmlContent = "";
             $scope.jobDescriptionContent = $sce.trustAsHtml($scope.jobDescriptionHtmlContent);
             $scope.jobRequirementsHtmlContent = "";
             $scope.jobRequirementsContent = $sce.trustAsHtml($scope.jobRequirementsHtmlContent);
-            $scope.jobTitleLocationResultContent = " Job Title <small>At Location Name</small> ";
+            $scope.jobTitleLocationResultContent = "Enter Job Title";
             $scope.jobDescriptionResultContent = "";
             $scope.aboutUsResultContent = "";
             $scope.jobRequirementsResultContent = "";

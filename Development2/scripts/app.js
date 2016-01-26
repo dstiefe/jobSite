@@ -44,11 +44,8 @@ var clientId ="P600Us6Y476QiK331u5yEzb22dpX_y6NS75!9I-a";
         var EmployeeTypes = [
              {value: "FullTime", name: "Full Time"},
             {value: "PartTime", name: "Part Time"},
-             {value: "Casual", name: "Casual"},
-             {value: "Shiftworkers", name: "Shift workers"},
-            {value: "DailyAndWeeklyHire", name: "Daily And Weekly Hire"},
-            {value: "Probation", name: "Probation"},
-            {value: "Outworkers", name: "Out workers"}
+             {value: "Contract", name: "Contract"},
+             {value: "Project", name: "Project"}
         ];
 
             // Use the variable in your constants

@@ -7,7 +7,7 @@ angular.module('Jobsite').factory('JobsService', ['$http', '$q', 'RESOURCES','Va
 
     var jobsServiceFactory = {};
 
-    var _searchAdvancedJobs = function (text, locationId, categoryId, employeeType, dateFrom, dateTo, skip, count) {
+    var _searchAdvancedJobs = function (text, locationId, categoryId, employeeType, dateFrom, dateTo, orderByTitle, orderByLocation, orderByDate, orderDirection, skip, count) {
         params={};
         if (typeof text !== 'undefined' && text !==''&& text !=null)
         {
@@ -32,6 +32,22 @@ angular.module('Jobsite').factory('JobsService', ['$http', '$q', 'RESOURCES','Va
         if (typeof dateTo !== 'undefined'&& dateTo !=null && dateTo !=='' && dateTo != 0)
         {
             params['dateTo'] = new Date(dateTo).getTime()/1000;
+        }
+        if (typeof orderByTitle !== 'undefined'&& orderByTitle !=null)
+        {
+            params['orderByTitle'] = orderByTitle;
+        }
+        if (typeof orderByLocation !== 'undefined'&& orderByLocation !=null)
+        {
+            params['orderByLocation'] = orderByLocation;
+        }
+        if (typeof orderByDate !== 'undefined'&& orderByDate !=null)
+        {
+            params['orderByDate'] = orderByDate;
+        }
+        if (typeof orderDirection !== 'undefined'&& orderDirection !=null)
+        {
+            params['orderDirection'] = orderDirection;
         }
         if (typeof skip !== 'undefined'&& skip !=null)
         {

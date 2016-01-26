@@ -17,10 +17,17 @@ angular
         $scope.maxSize = 10;
         $scope.itemsPerPage = 10;
         $scope.totalItems = 0;
+        $scope.orderByTitle = false;
+        $scope.orderByLocation = false;
+        $scope.orderByDate = false;
+        $scope.orderDirection =0;
+
+
+
         $scope.entryLimits = [5,10,20,50,100];
         var _searchByFilter = function() {
 
-            JobsService.searchAdvancedJobs($scope.searchtext, $scope.locationId,$scope.categoryId,$scope.employeeType,$scope.dateFrom,$scope.dateTo, ($scope.currentPage-1)*$scope.itemsPerPage,$scope.itemsPerPage).then(function (results) {
+            JobsService.searchAdvancedJobs($scope.searchtext, $scope.locationId,$scope.categoryId,$scope.employeeType,$scope.dateFrom,$scope.dateTo,$scope.orderByTitle, $scope.orderByLocation, $scope.orderByDate,$scope.orderDirection, ($scope.currentPage-1)*$scope.itemsPerPage,$scope.itemsPerPage).then(function (results) {
                 var res = results.data;
 
                 var categories = [];
@@ -81,6 +88,10 @@ angular
             $scope.employeeType = '';
             $scope.dateFrom ='';
             $scope.dateTo ='';
+            $scope.orderByTitle = false;
+            $scope.orderByLocation = false;
+            $scope.orderByDate = false;
+            $scope.orderDirection =0;
 
             _searchByFilter();
         };
@@ -115,8 +126,31 @@ angular
             }, 10);
         };
         $scope.sort_by = function(predicate) {
-            $scope.predicate = predicate;
-            $scope.reverse = !$scope.reverse;
+            if (predicate == 'title'){
+                $scope.orderByTitle = true;
+            }else{
+                $scope.orderByTitle = false;
+            }
+
+            if (predicate == 'location'){
+                $scope.orderByLocation = true;
+            }else{
+                $scope.orderByLocation = false;
+            }
+
+            if (predicate == 'publishedDate'){
+                $scope.orderByDate = true;
+            }else{
+                $scope.orderByDate = false;
+            }
+
+
+            if ($scope.orderDirection == 1)
+                $scope.orderDirection = 0;
+            else
+                $scope.orderDirection = 1;
+            _searchByFilter();
+
         };
         $scope.pageChanged = function() {
             _searchByFilter();

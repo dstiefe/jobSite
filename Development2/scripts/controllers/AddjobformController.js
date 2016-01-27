@@ -1,9 +1,31 @@
 angular.module('Jobsite').controller("AddjobformController", function($scope, Login, $sce, $location, $http, ValiDatedTokenObject, RESOURCES, $stateParams, CategoriesService, JobsService) {
 
         $scope.id  = $stateParams.id;
-    
-        $scope.EmployeeTypes = RESOURCES.EMPLOYEE_TYPES;
 
+        $scope.EmployeeTypes = RESOURCES.EMPLOYEE_TYPES;
+        $scope.categoryID = "";
+        $scope.locationID = "";
+        $scope.location = "";
+        $scope.posteddate = (new Date()).getTime() / 1000;
+        $scope.experience = "";
+        $scope.jobtype = "";
+        $scope.jobTitleLocationEditable = true;
+        $scope.jobDescriptionContentEditable = true;
+        $scope.jobRequirementsContentEditable = true;
+        $scope.aboutUsEditable = true;
+        $scope.aboutUsHtmlContent = "";
+        $scope.aboutUsContent = $sce.trustAsHtml($scope.aboutUsHtmlContent);
+        $scope.jobTitleLocationHtmlContent = "Enter Job Title";
+        $scope.jobTitleLocationContent = $sce.trustAsHtml($scope.jobTitleLocationHtmlContent);
+        $scope.jobDescriptionHtmlContent = "";
+        $scope.jobDescriptionContent = $sce.trustAsHtml($scope.jobDescriptionHtmlContent);
+        $scope.jobRequirementsHtmlContent = "";
+        $scope.jobRequirementsContent = $sce.trustAsHtml($scope.jobRequirementsHtmlContent);
+        $scope.jobTitleLocationResultContent = "Enter Job Title";
+        $scope.jobDescriptionResultContent = "";
+        $scope.aboutUsResultContent = "";
+        $scope.jobRequirementsResultContent = "";
+        $scope.tags = [];
 
         $scope.changeValue = function() {
             if ($scope.locationID > 0) {
@@ -22,7 +44,6 @@ angular.module('Jobsite').controller("AddjobformController", function($scope, Lo
         });
 
         if ($scope.id != "") {
-
             JobsService.getJob($scope.id).then(function (results) {
                 response = results.data;
                 $scope.categoryID = response["categoryId"];
@@ -53,31 +74,6 @@ angular.module('Jobsite').controller("AddjobformController", function($scope, Lo
             }, function (error) {
                 console.log(error.data.message);
             });
-
-        } else {
-            $scope.categoryID = "";
-            $scope.locationID = "";
-            $scope.location = "";
-            $scope.posteddate = (new Date()).getTime() / 1000;
-            $scope.experience = "";
-            $scope.jobtype = "";
-            $scope.jobTitleLocationEditable = true;
-            $scope.jobDescriptionContentEditable = true;
-            $scope.jobRequirementsContentEditable = true;
-            $scope.aboutUsEditable = true;
-            $scope.aboutUsHtmlContent = "";
-            $scope.aboutUsContent = $sce.trustAsHtml($scope.aboutUsHtmlContent);
-            $scope.jobTitleLocationHtmlContent = "Enter Job Title";
-            $scope.jobTitleLocationContent = $sce.trustAsHtml($scope.jobTitleLocationHtmlContent);
-            $scope.jobDescriptionHtmlContent = "";
-            $scope.jobDescriptionContent = $sce.trustAsHtml($scope.jobDescriptionHtmlContent);
-            $scope.jobRequirementsHtmlContent = "";
-            $scope.jobRequirementsContent = $sce.trustAsHtml($scope.jobRequirementsHtmlContent);
-            $scope.jobTitleLocationResultContent = "Enter Job Title";
-            $scope.jobDescriptionResultContent = "";
-            $scope.aboutUsResultContent = "";
-            $scope.jobRequirementsResultContent = "";
-            $scope.tags = [];
         }
 
         $scope.toggleEdit = function(param) {

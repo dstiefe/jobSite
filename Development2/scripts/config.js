@@ -67,7 +67,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
         })
         // Jobmanagement
         .state('jobmanagement', {
-            url: "/jobmanagement?id",
+            url: "/jobmanagement/:id",
             templateUrl: "views/jobmanagement.html",
             data: {
                 pageTitle: 'Job Management',

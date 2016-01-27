@@ -66,9 +66,58 @@ angular.module('Jobsite').factory('JobsService', ['$http', '$q', 'RESOURCES','Va
         }).then(function (results) {
             return results;
         });
-    }
+    };
+    var _getJob = function (id) {
+        return $http.get(serviceBase + 'jobs/'+id,{
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': ValiDatedTokenObject.getValiDatedTokenObject().token_type+" "+ValiDatedTokenObject.getValiDatedTokenObject().access_token
+            }
+        }).then(function (results) {
+            return results;
+        });
+    };
+    var _putJob = function (id, job) {
+        return $http.put(serviceBase + 'jobs/'+id,
+            job ,
+            {
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': ValiDatedTokenObject.getValiDatedTokenObject().token_type+" "+ValiDatedTokenObject.getValiDatedTokenObject().access_token
+            }
+        }).then(function (results) {
+            return results;
+        });
+    };
+    var _postJob = function (job) {
+        return $http.post(serviceBase + 'jobs',
+            job ,
+            {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': ValiDatedTokenObject.getValiDatedTokenObject().token_type+" "+ValiDatedTokenObject.getValiDatedTokenObject().access_token
+                }
+            }).then(function (results) {
+            return results;
+        });
+    };
+    var _deleteJob = function (id) {
+        return $http.delete(serviceBase + 'jobs/'+id,
+            {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': ValiDatedTokenObject.getValiDatedTokenObject().token_type+" "+ValiDatedTokenObject.getValiDatedTokenObject().access_token
+                }
+            }).then(function (results) {
+            return results;
+        });
+    };
 
     jobsServiceFactory.searchAdvancedJobs = _searchAdvancedJobs;
+    jobsServiceFactory.getJob = _getJob;
+    jobsServiceFactory.putJob = _putJob;
+    jobsServiceFactory.postJob = _postJob;
+    jobsServiceFactory.deleteJob = _deleteJob;
 
     return jobsServiceFactory;
 }]);

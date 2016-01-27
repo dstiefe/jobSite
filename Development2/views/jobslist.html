@@ -55,7 +55,7 @@
                                                 </td>
                                                 <td>{{data.applicantsIds.length}}</td>
                                                 <td>
-                                                    <a href="#jobmanagement?id={{data.id}}" class="btn btn-info btn-warning"><span class="glyphicon glyphicon-edit"></span> Edit</a> &nbsp;&nbsp;&nbsp;
+                                                    <a ui-sref="jobmanagement({id:data.id})" class="btn btn-info btn-warning"><span class="glyphicon glyphicon-edit"></span> Edit</a> &nbsp;&nbsp;&nbsp;
                                                     <a ng-click="deleterecords(data.id)" class="btn btn-info btn-danger"><span class="glyphicon glyphicon-remove"></span> Delete</a>
                                                 </td>
                                             </tr>

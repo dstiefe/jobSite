@@ -1,87 +1,65 @@
-angular
-    .module('Jobsite').controller("AddjobformController", function($scope, Login, $sce, $location, $http, ValiDatedTokenObject, RESOURCES) {
+angular.module('Jobsite').controller("AddjobformController", function($scope, Login, $sce, $location, $http, ValiDatedTokenObject, RESOURCES, $stateParams, CategoriesService, JobsService) {
+
+        $scope.id  = $stateParams.id;
+    
+        $scope.EmployeeTypes = RESOURCES.EMPLOYEE_TYPES;
 
 
-        /*ValiDatedTokenObject.ValiDatedTokenObject = JSON.parse(sessionStorage.getItem("ValiDatedTokenObject"));
-         
-        if (ValiDatedTokenObject.ValiDatedTokenObject == null || ValiDatedTokenObject.ValiDatedTokenObject.access_token == "") {
-            //$location.path("/login");
-        }*/
-
-        ValiDatedTokenObject.setValiDatedTokenObject(JSON.parse(sessionStorage.getItem("ValiDatedTokenObject")));
-        if (ValiDatedTokenObject.getValiDatedTokenObject() == null || ValiDatedTokenObject.getValiDatedTokenObject().access_token == "") {
-            $location.path("/login");
-        }
-        $scope.role = ValiDatedTokenObject.getValiDatedTokenObject().roles;
-        var parts = $location.absUrl().split("jobmanagemen");
-        if (parts[1] == "t")
-        { $scope.id = ""; } else { $scope.id = parts[1].replace("t?id=",""); }
-         
-        console.log($scope.id);
-        $http({
-            method: 'GET',
-            url: ServicesURL + 'api/v1/locations',
-            headers: {
-                'Content-Type': 'application/json'
+        $scope.changeValue = function() {
+            if ($scope.locationID > 0) {
+                $scope.location = $.grep($scope.locations, function(location) {
+                    return location.id == $scope.locationID;
+                })[0].name;
+            } else {
+                $scope.location = "";
             }
-        }).success(function(response) {
-            $scope.locations = response;
+        };
+
+        CategoriesService.getCategories().then(function (results) {
+            $scope.categories = results.data;
+        }, function (error) {
+            console.log(error.data.message);
         });
-        $http({
-            method: 'GET',
-            url: ServicesURL + 'api/v1/categories',
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        }).success(function(response) {
-            $scope.categories = response;
-        });
+
         if ($scope.id != "") {
-            $http({
-                    method: 'GET',
-                    url: ServicesURL + 'api/v1/jobs/' + $scope.id,
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Connection': 'keep-alive',
-                        'Authorization': ValiDatedTokenObject.getValiDatedTokenObject().token_type+" "+ValiDatedTokenObject.getValiDatedTokenObject().access_token
-                    }
-                })
-                .success(function(response) {
-                    $scope.categoryID = response["categoryId"];
-                    $scope.locationID = response["locationId"];
-                    $scope.location = response["location"];
-                    $scope.tags = response["tags"] == null ? [] : response["tags"];
-                    $scope.jobTitleLocationEditable = false;
-                    $scope.jobDescriptionContentEditable = false;
-                    $scope.jobRequirementsContentEditable = false;
-                    $scope.aboutUsEditable = false;
-                    $scope.aboutUsHtmlContent = response["aboutUs"] == "" ? "  <br> " + response["aboutUs"] : response["aboutUs"];
-                    $scope.posteddate = response["publishedDate"];
-                    $scope.employeeType = response["employeeType"];
-                    $scope.experience = response["experience"];
-                    $scope.jobtype = response["type"];
-                    $scope.aboutUsContent = $sce.trustAsHtml($scope.aboutUsHtmlContent);
-                    $scope.jobTitleLocationHtmlContent = response["title"] == "" ? "<br>" + response["title"] : response["title"];
-                    $scope.jobTitleLocationContent = $sce.trustAsHtml($scope.jobTitleLocationHtmlContent);
-                    $scope.jobDescriptionHtmlContent = response["description"]==""?"<br>"+response["description"]:response["description"];
-                    $scope.jobDescriptionContent = $sce.trustAsHtml($scope.jobDescriptionHtmlContent);
-                    $scope.jobRequirementsHtmlContent = response["requirements"] == "" ? " <br>" + response["requirements"] : response["requirements"];
-                    $scope.jobRequirementsContent = $sce.trustAsHtml($scope.jobRequirementsHtmlContent);
-                    console.log(response);
-                    $scope.jobTitleLocationResultContent = response["title"];
-                    $scope.jobDescriptionResultContent = response["description"];
-                    $scope.aboutUsResultContent = response["aboutUs"];
-                    $scope.jobRequirementsResultContent = response["requirements"];
-                    $scope.EmployeeTypes = RESOURCES.EMPLOYEE_TYPES;
-                });
-        } else {
 
+            JobsService.getJob($scope.id).then(function (results) {
+                response = results.data;
+                $scope.categoryID = response["categoryId"];
+                $scope.locationID = response["locationId"];
+                $scope.location = response["location"];
+                $scope.tags = response["tags"] == null ? [] : response["tags"];
+                $scope.jobTitleLocationEditable = false;
+                $scope.jobDescriptionContentEditable = false;
+                $scope.jobRequirementsContentEditable = false;
+                $scope.aboutUsEditable = false;
+                $scope.aboutUsHtmlContent = response["aboutUs"] == "" ? "  <br> " + response["aboutUs"] : response["aboutUs"];
+                $scope.posteddate = response["publishedDate"];
+                $scope.employeeType = response["employeeType"];
+                $scope.experience = response["experience"];
+                $scope.jobtype = response["type"];
+                $scope.aboutUsContent = $sce.trustAsHtml($scope.aboutUsHtmlContent);
+                $scope.jobTitleLocationHtmlContent = response["title"] == "" ? "<br>" + response["title"] : response["title"];
+                $scope.jobTitleLocationContent = $sce.trustAsHtml($scope.jobTitleLocationHtmlContent);
+                $scope.jobDescriptionHtmlContent = response["description"]==""?"<br>"+response["description"]:response["description"];
+                $scope.jobDescriptionContent = $sce.trustAsHtml($scope.jobDescriptionHtmlContent);
+                $scope.jobRequirementsHtmlContent = response["requirements"] == "" ? " <br>" + response["requirements"] : response["requirements"];
+                $scope.jobRequirementsContent = $sce.trustAsHtml($scope.jobRequirementsHtmlContent);
+                $scope.jobTitleLocationResultContent = response["title"];
+                $scope.jobDescriptionResultContent = response["description"];
+                $scope.aboutUsResultContent = response["aboutUs"];
+                $scope.jobRequirementsResultContent = response["requirements"];
+
+            }, function (error) {
+                console.log(error.data.message);
+            });
+
+        } else {
             $scope.categoryID = "";
             $scope.locationID = "";
             $scope.location = "";
             $scope.posteddate = (new Date()).getTime() / 1000;
             $scope.experience = "";
-           // $scope.employeeType = -1;
             $scope.jobtype = "";
             $scope.jobTitleLocationEditable = true;
             $scope.jobDescriptionContentEditable = true;
@@ -91,7 +69,6 @@ angular
             $scope.aboutUsContent = $sce.trustAsHtml($scope.aboutUsHtmlContent);
             $scope.jobTitleLocationHtmlContent = "Enter Job Title";
             $scope.jobTitleLocationContent = $sce.trustAsHtml($scope.jobTitleLocationHtmlContent);
-           
             $scope.jobDescriptionHtmlContent = "";
             $scope.jobDescriptionContent = $sce.trustAsHtml($scope.jobDescriptionHtmlContent);
             $scope.jobRequirementsHtmlContent = "";
@@ -101,8 +78,8 @@ angular
             $scope.aboutUsResultContent = "";
             $scope.jobRequirementsResultContent = "";
             $scope.tags = [];
-            $scope.EmployeeTypes = RESOURCES.EMPLOYEE_TYPES;
         }
+
         $scope.toggleEdit = function(param) {
             if ("jobTitleLocationEditable" == param) {
                 $scope.jobTitleLocationEditable = true;
@@ -122,15 +99,6 @@ angular
         };
         $scope.removetag = function(index) {
             $scope.tags.splice(index - 1, 1);
-        };
-        $scope.changeValue = function() {
-            if ($scope.locationID > 0) {
-                $scope.location = $.grep($scope.locations, function(location) {
-                    return location.id == $scope.locationID;
-                })[0].name;
-            } else {
-                $scope.location = "";
-            }
         };
         $scope.saveChanges = function(isValid) {
 
@@ -168,49 +136,27 @@ angular
             };
             if ($scope.id != "") {
 
-                $http({
-                        method: 'PUT',
-                        url: ServicesURL + 'api/v1/jobs/' + $scope.id,
-                        data: postsavedata,
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'Connection': 'keep-alive',
-                            'Authorization': ValiDatedTokenObject.getValiDatedTokenObject().token_type+" "+ValiDatedTokenObject.getValiDatedTokenObject().access_token
-                        }
-                    })
-                    .success(function(response) {
-                        $location.path("/jobslist");
-                    });
+                JobsService.putJob($scope.id, postsavedata).then(function (results) {
+                    $location.path("/jobslist");
+                }, function (error) {
+                    console.log(error.data.message);
+                });
 
             } else {
-                $http({
-                        method: 'POST',
-                        url: ServicesURL + 'api/v1/jobs',
-                        data: postsavedata,
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'Connection': 'keep-alive',
-                            'Authorization': ValiDatedTokenObject.getValiDatedTokenObject().token_type+" "+ValiDatedTokenObject.getValiDatedTokenObject().access_token
-                        }
-                    })
-                    .success(function(response) {
-                        $location.path("/jobslist");
-                    });
 
+                JobsService.postJob(postsavedata).then(function (results) {
+                    $location.path("/jobslist");
+                }, function (error) {
+                    console.log(error.data.message);
+                });
             }
         }
         $scope.removechanges = function() {
-            $http({
-                    method: 'DELETE',
-                    url: ServicesURL + 'api/v1/jobs/' + $scope.id,
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Connection': 'keep-alive',
-                        'Authorization': ValiDatedTokenObject.getValiDatedTokenObject().token_type+" "+ValiDatedTokenObject.getValiDatedTokenObject().access_token
-                    }
-                })
-                .success(function(response) {
-                    $location.path("/jobslist");
-                });
+
+            JobsService.deleteJob($scope.id).then(function (results) {
+                $location.path("/jobslist");
+            }, function (error) {
+                console.log(error.data.message);
+            });
         }
     });

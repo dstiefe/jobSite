@@ -28,7 +28,7 @@ angular.module('Jobsite').factory('LocationsService', ['$http', '$q', 'RESOURCES
         });
     };
 
-    var _suggestLocations = function (text, count, parentId, level) {
+    var _suggestLocations = function (text, parentId, level, count) {
         params={};
 
         params['text'] = text;

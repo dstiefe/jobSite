@@ -1,11 +1,100 @@
-angular.module('Jobsite').controller("AddjobformController", function($scope, Login, $sce, $location, $http, ValiDatedTokenObject, RESOURCES, $stateParams, CategoriesService, JobsService) {
+angular.module('Jobsite').controller("AddjobformController", function($scope, Login, $sce, $location, $http, $timeout, ValiDatedTokenObject, RESOURCES, $stateParams, CategoriesService, LocationsService, JobsService, $compile) {
 //https://github.com/zensh/ui-autocomplete
         $scope.id  = $stateParams.id;
 
+    /* config object */
+
+        $scope.locationState = {
+            id: '',
+            name: '',
+            value: '',
+            label:''
+            // some other property
+        };
+
+        $scope.locationCity = {
+            id: '',
+            name: '',
+            value: '',
+            label:''
+            // some other property
+        };
+        $scope.locationStateOption = {
+            options: {
+                html: false,
+                focusOpen: false,
+                onlySelectValid: true,
+                source: function (request, response) {
+                    if(request.term.length ==0)
+                            return;
+                    LocationsService.suggestLocations(request.term).then(function (results) {
+                        res = results.data;
+                        var data =[];
+                        for (var i=0; i <res.length; i++ ){
+                            var r = res[i];
+                            data.push({
+                                label: r.text,
+                                value: r.text,
+                                id: r.id,
+                                name: r.text
+                            });
+                        }
+                        response(data);
+                    }, function (error) {
+                        console.log(error.data.message);
+                    });
+                }
+            },
+            methods: {}
+        };
+        $scope.locationStateOption.events = {
+            change: function( event, ui ) {
+                $scope.locationCity.id='';
+                $scope.locationCity.name='';
+                $scope.locationCity.value='';
+                $scope.locationCity.label='';
+                $scope.locationCityOption.methods.clean();
+            },
+            close:function( event, ui ) {
+                console.log("close");
+                $timeout(function() {
+                    angular.element('#locationCity').focus();
+                });
+
+            }
+        };
+        $scope.locationCityOption = {
+            options: {
+                html: false,
+                focusOpen: false,
+                onlySelectValid: true,
+                source: function (request, response) {
+                    if(request.term.length ==0)
+                        return;
+                    LocationsService.suggestLocations(request.term, $scope.locationState.id, 2).then(function (results) {
+                        res = results.data;
+                        var data =[];
+                        for (var i=0; i <res.length; i++ ){
+                            var r = res[i];
+                            data.push({
+                                label: r.text,
+                                value: r.text,
+                                id: r.id,
+                                name: r.text
+                            });
+                        }
+                        response(data);
+                    }, function (error) {
+                        console.log(error.data.message);
+                    });
+                }
+            },
+            methods: {}
+        };
+
         $scope.EmployeeTypes = RESOURCES.EMPLOYEE_TYPES;
         $scope.categoryID = "";
-        $scope.locationID = "";
-        $scope.location = "";
+
         $scope.posteddate = (new Date()).getTime() / 1000;
         $scope.experience = "";
         $scope.jobtype = "";
@@ -27,16 +116,6 @@ angular.module('Jobsite').controller("AddjobformController", function($scope, Lo
         $scope.jobRequirementsResultContent = "";
         $scope.tags = [];
 
-        $scope.changeValue = function() {
-            if ($scope.locationID > 0) {
-                $scope.location = $.grep($scope.locations, function(location) {
-                    return location.id == $scope.locationID;
-                })[0].name;
-            } else {
-                $scope.location = "";
-            }
-        };
-
         CategoriesService.getCategories().then(function (results) {
             $scope.categories = results.data;
         }, function (error) {
@@ -47,8 +126,14 @@ angular.module('Jobsite').controller("AddjobformController", function($scope, Lo
             JobsService.getJob($scope.id).then(function (results) {
                 response = results.data;
                 $scope.categoryID = response["categoryId"];
-                $scope.locationID = response["locationId"];
-                $scope.location = response["location"];
+
+                $scope.locationCity = {
+                    id: response["locationId"],
+                    name: response["location"],
+                    value: response["location"],
+                    // some other property
+                };
+
                 $scope.tags = response["tags"] == null ? [] : response["tags"];
                 $scope.jobTitleLocationEditable = false;
                 $scope.jobDescriptionContentEditable = false;
@@ -70,6 +155,18 @@ angular.module('Jobsite').controller("AddjobformController", function($scope, Lo
                 $scope.jobDescriptionResultContent = response["description"];
                 $scope.aboutUsResultContent = response["aboutUs"];
                 $scope.jobRequirementsResultContent = response["requirements"];
+
+                LocationsService.getLocation($scope.locationCity.id).then(function (results) {
+                    res = results.data;
+                    $scope.locationState = {
+                        id: res.parentId,
+                        name: res.fullName.split('/')[0],
+                        value: res.fullName.split('/')[0],
+                        // some other property
+                    };
+                }, function (error) {
+                    console.log(error.data.message);
+                });
 
             }, function (error) {
                 console.log(error.data.message);
@@ -98,7 +195,7 @@ angular.module('Jobsite').controller("AddjobformController", function($scope, Lo
         };
         $scope.saveChanges = function(isValid) {
 
-            if (!isValid || !$scope.tags.length){
+            if (!isValid || !$scope.tags.length || !$scope.locationCity.id){
                 return;
             }
             if (!angular.isUndefined($scope.aboutUsResultContent)) {
@@ -121,7 +218,7 @@ angular.module('Jobsite').controller("AddjobformController", function($scope, Lo
             var postsavedata = {
                 "title": $scope.jobTitleLocationHtmlContent,
                 "description": $scope.jobDescriptionHtmlContent,
-                "locationId": $scope.locationID,
+                "locationId": $scope.locationCity.id,
                 "type": $scope.jobtype,
                 "requirements": $scope.jobRequirementsHtmlContent,
                 "aboutUs": $scope.aboutUsHtmlContent,

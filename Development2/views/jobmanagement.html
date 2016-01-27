@@ -1,6 +1,6 @@
 ﻿<!-- Header -->
 <div id="header" ng-include="'views/head.html'"></div>
-
+<link rel="stylesheet" href="libs/jquery-ui/themes/overcast/jquery-ui.min.css" />
 <div ng-controller="AddjobformController">
 
     <!-- Main Wrapper -->
@@ -87,12 +87,10 @@
                                                         </select>
                                                         <span class="color-theme" ng-show="userForm.Category.$error.required">Category is required.</span>
                                                         <br>
-                                                        <label for="Location">Location</label>
-                                                        <select ng-model="locationID" ng-change="changeValue()" class="form-control" id="Location" name="Location" required>
-                                                            <option value="">Select Location</option>
-                                                            <option ng-repeat="location in locations" ng-selected="location.id==locationID" value="{{location.id}}">{{location.name}}</option>
-                                                        </select>
-                                                        <span class="color-theme" ng-show="userForm.Location.$error.required">Location is required.</span>
+                                                        <label for="locationCity">Location</label>
+                                                        <input type="text" class="form-control"  ng-model="locationState"  ui-autocomplete="locationStateOption" placeholder="State abbreviation"  />
+                                                        <input type="text" class="form-control"  ng-model="locationCity" id="locationCity" ui-autocomplete="locationCityOption" placeholder="City" ng-if="locationState.id"  />
+                                                        <span class="color-theme" ng-show="!locationCity.id">Location is required.</span>
                                                         <br>
                                                         <label for="tags">Tags</label>
                                                         <input class="form-control" style="width:70%;float:right;" ng-model="tag" id="tags" type="text"><a href="" ng-click="addtags()"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>

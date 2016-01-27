@@ -37,6 +37,7 @@ var clientId ="P600Us6Y476QiK331u5yEzb22dpX_y6NS75!9I-a";
         'angular-chartist',         // Chartist
         'ui.codemirror',             // Ui Codemirror
         'textAngular',             //Text editor
+        'ui.autocomplete', //UI autocomplete
         'permission' // Permission
     ]).constant('RESOURCES', (function() {
 

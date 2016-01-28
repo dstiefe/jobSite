@@ -219,7 +219,6 @@ angular.module('Jobsite').controller("AddjobformController", function($scope, Lo
                 "title": $scope.jobTitleLocationHtmlContent,
                 "description": $scope.jobDescriptionHtmlContent,
                 "locationId": $scope.locationCity.id,
-                "type": $scope.jobtype,
                 "requirements": $scope.jobRequirementsHtmlContent,
                 "aboutUs": $scope.aboutUsHtmlContent,
                 "experience": $scope.experience,

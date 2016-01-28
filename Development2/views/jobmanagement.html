@@ -93,12 +93,12 @@
                                                         <span class="color-theme" ng-show="!locationCity.id">Location is required.</span>
                                                         <br>
                                                         <label for="tags">Tags</label>
-                                                        <input class="form-control" style="width:70%;float:right;" ng-model="tag" id="tags" type="text"><a href="" ng-click="addtags()"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
+                                                        <input class="form-control" style="width:70%;float:right;" ng-model="tag" id="tags" type="text"  ng-enter="addtags()"><a href="" ng-click="addtags()"<span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
                                                         <br>
                                                         <br>
 
                                                         <ul class="list-group">
-                                                            <li class="list-group-item" ng-repeat="tagname in tags">{{ tagname }}<a style="float:right;" href="" ng-click="removetag($index)"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></a></li>
+                                                            <li class="list-group-item" ng-repeat="tagname in tags">{{ tagname }}<a style="float:right;" href="" ng-click="removetag($index)"  ><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></a></li>
                                                          </ul>
 
                                                         <span class="color-theme" ng-show="!tags.length">Tags are required.</span>
@@ -130,16 +130,7 @@
                                                 <p>
                                                     <i class="fa fa-map-marker"></i> Location:
                                                     <br>
-                                                    <span class="color-theme">{{ location }}</span>
-                                                </p>
-                                                <p>
-                                                    <i class="fa fa-briefcase"></i> Job Type
-                                                    <br>
-                                                    <span class="color-theme">
-                                                        <input type="text" id="jobtype" name="jobtype" ng-model="jobtype" required>
-                                                        <br />
-                                                        <span ng-show="userForm.jobtype.$error.required">Job Type is required.</span>
-                                                    </span>
+                                                    <span class="color-theme">{{ locationCity.name }}</span>
                                                 </p>
                                                 <p>
                                                     <i class="fa fa-suitcase"></i> Experience

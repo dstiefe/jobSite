@@ -1,13 +1,12 @@
 ﻿<!-- Header -->
 <div id="header" ng-include="'views/head.html'"></div>
-
+<div class="container wrapper">
 <div ng-controller="dashboardController">
-    <!-- Main Wrapper -->
-    <div class="wrapper" >
-        <br />
+
         <div class="row">
-            <div class="col-lg-12 headertable">
-                <h3 style="margin: 0;padding: 0.7em 1em 1em 0.8em;">
+            <div class="col-lg-12">
+
+                <h3 class="headertable" style="margin: 0;padding: 0.7em 1em 1em 0.8em;">
                     {{headingmessage}}
                 </h3>
             </div>
@@ -43,8 +42,8 @@
                         </div>
                 </div>
             </div>
-    </div>
-    <div class="row" ng-show="list.length > 0">
+
+        <div class="row"   ng-show="list.length > 0">
 
         <div class="col-md-9 col-lg-offset-1" ng-show="list.length > 0">
             <div pagination="" ng-model="currentPage" ng-change="changed()" boundary-links="true" total-items="filteredItems" items-per-page="entryLimit" class="pagination-small" previous-text="&laquo;" next-text="&raquo;"></div>
@@ -56,3 +55,5 @@
         <div class="col-md-1"> </div>
     </div>
 </div>
+
+    </div>

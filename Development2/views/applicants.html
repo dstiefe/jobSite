@@ -1,22 +1,22 @@
 <!-- Header -->
 <div id="header" ng-include="'views/head.html'"></div>
-
+<div class="container" id="wrapper">
 <div ng-controller="ApplicantsController">
 
     <!-- Main Wrapper -->
-    <div id="wrapper" style="margin:0; ">
+
         <br />
         <div id="header" style="margin:0 auto; width:95%;">
-            <div class="col-md-1">
+            <div class="col-md-2">
                 <h3 style="margin: 0;padding: 0.7em 1em 1em 0.8em;"> Applicants:</h3>
             </div>
-            <div class="col-md-9">
+            <div class="col-md-8">
                 <div class="clear">
                     <br />
                 </div>
                 <input type="text" ng-model="search" ng-change="filter()" placeholder="Filter" class="form-control" />
             </div>
-            <div class="col-md-1">
+            <div class="col-md-2">
                 <div class="clear">
                     <br />
                 </div><a class="btn btn-info btn-primary" ui-sref="">Filter</a></div>
@@ -87,8 +87,10 @@
         </section>
         <!-- Right sidebar -->
 
-    </div>
+
 </div>
+
+    </div>
 <style>
     .footer{position:relative;}
 </style>

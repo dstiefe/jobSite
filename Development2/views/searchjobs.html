@@ -1,20 +1,22 @@
 ﻿<!-- Header -->
 <div id="header" ng-include="'views/head.html'"></div>
 
+
+    <div class="container" id="wrapper">
 <div ng-controller="searchjobController">
 
     <!-- Main Wrapper -->
-    <div id="wrapper" style="margin:0; ">
+
         <br />
         <div id="header" style="margin:0 auto; width:95%;">
             <div class="col-md-1">
                 <h3 style="margin: 0;padding: 0.7em 1em 1em 0.8em;"> Jobs:</h3>
             </div>
-            <div class="col-md-10">
+            <div class="col-md-9">
                 <div class="clear"><br /></div>
                 <input type="text" class="form-control" ng-model="searchtext"  ng-enter="searchjob()" placeholder="Job Title or Category or Location">
             </div>
-            <div class="col-md-1">
+            <div class="col-md-2">
                 <div class="clear">
                     <br />
                 </div> <a class="btn btn-primary btn-block m-b-md" ng-click="searchjob()" href="#">Search</a>
@@ -130,9 +132,12 @@
                 </div>
             </div> 
         </section>
-    </div>
+
 </div>
-<style>
+    </div>
+
+
+    <style>
     .footer {
         position: relative;
     }

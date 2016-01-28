@@ -1,8 +1,8 @@
 ﻿<!-- Header -->
-<div id="header" ng-include="'views/head.html'"></div>
-<div class="container">
+
+
 <link rel="stylesheet" href="libs/jquery-ui/themes/overcast/jquery-ui.min.css" />
-<div ng-controller="AddjobformController">
+<div ng-controller="AddjobformController"><div class="container"><div id="header" ng-include="'views/head.html'"></div>
 
     <!-- Main Wrapper -->
     <div id="wrapper" style="margin:0; ">
@@ -149,9 +149,9 @@
                                                     <i class="fa fa-suitcase"></i> Experience
                                                     <br>
                                                     <span class="color-theme">
-                                                        <input type="text" id="experience" name="experience" required ng-model="experience">
+                                                        <input type="text" id="experience" name="experience" ng-model="experience">
                                                         <br />
-                                                        <span ng-show="userForm.experience.$error.required">Experience is required.</span>
+
                                                     </span>
                                                 </p>
                                                 <p>

@@ -1,7 +1,7 @@
 ﻿<!-- Header -->
 
+<div id="header" ng-include="'views/head.html'"></div>
 
-    <div id="header" ng-include="'views/head.html'"></div>
 <div ng-controller="JobListController">
 
     <!-- Main Wrapper -->
@@ -26,14 +26,13 @@
             <div class="container">
                 <div class="right_col" role="main">
                     <div class="row">
-                        <div class="container">
+
                             <div class="row">
                                 <div class="col-md-12" style="text-align:right; padding-right: 15px;">
                                     <br />
                                     <br />
                                     <h5>Filtered {{ filtered.length }} of {{ totalItems}} Total Jobs</h5>
                                 </div>
-
                             </div>
                             <br />
                             <div class="row">
@@ -82,7 +81,7 @@
                                     </select>
                                 </div>
                             </div>
-                        </div>
+                   
                     </div>
                 </div>
             </div>

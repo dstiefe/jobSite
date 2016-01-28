@@ -10,25 +10,36 @@
 
         <form name="userForm" ng-submit="saveChanges(userForm.$valid)" novalidate>
         <br />
-        <div style="margin:0 auto; width:95%;">
-            <div class="col-md-1">
-            </div>
-            <div class="col-md-9">
-                <div class="clear">
-                    <br />
+            <div class="row">
+                <div class="col-sm-2 col-sm-offset-8">
+                    <button ng-hide="id == ''" data-ng-click="removechanges()" class="btn btn-danger btn-block btn-md">Delete Job</button>
                 </div>
-                <button ng-hide="id == ''" data-ng-click="removechanges()" class=" btn btn-danger btn-md pull-right">Delete Job</button>
-            </div>
-            <div class="col-md-1">
-                <div class="clear">
-                    <br />
-                    <button style="margin:0 -25px 0 0;" class="btn btn-primary btn-md pull-right" type="submit">Save Changes</button>
+                <div class="col-sm-2">
+                    <button class="btn btn-primary  btn-block btn-md" type="submit">Save Changes</button>
                 </div>
             </div>
-            <div class="col-md-1">
-                <br />&nbsp;
-            </div>
-        </div><div style="height:25px;clear:both;">
+        <!--<div style="margin:0 auto; width:95%;">-->
+            <!--<div class="col-md-8">-->
+            <!--</div>-->
+            <!--<div class="col-md-2">-->
+                <!--<div class="clear">-->
+                    <!--<br />-->
+                <!--</div>-->
+                <!--<button ng-hide="id == ''" data-ng-click="removechanges()" class=" btn btn-danger btn-md pull-right">Delete Job</button>-->
+            <!--</div>-->
+            <!--<div class="col-md-2">-->
+                <!--<div class="clear">-->
+                    <!--<br />-->
+                    <!--<button style="margin:0 -25px 0 0;" class="btn btn-primary btn-md pull-right" type="submit">Save Changes</button>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="col-md-1">-->
+                <!--<br />&nbsp;-->
+            <!--</div>-->
+        <!--</div>-->
+
+
+            <div style="height:25px;clear:both;">
             &nbsp;<br>
         </div>
         <div class="page-content">
@@ -53,6 +64,7 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <hr style="background-color: #C69373; height: 3px;" />
                                     <div class="row">
                                         <div class="col-sm-9">
                                             <div class="box-description">

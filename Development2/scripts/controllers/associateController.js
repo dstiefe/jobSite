@@ -20,7 +20,7 @@
         AuthService.registerExternal($scope.registerData).then(function (response) {
 
             $scope.savedSuccessfully = true;
-            $scope.message = "User has been registered successfully, you will be redicted to orders page in 2 seconds.";
+            $scope.message = "User has been registered successfully, you will be redicted to dashboard page in 2 seconds.";
             startTimer();
         },
           function (response) {

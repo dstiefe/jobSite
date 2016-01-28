@@ -161,6 +161,19 @@ angular.module('Jobsite').factory("AuthService", ['$http', '$q', 'ValiDatedToken
         return deferred.promise;
     };
 
+    var _resetPasswordToken = function (resetPasswordTokenData) {
+
+        return   $http.post(serviceBase + 'account/resetpasswordtoken', resetPasswordTokenData).then(function (response) {
+            return response;
+        });
+    };
+
+    var _resetPassword = function (resetPasswordData) {
+        return   $http.post(serviceBase + 'account/resetpassword', resetPasswordData).then(function (response) {
+            return response;
+        });
+    };
+
     authServiceFactory.saveRegistration = _saveRegistration;
     authServiceFactory.login = _login;
     authServiceFactory.logOut = _logOut;
@@ -170,6 +183,8 @@ angular.module('Jobsite').factory("AuthService", ['$http', '$q', 'ValiDatedToken
     authServiceFactory.obtainAccessToken = _obtainAccessToken;
     authServiceFactory.externalAuthData = _externalAuthData;
     authServiceFactory.registerExternal = _registerExternal;
+    authServiceFactory.resetPasswordToken = _resetPasswordToken;
+    authServiceFactory.resetPassword = _resetPassword;
 
     return authServiceFactory;
 }]);

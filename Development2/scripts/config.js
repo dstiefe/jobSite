@@ -172,6 +172,20 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
                 }
             }
         })
+        .state('resetpassword', {
+            url: "/resetpassword",
+            templateUrl: "views/resetpassword.html",
+            data: {
+                pageTitle: 'Reset password'
+            }
+        })
+        .state('resetpasswordverify', {
+            url: "/resetpasswordverify",
+            templateUrl: "views/resetpasswordverify.html",
+            data: {
+                pageTitle: 'Change password'
+            }
+        })
 }
 
 angular

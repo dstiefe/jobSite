@@ -4,13 +4,23 @@
 angular.module('Jobsite').controller("ResetPasswordController", function($scope, $http, $timeout, ValiDatedTokenObject, $location, AuthService, RESOURCES) {
     var serviceBase = RESOURCES.API_BASE_PATH;
 
-    $scope.username='';
-$scope.error_Description='';
+    $scope.usernameOrEmail='';
+
+    $scope.error_Description='';
     $scope.success_Description='';
-    $scope.ResetPassword = function(){
+
+    $scope.ResetPassword = function(isValid){
+        $scope.error_Description='';
+        $scope.success_Description='';
+        if (!isValid){
+            return;
+        }
+
         var data = {
-            userName: $scope.username
+            usernameOrEmail: $scope.usernameOrEmail
         };
+
+
         AuthService.resetPasswordToken(data).then(function (results) {
             $scope.success_Description= 'We sent a password-reset link to your email!';
         }, function (response) {
@@ -21,9 +31,7 @@ $scope.error_Description='';
                     errors.push(response.data.ModelState[key][i]);
                 }
             }
-
             $scope.error_Description = "Failed to reset password due to: " + errors.join(' ');
         });
     };
-
 });

@@ -4507,6 +4507,12 @@ ul.h-list li:hover a {
 
 @media (min-width: 1200px) {
     .container{
-        max-width: 980px !important;
+        width: 1170px !important;
+    }
+}
+
+@media (min-width: 1500px) {
+    .container{
+        width: 1470px !important;
     }
 }

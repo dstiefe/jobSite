@@ -4516,3 +4516,11 @@ ul.h-list li:hover a {
         width: 1470px !important;
     }
 }
+
+.dateHeader{
+    font-size: 12px;
+}
+.screeningFooter{
+    background-color: lightgrey;
+    padding: 10px;
+}

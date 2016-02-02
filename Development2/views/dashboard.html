@@ -22,7 +22,11 @@
                         <div class="panel panel-default">
                             <div class="panel-heading">
 
-                                <h3 class="panel-title pull-left">{{data.title}}({{data.location}})</h3>
+                                <div class="pull-left">
+                                    <h3 class="panel-title">{{data.title}}({{data.location}})</h3>
+                                    <span class="dateHeader">Date Created:{{data.publishedDate*1000 | date : "M/d/yyyy"}}</span>
+                                </div>
+
 
                                 <a class="btn btn-primary pull-right" ui-sref="applicants({id:data.id})" ng-show = "role == 'Admin'">
                                     {{viewtext}}
@@ -37,7 +41,14 @@
                             <div class="panel-body crop" ng-bind-html="data.description">
 
                             </div>
-                            <div class="panel-footer">Date:{{data.publishedDate*1000 | date : "M/d/yyyy"}}</div>
+                            <div class="panel-footer" ng-show = "role == 'Admin'">
+
+                                <a class="btn btn-default" href="#">
+                                    Screening Count
+                                    <span class="badge badge-success">{{data.applicantsCountForScreening}}</span>
+                                </a>
+
+                            </div>
                         </div>
                 </div>
             </div>

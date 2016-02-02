@@ -55,7 +55,7 @@ angular.module('Jobsite').factory('ScreeningsService', ['$http', '$q', 'RESOURCE
         });
     };
     var _getMyScreenings = function () {
-        return $http.get(screenings + 'screenings/my/',{
+        return $http.get(serviceBase + 'screenings/my/',{
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': ValiDatedTokenObject.getValiDatedTokenObject().token_type+" "+ValiDatedTokenObject.getValiDatedTokenObject().access_token
@@ -65,7 +65,7 @@ angular.module('Jobsite').factory('ScreeningsService', ['$http', '$q', 'RESOURCE
         });
     };
     var _postScreeningQuestion = function (id, model) {
-        return $http.post(screenings + 'screenings/'+id+'/questions/',
+        return $http.post(serviceBase + 'screenings/'+id+'/questions/',
             model,
             {
             headers: {
@@ -77,7 +77,7 @@ angular.module('Jobsite').factory('ScreeningsService', ['$http', '$q', 'RESOURCE
         });
     };
     var _getScreeningQuestionByResumeId = function (resumeId, screeningId, number) {
-        return $http.get(screenings + 'resumes/'+resumeId+'/screenings/'+screeningId+'/questions/'+number,
+        return $http.get(serviceBase + 'resumes/'+resumeId+'/screenings/'+screeningId+'/questions/'+number,
             {
                 headers: {
                     'Content-Type': 'application/json',
@@ -88,7 +88,7 @@ angular.module('Jobsite').factory('ScreeningsService', ['$http', '$q', 'RESOURCE
         });
     };
     var _getScreeningByResumeId = function (resumeId, screeningId) {
-        return $http.get(screenings + 'resumes/'+resumeId+'/screenings/'+screeningId,
+        return $http.get(serviceBase + 'resumes/'+resumeId+'/screenings/'+screeningId,
             {
                 headers: {
                     'Content-Type': 'application/json',
@@ -99,7 +99,7 @@ angular.module('Jobsite').factory('ScreeningsService', ['$http', '$q', 'RESOURCE
         });
     };
     var _setResultOnScreeningQuestion = function (resumeId, screeningId, questionId, model) {
-        return $http.get(screenings + 'resumes/'+resumeId+'/screenings/'+screeningId+'/questions/'+questionId+'/result',
+        return $http.get(serviceBase + 'resumes/'+resumeId+'/screenings/'+screeningId+'/questions/'+questionId+'/result',
             model,
             {
                 headers: {

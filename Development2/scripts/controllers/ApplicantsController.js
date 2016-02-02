@@ -13,6 +13,7 @@ angular.module('Jobsite').controller("ApplicantsController", function($scope, $h
             'Authorization': ValiDatedTokenObject.getValiDatedTokenObject().token_type+" "+ValiDatedTokenObject.getValiDatedTokenObject().access_token
         }
     }
+    $scope.screeningsItems = 0;
     $http(req).then(function(data) {
         if (data.status == "200") {
             $scope.list = data.data;

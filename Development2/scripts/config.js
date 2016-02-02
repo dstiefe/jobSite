@@ -186,6 +186,36 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
                 pageTitle: 'Change password'
             }
         })
+        .state('screenings', {
+            url: "/screenings",
+            templateUrl: "views/Screenings.html",
+            data: {
+                pageTitle: 'Screenings',
+                permissions: {
+                    only: ['Admin'],
+                }
+            }
+        })
+        .state('createscreening', {
+            url: "/createscreening",
+            templateUrl: "views/CreateScreening.html",
+            data: {
+                pageTitle: 'Create Screening',
+                permissions: {
+                    only: ['Admin'],
+                }
+            }
+        })
+        .state('createscreeningquestion', {
+            url: "/createscreeningquestion/:id",
+            templateUrl: "views/CreateScreeningQuestion.html",
+            data: {
+                pageTitle: 'Create Screening Question',
+                permissions: {
+                    only: ['Admin'],
+                }
+            }
+        })
 }
 
 angular

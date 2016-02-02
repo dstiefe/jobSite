@@ -43,6 +43,7 @@
                                         <th>Last Name&nbsp;<a ng-click="sort_by('category');"><i class="glyphicon glyphicon-sort"></i></a></th>
                                         <th>E-mail&nbsp;<a ng-click="sort_by('location');"><i class="glyphicon glyphicon-sort"></i></a></th>
                                         <th>Cover Letter&nbsp;<a ng-click="sort_by('location');"><i class="glyphicon glyphicon-sort"></i></a></th>
+                                        <th>Screening&nbsp;<a ng-click="sort_by('screeningStage');"><i class="glyphicon glyphicon-sort"></i></a></th>
                                         <th>Date Applied&nbsp;<a ng-click="sort_by('publishedDate');"><i class="glyphicon glyphicon-sort"></i></a></th>
                                         <th>Action</th>
                                         </thead>
@@ -50,8 +51,9 @@
                                         <tr ng-repeat="data in filtered = (list | filter:search | orderBy : predicate :reverse) | startFrom:(currentPage-1)*entryLimit | limitTo:entryLimit">
                                             <td>{{data.firstName}}</td>
                                             <td>{{data.lastName}}</td>
-                                            <td class="text-info font-bold">{{data.email}}</td>
+                                            <td>{{data.email}}</td>
                                             <td>{{data.note}}</td>
+                                            <td>{{data.screeningStage}}</td>
                                             <td>
                                                 {{ data.applyDate*1000 | date : "M/d/yyyy" }}
                                             </td>
@@ -67,11 +69,16 @@
                                         <h4>No Jobs found</h4>
                                     </div>
                                 </div>
-                                <div class="col-md-10" ng-show="filteredItems > 0">
+                                <div class="col-md-9" ng-show="filteredItems > 0">
                                     <div pagination="" ng-model="current" ng-change="changed()" boundary-links="true" total-items="filteredItems" items-per-page="entryLimit" class="pagination-small" previous-text="&laquo;" next-text="&raquo;"></div>
                                 </div>
+                                <div class="col-md-2" >
+                                    <br />   <span class="screeningFooter">{{ (list | filter: { screeningStage:'Screening' }).length }} of {{ totalItems}} taken
+                                        </span>
+
+                                </div>
                                 <div class="col-md-1">
-                                    <br /> PageSize:
+                                     PageSize:
                                     <select ng-model="entryLimit" class="form-control">
                                         <option>5</option>
                                         <option>10</option>

@@ -45,19 +45,19 @@
                                              <input class="form-control" style="width:70%;float:right;" ng-model="option" id="option" type="text"  ng-enter="addOption()" placeholder="Enter Possible Answer and press return">
                                     </div>
 
-                                    <div class="form-group" ng-show="screeningQuestion.type == 'MultipleChoice' || screeningQuestion.type == 'TrueFalse'">
+                                    <div class="form-group" ng-if="screeningQuestion.type == 'MultipleChoice' || screeningQuestion.type == 'TrueFalse'">
                                         <label for="options">Possible answers</label>
                                         <ul class="list-group" id="options" name="options" style="background-color: #fff;">
-                                            <li class="list-group-item" ng-repeat="option in screeningQuestion.options">{{ option }}
+                                            <li class="list-group-item" ng-repeat="_option in screeningQuestion.options">{{_option}}
 
                                                 <a style="float:right;" href="" ng-click="removeOption($index)"  ng-show="screeningQuestion.type == 'MultipleChoice'"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></a>
                                             </li>
                                         </ul>
                                     </div>
 
-                                    <div class="form-group" ng-show="screeningQuestion.type == 'FillIn'">
+                                    <div class="form-group" ng-if="screeningQuestion.type == 'FillIn'">
                                         <label for="answerText">Answer Text</label>
-                                        <div  text-angular ng-model="screeningQuestion.answerText" name="answerText" id="answerText" ta-text-editor-class="border-around" ta-html-editor-class="border-around" style="background-color: #fff;" required></div>
+                                        <div  text-angular ng-model="$parent.screeningQuestion.answerText" name="answerText" id="answerText" ta-text-editor-class="border-around" ta-html-editor-class="border-around" style="background-color: #fff;" required></div>
                                         <span class="color-theme" ng-show="createQuestionScreeningForm.answerText.$error.required">Answer Text is required.</span>
                                     </div>
 
@@ -79,15 +79,15 @@
                                         <span class="color-theme" ng-show="createQuestionScreeningForm.type.$error.required">Question Type is required.</span>
                                     </div>
 
-                                    <div class="form-group" ng-show="screeningQuestion.type == 'MultipleChoice' || screeningQuestion.type == 'TrueFalse'">
+                                    <div class="form-group" ng-if="screeningQuestion.type == 'MultipleChoice' || screeningQuestion.type == 'TrueFalse'">
                                         <label for="selectedOption">Correct Answer</label>
 
                                         <select  id="selectedOption"
                                                  name="selectedOption"
                                                  required
                                                  class="form-control"
-                                                ng-model="selectedOption"
-                                                ng-options="idx as _option for (idx, _option) in screeningQuestion.options">
+                                                ng-model="$parent.selectedOption"
+                                                ng-options="idx as _option for (idx, _option) in $parent.screeningQuestion.options">
                                         </select>
 
                                         <!--<select-->

@@ -139,6 +139,17 @@ angular.module('Jobsite').factory('ResumesService', ['$http', '$q', 'RESOURCES',
         });
     };
 
+    var _getResume = function(id){
+        return $http.get(serviceBase + 'resumes/'+id,{
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': ValiDatedTokenObject.getValiDatedTokenObject().token_type+" "+ValiDatedTokenObject.getValiDatedTokenObject().access_token
+            }
+        }).then(function (results) {
+            return results;
+        });
+    };
+
     resumesServiceFactory.searchResumes = _searchResumes;
     resumesServiceFactory.searchIntoResume = _searchIntoResume;
     resumesServiceFactory.searchIntoPageResume = _searchIntoPageResume;
@@ -146,6 +157,6 @@ angular.module('Jobsite').factory('ResumesService', ['$http', '$q', 'RESOURCES',
     resumesServiceFactory.searchResumesCount = _searchResumesCount;
     resumesServiceFactory.getNativeUrl = _getNativeUrl;
     resumesServiceFactory.gePdfUrl = _getPdfUrl;
-
+    resumesServiceFactory.getResume = _getResume;
     return resumesServiceFactory;
 }]);

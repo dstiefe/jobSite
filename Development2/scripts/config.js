@@ -226,6 +226,37 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
                 }
             }
         })
+
+        .state('starttestscreening', {
+            url: "/resumes/:id/screenings/start",
+            templateUrl: "views/StartTestScreening.html",
+            data: {
+                pageTitle: 'Start screening tests',
+                permissions: {
+                    only: ['User'],
+                }
+            }
+        })
+        .state('testscreening', {
+            url: "/resumes/:id/screenings/:screeningId/test",
+            templateUrl: "views/TestScreening.html",
+            data: {
+                pageTitle: 'Screening test',
+                permissions: {
+                    only: ['User'],
+                }
+            }
+        })
+        .state('finishtestscreening', {
+            url: "/resumes/screenings/finish",
+            templateUrl: "views/FinishTestScreening.html",
+            data: {
+                pageTitle: 'Finish screening tests',
+                permissions: {
+                    only: ['User'],
+                }
+            }
+        })
 }
 
 angular

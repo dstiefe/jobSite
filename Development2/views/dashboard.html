@@ -51,10 +51,13 @@
                                 <a class="btn btn-danger" ui-sref="starttestscreening({id:data.resumeId})" ng-show = "role == 'User' && data.screeningStage =='Screening'">
                                     {{data.screeningStage}}
                                 </a>
-                                <a class="btn btn-warning" href="#" ng-show = "role == 'User' && data.screeningStage =='InReview'">
+                                <a class="btn btn-warning" href="" ng-show = "role == 'User' && data.screeningStage =='InReview'">
                                     {{data.screeningStage}}
                                 </a>
-                                <a class="btn btn-success" href="#" ng-show = "role == 'User' && data.screeningStage =='Reviewed'">
+                                <a class="btn btn-success" href="" ng-show = "role == 'User' && data.screeningStage =='Reviewed'">
+                                {{data.screeningStage}}
+                            </a>
+                                <a class="btn btn-default" href="" ng-show = "role == 'User' && data.screeningStage =='None'">
                                     {{data.screeningStage}}
                                 </a>
                             </div>

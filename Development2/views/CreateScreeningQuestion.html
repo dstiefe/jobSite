@@ -40,20 +40,26 @@
                                     </div>
 
 
-                                    <div class="form-group">
+                                    <div class="form-group" ng-show="screeningQuestion.type == 'MultipleChoice'">
                                              <label for="option">Possible answer</label>
                                              <input class="form-control" style="width:70%;float:right;" ng-model="option" id="option" type="text"  ng-enter="addOption()" placeholder="Enter Possible Answer and press return">
                                     </div>
 
-                                    <div class="form-group">
+                                    <div class="form-group" ng-show="screeningQuestion.type == 'MultipleChoice' || screeningQuestion.type == 'TrueFalse'">
                                         <label for="options">Possible answers</label>
-                                        <ul class="list-group" id="options" name="options">
-                                            <li class="list-group-item" ng-repeat="option in options">{{ option }}<a style="float:right;" href="" ng-click="removeOption($index)"  ><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></a></li>
+                                        <ul class="list-group" id="options" name="options" style="background-color: #fff;">
+                                            <li class="list-group-item" ng-repeat="option in screeningQuestion.options">{{ option }}
+
+                                                <a style="float:right;" href="" ng-click="removeOption($index)"  ng-show="screeningQuestion.type == 'MultipleChoice'"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></a>
+                                            </li>
                                         </ul>
                                     </div>
 
-
-
+                                    <div class="form-group" ng-show="screeningQuestion.type == 'FillIn'">
+                                        <label for="answerText">Answer Text</label>
+                                        <div  text-angular ng-model="screeningQuestion.answerText" name="answerText" id="answerText" ta-text-editor-class="border-around" ta-html-editor-class="border-around" style="background-color: #fff;" required></div>
+                                        <span class="color-theme" ng-show="createQuestionScreeningForm.answerText.$error.required">Answer Text is required.</span>
+                                    </div>
 
                                 </div>
                                 <div class="col-md-6">
@@ -68,23 +74,32 @@
                                                 ng-change="changedQuestionType()"
                                         >
                                             <option value="">Select Question Type</option>
-                                            <option ng-repeat="_type in ScreeningQuestionTypes" ng-selected="_type.value==type" value="{{_type.value}}">{{_type.name}}</option>
+                                            <option ng-repeat="_type in ScreeningQuestionTypes" ng-selected="_type.value==screeningQuestion.type" value="{{_type.value}}">{{_type.name}}</option>
                                         </select>
-                                        <span class="color-theme" ng-show="createQuestionScreeningForm.type.$error.required">Screening Question Type is required.</span>
+                                        <span class="color-theme" ng-show="createQuestionScreeningForm.type.$error.required">Question Type is required.</span>
                                     </div>
 
-                                    <div class="form-group">
+                                    <div class="form-group" ng-show="screeningQuestion.type == 'MultipleChoice' || screeningQuestion.type == 'TrueFalse'">
                                         <label for="selectedOption">Correct Answer</label>
-                                        <select
-                                                id="selectedOption"
-                                                name="type"
+
+                                        <select  id="selectedOption"
+                                                 name="selectedOption"
+                                                 required
+                                                 class="form-control"
                                                 ng-model="selectedOption"
-                                                required
-                                                class="form-control"
-                                        >
-                                            <option value="">Select Correct Answer</option>
-                                            <option ng-repeat="_option in options" ng-selected="_option==selectedOption" value="{{_option}}">{{_option}}</option>
+                                                ng-options="idx as _option for (idx, _option) in screeningQuestion.options">
                                         </select>
+
+                                        <!--<select-->
+                                                <!--id="selectedOption"-->
+                                                <!--name="selectedOption"-->
+                                                <!--ng-model="selectedOption"-->
+                                                <!--required-->
+                                                <!--class="form-control"-->
+                                        <!--&gt;-->
+                                            <!--<option value="">Select Correct Answer</option>-->
+                                            <!--<option ng-repeat="_option in options" ng-selected="_option==selectedOption" value="{{_option}}">{{_option}}</option>-->
+                                        <!--</select>-->
                                         <span class="color-theme" ng-show="createQuestionScreeningForm.selectedOption.$error.required">Correct Answer Type is required.</span>
                                     </div>
 

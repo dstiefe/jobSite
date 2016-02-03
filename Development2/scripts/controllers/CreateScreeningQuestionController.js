@@ -5,7 +5,9 @@ angular.module('Jobsite').controller("CreateScreeningQuestionController", functi
 
     $scope.id = $stateParams.id;
     $scope.questionsCount = 0;
-    $scope.screeningQuestion = {};
+    $scope.screeningQuestion = {
+
+    };
     $scope.ScreeningQuestionTypes = RESOURCES.SCREENING_QUESTION_TYPES;
     $scope.options =[];
         ScreeningsService.getScreening($scope.id).then(function (results) {
@@ -19,6 +21,11 @@ angular.module('Jobsite').controller("CreateScreeningQuestionController", functi
 
         if (!isValid){
             return;
+        }
+
+        if ($scope.screeningQuestion.type == 'TrueFalse'){
+            $scope.screeningQuestion.options = [];
+            $scope.screeningQuestion.answerBoolean =  $scope.selectedOption == '0';
         }
 
             ScreeningsService.postScreeningQuestion($scope.id, $scope.screeningQuestion).then(function (results) {
@@ -38,14 +45,19 @@ angular.module('Jobsite').controller("CreateScreeningQuestionController", functi
 
     $scope.changedQuestionType = function() {
        if ($scope.screeningQuestion.type == 'TrueFalse'){
-           $scope.options = ['True', 'False'];
+           $scope.screeningQuestion.options = ['True', 'False'];
            $scope.option ='';
+           $scope.selectedOption ='';
+       }else{
+           $scope.screeningQuestion.options = [];
+           $scope.option ='';
+           $scope.selectedOption ='';
        }
     };
 
     $scope.addOption = function() {
-        if ($scope.options.indexOf($scope.option) == -1) {
-            $scope.options.push($scope.option);
+        if ($scope.screeningQuestion.options.indexOf($scope.option) == -1) {
+            $scope.screeningQuestion.options.push($scope.option);
             $scope.option ='';
         }
     };

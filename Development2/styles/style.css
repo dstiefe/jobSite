@@ -4524,3 +4524,24 @@ ul.h-list li:hover a {
     background-color: lightgrey;
     padding: 10px;
 }
+.panel-custom {
+    margin-left: 20px;
+    border-color: #ddd;
+    background-color: rgba(230, 235, 232, 0.29);
+}
+.panel-custom > .panel-heading {
+    margin-left: 20px;
+    margin-right: 20px;
+    color: #333;
+    border-color: #766F6F;
+}
+
+.vertical-align {
+    display: flex;
+    align-items: center;
+    min-height: 70vh;
+}
+.col-centered{
+    float: none;
+    margin: 0 auto;
+}

@@ -197,7 +197,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
             }
         })
         .state('createscreening', {
-            url: "/createscreening",
+            url: "/screenings/create",
             templateUrl: "views/CreateScreening.html",
             data: {
                 pageTitle: 'Create Screening',
@@ -206,8 +206,18 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
                 }
             }
         })
+        .state('editscreening', {
+            url: "/screenings/:id/edit",
+            templateUrl: "views/CreateScreening.html",
+            data: {
+                pageTitle: 'Edit Screening',
+                permissions: {
+                    only: ['Admin'],
+                }
+            }
+        })
         .state('createscreeningquestion', {
-            url: "/createscreeningquestion/:id",
+            url: "/screenings/:id/questions/create",
             templateUrl: "views/CreateScreeningQuestion.html",
             data: {
                 pageTitle: 'Create Screening Question',

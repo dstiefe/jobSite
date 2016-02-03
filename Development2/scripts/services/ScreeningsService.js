@@ -45,7 +45,7 @@ angular.module('Jobsite').factory('ScreeningsService', ['$http', '$q', 'RESOURCE
         });
     };
     var _getScreening = function (id) {
-        return $http.get(screenings + 'jobs/'+id,{
+        return $http.get(serviceBase + 'screenings/'+id,{
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': ValiDatedTokenObject.getValiDatedTokenObject().token_type+" "+ValiDatedTokenObject.getValiDatedTokenObject().access_token

@@ -1,0 +1,70 @@
+<link rel="stylesheet" href="libs/jquery-ui/themes/overcast/jquery-ui.min.css" />
+<div ng-controller="CreateScreeningController">
+    <div class="container">
+        <div id="header" ng-include="'views/head.html'"></div>
+        <div class="row-fluid vertical-align" style="margin-top: 20px;">
+                <div class="col-xs-12 col-sm-9 col-centered">
+
+                        <div class="panel panel-custom">
+                                <div class="panel-heading">Create Screening</div>
+                                <div class="panel-body">
+                                    <form name="createScreeningForm" ng-submit="saveChanges(createScreeningForm.$valid)" novalidate>
+                                        <div class="row">
+                                            <div class="col-md-6">
+
+                                                <div class="form-group">
+                                                    <label for="title">Title</label>
+                                                    <input type="text" class="form-control" ng-model="title" id="title" name="title" placeholder="Enter Title" required />
+                                                    <span class="color-theme" ng-show="createScreeningForm.title.$error.required">Title is required.</span>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="description">Description</label>
+                                                    <div  text-angular ng-model="description" name="description" id="description" ta-text-editor-class="border-around" ta-html-editor-class="border-around" style="background-color: #fff;" required></div>
+                                                    <span class="color-theme" ng-show="createScreeningForm.description.$error.required">Description is required.</span>
+                                                </div>
+
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="categoryId">Category</label>
+                                                    <select ng-model="categoryId" class="form-control" id="categoryId" name="categoryId" required>
+                                                        <option value="">Select Category</option>
+                                                        <option ng-repeat="category in categories" ng-selected="category.id==categoryId" value="{{category.id}}">{{category.name}}</option>
+                                                    </select>
+                                                    <span class="color-theme" ng-show="createScreeningForm.categoryId.$error.required">Category is required.</span>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="jobsIds">Jobs</label>
+                                                    <select multiple id="jobsIds" name="jobsIds" ng-model="jobsIds" class="form-control" required>
+                                                        <option ng-repeat="job in jobs" value="{{job.id}}">{{job.title}}</option>
+                                                    </select>
+                                                    <span class="color-theme" ng-show="createScreeningForm.jobsIds.$error.required">Jobs is required.</span>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="sort">Order</label>
+                                                    <input type="number" min="1" step="1"  ng-model="sort" class="form-control" id="sort" name="sort" placeholder="Set Order">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="timeToComplete">Time (in minutes)</label>
+                                                    <input type="number" min="0.5" step="0.5"  ng-model="timeToComplete" class="form-control" id="timeToComplete" name="timeToComplete" placeholder="Estimated Time to Complete" required />
+                                                    <span class="color-theme" ng-show="createScreeningForm.timeToComplete.$error.required">Time is required.</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6 col-md-offset-6 form-group text-right">
+                                                <button class="btn btn-primary btn-lg" type="submit">
+                                                    <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
+                            </div>
+                        </div>
+
+              </div>
+        </div>
+    </div>
+</div>

@@ -20,7 +20,7 @@
         <div class="col-md-1">
             <div class="clear">
                 <br />
-            </div><a class="btn btn-info btn-primary" ui-sref="jobmanagement">Create Screening</a></div>
+            </div><a class="btn btn-info btn-primary" ui-sref="createscreening">Create Screening</a></div>
     </div>
     <section id="content">
         <div class="container">
@@ -52,7 +52,7 @@
                                     {{ data.modifyDate*1000 | date : "M/d/yyyy" }}
                                 </td>
                                 <td>
-                                    <a ui-sref="jobmanagement({id:data.id})" class="btn btn-info btn-warning"><span class="glyphicon glyphicon-edit"></span> Edit</a>&nbsp;<a ng-click="deleterecords(data)" class="btn btn-info btn-danger"><span class="glyphicon glyphicon-remove"></span> Delete</a>
+                                    <a ui-sref="editscreening({id:data.id})" class="btn btn-info btn-warning"><span class="glyphicon glyphicon-edit"></span> Edit</a>&nbsp;<a ng-click="deleterecords(data)" class="btn btn-info btn-danger"><span class="glyphicon glyphicon-remove"></span> Delete</a>
                                 </td>
                             </tr>
                             </tbody>

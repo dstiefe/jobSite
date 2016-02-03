@@ -55,7 +55,16 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6 col-md-offset-6 form-group text-right">
-                                                <button class="btn btn-primary btn-lg" type="submit">
+
+                                                <button class="btn btn-primary btn-lg" type="button"  alt="Cancel and exit" title="Cancel and exit" ng-click="cancel()">
+                                                    <span class="glyphicon glyphicon glyphicon-ban-circle" aria-hidden="true" ></span>
+                                                </button>
+
+                                                <button class="btn btn-primary btn-lg" type="submit" alt="Save and exit" title="Save and exit" ng-click="saveAndExit=true">
+                                                    <span class="glyphicon glyphicon glyphicon-ok" aria-hidden="true" ></span>
+                                                </button>
+
+                                                <button class="btn btn-primary btn-lg" type="submit" alt="Save and continue" title="Save and continue">
                                                     <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
                                                 </button>
                                             </div>

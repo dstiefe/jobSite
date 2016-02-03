@@ -32,11 +32,11 @@ angular.module('Jobsite').controller("CreateScreeningController", function($scop
                 $scope.screening.jobsIds =res.jobsIds;
             }, 10);
 
-
         }, function (error) {
             console.log(error.data.message);
         });
     }
+
     $scope.saveChanges = function(isValid) {
 
         if (!isValid){
@@ -45,17 +45,30 @@ angular.module('Jobsite').controller("CreateScreeningController", function($scop
 
         if (!angular.isUndefined($scope.id) && $scope.id != '') {
             ScreeningsService.putScreening($scope.id, $scope.screening).then(function (results) {
-                $state.go('createscreeningquestion', {'id': results.data.id});
+                if ($scope.saveAndExit){
+                    $state.go('screenings');
+                }else{
+                    $state.go('createscreeningquestion', {'id': results.data.id});
+                }
             }, function (error) {
                 console.log(error.data.message);
             });
         }
         else{
             ScreeningsService.postScreening($scope.screening).then(function (results) {
-                $state.go('createscreeningquestion', {'id': results.data.id});
+                if ($scope.saveAndExit){
+                    $state.go('screenings');
+                }else{
+                    $state.go('createscreeningquestion', {'id': results.data.id});
+                }
             }, function (error) {
                 console.log(error.data.message);
             });
         }
     }
+
+    $scope.cancel = function() {
+         $state.go('screenings');
+    }
+
 });

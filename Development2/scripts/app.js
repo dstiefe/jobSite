@@ -49,9 +49,15 @@ var clientId ="P600Us6Y476QiK331u5yEzb22dpX_y6NS75!9I-a";
              {value: "Project", name: "Project"}
         ];
 
+        var ScreeningQuestionTypes = [
+            {value: "MultipleChoice", name: "Multiple/Choice"},
+            {value: "TrueFalse", name: "True/False"},
+            {value: "FillIn", name: "Fill In"}
+        ];
             // Use the variable in your constants
             return {
                 EMPLOYEE_TYPES: EmployeeTypes,
+                SCREENING_QUESTION_TYPES: ScreeningQuestionTypes,
                 API_BASE_PATH: apiBasePath,
                 CLIENT_ID: clientId
             }

@@ -1,0 +1,117 @@
+<link rel="stylesheet" href="libs/jquery-ui/themes/overcast/jquery-ui.min.css" />
+<div ng-controller="CreateScreeningQuestionController">
+    <div class="container">
+        <div id="header" ng-include="'views/head.html'"></div>
+        <div class="row-fluid vertical-align" style="margin-top: 20px;">
+            <div class="col-xs-12 col-sm-9 col-centered">
+
+                <div class="panel panel-custom">
+                    <div class="panel-heading">
+
+                        <div class="pull-left">
+                            <h1 class="panel-title">Create Screening</h1>
+                        </div>
+
+                        <div class=" pull-right">
+                            # of Questions Created {{questionsCount}}
+                        </div>
+
+                        <div class="clearfix"></div>
+
+                    </div>
+
+                    <div class="panel-body">
+                        <form name="createQuestionScreeningForm" ng-submit="saveChanges(createQuestionScreeningForm.$valid)" novalidate>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        Create Questions &amp; Answer Key
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="text">Question</label>
+                                        <input type="text" class="form-control" ng-model="screeningQuestion.text" id="text" name="text" placeholder="Enter Question" required />
+                                        <span class="color-theme" ng-show="createQuestionScreeningForm.text.$error.required">Question is required.</span>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="textOptional">Question Help</label>
+                                        <input type="text" class="form-control" ng-model="screeningQuestion.textOptional" id="textOptional" name="textOptional" placeholder="Enter Question Help (Optional)"  />
+                                    </div>
+
+
+                                    <div class="form-group">
+                                             <label for="option">Possible answer</label>
+                                             <input class="form-control" style="width:70%;float:right;" ng-model="option" id="option" type="text"  ng-enter="addOption()" placeholder="Enter Possible Answer and press return">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="options">Possible answers</label>
+                                        <ul class="list-group" id="options" name="options">
+                                            <li class="list-group-item" ng-repeat="option in options">{{ option }}<a style="float:right;" href="" ng-click="removeOption($index)"  ><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></a></li>
+                                        </ul>
+                                    </div>
+
+
+
+
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="type">Question Type</label>
+                                        <select
+                                                id="type"
+                                                name="type"
+                                                ng-model="screeningQuestion.type"
+                                                required
+                                                class="form-control"
+                                                ng-change="changedQuestionType()"
+                                        >
+                                            <option value="">Select Question Type</option>
+                                            <option ng-repeat="_type in ScreeningQuestionTypes" ng-selected="_type.value==type" value="{{_type.value}}">{{_type.name}}</option>
+                                        </select>
+                                        <span class="color-theme" ng-show="createQuestionScreeningForm.type.$error.required">Screening Question Type is required.</span>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="selectedOption">Correct Answer</label>
+                                        <select
+                                                id="selectedOption"
+                                                name="type"
+                                                ng-model="selectedOption"
+                                                required
+                                                class="form-control"
+                                        >
+                                            <option value="">Select Correct Answer</option>
+                                            <option ng-repeat="_option in options" ng-selected="_option==selectedOption" value="{{_option}}">{{_option}}</option>
+                                        </select>
+                                        <span class="color-theme" ng-show="createQuestionScreeningForm.selectedOption.$error.required">Correct Answer Type is required.</span>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 col-md-offset-6 form-group text-right">
+
+                                    <button class="btn btn-primary btn-lg" type="button"  alt="Cancel and exit" title="Cancel and exit" ng-click="cancel()">
+                                        Cancel
+                                    </button>
+
+                                    <button class="btn btn-primary btn-lg" type="submit" alt="Save and continue" title="Save and continue">
+                                        Add New Question
+                                    </button>
+
+                                    <button class="btn btn-primary btn-lg" type="submit" alt="Save and exit" title="Save and exit" ng-click="saveAndExit=true">
+                                        Save Screening
+                                    </button>
+
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

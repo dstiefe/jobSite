@@ -70,5 +70,4 @@ angular.module('Jobsite').controller("CreateScreeningController", function($scop
     $scope.cancel = function() {
          $state.go('screenings');
     }
-
 });

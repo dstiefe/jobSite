@@ -116,6 +116,7 @@ angular.module('Jobsite').factory('ScreeningsService', ['$http', '$q', 'RESOURCE
     screeningsServiceFactory.deleteScreening = _deleteScreening;
     screeningsServiceFactory.getScreening = _getScreening;
     screeningsServiceFactory.getMyScreenings = _getMyScreenings;
+
     screeningsServiceFactory.postScreeningQuestion = _postScreeningQuestion;
     screeningsServiceFactory.getScreeningQuestionByResumeId = _getScreeningQuestionByResumeId;
     screeningsServiceFactory.getScreeningByResumeId = _getScreeningByResumeId;

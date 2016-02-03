@@ -4,13 +4,7 @@
 angular.module('Jobsite').controller("CreateScreeningController", function($scope, Login, $http, $timeout, $location, ScreeningsService, CategoriesService, JobsService, $state, $stateParams) {
 
     $scope.id = $stateParams.id;
-    $scope.screening = {}
-    $scope.title = '';
-    $scope.description ='';
-    $scope.categoryId ='';
-    $scope.jobsIds ='';
-    $scope.sort ='';
-    $scope.timeToComplete ='';
+    $scope.screening = {};
 
     CategoriesService.getCategories().then(function (results) {
         $scope.categories = results.data;
@@ -24,45 +18,40 @@ angular.module('Jobsite').controller("CreateScreeningController", function($scop
         console.log(error.data.message);
     });
 
-    if ($scope.id != '') {
+    if (!angular.isUndefined($scope.id) && $scope.id != '') {
         ScreeningsService.getScreening($scope.id).then(function (results) {
+
             var res = results.data;
 
-            $scope.title = res.title;
-            $scope.description =res.description;
-            $scope.sort = res.sort;
-            $scope.timeToComplete = res.timeToComplete;
-            $scope.categoryId = res.categoryId;
-            $scope.jobsIds =res.jobsIds;
+            $scope.screening.title = res.title;
+            $scope.screening.description =res.description;
+            $scope.screening.sort = res.sort;
+            $scope.screening.timeToComplete = res.timeToComplete;
+            $timeout(function() {
+                $scope.screening.categoryId = res.categoryId;
+                $scope.screening.jobsIds =res.jobsIds;
+            }, 10);
+
 
         }, function (error) {
             console.log(error.data.message);
         });
     }
-
     $scope.saveChanges = function(isValid) {
 
         if (!isValid){
             return;
         }
-        var data = {
-            "title": $scope.title,
-            "description": $scope.description,
-            "sort": $scope.sort,
-            "timeToComplete": $scope.timeToComplete,
-            "categoryId": $scope.categoryId,
-            "jobsIds": $scope.jobsIds
-        };
 
-        if ($scope.id != '') {
-            ScreeningsService.putScreening($scope.id, data).then(function (results) {
+        if (!angular.isUndefined($scope.id) && $scope.id != '') {
+            ScreeningsService.putScreening($scope.id, $scope.screening).then(function (results) {
                 $state.go('createscreeningquestion', {'id': results.data.id});
             }, function (error) {
                 console.log(error.data.message);
             });
         }
         else{
-            ScreeningsService.postScreening(data).then(function (results) {
+            ScreeningsService.postScreening($scope.screening).then(function (results) {
                 $state.go('createscreeningquestion', {'id': results.data.id});
             }, function (error) {
                 console.log(error.data.message);

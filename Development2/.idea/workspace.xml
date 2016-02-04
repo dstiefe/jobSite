@@ -26,17 +26,41 @@
         <entry file="file://$PROJECT_DIR$/scripts/config.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="250" column="19" selection-start-line="250" selection-start-column="19" selection-end-line="250" selection-end-column="44" />
+              <caret line="249" column="35" selection-start-line="249" selection-start-column="16" selection-end-line="249" selection-end-column="35" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FinishTestScreeningController.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/scripts/controllers/FinishTestScreeningController.js">
+      <file leaf-file-name="TestScreening.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/TestScreening.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-9.153846">
+              <caret line="14" column="123" selection-start-line="14" selection-start-column="115" selection-end-line="14" selection-end-column="123" />
+              <folding>
+                <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#ul#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#ul#0;n#div#1;n#div#1;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/scripts/app.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="6" column="24" selection-start-line="6" selection-start-column="24" selection-end-line="6" selection-end-column="24" />
+              <caret line="41" column="8" selection-start-line="41" selection-start-column="8" selection-end-line="41" selection-end-column="8" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TestScreeningController.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/scripts/controllers/TestScreeningController.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.68476355">
+              <caret line="64" column="0" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
               <folding>
                 <element signature="e#0#40#0" expanded="false" />
               </folding>
@@ -44,26 +68,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CreateScreening.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/CreateScreening.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="14.692307">
-              <caret line="2" column="27" selection-start-line="2" selection-start-column="27" selection-end-line="2" selection-end-column="27" />
-              <folding>
-                <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="StartTestScreeningController.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/scripts/controllers/StartTestScreeningController.js">
+      <file leaf-file-name="ScreeningsService.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/obj/Release/Package/PackageTmp/scripts/services/ScreeningsService.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="15" column="7" selection-start-line="15" selection-start-column="7" selection-end-line="15" selection-end-column="7" />
-              <folding>
-                <element signature="e#41#81#0" expanded="false" />
-              </folding>
+              <caret line="101" column="25" selection-start-line="101" selection-start-column="25" selection-end-line="101" selection-end-column="25" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -71,83 +81,52 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-46.346153">
-              <caret line="189" column="13" selection-start-line="189" selection-start-column="13" selection-end-line="189" selection-end-column="13" />
+            <state vertical-scroll-proportion="-29.153847">
+              <caret line="146" column="38" selection-start-line="146" selection-start-column="38" selection-end-line="146" selection-end-column="38" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ResumesService.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/scripts/services/ResumesService.js">
+      <file leaf-file-name="moment.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/libs/angular-timer/moment.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="3" column="49" selection-start-line="3" selection-start-column="35" selection-end-line="3" selection-end-column="49" />
-              <folding>
-                <element signature="e#450#1189#0" expanded="false" />
-                <element signature="e#1238#2080#0" expanded="false" />
-                <element signature="e#2129#2686#0" expanded="false" />
-                <element signature="e#2729#3417#0" expanded="false" />
-                <element signature="e#3476#4044#0" expanded="false" />
-                <element signature="e#4083#4776#0" expanded="false" />
-                <element signature="e#4812#5502#0" expanded="false" />
-              </folding>
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="JobsService.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/scripts/services/JobsService.js">
+      <file leaf-file-name="humanize-duration.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/libs/angular-timer/humanize-duration.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="77" column="11" selection-start-line="70" selection-start-column="8" selection-end-line="77" selection-end-column="11" />
-              <folding>
-                <element signature="e#565#2614#0" expanded="false" />
-              </folding>
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="StartTestScreening.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/views/StartTestScreening.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.25197628">
-              <caret line="15" column="64" selection-start-line="15" selection-start-column="64" selection-end-line="15" selection-end-column="64" />
-              <folding>
-                <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#p#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#p#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#p#2;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FinishTestScreening.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/FinishTestScreening.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-6.5384617">
-              <caret line="10" column="27" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="66" />
-              <folding>
-                <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#p#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#p#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CreateScreeningController.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/scripts/controllers/CreateScreeningController.js">
+      <file leaf-file-name="CreateScreeningQuestionController.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/scripts/controllers/CreateScreeningQuestionController.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="48" column="12" selection-start-line="48" selection-start-column="12" selection-end-line="48" selection-end-column="44" />
+              <caret line="6" column="25" selection-start-line="6" selection-start-column="11" selection-end-line="6" selection-end-column="25" />
+              <folding>
+                <element signature="e#720#2161#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ScreeningsService.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/scripts/services/ScreeningsService.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="101" column="25" selection-start-line="101" selection-start-column="25" selection-end-line="101" selection-end-column="25" />
               <folding>
                 <element signature="e#0#40#0" expanded="false" />
-                <element signature="e#358#407#0" expanded="false" />
-                <element signature="e#530#573#0" expanded="false" />
-                <element signature="e#592#640#0" expanded="false" />
-                <element signature="e#2347#2388#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -167,8 +146,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/views/Register.html" />
-        <option value="$PROJECT_DIR$/scripts/directives/directives.js" />
         <option value="$PROJECT_DIR$/scripts/controllers/ResumeDetailController.js" />
         <option value="$PROJECT_DIR$/views/ResumeDetailView.html" />
         <option value="$PROJECT_DIR$/scripts/dashboard.js" />
@@ -204,20 +181,22 @@
         <option value="$PROJECT_DIR$/scripts/controllers/ScreeningsController.js" />
         <option value="$PROJECT_DIR$/scripts/controllers/CreateScreeningController.js" />
         <option value="$PROJECT_DIR$/views/CreateScreening.html" />
-        <option value="$PROJECT_DIR$/scripts/services/ScreeningsService.js" />
-        <option value="$PROJECT_DIR$/scripts/app.js" />
         <option value="$PROJECT_DIR$/views/CreateScreeningQuestion.html" />
         <option value="$PROJECT_DIR$/scripts/controllers/CreateScreeningQuestionController.js" />
         <option value="$PROJECT_DIR$/scripts/config.js" />
-        <option value="$PROJECT_DIR$/views/TestScreening.html" />
         <option value="$PROJECT_DIR$/views/dashboard.html" />
-        <option value="$PROJECT_DIR$/scripts/controllers/TestScreeningController.js" />
-        <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/scripts/services/ResumesService.js" />
         <option value="$PROJECT_DIR$/scripts/controllers/StartTestScreeningController.js" />
         <option value="$PROJECT_DIR$/scripts/controllers/FinishTestScreeningController.js" />
         <option value="$PROJECT_DIR$/views/FinishTestScreening.html" />
         <option value="$PROJECT_DIR$/views/StartTestScreening.html" />
+        <option value="$PROJECT_DIR$/libs/angular-timer/angular-timer.min.js" />
+        <option value="$PROJECT_DIR$/scripts/app.js" />
+        <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/views/TestScreening.html" />
+        <option value="$PROJECT_DIR$/obj/Release/Package/PackageTmp/scripts/services/ScreeningsService.js" />
+        <option value="$PROJECT_DIR$/scripts/services/ScreeningsService.js" />
+        <option value="$PROJECT_DIR$/scripts/controllers/TestScreeningController.js" />
       </list>
     </option>
   </component>
@@ -234,7 +213,7 @@
     <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="1936" />
-    <option name="height" value="1176" />
+    <option name="height" value="1066" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -261,7 +240,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -344,9 +322,24 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Development2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Development2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="libs" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -356,15 +349,16 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\proj\daniel\jobSite\Development2\libs\angular-timer" />
+      <recent name="C:\Users\Van\Documents\WORK\daniel\jobSite\Development2\scripts\services" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\proj\daniel\jobSite\Development2\libs\angular-timer" />
       <recent name="D:\proj\daniel\jobSite\Development2\scripts\services" />
       <recent name="C:\Users\Van\Documents\WORK\daniel\jobSite\Development2\scripts\services" />
       <recent name="C:\Users\Van\Documents\WORK\daniel\jobSite\Development2\scripts" />
       <recent name="C:\Users\Van\Documents\WORK\daniel\jobSite\Development2" />
-      <recent name="C:\Users\Van\Documents\WORK\daniel\jobSite\Development2\scripts\controllers" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Van\Documents\WORK\daniel\jobSite\Development2\scripts\services" />
     </key>
   </component>
   <component name="RunManager" selected="JavaScript Debug.index.html">
@@ -425,13 +419,14 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1176" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24114583" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.36960602" sideWeight="0.6098958" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.37343097" sideWeight="0.39010417" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -443,7 +438,6 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.37343097" sideWeight="0.39010417" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -567,7 +561,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/scripts/controllers/CreateScreeningQuestionController.js</url>
-          <line>22</line>
+          <line>32</line>
           <option name="timeStamp" value="98" />
         </line-breakpoint>
       </breakpoints>
@@ -583,34 +577,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/styles/Addjobform.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.8727274">
-          <caret line="25" column="27" selection-start-line="25" selection-start-column="27" selection-end-line="25" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/associate.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/ResumeDetailView.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="2.6493506">
-          <caret line="96" column="0" selection-start-line="96" selection-start-column="0" selection-end-line="96" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/searchjobs.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.16558442">
-          <caret line="136" column="0" selection-start-line="136" selection-start-column="0" selection-end-line="136" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/Searchprojects.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.22077923">
@@ -636,16 +602,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="91" column="0" selection-start-line="91" selection-start-column="0" selection-end-line="91" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/controllers/SearchResumesHomeController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="8" column="8" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
-          <folding>
-            <element signature="e#0#40#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -804,16 +760,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/services/ScreeningsService.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="119" column="50" selection-start-line="119" selection-start-column="29" selection-end-line="119" selection-end-column="50" />
-          <folding>
-            <element signature="e#0#40#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/jobslist.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-16.346153">
@@ -835,62 +781,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="54" column="27" selection-start-line="54" selection-start-column="21" selection-end-line="54" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/CreateScreeningQuestion.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.5636363">
-          <caret line="59" column="77" selection-start-line="59" selection-start-column="77" selection-end-line="59" selection-end-column="77" />
-          <folding>
-            <element signature="n#style#0;n#input#0;n#div#3;n#div#0;n#div#0;n#form#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#ul#0;n#div#4;n#div#0;n#div#0;n#form#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/controllers/CreateScreeningQuestionController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="52" column="38" selection-start-line="52" selection-start-column="38" selection-end-line="52" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/scripts/dashboard.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/TestScreening.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/dashboard.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-14.615385">
-          <caret line="53" column="65" selection-start-line="53" selection-start-column="65" selection-end-line="53" selection-end-column="65" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/controllers/TestScreeningController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -907,16 +801,8 @@
     <entry file="file://$PROJECT_DIR$/scripts/services/ResumesService.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="3" column="49" selection-start-line="3" selection-start-column="35" selection-end-line="3" selection-end-column="49" />
-          <folding>
-            <element signature="e#450#1189#0" expanded="false" />
-            <element signature="e#1238#2080#0" expanded="false" />
-            <element signature="e#2129#2686#0" expanded="false" />
-            <element signature="e#2729#3417#0" expanded="false" />
-            <element signature="e#3476#4044#0" expanded="false" />
-            <element signature="e#4083#4776#0" expanded="false" />
-            <element signature="e#4812#5502#0" expanded="false" />
-          </folding>
+          <caret line="14" column="9" selection-start-line="3" selection-start-column="35" selection-end-line="3" selection-end-column="49" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -944,40 +830,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/config.js">
+    <entry file="file://$PROJECT_DIR$/views/FinishTestScreening.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="250" column="19" selection-start-line="250" selection-start-column="19" selection-end-line="250" selection-end-column="44" />
-          <folding />
+          <caret line="10" column="27" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="66" />
+          <folding>
+            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#p#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#p#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/views/CreateScreening.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="14.692307">
-          <caret line="2" column="27" selection-start-line="2" selection-start-column="27" selection-end-line="2" selection-end-column="27" />
+        <state vertical-scroll-proportion="-3.2692308">
+          <caret line="5" column="15" selection-start-line="0" selection-start-column="0" selection-end-line="78" selection-end-column="6" />
           <folding>
-            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
+    <entry file="file://$PROJECT_DIR$/scripts/controllers/SearchResumesHomeController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-46.346153">
-          <caret line="189" column="13" selection-start-line="189" selection-start-column="13" selection-end-line="189" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/FinishTestScreening.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.5384617">
-          <caret line="10" column="27" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="66" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="8" column="8" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
           <folding>
-            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#p#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#p#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="e#0#40#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -985,22 +865,136 @@
     <entry file="file://$PROJECT_DIR$/scripts/controllers/StartTestScreeningController.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="15" column="7" selection-start-line="15" selection-start-column="7" selection-end-line="15" selection-end-column="7" />
+          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="23" selection-end-column="3" />
           <folding>
             <element signature="e#41#81#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/views/dashboard.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-19.538462">
+          <caret line="62" column="34" selection-start-line="43" selection-start-column="28" selection-end-line="62" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/views/StartTestScreening.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.25197628">
+        <state vertical-scroll-proportion="-9.807693">
           <caret line="15" column="64" selection-start-line="15" selection-start-column="64" selection-end-line="15" selection-end-column="64" />
           <folding>
             <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#p#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#p#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#p#2;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/CreateScreeningQuestion.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.9615384">
+          <caret line="33" column="40" selection-start-line="33" selection-start-column="40" selection-end-line="33" selection-end-column="153" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/libs/angular-timer/angular-timer.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/controllers/CreateScreeningQuestionController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="6" column="25" selection-start-line="6" selection-start-column="11" selection-end-line="6" selection-end-column="25" />
+          <folding>
+            <element signature="e#720#2161#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="41" column="8" selection-start-line="41" selection-start-column="8" selection-end-line="41" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/libs/angular-timer/humanize-duration.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/libs/angular-timer/moment.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-29.153847">
+          <caret line="146" column="38" selection-start-line="146" selection-start-column="38" selection-end-line="146" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/obj/Release/Package/PackageTmp/scripts/services/ScreeningsService.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="101" column="25" selection-start-line="101" selection-start-column="25" selection-end-line="101" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/services/ScreeningsService.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="101" column="25" selection-start-line="101" selection-start-column="25" selection-end-line="101" selection-end-column="25" />
+          <folding>
+            <element signature="e#0#40#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="249" column="35" selection-start-line="249" selection-start-column="16" selection-end-line="249" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/TestScreening.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-9.153846">
+          <caret line="14" column="123" selection-start-line="14" selection-start-column="115" selection-end-line="14" selection-end-column="123" />
+          <folding>
+            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#ul#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#ul#0;n#div#1;n#div#1;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/controllers/TestScreeningController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.68476355">
+          <caret line="64" column="0" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#40#0" expanded="false" />
           </folding>
         </state>
       </provider>

@@ -99,7 +99,7 @@ angular.module('Jobsite').factory('ScreeningsService', ['$http', '$q', 'RESOURCE
         });
     };
     var _setResultOnScreeningQuestion = function (resumeId, screeningId, questionId, model) {
-        return $http.get(serviceBase + 'resumes/'+resumeId+'/screenings/'+screeningId+'/questions/'+questionId+'/result',
+        return $http.post(serviceBase + 'resumes/'+resumeId+'/screenings/'+screeningId+'/questions/'+questionId+'/result',
             model,
             {
                 headers: {

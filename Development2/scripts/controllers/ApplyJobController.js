@@ -24,6 +24,7 @@ function ApplyJobController($scope, Login, ValiDatedTokenObject, $http, $locatio
     $scope.includeCoverLetter = false;
 
     $scope.resumeFileUrl = '';
+    $scope.resumeOriginalFilename = '';
 $scope.loading =false;
 
 
@@ -79,6 +80,7 @@ $scope.loading =false;
             })
             .success(function(response) {
                 $scope.resumeFileUrl = response.storageLocationNative;
+                $scope.resumeOriginalFilename = response.originalFilename;
                 $scope.wizard.next();
                 $scope.loading = false;
             })
@@ -96,6 +98,7 @@ $scope.loading =false;
         var postresumedata = {
             "note": $scope.coverLetterNote,
             "storageLocationNative": $scope.resumeFileUrl,
+            "originalFilename": $scope.resumeOriginalFilename,
             "firstName": $scope.accountFirstName,
             "lastName": $scope.accountLastName,
             "email": $scope.accountEmail

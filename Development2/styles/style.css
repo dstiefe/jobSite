@@ -1320,8 +1320,8 @@ fieldset[disabled] .btn-primary2.active {
 }
 
 .btn-success {
-    background-color: #62cb31;
-    border-color: #62cb31;
+    /*background-color: #62cb31;*/
+    /*border-color: #62cb31;*/
     color: #FFFFFF
 }
 

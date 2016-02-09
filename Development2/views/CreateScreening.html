@@ -37,7 +37,7 @@
 
                                                 <div class="form-group">
                                                     <label for="jobsIds">Jobs</label>
-                                                    <select multiple id="jobsIds" name="jobsIds" ng-model="screening.jobsIds" class="form-control" required>
+                                                    <select multiple id="jobsIds" name="jobsIds" ng-model="screening.jobsIds" class="form-control" ng-change="jobsChanged()" required>
                                                         <option ng-repeat="job in jobs" value="{{job.id}}">{{job.title}}</option>
                                                     </select>
                                                     <span class="color-theme" ng-show="createScreeningForm.jobsIds.$error.required">Jobs is required.</span>

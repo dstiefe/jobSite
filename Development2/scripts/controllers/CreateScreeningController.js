@@ -35,12 +35,6 @@ angular.module('Jobsite').controller("CreateScreeningController", function($scop
         }, function (error) {
             console.log(error.data.message);
         });
-    }else{
-        ScreeningsService.getNewOrder().then(function (results) {
-            $scope.screening.sort = parseInt(results.data.content);
-        }, function (error) {
-            console.log(error.data.message);
-        });
     }
 
     $scope.saveChanges = function(isValid) {
@@ -75,5 +69,17 @@ angular.module('Jobsite').controller("CreateScreeningController", function($scop
 
     $scope.cancel = function() {
          $state.go('screenings');
+    }
+
+    $scope.jobsChanged = function(){
+
+        if ($scope.screening.jobsIds != null && $scope.screening.jobsIds.length == 1){
+            ScreeningsService.getNewOrder($scope.screening.jobsIds[0]).then(function (results) {
+                $scope.screening.sort = parseInt(results.data.content);
+            }, function (error) {
+                console.log(error.data.message);
+            });
+        }
+
     }
 });

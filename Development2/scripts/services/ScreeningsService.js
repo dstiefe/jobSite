@@ -123,8 +123,8 @@ angular.module('Jobsite').factory('ScreeningsService', ['$http', '$q', 'RESOURCE
         });
     };
 
-    var _getNewOrder = function () {
-        return $http.get(serviceBase + 'screenings/order/new',
+    var _getNewOrder = function (jobId) {
+        return $http.get(serviceBase + 'jobs/'+jobId+'/screenings/order/new',
             {
                 headers: {
                     'Content-Type': 'application/json',

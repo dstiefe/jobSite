@@ -111,6 +111,34 @@ angular.module('Jobsite').factory('ScreeningsService', ['$http', '$q', 'RESOURCE
         });
     };
 
+    var _getTestResultsByResumeId = function (resumeId) {
+        return $http.get(serviceBase + 'resumes/'+resumeId+'/screenings/results',
+            {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': ValiDatedTokenObject.getValiDatedTokenObject().token_type+" "+ValiDatedTokenObject.getValiDatedTokenObject().access_token
+                }
+            }).then(function (results) {
+            return results;
+        });
+    };
+
+    var _getNewOrder = function () {
+        return $http.get(serviceBase + 'screenings/order/new',
+            {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': ValiDatedTokenObject.getValiDatedTokenObject().token_type+" "+ValiDatedTokenObject.getValiDatedTokenObject().access_token
+                },
+                transformResponse: function (data, headersGetter, status) {
+                    //This was implemented since the REST service is returning a plain/text response
+                    //and angularJS $http module can't parse the response like that.
+                    return {content: data};}
+            }).then(function (results) {
+            return results;
+        });
+    };
+
     screeningsServiceFactory.postScreening = _postScreening;
     screeningsServiceFactory.putScreening = _putScreening;
     screeningsServiceFactory.deleteScreening = _deleteScreening;
@@ -121,6 +149,8 @@ angular.module('Jobsite').factory('ScreeningsService', ['$http', '$q', 'RESOURCE
     screeningsServiceFactory.getScreeningQuestionByResumeId = _getScreeningQuestionByResumeId;
     screeningsServiceFactory.getScreeningByResumeId = _getScreeningByResumeId;
     screeningsServiceFactory.setResultOnScreeningQuestion = _setResultOnScreeningQuestion;
+    screeningsServiceFactory.getTestResultsByResumeId = _getTestResultsByResumeId;
+    screeningsServiceFactory.getNewOrder = _getNewOrder;
 
     return screeningsServiceFactory;
 }]);

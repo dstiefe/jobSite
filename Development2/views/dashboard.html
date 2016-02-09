@@ -47,6 +47,10 @@
                                     Screening Count
                                     <span class="badge badge-success">{{data.applicantsCountForScreening}}</span>
                                 </a>
+                                <a class="btn btn-default" href="#" ng-show = "role == 'Admin'">
+                                    InReview Count
+                                    <span class="badge badge-warning">{{data.applicantsCountForReview}}</span>
+                                </a>
 
                                 <a class="btn btn-danger" ui-sref="starttestscreening({id:data.resumeId})" ng-show = "role == 'User' && data.screeningStage =='Screening'">
                                     {{data.screeningStage}}

@@ -87,4 +87,30 @@ angular.module('Jobsite').controller("ApplicantsController", function($scope, $h
             console.log(error.data.message);
         });
     };
+
+    $scope.testResultsViewShow = function(data) {
+            var modalInstance = $modal.open({
+                animation: true,
+                templateUrl: 'views/TestResult.html',
+                controller: 'TestResultController',
+                size : 'lg',
+                resolve: {
+                    resume: function () {
+                        return data;
+                    },
+                    jobId: function () {
+                        return jobId;
+                    }
+                }});
+    };
+
+    $scope.arrayNotEmpty = function(item) {
+            var len = item.passedScreeningIds  == null ? 0: item.passedScreeningIds.length;
+            if ( len == 0) {
+                return false;
+            } else {
+                return true;
+        }
+    };
+
 })

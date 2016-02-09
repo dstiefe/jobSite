@@ -3,10 +3,8 @@
  */
 
 angular.module('Jobsite').controller("TestScreeningController", function($scope, $rootScope, Login, $http, $timeout, $location, ScreeningsService, CategoriesService, ResumesService, $state, $stateParams) {
-    $scope.timerRunning = true;
 
-    var timeStarted = false;
-
+var timeStarted = false;
     var _startTimer = function (){
         if (!timeStarted) {
             $scope.$broadcast('timer-start');
@@ -25,6 +23,7 @@ angular.module('Jobsite').controller("TestScreeningController", function($scope,
         }
     }
 
+    _startTimer();
 
 //http://stackoverflow.com/questions/26950645/how-to-get-current-time-from-angular-timer
     $scope.$on('timer-tick', function (event, data) {

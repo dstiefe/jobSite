@@ -24,7 +24,8 @@ function ApplyJobController($scope, Login, ValiDatedTokenObject, $http, $locatio
     $scope.includeCoverLetter = false;
 
     $scope.resumeFileUrl = '';
-
+    $scope.resumeOriginalFilename = '';
+$scope.loading =false;
 
 
     var req = {
@@ -79,7 +80,9 @@ function ApplyJobController($scope, Login, ValiDatedTokenObject, $http, $locatio
             })
             .success(function(response) {
                 $scope.resumeFileUrl = response.storageLocationNative;
+                $scope.resumeOriginalFilename = response.originalFilename;
                 $scope.wizard.next();
+                $scope.loading = false;
             })
             .error(function(response) {
                 $scope.loading = false;
@@ -89,12 +92,13 @@ function ApplyJobController($scope, Login, ValiDatedTokenObject, $http, $locatio
     };
 
     $scope.onSubmit = function() {
-
+        $scope.loading = true;
         var parts = $location.absUrl().split("?id=");
         var viewJobId = parts[1];
         var postresumedata = {
             "note": $scope.coverLetterNote,
             "storageLocationNative": $scope.resumeFileUrl,
+            "originalFilename": $scope.resumeOriginalFilename,
             "firstName": $scope.accountFirstName,
             "lastName": $scope.accountLastName,
             "email": $scope.accountEmail
@@ -113,7 +117,10 @@ function ApplyJobController($scope, Login, ValiDatedTokenObject, $http, $locatio
                 $scope.jobAppliedDate = response.applyDate;
                 $scope.step = 3;
                 $scope.$parent.isApplied = true;
-
+                $scope.loading = false;
+            })
+            .error(function(response) {
+                $scope.loading = false;
             });
     }
 

@@ -1,19 +1,14 @@
 angular
     .module('Jobsite').controller("ViewJobDetailsController", function ($scope, Login, ValiDatedTokenObject, $location, $modal, $http, $location, $sce) {
         
-         ValiDatedTokenObject.setValiDatedTokenObject(JSON.parse(sessionStorage.getItem("ValiDatedTokenObject")));
-    //if (ValiDatedTokenObject.getValiDatedTokenObject())
-    //{
-    //    var role = ValiDatedTokenObject.getValiDatedTokenObject().roles;
-    //    if(role == 'Admin') $location.path("/dashboard");
-    //}
-var token =''
-if (ValiDatedTokenObject.getValiDatedTokenObject()!=null)
-{
-    $scope.role = ValiDatedTokenObject.getValiDatedTokenObject().roles;
-    token = ValiDatedTokenObject.getValiDatedTokenObject().token_type+" "+ValiDatedTokenObject.getValiDatedTokenObject().access_token;
-}
+        ValiDatedTokenObject.setValiDatedTokenObject(JSON.parse(sessionStorage.getItem("ValiDatedTokenObject")));
 
+        var token ='';
+        if (ValiDatedTokenObject.getValiDatedTokenObject()!=null)
+        {
+            $scope.role = ValiDatedTokenObject.getValiDatedTokenObject().roles;
+            token = ValiDatedTokenObject.getValiDatedTokenObject().token_type+" "+ValiDatedTokenObject.getValiDatedTokenObject().access_token;
+        }
 
         var parts = $location.absUrl().split("viewjobdetails?id=");
         var viewJobId= parts[1];
@@ -24,7 +19,7 @@ if (ValiDatedTokenObject.getValiDatedTokenObject()!=null)
                 'Content-Type': 'application/json',
                'Authorization': token
             }
-        }
+        };
 
         $http(req).then(function(data) {
             if (data.status == "200") {
@@ -50,5 +45,22 @@ if (ValiDatedTokenObject.getValiDatedTokenObject()!=null)
                 controller: ApplyJobController,
                 scope: $scope
             });
-        }
+        };
+
+        $scope.showReferralView = function() {
+            $modal.open({
+                animation: true,
+                templateUrl: 'views/SendReferral.html',
+                controller: 'SendReferralController',
+                size : 'lg',
+                resolve: {
+                    jobId: function () {
+                        return viewJobId;
+                    },
+                    jobTitle: function () {
+                        return $scope.jobTitle;
+                    }
+                }});
+        };
+
     });

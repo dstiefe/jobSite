@@ -1,0 +1,60 @@
+<div class="inmodal">
+    <div class="color-line"></div>
+    <div class="modal-header">
+        <div style="position:absolute; right: 30px; top: 10px;">
+            <a ng-click="onClose()" ><i class="fa fa-times"  style="font-size: 30px; color: red;"></i></a>
+        </div>
+
+        <div class="pull-left">
+            {{jobTitle}}
+        </div>
+
+    </div>
+    <div class="modal-body">
+        <div class="alert alert-danger" role="alert" ng-hide='!message'>{{message}}</div>
+
+        <div class="row">
+            <div class="form-group col-sm-12">
+                <h2>How it Works</h2>
+                <p>If you are not interested in the position or feel like you know someone that would be better qualified and looking.  Just put in there emails below and they will get a message indicating that you think they might be a good fit for the position…</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-sm-12">
+                <h2>The Best Part</h2>
+                <p>If any of the individuals you send this referral to – are not interested and elect to send it to someone they know… you will still receive a referral fee.  In the example that I just described you and your referral will split the $ amount evenly.  The great part about this is not matter how many people continue to send this …we keep track</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-sm-9">
+
+                <div class="row" ng-repeat="emailObject in emailObjects">
+                    <div class="form-group col-xs-4">
+                        <input type="text" ng-model="emailObject.firstName" placeholder="First Name" class="form-control" />
+                    </div>
+                    <div class="form-group col-xs-4">
+                        <input type="text" ng-model="emailObject.lastName" placeholder="Last Name" class="form-control" />
+                    </div>
+                    <div class="form-group col-xs-4">
+                        <input type="email" ng-model="emailObject.email" placeholder="E-mail" class="form-control" />
+                    </div>
+                </div>
+
+            </div>
+            <div class="form-group col-sm-3">
+                <label class="checkbox-inline">
+                    <input type="checkbox" ng-model="agreeTerm" />  Agree To Terms<br /> <a href="#">view terms</a>
+                </label>            </div>
+        </div>
+
+
+
+    </div>
+</div>
+<div class="modal-footer">
+    <div class="text-right m-t-xs">
+        <button ng-click="onSave()" class="btn btn-success" ng-disabled="!agreeTerm">Save</button>
+    </div>
+</div>
+</div>

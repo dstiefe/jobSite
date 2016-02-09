@@ -1,4 +1,4 @@
-angular.module('Jobsite').controller("AddjobformController", function($scope, Login, $sce, $location, $http, $timeout, ValiDatedTokenObject, RESOURCES, $stateParams, CategoriesService, LocationsService, JobsService, $compile) {
+angular.module('Jobsite').controller("AddjobformController", function($scope, Login, $sce, $location, $http, $timeout, ValiDatedTokenObject, RESOURCES, $stateParams, CategoriesService, LocationsService, JobsService, $compile, $modal) {
 //https://github.com/zensh/ui-autocomplete
         $scope.id  = $stateParams.id;
 
@@ -115,6 +115,8 @@ angular.module('Jobsite').controller("AddjobformController", function($scope, Lo
         $scope.aboutUsResultContent = "";
         $scope.jobRequirementsResultContent = "";
         $scope.tags = [];
+        $scope.referralFeePercent = null;
+        $scope.referralFeeAmount = null;
 
         CategoriesService.getCategories().then(function (results) {
             $scope.categories = results.data;
@@ -155,6 +157,8 @@ angular.module('Jobsite').controller("AddjobformController", function($scope, Lo
                 $scope.jobDescriptionResultContent = response["description"];
                 $scope.aboutUsResultContent = response["aboutUs"];
                 $scope.jobRequirementsResultContent = response["requirements"];
+                $scope.referralFeePercent = response["referralFeePercent"];
+                $scope.referralFeeAmount =response["referralFeeAmount"];
 
                 LocationsService.getLocation($scope.locationCity.id).then(function (results) {
                     res = results.data;
@@ -198,6 +202,7 @@ angular.module('Jobsite').controller("AddjobformController", function($scope, Lo
             if (!isValid || !$scope.locationCity.id){
                 return;
             }
+            console.log("send");
             if (!angular.isUndefined($scope.aboutUsResultContent)) {
                 $scope.aboutUsHtmlContent = $scope.aboutUsResultContent;
             }
@@ -224,7 +229,9 @@ angular.module('Jobsite').controller("AddjobformController", function($scope, Lo
                 "experience": $scope.experience,
                 "categoryId": $scope.categoryID,
                 "tags": $scope.tags,
-                "employeeType": $scope.employeeType
+                "employeeType": $scope.employeeType,
+                "referralFeePercent":  $scope.referralFeePercent,
+                "referralFeeAmount": $scope.referralFeeAmount
             };
             if ($scope.id != "") {
 
@@ -251,4 +258,38 @@ angular.module('Jobsite').controller("AddjobformController", function($scope, Lo
                 console.log(error.data.message);
             });
         }
+
+        $scope.setReferral = function() {
+
+            var jobTitle = '';
+            if (!angular.isUndefined($scope.jobTitleLocationResultContent)) {
+                jobTitle = $scope.jobTitleLocationResultContent;
+            }
+
+            var modalInstance = $modal.open({
+                animation: true,
+                templateUrl: 'views/SetReferral.html',
+                controller: 'SetReferralController',
+                size : 'md',
+                resolve: {
+                    referralFeePercent: function () {
+                        return $scope.referralFeePercent;
+                    },
+                    referralFeeAmount: function () {
+                        return $scope.referralFeeAmount;
+                    },
+                    jobTitle: function () {
+                        return jobTitle;
+                    }
+                }});
+
+            modalInstance.result.then(function (res) {
+                $scope.referralFeePercent = res.referralFeePercent;
+                $scope.referralFeeAmount = res.referralFeeAmount;
+            }, function () {
+               console.log('Modal dismissed at: ' + new Date());
+            });
+
+        }
+
     });

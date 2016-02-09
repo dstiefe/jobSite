@@ -39,7 +39,8 @@ var clientId ="P600Us6Y476QiK331u5yEzb22dpX_y6NS75!9I-a";
         'textAngular',             //Text editor
         'ui.autocomplete', //UI autocomplete
         'permission', // Permission
-        'timer'
+        'timer',
+        'bcherny/formatAsCurrency'
     ]).constant('RESOURCES', (function() {
 
             // Define your variable

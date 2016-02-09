@@ -117,11 +117,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
             url: "/viewjobdetails?id",
             templateUrl: "views/viewjobdetails.html",
             data: {
-                pageTitle: 'Job Details',
-                permissions: {
-                    only: ['Admin', 'User'],
-                    redirectTo: 'login'
-                }
+                pageTitle: 'Job Details'
             }
             //, resolve: {
             //    factory: checkRouting

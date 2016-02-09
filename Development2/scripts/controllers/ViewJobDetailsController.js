@@ -7,9 +7,14 @@ angular
     //    var role = ValiDatedTokenObject.getValiDatedTokenObject().roles;
     //    if(role == 'Admin') $location.path("/dashboard");
     //}
-
-
+var token =''
+if (ValiDatedTokenObject.getValiDatedTokenObject()!=null)
+{
     $scope.role = ValiDatedTokenObject.getValiDatedTokenObject().roles;
+    token = ValiDatedTokenObject.getValiDatedTokenObject().token_type+" "+ValiDatedTokenObject.getValiDatedTokenObject().access_token;
+}
+
+
         var parts = $location.absUrl().split("viewjobdetails?id=");
         var viewJobId= parts[1];
           var req = {
@@ -17,7 +22,7 @@ angular
             url: ServicesURL + 'api/v1/jobs/' + viewJobId,
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': ValiDatedTokenObject.getValiDatedTokenObject().token_type+" "+ValiDatedTokenObject.getValiDatedTokenObject().access_token
+               'Authorization': token
             }
         }
 

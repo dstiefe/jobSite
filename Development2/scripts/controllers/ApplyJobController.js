@@ -25,8 +25,11 @@ function ApplyJobController($scope, Login, ValiDatedTokenObject, $http, $locatio
 
     $scope.resumeFileUrl = '';
     $scope.resumeOriginalFilename = '';
-$scope.loading =false;
-
+    $scope.loading =false;
+    if ( ValiDatedTokenObject.getValiDatedTokenObject()==null)
+    {
+        $location.path("/login");
+    }
 
     var req = {
         method: 'GET',

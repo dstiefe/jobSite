@@ -40,7 +40,8 @@ var clientId ="P600Us6Y476QiK331u5yEzb22dpX_y6NS75!9I-a";
         'ui.autocomplete', //UI autocomplete
         'permission', // Permission
         'timer',
-        'bcherny/formatAsCurrency'
+        'bcherny/formatAsCurrency',
+        'angular-loading-bar'
     ]).constant('RESOURCES', (function() {
 
             // Define your variable

@@ -24,10 +24,10 @@
 
                                 <div class="pull-left">
                                     <h3 class="panel-title">{{data.title}}({{data.location}})</h3>
-                                    <span class="dateHeader">Date Created:{{data.publishedDate*1000 | date : "M/d/yyyy"}}</span>
+                                    <span class="dateHeader">
+                                        <span ng-show = "role == 'Admin'">Date Created: </span><span ng-show = "role == 'User'">Date Applied: </span>{{data.publishedDate*1000 | date : "M/d/yyyy"}}
+                                    </span>
                                 </div>
-
-
                                 <a class="btn btn-primary pull-right" ui-sref="applicants({id:data.id})" ng-show = "role == 'Admin'">
                                     {{viewtext}}
                                     <span class="badge badge-success" ng-show="!isUndefinedOrNull(data.applicantsIds) && data.applicantsIds.length > 0" >{{data.applicantsIds.length}}</span>

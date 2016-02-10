@@ -26,10 +26,10 @@ angular.module('Jobsite').controller('SendReferralController', function ($scope,
     $scope.onSave = function() {
         $scope.message ='';
         var isFill = false;
+
         for(var i = 0; i < $scope.emailObjects.length; i++)
         {
            var emailObject = $scope.emailObjects[i];
-
            if (!angular.isUndefined(emailObject.email) && emailObject.email != null && emailObject.email != '')
            {
                isFill  = true;

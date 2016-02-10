@@ -4545,3 +4545,19 @@ ul.h-list li:hover a {
     float: none;
     margin: 0 auto;
 }
+
+
+/*
+ * override the default CSS as an example
+ */
+
+#loading-bar .bar {
+    background: #2c3e50;
+}
+#loading-bar .peg {
+    box-shadow: 0 0 10px #2c3e50, 0 0 5px #2c3e50;
+}
+#loading-bar-spinner .spinner-icon {
+    border-top-color:  #2c3e50;
+    border-left-color: #2c3e50;
+}

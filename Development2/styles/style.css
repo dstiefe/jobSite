@@ -4561,3 +4561,9 @@ ul.h-list li:hover a {
     border-top-color:  #2c3e50;
     border-left-color: #2c3e50;
 }
+
+.panel-footer.panel-info{
+    color: #31708f;
+    background-color: #d9edf7;
+    border-color: #bce8f1;
+}

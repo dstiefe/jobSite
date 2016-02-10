@@ -32,7 +32,11 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
             url: "/dashboard",
             templateUrl: "views/dashboard.html",
             data: {
-                pageTitle: 'Dashboard'
+                pageTitle: 'Dashboard',
+                permissions: {
+                 only: ['Admin', 'User'],
+                 redirectTo: 'login'
+                 }
             }
         })
         .state('logout', {
@@ -114,10 +118,18 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
         })
          // Register
         .state('viewjobdetails', {
-            url: "/viewjobdetails?id",
+            url: "/viewjobdetails?id&referral",
             templateUrl: "views/viewjobdetails.html",
             data: {
                 pageTitle: 'Job Details'
+            },
+            params: {
+                id: {
+                    squash: true
+                },
+                referral: {
+                        squash: true
+                }
             }
             //, resolve: {
             //    factory: checkRouting

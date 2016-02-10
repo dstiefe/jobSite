@@ -20,7 +20,21 @@ angular.module('Jobsite').factory('ReferralService', ['$http', '$q', 'RESOURCES'
         });
     };
 
+    var _getReferrals = function () {
+        return $http.get(serviceBase + 'referrals/my',
+            {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': ValiDatedTokenObject.getValiDatedTokenObject().token_type+" "+ValiDatedTokenObject.getValiDatedTokenObject().access_token
+                }
+            }).then(function (results) {
+            return results;
+        });
+    };
+
 
     referralServiceFactory.postReferral = _postReferral;
+    referralServiceFactory.getReferrals = _getReferrals;
+
     return referralServiceFactory;
 }]);

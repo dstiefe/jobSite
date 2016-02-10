@@ -1,5 +1,5 @@
 angular
-    .module('Jobsite').controller("ViewJobDetailsController", function ($scope, Login, ValiDatedTokenObject, $location, $modal, $http, $location, $sce) {
+    .module('Jobsite').controller("ViewJobDetailsController", function ($scope, Login, ValiDatedTokenObject, $location,$stateParams, $modal, $http, $location, $sce) {
         
         ValiDatedTokenObject.setValiDatedTokenObject(JSON.parse(sessionStorage.getItem("ValiDatedTokenObject")));
 
@@ -11,7 +11,8 @@ angular
         }
 
         var parts = $location.absUrl().split("viewjobdetails?id=");
-        var viewJobId= parts[1];
+        var viewJobId=   $stateParams.id;
+
           var req = {
             method: 'GET',
             url: ServicesURL + 'api/v1/jobs/' + viewJobId,
@@ -36,6 +37,7 @@ angular
                 $scope.applicants = data.data.applicants;
                 $scope.isOwn = data.data.isOwn;
                 $scope.isApplied = data.data.isApplied;
+                $scope.isReferral = data.data.referralFeePercent >0 || data.data.referralFeeAmount > 0;
             }
         });
 

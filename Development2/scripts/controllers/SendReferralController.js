@@ -5,7 +5,7 @@ angular.module('Jobsite').controller('SendReferralController', function ($scope,
 
 
     $scope.emailObjects = [];
-    for(var i=0; i < 3; i++)
+    for(var i=0; i < 1; i++)
     {
         $scope.emailObjects.push({
             'email':'',
@@ -22,9 +22,31 @@ angular.module('Jobsite').controller('SendReferralController', function ($scope,
     $scope.onClose = function() {
         $modalInstance.close();
     };
+$scope.addRecepient= function() {
 
-    $scope.onSave = function() {
+    if ($scope.emailObjects.length>=3)
+        return;
+
+    $scope.emailObjects.push({
+        'email':'',
+        'firstName':'',
+        'lastName':''
+    });
+};
+    $scope.removeRecepient= function(i) {
+
+        if ($scope.emailObjects.length<=1)
+            return;
+
+        $scope.emailObjects.splice(i, 1);
+
+    };
+    $scope.onSave = function(isValid) {
         $scope.message ='';
+        if (!isValid){
+            $scope.message ='Check input data!';
+            return;
+        }
         var isFill = false;
 
         for(var i = 0; i < $scope.emailObjects.length; i++)

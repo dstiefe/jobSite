@@ -10,7 +10,10 @@
         </div>
 
     </div>
-    <div class="modal-body">
+
+<form name="sendForm" ng-submit="onSave(sendForm.$valid)" novalidate>
+
+<div class="modal-body">
         <div class="alert alert-danger" role="alert" ng-hide='!message'>{{message}}</div>
 
         <div class="row">
@@ -29,32 +32,47 @@
         <div class="row">
             <div class="form-group col-sm-9">
 
-                <div class="row" ng-repeat="emailObject in emailObjects">
-                    <div class="form-group col-xs-4">
-                        <input type="text" ng-model="emailObject.firstName" placeholder="First Name" class="form-control" />
+                <div class="form-group">
+                    <a href="" ng-click="addRecepient()"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add Recipient</a>
+                </div>
+
+                <div class="row" ng-repeat="emailObject in emailObjects track by $index">
+                    <div class="form-group col-xs-1">
+                        <a href="" ng-click="removeRecepient($index)"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></a>
+                    </div>
+                    <div class="form-group col-xs-3">
+                        <input type="text" ng-model="emailObject.firstName" name="firstName_{{$index}}" id="firstName_{{$index}}" placeholder="First Name" class="form-control" required />
+                        <span class="color-theme" ng-show="sendForm.firstName_{{$index}}.$error.required">First Name is required.</span>
                     </div>
                     <div class="form-group col-xs-4">
-                        <input type="text" ng-model="emailObject.lastName" placeholder="Last Name" class="form-control" />
+                        <input type="text" ng-model="emailObject.lastName" placeholder="Last Name" name="lastName_{{$index}}" id="lastName_{{$index}}" class="form-control" required />
+                        <span class="color-theme" ng-show="sendForm.lastName_{{$index}}.$error.required">First Name is required.</span>
                     </div>
                     <div class="form-group col-xs-4">
-                        <input type="email" ng-model="emailObject.email" placeholder="E-mail" class="form-control" />
+                        <input type="email" ng-model="emailObject.email" placeholder="E-mail" name="email_{{$index}}" id="email_{{$index}}" class="form-control" required />
+                        <span class="color-theme" ng-show="sendForm.email_{{$index}}.$error.required">Email is required.</span>
+                        <span class="color-theme" ng-show="sendForm.email_{{$index}}.$error.email">Not valid email!</span>
                     </div>
                 </div>
 
             </div>
+
             <div class="form-group col-sm-3">
                 <label class="checkbox-inline">
-                    <input type="checkbox" ng-model="agreeTerm" />  Agree To Terms<br /> <a href="#">view terms</a>
+                    <input type="checkbox" ng-model="agreeTerm" />  Agree To Terms<br /> <a href="#" style="color: #0000C0;">view terms</a>
                 </label>            </div>
         </div>
 
 
 
     </div>
-</div>
+
 <div class="modal-footer">
     <div class="text-right m-t-xs">
-        <button ng-click="onSave()" class="btn btn-success" ng-disabled="!agreeTerm">Save</button>
+        <button type="submit" class="btn btn-success" ng-disabled="!agreeTerm">Save</button>
     </div>
 </div>
+
+</form>
+
 </div>

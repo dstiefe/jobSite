@@ -124,12 +124,8 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
                 pageTitle: 'Job Details'
             },
             params: {
-                id: {
-                    squash: true
-                },
-                referral: {
-                        squash: true
-                }
+                id: {squash: true},
+                referral: { squash: true}
             }
             //, resolve: {
             //    factory: checkRouting

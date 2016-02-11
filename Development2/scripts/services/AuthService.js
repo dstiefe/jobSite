@@ -27,14 +27,48 @@ angular.module('Jobsite').factory("AuthService", ['$http', '$q', 'ValiDatedToken
         lastName: ""
     };
 
-    var _saveRegistration = function (registration) {
+    var _getReferrals = function(){
+        var referralObj = sessionStorage.getItem("referrals");
+        var referralsArr =[];
+        if (referralObj != null)
+        {
+            referralsArr = JSON.parse(referralObj);
+            if (referralsArr == null){
+                referralsArr =[];
+            }
+        }
+        return referralsArr;
+    };
 
+    var _deleteReferrals = function(){
+        sessionStorage.removeItem("referrals");
+    };
+
+    var _trackReferrals = function(){
+
+        var model = {};
+
+        model.referralIds = _getReferrals();
+
+        if (_authentication.isUser){
+            $http.post(serviceBase + 'tracking/referrals', model,  {headers: {
+                'Content-Type': 'application/json',
+                    'Authorization': ValiDatedTokenObject.getValiDatedTokenObject().token_type+" "+ValiDatedTokenObject.getValiDatedTokenObject().access_token
+            }}).then(function (response) {
+                _deleteReferrals();
+                return response;
+            });
+        }else{
+            _deleteReferrals();
+        }
+    };
+
+    var _saveRegistration = function (registration) {
         _logOut();
 
         return $http.post(serviceBase + 'account/register', registration).then(function (response) {
-            return response;
+                return response;
         });
-
     };
 
     var _login = function (loginData) {
@@ -57,6 +91,8 @@ angular.module('Jobsite').factory("AuthService", ['$http', '$q', 'ValiDatedToken
             _authentication.userName = loginData.userName;
             _authentication.isUser = isUser;
             _authentication.isAdministrator = isAdministrator;
+
+            _trackReferrals();
 
             deferred.resolve(response);
 
@@ -107,7 +143,6 @@ angular.module('Jobsite').factory("AuthService", ['$http', '$q', 'ValiDatedToken
         var deferred = $q.defer();
 
         $http.get(serviceBase + 'account/ObtainLocalAccessToken', { params: { provider: externalData.provider, externalAccessToken: externalData.externalAccessToken } }).success(function (response) {
-
             var isUser = response.roles == "User";
             var isAdministrator = response.roles == "Admin";
 
@@ -120,6 +155,8 @@ angular.module('Jobsite').factory("AuthService", ['$http', '$q', 'ValiDatedToken
             _authentication.userName = response.userName;
             _authentication.isUser = isUser;
             _authentication.isAdministrator = isAdministrator;
+
+            _trackReferrals();
 
             deferred.resolve(response);
 
@@ -185,6 +222,8 @@ angular.module('Jobsite').factory("AuthService", ['$http', '$q', 'ValiDatedToken
     authServiceFactory.registerExternal = _registerExternal;
     authServiceFactory.resetPasswordToken = _resetPasswordToken;
     authServiceFactory.resetPassword = _resetPassword;
+
+
 
     return authServiceFactory;
 }]);

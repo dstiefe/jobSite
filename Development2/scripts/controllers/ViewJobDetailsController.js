@@ -1,45 +1,48 @@
 angular
-    .module('Jobsite').controller("ViewJobDetailsController", function ($scope, Login, ValiDatedTokenObject, $location,$stateParams, $modal, $http, $location, $sce) {
-        
-        ValiDatedTokenObject.setValiDatedTokenObject(JSON.parse(sessionStorage.getItem("ValiDatedTokenObject")));
+    .module('Jobsite').controller("ViewJobDetailsController", function ($scope, Login, ValiDatedTokenObject, $location,$stateParams, $modal, $http, $location, $sce, JobsService, AuthService) {
 
-        var token ='';
-        if (ValiDatedTokenObject.getValiDatedTokenObject()!=null)
+        var jobId =   $stateParams.id;
+        var referralId =   $stateParams.referral;
+
+        if (!AuthService.authentication.isAuth)
         {
-            $scope.role = ValiDatedTokenObject.getValiDatedTokenObject().roles;
-            token = ValiDatedTokenObject.getValiDatedTokenObject().token_type+" "+ValiDatedTokenObject.getValiDatedTokenObject().access_token;
+            var referralObj = sessionStorage.getItem("referrals");
+
+            var referralsArr =[];
+            if (referralObj != null)
+            {
+                referralsArr = JSON.parse(referralObj);
+                if (referralsArr == null){
+                    referralsArr =[];
+                }
+            }
+            if (referralsArr.indexOf(referralId) == -1)
+            {
+                referralsArr.push(referralId);
+                sessionStorage.setItem("referrals", JSON.stringify(referralsArr));
+            }
         }
 
-        var parts = $location.absUrl().split("viewjobdetails?id=");
-        var viewJobId=   $stateParams.id;
+        JobsService.getJob(jobId, referralId ).then(function (data) {
+            $scope.jobTitle =  $sce.trustAsHtml(data.data.title);
+            $scope.jobLocation = data.data.location;
+            $scope.jobDescription = $sce.trustAsHtml( data.data.description);
+            $scope.jobRequirements =  $sce.trustAsHtml(data.data.requirements);
+            $scope.employeeType = data.data.employeeType;
+            $scope.location = data.data.location;
+            $scope.jobtype = data.data.type;
+            $scope.experience = data.data.experience;
+            $scope.posteddate = data.data.publishedDate;
+            $scope.jobAboutus = $sce.trustAsHtml( data.data.aboutUs);
+            $scope.applicants = data.data.applicants;
+            $scope.isOwn = data.data.isOwn;
+            $scope.isApplied = data.data.isApplied;
+            $scope.isReferral = data.data.referralFeePercent >0 || data.data.referralFeeAmount > 0;
 
-          var req = {
-            method: 'GET',
-            url: ServicesURL + 'api/v1/jobs/' + viewJobId,
-            headers: {
-                'Content-Type': 'application/json',
-               'Authorization': token
-            }
-        };
-
-        $http(req).then(function(data) {
-            if (data.status == "200") {
-                $scope.jobTitle =  $sce.trustAsHtml(data.data.title);
-                $scope.jobLocation = data.data.location;
-                $scope.jobDescription = $sce.trustAsHtml( data.data.description);
-                $scope.jobRequirements =  $sce.trustAsHtml(data.data.requirements);
-                $scope.employeeType = data.data.employeeType;
-                $scope.location = data.data.location;
-                $scope.jobtype = data.data.type;
-                $scope.experience = data.data.experience;
-                $scope.posteddate = data.data.publishedDate;
-                $scope.jobAboutus = $sce.trustAsHtml( data.data.aboutUs);
-                $scope.applicants = data.data.applicants;
-                $scope.isOwn = data.data.isOwn;
-                $scope.isApplied = data.data.isApplied;
-                $scope.isReferral = data.data.referralFeePercent >0 || data.data.referralFeeAmount > 0;
-            }
+        }, function (error) {
+            console.log(error.data.message);
         });
+
 
         $scope.onApply = function() {
             $modal.open({
@@ -57,7 +60,7 @@ angular
                 size : 'lg',
                 resolve: {
                     jobId: function () {
-                        return viewJobId;
+                        return jobId;
                     },
                     jobTitle: function () {
                         return $scope.jobTitle;

@@ -1,5 +1,5 @@
-var ServicesURL = "http://ec2-52-90-116-49.compute-1.amazonaws.com:81/jobapi_dev/";
-
+//var ServicesURL = "http://ec2-52-90-116-49.compute-1.amazonaws.com:81/jobapi_dev/";
+var ServicesURL = 'http://localhost:41656/';
 angular
     .module('Jobsite').service("Registration", function($http) {
 

@@ -19,7 +19,7 @@
         <div class="row">
                 <br />
                 <div class="col-lg-6" ng-repeat="data in list | startFrom:(currentPage-1)*entryLimit | limitTo:entryLimit"  >
-                        <div class="panel panel-default">
+                    <div class="panel panel-default" ng-if="!data.recepients" >
                             <div class="panel-heading">
 
                                 <div class="pull-left">
@@ -28,19 +28,23 @@
                                         <span ng-show = "role == 'Admin'">Date Created: </span><span ng-show = "role == 'User'">Date Applied: </span>{{data.publishedDate*1000 | date : "M/d/yyyy"}}
                                     </span>
                                 </div>
+
+
                                 <a class="btn btn-primary pull-right" ui-sref="applicants({id:data.id})" ng-show = "role == 'Admin'">
                                     {{viewtext}}
                                     <span class="badge badge-success" ng-show="!isUndefinedOrNull(data.applicantsIds) && data.applicantsIds.length > 0" >{{data.applicantsIds.length}}</span>
                                 </a>
+
                                 <a class="btn btn-primary pull-right" href="#viewjobdetails?id={{data.id}}" ng-hide = "role == 'Admin'">
                                     {{viewtext}}
                                 </a>
                                 <div class="clearfix"></div>
 
                             </div>
-                            <div class="panel-body crop" ng-bind-html="data.description">
+                            <div class="panel-body crop" ng-bind-html="data.description"  ></div>
 
-                            </div>
+
+
                             <div class="panel-footer" >
 
                                 <a class="btn btn-default" href="#" ng-show = "role == 'Admin'">
@@ -59,13 +63,39 @@
                                     {{data.screeningStage}}
                                 </a>
                                 <a class="btn btn-success" href="" ng-show = "role == 'User' && data.screeningStage =='Reviewed'">
-                                {{data.screeningStage}}
-                            </a>
+                                    {{data.screeningStage}}
+                                </a>
                                 <a class="btn btn-default" href="" ng-show = "role == 'User' && data.screeningStage =='None'">
                                     {{data.screeningStage}}
                                 </a>
+
                             </div>
                         </div>
+                    <div class="panel panel-info" ng-if="data.recepients" >
+                        <div class="panel-heading">
+                            <div class="pull-left">
+                                <h3 class="panel-title">{{data.jobName}}({{data.location}})</h3>
+                                    <span class="dateHeader">
+                                        <span>Date Created: </span>{{data.modifyDate*1000 | date : "M/d/yyyy"}}
+                                    </span>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="panel-body crop" >
+                            <span ng-repeat="recepient in data.recepients">{{recepient.firstName}} {{recepient.lastName}}, </span>
+                        </div>
+                        <div class="panel-footer panel-info" >
+                            <a class="btn btn-danger" ng-show = "data.status =='GotJob'">
+                                &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;
+                            </a>
+                            <a class="btn btn-warning" ng-show =  "data.status =='Open'">
+                                &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;
+                            </a>
+                            <a class="btn btn-success" ng-show =  "data.status =='GotJobMyNetwork'">
+                                &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
 

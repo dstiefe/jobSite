@@ -22,8 +22,10 @@
                                                     <div class="col-sm-4">
                                                             <h3>{{jobTitle}}</h3>  <h4>{{jobLocation}}</h4>
                                                     </div>
-                                                    <div class="col-sm-4" style="color:white;" ng-hide="role=='Admin'">
+                                                    <div class="col-sm-4" style="color:white;">
+                                                        <span  ng-hide="role=='Admin' || !isReferral">
                                                             This job has a referral fee – so if you are not interested – do you know of someone that might be … <a href="" ng-click="showReferralView()" style="color: #0000C0; " >learn more</a>
+                                                      </span>
                                                     </div>
                                                     <div class="col-sm-4 text-right">
                                                         <button class="btn btn-success btn-md" ng-hide="role=='Admin' || isApplied" data-ng-click="onApply()">Apply</button>

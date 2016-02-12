@@ -93,12 +93,17 @@ angular.module('Jobsite').controller("Registration", function ($scope, AuthServi
         if (IsAllFieldsValidated === true) {
             $('.splash').show();
 
+
+
+
             AuthService.saveRegistration(UserInfo).then(function (response) {
 
                     $('.splash').hide();
                     $('#lblMessage').text("You have successfully register");
                     $('#lblMessage').css('color', 'blue');
                     $('.splash').hide();
+
+
 
                 },
                 function (response) {

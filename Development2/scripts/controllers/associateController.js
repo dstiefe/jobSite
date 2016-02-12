@@ -17,8 +17,9 @@
 
     $scope.registerExternal = function () {
 
-        AuthService.registerExternal($scope.registerData).then(function (response) {
 
+
+        AuthService.registerExternal($scope.registerData).then(function (response) {
             $scope.savedSuccessfully = true;
             $scope.message = "User has been registered successfully, you will be redicted to dashboard page in 2 seconds.";
             startTimer();

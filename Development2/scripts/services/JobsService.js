@@ -67,12 +67,24 @@ angular.module('Jobsite').factory('JobsService', ['$http', '$q', 'RESOURCES','Va
             return results;
         });
     };
-    var _getJob = function (id) {
+    var _getJob = function (id, referralId) {
+
+        var token ='';
+        if (ValiDatedTokenObject.getValiDatedTokenObject()!=null)
+        {
+            token = ValiDatedTokenObject.getValiDatedTokenObject().token_type+" "+ValiDatedTokenObject.getValiDatedTokenObject().access_token;
+        }
+        params={};
+        if (typeof referralId !== 'undefined' && referralId !==''&& referralId !=null)
+        {
+            params['referralId'] = referralId;
+        }
         return $http.get(serviceBase + 'jobs/'+id,{
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': ValiDatedTokenObject.getValiDatedTokenObject().token_type+" "+ValiDatedTokenObject.getValiDatedTokenObject().access_token
-            }
+                'Authorization': token
+            },
+            params: params
         }).then(function (results) {
             return results;
         });
@@ -122,12 +134,25 @@ angular.module('Jobsite').factory('JobsService', ['$http', '$q', 'RESOURCES','Va
             return results;
         });
     };
+
+    var _getJobsApplied = function () {
+        return $http.get(serviceBase + 'jobs/all/applied',{
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': ValiDatedTokenObject.getValiDatedTokenObject().token_type+" "+ValiDatedTokenObject.getValiDatedTokenObject().access_token
+            }
+        }).then(function (results) {
+            return results;
+        });
+    };
+
     jobsServiceFactory.searchAdvancedJobs = _searchAdvancedJobs;
     jobsServiceFactory.getJob = _getJob;
     jobsServiceFactory.putJob = _putJob;
     jobsServiceFactory.postJob = _postJob;
     jobsServiceFactory.deleteJob = _deleteJob;
     jobsServiceFactory.getMyJobs = _getMyJobs;
+    jobsServiceFactory.getJobsApplied = _getJobsApplied;
 
     return jobsServiceFactory;
 }]);

@@ -54,7 +54,14 @@
                                             <td>{{data.lastName}}</td>
                                             <td>{{data.email}}</td>
                                             <td>{{data.note}}</td>
-                                            <td>{{ data.passedScreeningIds == null ? 0: data.passedScreeningIds.length}} of {{ data.screeningIds.length}} taken</td>
+                                            <td>
+                                                <span ng-show = "data.screeningIds!=null && data.screeningIds.length != 0 ">
+                                                {{ data.passedScreeningIds == null ? 0: data.passedScreeningIds.length}} of {{ data.screeningIds.length}} taken
+                                                </span>
+                                                 <span ng-show = "data.screeningIds==null || data.screeningIds.length == 0 ">
+                                                     No screenings
+                                                 </span>
+                                            </td>
                                             <td>
                                                 {{ data.applyDate*1000 | date : "M/d/yyyy" }}
                                             </td>
@@ -62,7 +69,11 @@
                                                 <a  href="" ng-click="detailViewShow(data.id)" class="btn btn-info btn-warning"><span class="glyphicon glyphicon-edit"></span> View</a>
                                             </td>
                                             <td>
-                                                <a  href="" ng-click="testResultsViewShow(data)" class="btn btn-info btn-warning"><span class="glyphicon glyphicon-edit"></span> Manage</a>
+                                                <a  ng-show = "data.screeningIds!=null && data.screeningIds.length != 0 "href="" ng-click="testResultsViewShow(data)" class="btn btn-info btn-warning"><span class="glyphicon glyphicon-edit"></span> Manage</a>
+                                                <span ng-show = "data.screeningIds==null || data.screeningIds.length == 0 ">
+                                                     No screenings
+                                                 </span>
+                                            </td>
                                             </td>
                                         </tr>
                                         </tbody>

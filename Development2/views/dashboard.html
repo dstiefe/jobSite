@@ -47,15 +47,17 @@
 
                             <div class="panel-footer" >
 
-                                <a class="btn btn-default" href="#" ng-show = "role == 'Admin'">
-                                    Screening Count
+                                <a class="btn btn-default" href="#" ng-show = "role == 'Admin' && data.applicantsCountForScreening > 0">
+                                    Screening
                                     <span class="badge badge-success">{{data.applicantsCountForScreening}}</span>
                                 </a>
-                                <a class="btn btn-default" href="#" ng-show = "role == 'Admin'">
-                                    InReview Count
+                                <a class="btn btn-default" href="#" ng-show = "role == 'Admin' && data.applicantsCountForReview > 0">
+                                    InReview
                                     <span class="badge badge-warning">{{data.applicantsCountForReview}}</span>
                                 </a>
-
+                                <a class="btn btn-default" href="#" ng-show = "role == 'Admin' && data.applicantsCountForReview== 0 && data.applicantsCountForReview == 0 ">
+                                    No screenings
+                                </a>
                                 <a class="btn btn-danger" ui-sref="starttestscreening({id:data.resumeId})" ng-show = "role == 'User' && data.screeningStage =='Screening'">
                                     {{data.screeningStage}}
                                 </a>
@@ -66,7 +68,7 @@
                                     {{data.screeningStage}}
                                 </a>
                                 <a class="btn btn-default" href="" ng-show = "role == 'User' && data.screeningStage =='None'">
-                                    {{data.screeningStage}}
+                                    No screenings
                                 </a>
 
                             </div>

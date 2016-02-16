@@ -17,8 +17,21 @@ angular.module('Jobsite').controller("StartTestScreeningController", function($s
 
     $scope.start = function() {
 
-        if ($scope.resume.screeningIds.length > 0){
-            $state.go('testscreening', {'id': $scope.resumeId, 'screeningId': $scope.resume.screeningIds[0]});
-        }
+            if ($scope.resume.screeningIds != null && $scope.resume.screeningIds.length > 0){
+                var passedScreeningIds = [];
+                if ($scope.resume.passedScreeningIds != null){
+                    passedScreeningIds = $scope.resume.passedScreeningIds;
+                }
+
+                var diff = $scope.resume.screeningIds.diff(passedScreeningIds);
+                if (diff.length > 0)
+                {
+                    $state.go('testscreening', {'id': $scope.resumeId, 'screeningId': diff[0]});
+                }
+            }
     }
 });
+
+Array.prototype.diff = function(a) {
+    return this.filter(function(i) {return a.indexOf(i) < 0;});
+};

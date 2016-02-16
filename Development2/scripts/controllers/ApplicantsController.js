@@ -17,7 +17,6 @@ angular.module('Jobsite').controller("ApplicantsController", function($scope, $h
     $http(req).then(function(data) {
         if (data.status == "200") {
             $scope.list = data.data;
-            console.log($scope.list);
             $scope.currentPage = 1; //current page
             $scope.entryLimit = 10; //max no of items to display in a page
             $scope.filteredItems = $scope.list.length; //Initially for no filter
@@ -25,7 +24,6 @@ angular.module('Jobsite').controller("ApplicantsController", function($scope, $h
         }
     });
     $scope.deleterecords = function(id) {
-        console.log(id);
         $http({
             method: 'DELETE',
             url: ServicesURL + 'api/v1/jobs/' + id,
@@ -46,7 +44,6 @@ angular.module('Jobsite').controller("ApplicantsController", function($scope, $h
                     $scope.totalItems = $scope.list.length;
                 }
             });
-            console.log(response);
         });
 
     };

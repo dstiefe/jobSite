@@ -45,11 +45,16 @@ angular
 
 
         $scope.onApply = function() {
-            $modal.open({
-                templateUrl: 'views/applyjob.html',
-                controller: ApplyJobController,
-                scope: $scope
-            });
+            if (AuthService.authentication.isAuth && AuthService.authentication.isUser)
+            {
+                $modal.open({
+                    templateUrl: 'views/applyjob.html',
+                    controller: ApplyJobController,
+                    scope: $scope
+                });
+            } else{
+                $location.path("/login");
+            }
         };
 
         $scope.showReferralView = function() {

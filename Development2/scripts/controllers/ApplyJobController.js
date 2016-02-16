@@ -31,6 +31,8 @@ function ApplyJobController($scope, Login, ValiDatedTokenObject, $http, $locatio
         $location.path("/login");
     }
 
+
+
     var req = {
         method: 'GET',
         url: ServicesURL + 'api/v1/account/userinfo',
@@ -69,7 +71,6 @@ function ApplyJobController($scope, Login, ValiDatedTokenObject, $http, $locatio
     $scope.uploadFile = function(event) {
         $scope.loading = true;
         var file = event.target.files[0];
-        console.log('file is ');
         console.dir(file);
         var uploadUrl = ServicesURL + 'api/v1/resumes/upload';
         var fd = new FormData();

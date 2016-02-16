@@ -29,7 +29,6 @@ angular
         $http(req).then(function(data) {
             if (data.status == "200") {
                 $scope.list = data.data;
-                console.log($scope.list);
                 $scope.currentPage = 1; //current page
                 $scope.entryLimit = 10; //max no of items to display in a page
                 $scope.filteredItems = $scope.list.length; //Initially for no filter  
@@ -51,14 +50,12 @@ angular
                 $http(req).then(function(data) {
                     if (data.status == "200") {
                         $scope.list = data.data;
-                        console.log($scope.list);
                         $scope.currentPage = 1; //current page
                         $scope.entryLimit = 10; //max no of items to display in a page
                         $scope.filteredItems = $scope.list.length; //Initially for no filter  
                         $scope.totalItems = $scope.list.length;
                     }
                 });
-                console.log(response);
             });
 
         };

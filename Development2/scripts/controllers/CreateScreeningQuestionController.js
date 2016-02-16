@@ -18,7 +18,6 @@ angular.module('Jobsite').controller("CreateScreeningQuestionController", functi
     });
 
     $scope.saveChanges = function(isValid) {
-console.log("isValid = " + isValid);
         if (!isValid){
             return;
         }
@@ -75,7 +74,6 @@ console.log("isValid = " + isValid);
     };
 
     $scope.addOption = function() {
-        console.log("addOption = " + $scope.option);
         if ($scope.screeningQuestion.options.indexOf($scope.option) == -1) {
             $scope.screeningQuestion.options.push($scope.option);
             $scope.option ='';

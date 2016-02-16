@@ -56,7 +56,6 @@ angular.module('Jobsite').controller("AddjobformController", function($scope, Lo
                 $scope.locationCityOption.methods.clean();
             },
             close:function( event, ui ) {
-                console.log("close");
                 $timeout(function() {
                     angular.element('#locationCity').focus();
                 });
@@ -202,7 +201,6 @@ angular.module('Jobsite').controller("AddjobformController", function($scope, Lo
             if (!isValid || !$scope.locationCity.id){
                 return;
             }
-            console.log("send");
             if (!angular.isUndefined($scope.aboutUsResultContent)) {
                 $scope.aboutUsHtmlContent = $scope.aboutUsResultContent;
             }

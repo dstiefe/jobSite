@@ -42,7 +42,20 @@
 
                                     <div class="form-group" ng-show="screeningQuestion.type == 'MultipleChoice'">
                                              <label for="option">Possible answer</label>
-                                             <input class="form-control" style="width:70%;float:right;" ng-model="option" id="option" type="text"  ng-enter="addOption()" placeholder="Enter Possible Answer and press return">
+
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <div class="input-group">
+                                                     <input class="form-control" ng-model="option" id="option" type="text"  ng-enter="addOption()" placeholder="Enter Possible Answer and press return" />
+                                                      <span class="input-group-btn">
+                                                        <button class="btn btn-default" type="button" ng-click="addOption()"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
+                                                      </span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
                                     </div>
 
                                     <div class="form-group" ng-if="screeningQuestion.type == 'MultipleChoice' || screeningQuestion.type == 'TrueFalse'">
@@ -88,8 +101,9 @@
                                                  class="form-control"
                                                 ng-model="$parent.selectedOption"
                                                 ng-options="idx as _option for (idx, _option) in $parent.screeningQuestion.options">
+                                            <option value="">Select correct answer</option>
                                         </select>
-
+                                        <span id="helpBlock" class="help-block">Please, fill out possible answers and select correct answer</span>
                                         <!--<select-->
                                                 <!--id="selectedOption"-->
                                                 <!--name="selectedOption"-->

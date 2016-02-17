@@ -38,6 +38,11 @@
                                 <a class="btn btn-primary pull-right" href="#viewjobdetails?id={{data.id}}" ng-hide = "role == 'Admin'">
                                     {{viewtext}}
                                 </a>
+
+                             <span class="label label-success pull-right" ng-show = "role == 'Admin' && (data.referralFeePercent >0 || data.data.referralFeeAmount > 0)" style="background-color: #5cb85c; font-size: 14px; padding: 10px;margin:0 10px;">
+                                   $$ Referral
+                                </span>
+
                                 <div class="clearfix"></div>
 
                             </div>
@@ -81,21 +86,28 @@
                                         <span>Date Created: </span>{{data.modifyDate*1000 | date : "M/d/yyyy"}}
                                     </span>
                             </div>
+
+                            <span class="label label-primary pull-right" ng-show =  "data.status =='GotJobMyNetwork'" style="font-size: 14px; padding: 10px;">
+                                Reffered
+                            </span>
+
+                            <!--<span class="label label-danger pull-right" ng-show = "data.status =='GotJob'" style="font-size: 14px; padding: 10px;margin:0 10px;">-->
+                                <!--Reffered-->
+                            <!--</span>-->
+                            <!--<span class="label label-warning pull-right" ng-show =  "data.status =='Open'" style="font-size: 14px; padding: 10px;margin:0 10px;">-->
+                                <!--Reffered-->
+                            <!--</span>-->
+                            <!--<span class="label label-success pull-right" ng-show =  "data.status =='GotJobMyNetwork'" style="font-size: 14px; padding: 10px;">-->
+                                <!--Reffered-->
+                            <!--</span>-->
+
                             <div class="clearfix"></div>
                         </div>
                         <div class="panel-body crop" >
                             <span ng-repeat="recepient in data.recepients">{{recepient.firstName}} {{recepient.lastName}}, </span>
                         </div>
-                        <div class="panel-footer panel-info" >
-                            <a class="btn btn-danger" ng-show = "data.status =='GotJob'">
-                                &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;
-                            </a>
-                            <a class="btn btn-warning" ng-show =  "data.status =='Open'">
-                                &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;
-                            </a>
-                            <a class="btn btn-success" ng-show =  "data.status =='GotJobMyNetwork'">
-                                &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;
-                            </a>
+                        <div class="panel-footer panel-info" style="height: 50px;">
+
                         </div>
                     </div>
                 </div>

@@ -58,6 +58,8 @@ angular
         };
 
         $scope.showReferralView = function() {
+            if (AuthService.authentication.isAuth && AuthService.authentication.isUser)
+            {
             $modal.open({
                 animation: true,
                 templateUrl: 'views/SendReferral.html',
@@ -71,6 +73,9 @@ angular
                         return $scope.jobTitle;
                     }
                 }});
+            } else{
+                $location.path("/login");
+            }
         };
 
     });

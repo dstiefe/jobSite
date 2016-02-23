@@ -51,6 +51,11 @@
                                                     <input type="number" min="0.5" step="0.5"  ng-model="screening.timeToComplete" class="form-control" id="timeToComplete" name="timeToComplete" placeholder="Estimated Time to Complete" required />
                                                     <span class="color-theme" ng-show="createScreeningForm.timeToComplete.$error.required">Time is required.</span>
                                                 </div>
+                                                <div class="form-group">
+
+                                                            <input type="checkbox" ng-model="screening.isAutoSend" /> Send Screening once candidate applies
+
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="row">

@@ -139,6 +139,31 @@ angular.module('Jobsite').factory('ScreeningsService', ['$http', '$q', 'RESOURCE
         });
     };
 
+    var _getScreeningsByJobId = function (jobId) {
+        return $http.get(serviceBase + 'jobs/'+jobId+'/screenings',
+            {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': ValiDatedTokenObject.getValiDatedTokenObject().token_type+" "+ValiDatedTokenObject.getValiDatedTokenObject().access_token
+                }
+            }).then(function (results) {
+            return results;
+        });
+    };
+
+    var _sendScreeningsToResume = function (resumeId, model) {
+        return $http.post(serviceBase +  'resumes/'+resumeId+'/screenings',
+            model,
+            {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': ValiDatedTokenObject.getValiDatedTokenObject().token_type+" "+ValiDatedTokenObject.getValiDatedTokenObject().access_token
+                }
+            }).then(function (results) {
+            return results;
+        });
+    };
+
     screeningsServiceFactory.postScreening = _postScreening;
     screeningsServiceFactory.putScreening = _putScreening;
     screeningsServiceFactory.deleteScreening = _deleteScreening;
@@ -151,6 +176,8 @@ angular.module('Jobsite').factory('ScreeningsService', ['$http', '$q', 'RESOURCE
     screeningsServiceFactory.setResultOnScreeningQuestion = _setResultOnScreeningQuestion;
     screeningsServiceFactory.getTestResultsByResumeId = _getTestResultsByResumeId;
     screeningsServiceFactory.getNewOrder = _getNewOrder;
+    screeningsServiceFactory.getScreeningsByJobId = _getScreeningsByJobId;
+    screeningsServiceFactory.sendScreeningsToResume = _sendScreeningsToResume;
 
     return screeningsServiceFactory;
 }]);

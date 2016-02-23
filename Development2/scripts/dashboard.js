@@ -19,10 +19,12 @@ $(function() {
     })
 })
 
-angular.module('Jobsite').controller("dashboardController", function($scope, Login, ValiDatedTokenObject, locationHistoryService, $location, $modal, $http, $timeout, AuthService, JobsService, ReferralService) {
-   $scope.role = AuthService.authentication.isAdministrator ? "Admin": "User";
+angular.module('Jobsite').controller("dashboardController", function($scope, Login, ValiDatedTokenObject, locationHistoryService, $location, $modal, $http, $timeout, AuthService, JobsService, ReferralService, cfpLoadingBar) {
+    $scope.isLoading = true;
+    $scope.role = AuthService.authentication.isAdministrator ? "Admin": "User";
 
    $scope.entryLimits = [5,10,15,20,25];
+
 
    var _pageCalc = function(){
        $scope.currentPage = 1; //current page
@@ -35,30 +37,38 @@ angular.module('Jobsite').controller("dashboardController", function($scope, Log
 
         $scope.headingmessage = "Jobs Posted";
         $scope.viewtext = "View Applicants";
+        $scope.jobsNotFoundMessage = "No jobs";
 
         JobsService.getMyJobs().then(function (results) {
             $scope.list = results.data;
             _pageCalc();
+            $scope.isLoading = false;
         }, function (error) {
             console.log(error.data.message);
+            $scope.isLoading = false;
         });
 
     }else{
 
         $scope.headingmessage = "Jobs Applied To";
         $scope.viewtext = "View Job";
+        $scope.jobsNotFoundMessage = "No jobs found";
 
         JobsService.getJobsApplied().then(function (results) {
             $scope.list = results.data;
+
             ReferralService.getReferrals().then(function (results2) {
                 $scope.list = $scope.list.concat(results2.data);
                 _pageCalc();
+                $scope.isLoading = false;
             }, function (error) {
                 console.log(error.data.message);
+                $scope.isLoading = false;
             });
 
         }, function (error) {
             console.log(error.data.message);
+            $scope.isLoading = false;
         });
     }
 

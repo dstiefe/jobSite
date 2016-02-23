@@ -261,6 +261,26 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
                 }
             }
         })
+        .state('resumes', {
+            url: "/resumes",
+            templateUrl: "views/Resumes.html",
+            data: {
+                pageTitle: 'Resumes',
+                permissions: {
+                    only: ['User'],
+                }
+            }
+        })
+        .state('referrals', {
+            url: "/referrals",
+            templateUrl: "views/Referrals.html",
+            data: {
+                pageTitle: 'Referrals',
+                permissions: {
+                    only: ['Admin'],
+                }
+            }
+        })
 }
 
 angular

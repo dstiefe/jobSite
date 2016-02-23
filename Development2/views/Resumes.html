@@ -1,0 +1,418 @@
+
+<div class="color-line"></div>
+<div ng-controller="ResumesController">
+
+ <!-- Header -->
+ <nav role="navigation" class="navbar navbar-custom" >
+   <div class="navbar-left">
+    <ul class="nav navbar-nav no-borders">
+     <li>
+      <a class="btn btn-default btn-md pull-left" ui-sref="searchjobs" ng-show="isActive('/searchjobs') && !isAdministrator"><span >Find Jobs</span></a>
+     </li>
+     <li>
+      <a class="btn btn-default btn-md pull-left" ui-sref="jobslist" ng-show="isActive('/jobslist') && isAdministrator"><span>Jobs</span></a>
+     </li>
+     <li>
+      <a class="btn btn-default btn-md pull-left" ui-sref="dashboard" ng-show="isActive('/dashboard')"><span>Dashboard</span></a>
+     </li>
+     <li>
+      <a class="btn btn-default btn-md pull-left" ui-sref="searchresumeshome" ng-show="isActive('/searchresumeshome')"><span>Resumes</span></a>
+     </li>
+     <li>
+      <a class="btn btn-default btn-md pull-left" ui-sref="searchresumes" ng-show="isActive('/searchresumes')"><span>Resumes</span></a>
+     </li>
+
+
+    </ul>
+   </div>
+   <div class="navbar-right">
+    <ul ng-show="isAuth" class="nav navbar-nav no-borders">
+     <li class="dropdown">
+      <a class="dropdown-toggle"   data-toggle="dropdown">
+       <i class="pe-7s-keypad"></i>
+      </a>
+      <div class="dropdown-menu hdropdown bigmenu animated flipInX">
+       <table>
+        <tbody>
+        <tr>
+         <td>
+          <a ui-sref="dashboard">
+           <i class="pe pe-7s-home text-warning"></i>
+           <h5>Dashboard</h5>
+          </a>
+         </td>
+         <td ng-hide="isAdministrator">
+          <a ui-sref="searchjobs">
+           <i class="pe pe-7s-portfolio text-info"></i>
+           <h5>Find Jobs</h5>
+          </a>
+         </td>
+         <td ng-show="isAdministrator">
+          <a ui-sref="jobslist">
+           <i class="pe pe-7s-portfolio text-info"></i>
+           <h5>Jobs</h5>
+          </a>
+         </td>
+         <td  ng-show="isAdministrator">
+          <a  ui-sref="searchresumeshome">
+           <i class="pe pe-7s-file text-success"></i>
+           <h5>Resumes</h5>
+          </a>
+         </td>
+        </tr>
+        </tbody>
+       </table>
+      </div>
+     </li>
+
+     <li class="dropdown">
+      <a ng-show="isAuth" ui-sref="logout" id="cmd_Logout">
+       <i class="pe-7s-upload pe-rotate-90"></i>
+      </a>
+     </li>
+    </ul>
+
+    <ul ng-hide="isAuth" class="nav navbar-nav no-borders">
+     <li class="dropdown">
+      <a ui-sref="login" id="cmd_Logout">
+       <i class="pe-7s-upload pe-rotate-270"></i>
+      </a>
+     </li>
+    </ul>
+   </div>
+   <form class="searchresumeform navbar-form navbar-center" role="search">
+    <div class="form-group ">
+     <button class="btn btn-info btn-primary btn-block" id="resumes_filter">Filter</button>
+    </div>
+    <div class="form-group ">
+     <input type="text" class="form-control searchResumesText" id="searchText" ng-model="searchText" ng-enter="search()" placeholder="Search text" />
+    </div>
+    <div class="form-group ">
+     <button class="btn btn-success  btn-block" ng-click="search()">Search</button>
+    </div>
+   </form>
+
+   <div class="row resumes_parameters_panel col-md-12 col-lg-12" >
+
+    <div style="width: auto;height: 200px;">
+     In developing
+    </div>
+   <!--<div id="loading-div">-->
+   <!--<img src="/images/loading.gif" class="ld-img" style="">-->
+   <!--</div>-->
+
+   <!--<div id="first_box_items" class="col-md-3">-->
+   <!--<div id="loading-files-box" style="text-align:center; display:none;"><img src="/images/loading.gif"></div>-->
+
+   <!--<table class="table table-bordered table-condensed search-tables">-->
+   <!--<tbody><tr><td>Box:<img src="/images/container.png" style="display:inline-block;margin-left:5px"></td></tr>-->
+   <!--<tr>-->
+   <!--<td>-->
+   <!--<select id="case-drop" class="search-select">-->
+   <!--<option value="6c46727b-f59b-472a-8165-6d85012c986a">-->
+   <!--Box Example-->
+   <!--</option>-->
+   <!--<option value="b810b4d1-c508-4c25-9905-4cfd5e499dbb">-->
+   <!--Trina Box-->
+   <!--</option>-->
+
+   <!--</select>-->
+
+
+
+   <!--<input id="currentCaseValue" type="hidden">-->
+
+   <!--</td>-->
+   <!--</tr>-->
+   <!--</tbody></table>-->
+
+   <!--<div id="fetch" class="col-md-12" style="margin-top:15px;padding:0">-->
+   <!--<div id="loading-files-box" style="text-align:center; display:none;"><img src="/images/loading.gif"></div>-->
+
+   <!--<table class="table table-bordered table-condensed search-tables">-->
+   <!--<tbody><tr><td>Fetch<img src="/images/fetch.png" style="display:inline-block;margin-left:5px"></td></tr>-->
+   <!--<tr>-->
+   <!--<td>-->
+   <!--<select class="search-select" id="fetchType" name="fetchType"><option value="Regular">Regular</option>-->
+   <!--<option value="Quick">Quick</option>-->
+   <!--</select>-->
+   <!--</td>-->
+   <!--</tr>-->
+   <!--</tbody></table>-->
+   <!--</div>-->
+
+   <!--<div id="viewtypes" class="col-md-12" style="margin-top:15px;padding:0">-->
+   <!--<div id="loading-files-box" style="text-align:center; display:none;"><img src="/images/loading.gif"></div>-->
+   <!--<table class="table table-bordered table-condensed search-tables">-->
+   <!--<tbody><tr><td>View Type</td></tr>-->
+   <!--<tr>-->
+   <!--<td>-->
+   <!--<select class="search-select" id="viewtype" name="viewtype"><option value="Thumb">Thumb</option>-->
+   <!--<option value="FullView">FullView</option>-->
+   <!--</select>-->
+   <!--</td>-->
+   <!--</tr>-->
+   <!--</tbody></table>-->
+   <!--</div>-->
+
+   <!--</div>-->
+
+   <!--<div id="five_box_items" class="col-md-3">-->
+   <!--<div id="loading-files-box" style="text-align:center; display:none;"><img src="/images/loading.gif"></div>-->
+   <!--<div class="loading-icon" style="display:none"><img src="/images/350.GIF" style="display:block;margin:auto"></div>-->
+   <!--<table class="table table-bordered table-condensed search-tables">-->
+   <!--<tbody><tr>-->
+   <!--<td style="position:relative">-->
+   <!--Folders <img src="/images/folder.png" style="display:inline-block;margin-left:5px">-->
+
+   <!--</td>-->
+   <!--</tr>-->
+   <!--<tr>-->
+   <!--<td>-->
+   <!--<div style="text-align:center;margin-top: 7px;">-->
+   <!--<table style="white-space:nowrap;max-width: 100%">-->
+   <!--<tbody id="folder-div-adder"><tr><td style="text-align:left;white-space:nowrap;"> <label aria-hidden="true"> <span><div id="check-awesome" class="form-group"><input type="checkbox" id="ba8c04ea-8c85-440e-aee6-4a7da6c49409" value="ba8c04ea-8c85-440e-aee6-4a7da6c49409" class="folder_label_class">  <label for="ba8c04ea-8c85-440e-aee6-4a7da6c49409">  <span class=""></span> <span class="check"></span>  <span class="box"></span>Photos </label></div> </span></label></td></tr><tr><td style="text-align:left;white-space:nowrap;"> <label aria-hidden="true"> <span><div id="check-awesome" class="form-group"><input type="checkbox" id="38147790-ee27-4413-8cca-27f579da3867" value="38147790-ee27-4413-8cca-27f579da3867" class="folder_label_class">  <label for="38147790-ee27-4413-8cca-27f579da3867">  <span class=""></span> <span class="check"></span>  <span class="box"></span>Exhibits </label></div> </span></label></td></tr><tr><td style="text-align:left;white-space:nowrap;"> <label aria-hidden="true"> <span><div id="check-awesome" class="form-group"><input type="checkbox" id="fabb708e-2c14-4f4a-9902-87b89f5e77be" value="fabb708e-2c14-4f4a-9902-87b89f5e77be" class="folder_label_class">  <label for="fabb708e-2c14-4f4a-9902-87b89f5e77be">  <span class=""></span> <span class="check"></span>  <span class="box"></span>Depositions </label></div> </span></label></td></tr><tr><td style="text-align:left;white-space:nowrap;"> <label aria-hidden="true"> <span><div id="check-awesome" class="form-group"><input type="checkbox" id="dccfac11-553e-4446-8b07-425338fe4902" value="dccfac11-553e-4446-8b07-425338fe4902" class="folder_label_class">  <label for="dccfac11-553e-4446-8b07-425338fe4902">  <span class=""></span> <span class="check"></span>  <span class="box"></span>Case Law </label></div> </span></label></td></tr><tr><td style="text-align:left;white-space:nowrap;"> <label aria-hidden="true"> <span><div id="check-awesome" class="form-group"><input type="checkbox" id="ea7b699b-15fa-44e4-a22c-227c898f6b0c" value="ea7b699b-15fa-44e4-a22c-227c898f6b0c" class="folder_label_class">  <label for="ea7b699b-15fa-44e4-a22c-227c898f6b0c">  <span class=""></span> <span class="check"></span>  <span class="box"></span>Defendants Emails </label></div> </span></label></td></tr><tr><td style="text-align:left;white-space:nowrap;"> <label aria-hidden="true"> <span><div id="check-awesome" class="form-group"><input type="checkbox" id="24257d03-c101-4a2e-9a4a-cf035af22396" value="24257d03-c101-4a2e-9a4a-cf035af22396" class="folder_label_class">  <label for="24257d03-c101-4a2e-9a4a-cf035af22396">  <span class=""></span> <span class="check"></span>  <span class="box"></span>Subject Matter </label></div> </span></label></td></tr><tr><td style="text-align:left;white-space:nowrap;"> <label aria-hidden="true"> <span><div id="check-awesome" class="form-group"><input type="checkbox" id="a3622577-4e64-4b9e-befe-8eb3cc547d8a" value="a3622577-4e64-4b9e-befe-8eb3cc547d8a" class="folder_label_class">  <label for="a3622577-4e64-4b9e-befe-8eb3cc547d8a">  <span class=""></span> <span class="check"></span>  <span class="box"></span>New Folder </label></div> </span></label></td></tr><tr><td style="text-align:left;white-space:nowrap;"> <label aria-hidden="true"> <span><div id="check-awesome" class="form-group"><input type="checkbox" id="e64c741c-2ccb-4bb6-a160-4306c9e67deb" value="e64c741c-2ccb-4bb6-a160-4306c9e67deb" class="folder_label_class">  <label for="e64c741c-2ccb-4bb6-a160-4306c9e67deb">  <span class=""></span> <span class="check"></span>  <span class="box"></span>Expert CV's </label></div> </span></label></td></tr></tbody>-->
+   <!--</table>-->
+   <!--</div>-->
+
+
+   <!--</td>-->
+   <!--</tr>-->
+   <!--</tbody></table>-->
+
+   <!--</div>-->
+
+   <!--<div id="second_box_items" class="col-md-3">-->
+   <!--<div id="loading-tag-box" style="text-align:center; display:none;">-->
+   <!--<img src="/images/loading.gif">-->
+   <!--</div>-->
+   <!--<div class="loading-icon" style="display:none"><img src="/images/350.GIF" class="loading-img"></div>-->
+   <!--<div class="col-md-12" id="tags-wrapper">-->
+
+   <!--<table class="table table-bordered table-condensed search-tables">-->
+   <!--<tbody><tr>-->
+   <!--<td style="position:relative">-->
+   <!--Tags <img src="/images/tag-sm.png" style="display:inline-block;margin-left:5px">-->
+
+   <!--</td>-->
+   <!--</tr>-->
+   <!--<tr>-->
+   <!--<td>-->
+   <!--<div style="text-align:center;margin-top: 7px;">-->
+   <!--<table style="white-space:nowrap;max-width: 100%">-->
+   <!--<tbody id="tag-div-adder"><tr><td style="text-align:left;white-space:nowrap;"> <label aria-hidden="true"> <span><div id="check-awesome" class="form-group"><input type="checkbox" id="4072bb4a-da19-4449-a413-c7f69d587f38" value="4072bb4a-da19-4449-a413-c7f69d587f38" class="">  <label for="4072bb4a-da19-4449-a413-c7f69d587f38">  <span class=""></span> <span class="check"></span>  <span class="box"></span>Favorite </label></div> </span></label></td></tr><tr><td style="text-align:left;white-space:nowrap;"> <label aria-hidden="true"> <span><div id="check-awesome" class="form-group"><input type="checkbox" id="00abb7d1-8c44-47ce-b841-39d0aa41d98e" value="00abb7d1-8c44-47ce-b841-39d0aa41d98e" class="">  <label for="00abb7d1-8c44-47ce-b841-39d0aa41d98e">  <span class=""></span> <span class="check"></span>  <span class="box"></span>me tag </label></div> </span></label></td></tr><tr><td style="text-align:left;white-space:nowrap;"> <label aria-hidden="true"> <span><div id="check-awesome" class="form-group"><input type="checkbox" id="5be1d649-e7c8-49d5-8a79-111c31d858af" value="5be1d649-e7c8-49d5-8a79-111c31d858af" class="">  <label for="5be1d649-e7c8-49d5-8a79-111c31d858af">  <span class=""></span> <span class="check"></span>  <span class="box"></span>emails </label></div> </span></label></td></tr><tr><td style="text-align:left;white-space:nowrap;"> <label aria-hidden="true"> <span><div id="check-awesome" class="form-group"><input type="checkbox" id="82207c8d-b583-401b-87d2-11ad5629aaf0" value="82207c8d-b583-401b-87d2-11ad5629aaf0" class="">  <label for="82207c8d-b583-401b-87d2-11ad5629aaf0">  <span class=""></span> <span class="check"></span>  <span class="box"></span>yyy </label></div> </span></label></td></tr><tr><td style="text-align:left;white-space:nowrap;"> <label aria-hidden="true"> <span><div id="check-awesome" class="form-group"><input type="checkbox" id="7e200e0d-a2cb-4431-9e47-e8134882070a" value="7e200e0d-a2cb-4431-9e47-e8134882070a" class="">  <label for="7e200e0d-a2cb-4431-9e47-e8134882070a">  <span class=""></span> <span class="check"></span>  <span class="box"></span>dan </label></div> </span></label></td></tr><tr><td style="text-align:left;white-space:nowrap;"> <label aria-hidden="true"> <span><div id="check-awesome" class="form-group"><input type="checkbox" id="c3325f24-f5e7-46ad-bac8-ded64e9d82ec" value="c3325f24-f5e7-46ad-bac8-ded64e9d82ec" class="">  <label for="c3325f24-f5e7-46ad-bac8-ded64e9d82ec">  <span class=""></span> <span class="check"></span>  <span class="box"></span>new tag really important </label></div> </span></label></td></tr><tr><td style="text-align:left;white-space:nowrap;"> <label aria-hidden="true"> <span><div id="check-awesome" class="form-group"><input type="checkbox" id="fe1cdc01-76d2-4498-b67b-81dc96de6bfc" value="fe1cdc01-76d2-4498-b67b-81dc96de6bfc" class="">  <label for="fe1cdc01-76d2-4498-b67b-81dc96de6bfc">  <span class=""></span> <span class="check"></span>  <span class="box"></span>Ted Tags </label></div> </span></label></td></tr><tr><td style="text-align:left;white-space:nowrap;"> <label aria-hidden="true"> <span><div id="check-awesome" class="form-group"><input type="checkbox" id="65c719b3-dee8-4693-a331-781dc5f63488" value="65c719b3-dee8-4693-a331-781dc5f63488" class="">  <label for="65c719b3-dee8-4693-a331-781dc5f63488">  <span class=""></span> <span class="check"></span>  <span class="box"></span>Trina tags </label></div> </span></label></td></tr></tbody>-->
+   <!--</table>-->
+   <!--</div>-->
+
+
+   <!--</td>-->
+   <!--</tr>-->
+   <!--</tbody></table>-->
+
+
+   <!--</div>-->
+
+   <!--</div>-->
+
+   <!--<div id="fourth_box_items" class="col-md-3">-->
+   <!--<div id="loading-files-box" style="text-align:center; display:none;">-->
+   <!--<img src="/images/loading.gif">-->
+   <!--</div>-->
+
+
+
+   <!--<div class="col-md-12">-->
+   <!--<table id="ext-div-adder" class="table table-bordered table-condensed search-tables">-->
+   <!--<tbody><tr>-->
+   <!--<td>-->
+   <!--File Types <img src="/images/file.png" style="margin-left:5px">-->
+   <!--</td>-->
+   <!--</tr>-->
+   <!--<tr>-->
+   <!--<td style="text-align:left">-->
+   <!--<div id="check-awesome" class="form-group" style="margin-top:7px;margin-bottom:0">-->
+   <!--<input class="file_label_class" id="pdf_file" name="pdf_file" type="checkbox" value="true">-->
+   <!--<label for="pdf_file">-->
+   <!--<span class=""></span>-->
+   <!--<span class="check"></span>-->
+   <!--<span class="box"></span>-->
+   <!--pdf-->
+   <!--</label>-->
+
+   <!--</div>-->
+
+
+   <!--</td>-->
+   <!--</tr>-->
+   <!--<tr style="text-align:left;">-->
+   <!--<td style="text-align:left">-->
+
+   <!--<div id="check-awesome" class="form-group" style="margin-bottom: 0">-->
+   <!--<input class="file_label_class" id="zip_file" name="zip_file" type="checkbox" value="true">-->
+   <!--<label for="zip_file">-->
+   <!--<span class=""></span>-->
+   <!--<span class="check"></span>-->
+   <!--<span class="box"></span>-->
+   <!--zip-->
+   <!--</label>-->
+
+   <!--</div>-->
+
+
+   <!--</td>-->
+   <!--</tr>-->
+   <!--<tr>-->
+   <!--<td style="text-align:left;">-->
+   <!--<div id="check-awesome" class="form-group" style="margin-bottom: 0">-->
+   <!--<input class="file_label_class" id="docx_file" name="docx_file" type="checkbox" value="true">-->
+   <!--<label for="docx_file">-->
+   <!--<span class=""></span>-->
+   <!--<span class="check"></span>-->
+   <!--<span class="box"></span>-->
+   <!--docx-->
+   <!--</label>-->
+
+   <!--</div>-->
+
+
+   <!--</td>-->
+   <!--</tr>-->
+   <!--<tr>-->
+   <!--<td style="text-align:left;">-->
+   <!--<div id="check-awesome" class="form-group" style="margin-bottom: 0">-->
+   <!--<input class="file_label_class" id="xlsx_file" name="xlsx_file" type="checkbox" value="true">-->
+   <!--<label for="xlsx_file">-->
+   <!--<span class=""></span>-->
+   <!--<span class="check"></span>-->
+   <!--<span class="box"></span>-->
+   <!--xlsx-->
+   <!--</label>-->
+
+   <!--</div>-->
+
+   <!--</td>-->
+   <!--</tr>-->
+   <!--<tr>-->
+   <!--<td style="text-align:left;">-->
+   <!--<div id="check-awesome" class="form-group" style="margin-bottom: 0">-->
+   <!--<input class="file_label_class" id="msg_file" name="msg_file" type="checkbox" value="true">-->
+   <!--<label for="msg_file">-->
+   <!--<span class=""></span>-->
+   <!--<span class="check"></span>-->
+   <!--<span class="box"></span>-->
+   <!--email-->
+   <!--</label>-->
+
+   <!--</div>-->
+
+   <!--</td>-->
+   <!--</tr>-->
+   <!--<tr>-->
+   <!--<td style="text-align:left;">-->
+
+   <!--<div id="check-awesome" class="form-group" style="margin-bottom: 0">-->
+   <!--<input class="file_label_class" id="ppt_file" name="ppt_file" type="checkbox" value="true">-->
+   <!--<label for="ppt_file">-->
+   <!--<span class=""></span>-->
+   <!--<span class="check"></span>-->
+   <!--<span class="box"></span>-->
+   <!--ppt-->
+   <!--</label>-->
+
+   <!--</div>-->
+
+
+   <!--</td>-->
+   <!--</tr>-->
+   <!--<tr>-->
+   <!--<td style="text-align: left;">-->
+   <!--<div id="check-awesome" class="form-group" style="margin-bottom: 0">-->
+   <!--<input class="file_label_class" id="png_file" name="png_file" type="checkbox" value="true">-->
+   <!--<label for="png_file">-->
+   <!--<span class=""></span>-->
+   <!--<span class="check"></span>-->
+   <!--<span class="box"></span>-->
+   <!--png-->
+   <!--</label>-->
+
+   <!--</div>-->
+
+
+   <!--</td>-->
+   <!--</tr>-->
+   <!--<tr>-->
+   <!--<td style="text-align: left;">-->
+   <!--<div id="check-awesome" class="form-group" style="margin-bottom: 0">-->
+   <!--<input class="file_label_class" id="jpg_file" name="jpg_file" type="checkbox" value="true">-->
+   <!--<label for="jpg_file">-->
+   <!--<span class=""></span>-->
+   <!--<span class="check"></span>-->
+   <!--<span class="box"></span>-->
+   <!--jpg-->
+   <!--</label>-->
+
+   <!--</div>-->
+
+   <!--</td>-->
+   <!--</tr>-->
+   <!--</tbody></table>-->
+   <!--</div>-->
+
+   <!--</div>-->
+
+   </div>
+  </nav>
+
+<!-- Content -->
+
+ <div class="container">
+
+ <div class="row">
+  <div ng-show="!resumes.length" class="col-lg-12" style="">
+   <h1>No found resumes </h1>
+  </div>
+ </div>
+
+ <div class="row">
+  <br />
+  <div class="col-lg-6" ng-repeat="data in resumes"  >
+   <div class="panel panel-default">
+    <div class="panel-heading">
+
+        <h3 class="panel-title pull-left"><a href="" ng-click="detailViewShow(data)">{{data.firstName}} {{data.lastName}}</a></h3>
+        <i class="fa fa-file-pdf-o pull-right fa-lg"></i>
+
+     <div class="media pull-right">
+                                        <span class="pull-left">
+                                            <img class="media-object" src="http://ec2-52-90-116-49.compute-1.amazonaws.com:82/images/book.png" >
+                                            <span class="badge pull-right">{{data.totalPages}}</span>
+                                        </span>
+     </div>
+     <!--<span class="badge pull-right" ng-show="data.totalPages > 0" >{{data.totalPages}}</span>-->
+
+
+
+
+     <div class="clearfix"></div>
+    </div>
+    <div class="panel-body resumecrop"  ng-bind-html="data.body | trustedHtml | limitHightlightHtml:100"></div>
+    <div class="panel-footer">Date:{{data.applyDate*1000 | date : "M/d/yyyy"}}</div>
+   </div>
+  </div>
+ </div>
+
+  <div class="row">
+   <div ng-show="totalItems>0" class="col-lg-12" style="">
+    <pagination total-items="totalItems"  ng-change="pageChanged()" ng-model="currentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" rotate="false" num-pages="numPages" items-per-page="itemsPerPage"></pagination>
+   </div>
+  </div>
+
+ </div>
+
+
+
+
+</div>
+
+<script  type="text/javascript" src="scripts/resumes.js"></script>
+<link rel="stylesheet" href="styles/resumes.css" />

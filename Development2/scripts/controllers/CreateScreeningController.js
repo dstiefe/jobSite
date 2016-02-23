@@ -6,6 +6,7 @@ angular.module('Jobsite').controller("CreateScreeningController", function($scop
     $scope.id = $stateParams.id;
     $scope.screening = {};
 
+
     CategoriesService.getCategories().then(function (results) {
         $scope.categories = results.data;
     }, function (error) {
@@ -26,6 +27,7 @@ angular.module('Jobsite').controller("CreateScreeningController", function($scop
             $scope.screening.title = res.title;
             $scope.screening.description =res.description;
             $scope.screening.sort = res.sort;
+            $scope.screening.isAutoSend = res.isAutoSend;
             $scope.screening.timeToComplete = res.timeToComplete;
             $timeout(function() {
                 $scope.screening.categoryId = res.categoryId;

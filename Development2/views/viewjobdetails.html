@@ -4,7 +4,10 @@
     <div id="header" ng-include="'views/head.html'"></div>
 
 <div ng-controller="ViewJobDetailsController">
-
+    <ol class="breadcrumb">
+        <li><a  ng-click="$back()">Go Back</a></li>
+        <li class="active">Job Detail</li>
+    </ol>
     <!-- Main Wrapper -->
     <div id="wrapper" style="margin:0; ">
         <br/>

@@ -50,31 +50,50 @@
 
 
 
-                            <div class="panel-footer" >
+                            <div class="panel-footer" style="height: 50px;">
 
-                                <a class="btn btn-default" href="#" ng-show = "role == 'Admin' && data.applicantsCountForScreening > 0">
+                                <span class="label label-default label-footer"  ng-show = "role == 'Admin' && data.applicantsCountForScreening > 0">
                                     Screening
                                     <span class="badge badge-success">{{data.applicantsCountForScreening}}</span>
-                                </a>
-                                <a class="btn btn-default" href="#" ng-show = "role == 'Admin' && data.applicantsCountForReview > 0">
+                                </span>
+
+                                <span class="label label-warning label-footer" ng-show = "role == 'Admin' && data.applicantsCountForReview > 0">
                                     InReview
                                     <span class="badge badge-warning">{{data.applicantsCountForReview}}</span>
-                                </a>
-                                <a class="btn btn-default" href="#" ng-show = "role == 'Admin' && data.applicantsCountForReview== 0 && data.applicantsCountForReview == 0 ">
+                                </span>
+
+                                <span class="label label-default label-footer"  ng-show = "role == 'Admin' && data.applicantsCountForReview== 0 && data.applicantsCountForScreening == 0 ">
                                     No screenings
+                                </span>
+
+
+
+                                <a class="btn btn-default btn-footer" ng-repeat="screening in data.screenings | filter:{ isNew: true }" ui-sref="starttestscreening({id:data.resumeId, screeningId: screening.id})" ng-show = "role == 'User'">
+                                {{screening.name}}
+                                    <span class="badge badge-danger">New</span>
                                 </a>
-                                <a class="btn btn-danger" ui-sref="starttestscreening({id:data.resumeId})" ng-show = "role == 'User' && data.screeningStage =='Screening'">
-                                    {{data.screeningStage}}
-                                </a>
-                                <a class="btn btn-warning" href="" ng-show = "role == 'User' && data.screeningStage =='InReview'">
-                                    {{data.screeningStage}}
-                                </a>
-                                <a class="btn btn-success" href="" ng-show = "role == 'User' && data.screeningStage =='Reviewed'">
-                                    {{data.screeningStage}}
-                                </a>
-                                <a class="btn btn-default" href="" ng-show = "role == 'User' && data.screeningStage =='None'">
-                                    No screenings
-                                </a>
+
+                                <span class="label label-default label-footer" ng-repeat="screening in data.screenings | filter:{ isNew: false }"  ng-show = "role == 'User'">
+                                    {{screening.name}}
+                                      <span class="badge badge-success"><i class="fa fa-check"></i></span>
+                                </span>
+
+                                <div class="pull-right">
+                                    <i class="fa fa-question-circle fa-lg" title="Help text" style="color: #e6a300;"></i>
+                                </div>
+                                <!--<a class="btn btn-danger" ui-sref="starttestscreening({id:data.resumeId})" ng-show = "role == 'User' && data.screeningStage =='Screening'">-->
+                                    <!--{{data.screeningStage}}-->
+                                <!--</a>-->
+                                <!--<a class="btn btn-warning" href="" ng-show = "role == 'User' && data.screeningStage =='InReview'">-->
+                                    <!--{{data.screeningStage}}-->
+                                <!--</a>-->
+                                <!--<a class="btn btn-success" href="" ng-show = "role == 'User' && data.screeningStage =='Reviewed'">-->
+                                    <!--{{data.screeningStage}}-->
+                                <!--</a>-->
+
+                                <!--<span class="label label-default"  ng-show = "role == 'User' && data.screeningStage =='None'">-->
+                                    <!--No screenings-->
+                                <!--</span>-->
 
                             </div>
                         </div>

@@ -232,7 +232,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
         })
 
         .state('starttestscreening', {
-            url: "/resumes/:id/screenings/start",
+            url: "/resumes/:id/screenings/:screeningId/start",
             templateUrl: "views/StartTestScreening.html",
             data: {
                 pageTitle: 'Start screening tests',

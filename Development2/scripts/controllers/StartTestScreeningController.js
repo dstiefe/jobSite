@@ -7,6 +7,7 @@
 angular.module('Jobsite').controller("StartTestScreeningController", function($scope, Login, $http, $timeout, $location, ScreeningsService, CategoriesService, ResumesService, $state, $stateParams) {
 
     $scope.resumeId = $stateParams.id;
+    $scope.screeningId = $stateParams.screeningId;
     $scope.resume = {};
 
     ResumesService.getResume($scope.resumeId).then(function (results) {
@@ -26,7 +27,7 @@ angular.module('Jobsite').controller("StartTestScreeningController", function($s
                 var diff = $scope.resume.screeningIds.diff(passedScreeningIds);
                 if (diff.length > 0)
                 {
-                    $state.go('testscreening', {'id': $scope.resumeId, 'screeningId': diff[0]});
+                    $state.go('testscreening', {'id': $scope.resumeId, 'screeningId': $scope.screeningId});
                 }
             }
     }

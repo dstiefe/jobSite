@@ -78,4 +78,9 @@ angular
             }
         };
 
+    $scope.$back = function() {
+        window.history.back();
+    };
+
+
     });

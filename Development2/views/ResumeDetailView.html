@@ -55,6 +55,7 @@
 
 
                         <div id="native-content" style="white-space: normal;">
+
                             <iframe id="pdfViewer" class="pdfViewer" ng-src="{{resumeSource | trusted}}" ></iframe>
                             <!--<div id="errViewer"  class="alert alert-danger" role="alert"><strong>Attention!</strong>&nbsp;Can't view the file in this format</div>-->
                         </div>
@@ -69,12 +70,21 @@
             <!--Right Panel Begin-->
             <div class="right-panel transition-class wide short">
                 <div class="right-panel-buttons icons">
-                    <span class="glyphicon glyphicon-image" onclick="openShare();return false;"><img src="http://ec2-52-90-116-49.compute-1.amazonaws.com:82/images/rightpanel-share.png" alt="share link"></span>
+                    <span class="glyphicon glyphicon-image" ng-click="openShare()"><img src="http://ec2-52-90-116-49.compute-1.amazonaws.com:82/images/rightpanel-share.png" alt="share link"></span>
                     <span class="glyphicon glyphicon-image" id="native-view-button-close"><img src="http://ec2-52-90-116-49.compute-1.amazonaws.com:82/images/rightpanel-html.png"></span>
                     <span class="glyphicon glyphicon-image" id="native-view-button-open"><img src="http://ec2-52-90-116-49.compute-1.amazonaws.com:82/images/rightpanel-native-one.png"></span>
                     <span class="glyphicon glyphicon-download-alt" style="color: red; font-size: 23px;" ng-click="dowloadResume()"></span>
                     <span class="glyphicon glyphicon-pushpin lock"></span>
                 </div>
+
+                <div id="share_box" ng-show="shareBoxVisible" class="tag_box_final" style="font-size: 20px; width: 380px; position: absolute; right: 44px; border: 1px solid lightgray; color: black; padding-top: 10px; padding-bottom: 12px; padding-left: 25px; margin-top: -15px; z-index: 999999; display: block; background-color: white;">
+                    <i class="fa fa-print"></i> &nbsp; <a href="#" ng-click="printElem()">Print</a>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <i class="fa fa-download"></i> &nbsp; <a href="#" ng-click="dowloadResume()"id="download_button" target="">Download</a>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <i class="fa fa-envelope-o"></i>&nbsp; <a id="email_button" href="mailto:?subject=Sending Filedatageekslaw-box6c46727b-f59b-472a-8165-6d85012c986a-load4-processed-doc-EXHIBIT+57-pdfPages-EXHIBIT_57-001.pdf&amp;body=http%3a%2f%2fec2-52-90-116-49.compute-1.amazonaws.com%2fHome%2fFile%3fi%3ddatageekslaw%252fbox6c46727b-f59b-472a-8165-6d85012c986a%252fload4%252fprocessed%252fdoc%252fEXHIBIT%2b57%252fEXHIBIT%2b57.pdf%26caseId%3d6c46727b-f59b-472a-8165-6d85012c986a%26clientId%3dbf5e98b7-441c-4038-8320-a0af5e44b02b" onclick="pushFileEmail('datageekslaw-box6c46727b-f59b-472a-8165-6d85012c986a-load4-processed-doc-EXHIBIT 57-pdfPages-EXHIBIT_57-001.pdf', '6c46727b-f59b-472a-8165-6d85012c986a'); ">Email</a>
+                </div>
+
                 <!--&lt;!&ndash;Share Box Begin&ndash;&gt;-->
                 <!--@Html.Partial("Partial/ShareBox", Model)-->
                 <!--&lt;!&ndash;Share Box End&ndash;&gt;-->

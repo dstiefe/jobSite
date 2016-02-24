@@ -5,9 +5,11 @@ angular.module('Jobsite').controller("CreateScreeningQuestionController", functi
 
     $scope.id = $stateParams.id;
     $scope.questionsCount = 0;
+
     $scope.screeningQuestion = {
 
     };
+    $scope.screeningQuestion.tags = [];
     $scope.ScreeningQuestionTypes = RESOURCES.SCREENING_QUESTION_TYPES;
     $scope.screeningQuestion.options =[];
         ScreeningsService.getScreening($scope.id).then(function (results) {
@@ -47,6 +49,8 @@ angular.module('Jobsite').controller("CreateScreeningQuestionController", functi
                     $scope.screeningQuestion = {};
                     $scope.screeningQuestion.options = [];
                     $scope.screeningQuestion.answerText = '';
+                    $scope.screeningQuestion.tags = [];
+                    $scope.tag = "";
                     $scope.selectedOption='';
                     $scope.screeningQuestion.type='';
                     $scope.option ='';
@@ -82,4 +86,15 @@ angular.module('Jobsite').controller("CreateScreeningQuestionController", functi
     $scope.removeOption = function(index) {
         $scope.options.splice(index - 1, 1);
     };
+
+    $scope.addtags = function() {
+        if ($scope.screeningQuestion.tags.indexOf($scope.tag) == -1) {
+            $scope.screeningQuestion.tags.push($scope.tag);
+            $scope.tag = "";
+        }
+    };
+    $scope.removetag = function(index) {
+        $scope.screeningQuestion.tags.splice(index - 1, 1);
+    };
+
 });

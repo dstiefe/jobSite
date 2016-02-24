@@ -11,6 +11,9 @@ angular.module('Jobsite').controller('ResumeDetailController', function ($scope,
     $scope.resume = resume;
     $scope.itemsPerPage = 1;
     $scope.maxSize = 5;
+    $scope.shareBoxVisible = false;
+
+
 
     var _getResumeSource = function () {
         ResumesService.getPageUrl($scope.id, $scope.currentPage).then(function (results) {
@@ -63,5 +66,40 @@ angular.module('Jobsite').controller('ResumeDetailController', function ($scope,
         }, function (error) {
             console.log(error.data.message);
         });
+    };
+
+    $scope.openShare = function() {
+        $scope.shareBoxVisible = true;
+    };
+
+    window.onclick = function () {
+        if ($scope.shareBoxVisible) {
+            $scope.shareBoxVisible = false;
+        }
+    }
+    $scope.printElem = function() {
+
+
+        var getMyFrame = document.getElementById('pdfViewer');
+        getMyFrame.focus();
+        getMyFrame.contentWindow.print();
+        //Popup($("#pdfViewer").contents().find("html").html());
+    };
+    function Popup(data) {
+        console.log(data);
+        var mywindow = window.open('', 'my div', 'height=400,width=600');
+        mywindow.document.write('<html><head><title>my div</title>');
+        /*optional stylesheet*/ //mywindow.document.write('<link rel="stylesheet" href="main.css" type="text/css" />');
+        mywindow.document.write('</head><body >');
+        mywindow.document.write(data);
+        mywindow.document.write('</body></html>');
+
+        mywindow.document.close(); // necessary for IE >= 10
+        mywindow.focus(); // necessary for IE >= 10
+
+        mywindow.print();
+        mywindow.close();
+
+        return true;
     };
 });

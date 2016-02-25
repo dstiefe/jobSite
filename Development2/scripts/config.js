@@ -281,6 +281,17 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
                 }
             }
         })
+        .state('download_resume', {
+            url: "/download_resume/:id",
+            templateUrl: "views/DownloadResume.html",
+            data: {
+                pageTitle: 'Download resume',
+                permissions: {
+                    only: ['Admin', 'User'],
+                    redirectTo: 'login'
+                }
+            }
+        })
 }
 
 angular

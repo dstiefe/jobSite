@@ -15,6 +15,18 @@ angular.module('Jobsite').controller('ResumeDetailController', function ($scope,
 
 
 
+    function SetEmailLink(){
+        var host = location.protocol + '//'  + location.host;
+        if (location.pathname.indexOf('Development2') != -1){
+            host = location.protocol + '//' + location.host + '/Development2';
+        }
+        var url= host + '/index.html#/download_resume/'+ $scope.id;
+        $scope.emailLink = "mailto:?subject=Resume&body="+encodeURIComponent(url);
+    }
+
+    SetEmailLink();
+
+
     var _getResumeSource = function () {
         ResumesService.getPageUrl($scope.id, $scope.currentPage).then(function (results) {
             var _url = results.data.content;

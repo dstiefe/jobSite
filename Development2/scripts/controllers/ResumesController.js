@@ -1,68 +1,72 @@
 /**
  * Created by Van on 17.01.2016.
  */
-angular.module('Jobsite').controller("ResumesController", function($scope, AuthService, $location, SearchResumesParameters, ResumesService, $modal) {
+angular.module('Jobsite').controller("ResumesController", function($scope, AuthService, $location, SearchResumesParameters, ResumesService) {
 
-    $scope.isAuth = AuthService.authentication.isAuth;
-    $scope.isAdministrator = AuthService.authentication.isAdministrator;
-    $scope.isUser = AuthService.authentication.isUser;
-    $scope.isActive = function (viewLocation) {
-        return viewLocation === $location.path();
-    };
-
-    $scope.searchText = SearchResumesParameters.searchText;
-    $scope.resumes = [];
     $scope.currentPage = 1;
-
-    $scope.itemsPerPage = 10;
-    $scope.totalItems = 0;
-    $scope.maxSize = 5;
-
-    var _countS = function () {
-        ResumesService.searchResumesCount($scope.searchText).then(function (results) {
-            $scope.totalItems = results.data.content;
-        }, function (error) {
-            console.log(error.data.message);
-        });
+    if (sessionStorage.getItem("ValiDatedTokenObject") == null || sessionStorage.getItem("ValiDatedTokenObject")=="") {
+        $location.path("/login");
     }
-    var _search = function () {
-        skip = ($scope.currentPage - 1) * $scope.itemsPerPage;
-
-        ResumesService.searchResumes($scope.searchText, skip, $scope.itemsPerPage).then(function (results) {
-            $scope.resumes = results.data;
-        }, function (error) {
-            console.log(error.data.message);
-        });
+    ValiDatedTokenObject.setValiDatedTokenObject(JSON.parse(sessionStorage.getItem("ValiDatedTokenObject")));
+    if (ValiDatedTokenObject.getValiDatedTokenObject() == null || ValiDatedTokenObject.getValiDatedTokenObject().access_token == "") {
+        $location.path("/login");
     }
-    _search();
-    _countS();
-
-    $scope.search = function () {
-        _search();
-        _countS();
-    };
-
-    $scope.detailViewShow = function (data) {
-
-        var modalInstance = $modal.open({
-            animation: true,
-            templateUrl: 'views/ResumeDetailView.html',
-            controller: 'ResumeDetailController',
-            //size: 'fullscreen',
-            windowClass : 'modal-fullscreen',
-            resolve: {
-                resume: function () {
-                    return data;
-                },
-                text: function () {
-                    return $scope.searchText;
-                }
+    $scope.role = ValiDatedTokenObject.getValiDatedTokenObject().roles;
+    var req = {
+        method: 'GET',
+        url: ServicesURL + 'api/v1/resumes',
+        headers: {
+            'Content-Type': 'application/json',
+            'Connection': 'keep-alive',
+            'Authorization': ValiDatedTokenObject.getValiDatedTokenObject().token_type+" "+ValiDatedTokenObject.getValiDatedTokenObject().access_token
+        }
+    }
+    $http(req).then(function(data) {
+        if (data.status == "200") {
+            $scope.list = data.data;
+            $scope.currentPage = 1; //current page
+            $scope.entryLimit = 10; //max no of items to display in a page
+            $scope.filteredItems = $scope.list.length; //Initially for no filter
+            $scope.totalItems = $scope.list.length;
+        }
+    });
+    $scope.deleterecords = function(id) {
+        console.log(id);
+        $http({
+            method: 'DELETE',
+            url: ServicesURL + 'api/v1/jobs/' + id,
+            headers: {
+                'Content-Type': 'application/json',
+                'Connection': 'keep-alive',
+                'Authorization': ValiDatedTokenObject.getValiDatedTokenObject().token_type+" "+ValiDatedTokenObject.getValiDatedTokenObject().access_token
             }
+        }).
+        success(function(response) {
+            $http(req).then(function(data) {
+                if (data.status == "200") {
+                    $scope.list = data.data;
+                    $scope.currentPage = 1; //current page
+                    $scope.entryLimit = 10; //max no of items to display in a page
+                    $scope.filteredItems = $scope.list.length; //Initially for no filter
+                    $scope.totalItems = $scope.list.length;
+                }
+            });
         });
+
+    };
+    $scope.setPage = function(pageNo) {
+        $scope.currentPage = pageNo;
     };
 
-    $scope.pageChanged = function() {
-        _search();
+    $scope.filter = function() {
+        $timeout(function() {
+            $scope.filteredItems = $scope.filtered.length;
+        }, 10);
+    };
+
+    $scope.sort_by = function(predicate) {
+        $scope.predicate = predicate;
+        $scope.reverse = !$scope.reverse;
     };
 
 

@@ -5,7 +5,7 @@ angular.module('Jobsite').controller("CreateScreeningController", function($scop
 
     $scope.id = $stateParams.id;
     $scope.screening = {};
-
+    $scope.screening.sort = 0;
 
     CategoriesService.getCategories().then(function (results) {
         $scope.categories = results.data;
@@ -29,10 +29,10 @@ angular.module('Jobsite').controller("CreateScreeningController", function($scop
             $scope.screening.sort = res.sort;
             $scope.screening.isAutoSend = res.isAutoSend;
             $scope.screening.timeToComplete = res.timeToComplete;
-            $timeout(function() {
-                $scope.screening.categoryId = res.categoryId;
-                $scope.screening.jobsIds =res.jobsIds;
-            }, 10);
+
+            $scope.screening.categoryId = res.categoryId;
+            $scope.screening.jobsIds =res.jobsIds;
+
 
         }, function (error) {
             console.log(error.data.message);
@@ -40,7 +40,7 @@ angular.module('Jobsite').controller("CreateScreeningController", function($scop
     }
 
     $scope.saveChanges = function(isValid) {
-
+console.log('isValid='+isValid);
         if (!isValid){
             return;
         }

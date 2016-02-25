@@ -37,14 +37,16 @@
 
                                                 <div class="form-group">
                                                     <label for="jobsIds">Jobs</label>
-                                                    <select multiple id="jobsIds" name="jobsIds" ng-model="screening.jobsIds" class="form-control" ng-change="jobsChanged()" required>
-                                                        <option ng-repeat="job in jobs" value="{{job.id}}">{{job.title}}</option>
-                                                    </select>
+
+                                                    <select  id="jobsIds"  name="jobsIds" multiple="true" ng-model="screening.jobsIds" class="form-control" ng-change="jobsChanged()" required ng-options="job.id as job.title for job in jobs">
+                                                     </select>
+
+
                                                     <span class="color-theme" ng-show="createScreeningForm.jobsIds.$error.required">Jobs is required.</span>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="sort">Order</label>
-                                                    <input type="number" min="1" step="1"  ng-model="screening.sort" class="form-control" id="sort" name="sort" placeholder="Set Order">
+                                                    <input type="number" min="0" step="1"  ng-model="screening.sort" class="form-control" id="sort" name="sort" placeholder="Set Order">
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="timeToComplete">Time (in minutes)</label>

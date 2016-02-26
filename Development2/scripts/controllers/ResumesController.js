@@ -40,7 +40,14 @@ angular.module('Jobsite').controller("ResumesController", function($scope, AuthS
         $scope.predicate = predicate;
         $scope.reverse = !$scope.reverse;
     };
+    $scope.arrayEmptyJob= function(item) {
 
+        if (!angular.isUndefined(item.jobId)&& item.jobId != null && item.jobId != '')  {
+            return false;
+        } else {
+            return true;
+        }
+    };
     $scope.createOrEditResume = function(id) {
 
         var modalInstance = $modal.open({
@@ -56,7 +63,7 @@ angular.module('Jobsite').controller("ResumesController", function($scope, AuthS
         });
 
         modalInstance.result.then(function (res) {
-
+            getResumes();
         }, function () {
             console.log('Modal dismissed at: ' + new Date());
         });

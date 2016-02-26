@@ -172,6 +172,28 @@ angular.module('Jobsite').factory('ResumesService', ['$http', '$q', 'RESOURCES',
         });
     };
 
+    var _postResume = function(model){
+        return $http.post(serviceBase + 'resumes', model,{
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': ValiDatedTokenObject.getValiDatedTokenObject().token_type+" "+ValiDatedTokenObject.getValiDatedTokenObject().access_token
+            }
+        }).then(function (results) {
+            return results;
+        });
+    };
+
+    var _putResume = function(id, model){
+        return $http.put(serviceBase + 'resumes/'+id, model,{
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': ValiDatedTokenObject.getValiDatedTokenObject().token_type+" "+ValiDatedTokenObject.getValiDatedTokenObject().access_token
+            }
+        }).then(function (results) {
+            return results;
+        });
+    };
+
     resumesServiceFactory.searchResumes = _searchResumes;
     resumesServiceFactory.searchIntoResume = _searchIntoResume;
     resumesServiceFactory.searchIntoPageResume = _searchIntoPageResume;
@@ -182,6 +204,7 @@ angular.module('Jobsite').factory('ResumesService', ['$http', '$q', 'RESOURCES',
     resumesServiceFactory.getResume = _getResume;
     resumesServiceFactory.getMyResumes = _getMyResumes;
     resumesServiceFactory.deleteResume = _deleteResume;
-
+    resumesServiceFactory.postResume = _postResume;
+    resumesServiceFactory.putResume = _putResume;
     return resumesServiceFactory;
 }]);

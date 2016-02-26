@@ -6,48 +6,54 @@
         </div>
 
         <div class="pull-left">
-            {{jobTitle}}
+            {{user.lastName}}&nbsp;{{user.firstName}}
         </div>
 
     </div>
-    <div class="modal-body">
-        <div class="alert alert-danger" role="alert" ng-hide='!message'>{{message}}</div>
+    <form name="resumeForm" ng-submit="saveChanges(resumeForm.$valid)" novalidate>
+        <div class="modal-body">
+            <div class="alert alert-danger" role="alert" ng-hide='!message'>{{message}}</div>
 
-        <div class="row">
-            <div class="form-group col-sm-5">
-                <label class="radio-inline">
-                    <input type="radio" name="feeType" value="percent" ng-model="feeType" ng-change="changeFeeType()" /> % of Referral Fee
-                </label>
+            <div class="row">
+
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="title">Title</label>
+                        <input type="text" class="form-control" ng-model="resume.title" id="title" name="title" placeholder="Enter Title" required />
+                        <span class="color-theme" ng-show="resumeForm.title.$error.required">Title is required.</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Description</label>
+                        <div  text-angular ng-model="resume.description" name="description" id="description" ta-text-editor-class="border-around" ta-html-editor-class="border-around" style="background-color: #fff;" required></div>
+                        <span class="color-theme" ng-show="resumeForm.description.$error.required">Description is required.</span>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="tags">Tags</label> <br>
+                        <input class="form-control" style="width:90%;float:right;" ng-model="tag" id="tags" type="text"  ng-enter="addtags()"><a href="" ng-click="addtags()"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
+                        <br>
+                        <br>
+
+                        <ul class="list-group">
+                            <li class="list-group-item" ng-repeat="tagname in resume.tags">{{ tagname }}<a style="float:right;" href="" ng-click="removetag($index)"  ><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></a></li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-            <div class="form-group col-sm-7">
-                <select ng-model="referralFeePercent" class="form-control" ng-options="c for c in referralFeePercentList" ng-disabled="feeType!='percent'" > <option value="">Select % of referral fee</option></select>
+
+        </div>
+        <div class="modal-footer">
+            <div class="text-right m-t-xs">
+                <button type="submit" class="btn btn-success">Upload Resume</button>
             </div>
         </div>
-
-        <div class="row">
-            <div class="form-group col-sm-5">
-                <label class="radio-inline">
-                    <input type="radio" name="feeType" value="fixed" ng-model="feeType" ng-change="changeFeeType()"  /> Fixed $ Amount
-                </label>
-            </div>
-            <div class="form-group col-sm-7">
-                <input type="text" name="referralFeeAmount" class="form-control"  format-as-currency  ng-model="referralFeeAmount" ng-disabled="feeType!='fixed'" placeholder="Fixed $ amount" />
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-sm-12">
-                <label class="checkbox-inline">
-                    <input type="checkbox" ng-model="agreeTerm" />  Agree To Terms<br /> <a href="#">view terms</a>
-                </label>
-            </div>
-        </div>
-
-    </div>
+    </form>
 </div>
-<div class="modal-footer">
-    <div class="text-right m-t-xs">
-        <button ng-click="onSave()" class="btn btn-success" ng-disabled="!agreeTerm">Save</button>
-    </div>
-</div>
+
+
+
+
 </div>

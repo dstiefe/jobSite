@@ -44,10 +44,10 @@
         <th>Admin </th>
         </thead>
         <tbody>
-        <tr ng-repeat="data in filtered = (list | filter:search | orderBy : predicate :reverse) | startFrom:(currentPage-1)*entryLimit | limitTo:entryLimit">
+        <tr ng-repeat="data in filtered = (list| filter:arrayEmptyJob | filter:search | orderBy : predicate :reverse) | startFrom:(currentPage-1)*entryLimit | limitTo:entryLimit">
          <td>{{data.title}}</td>
-         <td>{{data.note}}</td>
-         <td>{{data.tags}}</td>
+         <td  ng-bind-html="data.body | trustedHtml | limitHightlightHtml:100"></td>
+         <td>{{data.tags.join()}}</td>
          <td>
           {{ data.applyDate*1000 | date : "M/d/yyyy" }}
          </td>

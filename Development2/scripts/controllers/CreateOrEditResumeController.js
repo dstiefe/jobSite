@@ -1,25 +1,68 @@
 /**
  * Created by Van on 26.02.2016.
  */
-angular.module('Jobsite').controller('CreateOrEditResumeController', function ($scope, $modalInstance, JobsService, ScreeningsService, $sce, $timeout, $document, resumeId) {
+angular.module('Jobsite').controller('CreateOrEditResumeController', function ($scope, $modalInstance, UsersService, ResumesService, $sce, $timeout, resumeId) {
+
+    $scope.id = resumeId;
+
+    $scope.resume ={};
+    $scope.resume.tags = [];
+
+    UsersService.getMyInfo().then(function (results) {
+        $scope.user = results.data;
+    }, function (error) {
+        console.log(error.data.message);
+    });
+
+    if (!angular.isUndefined($scope.id) && $scope.id != '') {
+        ResumesService.getResume($scope.id).then(function (results) {
+            var res = results.data;
+            $scope.resume.title = res.title;
+            $scope.resume.description =res.body;
+            $scope.resume.tags = res.tags;
+
+        }, function (error) {
+            console.log(error.data.message);
+        });
+    }
 
 
     $scope.onClose = function() {
-        $modalInstance.close({
-            'referralFeePercent': referralFeePercent,
-            'referralFeeAmount': referralFeeAmount
-        });
-    }
+        $modalInstance.close();
+    };
 
-    $scope.onSave = function() {
-        if ((angular.isUndefined($scope.referralFeePercent) || $scope.referralFeePercent == null) && (angular.isUndefined($scope.referralFeeAmount)|| $scope.referralFeeAmount == null))
-        {
-            $scope.message ='You don not fill Referral Fee!';
+    $scope.saveChanges = function(isValid) {
+
+        if (!isValid){
             return;
         }
-        $modalInstance.close({
-            'referralFeePercent':$scope.referralFeePercent,
-            'referralFeeAmount':$scope.referralFeeAmount
-        });
-    }
+
+        if (!angular.isUndefined($scope.id) && $scope.id != '') {
+            ResumesService.putResume($scope.id, $scope.resume).then(function (results) {
+                $modalInstance.close();
+            }, function (error) {
+                console.log(error.data.message);
+            });
+        }
+        else{
+            ResumesService.postResume($scope.resume).then(function (results) {
+                $modalInstance.close();
+            }, function (error) {
+                console.log(error.data.message);
+            });
+        }
+
+    };
+    $scope.addtags = function() {
+        if ($scope.resume.tags.indexOf($scope.tag) == -1) {
+            $scope.resume.tags.push($scope.tag);
+            $scope.tag = "";
+        }
+    };
+    $scope.removetag = function(index) {
+        $scope.resume.tags.splice(index - 1, 1);
+    };
+
+
+
 });

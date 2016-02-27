@@ -194,6 +194,28 @@ angular.module('Jobsite').factory('ResumesService', ['$http', '$q', 'RESOURCES',
         });
     };
 
+    var _applyToJobByExistResume = function(jobId, model){
+        return $http.post(serviceBase + 'jobs/'+jobId+'/applybyexistresume', model,{
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': ValiDatedTokenObject.getValiDatedTokenObject().token_type+" "+ValiDatedTokenObject.getValiDatedTokenObject().access_token
+            }
+        }).then(function (results) {
+            return results;
+        });
+    };
+
+    var _applyToJob = function(jobId, model){
+        return $http.post(serviceBase + 'jobs/'+jobId+'/apply', model,{
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': ValiDatedTokenObject.getValiDatedTokenObject().token_type+" "+ValiDatedTokenObject.getValiDatedTokenObject().access_token
+            }
+        }).then(function (results) {
+            return results;
+        });
+    };
+
     resumesServiceFactory.searchResumes = _searchResumes;
     resumesServiceFactory.searchIntoResume = _searchIntoResume;
     resumesServiceFactory.searchIntoPageResume = _searchIntoPageResume;
@@ -206,5 +228,8 @@ angular.module('Jobsite').factory('ResumesService', ['$http', '$q', 'RESOURCES',
     resumesServiceFactory.deleteResume = _deleteResume;
     resumesServiceFactory.postResume = _postResume;
     resumesServiceFactory.putResume = _putResume;
+    resumesServiceFactory.applyToJobByExistResume = _applyToJobByExistResume;
+    resumesServiceFactory.applyToJob = _applyToJob;
+
     return resumesServiceFactory;
 }]);

@@ -42,10 +42,11 @@ angular.module('Jobsite').controller("ResumesController", function($scope, AuthS
     };
     $scope.arrayEmptyJob= function(item) {
 
-        if (!angular.isUndefined(item.jobId)&& item.jobId != null && item.jobId != '')  {
-            return false;
-        } else {
+        //if (!angular.isUndefined(item.jobId)&& item.jobId != null && item.jobId != '')  {
+        if (!angular.isUndefined(item.title)&& item.title != null && item.title != '')  {
             return true;
+        } else {
+            return false;
         }
     };
     $scope.createOrEditResume = function(id) {

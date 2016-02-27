@@ -19,10 +19,10 @@ angular
     .module('Jobsite')
     .controller('ApplyJobController', ApplyJobController);
 
-function ApplyJobController($scope, Login, ValiDatedTokenObject, $http, $location, $modalInstance) {
+function ApplyJobController($scope, Login, ValiDatedTokenObject, $http, $location, $modalInstance, ResumesService) {
 
     $scope.includeCoverLetter = false;
-
+    $scope.selectedResume = '';
     $scope.resumeFileUrl = '';
     $scope.resumeOriginalFilename = '';
     $scope.loading =false;
@@ -31,7 +31,11 @@ function ApplyJobController($scope, Login, ValiDatedTokenObject, $http, $locatio
         $location.path("/login");
     }
 
-
+    ResumesService.getMyResumes().then(function (results) {
+        $scope.resumes = results.data;
+     }, function (error) {
+        console.log(error.data.message);
+    });
 
     var req = {
         method: 'GET',
@@ -102,33 +106,52 @@ function ApplyJobController($scope, Login, ValiDatedTokenObject, $http, $locatio
         var postresumedata = {
             "note": $scope.coverLetterNote,
             "storageLocationNative": $scope.resumeFileUrl,
+            "resumeId": $scope.selectedResume,
             "originalFilename": $scope.resumeOriginalFilename,
             "firstName": $scope.accountFirstName,
             "lastName": $scope.accountLastName,
             "email": $scope.accountEmail
         };
-        $http({
-                method: 'POST',
-                url: ServicesURL + 'api/v1/jobs/' + viewJobId + '/apply',
-                data: postresumedata,
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Connection': 'keep-alive',
-                    'Authorization': ValiDatedTokenObject.getValiDatedTokenObject().token_type+" "+ValiDatedTokenObject.getValiDatedTokenObject().access_token
-                }
-            })
-            .success(function(response) {
+
+        if ($scope.resumeFileUrl){
+            ResumesService.applyToJob(viewJobId,postresumedata).then(function (results) {
+                var response = results.data;
                 $scope.jobAppliedDate = response.applyDate;
                 $scope.step = 3;
                 $scope.$parent.isApplied = true;
                 $scope.loading = false;
-            })
-            .error(function(response) {
+            }, function (error) {
+                console.log(error.data.message);
                 $scope.loading = false;
             });
-    }
+        }else{
+            ResumesService.applyToJobByExistResume(viewJobId,postresumedata).then(function (results) {
+                var response = results.data;
+                $scope.jobAppliedDate = response.applyDate;
+                $scope.step = 3;
+                $scope.$parent.isApplied = true;
+                $scope.loading = false;
+            }, function (error) {
+                console.log(error.data.message);
+                $scope.loading = false;
+            });
+        }
+
+
+
+
+    };
 
     $scope.onClose = function() {
         $modalInstance.close();
     }
+
+    $scope.arrayEmptyJob= function(item) {
+
+        if (!angular.isUndefined(item.jobId)&& item.jobId != null && item.jobId != '')  {
+            return false;
+        } else {
+            return true;
+        }
+    };
 }

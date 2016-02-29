@@ -7,7 +7,8 @@ angular.module('Jobsite').controller('CreateOrEditResumeController', function ($
 
     $scope.resume ={};
     $scope.resume.tags = [];
-
+    $scope.loading =false;
+    $scope.message = '';
     UsersService.getMyInfo().then(function (results) {
         $scope.user = results.data;
     }, function (error) {
@@ -18,13 +19,37 @@ angular.module('Jobsite').controller('CreateOrEditResumeController', function ($
         ResumesService.getResume($scope.id).then(function (results) {
             var res = results.data;
             $scope.resume.title = res.title;
-            $scope.resume.description =res.body;
+            $scope.resume.description =res.description;
             $scope.resume.tags = res.tags;
+            if ($scope.resume.tags == null)
+                $scope.resume.tags = [];
+
+            $scope.resume.originalFilename = res.originalFilename;
+            $scope.resume.storageLocationNative = res.storageLocationNative;
 
         }, function (error) {
             console.log(error.data.message);
         });
     }
+
+    $scope.uploadFile = function(event) {
+
+        $scope.loading = true;
+
+        var file = event.target.files[0];
+
+        ResumesService.uploadResume(file).then(function (results) {
+            var response = results.data;
+            $scope.resume.storageLocationNative = response.storageLocationNative;
+            $scope.resume.originalFilename = response.originalFilename;
+            $scope.loading = false;
+
+        }, function (error) {
+            $scope.loading = false;
+            console.log(error.data.message);
+            alert('Resume upload failed');
+        });
+    };
 
 
     $scope.onClose = function() {
@@ -33,20 +58,25 @@ angular.module('Jobsite').controller('CreateOrEditResumeController', function ($
 
     $scope.saveChanges = function(isValid) {
 
-        if (!isValid){
+        if (!isValid ||  !$scope.resume.originalFilename){
+            $scope.message = "You don't fill all fields";
             return;
         }
 
         if (!angular.isUndefined($scope.id) && $scope.id != '') {
             ResumesService.putResume($scope.id, $scope.resume).then(function (results) {
-                $modalInstance.close();
+                $modalInstance.close({
+                    'isUpdated': true
+                });
             }, function (error) {
                 console.log(error.data.message);
             });
         }
         else{
             ResumesService.postResume($scope.resume).then(function (results) {
-                $modalInstance.close();
+                $modalInstance.close({
+                    'isUpdated': true
+                });
             }, function (error) {
                 console.log(error.data.message);
             });

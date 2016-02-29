@@ -19,7 +19,7 @@ angular.module('Jobsite').controller("ResumesController", function($scope, AuthS
     getResumes();
 
     $scope.deleterecords = function(id) {
-        ResumesService.deleteResume().then(function (results) {
+        ResumesService.deleteResume(id).then(function (results) {
             getResumes();
         }, function (error) {
             console.log(error.data.message);
@@ -64,7 +64,12 @@ angular.module('Jobsite').controller("ResumesController", function($scope, AuthS
         });
 
         modalInstance.result.then(function (res) {
-            getResumes();
+
+           if (!angular.isUndefined(res) && res!=null && !angular.isUndefined(res.isUpdated) && res.isUpdated!=null && res.isUpdated)
+           {
+               getResumes();
+           }
+
         }, function () {
             console.log('Modal dismissed at: ' + new Date());
         });

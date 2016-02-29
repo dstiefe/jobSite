@@ -54,7 +54,8 @@ var clientId ="P600Us6Y476QiK331u5yEzb22dpX_y6NS75!9I-a";
         var ScreeningQuestionTypes = [
             {value: "MultipleChoice", name: "Multiple/Choice"},
             {value: "TrueFalse", name: "True/False"},
-            {value: "FillIn", name: "Fill In"}
+            {value: "FillIn", name: "Fill In"},
+            {value: "LikertScale", name: "Likert Scale"},
         ];
             // Use the variable in your constants
             return {

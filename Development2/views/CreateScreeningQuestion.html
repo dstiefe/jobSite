@@ -74,6 +74,45 @@
                                         <span class="color-theme" ng-show="createQuestionScreeningForm.answerText.$error.required">Answer Text is required.</span>
                                     </div>
 
+                                    <div class="form-group" ng-if="screeningQuestion.type == 'LikertScale'">
+                                        <label for="type">Number of Options </label>
+
+                                        <select id="numOptionsSelected"
+                                                name="numOptionsSelected"
+                                                ng-model="$parent.numOptionsSelected"
+                                                required
+                                                class="form-control"
+                                                ng-options="c for c in numOptionsLikertScale"
+                                                ng-change="changedNumOptionsLikertScale()">
+                                            <option value="">Select Number of Options</option>
+                                        </select>
+                                        <span class="color-theme" ng-show="createQuestionScreeningForm.numOptionsSelected.$error.required">Number of Options is required.</span>
+
+                                    </div>
+                                    <div class="form-group" ng-if="screeningQuestion.type == 'LikertScale' && numOptionsSelected">
+
+                                        <div class="row">
+                                            <div class="col-xs-4" style="text-align: right">
+                                                {{screeningQuestion.options[0]}} =
+                                            </div>
+                                            <div class="col-xs-8">
+                                                <input type="text" ng-model="screeningQuestion.optionsDescriptions[1]" id="optionsDescriptions0"  name="optionsDescriptions0" class="form-control" required />
+                                                <span class="color-theme" ng-show="createQuestionScreeningForm.optionsDescriptions0.$error.required">Optionsis required.</span>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-xs-4" style="text-align: right">
+                                                {{screeningQuestion.options[screeningQuestion.options.length-1]}} =
+                                            </div>
+                                            <div class="col-xs-8">
+                                                 <input type="text" ng-model="screeningQuestion.optionsDescriptions[numOptionsSelected]" id="optionsDescriptionsL"  name="optionsDescriptionsL" required class="form-control"  />
+                                                <span class="color-theme" ng-show="createQuestionScreeningForm.optionsDescriptionsL.$error.required">Option is required.</span>
+                                            </div>
+                                        </div>
+
+                                    </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">

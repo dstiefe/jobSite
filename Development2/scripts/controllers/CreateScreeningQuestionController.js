@@ -12,7 +12,10 @@ angular.module('Jobsite').controller("CreateScreeningQuestionController", functi
     $scope.screeningQuestion.tags = [];
     $scope.ScreeningQuestionTypes = RESOURCES.SCREENING_QUESTION_TYPES;
     $scope.screeningQuestion.options =[];
-        ScreeningsService.getScreening($scope.id).then(function (results) {
+    $scope.screeningQuestion.optionsDescriptions = {};
+    $scope.numOptionsLikertScale =[3,5,7,9];
+    $scope.numOptionsSelected = '';
+    ScreeningsService.getScreening($scope.id).then(function (results) {
         var res = results.data;
         $scope.questionsCount = res.questionsCount;
     }, function (error) {
@@ -70,10 +73,18 @@ angular.module('Jobsite').controller("CreateScreeningQuestionController", functi
            $scope.screeningQuestion.options = ['True', 'False'];
            $scope.option ='';
            $scope.selectedOption ='';
+           $scope.screeningQuestion.optionsDescriptions ={};
+       }else if ($scope.screeningQuestion.type == 'LikertScale'){
+
+           $scope.screeningQuestion.options = [];
+           $scope.option ='';
+           $scope.selectedOption ='';
+           $scope.screeningQuestion.optionsDescriptions ={};
        }else{
            $scope.screeningQuestion.options = [];
            $scope.option ='';
            $scope.selectedOption ='';
+           $scope.screeningQuestion.optionsDescriptions ={};
        }
     };
 
@@ -95,6 +106,20 @@ angular.module('Jobsite').controller("CreateScreeningQuestionController", functi
     };
     $scope.removetag = function(index) {
         $scope.screeningQuestion.tags.splice(index - 1, 1);
+    };
+
+    $scope.changedNumOptionsLikertScale = function() {
+console.log('ggg='+$scope.numOptionsSelected);
+        $scope.screeningQuestion.options = [];
+        $scope.screeningQuestion.optionsDescriptions ={};
+
+        if ($scope.numOptionsSelected && parseInt($scope.numOptionsSelected) >=3 ){
+            for(var i=1;i<=parseInt($scope.numOptionsSelected) ;i++){
+
+                $scope.screeningQuestion.options.push(i);
+                $scope.screeningQuestion.optionsDescriptions[i]='';
+            }
+        }
     };
 
 });

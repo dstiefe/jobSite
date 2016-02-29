@@ -216,6 +216,21 @@ angular.module('Jobsite').factory('ResumesService', ['$http', '$q', 'RESOURCES',
         });
     };
 
+        var _uploadResume = function(file){
+            var fd = new FormData();
+            fd.append('file', file);
+            return $http.post(serviceBase + 'resumes/upload', fd, {
+                    transformRequest: angular.identity,
+                    headers: {
+                        'Content-Type': undefined,
+                        'Authorization': ValiDatedTokenObject.getValiDatedTokenObject().token_type+" "+ValiDatedTokenObject.getValiDatedTokenObject().access_token
+                    }
+                }).then(function (results) {
+                return results;
+            });
+        };
+
+
     resumesServiceFactory.searchResumes = _searchResumes;
     resumesServiceFactory.searchIntoResume = _searchIntoResume;
     resumesServiceFactory.searchIntoPageResume = _searchIntoPageResume;
@@ -230,6 +245,7 @@ angular.module('Jobsite').factory('ResumesService', ['$http', '$q', 'RESOURCES',
     resumesServiceFactory.putResume = _putResume;
     resumesServiceFactory.applyToJobByExistResume = _applyToJobByExistResume;
     resumesServiceFactory.applyToJob = _applyToJob;
+    resumesServiceFactory.uploadResume = _uploadResume;
 
     return resumesServiceFactory;
 }]);

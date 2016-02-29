@@ -44,12 +44,12 @@
         <th>Admin </th>
         </thead>
         <tbody>
-        <tr ng-repeat="data in filtered = (list| filter:arrayEmptyJob | filter:search | orderBy : predicate :reverse) | startFrom:(currentPage-1)*entryLimit | limitTo:entryLimit">
+        <tr ng-repeat="data in filtered = (list| filter:search | orderBy : predicate :reverse) | startFrom:(currentPage-1)*entryLimit | limitTo:entryLimit">
          <td>{{data.title}}</td>
-         <td  ng-bind-html="data.body | trustedHtml | limitHightlightHtml:100"></td>
+         <td  ng-bind-html="data.description | trustedHtml | limitHightlightHtml:100"></td>
          <td>{{data.tags.join()}}</td>
          <td>
-          {{ data.applyDate*1000 | date : "M/d/yyyy" }}
+          {{ data.modifyDate*1000 | date : "M/d/yyyy" }}
          </td>
          <td>
           <a href="" ng-click="createOrEditResume(data.id)" class="btn btn-info btn-warning"><span class="glyphicon glyphicon-edit"></span> Edit</a>&nbsp;<a ng-click="deleterecords(data.id)" class="btn btn-info btn-danger"><span class="glyphicon glyphicon-remove"></span> Delete</a>

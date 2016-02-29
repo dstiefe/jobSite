@@ -66,6 +66,32 @@
 
                                         </div>
 
+                                        <div class="form-group" ng-if="screeningQuestion.type == 'LikertScale'">
+
+
+                                                <ul class="list-inline">
+                                                    <li style="vertical-align: top;">
+                                                    {{$parent.screeningQuestion.optionsDescriptions["1"]}}
+                                                    </li>
+
+
+
+                                                    <li style="max-width:50px;" ng-repeat="(_key, _option) in $parent.screeningQuestion.options">
+                                                            <input  type="radio" ng-model="$parent.resultQuestion.answerOption" name="answerOption" required value="{{_key}}"><br />{{_option}}
+                                                        </li>
+
+                                                    <li style="vertical-align: top;">
+                                                    {{$parent.screeningQuestion.optionsDescriptions[$parent.screeningQuestion.options.length]}}
+                                                    </li>
+                                                </ul>
+
+
+
+
+
+                                            <span class="color-theme" ng-show="resultScreeningForm.answerOption.$error.required">Answer is required.</span>
+                                        </div>
+
 
                                     </div>
 

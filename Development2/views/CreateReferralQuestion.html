@@ -1,0 +1,197 @@
+<link rel="stylesheet" href="libs/jquery-ui/themes/overcast/jquery-ui.min.css" />
+<div ng-controller="CreateReferralQuestionController">
+    <div class="container">
+        <div id="header" ng-include="'views/head.html'"></div>
+        <div class="row-fluid vertical-align" style="margin-top: 20px;">
+            <div class="col-xs-12 col-sm-9 col-centered">
+
+                <div class="panel panel-custom">
+                    <div class="panel-heading">
+
+                        <div class="pull-left">
+                            <h1 class="panel-title">Create Referral</h1>
+                        </div>
+
+                        <div class=" pull-right">
+                            # of Questions Created {{questionsCount}}
+                        </div>
+
+                        <div class="clearfix"></div>
+
+                    </div>
+
+                    <div class="panel-body">
+                        <form name="createQuestionReferralForm" ng-submit="saveChanges(createQuestionReferralForm.$valid)" novalidate>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        Create Questions &amp; Answer Key
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="text">Question</label>
+                                        <input type="text" class="form-control" ng-model="referralQuestion.text" id="text" name="text" placeholder="Enter Question" required />
+                                        <span class="color-theme" ng-show="createQuestionReferralForm.text.$error.required">Question is required.</span>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="textOptional">Question Help</label>
+                                        <input type="text" class="form-control" ng-model="referralQuestion.textOptional" id="textOptional" name="textOptional" placeholder="Enter Question Help (Optional)"  />
+                                    </div>
+
+
+                                    <div class="form-group" ng-show="referralQuestion.type == 'MultipleChoice'">
+                                             <label for="option">Possible answer</label>
+
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <div class="input-group">
+                                                     <input class="form-control" ng-model="option" id="option" type="text"  ng-enter="addOption()" placeholder="Enter Possible Answer and press return" />
+                                                      <span class="input-group-btn">
+                                                        <button class="btn btn-default" type="button" ng-click="addOption()"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
+                                                      </span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
+                                    </div>
+
+                                    <div class="form-group" ng-if="referralQuestion.type == 'MultipleChoice' || referralQuestion.type == 'TrueFalse'">
+                                        <label for="options">Possible answers</label>
+                                        <ul class="list-group" id="options" name="options" style="background-color: #fff;">
+                                            <li class="list-group-item" ng-repeat="_option in referralQuestion.options">{{_option}}
+
+                                                <a style="float:right;" href="" ng-click="removeOption($index)"  ng-show="referralQuestion.type == 'MultipleChoice'"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></a>
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="form-group" ng-if="referralQuestion.type == 'FillIn'">
+                                        <label for="answerText">Answer Text</label>
+                                        <div  text-angular ng-model="$parent.referralQuestion.answerText" name="answerText" id="answerText" ta-text-editor-class="border-around" ta-html-editor-class="border-around" style="background-color: #fff;" required></div>
+                                        <span class="color-theme" ng-show="createQuestionReferralForm.answerText.$error.required">Answer Text is required.</span>
+                                    </div>
+
+                                    <div class="form-group" ng-if="referralQuestion.type == 'LikertScale'">
+                                        <label for="type">Number of Options </label>
+
+                                        <select id="numOptionsSelected"
+                                                name="numOptionsSelected"
+                                                ng-model="$parent.numOptionsSelected"
+                                                required
+                                                class="form-control"
+                                                ng-options="c for c in numOptionsLikertScale"
+                                                ng-change="changedNumOptionsLikertScale()">
+                                            <option value="">Select Number of Options</option>
+                                        </select>
+                                        <span class="color-theme" ng-show="createQuestionReferralForm.numOptionsSelected.$error.required">Number of Options is required.</span>
+
+                                    </div>
+                                    <div class="form-group" ng-if="referralQuestion.type == 'LikertScale' && numOptionsSelected">
+
+                                        <div class="row">
+                                            <div class="col-xs-4" style="text-align: right">
+                                                {{referralQuestion.options[0]}} =
+                                            </div>
+                                            <div class="col-xs-8">
+                                                <input type="text" ng-model="referralQuestion.optionsDescriptions[1]" id="optionsDescriptions0"  name="optionsDescriptions0" class="form-control" required />
+                                                <span class="color-theme" ng-show="createQuestionReferralForm.optionsDescriptions0.$error.required">Optionsis required.</span>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-xs-4" style="text-align: right">
+                                                {{referralQuestion.options[referralQuestion.options.length-1]}} =
+                                            </div>
+                                            <div class="col-xs-8">
+                                                 <input type="text" ng-model="referralQuestion.optionsDescriptions[numOptionsSelected]" id="optionsDescriptionsL"  name="optionsDescriptionsL" required class="form-control"  />
+                                                <span class="color-theme" ng-show="createQuestionReferralForm.optionsDescriptionsL.$error.required">Option is required.</span>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="type">Question Type</label>
+                                        <select
+                                                id="type"
+                                                name="type"
+                                                ng-model="referralQuestion.type"
+                                                required
+                                                class="form-control"
+                                                ng-change="changedQuestionType()"
+                                        >
+                                            <option value="">Select Question Type</option>
+                                            <option ng-repeat="_type in ScreeningQuestionTypes" ng-selected="_type.value==referralQuestion.type" value="{{_type.value}}">{{_type.name}}</option>
+                                        </select>
+                                        <span class="color-theme" ng-show="createQuestionReferralForm.type.$error.required">Question Type is required.</span>
+                                    </div>
+
+                                    <div class="form-group" ng-if="referralQuestion.type == 'MultipleChoice' || referralQuestion.type == 'TrueFalse'">
+                                        <label for="selectedOption">Correct Answer</label>
+
+                                        <select  id="selectedOption"
+                                                 name="selectedOption"
+                                                 required
+                                                 class="form-control"
+                                                ng-model="$parent.selectedOption"
+                                                ng-options="idx as _option for (idx, _option) in $parent.referralQuestion.options">
+                                            <option value="">Select correct answer</option>
+                                        </select>
+                                        <span id="helpBlock" class="help-block">Please, fill out possible answers and select correct answer</span>
+                                        <!--<select-->
+                                                <!--id="selectedOption"-->
+                                                <!--name="selectedOption"-->
+                                                <!--ng-model="selectedOption"-->
+                                                <!--required-->
+                                                <!--class="form-control"-->
+                                        <!--&gt;-->
+                                            <!--<option value="">Select Correct Answer</option>-->
+                                            <!--<option ng-repeat="_option in options" ng-selected="_option==selectedOption" value="{{_option}}">{{_option}}</option>-->
+                                        <!--</select>-->
+                                        <span class="color-theme" ng-show="createQuestionReferralForm.selectedOption.$error.required">Correct Answer Type is required.</span>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="tags">Tags</label>
+                                        <input class="form-control" style="width:70%;float:right;" ng-model="tag" id="tags" type="text"  ng-enter="addtags()"><a href="" ng-click="addtags()"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
+                                        <br>
+                                        <br>
+
+                                        <ul class="list-group">
+                                            <li class="list-group-item" ng-repeat="tagname in referralQuestion.tags">{{ tagname }}<a style="float:right;" href="" ng-click="removetag($index)"  ><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></a></li>
+                                        </ul>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 col-md-offset-6 form-group text-right">
+
+                                    <button class="btn btn-primary btn-lg" type="button"  alt="Cancel and exit" title="Cancel and exit" ng-click="cancel()">
+                                        Cancel
+                                    </button>
+
+                                    <button class="btn btn-primary btn-lg" type="submit" alt="Save and continue" title="Save and continue">
+                                        Add New Question
+                                    </button>
+
+                                    <button class="btn btn-primary btn-lg" type="submit" alt="Save and exit" title="Save and exit" ng-click="saveAndExit=true">
+                                        Save Screening
+                                    </button>
+
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

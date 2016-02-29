@@ -281,6 +281,38 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
                 }
             }
         })
+        .state('createreferral', {
+            url: "/referrals/create",
+            templateUrl: "views/CreateReferral.html",
+            data: {
+                pageTitle: 'Create Referral',
+                permissions: {
+                    only: ['Admin'],
+                }
+            }
+        })
+
+        .state('editreferral', {
+            url: "/referrals/:id/edit",
+            templateUrl: "views/CreateReferral.html",
+            data: {
+                pageTitle: 'Edit Referral',
+                permissions: {
+                    only: ['Admin'],
+                }
+            }
+        })
+        .state('createreferralquestion', {
+            url: "/referrals/:id/questions/create",
+            templateUrl: "views/CreateReferralQuestion.html",
+            data: {
+                pageTitle: 'Create Referral Question',
+                permissions: {
+                    only: ['Admin'],
+                }
+            }
+        })
+
         .state('download_resume', {
             url: "/download_resume/:id",
             templateUrl: "views/DownloadResume.html",

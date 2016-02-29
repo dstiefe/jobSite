@@ -70,7 +70,7 @@
                                 </span>
 
                                 <div class="pull-right">
-                                    <i class="fa fa-question-circle fa-lg" title="Help text" style="color: #e6a300;"></i>
+                                    <i class="fa fa-question-circle fa-lg" title="Help text" style="color: #e6a300;" ng-show="(data.screenings | filter:{ isNew: true }).length>0 || data.applicantsIds.length > 0"></i>
                                 </div>
                                 <!--<a class="btn btn-danger" ui-sref="starttestscreening({id:data.resumeId})" ng-show = "role == 'User' && data.screeningStage =='Screening'">-->
                                     <!--{{data.screeningStage}}-->

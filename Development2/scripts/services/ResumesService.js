@@ -230,6 +230,27 @@ angular.module('Jobsite').factory('ResumesService', ['$http', '$q', 'RESOURCES',
             });
         };
 
+    var _addAdminTags = function(resumeId, page, model){
+        return $http.post(serviceBase + 'resumes/'+resumeId+'/pages/'+page+'/admintags',model,{
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': ValiDatedTokenObject.getValiDatedTokenObject().token_type+" "+ValiDatedTokenObject.getValiDatedTokenObject().access_token
+            }
+        }).then(function (results) {
+            return results;
+        });
+    };
+
+    var _addAdminNotes = function(resumeId, page, model){
+        return $http.post(serviceBase + 'resumes/'+resumeId+'/pages/'+page+'/adminnotes',model,{
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': ValiDatedTokenObject.getValiDatedTokenObject().token_type+" "+ValiDatedTokenObject.getValiDatedTokenObject().access_token
+            }
+        }).then(function (results) {
+            return results;
+        });
+    };
 
     resumesServiceFactory.searchResumes = _searchResumes;
     resumesServiceFactory.searchIntoResume = _searchIntoResume;
@@ -247,7 +268,8 @@ angular.module('Jobsite').factory('ResumesService', ['$http', '$q', 'RESOURCES',
     resumesServiceFactory.applyToJob = _applyToJob;
     resumesServiceFactory.uploadResume = _uploadResume;
 
-
+    resumesServiceFactory.addAdminTags = _addAdminTags;
+    resumesServiceFactory.addAdminNotes = _addAdminNotes;
 
 
     return resumesServiceFactory;

@@ -9,11 +9,20 @@ angular.module('Jobsite').controller('ResumeDetailController', function ($scope,
     $scope.currentPage = resume.pageNumber;
     $scope.totalPages = resume.totalPages;
     $scope.resume = resume;
+    if ($scope.resume.adminTags == null){
+        $scope.resume.adminTags=[];
+    }
+    if ($scope.resume.adminNotes== null){
+        $scope.resume.adminNotes=[];
+    }
+
     $scope.itemsPerPage = 1;
     $scope.maxSize = 5;
     $scope.shareBoxVisible = false;
-
-
+    $scope.isShowAdminNotes = false;
+    $scope.isShowAdminTags = false;
+    $scope.adminTag = '';
+    $scope.adminNote = '';
 
     function SetEmailLink(){
         var host = location.protocol + '//'  + location.host;
@@ -48,6 +57,12 @@ angular.module('Jobsite').controller('ResumeDetailController', function ($scope,
             $scope.resume = results.data;
             $scope.currentPage = $scope.resume.pageNumber;
             $scope.totalPages = $scope.resume.totalPages;
+            if ($scope.resume.adminTags == null){
+                $scope.resume.adminTags=[];
+            }
+            if ($scope.resume.adminNotes== null){
+                $scope.resume.adminNotes=[];
+            }
             _getResumeSource();
         }, function (error) {
             console.log(error.data.message);
@@ -113,5 +128,73 @@ angular.module('Jobsite').controller('ResumeDetailController', function ($scope,
         mywindow.close();
 
         return true;
+    };
+
+    $scope.addAdminTag = function() {
+        if ($scope.resume.adminTags.indexOf($scope.adminTag) == -1) {
+
+
+            var req =  $scope.resume.adminTags.slice(0);
+            req.push($scope.adminTag);
+            var data ={
+                'Tags': req
+            };
+
+            ResumesService.addAdminTags($scope.id, $scope.currentPage, data).then(function (results) {
+                $scope.resume.adminTags.push($scope.adminTag);
+                $scope.adminTag = "";
+            }, function (error) {
+                console.log(error.data.message);
+            });
+
+        }
+    };
+    $scope.removeAdminTag = function(index) {
+
+        var req =  $scope.resume.adminTags.slice(0);
+        req.splice(index - 1, 1);
+        var data ={
+            'Tags': req
+        };
+        ResumesService.addAdminTags($scope.id, $scope.currentPage,data).then(function (results) {
+            $scope.resume.adminTags.splice(index - 1, 1);
+        }, function (error) {
+            console.log(error.data.message);
+        });
+
+    };
+
+
+    $scope.addAdminNote = function() {
+        if ($scope.resume.adminNotes.indexOf($scope.adminNote) == -1) {
+
+            var req =  $scope.resume.adminNotes.slice(0);
+            req.push($scope.adminNote);
+            var data ={
+                'Notes': req
+            };
+
+            ResumesService.addAdminNotes($scope.id, $scope.currentPage, data).then(function (results) {
+                $scope.resume.adminNotes.push($scope.adminNote);
+                $scope.adminNote = "";
+            }, function (error) {
+                console.log(error.data.message);
+            });
+
+
+        }
+    };
+    $scope.removeAdminNote = function(index) {
+
+        var req =  $scope.resume.adminNotes.slice(0);
+        req.splice(index - 1, 1);
+        var data ={
+            'Notes': req
+        };
+        ResumesService.addAdminNotes($scope.id, $scope.currentPage, data).then(function (results) {
+            $scope.resume.adminNotes.splice(index - 1, 1);
+        }, function (error) {
+            console.log(error.data.message);
+        });
     };
 });

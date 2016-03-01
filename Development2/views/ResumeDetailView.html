@@ -71,6 +71,8 @@
             <div class="right-panel transition-class wide short">
                 <div class="right-panel-buttons icons">
                     <span class="glyphicon glyphicon-image" ng-click="openShare()"><img src="http://ec2-52-90-116-49.compute-1.amazonaws.com:82/images/rightpanel-share.png" alt="share link"></span>
+                    <a href="" ng-click="isShowAdminNotes=!isShowAdminNotes;"><span class="glyphicon glyphicon-book" style="color: black;"></span></a>
+                    <a href="" ng-click="isShowAdminTags=!isShowAdminTags;"><span class="glyphicon glyphicon-tags" style="color: black;"></span></a>
                     <!--<span class="glyphicon glyphicon-image" id="native-view-button-close"><img src="http://ec2-52-90-116-49.compute-1.amazonaws.com:82/images/rightpanel-html.png"></span>-->
                     <!--<span class="glyphicon glyphicon-image" id="native-view-button-open"><img src="http://ec2-52-90-116-49.compute-1.amazonaws.com:82/images/rightpanel-native-one.png"></span>-->
                     <!--<span class="glyphicon glyphicon-download-alt" style="color: red; font-size: 23px;" ng-click="dowloadResume()"></span>-->
@@ -91,6 +93,48 @@
                 <!--&lt;!&ndash;Tag Box Begin&ndash;&gt;-->
                 <!--@Html.Partial("Partial/TagsBox", Model)-->
                 <!--Tag Box End-->
+
+                <div class="panel panel-success"  ng-show="isShowAdminNotes" >
+                    <div class="panel-heading resume_detail_view_color" >
+                        <h3 class="panel-title">Notes</h3>
+                    </div>
+                    <div style="max-height: 700px; overflow-y: scroll;">
+
+                            <br>
+                            <textarea rows="5" class="form-control" style="width:90%;float:right;" ng-model="adminNote" id="adminNote"  aria-hidden="true"></textarea><a href="" ng-click="addAdminNote()"><span class="glyphicon glyphicon-plus" ></span></a>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <ul class="list-group">
+                                <li class="list-group-item" ng-repeat="tagname in resume.adminNotes">
+                                    <h4 class="list-group-item-heading">   <a href="" ng-click="removeAdminNote($index)"  ><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></a></h4>
+                                    <p class="list-group-item-text" style="word-break: break-all;">
+                                    {{ tagname }}
+                                        </p>
+
+                                </li>
+                            </ul>
+
+                    </div>
+                </div>
+
+                <div class="panel panel-success"  ng-show="isShowAdminTags" >
+                    <div class="panel-heading resume_detail_view_color" >
+                        <h3 class="panel-title">Tags</h3>
+                    </div>
+                    <div style="max-height: 700px; overflow-y: scroll;">
+                        <br>
+                        <input class="form-control" style="width:90%;float:right;" ng-model="adminTag" id="adminTag" type="text" ng-enter="addAdminTag()"><a href="" ng-click="addAdminTag()"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
+                        <br>
+                        <br>
+                        <ul class="list-group">
+                            <li class="list-group-item" ng-repeat="tagname in resume.adminTags">{{ tagname }}<a style="float:right;" href="" ng-click="removeAdminTag($index)"  ><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></a></li>
+                        </ul>
+                    </div>
+                </div>
 
                 <div class="panel panel-success" id="fetch_results" ng-show="resume.neighborsPages.length" >
                     <div class="panel-heading resume_detail_view_color" >

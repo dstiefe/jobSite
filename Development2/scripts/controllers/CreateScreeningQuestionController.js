@@ -109,7 +109,6 @@ angular.module('Jobsite').controller("CreateScreeningQuestionController", functi
     };
 
     $scope.changedNumOptionsLikertScale = function() {
-console.log('ggg='+$scope.numOptionsSelected);
         $scope.screeningQuestion.options = [];
         $scope.screeningQuestion.optionsDescriptions ={};
 

@@ -247,5 +247,8 @@ angular.module('Jobsite').factory('ResumesService', ['$http', '$q', 'RESOURCES',
     resumesServiceFactory.applyToJob = _applyToJob;
     resumesServiceFactory.uploadResume = _uploadResume;
 
+
+
+
     return resumesServiceFactory;
 }]);

@@ -5,6 +5,13 @@ angular.module('Jobsite').controller("CreateScreeningQuestionController", functi
 
     $scope.id = $stateParams.id;
     $scope.type = $stateParams.type;
+
+    $scope.questionId = $stateParams.questionId;
+    $scope.mode= 'create';
+    if (!angular.isUndefined($scope.questionId) && $scope.questionId != ''){
+        $scope.mode= 'edit';
+    }
+
     $scope.questionsCount = 0;
 
     $scope.screeningQuestion = {
@@ -22,6 +29,31 @@ angular.module('Jobsite').controller("CreateScreeningQuestionController", functi
     }, function (error) {
         console.log(error.data.message);
     });
+
+    if ($scope.mode == 'edit') {
+        ScreeningsService.getScreeningQuestionById($scope.id, $scope.questionId).then(function (results) {
+            $scope.screeningQuestion = results.data;
+
+            if ( angular.isUndefined($scope.screeningQuestion.tags) || $scope.screeningQuestion.tags == null ){
+                $scope.screeningQuestion.tags = [];
+            }
+
+            if ($scope.screeningQuestion.type == 'TrueFalse'){
+                $scope.screeningQuestion.options = ['True', 'False'];
+                $scope.selectedOption = ($scope.screeningQuestion.answerBoolean) ? '0' :'1' ;
+            }
+
+            if ($scope.screeningQuestion.type == 'LikertScale'){
+                $scope.numOptionsSelected = $scope.screeningQuestion.options.length;
+            }
+            if ($scope.screeningQuestion.type == 'MultipleChoice'){
+                $scope.selectedOption = $scope.screeningQuestion.answerOption.toString();
+            }
+
+        }, function (error) {
+            console.log(error.data.message);
+        });
+    }
 
     $scope.saveChanges = function(isValid) {
         if (!isValid){
@@ -43,6 +75,30 @@ angular.module('Jobsite').controller("CreateScreeningQuestionController", functi
             $scope.screeningQuestion.options = [];
         }
 
+        if ($scope.mode == 'edit') {
+
+            ScreeningsService.putScreeningQuestion($scope.id, $scope.questionId, $scope.screeningQuestion).then(function (results) {
+                if ($scope.saveAndExit){
+                        $state.go('editscreening', {'id': $scope.id});
+                }else{
+
+                    //window.location.reload(true);
+                    $scope.questionsCount++;
+                    $scope.screeningQuestion = {};
+                    $scope.screeningQuestion.options = [];
+                    $scope.screeningQuestion.answerText = '';
+                    $scope.screeningQuestion.tags = [];
+                    $scope.tag = "";
+                    $scope.selectedOption='';
+                    $scope.screeningQuestion.type='';
+                    $scope.option ='';
+
+                }
+            }, function (error) {
+                console.log(error.data.message);
+            });
+        }
+        else{
             ScreeningsService.postScreeningQuestion($scope.id, $scope.screeningQuestion).then(function (results) {
                 if ($scope.saveAndExit){
                     if ($scope.type =='editscreening'){
@@ -67,7 +123,8 @@ angular.module('Jobsite').controller("CreateScreeningQuestionController", functi
             }, function (error) {
                 console.log(error.data.message);
             });
-    }
+        }
+    };
 
     $scope.cancel = function() {
         if ($scope.type =='editscreening'){
@@ -78,6 +135,7 @@ angular.module('Jobsite').controller("CreateScreeningQuestionController", functi
     };
 
     $scope.changedQuestionType = function() {
+
        if ($scope.screeningQuestion.type == 'TrueFalse'){
            $scope.screeningQuestion.options = ['True', 'False'];
            $scope.option ='';

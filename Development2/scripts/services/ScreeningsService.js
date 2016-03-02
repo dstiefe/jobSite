@@ -176,6 +176,41 @@ angular.module('Jobsite').factory('ScreeningsService', ['$http', '$q', 'RESOURCE
         });
     };
 
+    var _getScreeningQuestionById = function (screeningId, questionId){
+        return $http.get(serviceBase + 'screenings/'+screeningId+'/questions/'+questionId,
+            {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': ValiDatedTokenObject.getValiDatedTokenObject().token_type+" "+ValiDatedTokenObject.getValiDatedTokenObject().access_token
+                }
+            }).then(function (results) {
+            return results;
+        });
+    };
+
+    var _putScreeningQuestion = function (screeningId, questionId, model) {
+        return $http.put(serviceBase + 'screenings/'+screeningId+'/questions/'+questionId,
+            model,
+            {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': ValiDatedTokenObject.getValiDatedTokenObject().token_type+" "+ValiDatedTokenObject.getValiDatedTokenObject().access_token
+                }
+            }).then(function (results) {
+            return results;
+        });
+    };
+    var _deleteScreeningQuestion = function (screeningId, questionId) {
+        return $http.delete(serviceBase + 'screenings/'+screeningId+'/questions/'+questionId,
+            {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': ValiDatedTokenObject.getValiDatedTokenObject().token_type+" "+ValiDatedTokenObject.getValiDatedTokenObject().access_token
+                }
+            }).then(function (results) {
+            return results;
+        });
+    };
     screeningsServiceFactory.postScreening = _postScreening;
     screeningsServiceFactory.putScreening = _putScreening;
     screeningsServiceFactory.deleteScreening = _deleteScreening;
@@ -191,6 +226,10 @@ angular.module('Jobsite').factory('ScreeningsService', ['$http', '$q', 'RESOURCE
     screeningsServiceFactory.getScreeningsByJobId = _getScreeningsByJobId;
     screeningsServiceFactory.sendScreeningsToResume = _sendScreeningsToResume;
     screeningsServiceFactory.getScreeningQuestionsByScreeningId  = _getScreeningQuestionsByScreeningId;
+
+    screeningsServiceFactory.getScreeningQuestionById = _getScreeningQuestionById;
+    screeningsServiceFactory.putScreeningQuestion = _putScreeningQuestion;
+    screeningsServiceFactory.deleteScreeningQuestion = _deleteScreeningQuestion;
 
     return screeningsServiceFactory;
 }]);

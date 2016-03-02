@@ -4576,3 +4576,10 @@ ul.h-list li:hover a {
     margin-right: 10px;
 
 }
+.panel-dark{
+    background-color: rgb(32,56,100);
+    margin:0 !important;
+    padding-right: 20px !important;
+    padding-left: 20px !important;
+    color: white !important;
+}

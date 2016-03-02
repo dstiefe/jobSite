@@ -246,6 +246,9 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
         .state('editscreeningquestion', {
             url: "/screenings/:id/questions/:questionId/edit",
             templateUrl: "views/CreateScreeningQuestion.html",
+            params: {
+                'type': 'createscreening',
+            },
             data: {
                 pageTitle: 'Edit Screening Question',
                 permissions: {
@@ -346,6 +349,19 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
                 }
             }
         })
+
+        .state('assignscreening', {
+            url: "/screenings/:id/assign",
+            templateUrl: "views/ScreeningAssign.html",
+            data: {
+                pageTitle: 'Screening Assign',
+                permissions: {
+                    only: ['Admin'],
+                }
+            }
+        })
+
+
 }
 
 angular

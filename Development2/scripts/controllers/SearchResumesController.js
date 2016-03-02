@@ -17,30 +17,30 @@ angular.module('Jobsite').controller("SearchResumesController", function($scope,
     $scope.itemsPerPage = 10;
     $scope.totalItems = 0;
     $scope.maxSize = 5;
+    $scope.isLoading =false;
 
-    var _countS = function () {
-        ResumesService.searchResumesCount($scope.searchText).then(function (results) {
-            $scope.totalItems = results.data.content;
-        }, function (error) {
-            console.log(error.data.message);
-        });
-    }
-    var _search = function () {
+    $scope.search = function () {
+        $scope.isLoading =true;
         skip = ($scope.currentPage - 1) * $scope.itemsPerPage;
 
         ResumesService.searchResumes($scope.searchText, skip, $scope.itemsPerPage).then(function (results) {
             $scope.resumes = results.data;
+
+            ResumesService.searchResumesCount($scope.searchText).then(function (results) {
+                $scope.totalItems = results.data.content;
+                $scope.isLoading = false;
+            }, function (error) {
+                console.log(error.data.message);
+                $scope.isLoading = false;
+            });
+
         }, function (error) {
             console.log(error.data.message);
+            $scope.isLoading = false;
         });
-    }
-    _search();
-    _countS();
-
-    $scope.search = function () {
-        _search();
-        _countS();
     };
+
+    $scope.search();
 
     $scope.detailViewShow = function (data) {
 

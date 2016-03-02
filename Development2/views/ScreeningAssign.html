@@ -1,19 +1,19 @@
 <link rel="stylesheet" href="libs/jquery-ui/themes/overcast/jquery-ui.min.css" />
-<div ng-controller="EditScreeningController">
+<div ng-controller="ScreeningAssignController">
     <div class="container">
         <div id="header" ng-include="'views/head.html'"></div>
         <div class="row-fluid vertical-align" style="margin-top: 20px;">
             <div class="col-xs-12 col-sm-9 col-centered">
 
                 <div class="panel panel-custom">
-                    <div class="panel-heading panel-dark">
+                    <div class="panel-heading">
                         <!--<div class="panel-heading" style="background-color: rgb(32,56,100);margin:0; padding-right: 20px;padding-left: 20px;">-->
                         <div class="pull-left">
                             <h3 class="panel-title">{{screening.title}}</h3>
                         </div>
 
                         <div class="pull-right">
-                            <a class="btn btn-danger" ui-sref="assignscreening({id:screening.id})">
+                            <a class="btn btn-danger" ui-sref="assignscreening({id:data.id})">
                                 Assign Screening
                             </a>
 
@@ -37,10 +37,10 @@
                                     <caption>Questions</caption>
                                     <thead>
                                     <tr class="info">
-                                    <th>Order&nbsp;<a ng-click="sort_by('sort');"><i class="glyphicon glyphicon-sort"></i></a></th>
-                                    <th>Text&nbsp;<a ng-click="sort_by('text');"><i class="glyphicon glyphicon-sort"></i></a></th>
-                                    <th>Type&nbsp;<a ng-click="sort_by('type');"><i class="glyphicon glyphicon-sort"></i></a></th>
-                                    <th>Admin </th>
+                                        <th>Order&nbsp;<a ng-click="sort_by('sort');"><i class="glyphicon glyphicon-sort"></i></a></th>
+                                        <th>Text&nbsp;<a ng-click="sort_by('text');"><i class="glyphicon glyphicon-sort"></i></a></th>
+                                        <th>Type&nbsp;<a ng-click="sort_by('type');"><i class="glyphicon glyphicon-sort"></i></a></th>
+                                        <th>Admin </th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -69,12 +69,12 @@
                             </div>
                             <div class="col-md-2">
                                 PageSize: <select ng-model="entryLimit" class="form-control">
-                                    <option>5</option>
-                                    <option>10</option>
-                                    <option>20</option>
-                                    <option>50</option>
-                                    <option>100</option>
-                                </select>
+                                <option>5</option>
+                                <option>10</option>
+                                <option>20</option>
+                                <option>50</option>
+                                <option>100</option>
+                            </select>
                             </div>
                         </div>
                     </div>

@@ -47,11 +47,11 @@ console.log('isValid='+isValid);
 
         if (!angular.isUndefined($scope.id) && $scope.id != '') {
             ScreeningsService.putScreening($scope.id, $scope.screening).then(function (results) {
-                if ($scope.saveAndExit){
-                    $state.go('screenings');
-                }else{
-                    $state.go('createscreeningquestion', {'id': results.data.id});
-                }
+                //if ($scope.saveAndExit){
+                //    $state.go('screenings');
+                //}else{
+                    $state.go('editscreening', {'id': $scope.id});
+                //}
             }, function (error) {
                 console.log(error.data.message);
             });
@@ -70,8 +70,14 @@ console.log('isValid='+isValid);
     }
 
     $scope.cancel = function() {
-         $state.go('screenings');
-    }
+
+        if (!angular.isUndefined($scope.id) && $scope.id != '')
+        {
+            $state.go('editscreening', {'id': $scope.id});}
+        else{
+            $state.go('screenings');
+        }
+    };
 
     $scope.jobsChanged = function(){
 

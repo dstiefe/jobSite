@@ -4,6 +4,7 @@
 angular.module('Jobsite').controller("CreateScreeningQuestionController", function($scope, Login, $http, $timeout, $location, ScreeningsService, $state, $stateParams, RESOURCES) {
 
     $scope.id = $stateParams.id;
+    $scope.type = $stateParams.type;
     $scope.questionsCount = 0;
 
     $scope.screeningQuestion = {
@@ -44,7 +45,11 @@ angular.module('Jobsite').controller("CreateScreeningQuestionController", functi
 
             ScreeningsService.postScreeningQuestion($scope.id, $scope.screeningQuestion).then(function (results) {
                 if ($scope.saveAndExit){
-                    $state.go('screenings');
+                    if ($scope.type =='editscreening'){
+                        $state.go('editscreening', {'id': $scope.id});
+                    }else{
+                        $state.go('screenings');
+                    }
                 }else{
 
                     //window.location.reload(true);
@@ -65,8 +70,12 @@ angular.module('Jobsite').controller("CreateScreeningQuestionController", functi
     }
 
     $scope.cancel = function() {
-        $state.go('screenings');
-    }
+        if ($scope.type =='editscreening'){
+            $state.go('editscreening', {'id': $scope.id});
+        }else{
+            $state.go('screenings');
+        }
+    };
 
     $scope.changedQuestionType = function() {
        if ($scope.screeningQuestion.type == 'TrueFalse'){

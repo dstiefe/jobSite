@@ -212,7 +212,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
         })
         .state('editscreening', {
             url: "/screenings/:id/edit",
-            templateUrl: "views/CreateScreening.html",
+            templateUrl: "views/EditScreening.html",
             data: {
                 pageTitle: 'Edit Screening',
                 permissions: {
@@ -220,9 +220,22 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
                 }
             }
         })
+        .state('editscreeninginfo', {
+        url: "/screenings/:id/info/edit",
+        templateUrl: "views/CreateScreening.html",
+        data: {
+            pageTitle: 'Edit Screening Info',
+            permissions: {
+                only: ['Admin'],
+            }
+        }
+    })
         .state('createscreeningquestion', {
             url: "/screenings/:id/questions/create",
             templateUrl: "views/CreateScreeningQuestion.html",
+            params: {
+                'type': 'createscreening',
+            },
             data: {
                 pageTitle: 'Create Screening Question',
                 permissions: {
@@ -230,7 +243,16 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
                 }
             }
         })
-
+        .state('editscreeningquestion', {
+            url: "/screenings/:id/questions/:questionId/edit",
+            templateUrl: "views/CreateScreeningQuestion.html",
+            data: {
+                pageTitle: 'Edit Screening Question',
+                permissions: {
+                    only: ['Admin'],
+                }
+            }
+        })
         .state('starttestscreening', {
             url: "/resumes/:id/screenings/:screeningId/start",
             templateUrl: "views/StartTestScreening.html",

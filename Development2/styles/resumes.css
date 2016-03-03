@@ -67,7 +67,7 @@
 }
 .open-document-container {
     position: relative;
-    border-left: 1px solid #BDD7EE;
+    border-left: 1px solid  rgb(68,84,106);
 }
 .panel-body {
     white-space: normal;
@@ -113,7 +113,7 @@
 
 .open-document-container {
     position: relative;
-    border-left: 1px solid #BDD7EE;
+    border-left: 1px solid rgb(68,84,106);
 }
 
 .content-of-document {
@@ -132,7 +132,7 @@
     bottom: 0;
     width: 10%;
     padding: 5px;
-    border-left: 1px solid #BDD7EE;
+    border-left: 1px solid rgb(68,84,106);
     max-width: 70px;
 }
 
@@ -168,8 +168,8 @@
     text-align: left;
     width: 100%;
     margin: 15px 0;
-    border-top: 1px solid #BDD7EE;
-    border-bottom: 1px solid #BDD7EE;
+    border-top: 1px solid rgb(68,84,106);
+    border-bottom: 1px solid rgb(68,84,106);
 }
 .right-panel.wide > .right-panel-buttons> a > .glyphicon {
     display: inline-block;
@@ -302,6 +302,13 @@
 }
 
 .resume_detail_view_color{
-    background-color: #BDD7EE !important;
+    background-color: rgb(68,84,106) !important;
     border-color: transparent !important;
+}
+
+#detailViewPage > .panel-heading {
+    color: white !important;
+}
+.resume_detail_view_color.panel-heading {
+    color: white !important;
 }

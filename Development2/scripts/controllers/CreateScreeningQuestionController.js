@@ -174,7 +174,9 @@ angular.module('Jobsite').controller("CreateScreeningQuestionController", functi
     $scope.removetag = function(index) {
         $scope.screeningQuestion.tags.splice(index - 1, 1);
     };
-
+    $scope.$back = function() {
+        window.history.back();
+    };
     $scope.changedNumOptionsLikertScale = function() {
         $scope.screeningQuestion.options = [];
         $scope.screeningQuestion.optionsDescriptions ={};

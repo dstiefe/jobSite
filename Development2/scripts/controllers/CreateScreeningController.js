@@ -90,4 +90,8 @@ console.log('isValid='+isValid);
         }
 
     }
+
+    $scope.$back = function() {
+        window.history.back();
+    };
 });

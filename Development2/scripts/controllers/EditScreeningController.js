@@ -37,7 +37,9 @@ angular.module('Jobsite').controller("EditScreeningController", function($scope,
         $scope.predicate = predicate;
         $scope.reverse = !$scope.reverse;
     };
-
+    $scope.$back = function() {
+        window.history.back();
+    };
     $scope.deleterecords = function(data) {
         ScreeningsService.deleteScreeningQuestion(data.screeningId, data.id).then(function (results) {
             _getScreeningQuestions();

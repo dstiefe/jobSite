@@ -2,6 +2,11 @@
 <div ng-controller="CreateScreeningQuestionController">
     <div class="container">
         <div id="header" ng-include="'views/head.html'"></div>
+        <ol class="breadcrumb">
+            <li><a  ng-click="$back()">Go Back</a></li>
+            <li class="active" ng-if="mode == 'edit'">Edit Screening Quesion</li>
+            <li class="active" ng-if="mode == 'create'">Create Screening Quesion</li>
+        </ol>
         <div class="row-fluid vertical-align" style="margin-top: 20px;">
             <div class="col-xs-12 col-sm-9 col-centered">
                 <form name="createQuestionScreeningForm" ng-submit="saveChanges(createQuestionScreeningForm.$valid)" novalidate>
@@ -180,6 +185,11 @@
                                         <ul class="list-group">
                                             <li class="list-group-item" ng-repeat="tagname in screeningQuestion.tags">{{ tagname }}<a style="float:right;" href="" ng-click="removetag($index)"  ><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></a></li>
                                         </ul>
+                                    </div>
+                                    <div class="form-group" ng-if="mode == 'edit'">
+                                        <label for="sort">Order</label>
+                                        <input type="number" min="0" step="1"  ng-model="screeningQuestion.sort" class="form-control" id="sort" name="sort" placeholder="Set Order">
+
                                     </div>
 
 

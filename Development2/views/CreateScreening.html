@@ -1,8 +1,16 @@
 <link rel="stylesheet" href="libs/jquery-ui/themes/overcast/jquery-ui.min.css" />
 <div ng-controller="CreateScreeningController">
+
     <div class="container">
+
         <div id="header" ng-include="'views/head.html'"></div>
+        <ol class="breadcrumb">
+            <li><a  ng-click="$back()">Go Back</a></li>
+            <li class="active" ng-if="id">Edit Screening Info</li>
+            <li class="active" ng-if="!id">Create Screening</li>
+        </ol>
         <div class="row-fluid vertical-align" style="margin-top: 20px;">
+
                 <div class="col-xs-12 col-sm-9 col-centered">
 
                         <div class="panel panel-custom">

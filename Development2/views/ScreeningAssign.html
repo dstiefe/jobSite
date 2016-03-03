@@ -6,75 +6,63 @@
             <div class="col-xs-12 col-sm-9 col-centered">
 
                 <div class="panel panel-custom">
-                    <div class="panel-heading">
-                        <!--<div class="panel-heading" style="background-color: rgb(32,56,100);margin:0; padding-right: 20px;padding-left: 20px;">-->
+                    <div class="panel-heading panel-dark">
+
                         <div class="pull-left">
-                            <h3 class="panel-title">{{screening.title}}</h3>
+                            <h3 class="panel-title">{{myScreening.title}}</h3>
                         </div>
 
-                        <div class="pull-right">
-                            <a class="btn btn-danger" ui-sref="assignscreening({id:data.id})">
-                                Assign Screening
-                            </a>
-
-                            <a class="btn btn-primary" ui-sref="editscreeninginfo({id:screening.id})">
-                                Edit Screening Info
-                            </a>
-
-                            <a class="btn btn-success" ui-sref="createscreeningquestion({id:screening.id, type:'editscreening'})">
-                                New Question
-                            </a>
+                        <div class=" pull-right">
+                            <button class="btn btn-success btn-lg" type="button" alt="Save Changes" title="Save Changes" ng-click="saveChanges()">
+                                Save Changes
+                            </button>
                         </div>
 
                         <div class="clearfix"></div>
-
-
                     </div>
                     <div class="panel-body">
                         <div class="row">
-                            <div class="col-md-12" ng-show="filteredItems > 0">
-                                <table class="table table-striped">
-                                    <caption>Questions</caption>
-                                    <thead>
-                                    <tr class="info">
-                                        <th>Order&nbsp;<a ng-click="sort_by('sort');"><i class="glyphicon glyphicon-sort"></i></a></th>
-                                        <th>Text&nbsp;<a ng-click="sort_by('text');"><i class="glyphicon glyphicon-sort"></i></a></th>
-                                        <th>Type&nbsp;<a ng-click="sort_by('type');"><i class="glyphicon glyphicon-sort"></i></a></th>
-                                        <th>Admin </th>
-                                    </tr>
-                                    </thead>
+                            <div class="col-md-5">
+                                <table class="table table-striped table-bordered">
+                                    <caption><h2>Job List</h2></caption>
                                     <tbody>
-                                    <tr ng-repeat="data in filtered = (screeningQuestions  | orderBy : predicate :reverse) | startFrom:(currentPage-1)*entryLimit | limitTo:entryLimit">
-                                        <td>{{data.sort}}</td>
+                                    <tr ng-repeat="data in jobs">
+                                        <td><input type="radio" ng-model="$parent.selectedJobId" ng-value="data.id" /></td>
                                         <td>
-                                            {{ data.text  | limitTo: 50 }}
-                                        </td>
-                                        <td>
-                                            {{ data.type }}
-                                        </td>
-                                        <td>
-                                            <a ui-sref="editscreeningquestion({id:screening.id, questionId:data.id, type:'editscreening'})" class="btn btn-info btn-warning"><span class="glyphicon glyphicon-edit"></span> Edit</a>&nbsp;<a ng-click="deleterecords(data)" class="btn btn-info btn-danger"><span class="glyphicon glyphicon-remove"></span> Delete</a>
+                                            {{ data.title }}
                                         </td>
                                     </tr>
                                     </tbody>
                                 </table>
                             </div>
-                            <div class="col-md-12" ng-show="filteredItems == 0">
-                                <div class="col-md-12">
-                                    <h4>No questions found</h4>
-                                </div>
+                            <div class="col-md-2 vertical-align" >
+                                <button class="btn btn-waring btn-lg" type="button"  alt="Add Screening" title="Add Screening" ng-click="addMyScreening()">
+                                    Add Screening <i class="glyphicon glyphicon-arrow-right" style="font-size: 24px;"></i>
+                                </button>
                             </div>
-                            <div class="col-md-10" ng-show="filteredItems > 0  && filteredItems > entryLimit">
-                                <div pagination="" ng-model="currentPage" ng-change="changed()" boundary-links="true" total-items="filteredItems" items-per-page="entryLimit" class="pagination-small" previous-text="&laquo;" next-text="&raquo;"></div>
-                            </div>
-                            <div class="col-md-2">
-                                PageSize: <select ng-model="entryLimit" class="form-control">
-                                <option>5</option>
-                                <option>10</option>
-                                <option>20</option>
-                                <option>50</option>
-                                <option>100</option>
-                            </select>
+                            <div class="col-md-5">
+
+                                <table class="table table-striped table-bordered">
+                                    <caption>
+                                        <div class="row">
+                                            <div class="col-sm-8">
+                                        <h2>Screening order</h2>
+                                            </div>
+                                            <div class="col-sm-4"  style="font-size: 32px;">
+                                        <a ng-click="sort_by('title');" title="up"><i class="glyphicon glyphicon-arrow-up"></i></a>
+                                        <a ng-click="sort_by('title');" title="down"><i class="glyphicon glyphicon-arrow-down"></i></a>
+                                        </div>
+                                        </div>
+                                    </caption>
+                                    <tbody>
+                                    <tr ng-repeat="data in screenings | filter: jobExist | orderBy:'sort'">
+                                        <td><input type="radio" /></td>
+                                        <td>
+                                            {{ data.title }}
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>

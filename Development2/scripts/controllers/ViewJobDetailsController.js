@@ -78,9 +78,9 @@ angular
             }
         };
 
-    $scope.$back = function() {
-        window.history.back();
-    };
+    //$scope.$back = function() {
+    //    window.history.back();
+    //};
 
 
     });

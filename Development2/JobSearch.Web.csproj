@@ -2637,12 +2637,23 @@
     <Content Include="scripts\controllers\AddjobformController.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="scripts\controllers\ApplicantsController.js" />
     <Content Include="scripts\controllers\ApplyJobController.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="scripts\controllers\associateController.js" />
     <Content Include="scripts\controllers\AuthController.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="scripts\controllers\CreateOrEditResumeController.js" />
+    <Content Include="scripts\controllers\CreateReferralController.js" />
+    <Content Include="scripts\controllers\CreateReferralQuestionController.js" />
+    <Content Include="scripts\controllers\CreateScreeningController.js" />
+    <Content Include="scripts\controllers\CreateScreeningQuestionController.js" />
+    <Content Include="scripts\controllers\DownloadResumeController.js" />
+    <Content Include="scripts\controllers\EditScreeningController.js" />
+    <Content Include="scripts\controllers\FinishTestScreeningController.js" />
+    <Content Include="scripts\controllers\HeaderController.js" />
     <Content Include="scripts\controllers\JobListController.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -2652,9 +2663,24 @@
     <Content Include="scripts\controllers\main.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="scripts\controllers\ReferralsController.js" />
+    <Content Include="scripts\controllers\ResetPasswordController.js" />
+    <Content Include="scripts\controllers\ResetPasswordVerifyController.js" />
+    <Content Include="scripts\controllers\ResumeDetailController.js" />
+    <Content Include="scripts\controllers\ResumesController.js" />
+    <Content Include="scripts\controllers\ScreeningAssignController.js" />
+    <Content Include="scripts\controllers\ScreeningsController.js" />
     <Content Include="scripts\controllers\searchjobsController.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="scripts\controllers\SearchResumesController.js" />
+    <Content Include="scripts\controllers\SearchResumesHomeController.js" />
+    <Content Include="scripts\controllers\SendReferralController.js" />
+    <Content Include="scripts\controllers\SendScreeningController.js" />
+    <Content Include="scripts\controllers\SetReferralController.js" />
+    <Content Include="scripts\controllers\StartTestScreeningController.js" />
+    <Content Include="scripts\controllers\TestResultController.js" />
+    <Content Include="scripts\controllers\TestScreeningController.js" />
     <Content Include="scripts\controllers\ViewJobDetailsController.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -2685,39 +2711,63 @@
     <Content Include="scripts\register.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="scripts\services\AuthService.js" />
+    <Content Include="scripts\services\CategoriesService.js" />
+    <Content Include="scripts\services\JobsService.js" />
     <Content Include="scripts\services\locationHistoryService.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="scripts\services\LocationsService.js" />
     <Content Include="scripts\services\LoginService.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="scripts\services\ReferralService.js" />
     <Content Include="scripts\services\RegistrationService.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="scripts\services\ResumesService.js" />
+    <Content Include="scripts\services\ScreeningsService.js" />
+    <Content Include="scripts\services\SearchResumesParameters.js" />
+    <Content Include="scripts\services\UsersService.js" />
     <Content Include="scripts\services\ValiDatedTokenObjectService.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="styles\Addjobform.css">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="styles\font_style.css" />
     <Content Include="styles\img\green%402x.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="styles\img\green.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="styles\resumes.css" />
+    <Content Include="styles\shared.css" />
+    <Content Include="styles\social-buttons.css" />
     <Content Include="styles\static_custom.css">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="styles\style.css">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="views\1.html" />
+    <Content Include="views\applicants.html" />
     <Content Include="views\applyjob.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="views\associate.html" />
+    <Content Include="views\CreateOrEditResume.html" />
+    <Content Include="views\CreateReferral.html" />
+    <Content Include="views\CreateReferralQuestion.html" />
+    <Content Include="views\CreateScreening.html" />
+    <Content Include="views\CreateScreeningQuestion.html" />
     <Content Include="views\dashboard.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="views\DownloadResume.html" />
+    <Content Include="views\EditScreening.html" />
+    <Content Include="views\FinishTestScreening.html" />
     <Content Include="views\head.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -2730,18 +2780,33 @@
     <Content Include="views\login.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="views\Referrals.html" />
     <Content Include="views\Register.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="views\resetpassword.html" />
+    <Content Include="views\resetpasswordverify.html" />
+    <Content Include="views\ResumeDetailView.html" />
+    <Content Include="views\Resumes.html" />
+    <Content Include="views\ScreeningAssign.html" />
+    <Content Include="views\Screenings.html" />
     <Content Include="views\searchjobs.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="views\Searchprojects.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="views\SearchResumes.html" />
+    <Content Include="views\SearchResumesHome.html" />
+    <Content Include="views\SendReferral.html" />
+    <Content Include="views\SendScreeningView.html" />
+    <Content Include="views\SetReferral.html" />
+    <Content Include="views\StartTestScreening.html" />
     <Content Include="views\Test.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="views\TestResult.html" />
+    <Content Include="views\TestScreening.html" />
     <Content Include="views\viewjobdetails.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

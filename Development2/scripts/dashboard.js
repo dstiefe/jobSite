@@ -1,5 +1,5 @@
-$(document).ready(function() {
-    if (typeof(Storage) !== "undefined") {
+$(document).ready(function () {
+    if (typeof (Storage) !== "undefined") {
 
         ValiDatedTokenObject = JSON.parse(sessionStorage.getItem("ValiDatedTokenObject"));
         if (ValiDatedTokenObject == null || ValiDatedTokenObject.access_token == "") {
@@ -12,28 +12,28 @@ $(document).ready(function() {
 
 })
 
-$(function() {
-    $('#cmd_Logout').click(function() {
+$(function () {
+    $('#cmd_Logout').click(function () {
         sessionStorage.setItem("ValiDatedTokenObject", null);
         //window.location = "../login.html";
     })
 })
 
-angular.module('Jobsite').controller("dashboardController", function($scope, Login, ValiDatedTokenObject, locationHistoryService, $location, $modal, $http, $timeout, AuthService, JobsService, ReferralService, cfpLoadingBar) {
+angular.module('Jobsite').controller("dashboardController", function ($scope, Login, ValiDatedTokenObject, locationHistoryService, $location, $modal, $http, $timeout, AuthService, JobsService, ReferralService, cfpLoadingBar) {
     $scope.isLoading = true;
-    $scope.role = AuthService.authentication.isAdministrator ? "Admin": "User";
+    $scope.role = AuthService.authentication.isAdministrator ? "Admin" : "User";
 
-   $scope.entryLimits = [5,10,15,20,25];
+    $scope.entryLimits = [5, 10, 15, 20, 25];
 
 
-   var _pageCalc = function(){
-       $scope.currentPage = 1; //current page
-       $scope.entryLimit = 10; //max no of items to display in a page
-       $scope.filteredItems = $scope.list.length; //Initially for no filter
-       $scope.totalItems = $scope.list.length;
-   };
+    var _pageCalc = function () {
+        $scope.currentPage = 1; //current page
+        $scope.entryLimit = 10; //max no of items to display in a page
+        $scope.filteredItems = $scope.list.length; //Initially for no filter
+        $scope.totalItems = $scope.list.length;
+    };
 
-    if (AuthService.authentication.isAdministrator){
+    if (AuthService.authentication.isAdministrator) {
 
         $scope.headingmessage = "Jobs Posted";
         $scope.viewtext = "View Applicants";
@@ -48,7 +48,7 @@ angular.module('Jobsite').controller("dashboardController", function($scope, Log
             $scope.isLoading = false;
         });
 
-    }else{
+    } else {
 
         $scope.headingmessage = "Jobs Applied To";
         $scope.viewtext = "View Job";
@@ -71,6 +71,25 @@ angular.module('Jobsite').controller("dashboardController", function($scope, Log
             $scope.isLoading = false;
         });
     }
+    $scope.deleterecords = function (id) {
+        console.log(id);
+        $http({ method: 'DELETE', url: ServicesURL + 'api/v1/jobs/' + id, headers: { 'Content-Type': 'application/json', 'Connection': 'keep-alive', 'Authorization': ValiDatedTokenObject.getValiDatedTokenObject().token_type + " " + ValiDatedTokenObject.getValiDatedTokenObject().access_token } }).
+        success(function (response) {
+            JobsService.getMyJobs().then(function (results) {
+                $scope.list = results.data;
+                _pageCalc();
+                $scope.isLoading = false;
+            }, function (error) {
+                console.log(error.data.message);
+                $scope.isLoading = false;
+            });
+        });
+
+    };
+    $scope.setPage = function (pageNo) {
+        $scope.currentPage = pageNo;
+    };
 
 
-    });
+
+});

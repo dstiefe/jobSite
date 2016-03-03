@@ -48,7 +48,9 @@
 .modal.modal-fullscreen.force-fullscreen .modal-footer {
     bottom: 0;
 }
-
+.color-line {
+margin-top:1px;
+}
 
 /**/
 .panel.panel-success.panel-success_popup {

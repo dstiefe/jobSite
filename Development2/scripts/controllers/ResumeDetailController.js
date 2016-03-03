@@ -152,12 +152,12 @@ angular.module('Jobsite').controller('ResumeDetailController', function ($scope,
     $scope.removeAdminTag = function(index) {
 
         var req =  $scope.resume.adminTags.slice(0);
-        req.splice(index - 1, 1);
+        req.splice(index, 1);
         var data ={
             'Tags': req
         };
         ResumesService.addAdminTags($scope.id, $scope.currentPage,data).then(function (results) {
-            $scope.resume.adminTags.splice(index - 1, 1);
+            $scope.resume.adminTags.splice(index, 1);
         }, function (error) {
             console.log(error.data.message);
         });
@@ -187,12 +187,12 @@ angular.module('Jobsite').controller('ResumeDetailController', function ($scope,
     $scope.removeAdminNote = function(index) {
 
         var req =  $scope.resume.adminNotes.slice(0);
-        req.splice(index - 1, 1);
+        req.splice(index, 1);
         var data ={
             'Notes': req
         };
         ResumesService.addAdminNotes($scope.id, $scope.currentPage, data).then(function (results) {
-            $scope.resume.adminNotes.splice(index - 1, 1);
+            $scope.resume.adminNotes.splice(index, 1);
         }, function (error) {
             console.log(error.data.message);
         });

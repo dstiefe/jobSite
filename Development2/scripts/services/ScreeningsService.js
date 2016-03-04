@@ -225,8 +225,8 @@ angular.module('Jobsite').factory('ScreeningsService', ['$http', '$q', 'RESOURCE
     screeningsServiceFactory.getNewOrder = _getNewOrder;
     screeningsServiceFactory.getScreeningsByJobId = _getScreeningsByJobId;
     screeningsServiceFactory.sendScreeningsToResume = _sendScreeningsToResume;
-    screeningsServiceFactory.getScreeningQuestionsByScreeningId  = _getScreeningQuestionsByScreeningId;
 
+    screeningsServiceFactory.getScreeningQuestionsByScreeningId  = _getScreeningQuestionsByScreeningId;
     screeningsServiceFactory.getScreeningQuestionById = _getScreeningQuestionById;
     screeningsServiceFactory.putScreeningQuestion = _putScreeningQuestion;
     screeningsServiceFactory.deleteScreeningQuestion = _deleteScreeningQuestion;

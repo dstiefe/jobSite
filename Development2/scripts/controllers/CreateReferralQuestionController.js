@@ -4,7 +4,14 @@
 angular.module('Jobsite').controller("CreateReferralQuestionController", function($scope, Login, $http, $timeout, $location, ReferralService, $state, $stateParams, RESOURCES) {
 
     $scope.id = $stateParams.id;
+    $scope.type = $stateParams.type;
+
     $scope.questionsCount = 0;
+    $scope.questionId = $stateParams.questionId;
+    $scope.mode= 'create';
+    if (!angular.isUndefined($scope.questionId) && $scope.questionId != ''){
+        $scope.mode= 'edit';
+    }
 
     $scope.referralQuestion = {
 
@@ -15,12 +22,35 @@ angular.module('Jobsite').controller("CreateReferralQuestionController", functio
     $scope.referralQuestion.optionsDescriptions = {};
     $scope.numOptionsLikertScale =[3,5,7,9];
     $scope.numOptionsSelected = '';
+
+
+
+
+
+
     ReferralService.getJobReferral($scope.id).then(function (results) {
         var res = results.data;
         $scope.questionsCount = res.questionsCount;
     }, function (error) {
         console.log(error.data.message);
     });
+
+    if ($scope.mode == 'edit') {
+        ReferralService.getReferralQuestionById($scope.id, $scope.questionId).then(function (results) {
+            $scope.referralQuestion = results.data;
+
+            if ( angular.isUndefined($scope.referralQuestion.tags) || $scope.referralQuestion.tags == null ){
+                $scope.referralQuestion.tags = [];
+            }
+
+            if ($scope.referralQuestion.type == 'LikertScale'){
+                $scope.numOptionsSelected = $scope.referralQuestion.options.length;
+            }
+
+        }, function (error) {
+            console.log(error.data.message);
+        });
+    }
 
     $scope.saveChanges = function(isValid) {
         if (!isValid){
@@ -40,10 +70,11 @@ angular.module('Jobsite').controller("CreateReferralQuestionController", functio
         if ($scope.referralQuestion.type == 'FillIn'){
             $scope.referralQuestion.options = [];
         }
+        if ($scope.mode == 'edit') {
 
-        ReferralService.postReferralQuestion($scope.id, $scope.referralQuestion).then(function (results) {
+            ReferralService.putReferralQuestion($scope.id, $scope.questionId, $scope.referralQuestion).then(function (results) {
                 if ($scope.saveAndExit){
-                    $state.go('screenings');
+                    $state.go('editreferral', {'id': $scope.id});
                 }else{
 
                     //window.location.reload(true);
@@ -60,10 +91,37 @@ angular.module('Jobsite').controller("CreateReferralQuestionController", functio
             }, function (error) {
                 console.log(error.data.message);
             });
+        }
+        else {
+            ReferralService.postReferralQuestion($scope.id, $scope.referralQuestion).then(function (results) {
+                if ($scope.saveAndExit){
+                    if ($scope.type =='editreferral'){
+                        $state.go('editreferral', {'id': $scope.id});
+                    }else{
+                        $state.go('referrals');
+                    }
+                }else{
+
+                    //window.location.reload(true);
+                    $scope.questionsCount++;
+                    $scope.referralQuestion = {};
+                    $scope.referralQuestion.options = [];
+                    $scope.referralQuestion.answerText = '';
+                    $scope.referralQuestion.tags = [];
+                    $scope.tag = "";
+                    $scope.referralQuestion.type='';
+                    $scope.option ='';
+
+                }
+            }, function (error) {
+                console.log(error.data.message);
+            });
+        }
+
     }
 
     $scope.cancel = function() {
-        $state.go('screenings');
+        $state.go('referrals');
     }
 
     $scope.changedQuestionType = function() {
@@ -115,5 +173,7 @@ angular.module('Jobsite').controller("CreateReferralQuestionController", functio
             }
         }
     };
-
+    $scope.$back = function() {
+        window.history.back();
+    };
 });

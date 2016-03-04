@@ -2,11 +2,17 @@
 <div ng-controller="CreateReferralController">
     <div class="container">
         <div id="header" ng-include="'views/head.html'"></div>
+        <ol class="breadcrumb">
+            <li><a  ng-click="$back()">Go Back</a></li>
+            <li class="active" ng-if="id">Edit Referral Info</li>
+            <li class="active" ng-if="!id">Create Referral</li>
+        </ol>
         <div class="row-fluid vertical-align" style="margin-top: 20px;">
                 <div class="col-xs-12 col-sm-9 col-centered">
 
                         <div class="panel panel-custom">
-                                <div class="panel-heading">Create Referral</div>
+                            <div class="panel-heading" ng-if="id">Edit Referral Info</div>
+                            <div class="panel-heading" ng-if="!id">Create Referral</div>
                                 <div class="panel-body">
                                     <form name="createReferralForm" ng-submit="saveChanges(createReferralForm.$valid)" novalidate>
                                         <div class="row">
@@ -59,7 +65,7 @@
                                                     <span class="glyphicon glyphicon glyphicon-ok" aria-hidden="true" ></span>
                                                 </button>
 
-                                                <button class="btn btn-primary btn-lg" type="submit" alt="Save and continue" title="Save and continue">
+                                                <button class="btn btn-primary btn-lg" type="submit" alt="Save and continue" title="Save and continue"  ng-if="!id">
                                                     <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
                                                 </button>
                                             </div>

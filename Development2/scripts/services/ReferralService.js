@@ -100,6 +100,55 @@ angular.module('Jobsite').factory('ReferralService', ['$http', '$q', 'RESOURCES'
         });
     };
 
+    var _getReferralQuestionsByJobReferralId = function (referralId) {
+        return $http.get(serviceBase + 'jobreferrals/'+referralId+'/questions/',
+            {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': ValiDatedTokenObject.getValiDatedTokenObject().token_type+" "+ValiDatedTokenObject.getValiDatedTokenObject().access_token
+                }
+            }).then(function (results) {
+            return results;
+        });
+    };
+
+    var _getReferralQuestionById = function (referralId, questionId) {
+        return $http.get(serviceBase + 'jobreferrals/'+referralId+'/questions/'+questionId,
+            {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': ValiDatedTokenObject.getValiDatedTokenObject().token_type+" "+ValiDatedTokenObject.getValiDatedTokenObject().access_token
+                }
+            }).then(function (results) {
+            return results;
+        });
+    };
+
+    var _putReferralQuestion = function (referralId, questionId, model) {
+        return $http.put(serviceBase + 'jobreferrals/'+referralId+'/questions/'+questionId,
+            model,
+            {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': ValiDatedTokenObject.getValiDatedTokenObject().token_type+" "+ValiDatedTokenObject.getValiDatedTokenObject().access_token
+                }
+            }).then(function (results) {
+            return results;
+        });
+    };
+
+    var _deleteReferralQuestion = function (referralId, questionId) {
+        return $http.delete(serviceBase + 'jobreferrals/'+referralId+'/questions/'+questionId,
+            {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': ValiDatedTokenObject.getValiDatedTokenObject().token_type+" "+ValiDatedTokenObject.getValiDatedTokenObject().access_token
+                }
+            }).then(function (results) {
+            return results;
+        });
+    };
+
     referralServiceFactory.postReferral = _postReferral;
     referralServiceFactory.getReferrals = _getReferrals;
 
@@ -109,6 +158,11 @@ angular.module('Jobsite').factory('ReferralService', ['$http', '$q', 'RESOURCES'
     referralServiceFactory.putJobReferral = _putJobReferral;
     referralServiceFactory.postJobReferral = _postJobReferral;
     referralServiceFactory.postReferralQuestion = _postReferralQuestion;
+
+    referralServiceFactory.getReferralQuestionsByJobReferralId  = _getReferralQuestionsByJobReferralId;
+    referralServiceFactory.getReferralQuestionById = _getReferralQuestionById;
+    referralServiceFactory.putReferralQuestion = _putReferralQuestion;
+    referralServiceFactory.deleteReferralQuestion = _deleteReferralQuestion;
 
     return referralServiceFactory;
 }]);

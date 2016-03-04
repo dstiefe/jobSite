@@ -5,6 +5,7 @@ angular.module('Jobsite').controller("CreateReferralController", function($scope
 
     $scope.id = $stateParams.id;
     $scope.referral = {};
+    $scope.referral.sort = 0;
 
     CategoriesService.getCategories().then(function (results) {
         $scope.categories = results.data;
@@ -35,18 +36,13 @@ angular.module('Jobsite').controller("CreateReferralController", function($scope
     }
 
     $scope.saveChanges = function(isValid) {
-console.log('isValid='+isValid);
         if (!isValid){
             return;
         }
 
         if (!angular.isUndefined($scope.id) && $scope.id != '') {
             ReferralService.putJobReferral($scope.id, $scope.referral).then(function (results) {
-                if ($scope.saveAndExit){
-                    $state.go('referrals');
-                }else{
-                    $state.go('createreferralquestion', {'id': results.data.id});
-                }
+                $state.go('editreferral', {'id': $scope.id});
             }, function (error) {
                 console.log(error.data.message);
             });
@@ -65,8 +61,15 @@ console.log('isValid='+isValid);
     }
 
     $scope.cancel = function() {
-         $state.go('referrals');
+        if (!angular.isUndefined($scope.id) && $scope.id != '')
+        {
+            $state.go('editreferral', {'id': $scope.id});}
+        else{
+            $state.go('referrals');
+        }
     }
-
+    $scope.$back = function() {
+        window.history.back();
+    };
 
 });

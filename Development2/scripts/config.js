@@ -39,6 +39,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
                  }
             }
         })
+
         .state('logout', {
             url: "/logout",
             controller: function($state, $rootScope, AuthService) {
@@ -53,6 +54,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
                 }*/
             }
         })
+
         // Searchprojects
         .state('searchjobs', {
             url: "/searchjobs",
@@ -69,6 +71,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
             //    factory: checkRouting
             //}
         })
+
         // Jobmanagement
         .state('jobmanagement', {
             url: "/jobmanagement/:id",
@@ -81,6 +84,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
                 }
             }
         })
+
         // Jobslist
         .state('jobslist', {
             url: "/jobslist",
@@ -93,6 +97,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
                 }
             }
         })
+
         // Login
         .state('login', {
             url: "/login",
@@ -101,6 +106,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
                 pageTitle: 'Login'
             }
         })
+
         .state('associate', {
             url: "/associate",
             templateUrl: "views/associate.html",
@@ -108,6 +114,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
                 pageTitle: 'Associate'
             }
         })
+
         // Register
         .state('register', {
             url: "/register",
@@ -116,6 +123,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
                 pageTitle: 'Register'
             }
         })
+
          // Register
         .state('viewjobdetails', {
             url: "/viewjobdetails?id&referral",
@@ -131,6 +139,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
             //    factory: checkRouting
             //}
         })
+
          // ApplyJob
         .state('applyjob', {
             url: "/applyjob",
@@ -143,6 +152,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
                 }
             }
         })
+
         .state('applicants', {
             url: "/applicants/:id",
             templateUrl: "views/applicants.html",
@@ -154,6 +164,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
                 }
             }
         })
+
         //Search resumes home
         .state('searchresumeshome', {
             url: "/searchresumeshome",
@@ -165,6 +176,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
                 }
             }
         })
+
         //Search resumes
         .state('searchresumes', {
             url: "/searchresumes",
@@ -176,6 +188,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
                 }
             }
         })
+
         .state('resetpassword', {
             url: "/resetpassword",
             templateUrl: "views/resetpassword.html",
@@ -183,6 +196,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
                 pageTitle: 'Reset password'
             }
         })
+
         .state('resetpasswordverify', {
             url: "/resetpasswordverify",
             templateUrl: "views/resetpasswordverify.html",
@@ -190,6 +204,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
                 pageTitle: 'Change password'
             }
         })
+
         .state('screenings', {
             url: "/screenings",
             templateUrl: "views/Screenings.html",
@@ -200,6 +215,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
                 }
             }
         })
+
         .state('createscreening', {
             url: "/screenings/create",
             templateUrl: "views/CreateScreening.html",
@@ -210,6 +226,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
                 }
             }
         })
+
         .state('editscreening', {
             url: "/screenings/:id/edit",
             templateUrl: "views/EditScreening.html",
@@ -220,6 +237,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
                 }
             }
         })
+
         .state('editscreeninginfo', {
         url: "/screenings/:id/info/edit",
         templateUrl: "views/CreateScreening.html",
@@ -230,6 +248,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
             }
         }
     })
+
         .state('createscreeningquestion', {
             url: "/screenings/:id/questions/create",
             templateUrl: "views/CreateScreeningQuestion.html",
@@ -243,6 +262,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
                 }
             }
         })
+
         .state('editscreeningquestion', {
             url: "/screenings/:id/questions/:questionId/edit",
             templateUrl: "views/CreateScreeningQuestion.html",
@@ -256,6 +276,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
                 }
             }
         })
+
         .state('starttestscreening', {
             url: "/resumes/:id/screenings/:screeningId/start",
             templateUrl: "views/StartTestScreening.html",
@@ -266,6 +287,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
                 }
             }
         })
+
         .state('testscreening', {
             url: "/resumes/:id/screenings/:screeningId/test",
             templateUrl: "views/TestScreening.html",
@@ -276,6 +298,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
                 }
             }
         })
+
         .state('finishtestscreening', {
             url: "/resumes/screenings/finish",
             templateUrl: "views/FinishTestScreening.html",
@@ -286,6 +309,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
                 }
             }
         })
+
         .state('resumes', {
             url: "/resumes",
             templateUrl: "views/Resumes.html",
@@ -296,6 +320,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
                 }
             }
         })
+
         .state('referrals', {
             url: "/referrals",
             templateUrl: "views/Referrals.html",
@@ -306,6 +331,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
                 }
             }
         })
+
         .state('createreferral', {
             url: "/referrals/create",
             templateUrl: "views/CreateReferral.html",
@@ -319,7 +345,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
 
         .state('editreferral', {
             url: "/referrals/:id/edit",
-            templateUrl: "views/CreateReferral.html",
+            templateUrl: "views/EditReferral.html",
             data: {
                 pageTitle: 'Edit Referral',
                 permissions: {
@@ -327,11 +353,40 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
                 }
             }
         })
+
+        .state('editreferralinfo', {
+            url: "/referrals/:id/info/edit",
+            templateUrl: "views/CreateReferral.html",
+            data: {
+                pageTitle: 'Edit Screening Info',
+                permissions: {
+                    only: ['Admin'],
+                }
+            }
+        })
+
         .state('createreferralquestion', {
             url: "/referrals/:id/questions/create",
             templateUrl: "views/CreateReferralQuestion.html",
+            params: {
+                'type': 'createreferral',
+            },
             data: {
                 pageTitle: 'Create Referral Question',
+                permissions: {
+                    only: ['Admin'],
+                }
+            }
+        })
+
+        .state('editreferralquestion', {
+            url: "/referrals/:id/questions/:questionId/edit",
+            templateUrl: "views/CreateReferralQuestion.html",
+            params: {
+                'type': 'createreferral',
+            },
+            data: {
+                pageTitle: 'Edit Referral Question',
                 permissions: {
                     only: ['Admin'],
                 }
@@ -361,7 +416,16 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
             }
         })
 
-
+        .state('assignreferral', {
+            url: "/referrals/:id/assign",
+            templateUrl: "views/ReferralAssign.html",
+            data: {
+                pageTitle: 'Referral Assign',
+                permissions: {
+                    only: ['Admin'],
+                }
+            }
+        })
 }
 
 angular

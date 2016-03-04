@@ -68,7 +68,7 @@ angular.module('Jobsite').controller("CreateScreeningQuestionController", functi
 
         if ($scope.screeningQuestion.type == 'MultipleChoice'){
             $scope.screeningQuestion.answerText = '';
-            $scope.screeningQuestion.AnswerOption =  parseInt($scope.selectedOption);
+            $scope.screeningQuestion.answerOption =  parseInt($scope.selectedOption);
         }
 
         if ($scope.screeningQuestion.type == 'FillIn'){

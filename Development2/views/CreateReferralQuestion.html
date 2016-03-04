@@ -130,30 +130,6 @@
                                         <span class="color-theme" ng-show="createQuestionReferralForm.type.$error.required">Question Type is required.</span>
                                     </div>
 
-                                    <div class="form-group" ng-if="referralQuestion.type == 'MultipleChoice' || referralQuestion.type == 'TrueFalse'">
-                                        <label for="selectedOption">Correct Answer</label>
-
-                                        <select  id="selectedOption"
-                                                 name="selectedOption"
-                                                 required
-                                                 class="form-control"
-                                                ng-model="$parent.selectedOption"
-                                                ng-options="idx as _option for (idx, _option) in $parent.referralQuestion.options">
-                                            <option value="">Select correct answer</option>
-                                        </select>
-                                        <span id="helpBlock" class="help-block">Please, fill out possible answers and select correct answer</span>
-                                        <!--<select-->
-                                                <!--id="selectedOption"-->
-                                                <!--name="selectedOption"-->
-                                                <!--ng-model="selectedOption"-->
-                                                <!--required-->
-                                                <!--class="form-control"-->
-                                        <!--&gt;-->
-                                            <!--<option value="">Select Correct Answer</option>-->
-                                            <!--<option ng-repeat="_option in options" ng-selected="_option==selectedOption" value="{{_option}}">{{_option}}</option>-->
-                                        <!--</select>-->
-                                        <span class="color-theme" ng-show="createQuestionReferralForm.selectedOption.$error.required">Correct Answer Type is required.</span>
-                                    </div>
 
                                     <div class="form-group">
                                         <label for="tags">Tags</label>

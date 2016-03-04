@@ -256,7 +256,9 @@ angular.module('Jobsite').controller("AddjobformController", function($scope, Lo
                 console.log(error.data.message);
             });
         }
-
+    $scope.$back = function() {
+        window.history.back();
+    };
         $scope.setReferral = function() {
 
             var jobTitle = '';

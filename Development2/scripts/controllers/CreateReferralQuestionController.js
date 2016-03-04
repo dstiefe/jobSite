@@ -30,12 +30,11 @@ angular.module('Jobsite').controller("CreateReferralQuestionController", functio
         if ($scope.referralQuestion.type == 'TrueFalse'){
             $scope.referralQuestion.options = [];
             $scope.referralQuestion.answerText = '';
-            $scope.referralQuestion.answerBoolean =  $scope.selectedOption == '0';
+
         }
 
         if ($scope.referralQuestion.type == 'MultipleChoice'){
             $scope.referralQuestion.answerText = '';
-            $scope.referralQuestion.AnswerOption =  parseInt($scope.selectedOption);
         }
 
         if ($scope.referralQuestion.type == 'FillIn'){
@@ -54,7 +53,6 @@ angular.module('Jobsite').controller("CreateReferralQuestionController", functio
                     $scope.referralQuestion.answerText = '';
                     $scope.referralQuestion.tags = [];
                     $scope.tag = "";
-                    $scope.selectedOption='';
                     $scope.referralQuestion.type='';
                     $scope.option ='';
 
@@ -72,18 +70,15 @@ angular.module('Jobsite').controller("CreateReferralQuestionController", functio
        if ($scope.referralQuestion.type == 'TrueFalse'){
            $scope.referralQuestion.options = ['True', 'False'];
            $scope.option ='';
-           $scope.selectedOption ='';
            $scope.referralQuestion.optionsDescriptions ={};
        }else if ($scope.referralQuestion.type == 'LikertScale'){
 
            $scope.referralQuestion.options = [];
            $scope.option ='';
-           $scope.selectedOption ='';
            $scope.referralQuestion.optionsDescriptions ={};
        }else{
            $scope.referralQuestion.options = [];
            $scope.option ='';
-           $scope.selectedOption ='';
            $scope.referralQuestion.optionsDescriptions ={};
        }
     };
@@ -109,7 +104,6 @@ angular.module('Jobsite').controller("CreateReferralQuestionController", functio
     };
 
     $scope.changedNumOptionsLikertScale = function() {
-console.log('ggg='+$scope.numOptionsSelected);
         $scope.referralQuestion.options = [];
         $scope.referralQuestion.optionsDescriptions ={};
 

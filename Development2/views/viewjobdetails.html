@@ -11,7 +11,7 @@
     <!-- Main Wrapper -->
     <div id="wrapper" style="margin:0; ">
         <br/>
-        <div class="page-content">
+        <div class="page-content" ng-show="loading">
             <div class="container">
                 <div class="row">
                     <div class="col-sm-12">
@@ -23,16 +23,16 @@
                                             <div class="box-header">
                                                 <div class="row">
                                                     <div class="col-sm-4">
-                                                            <h3>{{jobTitle}}</h3>  <h4>{{jobLocation}}</h4>
+                                                        <h3>{{jobTitle}}</h3>  <h4>{{jobLocation}}</h4>
                                                     </div>
                                                     <div class="col-sm-4" style="color:white;">
-                                                        <span  ng-hide="role=='Admin' || !isReferral">
-                                                            This job has a referral fee – so if you are not interested – do you know of someone that might be … <a href="" ng-click="showReferralView()" style="color: #0000C0; " >learn more</a>
-                                                      </span>
+                                                        <span ng-hide="role=='Admin' || !isReferral">
+                                                            This job has a referral fee – so if you are not interested – do you know of someone that might be … <a href="" ng-click="showReferralView()" style="color: #0000C0; ">learn more</a>
+                                                        </span>
                                                     </div>
                                                     <div class="col-sm-4 text-right">
                                                         <button class="btn btn-success btn-md" ng-hide="role=='Admin' || isApplied" data-ng-click="onApply()">Apply</button>
-                                                        <span class=""ng-show="isApplied">You've already applied!</span>
+                                                        <span class="" ng-show="isApplied">You've already applied!</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -64,7 +64,7 @@
                                                                 <td>{{applicant.lastName}}</td>
                                                                 <td>{{applicant.email}}</td>
                                                                 <td>{{applicant.note}}</td>
-                                                                <td> <a  ui-sref="resume({id:data.id})" class="btn btn-info btn-warning"><span class="glyphicon glyphicon-edit"></span> View</a></td>
+                                                                <td> <a ui-sref="resume({id:data.id})" class="btn btn-info btn-warning"><span class="glyphicon glyphicon-edit"></span> View</a></td>
                                                             </tr>
                                                         </tbody>
                                                     </table>
@@ -79,7 +79,7 @@
                                                 <g:plusone></g:plusone>
                                                 <a class="twitter-share-button" href="https://twitter.com/intent/tweet">Tweet</a>
                                             </div>
-                                                     <div class="box-description">
+                                            <div class="box-description">
                                                 <h3>JOB SNAPSHOT</h3>
                                                 <p>
                                                     <i class="fa fa-clock-o"></i> Employee Type
@@ -114,7 +114,7 @@
                                         </div>
                                     </div>
                                 </div>
-                               <!--  include here if you want category section -->
+                                <!--  include here if you want category section -->
                             </div>
                         </div>
                     </div>

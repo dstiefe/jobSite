@@ -1,6 +1,6 @@
 angular
     .module('Jobsite').controller("ViewJobDetailsController", function ($scope, Login, ValiDatedTokenObject, $location,$stateParams, $modal, $http, $location, $sce, JobsService, AuthService) {
-
+        $scope.loading = false;
         var jobId =   $stateParams.id;
         var referralId =   $stateParams.referral;
 
@@ -23,7 +23,8 @@ angular
             }
         }
 
-        JobsService.getJob(jobId, referralId ).then(function (data) {
+        JobsService.getJob(jobId, referralId).then(function (data) {
+            $scope.loading = true;
             $scope.jobTitle =  $sce.trustAsHtml(data.data.title);
             $scope.jobLocation = data.data.location;
             $scope.jobDescription = $sce.trustAsHtml( data.data.description);
@@ -78,9 +79,9 @@ angular
             }
         };
 
-    $scope.$back = function() {
-        window.history.back();
-    };
+    //$scope.$back = function() {
+    //    window.history.back();
+    //};
 
 
     });

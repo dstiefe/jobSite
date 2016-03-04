@@ -37,7 +37,7 @@ angular.module('Jobsite').controller("ReferralAssignController", function($scope
     });
 
     $scope.saveChanges = function() {
-        $scope.putJobReferral($scope.myReferralId, $scope.myReferral).then(function (results) {
+        ReferralService.putJobReferral($scope.myReferralId, $scope.myReferral).then(function (results) {
             $state.go('editreferral', {'id': $scope.myReferralId});
         }, function (error) {
             console.log(error.data.message);

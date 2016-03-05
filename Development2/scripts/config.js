@@ -284,6 +284,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
                 pageTitle: 'Start screening tests',
                 permissions: {
                     only: ['User'],
+                    //redirectTo: 'login'
                 }
             }
         })

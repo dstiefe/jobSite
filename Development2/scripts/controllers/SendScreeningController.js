@@ -25,10 +25,14 @@ angular.module('Jobsite').controller('SendScreeningController', function ($scope
         $scope.screeningsAll = response;
 
         $scope.screeningsTaken =   $scope.screeningsAll.filter(function(item) {
+            if ($scope.resume.screeningIds == null)
+                return false;
             return item.jobsIds.indexOf(jobId) != -1 && $scope.resume.screeningIds.indexOf(item.id) != -1;
         });
 
         $scope.screeningsToTake =   $scope.screeningsAll.filter(function(item) {
+            if ($scope.resume.screeningIds == null)
+                return true;
             return item.jobsIds.indexOf(jobId) != -1 && $scope.resume.screeningIds.indexOf(item.id) == -1;
         });
 

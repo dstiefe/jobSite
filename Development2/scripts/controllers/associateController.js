@@ -36,8 +36,14 @@
     var startTimer = function () {
         var timer = $timeout(function () {
             $timeout.cancel(timer);
+            var return_url = sessionStorage.getItem("return_url");
+            if(return_url != null){
+                sessionStorage.removeItem("return_url");
+                $location.path(return_url);
+            }else{
+                $location.path('/dashboard');
+            }
 
-            $location.path('/dashboard');
         }, 2000);
     }
 

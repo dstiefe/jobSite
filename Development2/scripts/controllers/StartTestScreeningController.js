@@ -4,7 +4,19 @@
 /**
  * Created by Van on 03.02.2016.
  */
-angular.module('Jobsite').controller("StartTestScreeningController", function($scope, Login, $http, $timeout, $location, ScreeningsService, CategoriesService, ResumesService, $state, $stateParams) {
+angular.module('Jobsite').controller("StartTestScreeningController", function($scope, Login, $http, $timeout, $location, AuthService, ScreeningsService, CategoriesService, ResumesService, $state, $stateParams) {
+
+
+    if (!AuthService.authentication.isAuth || !AuthService.authentication.isUser)
+    {
+        var path = $location.path();
+        console.log("path="+path);
+        sessionStorage.setItem("return_url", path);
+        $state.transitionTo('login');
+    }
+else{
+
+
 
     $scope.resumeId = $stateParams.id;
     $scope.screeningId = $stateParams.screeningId;
@@ -30,6 +42,8 @@ angular.module('Jobsite').controller("StartTestScreeningController", function($s
                     $state.go('testscreening', {'id': $scope.resumeId, 'screeningId': $scope.screeningId});
                 }
             }
+    }
+
     }
 });
 

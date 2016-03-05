@@ -12,7 +12,15 @@ angular.module('Jobsite').controller("Login", function($scope, $rootScope, Login
             };
 
             AuthService.login(loginData).then(function (response) {
+
+                var return_url = sessionStorage.getItem("return_url");
+                if(return_url != null){
+                    sessionStorage.removeItem("return_url");
+                    $location.path(return_url);
+                }else{
                     $location.path('/dashboard');
+                }
+
                 },
                 function (err) {
                     if (err != null){
@@ -67,7 +75,13 @@ angular.module('Jobsite').controller("Login", function($scope, $rootScope, Login
                 //Obtain access token and redirect to orders
                 var externalData = { provider: fragment.provider, externalAccessToken: fragment.external_access_token };
                 AuthService.obtainAccessToken(externalData).then(function (response) {
-                        $location.path('/dashboard');
+                        var return_url = sessionStorage.getItem("return_url");
+                        if(return_url != null){
+                            sessionStorage.removeItem("return_url");
+                            $location.path(return_url);
+                        }else{
+                            $location.path('/dashboard');
+                        }
 
                     },
                     function (err) {

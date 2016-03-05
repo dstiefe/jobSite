@@ -282,10 +282,9 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
             templateUrl: "views/StartTestScreening.html",
             data: {
                 pageTitle: 'Start screening tests',
-                permissions: {
-                    only: ['User'],
-                    //redirectTo: 'login'
-                }
+                //permissions: {
+                //    only: ['User'],
+                //}
             }
         })
 

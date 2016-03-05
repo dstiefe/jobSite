@@ -24,6 +24,9 @@ angular
     $scope.locationsLimitConst = 5;//5
         $scope.locationsLimit =  $scope.locationsLimitConst;
 
+    $scope.categoriesLimitConst = 5;//5
+    $scope.categoriesLimit =  $scope.categoriesLimitConst;
+
         $scope.entryLimits = [5,10,20,50,100];
         var _searchByFilter = function() {
 

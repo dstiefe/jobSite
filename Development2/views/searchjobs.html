@@ -36,8 +36,10 @@
                                     <div class="panel-body">
                                         <h3><b>Category</b></h3>
                                         <ul class="list-group mailbox-list">
-                                            <li class="list-group-item" ng-repeat="category in categories"><a ng-click="searchbycategory(category.id)" href="#"><span data-ng-bind-html="category.category"></span> ({{ category.count}})</a></li>
+                                            <li class="list-group-item" ng-repeat="category in categories| limitTo:categoriesLimit"><a ng-click="searchbycategory(category.id)" href="#"><span data-ng-bind-html="category.category"></span> ({{ category.count}})</a></li>
                                         </ul>
+                                        <a href="" ng-click="categoriesLimit=categories.length;" ng-show="categoriesLimit<categories.length" style="color: darkblue;">Show more</a>
+                                        <a href="" ng-click="categoriesLimit=categoriesLimitConst;" ng-show="categoriesLimit>=categories.length && categories.length > categoriesLimitConst" style="color: darkblue;">Show less</a>
                                         <hr>
                                         <h3><b>Location</b></h3>
                                         <ul class="list-group mailbox-list">

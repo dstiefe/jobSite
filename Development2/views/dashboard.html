@@ -59,24 +59,35 @@
 
 
 
-                        <span class="label label-default label-footer" ng-repeat="screening in data.screenings" ng-show="role == 'Admin'">
+                        <span class="label label-info label-footer" ng-repeat="screening in data.screenings" ng-show="role == 'Admin'">
                             {{screening.name}}
                             <span class="badge badge-success" ng-show="screening.applicantsCount > 0">{{screening.applicantsCount}}</span>
                         </span>
 
-                        <a class="btn btn-default btn-footer" ng-repeat="screening in data.screenings | filter:{ isNew: true }" ui-sref="starttestscreening({id:data.resumeId, screeningId: screening.id})" ng-show="role == 'User'">
+                        <a class="btn btn-info btn-footer" ng-repeat="screening in data.screenings | filter:{ isNew: true }" ui-sref="starttestscreening({id:data.resumeId, screeningId: screening.id})" ng-show="role == 'User'">
                             {{screening.name}}
-                            <span class="badge badge-danger">New</span>
+                            <img src="images/new_little.png"  ng-show="screening.isNew" style="max-width:20px; position: relative; top: -8px; right:-13px;" />
                         </a>
 
-                        <span class="label label-default label-footer" ng-repeat="screening in data.screenings | filter:{ isNew: false }" ng-show="role == 'User'">
+                        <span class="label label-info label-footer" ng-repeat="screening in data.screenings | filter:{ isNew: false }" ng-show="role == 'User'">
                             {{screening.name}}
                             <span class="badge badge-success"><i class="fa fa-check"></i></span>
                         </span>
 
-                        <div class="pull-right">
-                            <i class="fa fa-question-circle fa-lg" title="Help text" style="color: #e6a300;" ng-show="(data.screenings | filter:{ isNew: true }).length>0 || data.applicantsIds.length > 0"></i>
-                        </div>
+
+                         <span class="label label-success label-footer" ng-repeat="reference in data.references" ng-show="role == 'Admin'">
+                            {{reference.name}}
+                        </span>
+
+                        <a href="" class="btn btn-success btn-footer" ng-repeat="reference in data.references" ng-click="sendReferenceToFriends(data, reference.id)" ng-show="role == 'User'" title="The client is very interested – do you have any references that will validate some of your skills sets that are required for this opportunity – if so please click">
+                            {{reference.name}}
+                            <img src="images/new_little.png"  ng-show="reference.isNew" style="max-width:20px; position: relative; top: -8px; right:-13px;" />
+                        </a>
+
+
+                        <!--<div class="pull-right">-->
+                            <!--<i class="fa fa-question-circle fa-lg" title="Help text" style="color: #e6a300;" ng-show="(data.screenings | filter:{ isNew: true }).length>0 || data.applicantsIds.length > 0"></i>-->
+                        <!--</div>-->
                         <!--<a class="btn btn-danger" ui-sref="starttestscreening({id:data.resumeId})" ng-show = "role == 'User' && data.screeningStage =='Screening'">-->
                         <!--{{data.screeningStage}}-->
                         <!--</a>-->
@@ -122,6 +133,24 @@
                     </div>
                     <div class="panel-footer panel-info" style="height: 50px;">
 
+                    </div>
+                </div>
+                <div class="panel panel-success" ng-if="data.referenceId">
+                    <div class="panel-heading">
+
+                        <a class="btn btn-info pull-right" href="#viewjobdetails?id={{data.jobId}}">
+                           View Job
+                        </a>
+
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="panel-body crop">
+                        {{data.userName}} wants would like you to provide a reference for the following job
+                    </div>
+                    <div class="panel-footer panel-success" style="height: 50px;">
+                        <a title="To Provide a reference please press 'start reference'" class="btn btn-info btn-footer pull-right" ui-sref="starttestjobreferral({jobId:data.jobId, resumeId: data.resumeId, jobReferralId: data.referenceIdc, userName:data.userName})" >
+                            Start Reference
+                        </a>
                     </div>
                 </div>
             </div>

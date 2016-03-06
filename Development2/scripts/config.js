@@ -426,6 +426,21 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
                 }
             }
         })
+
+        .state('starttestjobreferral', {
+            url: "/jobs/:jobId/resumes/:resumeId/jobreferrals/:jobReferralId/start?reference_friend_id",
+            templateUrl: "views/StartTestJobReferral.html",
+            params: {
+                reference_friend_id: { squash: true},
+                userName: ''
+            },
+            data: {
+                pageTitle: 'Start referrals tests',
+                //permissions: {
+                //    only: ['User'],
+                //}
+            }
+        })
 }
 
 angular

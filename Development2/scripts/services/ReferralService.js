@@ -149,6 +149,42 @@ angular.module('Jobsite').factory('ReferralService', ['$http', '$q', 'RESOURCES'
         });
     };
 
+    var _sendReferenceRequestToResume = function (resumeId, model) {
+        return $http.post(serviceBase + 'resumes/'+resumeId+'/jobreferral/',
+            model,
+            {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': ValiDatedTokenObject.getValiDatedTokenObject().token_type+" "+ValiDatedTokenObject.getValiDatedTokenObject().access_token
+                }
+            }).then(function (results) {
+            return results;
+        });
+    };
+
+    var _sendReferenceToFriends = function (model) {
+        return $http.post(serviceBase + 'jobreferrals/friends',
+            model,
+            {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': ValiDatedTokenObject.getValiDatedTokenObject().token_type+" "+ValiDatedTokenObject.getValiDatedTokenObject().access_token
+                }
+            }).then(function (results) {
+            return results;
+        });
+    };
+    var _getReferences = function () {
+        return $http.get(serviceBase + 'references/my',
+            {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': ValiDatedTokenObject.getValiDatedTokenObject().token_type+" "+ValiDatedTokenObject.getValiDatedTokenObject().access_token
+                }
+            }).then(function (results) {
+            return results;
+        });
+    };
     referralServiceFactory.postReferral = _postReferral;
     referralServiceFactory.getReferrals = _getReferrals;
 
@@ -163,6 +199,9 @@ angular.module('Jobsite').factory('ReferralService', ['$http', '$q', 'RESOURCES'
     referralServiceFactory.getReferralQuestionById = _getReferralQuestionById;
     referralServiceFactory.putReferralQuestion = _putReferralQuestion;
     referralServiceFactory.deleteReferralQuestion = _deleteReferralQuestion;
+    referralServiceFactory.sendReferenceRequestToResume = _sendReferenceRequestToResume;
+    referralServiceFactory.sendReferenceToFriends = _sendReferenceToFriends;
+    referralServiceFactory.getReferences = _getReferences;
 
     return referralServiceFactory;
 }]);

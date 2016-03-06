@@ -26,6 +26,41 @@ angular.module('Jobsite').factory("AuthService", ['$http', '$q', 'ValiDatedToken
         firstName: "",
         lastName: ""
     };
+    var _getReferences = function(){
+        var referralObj = sessionStorage.getItem("reference_friend_ids");
+        var referralsArr =[];
+        if (referralObj != null)
+        {
+            referralsArr = JSON.parse(referralObj);
+            if (referralsArr == null){
+                referralsArr =[];
+            }
+        }
+        return referralsArr;
+    };
+
+    var _deleteReferences = function(){
+        sessionStorage.removeItem("reference_friend_ids");
+    };
+
+    var _trackReferences = function(){
+
+        var model = {};
+
+        model.referenceIds = _getReferences();
+
+        if (_authentication.isUser && model.referenceIds.length > 0){
+            $http.post(serviceBase + 'tracking/references', model,  {headers: {
+                'Content-Type': 'application/json',
+                'Authorization': ValiDatedTokenObject.getValiDatedTokenObject().token_type+" "+ValiDatedTokenObject.getValiDatedTokenObject().access_token
+            }}).then(function (response) {
+                _deleteReferences();
+                return response;
+            });
+        }else{
+            _deleteReferences();
+        }
+    };
 
     var _getReferrals = function(){
         var referralObj = sessionStorage.getItem("referrals");
@@ -50,7 +85,7 @@ angular.module('Jobsite').factory("AuthService", ['$http', '$q', 'ValiDatedToken
 
         model.referralIds = _getReferrals();
 
-        if (_authentication.isUser){
+        if (_authentication.isUser && model.referralIds.length > 0){
             $http.post(serviceBase + 'tracking/referrals', model,  {headers: {
                 'Content-Type': 'application/json',
                     'Authorization': ValiDatedTokenObject.getValiDatedTokenObject().token_type+" "+ValiDatedTokenObject.getValiDatedTokenObject().access_token
@@ -93,6 +128,7 @@ angular.module('Jobsite').factory("AuthService", ['$http', '$q', 'ValiDatedToken
             _authentication.isAdministrator = isAdministrator;
 
             _trackReferrals();
+            _trackReferences();
 
             deferred.resolve(response);
 
@@ -157,6 +193,7 @@ angular.module('Jobsite').factory("AuthService", ['$http', '$q', 'ValiDatedToken
             _authentication.isAdministrator = isAdministrator;
 
             _trackReferrals();
+            _trackReferences();
 
             deferred.resolve(response);
 

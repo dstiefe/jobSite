@@ -111,7 +111,6 @@ angular.module('Jobsite').controller("ApplicantsController", function($scope, $h
     };
 
     $scope.sendScreeningViewShow = function(data) {
-
         var modalInstance = $modal.open({
             animation: true,
             templateUrl: 'views/SendScreeningView.html',
@@ -126,7 +125,23 @@ angular.module('Jobsite').controller("ApplicantsController", function($scope, $h
                 }
             }
         });
+    };
 
+    $scope.sendReferenceRequestViewShow = function(data) {
+        var modalInstance = $modal.open({
+            animation: true,
+            templateUrl: 'views/SendReferenceRequestView.html',
+            controller: 'SendReferenceRequestController',
+            size : 'lg',
+            resolve: {
+                resume: function () {
+                    return data;
+                },
+                jobId: function () {
+                    return jobId;
+                }
+            }
+        });
     };
 
 });

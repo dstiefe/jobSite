@@ -4567,7 +4567,11 @@ ul.h-list li:hover a {
     background-color: #d9edf7;
     border-color: #bce8f1;
 }
-
+.panel-footer.panel-success{
+    color: #3c763d;
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+}
 .panel-footer > .label-footer{
     margin-right: 10px;
     padding:7px;

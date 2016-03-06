@@ -59,8 +59,14 @@ angular.module('Jobsite').controller("dashboardController", function ($scope, Lo
 
             ReferralService.getReferrals().then(function (results2) {
                 $scope.list = $scope.list.concat(results2.data);
-                _pageCalc();
-                $scope.isLoading = false;
+                ReferralService.getReferences().then(function (results3) {
+                    $scope.list = $scope.list.concat(results3.data);
+                    _pageCalc();
+                    $scope.isLoading = false;
+                }, function (error) {
+                    console.log(error.data.message);
+                    $scope.isLoading = false;
+                });
             }, function (error) {
                 console.log(error.data.message);
                 $scope.isLoading = false;
@@ -86,6 +92,33 @@ angular.module('Jobsite').controller("dashboardController", function ($scope, Lo
     };
     $scope.setPage = function (pageNo) {
         $scope.currentPage = pageNo;
+    };
+
+    $scope.sendReferenceToFriends = function (job, referenceId) {
+        var resumeId = job.resumeId;
+        var jobId = job.id;
+
+        var modalInstance = $modal.open({
+            animation: true,
+            templateUrl: 'views/SendReferenceToFriendsView.html',
+            controller: 'SendReferenceToFriendsController',
+            size : 'lg',
+            resolve: {
+                resumeId: function () {
+                    return resumeId;
+                },
+                jobId: function () {
+                    return jobId;
+                },
+                jobTitle: function () {
+                    return job.title;
+                },
+                referenceId: function () {
+                    return referenceId;
+                }
+            }
+        });
+
     };
 
 

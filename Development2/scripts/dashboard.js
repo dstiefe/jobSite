@@ -22,7 +22,7 @@ $(function () {
 angular.module('Jobsite').controller("dashboardController", function ($scope, Login, ValiDatedTokenObject, locationHistoryService, $location, $modal, $http, $timeout, AuthService, JobsService, ReferralService, cfpLoadingBar) {
     $scope.isLoading = true;
     $scope.role = AuthService.authentication.isAdministrator ? "Admin" : "User";
-
+    $scope.isLoading =false;
     $scope.entryLimits = [5, 10, 15, 20, 25];
 
 
@@ -38,7 +38,7 @@ angular.module('Jobsite').controller("dashboardController", function ($scope, Lo
         $scope.headingmessage = "Jobs Posted";
         $scope.viewtext = "View Applicants";
         $scope.jobsNotFoundMessage = "No jobs";
-
+        $scope.isLoading =true;
         JobsService.getMyJobs().then(function (results) {
             $scope.list = results.data;
             _pageCalc();
@@ -53,7 +53,7 @@ angular.module('Jobsite').controller("dashboardController", function ($scope, Lo
         $scope.headingmessage = "Jobs Applied To";
         $scope.viewtext = "View Job";
         $scope.jobsNotFoundMessage = "No jobs found";
-
+        $scope.isLoading =true;
         JobsService.getJobsApplied().then(function (results) {
             $scope.list = results.data;
 
@@ -78,10 +78,8 @@ angular.module('Jobsite').controller("dashboardController", function ($scope, Lo
             JobsService.getMyJobs().then(function (results) {
                 $scope.list = results.data;
                 _pageCalc();
-                $scope.isLoading = false;
             }, function (error) {
                 console.log(error.data.message);
-                $scope.isLoading = false;
             });
         });
 

@@ -18,6 +18,19 @@ angular
     .directive('landingScrollspy', landingScrollspy)
     .directive('ngEnter', ngEnterHandler)
     .directive('customOnChange', fileUploadHandler)
+    .directive('back', backHandler)
+
+function backHandler($window) {
+    return {
+        restrict: 'A',
+        link: function (scope, elem, attrs) {
+            elem.bind('click', function () {
+                $window.history.back();
+            });
+        }
+    };
+}
+
 
 function fileUploadHandler() {
     return {

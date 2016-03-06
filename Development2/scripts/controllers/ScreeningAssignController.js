@@ -8,12 +8,7 @@ angular.module('Jobsite').controller("ScreeningAssignController", function($scop
 
     $scope.myScreeningId = $stateParams.id;
     $scope.selectedJobId = '';
-    // get jobs
-    JobsService.getMyJobs().then(function (results) {
-        $scope.jobs = results.data
-    }, function (error) {
-        console.log(error.data.message);
-    });
+
 
     var _getScreeningById =function(screeningId) {
         return $filter('filter')($scope.screenings, {id:screeningId})[0];
@@ -35,6 +30,15 @@ angular.module('Jobsite').controller("ScreeningAssignController", function($scop
     ScreeningsService.getMyScreenings().then(function (results) {
         $scope.screenings = results.data;
         $scope.myScreening = _getScreeningById($scope.myScreeningId);
+        var jobsIds = $scope.myScreening.jobsIds;
+        // get jobs
+        JobsService.getMyJobs().then(function (results) {
+            //$scope.jobs = results.data;
+            $scope.jobs = $filter('filter')(results.data, $scope.jobAlreadyAssign);
+        }, function (error) {
+            console.log(error.data.message);
+        });
+
     }, function (error) {
         console.log(error.data.message);
     });
@@ -47,6 +51,13 @@ angular.module('Jobsite').controller("ScreeningAssignController", function($scop
         });
     };
 
+    $scope.jobAlreadyAssign = function(item) {
+        if ($scope.myScreening.jobsIds.indexOf(item.id) != -1) {
+            return false;
+        } else {
+            return true;
+        }
+    };
 
     $scope.jobExist = function(item) {
         if (item.jobsIds.indexOf($scope.selectedJobId) != -1) {

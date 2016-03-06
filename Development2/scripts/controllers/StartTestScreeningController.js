@@ -10,39 +10,57 @@ angular.module('Jobsite').controller("StartTestScreeningController", function($s
     if (!AuthService.authentication.isAuth || !AuthService.authentication.isUser)
     {
         var path = $location.path();
-        console.log("path="+path);
         sessionStorage.setItem("return_url", path);
         $state.transitionTo('login');
     }
-else{
+    else{
+        $scope.error_message = '';
+        $scope.resumeId = $stateParams.id;
+        $scope.screeningId = $stateParams.screeningId;
+        $scope.resume = {};
+        $scope.screening = {};
+        $scope.error_message = '';
+        $scope.isDisabledStart = false;
+        ResumesService.getResume($scope.resumeId).then(function (results) {
+            $scope.resume  = results.data;
+        }, function (error) {
+            console.log(error.data.message);
+        });
 
-
-
-    $scope.resumeId = $stateParams.id;
-    $scope.screeningId = $stateParams.screeningId;
-    $scope.resume = {};
-
-    ResumesService.getResume($scope.resumeId).then(function (results) {
-        $scope.resume  = results.data;
-    }, function (error) {
-        console.log(error.data.message);
-    });
-
-    $scope.start = function() {
-
-            if ($scope.resume.screeningIds != null && $scope.resume.screeningIds.length > 0){
-                var passedScreeningIds = [];
-                if ($scope.resume.passedScreeningIds != null){
-                    passedScreeningIds = $scope.resume.passedScreeningIds;
-                }
-
-                var diff = $scope.resume.screeningIds.diff(passedScreeningIds);
-                if (diff.length > 0)
-                {
-                    $state.go('testscreening', {'id': $scope.resumeId, 'screeningId': $scope.screeningId});
-                }
+        ScreeningsService.getScreeningByResumeId($scope.resumeId, $scope.screeningId).then(function (results) {
+            $scope.screening  = results.data;
+            if ( $scope.screening.questionsCount == 0){
+                $scope.error_message = 'Screening does not have any questions! Please try again later!';
+                $scope.isDisabledStart = true;
             }
-    }
+        }, function (error) {
+            console.log(error.data.message);
+        });
+
+        $scope.start = function() {
+            $scope.error_message = '';
+                if ( $scope.screening.questionsCount == 0){
+                    $scope.error_message = 'Screening does not have any questions!';
+                    return;
+                }
+
+                if ($scope.resume.screeningIds != null && $scope.resume.screeningIds.length > 0){
+                    var passedScreeningIds = [];
+                    if ($scope.resume.passedScreeningIds != null){
+                        passedScreeningIds = $scope.resume.passedScreeningIds;
+                    }
+
+                    var diff = $scope.resume.screeningIds.diff(passedScreeningIds);
+                    if (diff.length > 0 && diff.indexOf($scope.screeningId) != -1)
+                    {
+                        $state.go('testscreening', {'id': $scope.resumeId, 'screeningId': $scope.screeningId});
+                    }else{
+                        $scope.error_message = 'You have already passed screening!';
+                    }
+                }else{
+                    $scope.error_message = 'You don not have any screenings!';
+                }
+        }
 
     }
 });

@@ -65,5 +65,8 @@ var clientId ="P600Us6Y476QiK331u5yEzb22dpX_y6NS75!9I-a";
                 CLIENT_ID: clientId
             }
         })())
+        .config(['cfpLoadingBarProvider', function(cfpLoadingBarProvider) {
+        cfpLoadingBarProvider.includeSpinner = false;
+    }])
 })();
 

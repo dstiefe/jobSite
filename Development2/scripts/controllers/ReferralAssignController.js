@@ -11,12 +11,6 @@ angular.module('Jobsite').controller("ReferralAssignController", function($scope
 
     $scope.myReferralId = $stateParams.id;
     $scope.selectedJobId = '';
-    // get jobs
-    JobsService.getMyJobs().then(function (results) {
-        $scope.jobs = results.data
-    }, function (error) {
-        console.log(error.data.message);
-    });
 
     var _getReferralById =function(referralId) {
         return $filter('filter')($scope.referrals, {id:referralId})[0];
@@ -32,6 +26,14 @@ angular.module('Jobsite').controller("ReferralAssignController", function($scope
     ReferralService.getMyJobReferrals().then(function (results) {
         $scope.referrals = results.data;
         $scope.myReferral = _getReferralById($scope.myReferralId);
+        // get jobs
+        JobsService.getMyJobs().then(function (results) {
+            //$scope.jobs = results.data;
+            $scope.jobs = $filter('filter')(results.data, $scope.jobAlreadyAssign);
+        }, function (error) {
+            console.log(error.data.message);
+        });
+
     }, function (error) {
         console.log(error.data.message);
     });
@@ -44,6 +46,13 @@ angular.module('Jobsite').controller("ReferralAssignController", function($scope
         });
     };
 
+    $scope.jobAlreadyAssign = function(item) {
+        if ($scope.myReferral.jobsIds.indexOf(item.id) != -1) {
+            return false;
+        } else {
+            return true;
+        }
+    };
 
     $scope.jobExist = function(item) {
         if (item.jobsIds.indexOf($scope.selectedJobId) != -1) {

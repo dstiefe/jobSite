@@ -441,6 +441,18 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
                 //}
             }
         })
+
+        .state('testsjobreferral', {
+            url: "/jobs/:jobId/resumes/:resumeId/jobreferrals/:jobReferralId/test",
+            templateUrl: "views/TestJobReferral.html",
+            data: {
+                pageTitle: 'JobReferral test',
+                permissions: {
+                    only: ['User'],
+                }
+            }
+        })
+
 }
 
 angular

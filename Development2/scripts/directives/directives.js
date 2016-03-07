@@ -20,6 +20,7 @@ angular
     .directive('customOnChange', fileUploadHandler)
     .directive('back', backHandler)
 
+
 function backHandler($window) {
     return {
         restrict: 'A',

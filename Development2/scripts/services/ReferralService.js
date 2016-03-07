@@ -185,6 +185,44 @@ angular.module('Jobsite').factory('ReferralService', ['$http', '$q', 'RESOURCES'
             return results;
         });
     };
+
+    var _getReferenceByResumeId = function (resumeId, referenceId) {
+        return $http.get(serviceBase + 'resumes/'+resumeId+'/jobreferrals/'+referenceId,
+            {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': ValiDatedTokenObject.getValiDatedTokenObject().token_type+" "+ValiDatedTokenObject.getValiDatedTokenObject().access_token
+                }
+            }).then(function (results) {
+            return results;
+        });
+    };
+
+    var _getReferenceQuestions = function (resumeId, referenceId) {
+        return $http.get(serviceBase + 'resumes/'+resumeId+'/jobreferrals/'+referenceId+'/questions',
+            {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': ValiDatedTokenObject.getValiDatedTokenObject().token_type+" "+ValiDatedTokenObject.getValiDatedTokenObject().access_token
+                }
+            }).then(function (results) {
+            return results;
+        });
+    };
+
+    var _setAnswersOnReferenceQuestions = function (resumeId, referenceId,model) {
+        return $http.post(serviceBase + 'resumes/'+resumeId+'/jobreferrals/'+referenceId+'/questions/result',
+            model,
+            {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': ValiDatedTokenObject.getValiDatedTokenObject().token_type+" "+ValiDatedTokenObject.getValiDatedTokenObject().access_token
+                }
+            }).then(function (results) {
+            return results;
+        });
+    };
+
     referralServiceFactory.postReferral = _postReferral;
     referralServiceFactory.getReferrals = _getReferrals;
 
@@ -202,6 +240,10 @@ angular.module('Jobsite').factory('ReferralService', ['$http', '$q', 'RESOURCES'
     referralServiceFactory.sendReferenceRequestToResume = _sendReferenceRequestToResume;
     referralServiceFactory.sendReferenceToFriends = _sendReferenceToFriends;
     referralServiceFactory.getReferences = _getReferences;
+
+    referralServiceFactory.getReferenceByResumeId = _getReferenceByResumeId;
+    referralServiceFactory.getReferenceQuestions = _getReferenceQuestions;
+    referralServiceFactory.setAnswersOnReferenceQuestions = _setAnswersOnReferenceQuestions;
 
     return referralServiceFactory;
 }]);

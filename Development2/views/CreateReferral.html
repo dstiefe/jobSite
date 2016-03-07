@@ -4,15 +4,15 @@
         <div id="header" ng-include="'views/head.html'"></div>
         <ol class="breadcrumb">
             <li><a  ng-click="$back()">Go Back</a></li>
-            <li class="active" ng-if="id">Edit Referral Info</li>
-            <li class="active" ng-if="!id">Create Referral</li>
+            <li class="active" ng-if="id">Edit Reference Info</li>
+            <li class="active" ng-if="!id">Create Reference</li>
         </ol>
         <div class="row-fluid vertical-align" style="margin-top: 20px;">
                 <div class="col-xs-12 col-sm-9 col-centered">
 
                         <div class="panel panel-custom">
-                            <div class="panel-heading" ng-if="id">Edit Referral Info</div>
-                            <div class="panel-heading" ng-if="!id">Create Referral</div>
+                            <div class="panel-heading" ng-if="id">Edit Reference Info</div>
+                            <div class="panel-heading" ng-if="!id">Create Reference</div>
                                 <div class="panel-body">
                                     <form name="createReferralForm" ng-submit="saveChanges(createReferralForm.$valid)" novalidate>
                                         <div class="row">

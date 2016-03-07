@@ -325,7 +325,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
             url: "/referrals",
             templateUrl: "views/Referrals.html",
             data: {
-                pageTitle: 'Referrals',
+                pageTitle: 'References',
                 permissions: {
                     only: ['Admin'],
                 }
@@ -336,7 +336,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
             url: "/referrals/create",
             templateUrl: "views/CreateReferral.html",
             data: {
-                pageTitle: 'Create Referral',
+                pageTitle: 'Create Reference',
                 permissions: {
                     only: ['Admin'],
                 }
@@ -347,7 +347,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
             url: "/referrals/:id/edit",
             templateUrl: "views/EditReferral.html",
             data: {
-                pageTitle: 'Edit Referral',
+                pageTitle: 'Edit Reference',
                 permissions: {
                     only: ['Admin'],
                 }
@@ -358,7 +358,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
             url: "/referrals/:id/info/edit",
             templateUrl: "views/CreateReferral.html",
             data: {
-                pageTitle: 'Edit Screening Info',
+                pageTitle: 'Edit Reference Info',
                 permissions: {
                     only: ['Admin'],
                 }
@@ -372,7 +372,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
                 'type': 'createreferral',
             },
             data: {
-                pageTitle: 'Create Referral Question',
+                pageTitle: 'Create Reference Question',
                 permissions: {
                     only: ['Admin'],
                 }
@@ -386,7 +386,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
                 'type': 'createreferral',
             },
             data: {
-                pageTitle: 'Edit Referral Question',
+                pageTitle: 'Edit Reference Question',
                 permissions: {
                     only: ['Admin'],
                 }
@@ -420,7 +420,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
             url: "/referrals/:id/assign",
             templateUrl: "views/ReferralAssign.html",
             data: {
-                pageTitle: 'Referral Assign',
+                pageTitle: 'Reference Assign',
                 permissions: {
                     only: ['Admin'],
                 }
@@ -446,7 +446,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
             url: "/jobs/:jobId/resumes/:resumeId/jobreferrals/:jobReferralId/test",
             templateUrl: "views/TestJobReferral.html",
             data: {
-                pageTitle: 'JobReferral test',
+                pageTitle: 'Reference test',
                 permissions: {
                     only: ['User'],
                 }

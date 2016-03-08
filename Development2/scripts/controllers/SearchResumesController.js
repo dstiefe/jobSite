@@ -17,26 +17,21 @@ angular.module('Jobsite').controller("SearchResumesController", function($scope,
     $scope.itemsPerPage = 10;
     $scope.totalItems = 0;
     $scope.maxSize = 5;
-    $scope.isLoading =false;
 
     $scope.search = function () {
-        $scope.isLoading =true;
-        skip = ($scope.currentPage - 1) * $scope.itemsPerPage;
+         skip = ($scope.currentPage - 1) * $scope.itemsPerPage;
 
         ResumesService.searchResumes($scope.searchText, skip, $scope.itemsPerPage).then(function (results) {
             $scope.resumes = results.data;
 
             ResumesService.searchResumesCount($scope.searchText).then(function (results) {
                 $scope.totalItems = results.data.content;
-                $scope.isLoading = false;
             }, function (error) {
                 console.log(error.data.message);
-                $scope.isLoading = false;
             });
 
         }, function (error) {
             console.log(error.data.message);
-            $scope.isLoading = false;
         });
     };
 

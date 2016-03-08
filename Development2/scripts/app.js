@@ -66,7 +66,8 @@ var clientId ="P600Us6Y476QiK331u5yEzb22dpX_y6NS75!9I-a";
             }
         })())
         .config(['cfpLoadingBarProvider', function(cfpLoadingBarProvider) {
-        cfpLoadingBarProvider.includeSpinner = false;
+            cfpLoadingBarProvider.includeSpinner = true;
+            cfpLoadingBarProvider.spinnerTemplate = '<div class="progress" style="position: absolute; top: 63px; left:45%; width: 200px; height: 10px; z-index: 9999999999;"><div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"><span class="sr-only"></span></div></div>';
     }])
 })();
 

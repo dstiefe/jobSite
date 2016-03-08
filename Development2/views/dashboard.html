@@ -61,7 +61,7 @@
 
                         <a class="btn btn-info btn-footer"   ng-repeat="screening in data.screenings | filter:{ isNew: true }" ui-sref="starttestscreening({id:data.resumeId, screeningId: screening.id})" ng-show="role == 'User'">
                             {{screening.name}}
-                               <img src="images/new_little.png"  ng-show="screening.isNew" style="max-width:25px; margin-top: -9px; margin-right:-13px;" />
+                               <img src="images/new_little.png"  ng-show="screening.isNew" style="max-width:25px; margin-top: -10px; margin-right:-13px;" />
                          </a>
 
                         <span class="label label-info label-footer" ng-repeat="screening in data.screenings | filter:{ isNew: false }" ng-show="role == 'User'">
@@ -76,7 +76,7 @@
 
                         <a href="" class="btn btn-success btn-footer" ng-repeat="reference in data.references" ng-click="sendReferenceToFriends(data, reference.id)" ng-show="role == 'User'" title="The client is very interested – do you have any references that will validate some of your skills sets that are required for this opportunity – if so please click">
                             {{reference.name}}
-                            <img src="images/new_little.png"  ng-show="reference.isNew" style="max-width:25px; margin-top: -9px; margin-right:-13px;"  />
+                            <img src="images/new_little.png"  ng-show="reference.isNew" style="max-width:25px; margin-top: -10px; margin-right:-13px;"  />
                         </a>
 
 

@@ -57,7 +57,7 @@
                                             <td>{{data.note}}</td>
                                             <td>
                                                 <span ng-show = "data.screeningIds!=null && data.screeningIds.length != 0 ">
-                                                {{ data.passedScreeningIds == null ? 0: data.passedScreeningIds.length}} of {{ data.screeningIds.length}} taken
+                                                {{ data.screeningIds.length}} of {{ jobScreenings.length}} taken
                                                 </span>
                                                  <span ng-show = "data.screeningIds==null || data.screeningIds.length == 0 ">
                                                      No screenings

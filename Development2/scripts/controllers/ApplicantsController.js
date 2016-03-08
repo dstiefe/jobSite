@@ -1,9 +1,10 @@
 /**
  * Created by Van on 16.01.2016.
  */
-angular.module('Jobsite').controller("ApplicantsController", function($scope, $http, $timeout, ValiDatedTokenObject, $location, AuthService, RESOURCES, $stateParams, ResumesService, $modal) {
+angular.module('Jobsite').controller("ApplicantsController", function($scope, $http, $timeout, ValiDatedTokenObject, $location, AuthService, RESOURCES, $stateParams, ResumesService, ScreeningsService, $modal) {
     var serviceBase = RESOURCES.API_BASE_PATH;
     var jobId = $stateParams.id;
+    $scope.jobScreenings = [];
     var req = {
         method: 'GET',
         url: serviceBase + 'jobs/'+ jobId +'/resumes',
@@ -12,7 +13,8 @@ angular.module('Jobsite').controller("ApplicantsController", function($scope, $h
             'Connection': 'keep-alive',
             'Authorization': ValiDatedTokenObject.getValiDatedTokenObject().token_type+" "+ValiDatedTokenObject.getValiDatedTokenObject().access_token
         }
-    }
+    };
+
     $scope.screeningsItems = 0;
     $http(req).then(function(data) {
         if (data.status == "200") {
@@ -23,6 +25,13 @@ angular.module('Jobsite').controller("ApplicantsController", function($scope, $h
             $scope.totalItems = $scope.list.length;
         }
     });
+
+    ScreeningsService.getScreeningsByJobId(jobId).then(function (results) {
+        $scope.jobScreenings = results.data;
+    }, function (error) {
+        console.log(error.data.message);
+    });
+
     $scope.deleterecords = function(id) {
         $http({
             method: 'DELETE',

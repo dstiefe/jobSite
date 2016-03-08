@@ -2751,7 +2751,6 @@
     <Content Include="styles\style.css">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="views\1.html" />
     <Content Include="views\applicants.html" />
     <Content Include="views\applyjob.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

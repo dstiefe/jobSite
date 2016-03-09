@@ -322,7 +322,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
         })
 
         .state('referrals', {
-            url: "/referrals",
+            url: "/references",
             templateUrl: "views/Referrals.html",
             data: {
                 pageTitle: 'References',
@@ -333,7 +333,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
         })
 
         .state('createreferral', {
-            url: "/referrals/create",
+            url: "/references/create",
             templateUrl: "views/CreateReferral.html",
             data: {
                 pageTitle: 'Create Reference',
@@ -344,7 +344,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
         })
 
         .state('editreferral', {
-            url: "/referrals/:id/edit",
+            url: "/references/:id/edit",
             templateUrl: "views/EditReferral.html",
             data: {
                 pageTitle: 'Edit Reference',
@@ -355,7 +355,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
         })
 
         .state('editreferralinfo', {
-            url: "/referrals/:id/info/edit",
+            url: "/references/:id/info/edit",
             templateUrl: "views/CreateReferral.html",
             data: {
                 pageTitle: 'Edit Reference Info',
@@ -366,7 +366,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
         })
 
         .state('createreferralquestion', {
-            url: "/referrals/:id/questions/create",
+            url: "/references/:id/questions/create",
             templateUrl: "views/CreateReferralQuestion.html",
             params: {
                 'type': 'createreferral',
@@ -380,7 +380,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
         })
 
         .state('editreferralquestion', {
-            url: "/referrals/:id/questions/:questionId/edit",
+            url: "/references/:id/questions/:questionId/edit",
             templateUrl: "views/CreateReferralQuestion.html",
             params: {
                 'type': 'createreferral',
@@ -417,7 +417,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
         })
 
         .state('assignreferral', {
-            url: "/referrals/:id/assign",
+            url: "/references/:id/assign",
             templateUrl: "views/ReferralAssign.html",
             data: {
                 pageTitle: 'Reference Assign',
@@ -428,14 +428,14 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
         })
 
         .state('starttestjobreferral', {
-            url: "/jobs/:jobId/resumes/:resumeId/jobreferrals/:jobReferralId/start?reference_friend_id",
+            url: "/jobs/:jobId/resumes/:resumeId/references/:jobReferralId/start?reference_friend_id",
             templateUrl: "views/StartTestJobReferral.html",
             params: {
                 reference_friend_id: { squash: true},
                 userName: ''
             },
             data: {
-                pageTitle: 'Start referrals tests',
+                pageTitle: 'Start references tests',
                 //permissions: {
                 //    only: ['User'],
                 //}
@@ -443,7 +443,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
         })
 
         .state('testsjobreferral', {
-            url: "/jobs/:jobId/resumes/:resumeId/jobreferrals/:jobReferralId/test",
+            url: "/jobs/:jobId/resumes/:resumeId/references/:jobReferralId/test",
             templateUrl: "views/TestJobReferral.html",
             data: {
                 pageTitle: 'Reference test',

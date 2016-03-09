@@ -32,7 +32,7 @@ angular.module('Jobsite').factory('ReferralService', ['$http', '$q', 'RESOURCES'
     };
 
     var _getMyJobReferrals = function () {
-        return $http.get(serviceBase + 'jobreferrals/my',
+        return $http.get(serviceBase + 'references/my',
             {
                 headers: {
                     'Content-Type': 'application/json',
@@ -43,7 +43,7 @@ angular.module('Jobsite').factory('ReferralService', ['$http', '$q', 'RESOURCES'
         });
     };
     var _deleteJobReferral = function (id) {
-        return $http.delete(serviceBase + 'jobreferrals/'+id,
+        return $http.delete(serviceBase + 'references/'+id,
             {
                 headers: {
                     'Content-Type': 'application/json',
@@ -54,7 +54,7 @@ angular.module('Jobsite').factory('ReferralService', ['$http', '$q', 'RESOURCES'
         });
     };
     var _getJobReferral = function (id) {
-        return $http.get(serviceBase + 'jobreferrals/'+id,{
+        return $http.get(serviceBase + 'references/'+id,{
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': ValiDatedTokenObject.getValiDatedTokenObject().token_type+" "+ValiDatedTokenObject.getValiDatedTokenObject().access_token
@@ -64,7 +64,7 @@ angular.module('Jobsite').factory('ReferralService', ['$http', '$q', 'RESOURCES'
         });
     };
     var _postJobReferral = function (model) {
-        return $http.post(serviceBase + 'jobreferrals',
+        return $http.post(serviceBase + 'references',
             model,
             {
                 headers: {
@@ -76,7 +76,7 @@ angular.module('Jobsite').factory('ReferralService', ['$http', '$q', 'RESOURCES'
         });
     };
     var _putJobReferral = function (id, model) {
-        return $http.put(serviceBase + 'jobreferrals/'+id,
+        return $http.put(serviceBase + 'references/'+id,
             model,
             {
                 headers: {
@@ -88,7 +88,7 @@ angular.module('Jobsite').factory('ReferralService', ['$http', '$q', 'RESOURCES'
         });
     };
     var _postReferralQuestion = function (id, model) {
-        return $http.post(serviceBase + 'jobreferrals/'+id+'/questions/',
+        return $http.post(serviceBase + 'references/'+id+'/questions/',
             model,
             {
                 headers: {
@@ -101,7 +101,7 @@ angular.module('Jobsite').factory('ReferralService', ['$http', '$q', 'RESOURCES'
     };
 
     var _getReferralQuestionsByJobReferralId = function (referralId) {
-        return $http.get(serviceBase + 'jobreferrals/'+referralId+'/questions/',
+        return $http.get(serviceBase + 'references/'+referralId+'/questions/',
             {
                 headers: {
                     'Content-Type': 'application/json',
@@ -113,7 +113,7 @@ angular.module('Jobsite').factory('ReferralService', ['$http', '$q', 'RESOURCES'
     };
 
     var _getReferralQuestionById = function (referralId, questionId) {
-        return $http.get(serviceBase + 'jobreferrals/'+referralId+'/questions/'+questionId,
+        return $http.get(serviceBase + 'references/'+referralId+'/questions/'+questionId,
             {
                 headers: {
                     'Content-Type': 'application/json',
@@ -125,7 +125,7 @@ angular.module('Jobsite').factory('ReferralService', ['$http', '$q', 'RESOURCES'
     };
 
     var _putReferralQuestion = function (referralId, questionId, model) {
-        return $http.put(serviceBase + 'jobreferrals/'+referralId+'/questions/'+questionId,
+        return $http.put(serviceBase + 'references/'+referralId+'/questions/'+questionId,
             model,
             {
                 headers: {
@@ -138,7 +138,7 @@ angular.module('Jobsite').factory('ReferralService', ['$http', '$q', 'RESOURCES'
     };
 
     var _deleteReferralQuestion = function (referralId, questionId) {
-        return $http.delete(serviceBase + 'jobreferrals/'+referralId+'/questions/'+questionId,
+        return $http.delete(serviceBase + 'references/'+referralId+'/questions/'+questionId,
             {
                 headers: {
                     'Content-Type': 'application/json',
@@ -150,7 +150,7 @@ angular.module('Jobsite').factory('ReferralService', ['$http', '$q', 'RESOURCES'
     };
 
     var _sendReferenceRequestToResume = function (resumeId, model) {
-        return $http.post(serviceBase + 'resumes/'+resumeId+'/jobreferral/',
+        return $http.post(serviceBase + 'resumes/'+resumeId+'/references/',
             model,
             {
                 headers: {
@@ -163,7 +163,7 @@ angular.module('Jobsite').factory('ReferralService', ['$http', '$q', 'RESOURCES'
     };
 
     var _sendReferenceToFriends = function (model) {
-        return $http.post(serviceBase + 'jobreferrals/friends',
+        return $http.post(serviceBase + 'references/friends',
             model,
             {
                 headers: {
@@ -187,7 +187,7 @@ angular.module('Jobsite').factory('ReferralService', ['$http', '$q', 'RESOURCES'
     };
 
     var _getReferenceByResumeId = function (resumeId, referenceId) {
-        return $http.get(serviceBase + 'resumes/'+resumeId+'/jobreferrals/'+referenceId,
+        return $http.get(serviceBase + 'resumes/'+resumeId+'/references/'+referenceId,
             {
                 headers: {
                     'Content-Type': 'application/json',
@@ -199,7 +199,7 @@ angular.module('Jobsite').factory('ReferralService', ['$http', '$q', 'RESOURCES'
     };
 
     var _getReferenceQuestions = function (resumeId, referenceId) {
-        return $http.get(serviceBase + 'resumes/'+resumeId+'/jobreferrals/'+referenceId+'/questions',
+        return $http.get(serviceBase + 'resumes/'+resumeId+'/references/'+referenceId+'/questions',
             {
                 headers: {
                     'Content-Type': 'application/json',
@@ -211,7 +211,7 @@ angular.module('Jobsite').factory('ReferralService', ['$http', '$q', 'RESOURCES'
     };
 
     var _setAnswersOnReferenceQuestions = function (resumeId, referenceId,model) {
-        return $http.post(serviceBase + 'resumes/'+resumeId+'/jobreferrals/'+referenceId+'/questions/result',
+        return $http.post(serviceBase + 'resumes/'+resumeId+'/references/'+referenceId+'/questions/result',
             model,
             {
                 headers: {

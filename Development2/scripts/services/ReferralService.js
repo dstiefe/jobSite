@@ -175,7 +175,7 @@ angular.module('Jobsite').factory('ReferralService', ['$http', '$q', 'RESOURCES'
         });
     };
     var _getReferences = function () {
-        return $http.get(serviceBase + 'references/my',
+        return $http.get(serviceBase + 'references/friends/my',
             {
                 headers: {
                     'Content-Type': 'application/json',

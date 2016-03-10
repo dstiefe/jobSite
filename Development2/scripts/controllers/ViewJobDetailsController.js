@@ -57,7 +57,7 @@ angular
                 });
             } else{
 
-         
+
                 $location.search('type', 'apply');
                 sessionStorage.setItem("return_url",  $location.path());
                 $location.path("/login");

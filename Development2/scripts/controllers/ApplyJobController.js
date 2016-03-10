@@ -146,12 +146,4 @@ function ApplyJobController($scope, Login, ValiDatedTokenObject, $http, $locatio
         $modalInstance.close();
     }
 
-    $scope.arrayEmptyJob= function(item) {
-
-        if (!angular.isUndefined(item.jobId)&& item.jobId != null && item.jobId != '')  {
-            return false;
-        } else {
-            return true;
-        }
-    };
 }

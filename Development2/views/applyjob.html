@@ -35,7 +35,7 @@
                             <table class="table table-striped">
                                 <tbody>
 
-                                <tr ng-repeat="data in filtered = (resumes| filter:arrayEmptyJob)">
+                                <tr ng-repeat="data in filtered = resumes">
                                     <td><input type="radio" ng-model="$parent.$parent.$parent.selectedResume" ng-value="data.id" /></td>
                                     <td>{{data.title}}</td>
                                     <td>

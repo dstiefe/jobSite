@@ -279,7 +279,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
         })
 
         .state('starttestscreening', {
-            url: "/resumes/:id/screenings/:screeningId/start",
+            url: "/jobs/:jobId/resumes/:id/screenings/:screeningId/start",
             templateUrl: "views/StartTestScreening.html",
             data: {
                 pageTitle: 'Start screening tests',
@@ -290,7 +290,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
         })
 
         .state('testscreening', {
-            url: "/resumes/:id/screenings/:screeningId/test",
+            url: "/jobs/:jobId/resumes/:id/screenings/:screeningId/test",
             templateUrl: "views/TestScreening.html",
             data: {
                 pageTitle: 'Screening test',

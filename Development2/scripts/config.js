@@ -126,14 +126,15 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
 
          // Register
         .state('viewjobdetails', {
-            url: "/viewjobdetails?id&referral",
+            url: "/viewjobdetails?id&referral&type",
             templateUrl: "views/viewjobdetails.html",
             data: {
                 pageTitle: 'Job Details'
             },
             params: {
                 id: {squash: true},
-                referral: { squash: true}
+                referral: { squash: true},
+                type: { squash: true}
             }
             //, resolve: {
             //    factory: checkRouting

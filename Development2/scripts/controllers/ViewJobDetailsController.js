@@ -3,6 +3,7 @@ angular
         $scope.loading = false;
         var jobId =   $stateParams.id;
         var referralId =   $stateParams.referral;
+        var type =   $stateParams.type;
 
         if (!AuthService.authentication.isAuth)
         {
@@ -20,8 +21,6 @@ angular
             {
                 referralsArr.push(referralId);
 
-                var path = $location.path();
-                sessionStorage.setItem("return_url", path);
 
                 sessionStorage.setItem("referrals", JSON.stringify(referralsArr));
             }
@@ -57,6 +56,10 @@ angular
                     scope: $scope
                 });
             } else{
+
+         
+                $location.search('type', 'apply');
+                sessionStorage.setItem("return_url",  $location.path());
                 $location.path("/login");
             }
         };
@@ -78,13 +81,21 @@ angular
                     }
                 }});
             } else{
+
+                $location.search('type', 'referral');
+                sessionStorage.setItem("return_url", $location.path());
                 $location.path("/login");
             }
         };
 
-        if (!angular.isUndefinedOrNull(referralId) && referralId !='')
+        if (!angular.isUndefinedOrNull(type) && type !='')
         {
-            $scope.showReferralView();
+            if (type=='referral'){
+                $scope.showReferralView();
+            }
+            if (type=='apply'){
+                $scope.onApply();
+            }
         }
 
     });

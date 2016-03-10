@@ -19,10 +19,10 @@ $(function () {
     })
 })
 
-angular.module('Jobsite').controller("dashboardController", function ($scope, Login, ValiDatedTokenObject, locationHistoryService, $location, $modal, $http, $timeout, AuthService, JobsService, ReferralService, cfpLoadingBar) {
+angular.module('Jobsite').controller("dashboardController", function ($rootScope, $scope, Login, ValiDatedTokenObject, locationHistoryService, $location, $modal, $http, $timeout, AuthService, JobsService, ReferralService, cfpLoadingBar) {
     $scope.role = AuthService.authentication.isAdministrator ? "Admin" : "User";
     $scope.entryLimits = [5, 10, 15, 20, 25];
-
+    $scope.isLoading = true;
 
     var _pageCalc = function () {
         $scope.currentPage = 1; //current page
@@ -39,8 +39,10 @@ angular.module('Jobsite').controller("dashboardController", function ($scope, Lo
         JobsService.getMyJobs().then(function (results) {
             $scope.list = results.data;
             _pageCalc();
+            $scope.isLoading = false;
         }, function (error) {
             console.log(error.data.message);
+            $scope.isLoading = false;
         });
 
     } else {
@@ -56,17 +58,22 @@ angular.module('Jobsite').controller("dashboardController", function ($scope, Lo
                 ReferralService.getReferences().then(function (results3) {
                     $scope.list = $scope.list.concat(results3.data);
                     _pageCalc();
+                    $scope.isLoading = false;
                 }, function (error) {
                     console.log(error.data.message);
+                    $scope.isLoading = false;
                 });
             }, function (error) {
                 console.log(error.data.message);
+                $scope.isLoading = false;
             });
 
         }, function (error) {
             console.log(error.data.message);
+            $scope.isLoading = false;
         });
     }
+
     $scope.deleterecords = function (id) {
         console.log(id);
         $http({ method: 'DELETE', url: ServicesURL + 'api/v1/jobs/' + id, headers: { 'Content-Type': 'application/json', 'Connection': 'keep-alive', 'Authorization': ValiDatedTokenObject.getValiDatedTokenObject().token_type + " " + ValiDatedTokenObject.getValiDatedTokenObject().access_token } }).
@@ -78,8 +85,8 @@ angular.module('Jobsite').controller("dashboardController", function ($scope, Lo
                 console.log(error.data.message);
             });
         });
-
     };
+
     $scope.setPage = function (pageNo) {
         $scope.currentPage = pageNo;
     };
@@ -110,7 +117,4 @@ angular.module('Jobsite').controller("dashboardController", function ($scope, Lo
         });
 
     };
-
-
-
 });

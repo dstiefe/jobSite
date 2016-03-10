@@ -4573,13 +4573,42 @@ ul.h-list li:hover a {
     border-color: #d6e9c6;
 }
 .panel-footer > .label-footer{
-    margin-right: 10px;
-    padding:7px;
-}
-.panel-footer > .btn-footer{
-    margin-right: 10px;
+    margin-right: 5px;
+    padding:8px;
+    line-height: normal;
+height: 34px;
+    display: inline-block !important;
 
 }
+
+.panel-footer > .label-footer.label-info {
+    background-color: #34495e;
+}
+.panel-footer > .label-footer.label-success{
+    background-color: rgb(56,87,35);
+}
+
+.panel-footer > .btn-footer.btn-success:hover, .btn-footer.btn-success:focus, .btn-footer.btn-success:active, .btn-footer.btn-success.active {
+
+    background-color: #5b8e39;
+    border-color: #5b8e39;
+}
+
+.panel-footer > .btn-footer.btn-success
+{
+    background-color: #385723;
+    border-color:  #385723;
+}
+.panel-footer > .btn-footer
+{
+ margin-right: 5px;
+}
+
+.panel-footer .badge-success{
+    background-color: #843C0C;
+}
+
+
 .panel-dark{
     background-color: rgb(32,56,100);
     margin:0 !important;
@@ -4604,4 +4633,8 @@ ul.h-list li:hover a {
     padding: 7px 14px;
 
     line-height: 1.3333333;
+}
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+    display: none !important;
 }

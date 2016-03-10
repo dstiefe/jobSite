@@ -19,6 +19,10 @@ angular
             if (referralsArr.indexOf(referralId) == -1)
             {
                 referralsArr.push(referralId);
+
+                var path = $location.path();
+                sessionStorage.setItem("return_url", path);
+
                 sessionStorage.setItem("referrals", JSON.stringify(referralsArr));
             }
         }
@@ -43,7 +47,6 @@ angular
         }, function (error) {
             console.log(error.data.message);
         });
-
 
         $scope.onApply = function() {
             if (AuthService.authentication.isAuth && AuthService.authentication.isUser)
@@ -79,9 +82,9 @@ angular
             }
         };
 
-    $scope.$back = function() {
-        window.history.back();
-    };
-
+        if (!angular.isUndefinedOrNull(referralId) && referralId !='')
+        {
+            $scope.showReferralView();
+        }
 
     });

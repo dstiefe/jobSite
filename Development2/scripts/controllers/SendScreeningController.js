@@ -47,7 +47,7 @@ angular.module('Jobsite').controller('SendScreeningController', function ($scope
     };
 
     $scope.notify = function() {
-        ScreeningsService.sendScreeningsToResume($scope.resume.id, {"screeningIds": $scope.screeningsToTakeSelected}).then(function (results) {
+        ScreeningsService.sendScreeningsToResume(jobId, $scope.resume.id, {"screeningIds": $scope.screeningsToTakeSelected}).then(function (results) {
             $scope.successMessage = true;
             $timeout(function() {
                 $modalInstance.close();

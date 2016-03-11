@@ -15,9 +15,9 @@ $scope.successMessage='';
     $scope.referenceQuestions = {};
     $scope.resultQuestions = [];
 
-    ReferralService.getReferenceByResumeId($scope.resumeId, $scope.jobReferralId).then(function (results) {
+    ReferralService.getReferenceByResumeId($scope.jobId, $scope.resumeId, $scope.jobReferralId).then(function (results) {
         $scope.reference  = results.data;
-        ReferralService.getReferenceQuestions($scope.resumeId, $scope.jobReferralId).then(function (results) {
+        ReferralService.getReferenceQuestions($scope.jobId, $scope.resumeId, $scope.jobReferralId).then(function (results) {
             $scope.referenceQuestions  = results.data;
         }, function (error) {
             console.log(error.data.message);
@@ -38,7 +38,7 @@ $scope.successMessage='';
         }
         $scope.errorMessage='';
         var data = {'results': $scope.resultQuestions};
-        ReferralService.setAnswersOnReferenceQuestions($scope.resumeId, $scope.jobReferralId, data).then(function (results) {
+        ReferralService.setAnswersOnReferenceQuestions($scope.jobId, $scope.resumeId, $scope.jobReferralId, data).then(function (results) {
             $scope.successMessage='Successfully saved!';
 
             $timeout(function() {

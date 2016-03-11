@@ -13,7 +13,7 @@ angular.module('Jobsite').controller('TestResultController', function ($scope, $
     });
 
 
-    ScreeningsService.getTestResultsByResumeId(jobId, $scope.resume.id).then(function (results) {
+    ScreeningsService.getTestResultsByResumeId($scope.resume.id).then(function (results) {
         response = results.data;
         $scope.results = response;
     }, function (error) {

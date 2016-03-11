@@ -17,8 +17,8 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
         $state.go('searchjobs');
     });
 
-    $stateProvider  
-        // Dashboard - Main page
+    $stateProvider
+    // Dashboard - Main page
         .state('test', {
             url: "/test",
             templateUrl: "views/Test.html",
@@ -34,9 +34,9 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
             data: {
                 pageTitle: 'Dashboard',
                 permissions: {
-                 only: ['Admin', 'User'],
-                 redirectTo: 'login'
-                 }
+                    only: ['Admin', 'User'],
+                    redirectTo: 'login'
+                }
             }
         })
 
@@ -48,10 +48,10 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
             },
             data: {
                 pageTitle: 'logout'
-               /*permissions: {
-                    only: ['Admin', 'User'],
-                redirectTo: 'login'
-                }*/
+                /*permissions: {
+                 only: ['Admin', 'User'],
+                 redirectTo: 'login'
+                 }*/
             }
         })
 
@@ -80,7 +80,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
                 pageTitle: 'Job Management',
                 permissions: {
                     only: ['Admin'],
-                 //   redirectTo: 'login'
+                    //   redirectTo: 'login'
                 }
             }
         })
@@ -93,7 +93,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
                 pageTitle: 'Jobs List',
                 permissions: {
                     only: ['Admin'],
-                 //   redirectTo: 'login'
+                    //   redirectTo: 'login'
                 }
             }
         })
@@ -124,7 +124,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
             }
         })
 
-         // Register
+        // Register
         .state('viewjobdetails', {
             url: "/viewjobdetails?id&referral&type",
             templateUrl: "views/viewjobdetails.html",
@@ -141,7 +141,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
             //}
         })
 
-         // ApplyJob
+        // ApplyJob
         .state('applyjob', {
             url: "/applyjob",
             templateUrl: "views/applyjob.html",
@@ -149,7 +149,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
                 pageTitle: 'Apply Job',
                 permissions: {
                     only: ['User'],
-                  //  redirectTo: 'login'
+                    //  redirectTo: 'login'
                 }
             }
         })
@@ -240,15 +240,15 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
         })
 
         .state('editscreeninginfo', {
-        url: "/screenings/:id/info/edit",
-        templateUrl: "views/CreateScreening.html",
-        data: {
-            pageTitle: 'Edit Screening Info',
-            permissions: {
-                only: ['Admin'],
+            url: "/screenings/:id/info/edit",
+            templateUrl: "views/CreateScreening.html",
+            data: {
+                pageTitle: 'Edit Screening Info',
+                permissions: {
+                    only: ['Admin'],
+                }
             }
-        }
-    })
+        })
 
         .state('createscreeningquestion', {
             url: "/screenings/:id/questions/create",
@@ -279,7 +279,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
         })
 
         .state('starttestscreening', {
-            url: "/jobs/:jobId/resumes/:id/screenings/:screeningId/start",
+            url: "/resumes/:id/screenings/:screeningId/start",
             templateUrl: "views/StartTestScreening.html",
             data: {
                 pageTitle: 'Start screening tests',
@@ -290,7 +290,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
         })
 
         .state('testscreening', {
-            url: "/jobs/:jobId/resumes/:id/screenings/:screeningId/test",
+            url: "/resumes/:id/screenings/:screeningId/test",
             templateUrl: "views/TestScreening.html",
             data: {
                 pageTitle: 'Screening test',
@@ -468,35 +468,35 @@ angular
 
         // Define anonymous role
         Permission.defineRole('anonymous', function (stateParams) {
-            if (!sessionStorage.getItem("ValiDatedTokenObject"))
-            {
-                return true;
-            }
-
-            ValiDatedTokenObject.setValiDatedTokenObject(JSON.parse(sessionStorage.getItem("ValiDatedTokenObject")));
-            if (!ValiDatedTokenObject.getValiDatedTokenObject())
-            {
-                return true;
-            }
-            return false;
-        })
-         .defineRole('User', function (stateParams) {
-             if (!sessionStorage.getItem("ValiDatedTokenObject"))
-             {
-                 return false;
-             }
-
-            ValiDatedTokenObject.setValiDatedTokenObject(JSON.parse(sessionStorage.getItem("ValiDatedTokenObject")));
-            if (ValiDatedTokenObject.getValiDatedTokenObject())
-            {
-                var role = ValiDatedTokenObject.getValiDatedTokenObject().roles;
-                if(role == 'User') {
+                if (!sessionStorage.getItem("ValiDatedTokenObject"))
+                {
                     return true;
                 }
-            }
-             return false;
+
+                ValiDatedTokenObject.setValiDatedTokenObject(JSON.parse(sessionStorage.getItem("ValiDatedTokenObject")));
+                if (!ValiDatedTokenObject.getValiDatedTokenObject())
+                {
+                    return true;
+                }
+                return false;
             })
-         .defineRole('Admin', function (stateParams) {
+            .defineRole('User', function (stateParams) {
+                if (!sessionStorage.getItem("ValiDatedTokenObject"))
+                {
+                    return false;
+                }
+
+                ValiDatedTokenObject.setValiDatedTokenObject(JSON.parse(sessionStorage.getItem("ValiDatedTokenObject")));
+                if (ValiDatedTokenObject.getValiDatedTokenObject())
+                {
+                    var role = ValiDatedTokenObject.getValiDatedTokenObject().roles;
+                    if(role == 'User') {
+                        return true;
+                    }
+                }
+                return false;
+            })
+            .defineRole('Admin', function (stateParams) {
                 if (!sessionStorage.getItem("ValiDatedTokenObject"))
                 {
                     return false;

@@ -83,9 +83,9 @@ angular.module('Jobsite').factory('ResumesService', ['$http', '$q', 'RESOURCES',
                 'Authorization': ValiDatedTokenObject.getValiDatedTokenObject().token_type+" "+ValiDatedTokenObject.getValiDatedTokenObject().access_token
             },
             transformResponse: function (data, headersGetter, status) {
-            //This was implemented since the REST service is returning a plain/text response
-            //and angularJS $http module can't parse the response like that.
-            return {content: data};}
+                //This was implemented since the REST service is returning a plain/text response
+                //and angularJS $http module can't parse the response like that.
+                return {content: data};}
         }).then(function (results) {
             return results;
         });
@@ -216,19 +216,19 @@ angular.module('Jobsite').factory('ResumesService', ['$http', '$q', 'RESOURCES',
         });
     };
 
-        var _uploadResume = function(file){
-            var fd = new FormData();
-            fd.append('file', file);
-            return $http.post(serviceBase + 'resumes/upload', fd, {
-                    transformRequest: angular.identity,
-                    headers: {
-                        'Content-Type': undefined,
-                        'Authorization': ValiDatedTokenObject.getValiDatedTokenObject().token_type+" "+ValiDatedTokenObject.getValiDatedTokenObject().access_token
-                    }
-                }).then(function (results) {
-                return results;
-            });
-        };
+    var _uploadResume = function(file){
+        var fd = new FormData();
+        fd.append('file', file);
+        return $http.post(serviceBase + 'resumes/upload', fd, {
+            transformRequest: angular.identity,
+            headers: {
+                'Content-Type': undefined,
+                'Authorization': ValiDatedTokenObject.getValiDatedTokenObject().token_type+" "+ValiDatedTokenObject.getValiDatedTokenObject().access_token
+            }
+        }).then(function (results) {
+            return results;
+        });
+    };
 
     var _addAdminTags = function(resumeId, page, model){
         return $http.post(serviceBase + 'resumes/'+resumeId+'/pages/'+page+'/admintags',model,{
@@ -243,17 +243,6 @@ angular.module('Jobsite').factory('ResumesService', ['$http', '$q', 'RESOURCES',
 
     var _addAdminNotes = function(resumeId, page, model){
         return $http.post(serviceBase + 'resumes/'+resumeId+'/pages/'+page+'/adminnotes',model,{
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': ValiDatedTokenObject.getValiDatedTokenObject().token_type+" "+ValiDatedTokenObject.getValiDatedTokenObject().access_token
-            }
-        }).then(function (results) {
-            return results;
-        });
-    };
-
-    var _getApplicant = function(jobId, resumeId){
-        return $http.get(serviceBase + 'jobs/'+jobId+'/resumes/'+resumeId,{
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': ValiDatedTokenObject.getValiDatedTokenObject().token_type+" "+ValiDatedTokenObject.getValiDatedTokenObject().access_token
@@ -278,7 +267,6 @@ angular.module('Jobsite').factory('ResumesService', ['$http', '$q', 'RESOURCES',
     resumesServiceFactory.applyToJobByExistResume = _applyToJobByExistResume;
     resumesServiceFactory.applyToJob = _applyToJob;
     resumesServiceFactory.uploadResume = _uploadResume;
-    resumesServiceFactory.getApplicant = _getApplicant;
 
     resumesServiceFactory.addAdminTags = _addAdminTags;
     resumesServiceFactory.addAdminNotes = _addAdminNotes;

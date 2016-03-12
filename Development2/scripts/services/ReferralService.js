@@ -149,8 +149,8 @@ angular.module('Jobsite').factory('ReferralService', ['$http', '$q', 'RESOURCES'
         });
     };
 
-    var _sendReferenceRequestToResume = function (resumeId, model) {
-        return $http.post(serviceBase + 'resumes/'+resumeId+'/references/',
+    var _sendReferenceRequestToResume = function (jobId, resumeId, model) {
+        return $http.post(serviceBase + 'jobs/'+jobId+'/resumes/'+resumeId+'/references/',
             model,
             {
                 headers: {
@@ -186,8 +186,8 @@ angular.module('Jobsite').factory('ReferralService', ['$http', '$q', 'RESOURCES'
         });
     };
 
-    var _getReferenceByResumeId = function (resumeId, referenceId) {
-        return $http.get(serviceBase + 'resumes/'+resumeId+'/references/'+referenceId,
+    var _getReferenceByResumeId = function (jobId, resumeId, referenceId) {
+        return $http.get(serviceBase + 'jobs/'+jobId+'/resumes/'+resumeId+'/references/'+referenceId,
             {
                 headers: {
                     'Content-Type': 'application/json',
@@ -198,8 +198,8 @@ angular.module('Jobsite').factory('ReferralService', ['$http', '$q', 'RESOURCES'
         });
     };
 
-    var _getReferenceQuestions = function (resumeId, referenceId) {
-        return $http.get(serviceBase + 'resumes/'+resumeId+'/references/'+referenceId+'/questions',
+    var _getReferenceQuestions = function (jobId, resumeId, referenceId) {
+        return $http.get(serviceBase + 'jobs/'+jobId+'/resumes/'+resumeId+'/references/'+referenceId+'/questions',
             {
                 headers: {
                     'Content-Type': 'application/json',
@@ -210,8 +210,8 @@ angular.module('Jobsite').factory('ReferralService', ['$http', '$q', 'RESOURCES'
         });
     };
 
-    var _setAnswersOnReferenceQuestions = function (resumeId, referenceId,model) {
-        return $http.post(serviceBase + 'resumes/'+resumeId+'/references/'+referenceId+'/questions/result',
+    var _setAnswersOnReferenceQuestions = function (jobId, resumeId, referenceId,model) {
+        return $http.post(serviceBase + 'jobs/'+jobId+'/resumes/'+resumeId+'/references/'+referenceId+'/questions/result',
             model,
             {
                 headers: {

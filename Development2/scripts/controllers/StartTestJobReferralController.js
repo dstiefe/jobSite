@@ -34,7 +34,7 @@ angular.module('Jobsite').controller("StartTestJobReferralController", function(
             $scope.isDisabledStart = false;
             $scope.error_message = '';
 
-            ReferralService.getReferenceByResumeId($scope.resumeId, $scope.jobReferralId).then(function (results) {
+            ReferralService.getReferenceByResumeId($scope.jobId, $scope.resumeId, $scope.jobReferralId).then(function (results) {
                 $scope.reference  = results.data;
                 if ( $scope.reference.questionsCount == 0){
                     $scope.error_message = 'Reference does not have any questions! Please try again later!';

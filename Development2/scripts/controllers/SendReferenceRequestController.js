@@ -47,7 +47,7 @@ angular.module('Jobsite').controller('SendReferenceRequestController', function 
     };
 
     $scope.notify = function() {
-        ReferralService.sendReferenceRequestToResume($scope.resume.id, {"jobReferralIds": $scope.referencesToTakeSelected}).then(function (results) {
+        ReferralService.sendReferenceRequestToResume(jobId, $scope.resume.id, {"jobReferralIds": $scope.referencesToTakeSelected}).then(function (results) {
             $scope.successMessage = true;
             $timeout(function() {
                 $modalInstance.close();

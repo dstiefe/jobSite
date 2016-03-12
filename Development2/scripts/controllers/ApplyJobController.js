@@ -136,10 +136,6 @@ function ApplyJobController($scope, Login, ValiDatedTokenObject, $http, $locatio
                 $scope.loading = false;
             });
         }
-
-
-
-
     };
 
     $scope.onClose = function() {

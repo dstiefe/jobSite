@@ -401,24 +401,20 @@
    <div class="panel panel-default">
     <div class="panel-heading">
 
-        <h3 class="panel-title pull-left"><a href="" ng-click="detailViewShow(data)">{{data.firstName}} {{data.lastName}}</a></h3>
+        <h3 class="panel-title pull-left"><a href="" ng-click="detailViewShow(data)">{{data.applicants[0].firstName}} {{data.applicants[0].lastName}}</a></h3>
         <i class="fa fa-file-pdf-o pull-right fa-lg"></i>
 
-     <div class="media pull-right">
-                                        <span class="pull-left">
-                                            <img class="media-object" src="http://ec2-52-90-116-49.compute-1.amazonaws.com:82/images/book.png" >
-                                            <span class="badge pull-right">{{data.totalPages}}</span>
-                                        </span>
-     </div>
-     <!--<span class="badge pull-right" ng-show="data.totalPages > 0" >{{data.totalPages}}</span>-->
-
-
-
+        <div class="media pull-right">
+                                           <span class="pull-left">
+                                               <img class="media-object" src="http://ec2-52-90-116-49.compute-1.amazonaws.com:82/images/book.png" >
+                                               <span class="badge pull-right">{{data.totalPages}}</span>
+                                           </span>
+        </div>
 
      <div class="clearfix"></div>
     </div>
     <div class="panel-body resumecrop"  ng-bind-html="data.body | trustedHtml | limitHightlightHtml:100"></div>
-    <div class="panel-footer">Date:{{data.applyDate*1000 | date : "M/d/yyyy"}}</div>
+    <div class="panel-footer">Date:{{data.applicants[0].applyDate*1000 | date : "M/d/yyyy"}}</div>
    </div>
   </div>
  </div>

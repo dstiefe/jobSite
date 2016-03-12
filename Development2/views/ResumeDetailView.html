@@ -109,7 +109,7 @@
                             <br>
                             <br>
                             <ul class="list-group">
-                                <li class="list-group-item" ng-repeat="tagname in resume.adminNotes">
+                                <li class="list-group-item" ng-repeat="tagname in resume.applicants[0].adminNotes">
                                     <h4 class="list-group-item-heading">   <a href="" ng-click="removeAdminNote($index)"  ><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></a></h4>
                                     <p class="list-group-item-text" style="word-break: break-all;">
                                     {{ tagname }}
@@ -131,7 +131,7 @@
                         <br>
                         <br>
                         <ul class="list-group">
-                            <li class="list-group-item" ng-repeat="tagname in resume.adminTags">{{ tagname }}<a style="float:right;" href="" ng-click="removeAdminTag($index)"  ><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></a></li>
+                            <li class="list-group-item" ng-repeat="tagname in resume.applicants[0].adminTags">{{ tagname }}<a style="float:right;" href="" ng-click="removeAdminTag($index)"  ><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></a></li>
                         </ul>
                     </div>
                 </div>

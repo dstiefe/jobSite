@@ -9,11 +9,11 @@ angular.module('Jobsite').controller('ResumeDetailController', function ($scope,
     $scope.currentPage = resume.pageNumber;
     $scope.totalPages = resume.totalPages;
     $scope.resume = resume;
-    if ($scope.resume.applicants[0].adminTags == null){
-        $scope.resume.applicants[0].adminTags=[];
+    if ($scope.resume.adminTags == null){
+        $scope.resume.adminTags=[];
     }
-    if ($scope.resume.applicants[0].adminNotes== null){
-        $scope.resume.applicants[0].adminNotes=[];
+    if ($scope.resume.adminNotes== null){
+        $scope.resume.adminNotes=[];
     }
 
     $scope.itemsPerPage = 1;
@@ -57,11 +57,11 @@ angular.module('Jobsite').controller('ResumeDetailController', function ($scope,
             $scope.resume = results.data;
             $scope.currentPage = $scope.resume.pageNumber;
             $scope.totalPages = $scope.resume.totalPages;
-            if ($scope.resume.applicants[0].adminTags == null){
-                $scope.resume.applicants[0].adminTags=[];
+            if ($scope.resume.adminTags == null){
+                $scope.resume.adminTags=[];
             }
-            if ($scope.resume.applicants[0].adminNotes== null){
-                $scope.resume.applicants[0].adminNotes=[];
+            if ($scope.resume.adminNotes== null){
+                $scope.resume.adminNotes=[];
             }
             _getResumeSource();
         }, function (error) {
@@ -131,17 +131,17 @@ angular.module('Jobsite').controller('ResumeDetailController', function ($scope,
     };
 
     $scope.addAdminTag = function() {
-        if ($scope.resume.applicants[0].adminTags.indexOf($scope.adminTag) == -1) {
+        if ($scope.resume.adminTags.indexOf($scope.adminTag) == -1) {
 
 
-            var req =  $scope.resume.applicants[0].adminTags.slice(0);
+            var req =  $scope.resume.adminTags.slice(0);
             req.push($scope.adminTag);
             var data ={
                 'Tags': req
             };
 
             ResumesService.addAdminTags($scope.id, $scope.currentPage, data).then(function (results) {
-                $scope.resume.applicants[0].adminTags.push($scope.adminTag);
+                $scope.resume.adminTags.push($scope.adminTag);
                 $scope.adminTag = "";
             }, function (error) {
                 console.log(error.data.message);
@@ -151,13 +151,13 @@ angular.module('Jobsite').controller('ResumeDetailController', function ($scope,
     };
     $scope.removeAdminTag = function(index) {
 
-        var req =  $scope.resume.applicants[0].adminTags.slice(0);
+        var req =  $scope.resume.adminTags.slice(0);
         req.splice(index, 1);
         var data ={
             'Tags': req
         };
         ResumesService.addAdminTags($scope.id, $scope.currentPage,data).then(function (results) {
-            $scope.resume.applicants[0].adminTags.splice(index, 1);
+            $scope.resume.adminTags.splice(index, 1);
         }, function (error) {
             console.log(error.data.message);
         });
@@ -166,16 +166,16 @@ angular.module('Jobsite').controller('ResumeDetailController', function ($scope,
 
 
     $scope.addAdminNote = function() {
-        if ($scope.resume.applicants[0].adminNotes.indexOf($scope.adminNote) == -1) {
+        if ($scope.resume.adminNotes.indexOf($scope.adminNote) == -1) {
 
-            var req =  $scope.resume.applicants[0].adminNotes.slice(0);
+            var req =  $scope.resume.adminNotes.slice(0);
             req.push($scope.adminNote);
             var data ={
                 'Notes': req
             };
 
             ResumesService.addAdminNotes($scope.id, $scope.currentPage, data).then(function (results) {
-                $scope.resume.applicants[0].adminNotes.push($scope.adminNote);
+                $scope.resume.adminNotes.push($scope.adminNote);
                 $scope.adminNote = "";
             }, function (error) {
                 console.log(error.data.message);
@@ -186,13 +186,13 @@ angular.module('Jobsite').controller('ResumeDetailController', function ($scope,
     };
     $scope.removeAdminNote = function(index) {
 
-        var req =  $scope.resume.applicants[0].adminNotes.slice(0);
+        var req =  $scope.resume.adminNotes.slice(0);
         req.splice(index, 1);
         var data ={
             'Notes': req
         };
         ResumesService.addAdminNotes($scope.id, $scope.currentPage, data).then(function (results) {
-            $scope.resume.applicants[0].adminNotes.splice(index, 1);
+            $scope.resume.adminNotes.splice(index, 1);
         }, function (error) {
             console.log(error.data.message);
         });

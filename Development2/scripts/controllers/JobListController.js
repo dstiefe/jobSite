@@ -3,11 +3,12 @@
 /// <reference path="Service.js" /> 
 
 angular
-    .module('Jobsite').controller("JobListController", function($scope, Login, $http, $timeout, $location, ValiDatedTokenObject) {
+    .module('Jobsite').controller("JobListController", function($scope, Login, $http, $timeout, $location, ValiDatedTokenObject,RESOURCES) {
         /*ValiDatedTokenObject.ValiDatedTokenObject = JSON.parse(sessionStorage.getItem("ValiDatedTokenObject"));
          if (ValiDatedTokenObject.ValiDatedTokenObject == null || ValiDatedTokenObject.ValiDatedTokenObject.access_token == "") {
             $location.path("/login");
         }*/
+    var serviceBase = RESOURCES.API_BASE_PATH;
         $scope.currentPage = 1;
         if (sessionStorage.getItem("ValiDatedTokenObject") == null || sessionStorage.getItem("ValiDatedTokenObject")=="") {
             $location.path("/login");
@@ -19,7 +20,7 @@ angular
         $scope.role = ValiDatedTokenObject.getValiDatedTokenObject().roles;
         var req = {
             method: 'GET',
-            url: ServicesURL + 'api/v1/jobs/my',
+            url: serviceBase + 'jobs/my',
             headers: {
                 'Content-Type': 'application/json',
                 'Connection': 'keep-alive',
@@ -39,7 +40,7 @@ angular
             console.log(id);
             $http({
                 method: 'DELETE',
-                url: ServicesURL + 'api/v1/jobs/' + id,
+                url: serviceBase + 'jobs/' + id,
                 headers: {
                     'Content-Type': 'application/json',
                     'Connection': 'keep-alive',

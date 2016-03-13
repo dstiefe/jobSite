@@ -4,7 +4,6 @@
  *
  */
 
-//var apiBasePath = 'http://ec2-52-0-227-162.compute-1.amazonaws.com:81/jobapi_dev/api/v1/';
 
 
 //var apiBasePath = 'http://ec2-52-90-116-49.compute-1.amazonaws.com:81/jobapi_dev/api/v1/';

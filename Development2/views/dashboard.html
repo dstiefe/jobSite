@@ -34,7 +34,7 @@
                         &nbsp;<a ng-click="deleterecords(data.id)" ng-show="role == 'Admin'" title="delete" style="margin:0 5px;" class="btn btn-info btn-danger pull-right"><span class="glyphicon glyphicon-remove"></span></a> &nbsp;
                         <a class="btn btn-primary pull-right" ui-sref="applicants({id:data.id})" ng-show="role == 'Admin'">
                             {{viewtext}}
-                            <span class="badge badge-success" ng-show="!isUndefinedOrNull(data.applicantsIds) && data.applicantsIds.length > 0">{{data.applicantsIds.length}}</span>
+                            <span class="badge badge-success" ng-show="data.applicantsCount > 0">{{data.applicantsCount}}</span>
                         </a>
 
                         <a class="btn btn-primary pull-right" href="#viewjobdetails?id={{data.id}}" ng-hide="role == 'Admin'">

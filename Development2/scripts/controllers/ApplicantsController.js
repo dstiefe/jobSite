@@ -35,7 +35,7 @@ angular.module('Jobsite').controller("ApplicantsController", function($scope, $h
     $scope.deleterecords = function(id) {
         $http({
             method: 'DELETE',
-            url: ServicesURL + 'api/v1/jobs/' + id,
+            url: serviceBase + 'jobs/' + id,
             headers: {
                 'Content-Type': 'application/json',
                 'Connection': 'keep-alive',

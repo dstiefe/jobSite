@@ -5,9 +5,9 @@
  */
 
 
-
-//var apiBasePath = 'http://ec2-52-90-116-49.compute-1.amazonaws.com:81/jobapi_dev/api/v1/';
-var apiBasePath = 'http://localhost:41656/api/v1/';
+var apiBasePath = 'http://ec2-52-90-116-49.compute-1.amazonaws.com:81/jobapi/api/v1/'; // prod
+//var apiBasePath = 'http://ec2-52-90-116-49.compute-1.amazonaws.com:81/jobapi_dev/api/v1/'; // dev
+//var apiBasePath = 'http://localhost:41656/api/v1/'; //local
 
 var clientId ="P600Us6Y476QiK331u5yEzb22dpX_y6NS75!9I-a";
 (function () {

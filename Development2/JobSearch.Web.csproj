@@ -21,6 +21,7 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <TypeScriptToolsVersion>1.0</TypeScriptToolsVersion>
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -40,6 +41,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <FilesToIncludeForPublish>AllFilesInProjectFolder</FilesToIncludeForPublish>
+    <ExcludeGeneratedDebugSymbol>true</ExcludeGeneratedDebugSymbol>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
@@ -2651,6 +2653,7 @@
     <Content Include="scripts\controllers\CreateScreeningController.js" />
     <Content Include="scripts\controllers\CreateScreeningQuestionController.js" />
     <Content Include="scripts\controllers\DownloadResumeController.js" />
+    <Content Include="scripts\controllers\EditReferralController.js" />
     <Content Include="scripts\controllers\EditScreeningController.js" />
     <Content Include="scripts\controllers\FinishTestScreeningController.js" />
     <Content Include="scripts\controllers\HeaderController.js" />
@@ -2663,6 +2666,7 @@
     <Content Include="scripts\controllers\main.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="scripts\controllers\ReferralAssignController.js" />
     <Content Include="scripts\controllers\ReferralsController.js" />
     <Content Include="scripts\controllers\ResetPasswordController.js" />
     <Content Include="scripts\controllers\ResetPasswordVerifyController.js" />
@@ -2675,10 +2679,14 @@
     </Content>
     <Content Include="scripts\controllers\SearchResumesController.js" />
     <Content Include="scripts\controllers\SearchResumesHomeController.js" />
+    <Content Include="scripts\controllers\SendReferenceRequestController.js" />
+    <Content Include="scripts\controllers\SendReferenceToFriendsController.js" />
     <Content Include="scripts\controllers\SendReferralController.js" />
     <Content Include="scripts\controllers\SendScreeningController.js" />
     <Content Include="scripts\controllers\SetReferralController.js" />
+    <Content Include="scripts\controllers\StartTestJobReferralController.js" />
     <Content Include="scripts\controllers\StartTestScreeningController.js" />
+    <Content Include="scripts\controllers\TestJobReferralController.js" />
     <Content Include="scripts\controllers\TestResultController.js" />
     <Content Include="scripts\controllers\TestScreeningController.js" />
     <Content Include="scripts\controllers\ViewJobDetailsController.js">
@@ -2702,6 +2710,7 @@
     <Content Include="scripts\filters\props.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="scripts\filters\SrcFilter.js" />
     <Content Include="scripts\filters\startFromFilter.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -2765,6 +2774,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="views\DownloadResume.html" />
+    <Content Include="views\EditReferral.html" />
     <Content Include="views\EditScreening.html" />
     <Content Include="views\FinishTestScreening.html" />
     <Content Include="views\head.html">
@@ -2779,6 +2789,7 @@
     <Content Include="views\login.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="views\ReferralAssign.html" />
     <Content Include="views\Referrals.html" />
     <Content Include="views\Register.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -2797,13 +2808,17 @@
     </Content>
     <Content Include="views\SearchResumes.html" />
     <Content Include="views\SearchResumesHome.html" />
+    <Content Include="views\SendReferenceRequestView.html" />
+    <Content Include="views\SendReferenceToFriendsView.html" />
     <Content Include="views\SendReferral.html" />
     <Content Include="views\SendScreeningView.html" />
     <Content Include="views\SetReferral.html" />
+    <Content Include="views\StartTestJobReferral.html" />
     <Content Include="views\StartTestScreening.html" />
     <Content Include="views\Test.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="views\TestJobReferral.html" />
     <Content Include="views\TestResult.html" />
     <Content Include="views\TestScreening.html" />
     <Content Include="views\viewjobdetails.html">
@@ -3557,6 +3572,17 @@
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Production|AnyCPU'">
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <FilesToIncludeForPublish>AllFilesInProjectFolder</FilesToIncludeForPublish>
+    <ExcludeGeneratedDebugSymbol>true</ExcludeGeneratedDebugSymbol>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />

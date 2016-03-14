@@ -36,12 +36,13 @@ angular.module('Jobsite').controller("TestScreeningController", function($scope,
 
     $scope.resumeId = $stateParams.id;
     $scope.screeningId = $stateParams.screeningId;
+    $scope.jobId = $stateParams.jobId;
     $scope.currentQuestionNumber = 0;
     $scope.screening = {};
     $scope.screeningQuestion = {};
     $scope.resultQuestion = {};
 
-    ScreeningsService.getScreeningByResumeId($scope.resumeId, $scope.screeningId).then(function (results) {
+    ScreeningsService.getScreeningByResumeId($scope.jobId, $scope.resumeId, $scope.screeningId).then(function (results) {
         $scope.screening  = results.data;
         _getQuestion();
     }, function (error) {
@@ -50,7 +51,7 @@ angular.module('Jobsite').controller("TestScreeningController", function($scope,
 
     var _getQuestion = function(){
         $scope.currentQuestionNumber++;
-        ScreeningsService.getScreeningQuestionByResumeId($scope.resumeId, $scope.screeningId, $scope.currentQuestionNumber).then(function (results) {
+        ScreeningsService.getScreeningQuestionByResumeId($scope.jobId, $scope.resumeId, $scope.screeningId, $scope.currentQuestionNumber).then(function (results) {
             $scope.screeningQuestion  = results.data;
 
         }, function (error) {
@@ -94,7 +95,7 @@ angular.module('Jobsite').controller("TestScreeningController", function($scope,
 
         timeseconds0 = timeseconds1;
 
-        ScreeningsService.setResultOnScreeningQuestion($scope.resumeId, $scope.screeningId, $scope.screeningQuestion.id, $scope.resultQuestion ).then(function (results) {
+        ScreeningsService.setResultOnScreeningQuestion($scope.jobId, $scope.resumeId, $scope.screeningId, $scope.screeningQuestion.id, $scope.resultQuestion ).then(function (results) {
             if ($scope.saveAndExit){
                 $state.go('finishtestscreening');
             }else{

@@ -76,8 +76,8 @@ angular.module('Jobsite').factory('ScreeningsService', ['$http', '$q', 'RESOURCE
             return results;
         });
     };
-    var _getScreeningQuestionByResumeId = function (resumeId, screeningId, number) {
-        return $http.get(serviceBase + 'resumes/'+resumeId+'/screenings/'+screeningId+'/questions/'+number,
+    var _getScreeningQuestionByResumeId = function (jobId, resumeId, screeningId, number) {
+        return $http.get(serviceBase + 'jobs/'+jobId+'/resumes/'+resumeId+'/screenings/'+screeningId+'/questions/'+number,
             {
                 headers: {
                     'Content-Type': 'application/json',
@@ -87,8 +87,8 @@ angular.module('Jobsite').factory('ScreeningsService', ['$http', '$q', 'RESOURCE
             return results;
         });
     };
-    var _getScreeningByResumeId = function (resumeId, screeningId) {
-        return $http.get(serviceBase + 'resumes/'+resumeId+'/screenings/'+screeningId,
+    var _getScreeningByResumeId = function (jobId, resumeId, screeningId) {
+        return $http.get(serviceBase + 'jobs/'+jobId+'/resumes/'+resumeId+'/screenings/'+screeningId,
             {
                 headers: {
                     'Content-Type': 'application/json',
@@ -98,8 +98,8 @@ angular.module('Jobsite').factory('ScreeningsService', ['$http', '$q', 'RESOURCE
             return results;
         });
     };
-    var _setResultOnScreeningQuestion = function (resumeId, screeningId, questionId, model) {
-        return $http.post(serviceBase + 'resumes/'+resumeId+'/screenings/'+screeningId+'/questions/'+questionId+'/result',
+    var _setResultOnScreeningQuestion = function (jobId, resumeId, screeningId, questionId, model) {
+        return $http.post(serviceBase + 'jobs/'+jobId+'/resumes/'+resumeId+'/screenings/'+screeningId+'/questions/'+questionId+'/result',
             model,
             {
                 headers: {
@@ -111,8 +111,8 @@ angular.module('Jobsite').factory('ScreeningsService', ['$http', '$q', 'RESOURCE
         });
     };
 
-    var _getTestResultsByResumeId = function (resumeId) {
-        return $http.get(serviceBase + 'resumes/'+resumeId+'/screenings/results',
+    var _getTestResultsByResumeId = function (jobId,resumeId) {
+        return $http.get(serviceBase + 'jobs/'+jobId+'/resumes/'+resumeId+'/screenings/results',
             {
                 headers: {
                     'Content-Type': 'application/json',
@@ -151,8 +151,8 @@ angular.module('Jobsite').factory('ScreeningsService', ['$http', '$q', 'RESOURCE
         });
     };
 
-    var _sendScreeningsToResume = function (resumeId, model) {
-        return $http.post(serviceBase +  'resumes/'+resumeId+'/screenings',
+    var _sendScreeningsToResume = function (jobId, resumeId, model) {
+        return $http.post(serviceBase +  'jobs/'+jobId+'/resumes/'+resumeId+'/screenings',
             model,
             {
                 headers: {

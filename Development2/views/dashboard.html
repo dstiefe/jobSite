@@ -1,58 +1,58 @@
 ﻿
-<div id="header" ng-include="'views/head.html'"></div>
+    <div id="header" ng-include="'views/head.html'"></div>
 <div ng-controller="dashboardController">
 
-    <div class="row">
-        <div class="col-lg-12">
+        <div class="row">
+            <div class="col-lg-12">
 
-            <h3 class="headertable" style="margin: 0;padding: 0.7em 1em 1em 0.8em;">
-                {{headingmessage}}
-            </h3>
+                <h3 class="headertable" style="margin: 0;padding: 0.7em 1em 1em 0.8em;">
+                    {{headingmessage}}
+                </h3>
+            </div>
         </div>
-    </div>
-    <!-- Right sidebar -->
+        <!-- Right sidebar -->
 
-    <div class="row">
-        <div ng-show="!list.length && !isLoading" class="col-lg-12" style="" ng-cloak>
-            <h1>{{jobsNotFoundMessage}}</h1>
+        <div class="row">
+            <div ng-show="!list.length && !isLoading" class="col-lg-12" style="" ng-cloak>
+                <h1>{{jobsNotFoundMessage}}</h1>
+            </div>
         </div>
-    </div>
 
-    <div class="row">
-        <br />
-        <div class="col-lg-6" ng-repeat="data in list | startFrom:(currentPage-1)*entryLimit | limitTo:entryLimit | orderBy:'-publishedDate'">
-            <div class="panel panel-default" ng-if="!data.recepients && !data.referenceId">
-                <div class="panel-heading">
+        <div class="row">
+                <br />
+            <div class="col-lg-6" ng-repeat="data in list | startFrom:(currentPage-1)*entryLimit | limitTo:entryLimit | orderBy:'-publishedDate'">
+                <div class="panel panel-default" ng-if="!data.recepients && !data.referenceId">
+                    <div class="panel-heading">
 
-                    <div class="pull-left">
-                        <h3 class="panel-title">{{data.title}}({{data.location}})</h3>
+                        <div class="pull-left">
+                            <h3 class="panel-title">{{data.title}}({{data.location}})</h3>
                             <span class="dateHeader">
                                 <span ng-show="role == 'Admin'">Date Created: </span><span ng-show="role == 'User'">Date Applied: </span>{{data.publishedDate*1000 | date : "M/d/yyyy"}}
                             </span>
-                    </div>
+                        </div>
 
-                    &nbsp;<a ng-click="deleterecords(data.id)" ng-show="role == 'Admin'" title="delete" style="margin:0 5px;" class="btn btn-info btn-danger pull-right"><span class="glyphicon glyphicon-remove"></span></a> &nbsp;
-                    <a class="btn btn-primary pull-right" ui-sref="applicants({id:data.id})" ng-show="role == 'Admin'">
-                        {{viewtext}}
-                        <span class="badge badge-success" ng-show="!isUndefinedOrNull(data.applicantsIds) && data.applicantsIds.length > 0">{{data.applicantsIds.length}}</span>
-                    </a>
+                        &nbsp;<a ng-click="deleterecords(data.id)" ng-show="role == 'Admin'" title="delete" style="margin:0 5px;" class="btn btn-info btn-danger pull-right"><span class="glyphicon glyphicon-remove"></span></a> &nbsp;
+                        <a class="btn btn-primary pull-right" ui-sref="applicants({id:data.id})" ng-show="role == 'Admin'">
+                            {{viewtext}}
+                            <span class="badge badge-success" ng-show="data.applicantsCount > 0">{{data.applicantsCount}}</span>
+                        </a>
 
-                    <a class="btn btn-primary pull-right" href="#viewjobdetails?id={{data.id}}" ng-hide="role == 'Admin'">
-                        {{viewtext}}
-                    </a>
+                        <a class="btn btn-primary pull-right" href="#viewjobdetails?id={{data.id}}" ng-hide="role == 'Admin'">
+                            {{viewtext}}
+                        </a>
 
                         <span class="label label-success pull-right" ng-show="role == 'Admin' && (data.referralFeePercent >0 || data.data.referralFeeAmount > 0)" style="background-color: #5cb85c; font-size: 14px; padding: 10px;margin:0 10px;">
                             $$ Referral
                         </span>
 
-                    <div class="clearfix"></div>
+                        <div class="clearfix"></div>
 
-                </div>
-                <div class="panel-body crop" ng-bind-html="data.description"></div>
+                    </div>
+                    <div class="panel-body crop" ng-bind-html="data.description"></div>
 
 
 
-                <div class="panel-footer" style="height: 50px;padding-top: 5px;" ng-if="role=='Admin'">
+                    <div class="panel-footer" style="height: 50px;padding-top: 5px;" ng-if="role=='Admin'">
                         <span class="label label-info label-footer" ng-repeat="screening in data.screenings">
                             {{screening.name}}
                             <span class="badge badge-success" ng-show="screening.applicantsCount > 0" >{{screening.applicantsCount}}</span>
@@ -61,82 +61,82 @@
                          <span class="label label-success label-footer" ng-repeat="reference in data.references" >
                             {{reference.name}}
                         </span>
-                </div>
+                    </div>
 
-                <div class="panel-footer" style="height: 50px;padding-top: 5px;" ng-if="role=='User'">
+                    <div class="panel-footer" style="height: 50px;padding-top: 5px;" ng-if="role=='User'">
 
 
-                    <a class="btn btn-primary btn-footer"   ng-repeat="screening in data.screenings | filter:{ isNew: true }" ui-sref="starttestscreening({id:data.resumeId, screeningId: screening.id})">
-                        {{screening.name}}
-                        <img src="images/new_little.png"  ng-show="screening.isNew" style="max-width:25px; margin-top: -10px; margin-right:-13px;" />
-                    </a>
+                        <a class="btn btn-primary btn-footer"   ng-repeat="screening in data.screenings | filter:{ isNew: true }" ui-sref="starttestscreening({id:data.resumeId, jobId:data.id, screeningId: screening.id})">
+                            {{screening.name}}
+                            <img src="images/new_little.png"  ng-show="screening.isNew" style="max-width:25px; margin-top: -10px; margin-right:-13px;" />
+                        </a>
 
                         <span class="label label-info label-footer" ng-repeat="screening in data.screenings | filter:{ isNew: false }" >
                             {{screening.name}}
                             <span class="badge badge-success"><i class="fa fa-check"></i></span>
                         </span>
 
-                    <a href="" class="btn btn-success btn-footer" ng-repeat="reference in data.references" ng-click="sendReferenceToFriends(data, reference.id)"  title="The client is very interested – do you have any references that will validate some of your skills sets that are required for this opportunity – if so please click">
-                        {{reference.name}}
-                        <img src="images/new_little.png"  ng-show="reference.isNew" style="max-width:25px; margin-top: -10px; margin-right:-13px;"  />
-                    </a>
+                        <a href="" class="btn btn-success btn-footer" ng-repeat="reference in data.references" ng-click="sendReferenceToFriends(data, reference.id)"  title="The client is very interested – do you have any references that will validate some of your skills sets that are required for this opportunity – if so please click">
+                            {{reference.name}}
+                            <img src="images/new_little.png"  ng-show="reference.isNew" style="max-width:25px; margin-top: -10px; margin-right:-13px;"  />
+                        </a>
 
+                    </div>
                 </div>
-            </div>
-            <div class="panel panel-info" ng-if="data.recepients">
-                <div class="panel-heading">
-                    <div class="pull-left">
-                        <h3 class="panel-title">{{data.jobName}}({{data.location}})</h3>
+                <div class="panel panel-info" ng-if="data.recepients">
+                    <div class="panel-heading">
+                        <div class="pull-left">
+                            <h3 class="panel-title">{{data.jobName}}({{data.location}})</h3>
                             <span class="dateHeader">
                                 <span>Date Created: </span>{{data.modifyDate*1000 | date : "M/d/yyyy"}}
                             </span>
-                    </div>
+                        </div>
 
                         <span class="label label-primary pull-right" ng-show="data.status =='GotJobMyNetwork'" style="font-size: 14px; padding: 10px;">
                             Reffered
                         </span>
 
-                    <div class="clearfix"></div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="panel-body crop">
+
+                        You have referred the job: {{data.jobName}} to <span ng-repeat="recepient in data.recepients">{{recepient.firstName}} {{recepient.lastName}}, </span> here on {{data.modifyDate*1000 | date : "M/d/yyyy"}}.  We will keep you notified on the status of this position… Thank you!!!
+
+
+                    </div>
+                    <div class="panel-footer panel-info" style="height: 50px;">
+
+                    </div>
                 </div>
-                <div class="panel-body crop">
+                <div class="panel panel-success" ng-if="data.referenceId">
+                    <div class="panel-heading">
 
-                    You have referred the job: {{data.jobName}} to <span ng-repeat="recepient in data.recepients">{{recepient.firstName}} {{recepient.lastName}}, </span> here on {{data.modifyDate*1000 | date : "M/d/yyyy"}}.  We will keep you notified on the status of this position… Thank you!!!
+                        <a class="btn btn-info pull-right" href="#viewjobdetails?id={{data.jobId}}">
+                           View Job
+                        </a>
 
-
-                </div>
-                <div class="panel-footer panel-info" style="height: 50px;">
-
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="panel-body crop">
+                        {{data.userName}} wants would like you to provide a reference for the following job
+                    </div>
+                    <div class="panel-footer panel-success" style="height: 50px;" >
+                        <a ng-hide="data.isPassed" title="To Provide a reference please press 'start reference'" class="btn btn-info btn-footer pull-right" ui-sref="starttestjobreferral({jobId:data.jobId, resumeId: data.resumeId, jobReferralId: data.referenceId, userName:data.userName})" >
+                            Start Reference
+                        </a>
+                    </div>
                 </div>
             </div>
-            <div class="panel panel-success" ng-if="data.referenceId">
-                <div class="panel-heading">
-
-                    <a class="btn btn-info pull-right" href="#viewjobdetails?id={{data.jobId}}">
-                        View Job
-                    </a>
-
-                    <div class="clearfix"></div>
-                </div>
-                <div class="panel-body crop">
-                    {{data.userName}} wants would like you to provide a reference for the following job
-                </div>
-                <div class="panel-footer panel-success" style="height: 50px;" >
-                    <a ng-hide="data.isPassed" title="To Provide a reference please press 'start reference'" class="btn btn-info btn-footer pull-right" ui-sref="starttestjobreferral({jobId:data.jobId, resumeId: data.resumeId, jobReferralId: data.referenceId, userName:data.userName})" >
-                        Start Reference
-                    </a>
-                </div>
             </div>
-        </div>
-    </div>
 
-    <div class="row"   ng-show="list.length > 0">
+        <div class="row"   ng-show="list.length > 0">
 
         <div class="col-md-9 col-lg-offset-1" ng-show="list.length > 0">
             <div pagination="" ng-model="currentPage" ng-change="changed()" boundary-links="true" total-items="filteredItems" items-per-page="entryLimit" class="pagination-small" previous-text="&laquo;" next-text="&raquo;"></div>
         </div>
         <div class="col-md-1">
             PageSize: <select ng-model="entryLimit" class="form-control" ng-options="c for c in entryLimits">
-        </select>
+            </select>
         </div>
         <div class="col-md-1"> </div>
     </div>

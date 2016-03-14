@@ -19,8 +19,8 @@ angular
     .module('Jobsite')
     .controller('ApplyJobController', ApplyJobController);
 
-function ApplyJobController($scope, Login, ValiDatedTokenObject, $http, $location, $modalInstance, ResumesService) {
-
+function ApplyJobController($scope, Login, ValiDatedTokenObject, $http, $location, $modalInstance, ResumesService, RESOURCES) {
+    var serviceBase = RESOURCES.API_BASE_PATH;
     $scope.includeCoverLetter = false;
     $scope.selectedResume = '';
     $scope.resumeFileUrl = '';
@@ -39,7 +39,7 @@ function ApplyJobController($scope, Login, ValiDatedTokenObject, $http, $locatio
 
     var req = {
         method: 'GET',
-        url: ServicesURL + 'api/v1/account/userinfo',
+        url: serviceBase + 'account/userinfo',
         headers: {
             'Content-Type': 'application/json',
             'Connection': 'keep-alive',
@@ -76,7 +76,7 @@ function ApplyJobController($scope, Login, ValiDatedTokenObject, $http, $locatio
         $scope.loading = true;
         var file = event.target.files[0];
         console.dir(file);
-        var uploadUrl = ServicesURL + 'api/v1/resumes/upload';
+        var uploadUrl = serviceBase + 'resumes/upload';
         var fd = new FormData();
         fd.append('file', file);
         $http.post(uploadUrl, fd, {
@@ -136,22 +136,10 @@ function ApplyJobController($scope, Login, ValiDatedTokenObject, $http, $locatio
                 $scope.loading = false;
             });
         }
-
-
-
-
     };
 
     $scope.onClose = function() {
         $modalInstance.close();
     }
 
-    $scope.arrayEmptyJob= function(item) {
-
-        if (!angular.isUndefined(item.jobId)&& item.jobId != null && item.jobId != '')  {
-            return false;
-        } else {
-            return true;
-        }
-    };
 }

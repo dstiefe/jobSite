@@ -22,7 +22,9 @@ angular.module('Jobsite').controller('SendScreeningController', function ($scope
 
     ScreeningsService.getMyScreenings().then(function (results) {
         response = results.data;
-        $scope.screeningsAll = response;
+        $scope.screeningsAll =   response.filter(function(item) {
+            return item.jobsIds.indexOf(jobId) != -1;
+        });
 
         $scope.screeningsTaken =   $scope.screeningsAll.filter(function(item) {
             if ($scope.resume.screeningIds == null)
@@ -47,7 +49,7 @@ angular.module('Jobsite').controller('SendScreeningController', function ($scope
     };
 
     $scope.notify = function() {
-        ScreeningsService.sendScreeningsToResume($scope.resume.id, {"screeningIds": $scope.screeningsToTakeSelected}).then(function (results) {
+        ScreeningsService.sendScreeningsToResume(jobId, $scope.resume.id, {"screeningIds": $scope.screeningsToTakeSelected}).then(function (results) {
             $scope.successMessage = true;
             $timeout(function() {
                 $modalInstance.close();

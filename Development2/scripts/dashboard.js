@@ -19,11 +19,11 @@ $(function () {
     })
 })
 
-angular.module('Jobsite').controller("dashboardController", function ($rootScope, $scope, Login, ValiDatedTokenObject, locationHistoryService, $location, $modal, $http, $timeout, AuthService, JobsService, ReferralService, cfpLoadingBar) {
+angular.module('Jobsite').controller("dashboardController", function ($rootScope, $scope, Login, ValiDatedTokenObject, locationHistoryService, $location, $modal, $http, $timeout, AuthService, JobsService, ReferralService, RESOURCES, cfpLoadingBar) {
     $scope.role = AuthService.authentication.isAdministrator ? "Admin" : "User";
     $scope.entryLimits = [5, 10, 15, 20, 25];
     $scope.isLoading = true;
-
+    var serviceBase = RESOURCES.API_BASE_PATH;
     var _pageCalc = function () {
         $scope.currentPage = 1; //current page
         $scope.entryLimit = 10; //max no of items to display in a page
@@ -76,7 +76,7 @@ angular.module('Jobsite').controller("dashboardController", function ($rootScope
 
     $scope.deleterecords = function (id) {
         console.log(id);
-        $http({ method: 'DELETE', url: ServicesURL + 'api/v1/jobs/' + id, headers: { 'Content-Type': 'application/json', 'Connection': 'keep-alive', 'Authorization': ValiDatedTokenObject.getValiDatedTokenObject().token_type + " " + ValiDatedTokenObject.getValiDatedTokenObject().access_token } }).
+        $http({ method: 'DELETE', url: serviceBase + 'jobs/' + id, headers: { 'Content-Type': 'application/json', 'Connection': 'keep-alive', 'Authorization': ValiDatedTokenObject.getValiDatedTokenObject().token_type + " " + ValiDatedTokenObject.getValiDatedTokenObject().access_token } }).
         success(function (response) {
             JobsService.getMyJobs().then(function (results) {
                 $scope.list = results.data;

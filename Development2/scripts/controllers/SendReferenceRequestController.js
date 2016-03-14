@@ -22,7 +22,9 @@ angular.module('Jobsite').controller('SendReferenceRequestController', function 
 
     ReferralService.getMyJobReferrals().then(function (results) {
         response = results.data;
-        $scope.referencesAll = response;
+        $scope.referencesAll = response.filter(function(item) {
+               return item.jobsIds.indexOf(jobId) != -1;
+        });
 
         $scope.referencesTaken =   $scope.referencesAll.filter(function(item) {
             if ($scope.resume.referencesIds == null)
@@ -47,7 +49,7 @@ angular.module('Jobsite').controller('SendReferenceRequestController', function 
     };
 
     $scope.notify = function() {
-        ReferralService.sendReferenceRequestToResume($scope.resume.id, {"jobReferralIds": $scope.referencesToTakeSelected}).then(function (results) {
+        ReferralService.sendReferenceRequestToResume(jobId, $scope.resume.id, {"jobReferralIds": $scope.referencesToTakeSelected}).then(function (results) {
             $scope.successMessage = true;
             $timeout(function() {
                 $modalInstance.close();

@@ -43,7 +43,7 @@
                                             <th>Job Category&nbsp;<a ng-click="sort_by('category');"><i class="glyphicon glyphicon-sort"></i></a></th>
                                             <th>Job Location&nbsp;<a ng-click="sort_by('location');"><i class="glyphicon glyphicon-sort"></i></a></th>
                                             <th>Posted Date&nbsp;<a ng-click="sort_by('publishedDate');"><i class="glyphicon glyphicon-sort"></i></a></th>
-                                            <th># of Candidates&nbsp;<a ng-click="sort_by('applicantsIds.length');"><i class="glyphicon glyphicon-sort"></i></a></th>
+                                            <th># of Candidates&nbsp;<a ng-click="sort_by('applicantsCount');"><i class="glyphicon glyphicon-sort"></i></a></th>
                                             <th>Admin </th>
                                         </thead>
                                         <tbody>
@@ -54,7 +54,7 @@
                                                 <td>
                                                     {{ data.publishedDate*1000 | date : "M/d/yyyy" }}
                                                 </td>
-                                                <td>{{data.applicantsIds.length}}</td>
+                                                <td>{{data.applicantsCount}}</td>
                                                 <td>
                                                     <a ui-sref="jobmanagement({id:data.id})" class="btn btn-info btn-warning"><span class="glyphicon glyphicon-edit"></span> Edit</a>&nbsp;<a ng-click="deleterecords(data.id)" class="btn btn-info btn-danger"><span class="glyphicon glyphicon-remove"></span> Delete</a>
                                                 </td>

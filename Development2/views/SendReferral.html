@@ -11,69 +11,64 @@
 
     </div>
 
-<form name="sendForm" ng-submit="onSave(sendForm.$valid)" novalidate>
+    <form name="sendForm" ng-submit="onSave(sendForm.$valid)" novalidate>
 
-<div class="modal-body">
-        <div class="alert alert-danger" role="alert" ng-hide='!message'>{{message}}</div>
+        <div class="modal-body">
+            <div class="alert alert-danger" role="alert" ng-hide='!message'>{{message}}</div>
 
-        <div class="row">
-            <div class="form-group col-sm-12">
-                <h2>How it Works</h2>
-                <p>If you are not interested in the position or feel like you know someone that would be better qualified and looking.  Just put in there emails below and they will get a message indicating that you think they might be a good fit for the position…</p>
+            <div class="row">
+                <div class="form-group col-sm-12">
+                    <h2>How it Works</h2>
+                    <p>If you are not interested in the position or feel like you know someone that would be better qualified and looking.  Just put in there emails below and they will get a message indicating that you think they might be a good fit for the position…</p>
+                </div>
             </div>
-        </div>
 
-        <div class="row">
-            <div class="form-group col-sm-12">
-                <h2>The Best Part</h2>
-                <p>If any of the individuals you send this referral to – are not interested and elect to send it to someone they know… you will still receive a referral fee.  In the example that I just described you and your referral will split the $ amount evenly.  The great part about this is not matter how many people continue to send this …we keep track</p>
+            <div class="row">
+                <div class="form-group col-sm-12">
+                    <h2>The Best Part</h2>
+                    <p>If any of the individuals you send this referral to – are not interested and elect to send it to someone they know… you will still receive a referral fee.  In the example that I just described you and your referral will split the $ amount evenly.  The great part about this is not matter how many people continue to send this …we keep track</p>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="form-group col-sm-9">
+            <div class="row">
+                <div class="form-group col-sm-9">
 
-                <div class="form-group">
-                    <a href="" ng-click="addRecepient()"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add Recipient</a>
+                    <div class="form-group">
+                        <a href="" ng-click="addRecepient()"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add Recipient</a>
+                    </div>
+
+                    <div class="row" ng-repeat="emailObject in emailObjects track by $index">
+                        <div class="form-group col-xs-1">
+                            <a href="" ng-click="removeRecepient($index)"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></a>
+                        </div>
+                        <div class="form-group col-xs-3">
+                            <input type="text" ng-model="emailObject.firstName" name="firstName_{{$index}}" id="firstName_{{$index}}" placeholder="First Name" class="form-control" required />
+                            <span class="color-theme" ng-show="sendForm.firstName_{{$index}}.$error.required">First Name is required.</span>
+                        </div>
+                        <div class="form-group col-xs-4">
+                            <input type="text" ng-model="emailObject.lastName" placeholder="Last Name" name="lastName_{{$index}}" id="lastName_{{$index}}" class="form-control" required />
+                            <span class="color-theme" ng-show="sendForm.lastName_{{$index}}.$error.required">First Name is required.</span>
+                        </div>
+                        <div class="form-group col-xs-4">
+                            <input type="email" ng-model="emailObject.email" placeholder="E-mail" name="email_{{$index}}" id="email_{{$index}}" class="form-control" required />
+                            <span class="color-theme" ng-show="sendForm.email_{{$index}}.$error.required">Email is required.</span>
+                            <span class="color-theme" ng-show="sendForm.email_{{$index}}.$error.email">Not valid email!</span>
+                        </div>
+                    </div>
+
                 </div>
 
-                <div class="row" ng-repeat="emailObject in emailObjects track by $index">
-                    <div class="form-group col-xs-1">
-                        <a href="" ng-click="removeRecepient($index)"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></a>
-                    </div>
-                    <div class="form-group col-xs-3">
-                        <input type="text" ng-model="emailObject.firstName" name="firstName_{{$index}}" id="firstName_{{$index}}" placeholder="First Name" class="form-control" required />
-                        <span class="color-theme" ng-show="sendForm.firstName_{{$index}}.$error.required">First Name is required.</span>
-                    </div>
-                    <div class="form-group col-xs-4">
-                        <input type="text" ng-model="emailObject.lastName" placeholder="Last Name" name="lastName_{{$index}}" id="lastName_{{$index}}" class="form-control" required />
-                        <span class="color-theme" ng-show="sendForm.lastName_{{$index}}.$error.required">First Name is required.</span>
-                    </div>
-                    <div class="form-group col-xs-4">
-                        <input type="email" ng-model="emailObject.email" placeholder="E-mail" name="email_{{$index}}" id="email_{{$index}}" class="form-control" required />
-                        <span class="color-theme" ng-show="sendForm.email_{{$index}}.$error.required">Email is required.</span>
-                        <span class="color-theme" ng-show="sendForm.email_{{$index}}.$error.email">Not valid email!</span>
-                    </div>
-                </div>
-
             </div>
 
-            <div class="form-group col-sm-3">
-                <label class="checkbox-inline">
-                    <input type="checkbox" ng-model="agreeTerm" />  Agree To Terms<br /> <a href="#" style="color: #0000C0;">view terms</a>
-                </label>            </div>
+
+
         </div>
 
+        <div class="modal-footer">
+            <div class="text-right m-t-xs">
+                <button type="submit" class="btn btn-success" >Send</button>
+            </div>
+        </div>
 
-
-    </div>
-
-<div class="modal-footer">
-    <div class="text-right m-t-xs">
-        <i class="fa fa-question-circle fa-lg" title="Please agree to terms" style="color: #e6a300;"></i>
-        <button type="submit" class="btn btn-success" ng-disabled="!agreeTerm">Save</button>
-    </div>
-</div>
-
-</form>
+    </form>
 
 </div>

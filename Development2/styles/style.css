@@ -4638,3 +4638,11 @@ height: 34px;
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
     display: none !important;
 }
+
+.panel-terms{
+    font-size:12px;
+    text-align: center;
+}
+.panel-terms a:hover {
+   text-decoration: underline;
+}

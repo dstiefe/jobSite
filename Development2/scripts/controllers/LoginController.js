@@ -3,9 +3,9 @@
 /// <reference path="Service.js" />  
 
 
-angular.module('Jobsite').controller("Login", function($scope, $rootScope, Login, $location, locationHistoryService,ValiDatedTokenObject, AuthService, RESOURCES) {
+angular.module('Jobsite').controller("Login", function($scope, $rootScope, Login, $location, locationHistoryService,ValiDatedTokenObject, AuthService, RESOURCES, $modal) {
 
-        $scope.UserLogin = function() {
+    $scope.UserLogin = function() {
             var loginData = {
                 userName: $scope.username,
                 password: $scope.password
@@ -92,11 +92,24 @@ angular.module('Jobsite').controller("Login", function($scope, $rootScope, Login
         });
     };
 
-    })
-//angular
-//    .module('Jobsite').controller("logoutcontroller",
-//    function ($scope, Login, $location, locationHistoryService, ValiDatedTokenObject, AuthService) {
-//        AuthService.logOut();
-//        $location.path('/searchjobs');
-//        if(!$scope.$$phase) $scope.$apply();
-//    });
+
+    var showHelpWindow = function(templateName) {
+        var modalInstance = $modal.open({
+            animation: true,
+            templateUrl: templateName,
+            controller: function(){
+
+            },
+            size : 'lg'
+        });
+    };
+
+    $scope.showTerms = function() {
+        showHelpWindow('views/TermsView.html');
+    };
+
+    $scope.showPrivacy= function() {
+        showHelpWindow('views/PrivacyView.html');
+    };
+
+});

@@ -63,7 +63,8 @@
 
                                     <div class="form-group" ng-if="question.type == 'FillIn'">
 
-                                        <div  text-angular ng-model="$parent.resultQuestions[$parent.$index].answerText" name="answerText_{{$parent.$index}}" id="answerText" ta-text-editor-class="border-around" ta-html-editor-class="border-around" style="background-color: #fff;" required></div>
+<textarea class="form-control" rows="15" ng-model="$parent.resultQuestions[$parent.$index].answerText" name="answerText_{{$parent.$index}}" id="answerText" style="background-color: #fff;" required></textarea>
+
                                         <span class="color-theme" ng-show="resultScreeningForm.answerText_{{$parent.$index}}.$error.required">Answer Text is required.</span>
                                         <input type="hidden"  ng-model="$parent.resultQuestions[$parent.$index].referenceQuestionId" value="{{question.id}}" ng-init="$parent.resultQuestions[$parent.$index].referenceQuestionId=question.id"   />
 

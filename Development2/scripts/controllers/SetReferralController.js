@@ -5,6 +5,8 @@ angular.module('Jobsite').controller('SetReferralController', function ($scope, 
 
     $scope.referralFeePercent = referralFeePercent;
     $scope.referralFeeAmount = referralFeeAmount;
+
+
     $scope.referralFeePercentList = [];
     for(var i=1; i<10; i++)
     {

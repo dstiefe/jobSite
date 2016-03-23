@@ -174,6 +174,21 @@ angular.module('Jobsite').factory('ReferralService', ['$http', '$q', 'RESOURCES'
             return results;
         });
     };
+
+    var _getReferenceCountToFriends  = function(jobId, resumeId, referenceId){
+        return $http.get(serviceBase + 'jobs/'+jobId+'/resumes/'+resumeId+'/references/'+referenceId+'/friends/count',{
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': ValiDatedTokenObject.getValiDatedTokenObject().token_type+" "+ValiDatedTokenObject.getValiDatedTokenObject().access_token
+            },
+            transformResponse: function (data, headersGetter, status) {
+                //This was implemented since the REST service is returning a plain/text response
+                //and angularJS $http module can't parse the response like that.
+                return {content: data};}
+        }).then(function (results) {
+            return results;
+        });
+    };
     var _getReferences = function () {
         return $http.get(serviceBase + 'references/friends/my',
             {
@@ -239,6 +254,7 @@ angular.module('Jobsite').factory('ReferralService', ['$http', '$q', 'RESOURCES'
     referralServiceFactory.deleteReferralQuestion = _deleteReferralQuestion;
     referralServiceFactory.sendReferenceRequestToResume = _sendReferenceRequestToResume;
     referralServiceFactory.sendReferenceToFriends = _sendReferenceToFriends;
+    referralServiceFactory.getReferenceCountToFriends = _getReferenceCountToFriends;
     referralServiceFactory.getReferences = _getReferences;
 
     referralServiceFactory.getReferenceByResumeId = _getReferenceByResumeId;

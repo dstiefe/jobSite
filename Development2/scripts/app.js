@@ -56,10 +56,19 @@ var clientId ="P600Us6Y476QiK331u5yEzb22dpX_y6NS75!9I-a";
             {value: "FillIn", name: "Fill In"},
             {value: "LikertScale", name: "Likert Scale"},
         ];
+
+            var WorkingRelationshipTypes = [
+                {value: "WasYourDirectReport", name: "Was your direct report"},
+                {value: "WasFurtherUpTheOrgChart", name: "Was further up the org chart"},
+                {value: "WasYourColleague", name: "Was your colleague"},
+                {value: "WasADirectReport", name: "Was a direct report"},
+            ];
+
             // Use the variable in your constants
             return {
                 EMPLOYEE_TYPES: EmployeeTypes,
                 SCREENING_QUESTION_TYPES: ScreeningQuestionTypes,
+                WORKING_RELATIONSHIP_TYPES: WorkingRelationshipTypes,
                 API_BASE_PATH: apiBasePath,
                 CLIENT_ID: clientId
             }

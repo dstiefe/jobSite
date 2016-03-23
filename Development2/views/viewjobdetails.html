@@ -25,12 +25,15 @@
                                                     <div class="col-sm-4">
                                                         <h3>{{jobTitle}}</h3>  <h4>{{jobLocation}}</h4>
                                                     </div>
-                                                    <div class="col-sm-4" style="color:white;">
+                                                    <div class="col-sm-5" style="color:white; text-align: center;">
                                                         <span ng-hide="role=='Admin' || !isReferral || isApplied">
-                                                            This job has a referral fee – so if you are not interested – do you know of someone that might be … <a href="" ng-click="showReferralView()" style="color: #0000C0; ">learn more</a>
+
+                                                            This job has a {{referralText}} referral fee<br/>
+So if you are not interested – do you know someone that might be?<br/>
+                                                            <a href="" ng-click="showReferralView()" style="color: #0000C0; ">Learn more and refer someone</a>
                                                         </span>
                                                     </div>
-                                                    <div class="col-sm-4 text-right">
+                                                    <div class="col-sm-3 text-right">
                                                         <button class="btn btn-success btn-md" ng-hide="role=='Admin' || isApplied" data-ng-click="onApply()">Apply</button>
                                                         <span class="" ng-show="isApplied">You've already applied!</span>
                                                     </div>

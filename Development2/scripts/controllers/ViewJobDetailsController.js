@@ -4,7 +4,7 @@ angular
         var jobId =   $stateParams.id;
         var referralId =   $stateParams.referral;
         var type =   $stateParams.type;
-
+    $scope.referralText='';
         if (!AuthService.authentication.isAuth)
         {
             var referralObj = sessionStorage.getItem("referrals");
@@ -42,7 +42,12 @@ angular
             $scope.isOwn = data.data.isOwn;
             $scope.isApplied = data.data.isApplied;
             $scope.isReferral = data.data.referralFeePercent >0 || data.data.referralFeeAmount > 0;
-
+            if (data.data.referralFeePercent >0){
+                $scope.referralText=data.data.referralFeePercent + '%';
+            }
+            if (data.data.referralFeeAmount >0){
+                $scope.referralText='$'+ data.data.referralFeeAmount ;
+            }
         }, function (error) {
             console.log(error.data.message);
         });
@@ -78,6 +83,9 @@ angular
                     },
                     jobTitle: function () {
                         return $scope.jobTitle;
+                    },
+                    referralText: function () {
+                        return $scope.referralText;
                     }
                 }});
             } else{

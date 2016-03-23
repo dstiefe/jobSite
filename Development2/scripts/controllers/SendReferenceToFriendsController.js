@@ -1,51 +1,56 @@
 /**
  * Created by Van on 10.02.2016.
  */
-angular.module('Jobsite').controller('SendReferenceToFriendsController', function ($scope, $modalInstance, JobsService, ScreeningsService, $sce, $timeout, $document, ReferralService, jobId, jobTitle,resumeId,referenceId) {
+angular.module('Jobsite').controller('SendReferenceToFriendsController', function ($scope, $modalInstance, JobsService, ScreeningsService, $sce, $timeout, $document, ReferralService, jobId, jobTitle,resumeId,referenceId,RESOURCES) {
+    $scope.WorkingRelationshipTypes = RESOURCES.WORKING_RELATIONSHIP_TYPES;
 
-    $scope.emailObjects = [];
-
-    for(var i=0; i < 1; i++)
+    $scope.yearsList = [];
+    for(var i=1; i <= 20; i++)
     {
-        $scope.emailObjects.push({
-            'email':'',
-            'firstName':'',
-            'lastName':''
-        });
+        $scope.yearsList.push(i);
     }
-
+    $scope.successMessage='';
     $scope.jobTitle = jobTitle;
     $scope.jobId = jobId;
     $scope.resumeId = resumeId;
     $scope.referenceId = referenceId;
 
     $scope.message ='';
+
+    $scope.friendsCount ='';
+
+    var _initEmailObjects = function (){
+        $scope.emailObjects = [];
+        for(var i=0; i < 1; i++)
+        {
+            $scope.emailObjects.push({
+                'email':'',
+                'firstName':'',
+                'lastName':'',
+                'years':'',
+                'personTitle': '',
+                'workingRelationshipType':''
+            });
+        }
+        ReferralService.getReferenceCountToFriends($scope.jobId, $scope.resumeId, $scope.referenceId).then(function (results) {
+            $scope.friendsCount = results.data.content;
+        }, function (error) {
+            $scope.message ='Error occured!';
+            console.log(error.data.message);
+        });
+
+    };
+    _initEmailObjects();
+
+
     $scope.onClose = function() {
         $modalInstance.close();
     };
-    $scope.addReference= function() {
 
-        if ($scope.emailObjects.length>=3)
-            return;
-
-        $scope.emailObjects.push({
-            'email':'',
-            'firstName':'',
-            'lastName':''
-        });
-    };
-    $scope.removeReference= function(i) {
-
-        if ($scope.emailObjects.length<=1)
-            return;
-
-        $scope.emailObjects.splice(i, 1);
-
-    };
     $scope.onSave = function(isValid) {
 
         $scope.message ='';
-
+        $scope.successMessage='';
         if (!isValid){
             $scope.message ='Check input data!';
             return;
@@ -76,7 +81,13 @@ angular.module('Jobsite').controller('SendReferenceToFriendsController', functio
         };
 
         ReferralService.sendReferenceToFriends(postsavedata).then(function (results) {
-            $modalInstance.close();
+            _initEmailObjects();
+            $scope.successMessage='Successfully sent!';
+
+            $timeout(function() {
+                $scope.successMessage='';
+            }, 1000);
+
         }, function (error) {
             $scope.message ='Error occured!';
             console.log(error.data.message);

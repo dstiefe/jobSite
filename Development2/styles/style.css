@@ -4572,6 +4572,14 @@ ul.h-list li:hover a {
     background-color: #dff0d8;
     border-color: #d6e9c6;
 }
+
+.panel-footer.panel-warning{
+    color: #8a6d3b;
+    background-color: #fcf8e3;
+    border-color: #faebcc;
+}
+
+
 .panel-footer > .label-footer{
     margin-right: 5px;
     padding:8px;

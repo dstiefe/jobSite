@@ -153,4 +153,21 @@ angular.module('Jobsite').controller("ApplicantsController", function($scope, $h
         });
     };
 
+    $scope.sendTraitifyViewShow = function(data) {
+        var modalInstance = $modal.open({
+            animation: true,
+            templateUrl: 'views/SendTraitifyRequestView.html',
+            controller: 'SendTraitifyRequestController',
+            size : 'lg',
+            resolve: {
+                resume: function () {
+                    return data;
+                },
+                jobId: function () {
+                    return jobId;
+                }
+            }
+        });
+    };
+
 });

@@ -465,6 +465,29 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
             }
         })
 
+        .state('traitifystart', {
+            url: "/jobs/:jobId/resumes/:resumeId/traitify/:traitifyId/start",
+            templateUrl: "views/TraitifyStart.html",
+            data: {
+                pageTitle: 'Traitify start test',
+                permissions: {
+                    only: ['User'],
+                }
+            }
+        })
+
+        .state('traitifyfinish', {
+            url: "/jobs/:jobId/resumes/:resumeId/traitify/:traitifyId/finish",
+            templateUrl: "views/TraitifyFinish.html",
+            data: {
+                pageTitle: 'Traitify finish test',
+                permissions: {
+                    only: ['User'],
+                }
+            }
+        })
+
+
 }
 
 angular

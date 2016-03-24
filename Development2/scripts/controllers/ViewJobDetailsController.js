@@ -1,5 +1,5 @@
 angular
-    .module('Jobsite').controller("ViewJobDetailsController", function ($scope, Login, ValiDatedTokenObject, $location,$stateParams, $modal, $http, $location, $sce, JobsService, AuthService) {
+    .module('Jobsite').controller("ViewJobDetailsController", function ($rootScope, $scope, Login, ValiDatedTokenObject, $location,$stateParams, $modal, $http, $location, $sce, JobsService, AuthService) {
         $scope.loading = false;
         var jobId =   $stateParams.id;
         var referralId =   $stateParams.referral;
@@ -46,7 +46,7 @@ angular
                 $scope.referralText=data.data.referralFeePercent + '%';
             }
             if (data.data.referralFeeAmount >0){
-                $scope.referralText='$'+ data.data.referralFeeAmount ;
+                $scope.referralText='$'+ $rootScope.numberWithCommas(data.data.referralFeeAmount);
             }
         }, function (error) {
             console.log(error.data.message);

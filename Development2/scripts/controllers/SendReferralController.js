@@ -5,7 +5,7 @@ angular.module('Jobsite').controller('SendReferralController', function ($scope,
 
 
 
-   $scope.referralText=referralText ;
+   $scope.referralText = referralText;
 
 
     $scope.emailObjects = [];

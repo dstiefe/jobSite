@@ -2,8 +2,9 @@ angular
     .module('Jobsite')
     .controller('ApplyJobController', ApplyJobController);
 
-function ApplyJobController($scope, Login, ValiDatedTokenObject, $http, $location, $modalInstance, ResumesService, RESOURCES) {
+function ApplyJobController($scope, Login, ValiDatedTokenObject, $http, $location, $modalInstance, ResumesService, RESOURCES,jobId) {
     var serviceBase = RESOURCES.API_BASE_PATH;
+    $scope.jobId = jobId;
     $scope.includeCoverLetter = false;
     $scope.selectedResume = '';
     $scope.resumeFileUrl = '';
@@ -84,8 +85,7 @@ function ApplyJobController($scope, Login, ValiDatedTokenObject, $http, $locatio
 
     $scope.onSubmit = function() {
         $scope.loading = true;
-        var parts = $location.absUrl().split("?id=");
-        var viewJobId = parts[1];
+
         var postresumedata = {
             "note": $scope.coverLetterNote,
             "storageLocationNative": $scope.resumeFileUrl,
@@ -97,7 +97,7 @@ function ApplyJobController($scope, Login, ValiDatedTokenObject, $http, $locatio
         };
 
         if ($scope.resumeFileUrl){
-            ResumesService.applyToJob(viewJobId,postresumedata).then(function (results) {
+            ResumesService.applyToJob($scope.jobId ,postresumedata).then(function (results) {
                 var response = results.data;
                 $scope.jobAppliedDate = response.applyDate;
                 $scope.step = 3;
@@ -108,7 +108,7 @@ function ApplyJobController($scope, Login, ValiDatedTokenObject, $http, $locatio
                 $scope.loading = false;
             });
         }else{
-            ResumesService.applyToJobByExistResume(viewJobId,postresumedata).then(function (results) {
+            ResumesService.applyToJobByExistResume($scope.jobId ,postresumedata).then(function (results) {
                 var response = results.data;
                 $scope.jobAppliedDate = response.applyDate;
                 $scope.step = 3;

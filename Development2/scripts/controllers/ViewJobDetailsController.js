@@ -5,6 +5,7 @@ angular
         var referralId =   $stateParams.referral;
         var type =   $stateParams.type;
     $scope.referralText='';
+   //
         if (!AuthService.authentication.isAuth)
         {
             var referralObj = sessionStorage.getItem("referrals");
@@ -58,7 +59,11 @@ angular
                 $modal.open({
                     templateUrl: 'views/applyjob.html',
                     controller: ApplyJobController,
-                    scope: $scope
+                    scope: $scope,
+                    resolve: {
+                        jobId: function () {
+                            return jobId;
+                        }}
                 });
             } else{
 

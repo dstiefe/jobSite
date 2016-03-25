@@ -70,7 +70,10 @@ var clientId ="P600Us6Y476QiK331u5yEzb22dpX_y6NS75!9I-a";
                 SCREENING_QUESTION_TYPES: ScreeningQuestionTypes,
                 WORKING_RELATIONSHIP_TYPES: WorkingRelationshipTypes,
                 API_BASE_PATH: apiBasePath,
-                CLIENT_ID: clientId
+                CLIENT_ID: clientId,
+                TRAITIFY_PUBLIC_KEY: 'm8rrmi54uig26dapmnv6bstak9',
+                TRAITIFY_HOST: 'api-sandbox.traitify.com',
+                TRAITIFY_VERSION: 'v1'
             }
         })())
         .config(['cfpLoadingBarProvider', function(cfpLoadingBarProvider) {

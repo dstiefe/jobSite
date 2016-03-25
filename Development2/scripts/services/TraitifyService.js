@@ -33,10 +33,34 @@ angular.module('Jobsite').factory('TraitifyService', ['$http', '$q', 'RESOURCES'
         });
     };
 
+    var _getTraitify = function (jobId, resumeId,  traitifyId) {
+        return $http.get(serviceBase + 'jobs/'+jobId+'/resumes/'+resumeId+'/traitifytest/'+traitifyId,
+            {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': ValiDatedTokenObject.getValiDatedTokenObject().token_type+" "+ValiDatedTokenObject.getValiDatedTokenObject().access_token
+                }
+            }).then(function (results) {
+            return results;
+        });
+    };
+
+    var _finishTraitify = function (jobId, resumeId,  traitifyId) {
+        return $http.put(serviceBase + 'jobs/'+jobId+'/resumes/'+resumeId+'/traitifytest/'+traitifyId+'/finish',null,
+            {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': ValiDatedTokenObject.getValiDatedTokenObject().token_type+" "+ValiDatedTokenObject.getValiDatedTokenObject().access_token
+                }
+            }).then(function (results) {
+            return results;
+        });
+    };
 
     traitifyServiceFactory.getDecks = _getDecks;
     traitifyServiceFactory.sendTraitify = _sendTraitify;
-
+    traitifyServiceFactory.getTraitify = _getTraitify;
+    traitifyServiceFactory.finishTraitify = _finishTraitify;
 
     return traitifyServiceFactory;
 }]);

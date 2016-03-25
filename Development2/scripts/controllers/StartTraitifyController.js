@@ -11,7 +11,8 @@ angular.module('Jobsite').controller("StartTraitifyController", function($scope,
         sessionStorage.setItem("return_url", path);
         $state.transitionTo('login');
     }
-    else{
+    else
+    {
         $scope.error_message = '';
         $scope.jobId = $stateParams.jobId;
         $scope.resumeId = $stateParams.resumeId;
@@ -19,47 +20,26 @@ angular.module('Jobsite').controller("StartTraitifyController", function($scope,
 
 
 
-        ResumesService.getApplicant($scope.jobId, $scope.resumeId).then(function (results) {
-            $scope.resume  = results.data;
+        TraitifyService.getTraitify($scope.jobId, $scope.resumeId, $scope.traitifyId).then(function (results) {
+            $scope.traitify  = results.data;
         }, function (error) {
             console.log(error.data.message);
         });
 
-        ScreeningsService.getScreeningByResumeId($scope.jobId, $scope.resumeId, $scope.screeningId).then(function (results) {
-            $scope.screening  = results.data;
-            if ( $scope.screening.questionsCount == 0){
-                $scope.error_message = 'Screening does not have any questions! Please try again later!';
-                $scope.isDisabledStart = true;
-            }
-        }, function (error) {
-            console.log(error.data.message);
-        });
 
         $scope.start = function() {
             $scope.error_message = '';
-            if ( $scope.screening.questionsCount == 0){
-                $scope.error_message = 'Screening does not have any questions!';
+            if ( $scope.traitify.slidesCount == 0){
+                $scope.error_message = 'Test does not have any questions!';
                 return;
             }
-
-            if ($scope.resume.screeningIds != null && $scope.resume.screeningIds.length > 0){
-                var passedScreeningIds = [];
-                if ($scope.resume.passedScreeningIds != null){
-                    passedScreeningIds = $scope.resume.passedScreeningIds;
-                }
-
-                var diff = $scope.resume.screeningIds.diff(passedScreeningIds);
-                if (diff.length > 0 && diff.indexOf($scope.screeningId) != -1)
-                {
-                    $state.go('testscreening', {'id': $scope.resumeId, 'screeningId': $scope.screeningId, 'jobId':$scope.jobId});
-                }else{
-                    $scope.error_message = 'You have already passed screening!';
-                }
+            if (!$scope.traitify.isFinish)
+            {
+                $state.go('traitify', {'resumeId': $scope.resumeId, 'traitifyId': $scope.traitifyId, 'jobId':$scope.jobId});
             }else{
-                $scope.error_message = 'You don not have any screenings!';
+                $scope.error_message = 'You have already passed test!';
             }
         }
-
     }
 });
 

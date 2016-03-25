@@ -470,9 +470,9 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
             templateUrl: "views/TraitifyStart.html",
             data: {
                 pageTitle: 'Traitify start test',
-                permissions: {
-                    only: ['User'],
-                }
+                //permissions: {
+                //    only: ['User'],
+                //}
             }
         })
 

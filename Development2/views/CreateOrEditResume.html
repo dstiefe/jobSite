@@ -46,7 +46,7 @@
                         <label ng-show="resume.originalFilename">Uploaded Resume File Name:&nbsp;{{resume.originalFilename}}</label>
                         <br />
                         <label for="exampleInputFile">save/upload</label>
-                        <input type="file" id="exampleInputFile" file-model="myFile" custom-on-change="uploadFile" accept="application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" />
+                        <input type="file" id="exampleInputFile" custom-on-change="uploadFile" accept="application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" />
                         <progressbar class="progress-striped active" max="100" value="100" type="info" ng-show="loading">Loading...Please wait.</progressbar>
                     </div>
                 </div>

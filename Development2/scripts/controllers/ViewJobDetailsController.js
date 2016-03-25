@@ -49,6 +49,18 @@ angular
             if (data.data.referralFeeAmount >0){
                 $scope.referralText='$'+ $rootScope.numberWithCommas(data.data.referralFeeAmount);
             }
+
+
+            if (!angular.isUndefinedOrNull(type) && type !='')
+            {
+                if (type=='referral' && $scope.isReferral){
+                    $scope.showReferralView();
+                }
+                if (type=='apply' && !$scope.isApplied){
+                    $scope.onApply();
+                }
+            }
+
         }, function (error) {
             console.log(error.data.message);
         });
@@ -101,14 +113,6 @@ angular
             }
         };
 
-        if (!angular.isUndefinedOrNull(type) && type !='')
-        {
-            if (type=='referral'){
-                $scope.showReferralView();
-            }
-            if (type=='apply'){
-                $scope.onApply();
-            }
-        }
+
 
     });

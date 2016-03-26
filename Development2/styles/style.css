@@ -4654,3 +4654,13 @@ height: 34px;
 .panel-terms a:hover {
    text-decoration: underline;
 }
+
+.icon-inerview{
+    background: url("../images/interview_users.png") 100% 100% no-repeat;
+    background-size: 44px;
+    background-position: center center;
+    width: 44px !important;
+    height: 42px !important;
+    line-height: 44px;
+    display: inline-block;
+}

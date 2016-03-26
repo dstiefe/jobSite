@@ -487,7 +487,88 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
             }
         })
 
+        .state('interviews', {
+            url: "/interviews",
+            templateUrl: "views/Interviews.html",
+            data: {
+                pageTitle: 'Interviews',
+                permissions: {
+                    only: ['Admin'],
+                }
+            }
+        })
 
+        .state('createinterview', {
+            url: "/interviews/create",
+            templateUrl: "views/CreateInterview.html",
+            data: {
+                pageTitle: 'Create Interview',
+                permissions: {
+                    only: ['Admin'],
+                }
+            }
+        })
+
+        .state('editinterview', {
+            url: "/interviews/:id/edit",
+            templateUrl: "views/EditInterview.html",
+            data: {
+                pageTitle: 'Edit Interview',
+                permissions: {
+                    only: ['Admin'],
+                }
+            }
+        })
+
+        .state('editinterviewinfo', {
+            url: "/interviews/:id/info/edit",
+            templateUrl: "views/CreateInterview.html",
+            data: {
+                pageTitle: 'Edit Interview Info',
+                permissions: {
+                    only: ['Admin'],
+                }
+            }
+        })
+
+        .state('createinterviewquestion', {
+            url: "/interviews/:id/questions/create",
+            templateUrl: "views/CreateInterviewQuestion.html",
+            params: {
+                'type': 'createinterview',
+            },
+            data: {
+                pageTitle: 'Create Interview Question',
+                permissions: {
+                    only: ['Admin'],
+                }
+            }
+        })
+
+        .state('editinterviewquestion', {
+            url: "/interviews/:id/questions/:questionId/edit",
+            templateUrl: "views/CreateInterviewQuestion.html",
+            params: {
+                'type': 'createinterview',
+            },
+            data: {
+                pageTitle: 'Edit Interview Question',
+                permissions: {
+                    only: ['Admin'],
+                }
+            }
+        })
+
+        .state('assigninterview', {
+            url: "/interviews/:id/assign",
+            templateUrl: "views/InterviewAssign.html",
+            data: {
+                pageTitle: 'Interview Assign',
+                permissions: {
+                    only: ['Admin'],
+                }
+            }
+        })
 }
 
 angular

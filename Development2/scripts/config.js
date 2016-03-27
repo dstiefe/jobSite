@@ -569,6 +569,28 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
                 }
             }
         })
+
+        .state('startinterview', {
+            url: "/jobs/:jobId/resumes/:resumeId/interviews/:interviewId/start",
+            templateUrl: "views/StartInterview.html",
+            data: {
+                pageTitle: 'Start interview',
+                //permissions: {
+                //    only: ['User'],
+                //}
+            }
+        })
+
+        .state('testinterview', {
+            url: "/jobs/:jobId/resumes/:resumeId/interviews/:interviewId/test",
+            templateUrl: "views/TestInterview.html",
+            data: {
+                pageTitle: 'Interview test',
+                permissions: {
+                    only: ['User'],
+                }
+            }
+        })
 }
 
 angular

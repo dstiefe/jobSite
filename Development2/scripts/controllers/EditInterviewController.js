@@ -16,7 +16,7 @@ angular.module('Jobsite').controller("EditInterviewController", function($scope,
         console.log(error.data.message);
     });
 
-    var getInterviewQuestions =  function() {
+    var _getInterviewQuestions =  function() {
         InterviewsService.getInterviewQuestionsByInterviewId($scope.id).then(function (results) {
             $scope.interviewQuestions = results.data;
 
@@ -30,7 +30,7 @@ angular.module('Jobsite').controller("EditInterviewController", function($scope,
         });
     };
 
-    getInterviewQuestions();
+    _getInterviewQuestions();
 
     $scope.setPage = function(pageNo) {
         $scope.currentPage = pageNo;

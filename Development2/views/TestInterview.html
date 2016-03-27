@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="libs/jquery-ui/themes/overcast/jquery-ui.min.css" />
-<div ng-controller="TestJobReferralController">
+<div ng-controller="TestInterviewController">
     <div class="container">
         <div id="header" ng-include="'views/head.html'"></div>
         <div class="row-fluid vertical-align" style="margin-top: 20px;">
@@ -8,18 +8,18 @@
                 <div class="alert alert-success" role="alert" ng-hide="!successMessage">{{successMessage}}</div>
                 <div class="alert alert-danger" role="alert" ng-hide="!errorMessage">{{errorMessage}}</div>
 
-                <form name="resultScreeningForm" ng-submit="saveChanges(resultScreeningForm.$valid)" novalidate>
+                <form name="resultInterviewForm" ng-submit="saveChanges(resultInterviewForm.$valid)" novalidate>
 
                     <div class="panel panel-custom">
 
                         <div class="panel-heading">
 
                             <div class="pull-left">
-                                <h1 class="panel-title">{{reference.title}}</timer></h1>
+                                <h1 class="panel-title">{{interview.title}}</timer></h1>
                             </div>
 
                             <div class="pull-right">
-                               {{reference.questionsCount}} questions
+                               {{interview.questionsCount}} questions
                             </div>
 
                             <div class="clearfix"></div>
@@ -28,7 +28,7 @@
 
                         <div class="panel-body">
 
-                            <div class="row" ng-repeat="question in referenceQuestions track by $index">
+                            <div class="row" ng-repeat="question in interviewQuestions track by $index">
                                 <div class="col-md-10 col-md-offset-1">
                                     <p><b>{{$index + 1}}) {{question.text}}</b></p>
                                     <p>{{question.textOptional}}</p>
@@ -46,8 +46,8 @@
                                                 <input type="radio" ng-model="$parent.resultQuestions[$parent.$index].answerBool" name="answerBool_{{$parent.$index}}" required value="false"> False
                                             </li>
                                         </ul>
-                                        <input type="hidden"  ng-model="$parent.resultQuestions[$parent.$index].referenceQuestionId" value="{{question.id}}" ng-init="$parent.resultQuestions[$parent.$index].referenceQuestionId=question.id"   />
-                                        <span class="color-theme" ng-show="resultScreeningForm.answerBool_{{$parent.$index}}.$error.required">Answer is required.</span>
+                                        <input type="hidden"  ng-model="$parent.resultQuestions[$parent.$index].interviewQuestionId" value="{{question.id}}" ng-init="$parent.resultQuestions[$parent.$index].interviewQuestionId=question.id"   />
+                                        <span class="color-theme" ng-show="resultInterviewForm.answerBool_{{$parent.$index}}.$error.required">Answer is required.</span>
                                     </div>
 
                                     <div class="form-group" ng-if="question.type == 'MultipleChoice'">
@@ -57,16 +57,16 @@
                                                 <input type="radio" ng-model="$parent.resultQuestions[$parent.$index].answerOption"  name="answerOption_{{$parent.$index}}" required value="{{_key}}"> {{_option}}
                                             </li>
                                         </ul>
-                                        <input type="hidden"  ng-model="$parent.resultQuestions[$parent.$index].referenceQuestionId" value="{{question.id}}" ng-init="$parent.resultQuestions[$parent.$index].referenceQuestionId=question.id"   />
-                                        <span class="color-theme" ng-show="resultScreeningForm.answerOption_{{$parent.$index}}.$error.required">Answer is required.</span>
+                                        <input type="hidden"  ng-model="$parent.resultQuestions[$parent.$index].interviewQuestionId" value="{{question.id}}" ng-init="$parent.resultQuestions[$parent.$index].interviewQuestionId=question.id"   />
+                                        <span class="color-theme" ng-show="resultInterviewForm.answerOption_{{$parent.$index}}.$error.required">Answer is required.</span>
                                     </div>
 
                                     <div class="form-group" ng-if="question.type == 'FillIn'">
 
 <textarea class="form-control" rows="15" ng-model="$parent.resultQuestions[$parent.$index].answerText" name="answerText_{{$parent.$index}}" id="answerText" style="background-color: #fff;" required></textarea>
 
-                                        <span class="color-theme" ng-show="resultScreeningForm.answerText_{{$parent.$index}}.$error.required">Answer Text is required.</span>
-                                        <input type="hidden"  ng-model="$parent.resultQuestions[$parent.$index].referenceQuestionId" value="{{question.id}}" ng-init="$parent.resultQuestions[$parent.$index].referenceQuestionId=question.id"   />
+                                        <span class="color-theme" ng-show="resultInterviewForm.answerText_{{$parent.$index}}.$error.required">Answer Text is required.</span>
+                                        <input type="hidden"  ng-model="$parent.resultQuestions[$parent.$index].interviewQuestionId" value="{{question.id}}" ng-init="$parent.resultQuestions[$parent.$index].interviewQuestionId=question.id"   />
 
                                     </div>
 
@@ -92,8 +92,8 @@
 
 
 
-                                        <input type="hidden"  ng-model="$parent.resultQuestions[$parent.$index].referenceQuestionId" value="{{question.id}}" ng-init="$parent.resultQuestions[$parent.$index].referenceQuestionId=question.id"   />
-                                        <span class="color-theme" ng-show="resultScreeningForm.answerOption_{{$parent.$index}}.$error.required">Answer is required.</span>
+                                        <input type="hidden"  ng-model="$parent.resultQuestions[$parent.$index].interviewQuestionId" value="{{question.id}}" ng-init="$parent.resultQuestions[$parent.$index].interviewQuestionId=question.id"   />
+                                        <span class="color-theme" ng-show="resultInterviewForm.answerOption_{{$parent.$index}}.$error.required">Answer is required.</span>
                                     </div>
 
                                     <hr />
@@ -111,9 +111,7 @@
                                     <span class="glyphicon glyphicon glyphicon-ok" aria-hidden="true" ></span>
                                 </button>
 
-                                <button class="btn btn-primary btn-lg " type="submit" alt="Save and continue" title="Save and continue" ng-hide="currentQuestionNumber == reference.questionsCount">
-                                    <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
-                                </button>
+
 
                             </div>
                             <div class="clearfix"></div>

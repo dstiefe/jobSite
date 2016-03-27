@@ -1,0 +1,51 @@
+<div class="inmodal">
+    <div class="color-line"></div>
+    <div class="modal-header">
+        <div style="position:absolute; right: 30px; top: 10px;">
+            <a ng-click="onClose()" ><span class="glyphicon close-icon hoverClick" style="font-size: 30px; color: red;">×</span></a>
+        </div>
+
+        <div class="pull-left">
+            {{resume.firstName}} {{resume.lastName}}
+        </div>
+
+
+
+        <div class="pull-right">
+            {{job.title}}
+        </div>
+
+
+    </div>
+    <div class="modal-body">
+
+        <div class="alert alert-success" role="alert" ng-show="successMessage">Successfully notified!</div>
+        <div class="alert alert-danger" role="alert" ng-show="errorMessage">Error occured</div>
+        <div class="row">
+            <div class="col-md-4">
+                <label>Interviews Sent</label>
+                <select multiple disabled id="interviewsTaken" name="interviewsTaken" ng-model="interviewsTaken" class="form-control" >
+                    <option ng-repeat="interview in interviewsTaken" value="{{interview.id}}">{{interview.title}}</option>
+                </select>
+            </div>
+            <div class="col-md-4">
+                <label>Interviews To Send</label>
+                <select multiple id="interviewsToTake" name="interviewsToTake" ng-model="interviewsToTakeSelected" class="form-control" required >
+                    <option ng-repeat="interview in interviewsToTake" value="{{interview.id}}">{{interview.title}}</option>
+                </select>
+            </div>
+            <div class="col-md-4">
+                <label>All Interviews</label>
+                <select multiple disabled id="interviewsAll" name="interviewsAll" ng-model="interviewsAll" class="form-control" >
+                    <option ng-repeat="interview in interviewsAll" value="{{interview.id}}">{{interview.title}}</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <div class="text-right m-t-xs">
+            <button ng-click="notify()" class="btn btn-success" ng-disabled="interviewsToTakeSelected.length == 0">Notify Candidate</button>
+            <button ng-click="onClose()" class="btn btn-primary">Close</button>
+        </div>
+    </div>
+</div>

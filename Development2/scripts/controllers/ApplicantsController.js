@@ -170,4 +170,21 @@ angular.module('Jobsite').controller("ApplicantsController", function($scope, $h
         });
     };
 
+    $scope.sendInterviewViewShow = function(data) {
+        var modalInstance = $modal.open({
+            animation: true,
+            templateUrl: 'views/SendInterviewView.html',
+            controller: 'SendInterviewController',
+            size : 'lg',
+            resolve: {
+                resume: function () {
+                    return data;
+                },
+                jobId: function () {
+                    return jobId;
+                }
+            }
+        });
+    };
+
 });

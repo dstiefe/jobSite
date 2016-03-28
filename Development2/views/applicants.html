@@ -48,7 +48,7 @@
                                         <th>E-mail&nbsp;<a ng-click="sort_by('location');"><i class="glyphicon glyphicon-sort"></i></a></th>
                                         <th>Cover Letter&nbsp;<a ng-click="sort_by('location');"><i class="glyphicon glyphicon-sort"></i></a></th>
                                         <th>Screening&nbsp;<a ng-click="sort_by('passedScreeningIds');"><i class="glyphicon glyphicon-sort"></i></a></th>
-                                        <th>Date Applied&nbsp;<a ng-click="sort_by('publishedDate');"><i class="glyphicon glyphicon-sort"></i></a></th>
+                                        <th>Date Applied&nbsp;<a ng-click="sort_by('applyDate');"><i class="glyphicon glyphicon-sort"></i></a></th>
                                         <th>Resume</th>
                                         <th>Screening</th>
                                         </thead>
@@ -106,7 +106,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-9" ng-show="filteredItems > 0">
-                                    <div pagination="" ng-model="current" ng-change="changed()" boundary-links="true" total-items="filteredItems" items-per-page="entryLimit" class="pagination-small" previous-text="&laquo;" next-text="&raquo;"></div>
+                                    <div pagination="" ng-model="currentPage" ng-change="changed()" boundary-links="true" total-items="filteredItems" items-per-page="entryLimit" class="pagination-small" previous-text="&laquo;" next-text="&raquo;"></div>
                                 </div>
                                 <div class="col-md-2" >
                                     <br />   <span class="screeningFooter">{{ (filtered | filter: arrayNotEmpty).length }} of {{ filtered.length}} taken

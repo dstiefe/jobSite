@@ -3,7 +3,7 @@
  */
 angular.module('Jobsite').controller('SelectLoginRegisterController', function ($scope, $modalInstance, JobsService, $state, InterviewsService, $sce, $timeout, $document, type) {
 
-    $scope.typeText = (type=='apply')?'apply':'referring';
+    $scope.typeText = (type=='apply')?'applying for':'referring';
     $scope.isLogin = null;
 
 

@@ -4,8 +4,8 @@ angular
         var jobId =   $stateParams.id;
         var referralId =   $stateParams.referral;
         var type =   $stateParams.type;
-    $scope.referralText='';
-   //
+        $scope.referralText='';
+
         if (!AuthService.authentication.isAuth)
         {
             var referralObj = sessionStorage.getItem("referrals");
@@ -65,6 +65,36 @@ angular
             console.log(error.data.message);
         });
 
+        var _showLoginRegisterView = function(type) {
+
+
+            var modalInstance = $modal.open({
+                animation: true,
+                templateUrl: 'views/SelectLoginRegisterView.html',
+                controller: 'SelectLoginRegisterController',
+                size : 'md',
+                resolve: {
+                    type: function () {
+                        return type;
+                    }
+                }
+            });
+
+            modalInstance.result.then(function (res) {
+                if (res.isLogin != null){
+                    $location.search('type', type);
+                    sessionStorage.setItem("return_url",  $location.path());
+                    if (res.isLogin){
+                        $location.path("/login");
+                    }else{
+                        $location.path("/register");
+                    }
+                }
+            }, function () {
+                console.log('Modal dismissed at: ' + new Date());
+            });
+        };
+
         $scope.onApply = function() {
             if (AuthService.authentication.isAuth && AuthService.authentication.isUser)
             {
@@ -78,11 +108,7 @@ angular
                         }}
                 });
             } else{
-
-
-                $location.search('type', 'apply');
-                sessionStorage.setItem("return_url",  $location.path());
-                $location.path("/login");
+                _showLoginRegisterView('apply');
             }
         };
 
@@ -106,13 +132,7 @@ angular
                     }
                 }});
             } else{
-
-                $location.search('type', 'referral');
-                sessionStorage.setItem("return_url", $location.path());
-                $location.path("/login");
+                _showLoginRegisterView('referral');
             }
         };
-
-
-
     });

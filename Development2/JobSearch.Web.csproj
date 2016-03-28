@@ -2644,9 +2644,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="scripts\controllers\associateController.js" />
-    <Content Include="scripts\controllers\AuthController.js">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="scripts\controllers\CreateOrEditResumeController.js" />
     <Content Include="scripts\controllers\CreateReferralController.js" />
     <Content Include="scripts\controllers\CreateReferralQuestionController.js" />
@@ -2717,9 +2714,6 @@
     <Content Include="scripts\homer.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="scripts\register.js">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="scripts\services\AuthService.js" />
     <Content Include="scripts\services\CategoriesService.js" />
     <Content Include="scripts\services\JobsService.js" />
@@ -2727,9 +2721,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="scripts\services\LocationsService.js" />
-    <Content Include="scripts\services\LoginService.js">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="scripts\services\ReferralService.js" />
     <Content Include="scripts\services\RegistrationService.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

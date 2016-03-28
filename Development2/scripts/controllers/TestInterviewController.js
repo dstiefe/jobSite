@@ -17,6 +17,9 @@ angular.module('Jobsite').controller("TestInterviewController", function($scope,
 
     InterviewsService.getInterviewByResumeId($scope.jobId, $scope.resumeId, $scope.interviewId).then(function (results) {
         $scope.interview  = results.data;
+        if ( $scope.interview.questionsCount == 0){
+            $scope.errorMessage = 'Interview does not have any questions! Please try again later!';
+        }
         InterviewsService.getInterviewQuestions($scope.jobId, $scope.resumeId, $scope.interviewId).then(function (results) {
             $scope.interviewQuestions  = results.data;
         }, function (error) {

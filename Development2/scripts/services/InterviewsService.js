@@ -138,9 +138,8 @@ angular.module('Jobsite').factory('InterviewsService', ['$http', '$q', 'RESOURCE
             return results;
         });
     };
-
-    var _sendInterviewToFriends = function (model) {
-        return $http.post(serviceBase + 'interviews/friends',
+    var  _notifyInterviewCandidate= function (jobId, resumeId, model) {
+        return $http.put(serviceBase + 'jobs/'+jobId+'/resumes/'+resumeId+'/interviews/notify/',
             model,
             {
                 headers: {
@@ -151,23 +150,6 @@ angular.module('Jobsite').factory('InterviewsService', ['$http', '$q', 'RESOURCE
             return results;
         });
     };
-
-    var _getInterviewCountToFriends  = function(jobId, resumeId, referenceId){
-        return $http.get(serviceBase + 'jobs/'+jobId+'/resumes/'+resumeId+'/interviews/'+referenceId+'/friends/count',{
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': ValiDatedTokenObject.getValiDatedTokenObject().token_type+" "+ValiDatedTokenObject.getValiDatedTokenObject().access_token
-            },
-            transformResponse: function (data, headersGetter, status) {
-                //This was implemented since the REST service is returning a plain/text response
-                //and angularJS $http module can't parse the response like that.
-                return {content: data};}
-        }).then(function (results) {
-            return results;
-        });
-    };
-
-
     var _getInterviewByResumeId = function (jobId, resumeId, referenceId) {
         return $http.get(serviceBase + 'jobs/'+jobId+'/resumes/'+resumeId+'/interviews/'+referenceId,
             {
@@ -219,9 +201,7 @@ angular.module('Jobsite').factory('InterviewsService', ['$http', '$q', 'RESOURCE
     referralServiceFactory.putInterviewQuestion = _putInterviewQuestion;
     referralServiceFactory.deleteInterviewQuestion = _deleteInterviewQuestion;
     referralServiceFactory.sendInterviewRequestToResume = _sendInterviewRequestToResume;
-    referralServiceFactory.sendInterviewToFriends = _sendInterviewToFriends;
-    referralServiceFactory.getInterviewCountToFriends = _getInterviewCountToFriends;
-
+    referralServiceFactory.notifyInterviewCandidate = _notifyInterviewCandidate;
 
     referralServiceFactory.getInterviewByResumeId = _getInterviewByResumeId;
     referralServiceFactory.getInterviewQuestions = _getInterviewQuestions;

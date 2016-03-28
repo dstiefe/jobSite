@@ -1,6 +1,7 @@
 <div class="inmodal">
     <div class="color-line"></div>
     <div class="modal-header">
+
         <div style="position:absolute; right: 30px; top: 10px;">
             <a ng-click="onClose()" ><span class="glyphicon close-icon hoverClick" style="font-size: 30px; color: red;">×</span></a>
         </div>
@@ -9,43 +10,36 @@
             {{resume.firstName}} {{resume.lastName}}
         </div>
 
-
-
         <div class="pull-right">
             {{job.title}}
         </div>
-
 
     </div>
     <div class="modal-body">
 
         <div class="alert alert-success" role="alert" ng-show="successMessage">Successfully notified!</div>
         <div class="alert alert-danger" role="alert" ng-show="errorMessage">Error occured</div>
+
         <div class="row">
-            <div class="col-md-4">
-                <label>Interviews Sent</label>
-                <select multiple disabled id="interviewsTaken" name="interviewsTaken" ng-model="interviewsTaken" class="form-control" >
-                    <option ng-repeat="interview in interviewsTaken" value="{{interview.id}}">{{interview.title}}</option>
-                </select>
+            <div class="col-md-6">
+                <form  name="interviewForm" ng-submit="startInterview(interviewForm.$valid)" novalidate>
+                    <div class="form-group">
+                        <label for="interviewSelected">Select Interview</label>
+                        <select ng-model="interviewSelected" class="form-control" id="interviewSelected" name="interviewSelected" required>
+                            <option value="">Select Interview</option>
+                            <option ng-repeat="interview in interviews" ng-selected="interview.id==interviewSelected" value="{{interview.id}}">{{interview.title}}</option>
+                        </select>
+                        <span class="color-theme" ng-show="interviewForm.interviewSelected.$error.required">Interview is required.</span>
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-primary  btn-block btn-md" type="submit" ng-disabled="interviews.length == 0">Start interview</button>
+                    </div>
+                 </form>
             </div>
-            <div class="col-md-4">
-                <label>Interviews To Send</label>
-                <select multiple id="interviewsToTake" name="interviewsToTake" ng-model="interviewsToTakeSelected" class="form-control" required >
-                    <option ng-repeat="interview in interviewsToTake" value="{{interview.id}}">{{interview.title}}</option>
-                </select>
+            <div class="col-md-6">
+                <div class="form-group"><label>Notify Candidate</label> </div>
+                <div class="form-group"><button ng-click="notify()" class="btn btn-success" ng-disabled="interviews.length == 0">Notify Candidate</button> </div>
             </div>
-            <div class="col-md-4">
-                <label>All Interviews</label>
-                <select multiple disabled id="interviewsAll" name="interviewsAll" ng-model="interviewsAll" class="form-control" >
-                    <option ng-repeat="interview in interviewsAll" value="{{interview.id}}">{{interview.title}}</option>
-                </select>
-            </div>
-        </div>
-    </div>
-    <div class="modal-footer">
-        <div class="text-right m-t-xs">
-            <button ng-click="notify()" class="btn btn-success" ng-disabled="interviewsToTakeSelected.length == 0">Notify Candidate</button>
-            <button ng-click="onClose()" class="btn btn-primary">Close</button>
         </div>
     </div>
 </div>

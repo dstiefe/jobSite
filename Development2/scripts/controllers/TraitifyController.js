@@ -1,7 +1,7 @@
 /**
  * Created by Van on 22.03.2016.
  */
-angular.module('Jobsite').controller("TraitifyController", function($scope, $rootScope, Login, $http, $timeout, $location,  $state, TraitifyService, $stateParams, RESOURCES) {
+angular.module('Jobsite').controller("TraitifyController", function($scope, $rootScope,  $http, $timeout, $location,  $state, TraitifyService, $stateParams, RESOURCES) {
 
 
     $scope.jobId = $stateParams.jobId;

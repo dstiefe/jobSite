@@ -1,5 +1,5 @@
 angular
-    .module('Jobsite').controller("ViewJobDetailsController", function ($rootScope, $scope, Login, ValiDatedTokenObject, $location,$stateParams, $modal, $http, $location, $sce, JobsService, AuthService) {
+    .module('Jobsite').controller("ViewJobDetailsController", function ($rootScope, $scope,  ValiDatedTokenObject, $location,$stateParams, $modal, $http, $location, $sce, JobsService, AuthService) {
         $scope.loading = false;
         var jobId =   $stateParams.id;
         var referralId =   $stateParams.referral;

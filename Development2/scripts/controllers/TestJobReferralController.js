@@ -2,7 +2,7 @@
  * Created by Van on 04.02.2016.
  */
 
-angular.module('Jobsite').controller("TestJobReferralController", function($scope, $rootScope, Login, $http, $timeout, $location, ReferralService, CategoriesService, ResumesService, $state, $stateParams) {
+angular.module('Jobsite').controller("TestJobReferralController", function($scope, $rootScope,  $http, $timeout, $location, ReferralService, CategoriesService, ResumesService, $state, $stateParams) {
 
 
     $scope.jobId =   $stateParams.jobId;

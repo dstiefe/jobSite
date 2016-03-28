@@ -7,7 +7,7 @@
 /**
  * Created by Van on 03.02.2016.
  */
-angular.module('Jobsite').controller("InterviewAssignController", function($scope, Login, $http, $timeout, $location,$filter, InterviewsService, JobsService, $state, $stateParams) {
+angular.module('Jobsite').controller("InterviewAssignController", function($scope,  $http, $timeout, $location,$filter, InterviewsService, JobsService, $state, $stateParams) {
 
     $scope.myInterviewId = $stateParams.id;
     $scope.selectedJobId = '';

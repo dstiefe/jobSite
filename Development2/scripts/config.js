@@ -118,7 +118,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
         // Register
         .state('register', {
             url: "/register",
-            templateUrl: "views/Register.html",
+            templateUrl: "views/login.html",
             data: {
                 pageTitle: 'Register'
             }

@@ -2,7 +2,7 @@
  * Created by Van on 25.03.2016.
  */
 
-angular.module('Jobsite').controller("StartTraitifyController", function($scope, Login, $http, $timeout, $location, AuthService, TraitifyService, $state, $stateParams) {
+angular.module('Jobsite').controller("StartTraitifyController", function($scope,  $http, $timeout, $location, AuthService, TraitifyService, $state, $stateParams) {
 
 
     if (!AuthService.authentication.isAuth || !AuthService.authentication.isUser)

@@ -3,7 +3,7 @@
 /// <reference path="Service.js" /> 
 
 angular
-    .module('Jobsite').controller("JobListController", function($scope, Login, $http, $timeout, $location, ValiDatedTokenObject,RESOURCES) {
+    .module('Jobsite').controller("JobListController", function($scope,  $http, $timeout, $location, ValiDatedTokenObject,RESOURCES) {
         /*ValiDatedTokenObject.ValiDatedTokenObject = JSON.parse(sessionStorage.getItem("ValiDatedTokenObject"));
          if (ValiDatedTokenObject.ValiDatedTokenObject == null || ValiDatedTokenObject.ValiDatedTokenObject.access_token == "") {
             $location.path("/login");

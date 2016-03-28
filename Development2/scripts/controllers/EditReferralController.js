@@ -4,7 +4,7 @@
 /**
  * Created by Van on 03.02.2016.
  */
-angular.module('Jobsite').controller("EditReferralController", function($scope, Login, $http, $timeout, $location, ReferralService, CategoriesService, JobsService, $state, $stateParams) {
+angular.module('Jobsite').controller("EditReferralController", function($scope,  $http, $timeout, $location, ReferralService, CategoriesService, JobsService, $state, $stateParams) {
 
     $scope.id = $stateParams.id;
     $scope.currentPage = 1;

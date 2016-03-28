@@ -7,7 +7,7 @@
 /**
  * Created by Van on 03.02.2016.
  */
-angular.module('Jobsite').controller("ReferralAssignController", function($scope, Login, $http, $timeout, $location,$filter, ReferralService, JobsService, $state, $stateParams) {
+angular.module('Jobsite').controller("ReferralAssignController", function($scope,  $http, $timeout, $location,$filter, ReferralService, JobsService, $state, $stateParams) {
 
     $scope.myReferralId = $stateParams.id;
     $scope.selectedJobId = '';

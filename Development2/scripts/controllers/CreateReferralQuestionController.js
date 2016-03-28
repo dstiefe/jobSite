@@ -1,7 +1,7 @@
 /**
  * Created by Van on 03.02.2016.
  */
-angular.module('Jobsite').controller("CreateReferralQuestionController", function($scope, Login, $http, $timeout, $location, ReferralService, $state, $stateParams, RESOURCES) {
+angular.module('Jobsite').controller("CreateReferralQuestionController", function($scope,  $http, $timeout, $location, ReferralService, $state, $stateParams, RESOURCES) {
 
     $scope.id = $stateParams.id;
     $scope.type = $stateParams.type;

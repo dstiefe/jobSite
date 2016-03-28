@@ -4,7 +4,7 @@
 /**
  * Created by Van on 03.02.2016.
  */
-angular.module('Jobsite').controller("StartTestScreeningController", function($scope, Login, $http, $timeout, $location, AuthService, ScreeningsService, CategoriesService, ResumesService, $state, $stateParams) {
+angular.module('Jobsite').controller("StartTestScreeningController", function($scope,  $http, $timeout, $location, AuthService, ScreeningsService, CategoriesService, ResumesService, $state, $stateParams) {
 
 
     if (!AuthService.authentication.isAuth || !AuthService.authentication.isUser)

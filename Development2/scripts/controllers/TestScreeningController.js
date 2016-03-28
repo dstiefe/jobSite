@@ -2,7 +2,7 @@
  * Created by Van on 04.02.2016.
  */
 
-angular.module('Jobsite').controller("TestScreeningController", function($scope, $rootScope, Login, $http, $timeout, $location, ScreeningsService, CategoriesService, ResumesService, $state, $stateParams) {
+angular.module('Jobsite').controller("TestScreeningController", function($scope, $rootScope,  $http, $timeout, $location, ScreeningsService, CategoriesService, ResumesService, $state, $stateParams) {
 
     var timeStarted = false;
     var _startTimer = function (){

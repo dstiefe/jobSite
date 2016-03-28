@@ -1,7 +1,7 @@
 /**
  * Created by Van on 03.02.2016.
  */
-angular.module('Jobsite').controller("EditScreeningController", function($scope, Login, $http, $timeout, $location, ScreeningsService, CategoriesService, JobsService, $state, $stateParams) {
+angular.module('Jobsite').controller("EditScreeningController", function($scope,  $http, $timeout, $location, ScreeningsService, CategoriesService, JobsService, $state, $stateParams) {
 
     $scope.id = $stateParams.id;
     $scope.currentPage = 1;

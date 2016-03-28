@@ -19,7 +19,7 @@ $(function () {
     })
 })
 
-angular.module('Jobsite').controller("dashboardController", function ($rootScope, $scope, Login, ValiDatedTokenObject, locationHistoryService, $location, $modal, $http, $timeout, AuthService, JobsService, ReferralService, RESOURCES, cfpLoadingBar) {
+angular.module('Jobsite').controller("dashboardController", function ($rootScope, $scope, ValiDatedTokenObject, locationHistoryService, $location, $modal, $http, $timeout, AuthService, JobsService, ReferralService, RESOURCES, cfpLoadingBar) {
     $scope.role = AuthService.authentication.isAdministrator ? "Admin" : "User";
     $scope.entryLimits = [5, 10, 15, 20, 25];
     $scope.isLoading = true;

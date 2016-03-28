@@ -1,7 +1,7 @@
 /**
  * Created by Van on 03.02.2016.
  */
-angular.module('Jobsite').controller("CreateInterviewQuestionController", function($scope, Login, $http, $timeout, $location, InterviewsService, $state, $stateParams, RESOURCES) {
+angular.module('Jobsite').controller("CreateInterviewQuestionController", function($scope,  $http, $timeout, $location, InterviewsService, $state, $stateParams, RESOURCES) {
 
     $scope.id = $stateParams.id;
     $scope.type = $stateParams.type;

@@ -1,5 +1,5 @@
 angular
-    .module('Jobsite').controller("searchjobController", function($scope, Login,ValiDatedTokenObject, $location,$http, $timeout, RESOURCES, JobsService, $filter) {
+    .module('Jobsite').controller("searchjobController", function($scope, ValiDatedTokenObject, $location,$http, $timeout, RESOURCES, JobsService, $filter) {
 
         if (sessionStorage.getItem("ValiDatedTokenObject") == null) { } else {
             ValiDatedTokenObject.setValiDatedTokenObject(JSON.parse(sessionStorage.getItem("ValiDatedTokenObject")));

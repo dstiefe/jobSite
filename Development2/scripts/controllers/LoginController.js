@@ -3,16 +3,39 @@
 /// <reference path="Service.js" />  
 
 
-angular.module('Jobsite').controller("Login", function($scope, $rootScope, Login, $location, locationHistoryService,ValiDatedTokenObject, AuthService, RESOURCES, $modal) {
+angular.module('Jobsite').controller("Login", function($scope, $rootScope, $location, locationHistoryService, ValiDatedTokenObject, AuthService, RESOURCES, $modal, $timeout) {
 
-    $scope.UserLogin = function() {
-            var loginData = {
-                userName: $scope.username,
-                password: $scope.password
-            };
+    if(window.location.href.indexOf("register") > -1) {
+        $scope.tabs = [{active: false}, {active: true }];
+    }else{
+        $scope.tabs = [{active: true}, {active: false }];
+    }
 
-            AuthService.login(loginData).then(function (response) {
 
+    $scope.loginData ={
+        userName:'',
+        password:''
+    };
+    $scope.registerData ={
+            firstName: '',
+            lastName: '',
+            email: '',
+            emailRepeat: '',
+            userName: '',
+            password: '',
+            passwordRepeat: '',
+            isEmployer: false
+    };
+
+    $scope.login = function(isValid) {
+        $scope.successRegisterMessage='';
+        $scope.errorRegisterDescription = '';
+        $scope.errorLoginDescription ='';
+        if (!isValid) {
+            $scope.errorLoginDescription = "Please, fill out all fields!";
+            return;
+        }
+        AuthService.login($scope.loginData).then(function (response) {
                 var return_url = sessionStorage.getItem("return_url");
                 if(return_url != null){
                     sessionStorage.removeItem("return_url");
@@ -20,18 +43,46 @@ angular.module('Jobsite').controller("Login", function($scope, $rootScope, Login
                 }else{
                     $location.path('/dashboard');
                 }
+            },
+            function (err) {
+                if (err != null){
+                    $scope.errorLoginDescription = err.error_description;
+                }
+                else{
+                    $scope.errorLoginDescription = "Internal Server Error";
+                }
+            });
+    };
+    $scope.register = function(isValid) {
+        $scope.successRegisterMessage='';
+        $scope.errorRegisterDescription = '';
+        $scope.errorLoginDescription ='';
+        if (!isValid) {
+            $scope.errorRegisterDescription = "Please, fill out all fields!";
+            return;
+        }
+        AuthService.saveRegistration($scope.registerData).then(function (response) {
 
-                },
-                function (err) {
-                    if (err != null){
-                        $scope.error_Description = err.error_description;
-                    }
-                    else{
-                        $scope.error_Description = "Internal Server Error";
-                    }
-                });
-        };
 
+                $scope.successRegisterMessage="You have successfully register";
+
+                $timeout(function() {
+                    $scope.successRegisterMessage='';
+                    $scope.tabs = [{active: true}, {active: false }];
+                }, 1000);
+            },
+            function (response) {
+
+                var errors = [];
+                for (var key in response.data.ModelState) {
+                    for (var i = 0; i < response.data.ModelState[key].length; i++) {
+                        errors.push(response.data.ModelState[key][i]);
+                    }
+                }
+                $scope.errorRegisterDescription ="Failed to register user due to: " + errors.join(' ');
+
+            });
+    };
     $scope.authExternalProvider = function (provider) {
 
         var redirectUri = location.protocol + '//' + location.host + '/authcomplete.html';

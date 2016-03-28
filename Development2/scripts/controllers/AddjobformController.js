@@ -1,4 +1,4 @@
-angular.module('Jobsite').controller("AddjobformController", function($scope, Login, $sce, $location, $http, $timeout, ValiDatedTokenObject, RESOURCES, $stateParams, CategoriesService, LocationsService, JobsService, $compile, $modal) {
+angular.module('Jobsite').controller("AddjobformController", function($scope,  $sce, $location, $http, $timeout, ValiDatedTokenObject, RESOURCES, $stateParams, CategoriesService, LocationsService, JobsService, $compile, $modal) {
 //https://github.com/zensh/ui-autocomplete
         $scope.id  = $stateParams.id;
 

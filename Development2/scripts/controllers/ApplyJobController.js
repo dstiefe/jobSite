@@ -2,7 +2,7 @@ angular
     .module('Jobsite')
     .controller('ApplyJobController', ApplyJobController);
 
-function ApplyJobController($scope, Login, ValiDatedTokenObject, $http, $location, $modalInstance, ResumesService, RESOURCES,jobId) {
+function ApplyJobController($scope,  ValiDatedTokenObject, $http, $location, $modalInstance, ResumesService, RESOURCES,jobId) {
     var serviceBase = RESOURCES.API_BASE_PATH;
     $scope.jobId = jobId;
     $scope.includeCoverLetter = false;

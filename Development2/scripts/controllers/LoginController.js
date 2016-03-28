@@ -92,7 +92,6 @@ angular.module('Jobsite').controller("Login", function($scope, $rootScope, Login
         });
     };
 
-
     var showHelpWindow = function(templateName) {
         var modalInstance = $modal.open({
             animation: true,

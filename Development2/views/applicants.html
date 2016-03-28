@@ -57,7 +57,12 @@
                                             <td>{{data.firstName}}</td>
                                             <td>{{data.lastName}}</td>
                                             <td>{{data.email}}</td>
-                                            <td>{{data.note | limitTo: 100 }}</td>
+                                            <td>
+                                                {{data.note | limitTo: 100 }}
+                                                 <p style="text-align: right;" ng-if = "data.note.length > 0" >
+                                                     <a href="" ng-click="showCover(data)">See more</a>
+                                                 </p>
+                                            </td>
                                             <td>
                                                 <span ng-show = "data.screeningIds!=null && data.screeningIds.length != 0 ">
                                                 {{ data.screeningIds.length}} of {{ jobScreenings.length}} taken

@@ -187,4 +187,21 @@ angular.module('Jobsite').controller("ApplicantsController", function($scope, $h
         });
     };
 
+    $scope.showCover = function(data) {
+        var modalInstance = $modal.open({
+            animation: true,
+            templateUrl: 'views/ShowCoverView.html',
+            controller: 'ShowCoverController',
+            size : 'lg',
+            resolve: {
+                resume: function () {
+                    return data;
+                },
+                jobId: function () {
+                    return jobId;
+                }
+            }
+        });
+    };
+
 });

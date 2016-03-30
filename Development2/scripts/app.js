@@ -39,7 +39,9 @@ var clientId ="P600Us6Y476QiK331u5yEzb22dpX_y6NS75!9I-a";
         'permission', // Permission
         'timer',
         'bcherny/formatAsCurrency',
-        'angular-loading-bar'
+        'angular-loading-bar',
+        //'colorpicker.module',
+        'angularSpectrumColorpicker'
     ]).constant('RESOURCES', (function() {
 
             // Define your variable
@@ -84,13 +86,57 @@ var clientId ="P600Us6Y476QiK331u5yEzb22dpX_y6NS75!9I-a";
         }])
         .config(['$provide', function($provide){
             // this demonstrates how to register a new tool and add it to the default toolbar
-            $provide.decorator('taOptions', ['$delegate', function(taOptions){
+            $provide.decorator('taOptions', ['taRegisterTool','$delegate', function(taRegisterTool, taOptions){
                 taOptions.toolbar = [
                     [],
                     ['bold', 'italics', 'underline', 'ul', 'ol',],
                     ['justifyCenter'],
-                    [ 'insertImage', 'insertLink', 'insertVideo']
+                    [ 'insertImage', 'insertLink', 'insertVideo'],
+                    ['fontColor']
                 ];
+
+                //taRegisterTool('fontColor', {
+                //    display: "<button type='button' ng-model='textAngular.fontColor' colorpicker class='btn btn-default font-color' ng-class='displayActiveToolClass(active)' ng-disabled='showHtml()'><i class='fa fa-font'></i></button>",
+                //    action: function(deferred) {
+                //        var textAngular = this, this_Scope = angular.element(".font-color").scope();
+                //
+                //        this_Scope.$watch('textAngular.fontColor', function(value){
+                //            if(value !== '' && value !== undefined) {
+                //                console.log('val='+value);
+                //                textAngular.$editor().wrapSelection('foreColor', value);
+                //                deferred.resolve();
+                //            }
+                //        });
+                //        return false;
+                //    }
+                //});
+
+                taRegisterTool('fontColor', {
+
+                    //action: function(color) {
+                    //    if (color !== '') {
+                    //        console.log(color);
+                    //        return this.$editor().wrapSelection('foreColor', color);
+                    //    }
+                    //}
+
+                    display: "<div spectrum-colorpicker ng-model='color' on-change='!!color && action(color)' format='\"hex\"' options='options'></div>",
+                    action: function (color) {
+                        var me = this;
+                        if (!this.$editor().wrapSelection) {
+                            setTimeout(function () {
+                                me.action(color);
+                            }, 100)
+                        } else {
+                            return this.$editor().wrapSelection('foreColor', color);
+                        }
+                    },
+                    iconclass: "fa fa-font",
+                    options: {
+                        replacerClassName: 'fa fa-font', showButtons: true
+                    },
+                    color: "#000"
+                });
                 return taOptions; // whatever you return will be the taOptions
             }]);
         }])

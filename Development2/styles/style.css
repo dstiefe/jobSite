@@ -2824,9 +2824,18 @@ body.fullscreen-panel-mode {
 
 .navbar-nav>li,
 .navbar-nav>li>a {
-    height: 56px
+    /*height: 50px;*/
+    /*height: 56px;*/
+    /*mine*/
 }
-
+.right-button{
+    padding-bottom:12.5px !important;
+    padding-top:12.5px !important;
+}
+.navbar ul {
+    margin-top: 0;
+    margin-bottom: 0px !important;
+}
 .navbar-nav>li>a {
     padding: 15px 20px;
     font-size: 25px
@@ -3167,8 +3176,9 @@ h6 {
 }
 
 @media (max-width:768px) {
+
     .navbar-form-custom,
-    .navbar-right,
+   /*!* .navbar-right,*! mine*/
     #logo {
         display: none
     }
@@ -3592,7 +3602,9 @@ label.error:before {
 }
 
 .hdropdown.bigmenu {
-    padding: 30px 30px 0px 30px
+    padding: 30px 30px 0px 30px;
+   width: 400px;
+    /*mine*/
 }
 
 .bigmenu a i {
@@ -4196,7 +4208,7 @@ ul.h-list li:hover a {
 
 .landing-page .navbar-nav>li,
 .landing-page .navbar-nav>li>a {
-    height: 55px
+    height: 55px;
 }
 
 .landing-page header {

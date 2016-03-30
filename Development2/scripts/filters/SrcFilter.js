@@ -9,12 +9,12 @@ angular.module('Jobsite').filter('trusted', ['$sce', function ($sce) {
     };
 }]);
 
-
 angular.module('Jobsite').filter('trustedHtml', ['$sce', function ($sce) {
     return function(html){
         return $sce.trustAsHtml(html)
     };
 }]);
+
 angular.module('Jobsite').filter('limitHtml', function() {
     return function(text, limit) {
 
@@ -23,7 +23,7 @@ angular.module('Jobsite').filter('limitHtml', function() {
 
         return changedString.length > limit ? changedString.substr(0, limit - 1) : changedString;
     }
-})
+});
 
 angular.module('Jobsite').filter('limitHightlightHtml', function() {
         return function(text, limit) {
@@ -52,4 +52,4 @@ angular.module('Jobsite').filter('limitHightlightHtml', function() {
 
             return changedString;
         }
-    })
+});

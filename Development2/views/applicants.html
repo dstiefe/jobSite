@@ -1,7 +1,7 @@
 <!-- Header -->
 
 
-    <div class="container" ng-include="'views/head.html'"></div>
+<div class="container" ng-include="'views/head.html'"></div>
 
 <div class="container" ng-controller="ApplicantsController">
     <ol class="breadcrumb" style="margin-bottom: 10px;">
@@ -90,37 +90,41 @@
                                                 <a href="" ng-click="detailViewShow(data.id)" class="btn btn-info btn-warning"><span class="glyphicon glyphicon-edit"></span> View</a>
                                             </td>
                                             <td>
-                                                <div class="input-group">
+
                                                     <div class="btn-group" >
                                                         <button class="btn btn-default dropdown-toggle"
                                                                 data-toggle="dropdown"
                                                                 ng-click='open=!open'>
                                                             <i class="pe-7s-keypad"></i>
                                                         </button>
-                                                        <ul class="dropdown-menu list-inline">
-                                                            <li ng-click="$parent.open =!$parent.open">
+                                                        <div class="row dropdown-menu list-inline hdropdown bigmenu animated flipInX" style="margin-left: -300px;">
+                                                            <div class="col-xs-6" ng-click="$parent.open =!$parent.open">
                                                                 <a href="" title="Send screening" alt="Send screening" ng-click="sendScreeningViewShow(data)">
-                                                                    <i class="fa fa-lg fa-wifi"></i>
+                                                                    <i class="fa fa-wifi text-warning"></i>
+                                                                    <h5>Screening</h5>
                                                                 </a>
-                                                            </li>
-                                                            <li ng-click="$parent.open =!$parent.open">
+                                                            </div>
+                                                            <div class="col-xs-6" ng-click="$parent.open =!$parent.open">
                                                                 <a href="" title="Send reference request" alt="Send reference request" ng-click="sendReferenceRequestViewShow(data)">
-                                                                    <i class="fa fa-users"></i>
+                                                                    <i class="fa fa-users text-info"></i>
+                                                                    <h5>Reference</h5>
                                                                 </a>
-                                                            </li>
-                                                            <li ng-click="$parent.open =!$parent.open">
+                                                            </div>
+                                                            <div class="col-xs-6" ng-click="$parent.open =!$parent.open">
                                                                 <a href="" title="Send traitify test" alt="Send traitify test" ng-click="sendTraitifyViewShow(data)">
-                                                                    <img src="images/mind.png" width="18px" />
+                                                                    <img src="images/mind-red.png" width="46px" />
+                                                                    <h5>Personality</h5>
                                                                 </a>
-                                                            </li>
-                                                            <li ng-click="$parent.open =!$parent.open">
+                                                            </div>
+                                                            <div class="col-xs-6" ng-click="$parent.open =!$parent.open">
                                                                 <a href="" title="Send interview" alt="Send traitify test" ng-click="sendInterviewViewShow(data)">
-                                                                    <img src="images/interview_users.png" width="22px" />
+                                                                    <img src="images/interview_users_green.png" height="46px" />
+                                                                    <h5>Interview</h5>
                                                                 </a>
-                                                            </li>
-                                                        </ul>
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                </div>
+
 
 
 

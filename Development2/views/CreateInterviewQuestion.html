@@ -1,7 +1,6 @@
 <link rel="stylesheet" href="libs/jquery-ui/themes/overcast/jquery-ui.min.css" />
+<div class="container" ng-include="'views/head.html'"></div>
 <div class="container" ng-controller="CreateInterviewQuestionController">
-    <div class="container">
-        <div class="container" ng-include="'views/head.html'"></div>
         <ol class="breadcrumb">
             <li><a  ng-click="$back()">Go Back</a></li>
             <li class="active" ng-if="mode == 'edit'">Edit Interview Quesion</li>
@@ -193,5 +192,4 @@
                 </form>
             </div>
         </div>
-    </div>
 </div>

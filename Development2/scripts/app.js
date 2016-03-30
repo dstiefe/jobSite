@@ -82,5 +82,18 @@ var clientId ="P600Us6Y476QiK331u5yEzb22dpX_y6NS75!9I-a";
             cfpLoadingBarProvider.spinnerTemplate = '<div id="outer" style="width:100%;position: absolute; top: 63px; "><div class="progress" style=" margin: 0 auto;  width: 200px; height: 10px; z-index: 9999999999;"><div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"><span class="sr-only"></span></div></div></div>';
 
         }])
+        .config(['$provide', function($provide){
+            // this demonstrates how to register a new tool and add it to the default toolbar
+            $provide.decorator('taOptions', ['$delegate', function(taOptions){
+                taOptions.toolbar = [
+                    [],
+                    ['bold', 'italics', 'underline', 'ul', 'ol',],
+                    ['justifyCenter'],
+                    [ 'insertImage', 'insertLink', 'insertVideo']
+                ];
+                return taOptions; // whatever you return will be the taOptions
+            }]);
+        }])
+
 })();
 

@@ -3,9 +3,11 @@
 
 <link rel="stylesheet" href="libs/jquery-ui/themes/overcast/jquery-ui.min.css" />
 
+<div class="container" ng-include="'views/head.html'"></div>
+
 <div class="container" ng-controller="AddjobformController">
-    <div class="container">
-        <div class="container" ng-include="'views/head.html'"></div>
+
+
         <ol class="breadcrumb">
             <li><a  ng-click="$back()">Go Back</a></li>
             <li class="active">Edit Job</li>
@@ -186,5 +188,5 @@
         </div>
             </form>
     </div>
-</div>
+
 </div>

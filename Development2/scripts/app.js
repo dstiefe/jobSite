@@ -40,7 +40,6 @@ var clientId ="P600Us6Y476QiK331u5yEzb22dpX_y6NS75!9I-a";
         'timer',
         'bcherny/formatAsCurrency',
         'angular-loading-bar',
-        //'colorpicker.module',
         'angularSpectrumColorpicker'
     ]).constant('RESOURCES', (function() {
 
@@ -95,31 +94,7 @@ var clientId ="P600Us6Y476QiK331u5yEzb22dpX_y6NS75!9I-a";
                     ['fontColor']
                 ];
 
-                //taRegisterTool('fontColor', {
-                //    display: "<button type='button' ng-model='textAngular.fontColor' colorpicker class='btn btn-default font-color' ng-class='displayActiveToolClass(active)' ng-disabled='showHtml()'><i class='fa fa-font'></i></button>",
-                //    action: function(deferred) {
-                //        var textAngular = this, this_Scope = angular.element(".font-color").scope();
-                //
-                //        this_Scope.$watch('textAngular.fontColor', function(value){
-                //            if(value !== '' && value !== undefined) {
-                //                console.log('val='+value);
-                //                textAngular.$editor().wrapSelection('foreColor', value);
-                //                deferred.resolve();
-                //            }
-                //        });
-                //        return false;
-                //    }
-                //});
-
                 taRegisterTool('fontColor', {
-
-                    //action: function(color) {
-                    //    if (color !== '') {
-                    //        console.log(color);
-                    //        return this.$editor().wrapSelection('foreColor', color);
-                    //    }
-                    //}
-
                     display: "<div spectrum-colorpicker ng-model='color' on-change='!!color && action(color)' format='\"hex\"' options='options'></div>",
                     action: function (color) {
                         var me = this;

@@ -44,6 +44,8 @@
 
     <br />
 
+
+
     <section id="content">
             <div class="container">
                 <div class="right_col" role="main">
@@ -88,22 +90,54 @@
                                                 <a href="" ng-click="detailViewShow(data.id)" class="btn btn-info btn-warning"><span class="glyphicon glyphicon-edit"></span> View</a>
                                             </td>
                                             <td>
-                                                <a href="" title="Send screening" alt="Send screening" ng-click="sendScreeningViewShow(data)">
-                                                    <i class="fa fa-lg fa-wifi"></i>
-                                                </a>
-                                                <a href="" title="Send reference request" alt="Send reference request" ng-click="sendReferenceRequestViewShow(data)">
-                                                    <i class="fa fa-users"></i>
-                                                </a>
-                                                <a href="" title="Send traitify test" alt="Send traitify test" ng-click="sendTraitifyViewShow(data)">
-                                                    <img src="images/mind.png" width="18px" />
-                                                </a>
-                                                <a href="" title="Send interview" alt="Send traitify test" ng-click="sendInterviewViewShow(data)">
-                                                    <img src="images/interview_users.png" width="22px" />
-                                                </a>
-                                                <!--<a  ng-show = "data.screeningIds!=null && data.screeningIds.length != 0 "href="" ng-click="testResultsViewShow(data)" class="btn btn-info btn-warning"><span class="glyphicon glyphicon-edit"></span> Manage</a>-->
-                                                <!--<span ng-show = "data.screeningIds==null || data.screeningIds.length == 0 ">-->
-                                                     <!--No screenings-->
-                                                 <!--</span>-->
+                                                <div class="input-group">
+                                                    <div class="btn-group" >
+                                                        <button class="btn btn-default dropdown-toggle"
+                                                                data-toggle="dropdown"
+                                                                ng-click='open=!open'>
+                                                            <i class="pe-7s-keypad"></i>
+                                                        </button>
+                                                        <ul class="dropdown-menu list-inline">
+                                                            <li ng-click="$parent.open =!$parent.open">
+                                                                <a href="" title="Send screening" alt="Send screening" ng-click="sendScreeningViewShow(data)">
+                                                                    <i class="fa fa-lg fa-wifi"></i>
+                                                                </a>
+                                                            </li>
+                                                            <li ng-click="$parent.open =!$parent.open">
+                                                                <a href="" title="Send reference request" alt="Send reference request" ng-click="sendReferenceRequestViewShow(data)">
+                                                                    <i class="fa fa-users"></i>
+                                                                </a>
+                                                            </li>
+                                                            <li ng-click="$parent.open =!$parent.open">
+                                                                <a href="" title="Send traitify test" alt="Send traitify test" ng-click="sendTraitifyViewShow(data)">
+                                                                    <img src="images/mind.png" width="18px" />
+                                                                </a>
+                                                            </li>
+                                                            <li ng-click="$parent.open =!$parent.open">
+                                                                <a href="" title="Send interview" alt="Send traitify test" ng-click="sendInterviewViewShow(data)">
+                                                                    <img src="images/interview_users.png" width="22px" />
+                                                                </a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+
+
+
+
+
+                                                <!--<a href="" title="Send screening" alt="Send screening" ng-click="sendScreeningViewShow(data)">-->
+                                                    <!--<i class="fa fa-lg fa-wifi"></i>-->
+                                                <!--</a>-->
+                                                <!--<a href="" title="Send reference request" alt="Send reference request" ng-click="sendReferenceRequestViewShow(data)">-->
+                                                    <!--<i class="fa fa-users"></i>-->
+                                                <!--</a>-->
+                                                <!--<a href="" title="Send traitify test" alt="Send traitify test" ng-click="sendTraitifyViewShow(data)">-->
+                                                    <!--<img src="images/mind.png" width="18px" />-->
+                                                <!--</a>-->
+                                                <!--<a href="" title="Send interview" alt="Send traitify test" ng-click="sendInterviewViewShow(data)">-->
+                                                    <!--<img src="images/interview_users.png" width="22px" />-->
+                                                <!--</a>-->
                                             </td>
                                             </td>
                                         </tr>

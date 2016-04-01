@@ -4680,3 +4680,10 @@ height: 34px;
     line-height: 44px;
     display: inline-block;
 }
+
+
+.ellipsis {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}

@@ -13,6 +13,8 @@ angular.module('Jobsite').controller("UserDashboardController", function ($rootS
         $scope.totalItems = $scope.list.length;
     };
 
+    $scope.activeTab = 'JobDescription';
+
    JobsService.getJobsApplied().then(function (results) {
             $scope.list = results.data;
 
@@ -20,6 +22,10 @@ angular.module('Jobsite').controller("UserDashboardController", function ($rootS
                 $scope.list = $scope.list.concat(results2.data);
                 ReferralService.getReferences().then(function (results3) {
                     $scope.list = $scope.list.concat(results3.data);
+
+                    for(var i= 0; i< $scope.list.length; i++)
+                        $scope.list[i].activeTab = 0;
+
                     _pageCalc();
                     $scope.isLoading = false;
                 }, function (error) {

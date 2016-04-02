@@ -8,8 +8,10 @@
 
     <div class="row">
         <br />
-        <div class="col-lg-3 col-md-4" ng-repeat="data in list | startFrom:(currentPage-1)*entryLimit | limitTo:entryLimit | orderBy:'-publishedDate'">
+        <div class="col-lg-3 col-md-4 col-sm-6" ng-repeat="data in list | startFrom:(currentPage-1)*entryLimit | limitTo:entryLimit | orderBy:'-publishedDate'">
+
             <div class="panel panel-default" ng-if="!data.recepients && !data.referenceId">
+
                 <div class="panel-heading" style="height: 56px; overflow: hidden;">
 
                     <div class="pull-left" style="width:100%">
@@ -19,112 +21,198 @@
                         </span>
                     </div>
 
-                    &nbsp;
-
-
-                    <a class="btn btn-primary pull-right" href="#viewjobdetails?id={{data.id}}" >
-                        View Job
-                    </a>
-
-
-
                     <div class="clearfix"></div>
 
                 </div>
-                <div class="panel-body crop" ng-bind-html="data.description"></div>
 
+                <div class="panel-body tab-content" style="height:130px;">
 
+                    <div id="job_description_{{data.id}}" class="crop tab-pane fade in active">
 
+                        <div class="crop" ng-bind-html="data.description"></div>
 
-                <div class="panel-footer" style="height: 50px;padding-top: 5px;" >
+                    </div>
 
+                    <div id="skills_{{data.id}}" class="tab-pane fade">
 
-                    <a class="btn btn-primary btn-footer"   ng-repeat="screening in data.screenings | filter:{ isNew: true }" ui-sref="starttestscreening({id:data.resumeId, jobId:data.id, screeningId: screening.id})">
+                        <a class="btn btn-primary btn-footer"   ng-repeat="screening in data.screenings | filter:{ isNew: true }" ui-sref="starttestscreening({id:data.resumeId, jobId:data.id, screeningId: screening.id})">
                         {{screening.name}}
                         <img src="images/new_little.png"  ng-show="screening.isNew" style="max-width:25px; margin-top: -10px; margin-right:-13px;" />
-                    </a>
-
+                        </a>
                         <span class="label label-info label-footer" ng-repeat="screening in data.screenings | filter:{ isNew: false }" >
-                            {{screening.name}}
-                            <span class="badge badge-success"><i class="fa fa-check"></i></span>
+                        {{screening.name}}
+                        <span class="badge badge-success"><i class="fa fa-check"></i></span>
                         </span>
+                    </div>
 
-                    <a href="" class="btn btn-success btn-footer" ng-repeat="reference in data.references" ng-click="sendReferenceToFriends(data, reference.id)"  title="The client is very interested – do you have any references that will validate some of your skills sets that are required for this opportunity – if so please click">
-                        {{reference.name}}
-                        <img src="images/new_little.png"  ng-show="reference.isNew" style="max-width:25px; margin-top: -10px; margin-right:-13px;"  />
-                    </a>
+                    <div id="personalities_{{data.id}}" class="tab-pane fade">
 
-                    <a class="btn btn-warning btn-footer"   ng-repeat="traitify in data.traitifies | filter:{ isNew: true }" ui-sref="traitifystart({resumeId:data.resumeId, jobId:data.id, traitifyId: traitify.id})">
+                        <a class="btn btn-warning btn-footer"   ng-repeat="traitify in data.traitifies | filter:{ isNew: true }" ui-sref="traitifystart({resumeId:data.resumeId, jobId:data.id, traitifyId: traitify.id})">
                         {{traitify.name}}
                         <img src="images/new_little.png"  ng-show="traitify.isNew" style="max-width:25px; margin-top: -10px; margin-right:-13px;" />
-                    </a>
+                        </a>
 
                         <span class="label label-warning label-footer" ng-repeat="traitify in data.traitifies | filter:{ isNew: false }" >
-                            {{traitify.name}}
-                            <span class="badge badge-success"><i class="fa fa-check"></i></span>
+                        {{traitify.name}}
+                        <span class="badge badge-success"><i class="fa fa-check"></i></span>
                         </span>
 
+                    </div>
+
+                    <div id="peer_review_{{data.id}}" class="tab-pane fade">
+                        <a href="" class="btn btn-success btn-footer" ng-repeat="reference in data.references" ng-click="sendReferenceToFriends(data, reference.id)"  title="The client is very interested – do you have any references that will validate some of your skills sets that are required for this opportunity – if so please click">
+                        {{reference.name}}
+                        <img src="images/new_little.png"  ng-show="reference.isNew" style="max-width:25px; margin-top: -10px; margin-right:-13px;"  />
+                        </a>
+                    </div>
+
                 </div>
-            </div>
+
+                <div class="panel-footer" style="height: 50px; padding: 3px;" >
+
+                    <div class="btn-group btn-group-md btn-group-justified" role="group" style="height: 100%;">
+
+                        <a role="button" data-toggle="tab" href="#job_description_{{data.id}}" target="_self" class="btn btn-primary btn-xs" style="white-space: normal;" ng-model="data.activeTab" btn-radio="0" uncheckable >Job Description</a>
+                        <a role="button" data-toggle="tab" href="#skills_{{data.id}}" target="_self" class="btn btn-primary btn-xs"  style="white-space: normal; " ng-model="data.activeTab" btn-radio="1" uncheckable >Skills Assessment</a>
+                        <a role="button" data-toggle="tab" href="#personalities_{{data.id}}" target="_self" class="btn btn-primary btn-xs"  style="white-space: normal;" ng-model="data.activeTab" btn-radio="2" uncheckable >Personality  Assessment</a>
+                        <a role="button" data-toggle="tab" href="#peer_review_{{data.id}}" target="_self" class="btn btn-primary btn-xs"  style="white-space: normal; " ng-model="data.activeTab" btn-radio="3" uncheckable >Peer Review</a>
+
+                    </div>
+
+                </div>
+
+             </div>
+
             <div class="panel panel-info" ng-if="data.recepients">
-                <div class="panel-heading" style="height: 56px;">
-                    <div class="pull-left">
-                        <h3 class="panel-title">{{data.jobName}}({{data.location}})</h3>
-                            <span class="dateHeader">
+
+                <div class="panel-heading" style="height: 56px; overflow: hidden;">
+                    <div class="pull-left" style="width:100%">
+                        <h3 class="panel-title ellipsis">{{data.jobName}}({{data.location}})</h3>
+                            <span class="dateHeader ellipsis">
                                 <span>Date Created: </span>{{data.modifyDate*1000 | date : "M/d/yyyy"}}
                             </span>
                     </div>
-
-                        <span class="label label-primary pull-right" ng-show="data.status =='GotJobMyNetwork'" style="font-size: 14px; padding: 10px;">
-                            Reffered
-                        </span>
-
                     <div class="clearfix"></div>
                 </div>
-                <div class="panel-body crop">
 
-                    You have referred the job: {{data.jobName}} to <span ng-repeat="recepient in data.recepients">{{recepient.firstName}} {{recepient.lastName}}, </span> here on {{data.modifyDate*1000 | date : "M/d/yyyy"}}.  We will keep you notified on the status of this position… Thank you!!!
+                <div class="panel-body tab-content" style="height:130px;">
 
+                    <div id="referral_overview_{{data.id}}" class="crop tab-pane fade in active">
+
+                        You have referred the job: {{data.jobName}} to <span ng-repeat="recepient in data.recepients">{{recepient.firstName}} {{recepient.lastName}}, </span> here on {{data.modifyDate*1000 | date : "M/d/yyyy"}}.  We will keep you notified on the status of this position… Thank you!!!
+
+
+                    </div>
+
+                    <div id="referral_list_{{data.id}}" class="tab-pane fade">
+
+                        <a class="btn btn-primary btn-footer"   ng-repeat="screening in data.screenings | filter:{ isNew: true }" ui-sref="starttestscreening({id:data.resumeId, jobId:data.id, screeningId: screening.id})">
+                            {{screening.name}}
+                            <img src="images/new_little.png"  ng-show="screening.isNew" style="max-width:25px; margin-top: -10px; margin-right:-13px;" />
+                        </a>
+                        <span class="label label-info label-footer" ng-repeat="screening in data.screenings | filter:{ isNew: false }" >
+                        {{screening.name}}
+                        <span class="badge badge-success"><i class="fa fa-check"></i></span>
+                        </span>
+                    </div>
+
+                    <div id="referral_add_{{data.id}}" class="tab-pane fade">
+
+                        <a class="btn btn-warning btn-footer"   ng-repeat="traitify in data.traitifies | filter:{ isNew: true }" ui-sref="traitifystart({resumeId:data.resumeId, jobId:data.id, traitifyId: traitify.id})">
+                            {{traitify.name}}
+                            <img src="images/new_little.png"  ng-show="traitify.isNew" style="max-width:25px; margin-top: -10px; margin-right:-13px;" />
+                        </a>
+
+                        <span class="label label-warning label-footer" ng-repeat="traitify in data.traitifies | filter:{ isNew: false }" >
+                        {{traitify.name}}
+                        <span class="badge badge-success"><i class="fa fa-check"></i></span>
+                        </span>
+
+                    </div>
 
                 </div>
-                <div class="panel-footer panel-info" style="height: 50px;">
+
+                <!--<span class="label label-primary pull-right" ng-show="data.status =='GotJobMyNetwork'" style="font-size: 14px; padding: 10px;">-->
+                <!--Reffered-->
+                <!--</span>-->
+
+
+                <div class="panel-footer" style="height: 50px; padding: 3px;" >
+
+                    <div class="btn-group btn-group-md btn-group-justified" role="group" style="height: 100%;">
+
+                        <a role="button" data-toggle="tab" href="#referral_overview_{{data.id}}" target="_self" class="btn btn-info btn-xs" style="white-space: normal;" ng-model="data.activeTab" btn-radio="0" uncheckable >Referral Overview</a>
+                        <a role="button" data-toggle="tab" href="#referral_list_{{data.id}}" target="_self" class="btn btn-info btn-xs"  style="white-space: normal; " ng-model="data.activeTab" btn-radio="1" uncheckable >Referral List</a>
+                        <a role="button" data-toggle="tab" href="#referral_add_{{data.id}}" target="_self" class="btn btn-info btn-xs"  style="white-space: normal;" ng-model="data.activeTab" btn-radio="2" uncheckable >Refer Additional People </a>
+
+                    </div>
 
                 </div>
             </div>
 
             <div class="panel panel-warning" ng-if="data.referenceId && !data.isPassed">
-                <div class="panel-heading" style="height: 56px;">
 
-                    <a class="btn btn-info pull-right" href="#viewjobdetails?id={{data.jobId}}">
-                        View Job
-                    </a>
 
+                <div class="panel-heading" style="height: 56px; overflow: hidden;">
+                    <div class="pull-left" style="width:100%">
+                        <!--<h3 class="panel-title ellipsis">{{data.jobName}}({{data.location}})</h3>-->
+                            <!--<span class="dateHeader ellipsis">-->
+                                <!--<span>Date Created: </span>{{data.modifyDate*1000 | date : "M/d/yyyy"}}-->
+                            <!--</span>-->
+                    </div>
                     <div class="clearfix"></div>
                 </div>
-                <div class="panel-body crop">
-                    {{data.userName}} wants would like you to provide a reference for the following job
+
+                <div class="panel-body tab-content" style="height:130px; font-size: 12px;">
+
+                    <div id="reference_request_{{data.id}}" class="crop tab-pane fade in active" style="overflow-y: scroll;">
+
+                        <p>{{data.userName}}  is asking you to be a reference for {{data.jobName}}</p>
+
+                        <p>At Daytal our objective is to make sure {{data.userName}} is the right fit for the {{data.jobName}}.  Therefore, in order to get the most accurate feedback your responses will NOT be shared with {{data.userName}}</p>
+
+
+                        <a title="To Provide a reference please press 'start reference'" class="btn btn-info btn-footer pull-right" ui-sref="starttestjobreferral({jobId:data.jobId, resumeId: data.resumeId, jobReferralId: data.referenceId, userName:data.userName})" >
+                            Begin Reference
+                        </a>
+                    </div>
+
                 </div>
+
+
                 <div class="panel-footer panel-warning" style="height: 50px;" >
-                    <a title="To Provide a reference please press 'start reference'" class="btn btn-info btn-footer pull-right" ui-sref="starttestjobreferral({jobId:data.jobId, resumeId: data.resumeId, jobReferralId: data.referenceId, userName:data.userName})" >
-                        Start Reference
-                    </a>
+                    <div class="btn-group btn-group-md btn-group-justified" role="group" style="height: 100%;">
+
+                        <a role="button" data-toggle="tab" href="#reference_request_{{data.id}}" target="_self" class="btn btn-warning btn-xs" style="white-space: normal;" ng-model="data.activeTab" btn-radio="0" uncheckable >Reference Request</a>
+
+                    </div>
                 </div>
             </div>
 
             <div class="panel panel-success"  ng-if="data.referenceId && data.isPassed">
-                <div class="panel-heading" style="height: 56px;">
 
-                    <a class="btn btn-info pull-right" href="#viewjobdetails?id={{data.jobId}}">
-                        View Job
-                    </a>
+                <div class="panel-heading" style="height: 56px; overflow: hidden;">
 
-                    <div class="clearfix"></div>
+
                 </div>
-                <div class="panel-body crop">
-                    {{data.userName}} wants would like you to provide a reference for the following job
+
+                <div class="panel-body tab-content" style="height:130px;">
+
+                    <div id="reference_send_{{data.id}}" class="crop tab-pane fade in active">
+                        {{data.userName}} wants would like you to provide a reference for
+                        <a  href="#viewjobdetails?id={{data.jobId}}">
+                            the following job
+                        </a>
+                    </div>
+
                 </div>
+
                 <div class="panel-footer panel-success" style="height: 50px;" >
-                    Thank you for filling out the reference request
+                    <div class="btn-group btn-group-md btn-group-justified" role="group" style="height: 100%;">
+
+                        <a role="button" data-toggle="tab" href="#reference_send_{{data.id}}" target="_self" class="btn btn-success btn-xs" style="white-space: normal;" ng-model="data.activeTab" btn-radio="0" uncheckable >Provide Reference Request</a>
+
+                    </div>
                 </div>
             </div>
 

@@ -1,7 +1,10 @@
 /**
  * Created by Van on 10.02.2016.
  */
-angular.module('Jobsite').controller('SendReferenceToFriendsController', function ($scope, $modalInstance, JobsService, ScreeningsService, $sce, $timeout, $document, ReferralService, jobId, jobTitle,resumeId,referenceId,RESOURCES) {
+angular.module('Jobsite').controller('SendReferenceToFriendsController', function ($scope,  JobsService, ScreeningsService, $sce, $timeout, $document, ReferralService, RESOURCES) {
+
+    $scope.job = {};
+    $scope.referenceId = '';
     $scope.WorkingRelationshipTypes = RESOURCES.WORKING_RELATIONSHIP_TYPES;
 
     $scope.yearsList = [];
@@ -9,14 +12,9 @@ angular.module('Jobsite').controller('SendReferenceToFriendsController', functio
     {
         $scope.yearsList.push(i);
     }
+
     $scope.successMessage='';
-    $scope.jobTitle = jobTitle;
-    $scope.jobId = jobId;
-    $scope.resumeId = resumeId;
-    $scope.referenceId = referenceId;
-
     $scope.message ='';
-
     $scope.friendsCount ='';
 
     var _initEmailObjects = function (){
@@ -32,7 +30,7 @@ angular.module('Jobsite').controller('SendReferenceToFriendsController', functio
                 'workingRelationshipType':''
             });
         }
-        ReferralService.getReferenceCountToFriends($scope.jobId, $scope.resumeId, $scope.referenceId).then(function (results) {
+        ReferralService.getReferenceCountToFriends($scope.job.id, $scope.job.resumeId, $scope.referenceId).then(function (results) {
             $scope.friendsCount = results.data.content;
         }, function (error) {
             $scope.message ='Error occured!';
@@ -40,11 +38,19 @@ angular.module('Jobsite').controller('SendReferenceToFriendsController', functio
         });
 
     };
-    _initEmailObjects();
 
 
-    $scope.onClose = function() {
-        $modalInstance.close();
+
+    //$scope.onClose = function() {
+    //    $modalInstance.close();
+    //};
+
+    $scope.sendReferenceToFriends= function(referenceId) {
+        $scope.successMessage='';
+        $scope.message ='';
+        $scope.friendsCount ='';
+        $scope.referenceId = referenceId;
+        _initEmailObjects();
     };
 
     $scope.onSave = function(isValid) {
@@ -74,8 +80,8 @@ angular.module('Jobsite').controller('SendReferenceToFriendsController', functio
         }
 
         var postsavedata = {
-            "jobId": $scope.jobId,
-            "resumeId": $scope.resumeId,
+            "jobId": $scope.job.id,
+            "resumeId": $scope.job.resumeId,
             "referenceId": $scope.referenceId,
             "recepients": $scope.emailObjects
         };

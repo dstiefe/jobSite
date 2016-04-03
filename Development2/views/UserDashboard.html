@@ -77,27 +77,37 @@
 
                     </div>
 
-                    <div id="peer_review_{{data.id}}" class="tab-pane fade row">
-
-                        <div class="panel panel-success col-xs-3 small-panel small-panel-success" ng-repeat="reference in data.references| filter:{ isNew: true }">
-                            <div class="panel-body small-panel-body">
-                                <p>{{reference.name}}</p>
-                                <a class="btn btn-success btn-xs btn-footer"  ng-click="sendReferenceToFriends(data, reference.id)">Start</a>
-                            </div>
-                        </div>
-
-                        <div class="panel panel-info col-xs-3 small-panel small-panel-info" ng-repeat="reference in data.references | filter:{ isNew: false }">
-                            <div class="panel-body small-panel-body">
-                                <p>{{reference.name}}</p>
-                                <b>Taken</b>
-                            </div>
-                        </div>
-
-                        <p ng-show="(data.references).length == 0" class="col-xs-12">
-                            Not found Peer Reviews
-                        <p>
+                    <div id="peer_review_{{data.id}}" class="tab-pane fade row"
+                         ng-include="'views/SendReferenceToFriendsView.html'"
+                         ng-controller="SendReferenceToFriendsController"
+                         onload="job = data;"
+                    >
 
                     </div>
+
+                    <!--<div id="peer_review_{{data.id}}" class="tab-pane fade row">                      -->
+                        <!---->
+                        <!--<div class="panel panel-success col-xs-3 small-panel small-panel-success" ng-repeat="reference in data.references| filter:{ isNew: true }">-->
+                            <!--<div class="panel-body small-panel-body">-->
+                                <!--<p>{{reference.name}}</p>-->
+                                <!--<a class="btn btn-success btn-xs btn-footer"  ng-click="sendReferenceToFriends(data, reference.id)">Start</a>-->
+                            <!--</div>-->
+                        <!--</div>-->
+
+                        <!--<div class="panel panel-info col-xs-3 small-panel small-panel-info" ng-repeat="reference in data.references | filter:{ isNew: false }">-->
+                            <!--<div class="panel-body small-panel-body">-->
+                                <!--<p>{{reference.name}}</p>-->
+                                <!--<b>Taken</b>-->
+                            <!--</div>-->
+                        <!--</div>-->
+
+                        <!--<p ng-show="(data.references).length == 0" class="col-xs-12">-->
+                            <!--Not found Peer Reviews-->
+                        <!--<p>-->
+
+                    <!--</div>-->
+
+
 
                 </div>
 
@@ -126,7 +136,7 @@
 
              </div>
 
-            <div class="panel panel-info" ng-if="data.recepients">
+            <div class="panel panel-success" ng-if="data.recepients">
 
                 <div class="panel-heading" style="height: 56px; overflow: hidden;">
                     <div class="pull-left" style="width:100%">
@@ -141,22 +151,31 @@
                 <div class="panel-body tab-content panel-body-user" >
 
                     <div id="referral_overview_{{data.id}}" class="crop tab-pane fade in active">
+                        <p>You have referred {{data.recepients.length}} to job {{data.jobName}}.</p>
 
-                        You have referred the job: {{data.jobName}} to <span ng-repeat="recepient in data.recepients">{{recepient.firstName}} {{recepient.lastName}}, </span> here on {{data.modifyDate*1000 | date : "M/d/yyyy"}}.  We will keep you notified on the status of this position… Thank you!!!
+                        <p>Thank you so much!</p>
+
+                        <!--You have referred the job: {{data.jobName}} to <span ng-repeat="recepient in data.recepients">{{recepient.firstName}} {{recepient.lastName}}, </span> here on {{data.modifyDate*1000 | date : "M/d/yyyy"}}.  We will keep you notified on the status of this position… Thank you!!!-->
 
 
                     </div>
 
                     <div id="referral_list_{{data.id}}" class="tab-pane fade">
+                        <div class="form-group">
+                            <input type="text" ng-model="data.search"  placeholder="Enter Name to Filter List" class="form-control" />
+                        </div>
+                        <div class="table-responsive">
+                        <table class="table table-striped">
+                            <tbody>
+                            <tr ng-repeat="recepient in data.recepients | filter:data.search">
+                                <th scope="row">{{$index+1}}</th>
+                                 <td>{{recepient.firstName}} {{recepient.lastName}}</td>
+                                <td>{{recepient.email}}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        </div>
 
-                        <a class="btn btn-primary btn-footer"   ng-repeat="screening in data.screenings | filter:{ isNew: true }" ui-sref="starttestscreening({id:data.resumeId, jobId:data.id, screeningId: screening.id})">
-                            {{screening.name}}
-                            <img src="images/new_little.png"  ng-show="screening.isNew" style="max-width:25px; margin-top: -10px; margin-right:-13px;" />
-                        </a>
-                        <span class="label label-info label-footer" ng-repeat="screening in data.screenings | filter:{ isNew: false }" >
-                        {{screening.name}}
-                        <span class="badge badge-success"><i class="fa fa-check"></i></span>
-                        </span>
                     </div>
 
                     <div id="referral_add_{{data.id}}" class="tab-pane fade">
@@ -184,16 +203,16 @@
 
                     <div class="btn-group btn-group-md btn-group-justified" role="group" style="height: 100%;">
 
-                        <a role="button" data-toggle="tab" href="#referral_overview_{{data.id}}" target="_self" class="btn btn-info btn-xs" style="white-space: normal;" ng-model="data.activeTab" btn-radio="0" uncheckable >Referral Overview</a>
-                        <a role="button" data-toggle="tab" href="#referral_list_{{data.id}}" target="_self" class="btn btn-info btn-xs"  style="white-space: normal; " ng-model="data.activeTab" btn-radio="1" uncheckable >Referral List</a>
-                        <a role="button" data-toggle="tab" href="#referral_add_{{data.id}}" target="_self" class="btn btn-info btn-xs"  style="white-space: normal;" ng-model="data.activeTab" btn-radio="2" uncheckable >Refer Additional People </a>
+                        <a role="button" data-toggle="tab" href="#referral_overview_{{data.id}}" target="_self" class="btn btn-default btn-xs" style="white-space: normal;" ng-model="data.activeTab" btn-radio="0" uncheckable >Referral Overview</a>
+                        <a role="button" data-toggle="tab" href="#referral_list_{{data.id}}" target="_self" class="btn btn-default btn-xs"  style="white-space: normal; " ng-model="data.activeTab" btn-radio="1" uncheckable >Referral List</a>
+                        <a role="button" data-toggle="tab" href="#referral_add_{{data.id}}" target="_self" class="btn btn-default btn-xs"  style="white-space: normal;" ng-model="data.activeTab" btn-radio="2" uncheckable >Refer Additional People </a>
 
                     </div>
 
                 </div>
             </div>
 
-            <div class="panel panel-warning" ng-if="data.referenceId && !data.isPassed">
+            <div class="panel panel-warning" ng-if="data.referenceId">
 
 
                 <div class="panel-heading" style="height: 56px; overflow: hidden;">

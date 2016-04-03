@@ -59,10 +59,10 @@ var clientId ="P600Us6Y476QiK331u5yEzb22dpX_y6NS75!9I-a";
         ];
 
             var WorkingRelationshipTypes = [
-                {value: "WasYourDirectReport", name: "Was your direct report"},
+                {value: "WasYourDirectReport", name: "Your Direct Report"},
                 {value: "WasFurtherUpTheOrgChart", name: "Was further up the org chart"},
-                {value: "WasYourColleague", name: "Was your colleague"},
-                {value: "WasADirectReport", name: "Was a direct report"},
+                {value: "WasYourColleague", name: "Colleague"},
+                {value: "WasADirectReport", name: "Your Direct Report"},
             ];
 
             // Use the variable in your constants

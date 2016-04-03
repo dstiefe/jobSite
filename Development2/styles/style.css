@@ -4687,3 +4687,69 @@ height: 34px;
     text-overflow: ellipsis;
     overflow: hidden;
 }
+
+.col-user{
+    padding-right: 5px !important;
+    padding-left: 5px !important;
+}
+.panel-body-user{
+    height: 180px;
+    font-size: 12px;
+}
+
+.panel-body-user  .crop {
+    overflow: hidden;
+    height: 160px !important;
+    line-height: 20px;
+}
+
+.panel-footer .btn-group .badge-success {
+    background-color: #62cb31 !important;
+}
+.badge-right{
+    position: absolute !important;
+    top: auto !important;
+    right: 0px;
+    bottom: 0px;
+}
+
+.panel-footer-user{
+    height: 70px !important;
+    padding: 3px !important;
+
+}
+
+.small-panel{
+    padding: 3px !important;
+    margin: 3px !important;
+}
+
+.small-panel-success{
+    background-color: #d6e9c6 !important;
+    border-color:#74d348 !important;
+}
+.small-panel-info{
+    background-color: #bce8f1 !important;
+    border-color: #3498db !important;
+}
+
+.small-panel-body{
+    height: 50px !important;
+    font-size: 10px !important;
+    padding: 0 !important;
+    text-align: center !important;
+}
+
+.panel-footer .btn-group  .btn-default {
+    background-color: #f5f5f5;
+    border-color: #e4e5e7;
+    color: #6a6c6f
+}
+
+.panel-footer .btn-group
+.btn-default:active,
+.btn-default.active {
+    background-color: #fff !important;
+    border-color: #d9dbdd;
+    color: #606265
+}

@@ -4695,6 +4695,7 @@ height: 34px;
 .panel-body-user{
     height: 180px;
     font-size: 12px;
+    padding: 10px !important;
 }
 
 .panel-body-user  .crop {
@@ -4752,4 +4753,13 @@ height: 34px;
     background-color: #fff !important;
     border-color: #d9dbdd;
     color: #606265
+}
+
+.panel-body-user p {
+    margin: 0 0 5px !important;
+}
+
+.panel-body-user .row {
+     margin-right: auto !important;
+     margin-left: auto !important;
 }

@@ -81,33 +81,7 @@
                          ng-include="'views/SendReferenceToFriendsView.html'"
                          ng-controller="SendReferenceToFriendsController"
                          onload="job = data;"
-                    >
-
-                    </div>
-
-                    <!--<div id="peer_review_{{data.id}}" class="tab-pane fade row">                      -->
-                        <!---->
-                        <!--<div class="panel panel-success col-xs-3 small-panel small-panel-success" ng-repeat="reference in data.references| filter:{ isNew: true }">-->
-                            <!--<div class="panel-body small-panel-body">-->
-                                <!--<p>{{reference.name}}</p>-->
-                                <!--<a class="btn btn-success btn-xs btn-footer"  ng-click="sendReferenceToFriends(data, reference.id)">Start</a>-->
-                            <!--</div>-->
-                        <!--</div>-->
-
-                        <!--<div class="panel panel-info col-xs-3 small-panel small-panel-info" ng-repeat="reference in data.references | filter:{ isNew: false }">-->
-                            <!--<div class="panel-body small-panel-body">-->
-                                <!--<p>{{reference.name}}</p>-->
-                                <!--<b>Taken</b>-->
-                            <!--</div>-->
-                        <!--</div>-->
-
-                        <!--<p ng-show="(data.references).length == 0" class="col-xs-12">-->
-                            <!--Not found Peer Reviews-->
-                        <!--<p>-->
-
-                    <!--</div>-->
-
-
+                    ></div>
 
                 </div>
 
@@ -152,12 +126,7 @@
 
                     <div id="referral_overview_{{data.id}}" class="crop tab-pane fade in active">
                         <p>You have referred {{data.recepients.length}} to job {{data.jobName}}.</p>
-
                         <p>Thank you so much!</p>
-
-                        <!--You have referred the job: {{data.jobName}} to <span ng-repeat="recepient in data.recepients">{{recepient.firstName}} {{recepient.lastName}}, </span> here on {{data.modifyDate*1000 | date : "M/d/yyyy"}}.  We will keep you notified on the status of this position… Thank you!!!-->
-
-
                     </div>
 
                     <div id="referral_list_{{data.id}}" class="tab-pane fade">
@@ -178,26 +147,14 @@
 
                     </div>
 
-                    <div id="referral_add_{{data.id}}" class="tab-pane fade">
 
-                        <a class="btn btn-warning btn-footer"   ng-repeat="traitify in data.traitifies | filter:{ isNew: true }" ui-sref="traitifystart({resumeId:data.resumeId, jobId:data.id, traitifyId: traitify.id})">
-                            {{traitify.name}}
-                            <img src="images/new_little.png"  ng-show="traitify.isNew" style="max-width:25px; margin-top: -10px; margin-right:-13px;" />
-                        </a>
-
-                        <span class="label label-warning label-footer" ng-repeat="traitify in data.traitifies | filter:{ isNew: false }" >
-                        {{traitify.name}}
-                        <span class="badge badge-success"><i class="fa fa-check"></i></span>
-                        </span>
-
-                    </div>
+                    <div id="referral_add_{{data.id}}" class="tab-pane fade row"
+                         ng-include="'views/SendReferralPartialView.html'"
+                         ng-controller="SendReferralPartialController"
+                         onload="job = data;"
+                    ></div>
 
                 </div>
-
-                <!--<span class="label label-primary pull-right" ng-show="data.status =='GotJobMyNetwork'" style="font-size: 14px; padding: 10px;">-->
-                <!--Reffered-->
-                <!--</span>-->
-
 
                 <div class="panel-footer panel-footer-user"  >
 

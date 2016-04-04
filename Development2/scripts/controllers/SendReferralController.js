@@ -26,17 +26,19 @@ angular.module('Jobsite').controller('SendReferralController', function ($scope,
     $scope.onClose = function() {
         $modalInstance.close();
     };
-$scope.addRecepient= function() {
 
-    if ($scope.emailObjects.length>=3)
-        return;
+    $scope.addRecepient= function() {
 
-    $scope.emailObjects.push({
-        'email':'',
-        'firstName':'',
-        'lastName':''
-    });
-};
+        if ($scope.emailObjects.length>=3)
+            return;
+
+        $scope.emailObjects.push({
+            'email':'',
+            'firstName':'',
+            'lastName':''
+        });
+    };
+
     $scope.removeRecepient= function(i) {
 
         if ($scope.emailObjects.length<=1)
@@ -52,7 +54,6 @@ $scope.addRecepient= function() {
             return;
         }
         var isFill = false;
-
         for(var i = 0; i < $scope.emailObjects.length; i++)
         {
            var emailObject = $scope.emailObjects[i];

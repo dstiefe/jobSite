@@ -1,8 +1,7 @@
 /**
  * Created by Van on 02.04.2016.
  */
-angular.module('Jobsite').controller("UserDashboardController", function ($rootScope, $scope, ValiDatedTokenObject, locationHistoryService, $location, $modal, $http, $timeout, AuthService, JobsService, ReferralService, RESOURCES, cfpLoadingBar) {
-   $scope.role = AuthService.authentication.isAdministrator ? "Admin" : "User";
+angular.module('Jobsite').controller("UserDashboardController", function ($rootScope, $scope, ValiDatedTokenObject, locationHistoryService, $location, $modal, $http, $timeout, AuthService, JobsService, ReferralService, RESOURCES, cfpLoadingBar) {$scope.role = AuthService.authentication.isAdministrator ? "Admin" : "User";
    $scope.entryLimits = [5, 10, 15, 20, 25];
    $scope.isLoading = true;
    var serviceBase = RESOURCES.API_BASE_PATH;
@@ -13,7 +12,7 @@ angular.module('Jobsite').controller("UserDashboardController", function ($rootS
         $scope.totalItems = $scope.list.length;
     };
 
-    $scope.activeTab = 'JobDescription';
+   $scope.activeTab = 'JobDescription';
 
    JobsService.getJobsApplied().then(function (results) {
             $scope.list = results.data;
@@ -46,30 +45,4 @@ angular.module('Jobsite').controller("UserDashboardController", function ($rootS
         $scope.currentPage = pageNo;
     };
 
-   $scope.sendReferenceToFriends = function (job, referenceId) {
-        var resumeId = job.resumeId;
-        var jobId = job.id;
-
-        var modalInstance = $modal.open({
-            animation: true,
-            templateUrl: 'views/SendReferenceToFriendsView.html',
-            controller: 'SendReferenceToFriendsController',
-            size : 'lg',
-            resolve: {
-                resumeId: function () {
-                    return resumeId;
-                },
-                jobId: function () {
-                    return jobId;
-                },
-                jobTitle: function () {
-                    return job.title;
-                },
-                referenceId: function () {
-                    return referenceId;
-                }
-            }
-        });
-
-    };
 });

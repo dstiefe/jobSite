@@ -1,14 +1,14 @@
 
 <div ng-show="!referenceId">
 
-    <div class="panel panel-success col-xs-3 small-panel small-panel-success" ng-repeat="reference in data.references| filter:{ isNew: true }">
+    <div class="panel panel-success col-xs-3 small-panel small-panel-success" ng-repeat="reference in job.references| filter:{ isNew: true }">
         <div class="panel-body small-panel-body">
             <p>{{reference.name}}</p>
-            <a class="btn btn-success btn-xs btn-footer"  ng-click="sendReferenceToFriends(reference.id)">Start</a>
+            <a class="btn btn-success btn-xs btn-footer"  ng-click="sendReferenceToFriends(reference)">Start</a>
         </div>
     </div>
 
-    <div class="panel panel-info col-xs-3 small-panel small-panel-info" ng-repeat="reference in data.references | filter:{ isNew: false }">
+    <div class="panel panel-info col-xs-3 small-panel small-panel-info" ng-repeat="reference in job.references | filter:{ isNew: false }">
         <div class="panel-body small-panel-body">
             <p>{{reference.name}}</p>
             <b>Taken</b>
@@ -106,7 +106,7 @@
                     <button type="button" ng-click="$parent.referenceId=''" class="btn btn-primary btn-sm btn-block">Back</button>
                 </div>
                 <div class="form-group col-xs-4"  style="padding: 3px;">
-                    <button type="submit" class="btn btn-success btn-sm btn-block">Send</button>
+                    <button type="submit" class="btn btn-success btn-sm btn-block" ng-disabled="friendsCount>=2">Send</button>
                 </div>
             </div>
 

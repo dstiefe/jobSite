@@ -5,6 +5,7 @@ angular.module('Jobsite').controller('SendReferenceToFriendsController', functio
 
     $scope.job = {};
     $scope.referenceId = '';
+    $scope.reference = {};
     $scope.WorkingRelationshipTypes = RESOURCES.WORKING_RELATIONSHIP_TYPES;
 
     $scope.yearsList = [];
@@ -32,6 +33,7 @@ angular.module('Jobsite').controller('SendReferenceToFriendsController', functio
         }
         ReferralService.getReferenceCountToFriends($scope.job.id, $scope.job.resumeId, $scope.referenceId).then(function (results) {
             $scope.friendsCount = results.data.content;
+            $scope.reference.isNew = $scope.friendsCount <2;
         }, function (error) {
             $scope.message ='Error occured!';
             console.log(error.data.message);
@@ -45,11 +47,12 @@ angular.module('Jobsite').controller('SendReferenceToFriendsController', functio
     //    $modalInstance.close();
     //};
 
-    $scope.sendReferenceToFriends= function(referenceId) {
+    $scope.sendReferenceToFriends= function(reference) {
         $scope.successMessage='';
         $scope.message ='';
         $scope.friendsCount ='';
-        $scope.referenceId = referenceId;
+        $scope.referenceId = reference.id;
+        $scope.reference = reference;
         _initEmailObjects();
     };
 

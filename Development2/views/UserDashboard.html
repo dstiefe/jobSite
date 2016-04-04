@@ -130,21 +130,29 @@
                     </div>
 
                     <div id="referral_list_{{data.id}}" class="tab-pane fade">
-                        <div class="form-group">
-                            <input type="text" ng-model="data.search"  placeholder="Enter Name to Filter List" class="form-control" />
+                        <div class="row">
+                            <div class="form-group col-xs-8">
+                                <input type="text" ng-model="data.search"  placeholder="Enter Name to Filter List" class="form-control" />
+                            </div>
+                            <div class="form-group  col-xs-4" >
+                                <p># Referred: {{(data.recepients | filter:data.search).length}}</p>
+                            </div>
                         </div>
-                        <div class="table-responsive">
-                        <table class="table table-striped">
-                            <tbody>
-                            <tr ng-repeat="recepient in data.recepients | filter:data.search">
-                                <th scope="row">{{$index+1}}</th>
-                                 <td>{{recepient.firstName}} {{recepient.lastName}}</td>
-                                <td>{{recepient.email}}</td>
-                            </tr>
-                            </tbody>
-                        </table>
-                        </div>
+                        <div class="row">
+                            <div class="col-xs-12" style="max-height: 110px;  overflow-y: auto;">
 
+                            <table class="table table-striped" >
+                                <tbody>
+                                <tr ng-repeat="recepient in data.recepients | filter:data.search">
+                                    <th scope="row">{{$index+1}}</th>
+                                     <td>{{recepient.firstName}} {{recepient.lastName}}</td>
+                                    <td>{{recepient.email}}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+
+                            </div>
+                        </div>
                     </div>
 
 

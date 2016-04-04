@@ -4704,7 +4704,7 @@ height: 34px;
     line-height: 20px;
 }
 
-.panel-footer .btn-group .badge-success {
+.panel-footer .nav-tabs .badge-success {
     background-color: #5cb85c !important;
 }
 .badge-right{
@@ -4715,7 +4715,7 @@ height: 34px;
 }
 
 .panel-footer-user{
-    height: 70px !important;
+    height: 62px !important;
     padding: 2px !important;
     background-color: white;
 border: none;
@@ -4781,14 +4781,23 @@ border: none;
     margin-top:-1px !important;
     width: 25%;
     height: 100% !important;
+
+
 }
 
 .panel-tabs   .nav-tabs > li > a {
+
+    display: flex;
+    justify-content: center; /* align horizontal */
+    align-items: center; /* align vertical */
+
     height: 100% !important;
-    padding: 10px 10px !important;
-    padding-top: 3px !important;
-    padding-bottom: 3px !important;
-    line-height: 20px !important;
+    /*line-height: 100% !important;*/
+    padding: 0  !important;
+    /*padding: 10px 10px !important;*/
+    /*padding-top: 3px !important;*/
+    /*padding-bottom: 3px !important;*/
+    /*line-height: 20px !important;*/
     border: 1px solid transparent !important;
     -moz-border-radius:0px !important;
     -webkit-border-radius:0px !important;

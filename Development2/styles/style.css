@@ -4808,7 +4808,7 @@ border: none;
     -moz-border-radius-bottomleft: 5px !important;
     -webkit-border-bottom-left-radius: 5px !important;
     border-bottom-left-radius: 5px !important;
-    background-color: #f5f5f5 !important;
+    background-color: #e6e6e6 !important;
     white-space: normal !important;
     font-size:12px !important;
     text-align: center !important;
@@ -4824,7 +4824,8 @@ border: none;
 .panel-tabs  .nav-tabs > .active > a,  .panel-tabs .nav-tabs > .active > a:hover,  .panel-tabs .nav-tabs > .active > a:focus {
     color: #555555 !important;
     cursor: default !important;
-    background-color: #ffffff !important;
+    /*background-color: #ffffff !important;*/
+    background-color: #f5f5f5 !important;
     border: 1px solid #ddd !important;
     border-top-color: transparent !important;
 }

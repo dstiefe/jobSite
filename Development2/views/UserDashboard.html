@@ -217,13 +217,18 @@
                 </div>
 
                 <div class="panel-footer panel-footer-user"  >
-                    <div class="btn-group btn-group-md btn-group-justified" role="group" style="height: 100%; width: 25%;">
 
-                        <a role="button" data-toggle="tab" href="#reference_request_{{data.id}}" target="_self" class="btn btn-default btn-xs" style="white-space: normal;" ng-model="data.activeTab" btn-radio="0" uncheckable >
-                            Reference Request
-                            <span class="badge badge-success badge-right" ng-show="!data.isPassed">1</span>
-                        </a>
-                    </div>
+                    <ul class="nav nav-tabs ">
+                        <li class="active">
+                            <a role="button" data-toggle="tab" href="#reference_request_{{data.id}}" target="_self" ng-model="data.activeTab" btn-radio="0" uncheckable >
+                                Reference Request
+                                <span class="badge badge-success badge-right" ng-show="!data.isPassed">1</span>
+                            </a>
+                        </li>
+
+                    </ul>
+
+
                 </div>
 
             </div>

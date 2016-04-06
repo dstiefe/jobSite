@@ -4829,3 +4829,14 @@ border: none;
     border: 1px solid #ddd !important;
     border-top-color: transparent !important;
 }
+
+.icon-client{
+    background: url("../images/admin_user.png") 100% 100% no-repeat;
+    background-size: 44px;
+    background-position: center center;
+    width: 44px !important;
+    height: 42px !important;
+    line-height: 44px;
+    display: inline-block;
+}
+

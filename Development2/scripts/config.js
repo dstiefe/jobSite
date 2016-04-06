@@ -580,6 +580,18 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
                 }
             }
         })
+
+        // Clients
+        .state('clients', {
+            url: "/clients",
+            templateUrl: "views/Clients.html",
+            data: {
+                pageTitle: 'Clients',
+                permissions: {
+                    only: ['Admin'],
+                }
+            }
+        })
 }
 
 angular

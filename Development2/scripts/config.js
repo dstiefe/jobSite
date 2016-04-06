@@ -592,6 +592,31 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
                 }
             }
         })
+
+        // Create Client
+        .state('createclient', {
+            url: "/clients/create",
+            templateUrl: "views/CreateClient.html",
+            data: {
+                pageTitle: 'Create Client',
+                permissions: {
+                    only: ['Admin'],
+                }
+            }
+        })
+
+        // Edit Client
+        .state('editclient', {
+            url: "/clients/:id/edit",
+            templateUrl: "views/CreateClient.html",
+            data: {
+                pageTitle: 'Edit Client',
+                permissions: {
+                    only: ['Admin'],
+                }
+            }
+        })
+
 }
 
 angular

@@ -110,14 +110,13 @@ angular.module('Jobsite').controller("AddjobformController", function($scope,  $
     $scope.adminClientOption = {
         options: {
             html: false,
-            focusOpen: false,
+            focusOpen: true,
             onlySelectValid: true,
             source: function (request, response) {
-
-                if(request.term.length ==0 || $scope.clients == null || $scope.clients.length == 0)
-                    return;
-
-                var res = $filter('filter')($scope.clients, {companyName: request.term});
+                var res = $scope.clients;
+                if(request.term.length !=0) {
+                    res = $filter('filter')($scope.clients, {companyName: request.term});
+                }
                     var data =[];
                     for (var i=0; i <res.length; i++ ){
                         var r = res[i];

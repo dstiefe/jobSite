@@ -1,11 +1,12 @@
 /**
  * Created by Van on 03.02.2016.
  */
-angular.module('Jobsite').controller("CreateScreeningController", function($scope,  $http, $timeout, $location, ScreeningsService, CategoriesService, JobsService, $state, $stateParams) {
+angular.module('Jobsite').controller("CreateScreeningController", function($scope,  $http, $timeout, $location, ScreeningsService, CategoriesService, JobsService, $state, $stateParams, $modal) {
 
     $scope.id = $stateParams.id;
     $scope.screening = {};
     $scope.screening.sort = 0;
+    //$scope.screening.tags = [];
 
     CategoriesService.getCategories().then(function (results) {
         $scope.categories = results.data;
@@ -40,18 +41,13 @@ angular.module('Jobsite').controller("CreateScreeningController", function($scop
     }
 
     $scope.saveChanges = function(isValid) {
-console.log('isValid='+isValid);
         if (!isValid){
             return;
         }
 
         if (!angular.isUndefined($scope.id) && $scope.id != '') {
             ScreeningsService.putScreening($scope.id, $scope.screening).then(function (results) {
-                //if ($scope.saveAndExit){
-                //    $state.go('screenings');
-                //}else{
                     $state.go('editscreening', {'id': $scope.id});
-                //}
             }, function (error) {
                 console.log(error.data.message);
             });
@@ -67,7 +63,7 @@ console.log('isValid='+isValid);
                 console.log(error.data.message);
             });
         }
-    }
+    };
 
     $scope.cancel = function() {
 
@@ -89,9 +85,32 @@ console.log('isValid='+isValid);
             });
         }
 
-    }
+    };
 
     $scope.$back = function() {
         window.history.back();
     };
+
+    $scope.manageTags = function() {
+
+        var modalInstance = $modal.open({
+            animation: true,
+            templateUrl: 'views/ManageTags.html',
+            controller: 'ManageTagsController',
+            size : 'md',
+            resolve: {
+                screening: function () {
+                    return $scope.screening;
+                }
+            }});
+
+        modalInstance.result.then(function (res) {
+            $scope.screening.tags = res.tags;
+        }, function () {
+            console.log('Modal dismissed at: ' + new Date());
+        });
+
+    };
+
+
 });

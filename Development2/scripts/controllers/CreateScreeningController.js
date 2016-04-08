@@ -33,7 +33,7 @@ angular.module('Jobsite').controller("CreateScreeningController", function($scop
 
             $scope.screening.categoryId = res.categoryId;
             $scope.screening.jobsIds =res.jobsIds;
-
+            $scope.screening.tags =res.tags;
 
         }, function (error) {
             console.log(error.data.message);
@@ -105,7 +105,11 @@ angular.module('Jobsite').controller("CreateScreeningController", function($scop
             }});
 
         modalInstance.result.then(function (res) {
-            $scope.screening.tags = res.tags;
+            if (res){
+                $scope.screening.tags = res.tags;
+            }
+
+
         }, function () {
             console.log('Modal dismissed at: ' + new Date());
         });

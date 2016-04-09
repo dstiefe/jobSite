@@ -204,4 +204,21 @@ angular.module('Jobsite').controller("ApplicantsController", function($scope, $h
         });
     };
 
+    $scope.sendMessage = function(data) {
+        var modalInstance = $modal.open({
+            animation: true,
+            templateUrl: 'views/MessagesView.html',
+            controller: 'MessagesController',
+            size : 'lg',
+            resolve: {
+                resume: function () {
+                    return data;
+                },
+                jobId: function () {
+                    return jobId;
+                }
+            }
+        });
+    };
+
 });

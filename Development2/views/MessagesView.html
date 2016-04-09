@@ -1,0 +1,50 @@
+<div class="inmodal">
+    <div class="color-line"></div>
+    <div class="modal-header">
+
+        <div style="position:absolute; right: 30px; top: 10px;">
+            <a ng-click="onClose()" ><span class="glyphicon close-icon hoverClick" style="font-size: 30px; color: red;">×</span></a>
+        </div>
+
+        <div class="pull-left">
+            {{resume.firstName}} {{resume.lastName}}
+        </div>
+
+        <div class="pull-right">
+            {{job.title}}
+        </div>
+
+    </div>
+    <div class="modal-body">
+
+        <div class="alert alert-success" role="alert" ng-show="successMessage">Successfully notified!</div>
+        <div class="alert alert-danger" role="alert" ng-show="errorMessage">Error occured</div>
+
+        <div class="row">
+            <div class="col-md-12">
+
+                <accordion close-others="oneAtATime">
+
+                        <accordion-group ng-repeat="_message in messages track by $index" is-open="_message.open">
+                            <accordion-heading>
+                                <span class="pull-left">Message From: {{_message.from}}</span>
+                                {{_message.subject | limitTo: 200}}
+                                <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-up': _message.open, 'glyphicon-chevron-down': !_message.open}"></i>
+
+                                <span class="pull-right">{{ _message.date*1000 | date : "M/d/yyyy" }}</span>
+
+
+                            </accordion-heading>
+                            {{_message.body}}
+                        </accordion-group>
+
+
+                </accordion>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group"><label>Notify Candidate</label> </div>
+                <div class="form-group"><button ng-click="notify()" class="btn btn-success" ng-disabled="interviews.length == 0">Notify Candidate</button> </div>
+            </div>
+        </div>
+    </div>
+</div>

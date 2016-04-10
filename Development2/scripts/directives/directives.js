@@ -22,6 +22,7 @@ angular
     .directive("pwCheck", pwCheck)
 
 
+
 function pwCheck() {
     return {
         require: 'ngModel',
@@ -37,6 +38,9 @@ function pwCheck() {
 
     };
 }
+
+
+
 
 
 

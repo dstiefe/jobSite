@@ -40,7 +40,8 @@ var clientId ="P600Us6Y476QiK331u5yEzb22dpX_y6NS75!9I-a";
         'timer',
         'bcherny/formatAsCurrency',
         'angular-loading-bar',
-        'angularSpectrumColorpicker'
+        'angularSpectrumColorpicker',
+        'luegg.directives'
     ]).constant('RESOURCES', (function() {
 
             // Define your variable

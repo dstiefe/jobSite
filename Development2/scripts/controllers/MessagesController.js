@@ -26,18 +26,41 @@ angular.module('Jobsite').controller('MessagesController', function ($scope, $mo
 
 
     $scope.messages = [];
-    for (var i =0; i< 3;i++){
+    for (var i =0; i< 50;i++){
         $scope.messages.push({
-            from:'Dyatal '+ i,
-            to:'Me '+ i,
-            subject:'test'+i,
-            body:'bodytest'+i,
+            from:'Dyatal ewrewrewrewrewrwerwer'+ i,
+            to:'Me werwrewrewrewrtertretyrytrytr '+ i,
+            subject:'test tretytrytrytrytry gretyry trytrytry htrytry ggfgfdgfd trytrytry ytrytr ghttrhtr htrhthtrh hthtrbtt y yu yyy '+i,
+            body:'bodytest ergre gregreg gtrhh  htrhhet htrhtreh hrthythyt hytjytjyt hjytjytjyt hjytjytjyt htyjytjyjuykuykiu hjytjytj jytjyt jyuuykuykuykiu juykuykuykyu '+i,
             date: 1460232379
         });
     }
 
-    $scope.send = function() {
-       console.log('send');
+    $scope.send = function(isValid) {
+        $scope.successMessage = false;
+        $scope.errorMessage = false;
+        if (!isValid){
+            return
+        }
+
+        console.log('send');
+
+        $scope.messages.push({
+            from:'Dyatal ewrewrewrewrewrwerwer'+ i,
+            to:'Me werwrewrewrewrtertretyrytrytr '+ i,
+            subject:$scope.newMessage.subject,
+            body:$scope.newMessage.body,
+            date: 1460232379
+        });
+
+
+
+        $scope.successMessage =true;
+        $scope.newMessage.subject ='';
+        $scope.newMessage.body ='';
+        $timeout(function() {
+            $scope.successMessage =false;
+        }, 1000);
     };
 
     $scope.cancel = function() {

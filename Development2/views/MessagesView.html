@@ -17,33 +17,49 @@
     </div>
     <div class="modal-body">
 
-        <div class="alert alert-success" role="alert" ng-show="successMessage">Successfully notified!</div>
-        <div class="alert alert-danger" role="alert" ng-show="errorMessage">Error occured</div>
+
 
         <div class="row">
-            <div class="col-md-12">
-
-                <accordion close-others="oneAtATime">
-
-                        <accordion-group ng-repeat="_message in messages track by $index" is-open="_message.open">
+            <div class="col-md-12" style="height: 500px !important; overflow-y: auto !important;" scroll-glue>
+                <accordion close-others="oneAtATime" >
+                        <accordion-group ng-repeat="_message in messages track by $index" is-open="_message.open" >
                             <accordion-heading>
-                                <span class="pull-left">Message From: {{_message.from}}</span>
-                                {{_message.subject | limitTo: 200}}
-                                <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-up': _message.open, 'glyphicon-chevron-down': !_message.open}"></i>
-
-                                <span class="pull-right">{{ _message.date*1000 | date : "M/d/yyyy" }}</span>
-
-
+                                <span class="pull-left">Message From: {{_message.from | limitTo: 20}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                <span class="text-center">{{_message.subject | limitTo: 50}}&nbsp;</span>
+                                <span class="pull-right">&nbsp;{{ _message.date*1000 | date : "MMMM d - yyyy" }}&nbsp;&nbsp;&nbsp;<i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-up': _message.open, 'glyphicon-chevron-down': !_message.open}"></i></span>
                             </accordion-heading>
-                            {{_message.body}}
+                            <p>Message From: {{_message.from}}</p>
+                            <p>To: {{_message.to}}</p>
+                            <p>Subject: {{_message.subject}}</p>
+                            <p>{{_message.body}}</p>
                         </accordion-group>
-
-
                 </accordion>
             </div>
-            <div class="col-md-6">
-                <div class="form-group"><label>Notify Candidate</label> </div>
-                <div class="form-group"><button ng-click="notify()" class="btn btn-success" ng-disabled="interviews.length == 0">Notify Candidate</button> </div>
+
+            <div class="col-md-12" style="background-color: #DEEBF7;">
+<br />
+                <div class="alert alert-success" role="alert" ng-show="successMessage">Successfully sended!</div>
+                <div class="alert alert-danger" role="alert" ng-show="errorMessage">Error occured</div>
+
+                <form name="sendForm" ng-submit="send(sendForm.$valid)" novalidate>
+
+                    <div class="form-group">
+                        To: {{resume.firstName}} {{resume.lastName}}
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" ng-model="newMessage.subject" placeholder="Subject" name="subject" id="subject" class="form-control" required />
+                        <span class="color-theme" ng-show="sendForm.subject.$error.required">Subject is required.</span>
+                    </div>
+                    <div class="form-group">
+                        <textarea cols="40" rows="5" ng-model="newMessage.body" placeholder="Message" name="body" id="body" class="form-control" required></textarea>
+                        <span class="color-theme" ng-show="sendForm.body.$error.required">Message is required.</span>
+                    </div>
+                    <div class="form-group">
+                           <button class="btn btn-primary btn-md" type="submit">Send</button>
+                        <button data-ng-click="close()" class="btn btn-default btn-md">Cancel</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

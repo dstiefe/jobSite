@@ -14,7 +14,7 @@ angular.module('Jobsite').controller('ManageTagsController', function ($scope, $
 
         $scope.tags = [];
 
-     
+
     }
 
     $scope.types = [

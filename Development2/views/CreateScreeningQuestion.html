@@ -172,7 +172,7 @@
                                             <select
                                                     id="selectedTag_{{$index}}"
                                                     name="selectedTag_{{$index}}"
-                                                    required
+                                                    
                                                     class="form-control"
                                                     ng-init="screeningTagChilds=getChildsTags(screeningTag)"
                                                     ng-model="$parent.screeningQuestion.tags[$index]"
@@ -180,7 +180,7 @@
 
                                             >
                                                 <option value="">Select {{screeningTag.name}}</option>
-                                                <option ng-repeat="_option in screeningTagChilds" ng-selected="$parent.screeningQuestion.tags.indexOf(_option.name)!=-1" value="{{_option.name}}">{{_option.parentName}}  / {{_option.name}}</option>
+                                                <option ng-repeat="_option in screeningTagChilds" ng-selected="$parent.screeningQuestion.tags.indexOf(_option.parentName+'/'+_option.name)!=-1" value="{{_option.parentName}}/{{_option.name}}">{{_option.parentName}} / {{_option.name}}</option>
                                             </select>
 
 

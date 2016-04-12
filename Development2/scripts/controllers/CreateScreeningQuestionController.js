@@ -1,7 +1,7 @@
 /**
  * Created by Van on 03.02.2016.
  */
-angular.module('Jobsite').controller("CreateScreeningQuestionController", function($scope,  $http, $timeout, $location, ScreeningsService, $state, $stateParams, RESOURCES) {
+angular.module('Jobsite').controller("CreateScreeningQuestionController", function($scope,  $http, $timeout, $location, ScreeningsService, $state, $stateParams, RESOURCES, $filter) {
 
     $scope.id = $stateParams.id;
     $scope.type = $stateParams.type;
@@ -25,6 +25,7 @@ angular.module('Jobsite').controller("CreateScreeningQuestionController", functi
     $scope.numOptionsSelected = '';
 
     $scope.screeningTags = [];
+    //$scope.selectedTags = [];
 
     ScreeningsService.getScreening($scope.id).then(function (results) {
         var res = results.data;
@@ -66,6 +67,35 @@ angular.module('Jobsite').controller("CreateScreeningQuestionController", functi
         });
     }
 
+
+    $scope.getChildsTags = function(rootTag) {
+
+        var childs = $filter('filter')($scope.screeningTags, {parentName: rootTag.name}, true);
+        if ( childs != null && childs.length > 0)
+        {
+            for (var i =0; i < childs.length; i++)
+            {
+                if (childs[i].isCategory)
+                {
+                    childs = childs.concat($scope.getChildsTags(childs[i]));
+                }
+            }
+        }
+        return $filter('filter')(childs, {isCategory: false}, true);
+
+        //var childs = $filter('filter')($scope.screeningTags, {parentName: rootTag.name}, true);
+        //
+        //if ( childs != null && childs.length > 0)
+        //{
+        //    for (var i =0; i < childs.length; i++)
+        //      childs = childs.concat($scope.getChildsTags(childs[i]));
+        //}
+        //
+        //return childs;
+
+    };
+
+
     $scope.saveChanges = function(isValid) {
         if (!isValid){
             return;
@@ -86,6 +116,10 @@ angular.module('Jobsite').controller("CreateScreeningQuestionController", functi
             $scope.screeningQuestion.options = [];
         }
 
+        //if ($scope.selectedTags.length > 0){
+        //    $scope.screeningQuestion.tags = $scope.selectedTags;
+        //}
+
         if ($scope.mode == 'edit') {
 
             ScreeningsService.putScreeningQuestion($scope.id, $scope.questionId, $scope.screeningQuestion).then(function (results) {
@@ -100,6 +134,7 @@ angular.module('Jobsite').controller("CreateScreeningQuestionController", functi
                     $scope.screeningQuestion.answerText = '';
                     $scope.screeningQuestion.tags = [];
                     $scope.tag = "";
+                    //$scope.selectedTags = [];
                     $scope.selectedOption='';
                     $scope.screeningQuestion.type='';
                     $scope.option ='';
@@ -126,6 +161,7 @@ angular.module('Jobsite').controller("CreateScreeningQuestionController", functi
                     $scope.screeningQuestion.answerText = '';
                     $scope.screeningQuestion.tags = [];
                     $scope.tag = "";
+                    //$scope.selectedTags = [];
                     $scope.selectedOption='';
                     $scope.screeningQuestion.type='';
                     $scope.option ='';

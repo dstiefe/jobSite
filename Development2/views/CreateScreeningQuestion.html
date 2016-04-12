@@ -156,12 +156,45 @@
 
                                     <div class="form-group">
                                         <label for="tags">Tags</label>
-                                        <input class="form-control" style="width:70%;float:right;" ng-model="tag" id="tags" type="text"  ng-enter="addtags()"><a href="" ng-click="addtags()"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
-                                        <br>
-                                        <br>
-                                        <ul class="list-group">
-                                            <li class="list-group-item" ng-repeat="tagname in screeningQuestion.tags">{{ tagname }}<a style="float:right;" href="" ng-click="removetag($index)"  ><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></a></li>
-                                        </ul>
+
+                                        <div ng-repeat="screeningTag in screeningTags | filter:{ level: 1, isCategory: true } track by $index">
+
+                                            <!--<select  id="selectedTag_{{$index}}"-->
+                                                     <!--name="selectedTag_{{$index}}"-->
+                                                     <!--required-->
+                                                     <!--class="form-control"-->
+                                                     <!--ng-init="screeningTagChilds=getChildsTags(screeningTag)"-->
+                                                     <!--ng-model="$parent.screeningQuestion.tags[$index]"-->
+                                                     <!--ng-options="_option.name as (_option.parentName +' / '+ _option.name) for  _option in screeningTagChilds">-->
+                                                <!--<option value="">Select {{screeningTag.name}}</option>-->
+                                            <!--</select>-->
+
+                                            <select
+                                                    id="selectedTag_{{$index}}"
+                                                    name="selectedTag_{{$index}}"
+                                                    required
+                                                    class="form-control"
+                                                    ng-init="screeningTagChilds=getChildsTags(screeningTag)"
+                                                    ng-model="$parent.screeningQuestion.tags[$index]"
+                                                    class="form-control"
+
+                                            >
+                                                <option value="">Select {{screeningTag.name}}</option>
+                                                <option ng-repeat="_option in screeningTagChilds" ng-selected="$parent.screeningQuestion.tags.indexOf(_option.name)!=-1" value="{{_option.name}}">{{_option.parentName}}  / {{_option.name}}</option>
+                                            </select>
+
+
+                                            <br />
+                                        </div>
+
+                                        <!--<input class="form-control" style="width:70%;float:right;" ng-model="tag" id="tags" type="text"  ng-enter="addtags()"><a href="" ng-click="addtags()"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>-->
+                                        <!--<br>-->
+                                        <!--<br>-->
+                                        <!--<ul class="list-group">-->
+                                            <!--<li class="list-group-item" ng-repeat="tagname in screeningQuestion.tags">{{ tagname }}<a style="float:right;" href="" ng-click="removetag($index)"  ><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></a></li>-->
+                                        <!--</ul>-->
+
+
                                     </div>
 
                                     <div class="form-group" ng-if="mode == 'edit'">

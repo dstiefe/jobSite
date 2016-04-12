@@ -14,17 +14,7 @@ angular.module('Jobsite').controller('ManageTagsController', function ($scope, $
 
         $scope.tags = [];
 
-        $scope.tags.push({
-            name: 'Test Category',
-            isCategory: true,
-            level: 1
-        });
-
-        $scope.tags.push({
-            name: 'Test Difficulty',
-            isCategory: true,
-            level: 1
-        });
+     
     }
 
     $scope.types = [

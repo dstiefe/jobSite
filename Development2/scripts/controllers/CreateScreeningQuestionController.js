@@ -23,12 +23,23 @@ angular.module('Jobsite').controller("CreateScreeningQuestionController", functi
     $scope.screeningQuestion.optionsDescriptions = {};
     $scope.numOptionsLikertScale =[3,5,7,9];
     $scope.numOptionsSelected = '';
+
+    $scope.screeningTags = [];
+
     ScreeningsService.getScreening($scope.id).then(function (results) {
         var res = results.data;
+
+        $scope.screeningTags = res.tags;
+        if ($scope.screeningTags == null){
+            $scope.screeningTags = [];
+        }
+
         $scope.questionsCount = res.questionsCount;
+
     }, function (error) {
         console.log(error.data.message);
     });
+
 
     if ($scope.mode == 'edit') {
         ScreeningsService.getScreeningQuestionById($scope.id, $scope.questionId).then(function (results) {

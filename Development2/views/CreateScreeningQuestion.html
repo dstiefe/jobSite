@@ -59,6 +59,21 @@
                                         <input type="text" class="form-control" ng-model="screeningQuestion.textOptional" id="textOptional" name="textOptional" placeholder="Enter Question Help (Optional)"  />
                                     </div>
 
+                                    <div class="form-group">
+                                        <label for="type">Question Type</label>
+                                        <select
+                                                id="type"
+                                                name="type"
+                                                ng-model="screeningQuestion.type"
+                                                required
+                                                class="form-control"
+                                                ng-change="changedQuestionType()"
+                                        >
+                                            <option value="">Select Question Type</option>
+                                            <option ng-repeat="_type in ScreeningQuestionTypes" ng-selected="_type.value==screeningQuestion.type" value="{{_type.value}}">{{_type.name}}</option>
+                                        </select>
+                                        <span class="color-theme" ng-show="createQuestionScreeningForm.type.$error.required">Question Type is required.</span>
+                                    </div>
 
                                     <div class="form-group" ng-show="screeningQuestion.type == 'MultipleChoice'">
                                              <label for="option">Possible answer</label>
@@ -134,45 +149,9 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6">
+
                                     <div class="form-group">
-                                        <label for="type">Question Type</label>
-                                        <select
-                                                id="type"
-                                                name="type"
-                                                ng-model="screeningQuestion.type"
-                                                required
-                                                class="form-control"
-                                                ng-change="changedQuestionType()"
-                                        >
-                                            <option value="">Select Question Type</option>
-                                            <option ng-repeat="_type in ScreeningQuestionTypes" ng-selected="_type.value==screeningQuestion.type" value="{{_type.value}}">{{_type.name}}</option>
-                                        </select>
-                                        <span class="color-theme" ng-show="createQuestionScreeningForm.type.$error.required">Question Type is required.</span>
-                                    </div>
-
-                                    <div class="form-group" ng-if="screeningQuestion.type == 'MultipleChoice' || screeningQuestion.type == 'TrueFalse'">
-                                        <label for="selectedOption">Correct Answer</label>
-
-                                        <select  id="selectedOption"
-                                                 name="selectedOption"
-                                                 required
-                                                 class="form-control"
-                                                ng-model="$parent.selectedOption"
-                                                ng-options="idx as _option for (idx, _option) in $parent.screeningQuestion.options">
-                                            <option value="">Select correct answer</option>
-                                        </select>
-                                        <span id="helpBlock" class="help-block">Please, fill out possible answers and select correct answer</span>
-                                        <!--<select-->
-                                                <!--id="selectedOption"-->
-                                                <!--name="selectedOption"-->
-                                                <!--ng-model="selectedOption"-->
-                                                <!--required-->
-                                                <!--class="form-control"-->
-                                        <!--&gt;-->
-                                            <!--<option value="">Select Correct Answer</option>-->
-                                            <!--<option ng-repeat="_option in options" ng-selected="_option==selectedOption" value="{{_option}}">{{_option}}</option>-->
-                                        <!--</select>-->
-                                        <span class="color-theme" ng-show="createQuestionScreeningForm.selectedOption.$error.required">Correct Answer Type is required.</span>
+                                      <br />
                                     </div>
 
                                     <div class="form-group">
@@ -180,17 +159,29 @@
                                         <input class="form-control" style="width:70%;float:right;" ng-model="tag" id="tags" type="text"  ng-enter="addtags()"><a href="" ng-click="addtags()"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
                                         <br>
                                         <br>
-
                                         <ul class="list-group">
                                             <li class="list-group-item" ng-repeat="tagname in screeningQuestion.tags">{{ tagname }}<a style="float:right;" href="" ng-click="removetag($index)"  ><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></a></li>
                                         </ul>
                                     </div>
+
                                     <div class="form-group" ng-if="mode == 'edit'">
                                         <label for="sort">Order</label>
                                         <input type="number" min="0" step="1"  ng-model="screeningQuestion.sort" class="form-control" id="sort" name="sort" placeholder="Set Order">
-
                                     </div>
 
+                                    <div class="form-group" ng-if="screeningQuestion.type == 'MultipleChoice' || screeningQuestion.type == 'TrueFalse'">
+                                        <label for="selectedOption">Correct Answer</label>
+                                        <select  id="selectedOption"
+                                                 name="selectedOption"
+                                                 required
+                                                 class="form-control"
+                                                 ng-model="$parent.selectedOption"
+                                                 ng-options="idx as _option for (idx, _option) in $parent.screeningQuestion.options">
+                                            <option value="">Select correct answer</option>
+                                        </select>
+                                        <span id="helpBlock" class="help-block">Please, fill out possible answers and select correct answer</span>
+                                        <span class="color-theme" ng-show="createQuestionScreeningForm.selectedOption.$error.required">Correct Answer Type is required.</span>
+                                    </div>
 
                                 </div>
                             </div>

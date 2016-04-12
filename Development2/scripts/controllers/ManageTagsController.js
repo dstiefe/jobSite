@@ -10,13 +10,28 @@ angular.module('Jobsite').controller('ManageTagsController', function ($scope, $
 
     $scope.tags = $scope.screening.tags;
 
-    if (!$scope.tags){
+    if (!$scope.tags || $scope.tags.length == 0){
+
         $scope.tags = [];
+
+        $scope.tags.push({
+            name: 'Test Category',
+            isCategory: true,
+            level: 1
+        });
+
+        $scope.tags.push({
+            name: 'Test Difficulty',
+            isCategory: true,
+            level: 1
+        });
     }
+
     $scope.types = [
         {value: true, name: "Category"},
         {value: false, name: "Value"}
     ];
+
     $scope.type = '';
     $scope.levels = [1,2,3];
     $scope.level = '';
@@ -89,8 +104,6 @@ angular.module('Jobsite').controller('ManageTagsController', function ($scope, $
         $scope.parentName = '';
     };
 
-
-
     $scope.parentChanged= function() {
         $scope.levelTags = [];
         if ($scope.parentName){
@@ -101,5 +114,4 @@ angular.module('Jobsite').controller('ManageTagsController', function ($scope, $
             }
         }
     };
-
 });

@@ -1,6 +1,9 @@
 import unittest
 import base64
 from suds.client import Client
+from xml2json import xml2json
+
+import optparse
 
 class RChilliTest(unittest.TestCase):
 
@@ -21,7 +24,15 @@ class RChilliTest(unittest.TestCase):
         print client
 
         result = client.service.parseResumeBinary(resume_encoded_string, self.resumeFilePath, self.RChilliUserKey, self.RChilliVersion, self.RChilliSubuserID)
-        print result
+        #print result
+
+        result = result.encode('ascii', 'ignore').decode('ascii')
+        #print result
+
+        options = optparse.Values({"pretty": False})
+        strip_ns = 1
+        json = xml2json(result, options, strip_ns)
+        print json
 
         self.assertEqual(True, result != None )
 

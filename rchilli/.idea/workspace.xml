@@ -14,9 +14,12 @@
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/rchilli$Unittest_ParserResumeTest_TestRChilli.coverage" NAME="Unittest ParserResumeTest.TestRChilli Coverage Results" MODIFIED="1460829590255" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
     <SUITE FILE_PATH="coverage/rchilli$Unittest_RChilliTest_TestResume.coverage" NAME="Unittest RChilliTest.TestResume Coverage Results" MODIFIED="1460663340780" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
+    <SUITE FILE_PATH="coverage/rchilli$Unittests_in_ParserResumeTest.coverage" NAME="Unittests in ParserResumeTest Coverage Results" MODIFIED="1460829519843" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
+    <SUITE FILE_PATH="coverage/rchilli$Unittest_ParserResumeTest_TestHireAbility.coverage" NAME="Unittest ParserResumeTest.TestHireAbility Coverage Results" MODIFIED="1460829542099" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
     <SUITE FILE_PATH="coverage/rchilli$Unittest_RChilliTest_test_something.coverage" NAME="Unittest RChilliTest.test_something Coverage Results" MODIFIED="1460661230379" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
-    <SUITE FILE_PATH="coverage/rchilli$Unittest_HireAbilityTest_TestResume.coverage" NAME="Unittest HireAbilityTest.TestResume Coverage Results" MODIFIED="1460741981898" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
+    <SUITE FILE_PATH="coverage/rchilli$Unittest_HireAbilityTest_TestResume.coverage" NAME="Unittest HireAbilityTest.TestResume Coverage Results" MODIFIED="1460826090783" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
@@ -31,7 +34,7 @@
         <entry file="file://$PROJECT_DIR$/tests/RChilliTest.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="3" selection-end-column="29" />
+              <caret line="25" column="17" selection-start-line="25" selection-start-column="17" selection-end-line="25" selection-end-column="158" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
               </folding>
@@ -39,14 +42,102 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="HireAbilityTest.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="HireAbilityParseResumeApi.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ParseResumeApis/HireAbilityParseResumeApi.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="4" column="31" selection-start-line="4" selection-start-column="6" selection-end-line="4" selection-end-column="31" />
+              <folding>
+                <element signature="e#0#57#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="XmlConverter.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ParseResumeApis/XmlConverter.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="3" column="22" selection-start-line="3" selection-start-column="22" selection-end-line="3" selection-end-column="22" />
+              <folding>
+                <element signature="e#0#16#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RChilliParseResumeApi.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ParseResumeApis/RChilliParseResumeApi.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="4" column="27" selection-start-line="4" selection-start-column="6" selection-end-line="4" selection-end-column="27" />
+              <folding>
+                <element signature="e#0#57#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="HireAbilityTest.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tests/HireAbilityTest.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7647059">
-              <caret line="36" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
+            <state vertical-scroll-proportion="-21.103449">
+              <caret line="36" column="8" selection-start-line="36" selection-start-column="8" selection-end-line="36" selection-end-column="50" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ParserResumeTest.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/tests/ParserResumeTest.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.18923934">
+              <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#15#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="case.py" pinned="false" current-in-tab="false">
+        <entry file="file://C:/Python27/Lib/unittest/case.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="392" column="0" selection-start-line="392" selection-start-column="0" selection-end-line="392" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="suite.py" pinned="false" current-in-tab="false">
+        <entry file="file://C:/Python27/Lib/unittest/suite.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="69" column="0" selection-start-line="69" selection-start-column="0" selection-end-line="69" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="tcunittest.py" pinned="false" current-in-tab="false">
+        <entry file="file://$APPLICATION_HOME_DIR$/helpers/pycharm/tcunittest.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="254" column="0" selection-start-line="254" selection-start-column="0" selection-end-line="254" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="utrunner.py" pinned="false" current-in-tab="false">
+        <entry file="file://$APPLICATION_HOME_DIR$/helpers/pycharm/utrunner.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="155" column="0" selection-start-line="155" selection-start-column="0" selection-end-line="155" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -67,6 +158,12 @@
         <option value="$PROJECT_DIR$/rchilli/RChilliTest.py" />
         <option value="$PROJECT_DIR$/tests/RChilliTest.py" />
         <option value="$PROJECT_DIR$/tests/HireAbilityTest.py" />
+        <option value="$PROJECT_DIR$/tests/ParseResumeApi.py" />
+        <option value="$PROJECT_DIR$/ParseResumeApis/ParseResumeApi.py" />
+        <option value="$PROJECT_DIR$/ParseResumeApis/RChilliParseResumeApi.py" />
+        <option value="$PROJECT_DIR$/ParseResumeApis/HireAbilityParseResumeApi.py" />
+        <option value="$PROJECT_DIR$/ParseResumeApis/XmlConverter.py" />
+        <option value="$PROJECT_DIR$/tests/ParserResumeTest.py" />
       </list>
     </option>
   </component>
@@ -78,7 +175,7 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1932" />
+    <option name="width" value="1936" />
     <option name="height" value="1176" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
@@ -106,6 +203,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -136,9 +234,22 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rchilli" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rchilli" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ParseResumeApis" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -147,34 +258,16 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Van\Documents\WORK\daniel\master\jobSite\rchilli\tests" />
+      <recent name="C:\Users\Van\Documents\WORK\daniel\master\jobSite\rchilli" />
+      <recent name="C:\Users\Van\Documents\WORK\daniel\master\jobSite\rchilli\ParseResumeApis" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Van\Documents\WORK\daniel\rchilli\rchilli\data" />
     </key>
   </component>
-  <component name="RunManager" selected="Python tests.Unittest HireAbilityTest.TestResume">
-    <configuration default="false" name="Unittest RChilliTest.test_something" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="rchilli" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tests/RChilliTest.py" />
-      <option name="CLASS_NAME" value="RChilliTest" />
-      <option name="METHOD_NAME" value="test_something" />
-      <option name="FOLDER_NAME" value="" />
-      <option name="TEST_TYPE" value="TEST_METHOD" />
-      <option name="PATTERN" value="" />
-      <option name="USE_PATTERN" value="false" />
-      <option name="PUREUNITTEST" value="true" />
-      <option name="PARAMS" value="" />
-      <option name="USE_PARAM" value="false" />
-      <method />
-    </configuration>
+  <component name="RunManager" selected="Python tests.Unittest ParserResumeTest.TestRChilli">
     <configuration default="false" name="Unittest RChilliTest.TestResume" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -212,6 +305,75 @@
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tests/HireAbilityTest.py" />
       <option name="CLASS_NAME" value="HireAbilityTest" />
       <option name="METHOD_NAME" value="TestResume" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_METHOD" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="PUREUNITTEST" value="true" />
+      <option name="PARAMS" value="" />
+      <option name="USE_PARAM" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="Unittests in ParserResumeTest" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="rchilli" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tests/ParserResumeTest.py" />
+      <option name="CLASS_NAME" value="ParserResumeTest" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_CLASS" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="PUREUNITTEST" value="true" />
+      <option name="PARAMS" value="" />
+      <option name="USE_PARAM" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="Unittest ParserResumeTest.TestHireAbility" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="rchilli" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tests/ParserResumeTest.py" />
+      <option name="CLASS_NAME" value="ParserResumeTest" />
+      <option name="METHOD_NAME" value="TestHireAbility" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_METHOD" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="PUREUNITTEST" value="true" />
+      <option name="PARAMS" value="" />
+      <option name="USE_PARAM" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="Unittest ParserResumeTest.TestRChilli" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="rchilli" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tests/ParserResumeTest.py" />
+      <option name="CLASS_NAME" value="ParserResumeTest" />
+      <option name="METHOD_NAME" value="TestRChilli" />
       <option name="FOLDER_NAME" value="" />
       <option name="TEST_TYPE" value="TEST_METHOD" />
       <option name="PATTERN" value="" />
@@ -414,16 +576,20 @@
       <option name="USE_KEYWORD" value="false" />
       <method />
     </configuration>
-    <list size="3">
-      <item index="0" class="java.lang.String" itemvalue="Python tests.Unittest RChilliTest.test_something" />
-      <item index="1" class="java.lang.String" itemvalue="Python tests.Unittest RChilliTest.TestResume" />
-      <item index="2" class="java.lang.String" itemvalue="Python tests.Unittest HireAbilityTest.TestResume" />
+    <list size="5">
+      <item index="0" class="java.lang.String" itemvalue="Python tests.Unittest RChilliTest.TestResume" />
+      <item index="1" class="java.lang.String" itemvalue="Python tests.Unittest HireAbilityTest.TestResume" />
+      <item index="2" class="java.lang.String" itemvalue="Python tests.Unittests in ParserResumeTest" />
+      <item index="3" class="java.lang.String" itemvalue="Python tests.Unittest ParserResumeTest.TestHireAbility" />
+      <item index="4" class="java.lang.String" itemvalue="Python tests.Unittest ParserResumeTest.TestRChilli" />
     </list>
     <recent_temporary>
-      <list size="3">
-        <item index="0" class="java.lang.String" itemvalue="Python tests.Unittest HireAbilityTest.TestResume" />
-        <item index="1" class="java.lang.String" itemvalue="Python tests.Unittest RChilliTest.TestResume" />
-        <item index="2" class="java.lang.String" itemvalue="Python tests.Unittest RChilliTest.test_something" />
+      <list size="5">
+        <item index="0" class="java.lang.String" itemvalue="Python tests.Unittest ParserResumeTest.TestRChilli" />
+        <item index="1" class="java.lang.String" itemvalue="Python tests.Unittest ParserResumeTest.TestHireAbility" />
+        <item index="2" class="java.lang.String" itemvalue="Python tests.Unittests in ParserResumeTest" />
+        <item index="3" class="java.lang.String" itemvalue="Python tests.Unittest HireAbilityTest.TestResume" />
+        <item index="4" class="java.lang.String" itemvalue="Python tests.Unittest RChilliTest.TestResume" />
       </list>
     </recent_temporary>
   </component>
@@ -441,33 +607,42 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Unittest_HireAbilityTest_TestResume - 2016.04.15 at 22h 39m 14s.xml">
+    <history-entry file="Unittest_HireAbilityTest_TestResume - 2016.04.16 at 21h 47m 27s.xml">
       <configuration name="Unittest HireAbilityTest.TestResume" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittest_RChilliTest_TestResume - 2016.04.15 at 00h 23m 50s.xml">
-      <configuration name="Unittest RChilliTest.TestResume" configurationId="tests" />
+    <history-entry file="Unittest_HireAbilityTest_TestResume - 2016.04.16 at 21h 49m 27s.xml">
+      <configuration name="Unittest HireAbilityTest.TestResume" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittest_RChilliTest_TestResume - 2016.04.15 at 00h 26m 32s.xml">
-      <configuration name="Unittest RChilliTest.TestResume" configurationId="tests" />
+    <history-entry file="Unittest_HireAbilityTest_TestResume - 2016.04.16 at 21h 54m 02s.xml">
+      <configuration name="Unittest HireAbilityTest.TestResume" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittest_RChilliTest_TestResume - 2016.04.15 at 00h 44m 23s.xml">
-      <configuration name="Unittest RChilliTest.TestResume" configurationId="tests" />
+    <history-entry file="Unittest_HireAbilityTest_TestResume - 2016.04.16 at 21h 55m 20s.xml">
+      <configuration name="Unittest HireAbilityTest.TestResume" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittest_RChilliTest_TestResume - 2016.04.15 at 00h 46m 25s.xml">
-      <configuration name="Unittest RChilliTest.TestResume" configurationId="tests" />
+    <history-entry file="Unittest_HireAbilityTest_TestResume - 2016.04.16 at 21h 57m 24s.xml">
+      <configuration name="Unittest HireAbilityTest.TestResume" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittest_RChilliTest_TestResume - 2016.04.15 at 00h 48m 44s.xml">
-      <configuration name="Unittest RChilliTest.TestResume" configurationId="tests" />
+    <history-entry file="Unittest_HireAbilityTest_TestResume - 2016.04.16 at 22h 00m 44s.xml">
+      <configuration name="Unittest HireAbilityTest.TestResume" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittest_RChilliTest_test_something - 2016.04.15 at 00h 14m 05s.xml">
-      <configuration name="Unittest RChilliTest.test_something" configurationId="tests" />
+    <history-entry file="Unittest_HireAbilityTest_TestResume - 2016.04.16 at 22h 09m 28s.xml">
+      <configuration name="Unittest HireAbilityTest.TestResume" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittest_ParserResumeTest_TestHireAbility - 2016.04.16 at 22h 59m 39s.xml">
+      <configuration name="Unittest ParserResumeTest.TestHireAbility" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittest_ParserResumeTest_TestRChilli - 2016.04.16 at 23h 00m 07s.xml">
+      <configuration name="Unittest ParserResumeTest.TestRChilli" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_in_ParserResumeTest - 2016.04.16 at 22h 58m 40s.xml">
+      <configuration name="Unittests in ParserResumeTest" configurationId="tests" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1932" height="1176" extended-state="1" />
-    <editor active="false" />
+    <frame x="-8" y="-8" width="1936" height="1176" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24947916" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -477,7 +652,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3292683" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.55909944" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.46810508" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -537,18 +712,8 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="python-line">
           <url>file://$PROJECT_DIR$/tests/HireAbilityTest.py</url>
-          <line>26</line>
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="python-line">
-          <url>file://$PROJECT_DIR$/tests/HireAbilityTest.py</url>
           <line>29</line>
           <option name="timeStamp" value="8" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="python-line">
-          <url>file://$PROJECT_DIR$/tests/HireAbilityTest.py</url>
-          <line>20</line>
-          <option name="timeStamp" value="9" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="python-line">
           <url>file://$PROJECT_DIR$/tests/HireAbilityTest.py</url>
@@ -560,12 +725,62 @@
           <line>36</line>
           <option name="timeStamp" value="11" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/tests/HireAbilityTest.py</url>
+          <line>24</line>
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/tests/HireAbilityTest.py</url>
+          <line>28</line>
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/tests/HireAbilityTest.py</url>
+          <line>25</line>
+          <option name="timeStamp" value="14" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/tests/HireAbilityTest.py</url>
+          <line>18</line>
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/tests/ParserResumeTest.py</url>
+          <line>16</line>
+          <option name="timeStamp" value="17" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/tests/ParserResumeTest.py</url>
+          <line>30</line>
+          <option name="timeStamp" value="18" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="12" />
+      <option name="time" value="19" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/tests/RChilliTest.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="3" selection-end-column="29" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/HireAbilityTest.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/tests/RChilliTest.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -657,6 +872,64 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/ParseResumeApis/ParseResumeApi.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="14" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/RChilliTest.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="25" column="17" selection-start-line="25" selection-start-column="17" selection-end-line="25" selection-end-column="158" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ParseResumeApis/XmlConverter.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="3" column="22" selection-start-line="3" selection-start-column="22" selection-end-line="3" selection-end-column="22" />
+          <folding>
+            <element signature="e#0#16#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ParseResumeApis/HireAbilityParseResumeApi.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="4" column="31" selection-start-line="4" selection-start-column="6" selection-end-line="4" selection-end-column="31" />
+          <folding>
+            <element signature="e#0#57#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ParseResumeApis/RChilliParseResumeApi.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="4" column="27" selection-start-line="4" selection-start-column="6" selection-end-line="4" selection-end-column="27" />
+          <folding>
+            <element signature="e#0#57#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/HireAbilityTest.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-21.103449">
+          <caret line="36" column="8" selection-start-line="36" selection-start-column="8" selection-end-line="36" selection-end-column="50" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://C:/Python27/Lib/unittest/case.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -673,14 +946,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pycharm/utrunner.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="155" column="0" selection-start-line="155" selection-start-column="0" selection-end-line="155" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$APPLICATION_HOME_DIR$/helpers/pycharm/tcunittest.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -689,20 +954,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tests/RChilliTest.py">
+    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pycharm/utrunner.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="3" selection-end-column="29" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
+          <caret line="155" column="0" selection-start-line="155" selection-start-column="0" selection-end-line="155" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tests/HireAbilityTest.py">
+    <entry file="file://$PROJECT_DIR$/tests/ParserResumeTest.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7647059">
-          <caret line="36" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.18923934">
+          <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
           </folding>

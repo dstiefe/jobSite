@@ -214,8 +214,14 @@ angular.module('Jobsite').controller("ApplicantsController", function($scope, $h
                 resume: function () {
                     return data;
                 },
+                resumeId: function () {
+                    return data.id;
+                },
                 jobId: function () {
                     return jobId;
+                },
+                job: function () {
+                    return null;
                 }
             }
         });

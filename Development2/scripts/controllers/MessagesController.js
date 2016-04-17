@@ -1,31 +1,44 @@
 /**
  * Created by Van on 23.02.2016.
  */
-angular.module('Jobsite').controller('MessagesController', function ($scope, $modalInstance, JobsService, $state, InterviewsService, MessagesService, $sce, $timeout, $document, resume, jobId) {
+angular.module('Jobsite').controller('MessagesController', function ($scope, $modalInstance, JobsService, $state, InterviewsService, MessagesService, $sce, $timeout, $document, resume, jobId, resumeId, job) {
 
-    $scope.resume = resume;
+
     $scope.jobId = jobId;
-
-    $scope.successMessage =false;
-    $scope.errorMessage =false;
+    $scope.resumeId = resumeId;
+    $scope.successMessage = false;
+    $scope.errorMessage = false;
     $scope.newMessage={
         subject:'',
         body:''
     };
 
-    JobsService.getJob($scope.jobId).then(function (results) {
-        response = results.data;
-        $scope.job = response;
-    }, function (error) {
-        console.log(error.data.message);
-    });
+    if (resume != null){
+        $scope.toUserName = resume.firstName + ' ' + resume.lastName;
+    }
+    else{
+        $scope.toUserName = 'Emplorer';
+    }
+
+
+    if (job != null){
+        $scope.job = job;
+    }
+    else{
+        JobsService.getJob($scope.jobId).then(function (results) {
+            response = results.data;
+            $scope.job = response;
+        }, function (error) {
+            console.log(error.data.message);
+        });
+    }
 
     $scope.onClose = function() {
         console.log('close');
         $modalInstance.close();
     };
 
-    MessagesService.getMessages($scope.jobId, $scope.resume.id).then(function (results) {
+    MessagesService.getMessages($scope.jobId, $scope.resumeId).then(function (results) {
         $scope.messages = results.data;
     }, function (error) {
         console.log(error.data.message);
@@ -42,7 +55,7 @@ angular.module('Jobsite').controller('MessagesController', function ($scope, $mo
 
         var request ={
             jobId: $scope.jobId,
-            resumeId: $scope.resume.id,
+            resumeId: $scope.resumeId,
             subject:$scope.newMessage.subject,
             body:$scope.newMessage.body
         };

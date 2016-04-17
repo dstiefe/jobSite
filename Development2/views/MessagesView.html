@@ -7,7 +7,7 @@
         </div>
 
         <div class="pull-left">
-            {{resume.firstName}} {{resume.lastName}}
+            {{toUserName}}
         </div>
 
         <div class="pull-right">
@@ -48,7 +48,7 @@
                 <form name="sendForm" ng-submit="send(sendForm.$valid)" novalidate>
 
                     <div class="form-group">
-                        To: {{resume.firstName}} {{resume.lastName}}
+                        To: {{toUserName}}
                     </div>
 
                     <div class="form-group">

@@ -45,4 +45,27 @@ angular.module('Jobsite').controller("UserDashboardController", function ($rootS
         $scope.currentPage = pageNo;
     };
 
+    $scope.showMessages = function (data) {
+        var modalInstance = $modal.open({
+            animation: true,
+            templateUrl: 'views/MessagesView.html',
+            controller: 'MessagesController',
+            size : 'lg',
+            resolve: {
+                resume: function () {
+                    return null;
+                },
+                resumeId: function () {
+                    return data.resumeId;
+                },
+                jobId: function () {
+                    return data.id;
+                },
+                job: function () {
+                    return data;
+                }
+            }
+        });
+    };
+
 });

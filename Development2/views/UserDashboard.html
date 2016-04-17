@@ -22,16 +22,14 @@
                     </div>
 
                     <div class="pull-right" >
-
-                        <div class="media">
-                                        <span class="pull-left">
-                                             <i class="fa fa-envelope-o media-object envelope-user" aria-hidden="true"></i>
-                                            <span class="badge badge-success pull-right" ng-show="data.messagesCount>0">{{data.messagesCount}}</span>
-                                        </span>
-                        </div>
-
-
-
+                        <a href="" ng-click="showMessages(data)">
+                            <div class="media">
+                                                                <span class="pull-left">
+                                                                     <i class="fa fa-envelope-o media-object envelope-user" aria-hidden="true"></i>
+                                                                     <span class="badge badge-success pull-right" ng-show="data.messagesCount>0">{{data.messagesCount}}</span>
+                                                                </span>
+                            </div>
+                        </a>
                     </div>
 
                     <div class="clearfix"></div>

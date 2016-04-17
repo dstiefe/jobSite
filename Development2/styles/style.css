@@ -4840,3 +4840,11 @@ border: none;
     display: inline-block;
 }
 
+.envelope-user{
+    font-size: 28px;
+}
+.media i+span.badge {
+    position: relative;
+    top: -11px;
+    left: 9px;
+}

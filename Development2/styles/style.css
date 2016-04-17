@@ -4848,3 +4848,13 @@ border: none;
     top: -11px;
     left: 9px;
 }
+
+.icon-bulk-email{
+    background: url("../images/bulkemail.png") 100% 100% no-repeat;
+    background-size: 44px;
+    background-position: center center;
+    width: 44px !important;
+    height: 42px !important;
+    line-height: 44px;
+    display: inline-block;
+}

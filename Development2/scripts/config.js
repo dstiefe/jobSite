@@ -617,6 +617,17 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
             }
         })
 
+        .state('bulkemails', {
+            url: "/messages/bulk",
+            templateUrl: "views/MessagesBulk.html",
+            data: {
+                pageTitle: 'Bulk Message',
+                permissions: {
+                    only: ['Admin'],
+                }
+            }
+        })
+
 }
 
 angular

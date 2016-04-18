@@ -66,6 +66,13 @@ angular.module('Jobsite').controller("UserDashboardController", function ($rootS
                 }
             }
         });
+
+        modalInstance.result.then(function (res) {
+            data.messagesCount = 0;
+        }, function () {
+            data.messagesCount = 0;
+            //console.log('Modal dismissed at: ' + new Date());
+        });
     };
 
 });

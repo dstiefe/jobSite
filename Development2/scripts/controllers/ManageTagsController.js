@@ -37,6 +37,8 @@ angular.module('Jobsite').controller('ManageTagsController', function ($scope, $
         $modalInstance.close();
     };
 
+
+
     var _getParentLevelByName = function(parentName){
         var parent =  $filter('filter')($scope.parents, { name:parentName})[0];
         return parseInt(parent.level);

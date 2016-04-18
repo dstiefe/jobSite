@@ -3,15 +3,17 @@
  */
 angular.module('Jobsite').controller('MessagesController', function ($scope, $modalInstance, JobsService, $state, InterviewsService, MessagesService, $sce, $timeout, $document, resume, jobId, resumeId, job) {
 
-
     $scope.jobId = jobId;
     $scope.resumeId = resumeId;
     $scope.successMessage = false;
-    $scope.errorMessage = false;
+    $scope.errorMessage = '';
     $scope.newMessage={
         subject:'',
         body:''
     };
+    $scope.selectedMessageTemplate = {};
+    $scope.isSaveTemplate = false;
+    $scope.nameTemplate = '';
 
     if (resume != null){
         $scope.toUserName = resume.firstName + ' ' + resume.lastName;
@@ -19,7 +21,6 @@ angular.module('Jobsite').controller('MessagesController', function ($scope, $mo
     else{
         $scope.toUserName = 'Emplorer';
     }
-
 
     if (job != null){
         $scope.job = job;
@@ -33,25 +34,20 @@ angular.module('Jobsite').controller('MessagesController', function ($scope, $mo
         });
     }
 
-    $scope.onClose = function() {
-        console.log('close');
-        $modalInstance.close();
-    };
-
     MessagesService.getMessages($scope.jobId, $scope.resumeId).then(function (results) {
         $scope.messages = results.data;
     }, function (error) {
         console.log(error.data.message);
     });
 
-    $scope.send = function(isValid) {
-        $scope.successMessage = false;
-        $scope.errorMessage = false;
-        if (!isValid){
-            return
-        }
+    MessagesService.getMessageTemplates().then(function (results) {
+        $scope.messageTemplates = results.data;
+    }, function (error) {
+        console.log(error.data.message);
+    });
 
-        console.log('send');
+
+    var _sendMessage = function(){
 
         var request ={
             jobId: $scope.jobId,
@@ -59,9 +55,8 @@ angular.module('Jobsite').controller('MessagesController', function ($scope, $mo
             subject:$scope.newMessage.subject,
             body:$scope.newMessage.body
         };
-
         MessagesService.sendMessage(request).then(function (results) {
-           var message = results.data;
+            var message = results.data;
             $scope.messages.push(message);
 
             $scope.successMessage = true;
@@ -72,9 +67,46 @@ angular.module('Jobsite').controller('MessagesController', function ($scope, $mo
             }, 1000);
 
         }, function (error) {
-            $scope.errorMessage = true;
+            $scope.errorMessage = "Try again";
             console.log(error.data.message);
         });
+
+    };
+
+    $scope.send = function(isValid) {
+        $scope.successMessage = false;
+        $scope.errorMessage = '';
+        if (!isValid){
+            $scope.errorMessage = "You don't fill mandatory fields";
+            return;
+        }
+
+        if ($scope.isSaveTemplate && !$scope.nameTemplate){
+            $scope.errorMessage = "You don't fill Name Template";
+            return;
+        }
+
+        console.log('send');
+
+        if ($scope.isSaveTemplate){
+            var requestTemp ={
+                name: $scope.nameTemplate,
+                subject:$scope.newMessage.subject,
+                body:$scope.newMessage.body
+            };
+            MessagesService.postMessageTemplate(requestTemp).then(function (results) {
+                var messageTemplate = results.data;
+                $scope.messageTemplates.push(messageTemplate);
+                _sendMessage();
+
+            }, function (error) {
+                $scope.errorMessage = "Can not save template";
+                console.log(error.data.message);
+            });
+        }
+        else{
+            _sendMessage();
+        }
     };
 
     $scope.cancel = function() {
@@ -82,4 +114,15 @@ angular.module('Jobsite').controller('MessagesController', function ($scope, $mo
         $modalInstance.close();
     };
 
+    $scope.onClose = function() {
+        console.log('close');
+        $modalInstance.close();
+    };
+
+    $scope.messageTemplateChanged = function(messageTemplate) {
+       if ($scope.selectedMessageTemplate){
+          $scope.newMessage.subject = $scope.selectedMessageTemplate.subject;
+          $scope.newMessage.body = $scope.selectedMessageTemplate.body;
+       }
+    };
 });

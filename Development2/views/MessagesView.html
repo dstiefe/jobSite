@@ -41,9 +41,9 @@
             </div>
 
             <div class="col-md-12" style="background-color: #DEEBF7;">
-<br />
+                <br />
                 <div class="alert alert-success" role="alert" ng-show="successMessage">Successfully sended!</div>
-                <div class="alert alert-danger" role="alert" ng-show="errorMessage">Error occured</div>
+                <div class="alert alert-danger" role="alert" ng-show="errorMessage">Error occured. {{errorMessage}}</div>
 
                 <form name="sendForm" ng-submit="send(sendForm.$valid)" novalidate>
 
@@ -52,17 +52,41 @@
                     </div>
 
                     <div class="form-group">
+
+
+
+                        <select  id="selectedMessageTemplate"
+                                 name="selectedMessageTemplate"
+                                 ng-model="selectedMessageTemplate"
+                                 class="form-control"
+                                 ng-change="messageTemplateChanged()"
+                                 ng-options="messageTemplate as messageTemplate.name for messageTemplate in messageTemplates">
+                            <option value="">Insert Template</option>
+                        </select>
+
+                        <!--<select  class="form-control" id="messageTemplate" name="messageTemplate" ng-model="selectedMessageTemplate" ng-change="messageTemplateChanged()">-->
+                            <!--<option value="">Insert Template</option>-->
+                            <!--<option ng-repeat="messageTemplate in messageTemplates" ng-selected="messageTemplate.id==selectedMessageTemplate.id" value="{{messageTemplate}}">{{messageTemplate.name}}</option>-->
+                        <!--</select>-->
+                    </div>
+
+                    <div class="form-group">
                         <input type="text" ng-model="newMessage.subject" placeholder="Subject" name="subject" id="subject" class="form-control" required />
                         <span class="color-theme" ng-show="sendForm.subject.$error.required">Subject is required.</span>
                     </div>
+
                     <div class="form-group">
                         <textarea cols="40" rows="5" ng-model="newMessage.body" placeholder="Message" name="body" id="body" class="form-control" required></textarea>
                         <span class="color-theme" ng-show="sendForm.body.$error.required">Message is required.</span>
                     </div>
+
                     <div class="form-group">
-                           <button class="btn btn-primary btn-md" type="submit">Send</button>
-                        <button ng-click="cancel()" class="btn btn-default btn-md">Cancel</button>
+                                <button class="btn btn-primary btn-md" type="submit">Send</button>
+                                <button ng-click="cancel()" class="btn btn-default btn-md">Cancel</button>
+                                <input type="checkbox" ng-model="isSaveTemplate" /> Save Template
+                                <input type="text" placeholder="Name Template" class="form-control" ng-model="nameTemplate" style="display: inline;width: 200px;" />
                     </div>
+
                 </form>
             </div>
         </div>

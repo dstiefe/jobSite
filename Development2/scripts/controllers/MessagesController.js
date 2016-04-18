@@ -1,7 +1,7 @@
 /**
  * Created by Van on 23.02.2016.
  */
-angular.module('Jobsite').controller('MessagesController', function ($scope, $modalInstance, JobsService, $state, InterviewsService, MessagesService, $sce, $timeout, $document, resume, jobId, resumeId, job) {
+angular.module('Jobsite').controller('MessagesController', function ($scope, $modalInstance, JobsService, $state, InterviewsService, MessagesService, AuthService, $sce, $timeout, $document, resume, jobId, resumeId, job) {
 
     $scope.jobId = jobId;
     $scope.resumeId = resumeId;
@@ -14,6 +14,8 @@ angular.module('Jobsite').controller('MessagesController', function ($scope, $mo
     $scope.selectedMessageTemplate = {};
     $scope.isSaveTemplate = false;
     $scope.nameTemplate = '';
+    $scope.isAdmin = AuthService.authentication.isAdministrator;
+
 
     if (resume != null){
         $scope.toUserName = resume.firstName + ' ' + resume.lastName;
@@ -123,6 +125,9 @@ angular.module('Jobsite').controller('MessagesController', function ($scope, $mo
        if ($scope.selectedMessageTemplate){
           $scope.newMessage.subject = $scope.selectedMessageTemplate.subject;
           $scope.newMessage.body = $scope.selectedMessageTemplate.body;
+       }else{
+           $scope.newMessage.subject = '';
+           $scope.newMessage.body = '';
        }
     };
 });

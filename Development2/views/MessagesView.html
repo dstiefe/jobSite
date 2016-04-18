@@ -55,12 +55,14 @@
 
 
 
-                        <select  id="selectedMessageTemplate"
+                        <select id="selectedMessageTemplate"
                                  name="selectedMessageTemplate"
                                  ng-model="selectedMessageTemplate"
                                  class="form-control"
                                  ng-change="messageTemplateChanged()"
-                                 ng-options="messageTemplate as messageTemplate.name for messageTemplate in messageTemplates">
+                                 ng-options="messageTemplate as messageTemplate.name for messageTemplate in messageTemplates"
+                                 ng-show="isAdmin"
+                        >
                             <option value="">Insert Template</option>
                         </select>
 
@@ -83,8 +85,10 @@
                     <div class="form-group">
                                 <button class="btn btn-primary btn-md" type="submit">Send</button>
                                 <button ng-click="cancel()" class="btn btn-default btn-md">Cancel</button>
-                                <input type="checkbox" ng-model="isSaveTemplate" /> Save Template
-                                <input type="text" placeholder="Name Template" class="form-control" ng-model="nameTemplate" style="display: inline;width: 200px;" />
+                                <span ng-show="isAdmin">
+                                    <input type="checkbox" ng-model="isSaveTemplate" /> Save Template
+                                    <input type="text" placeholder="Name Template" class="form-control" ng-model="nameTemplate" style="display: inline;width: 200px;" />
+                                </span>
                     </div>
 
                 </form>

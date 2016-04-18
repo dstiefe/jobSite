@@ -103,6 +103,9 @@ angular.module('Jobsite').controller('MessagesBulkController', function ($scope,
         if ($scope.selectedMessageTemplate){
             $scope.newMessage.subject = $scope.selectedMessageTemplate.subject;
             $scope.newMessage.body = $scope.selectedMessageTemplate.body;
+        }else{
+            $scope.newMessage.subject = '';
+            $scope.newMessage.body = '';
         }
     };
 });

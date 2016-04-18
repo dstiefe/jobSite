@@ -15,7 +15,7 @@ angular.module('Jobsite').controller('MessagesController', function ($scope, $mo
     $scope.isSaveTemplate = false;
     $scope.nameTemplate = '';
     $scope.isAdmin = AuthService.authentication.isAdministrator;
-
+$scope.showReply=false;
 
     if (resume != null){
         $scope.toUserName = resume.firstName + ' ' + resume.lastName;
@@ -38,6 +38,10 @@ angular.module('Jobsite').controller('MessagesController', function ($scope, $mo
 
     MessagesService.getMessages($scope.jobId, $scope.resumeId).then(function (results) {
         $scope.messages = results.data;
+        if ($scope.messages.length>0){
+            $scope.messages[$scope.messages.length-1].open=true;
+        }
+
     }, function (error) {
         console.log(error.data.message);
     });

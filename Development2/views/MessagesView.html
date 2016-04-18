@@ -27,20 +27,23 @@
 
                 <accordion close-others="oneAtATime" >
                         <accordion-group ng-repeat="_message in messages track by $index" is-open="_message.open" >
-                            <accordion-heading>
+                            <accordion-heading ng-click="_message.open = !_message.open">
+                                <div>
                                 <span class="pull-left">Message From: {{_message.from | limitTo: 20}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
                                 <span class="text-center">{{_message.subject | limitTo: 50}}&nbsp;</span>
                                 <span class="pull-right">&nbsp;{{ _message.createDate*1000 | date : "MMMM d - yyyy" }}&nbsp;&nbsp;&nbsp;<i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-up': _message.open, 'glyphicon-chevron-down': !_message.open}"></i></span>
+                                    </div>
                             </accordion-heading>
                             <p>Message From: {{_message.from}}</p>
                             <p>To: {{_message.to}}</p>
                             <p>Subject: {{_message.subject}}</p>
                             <p>{{_message.body}}</p>
+                            <p><a href="" style="color: darkcyan;" ng-click="$parent.$parent.$parent.$parent.showReply=!$parent.$parent.$parent.$parent.showReply">Reply</a></p>
                         </accordion-group>
                 </accordion>
             </div>
 
-            <div class="col-md-12" style="background-color: #DEEBF7;">
+            <div class="col-md-12" style="background-color: #DEEBF7;" ng-show="showReply">
                 <br />
                 <div class="alert alert-success" role="alert" ng-show="successMessage">Successfully sended!</div>
                 <div class="alert alert-danger" role="alert" ng-show="errorMessage">Error occured. {{errorMessage}}</div>

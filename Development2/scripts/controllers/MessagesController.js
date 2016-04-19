@@ -1,7 +1,8 @@
 /**
  * Created by Van on 23.02.2016.
  */
-angular.module('Jobsite').controller('MessagesController', function ($scope, $modalInstance, JobsService, $state, InterviewsService, MessagesService, AuthService, $sce, $timeout, $document, resume, jobId, resumeId, job) {
+angular.module('Jobsite').controller('MessagesController', function ($scope, $modalInstance, JobsService,ResumesService, $state, InterviewsService, MessagesService, AuthService, $sce, $timeout, $document, resume, jobId, resumeId, job) {
+
 
     $scope.jobId = jobId;
     $scope.resumeId = resumeId;
@@ -17,12 +18,25 @@ angular.module('Jobsite').controller('MessagesController', function ($scope, $mo
     $scope.isAdmin = AuthService.authentication.isAdministrator;
 
 
-    if (resume != null){
-        $scope.toUserName = resume.firstName + ' ' + resume.lastName;
-    }
-    else{
-        $scope.toUserName = 'Emplorer';
-    }
+        if ($scope.isAdmin){
+            if (resume != null){
+                $scope.resume = resume;
+                $scope.toUserName = $scope.resume.firstName + ' ' + $scope.resume.lastName;
+            }
+            else{
+                ResumesService.getResume($scope.resumeId).then(function (results) {
+                    response = results.data;
+                    $scope.resume = response;
+                    $scope.toUserName = $scope.resume.firstName + ' ' + $scope.resume.lastName;
+                }, function (error) {
+                    console.log(error.data.message);
+                });
+            }
+        }
+        else{
+            $scope.toUserName = 'Emplorer';
+        }
+
 
     if (job != null){
         $scope.job = job;

@@ -29,13 +29,14 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
 
         // Dashboard - Main page
         .state('dashboard', {
-            url: "/dashboard",
+            url: "/dashboard?jobId&resumeId&messageshow",
             templateUrl: "views/dashboard.html",
             data: {
                 pageTitle: 'Dashboard',
-                permissions: {
-                    only: ['Admin', 'User'],
-                    redirectTo: 'login'
+                params: {
+                    jobId: { squash: true},
+                    resumeId: { squash: true},
+                    messageshow: { squash: true},
                 }
             }
         })
@@ -155,13 +156,13 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
         })
 
         .state('applicants', {
-            url: "/applicants/:id",
+            url: "/applicants/:id?resumeId&messageshow",
             templateUrl: "views/applicants.html",
             data: {
                 pageTitle: 'Applicants',
-                permissions: {
-                    only: ['Admin'],
-                    //  redirectTo: 'login'
+                params: {
+                    resumeId: { squash: true},
+                    messageshow: { squash: true},
                 }
             }
         })

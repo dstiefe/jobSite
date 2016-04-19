@@ -38,12 +38,37 @@
                             <p>To: {{_message.to}}</p>
                             <p>Subject: {{_message.subject}}</p>
                             <p>{{_message.body}}</p>
-                            <p><a href="" style="color: darkcyan;" ng-click="$parent.$parent.$parent.$parent.showReply=!$parent.$parent.$parent.$parent.showReply">Reply</a></p>
+                            <p ng-show="!_message.showReply"><a href="" style="color: darkcyan;" ng-click="_message.showReply=true">Reply</a></p>
+
+                            <div ng-show="_message.showReply" class="col-xs-12" style="background-color: #DEEBF7;">
+                                <br />
+                                <div class="alert alert-success" role="alert" ng-show="_message.successMessage">Successfully sended!</div>
+                                <div class="alert alert-danger" role="alert" ng-show="_message.errorMessage">Error occured. {{_message.errorMessage}}</div>
+
+                                <form name="replyForm_{{$index}}" ng-submit="reply(_message)" novalidate>
+
+                                    <div class="form-group">
+                                        To: {{toUserName}}
+                                    </div>
+
+                                    <div class="form-group">
+                                        <textarea cols="40" rows="5" ng-model="_message.replyBody" placeholder="Message" name="replyBody_{{$index}}" id="replyBody_{{$index}}" class="form-control" required></textarea>
+                                        <span class="color-theme" ng-show="replyForm_{{$index}}.replyBody_{{$index}}.$error.required">Message is required.</span>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <button class="btn btn-primary btn-md" type="submit">Reply</button>
+                                        <button type="button" ng-click="replyCancel(_message)" class="btn btn-default btn-md">Cancel Reply</button>
+                                    </div>
+
+                                </form>
+                            </div>
+
                         </accordion-group>
                 </accordion>
             </div>
 
-            <div class="col-md-12" style="background-color: #DEEBF7;" ng-show="showReply">
+            <div class="col-md-12" style="background-color: #DEEBF7;" >
                 <br />
                 <div class="alert alert-success" role="alert" ng-show="successMessage">Successfully sended!</div>
                 <div class="alert alert-danger" role="alert" ng-show="errorMessage">Error occured. {{errorMessage}}</div>
@@ -55,8 +80,6 @@
                     </div>
 
                     <div class="form-group">
-
-
 
                         <select id="selectedMessageTemplate"
                                  name="selectedMessageTemplate"
@@ -87,7 +110,7 @@
 
                     <div class="form-group">
                                 <button class="btn btn-primary btn-md" type="submit">Send</button>
-                                <button ng-click="cancel()" class="btn btn-default btn-md">Cancel</button>
+                                <button type="button" ng-click="cancel()" class="btn btn-default btn-md">Cancel</button>
                                 <span ng-show="isAdmin">
                                     <input type="checkbox" ng-model="isSaveTemplate" /> Save Template
                                     <input type="text" placeholder="Name Template" class="form-control" ng-model="nameTemplate" style="display: inline;width: 200px;" />

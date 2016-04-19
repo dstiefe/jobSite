@@ -15,7 +15,7 @@ angular.module('Jobsite').controller('MessagesController', function ($scope, $mo
     $scope.isSaveTemplate = false;
     $scope.nameTemplate = '';
     $scope.isAdmin = AuthService.authentication.isAdministrator;
-$scope.showReply=false;
+
 
     if (resume != null){
         $scope.toUserName = resume.firstName + ' ' + resume.lastName;
@@ -134,4 +134,45 @@ $scope.showReply=false;
            $scope.newMessage.body = '';
        }
     };
+
+
+    $scope.reply = function( message) {
+        message.successMessage = false;
+        message.errorMessage = '';
+        if (!message.replyBody){
+            message.errorMessage = "You don't fill mandatory fields";
+            return;
+        }
+
+        var request ={
+            jobId: message.jobId,
+            resumeId: message.resumeId,
+            subject: message.subject,
+            body: message.replyBody
+        };
+
+        MessagesService.sendMessage(request).then(function (results) {
+
+            $scope.messages.push(results.data);
+
+            message.replyBody='';
+            message.showReply=false;
+            $timeout(function() {
+                message.successMessage = true;
+            }, 1000);
+
+        }, function (error) {
+            message.errorMessage = "Try again";
+            console.log(error.data.message);
+        });
+
+    };
+
+    $scope.replyCancel = function( message) {
+        message.successMessage = false;
+        message.errorMessage = '';
+        message.replyBody='';
+        message.showReply=false;
+    };
+
 });

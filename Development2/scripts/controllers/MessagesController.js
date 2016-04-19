@@ -175,4 +175,44 @@ angular.module('Jobsite').controller('MessagesController', function ($scope, $mo
         message.showReply=false;
     };
 
+    $scope.isCollapse = true;
+    $scope.showAllItems = function(message) {
+        if (message.collapse){
+            console.log('showAllItems');
+            message.collapse =false;
+            $scope.isCollapse = false;
+        }
+
+    };
+
+    $scope.collapseFilter = function(item, index, array) {
+        var count = array.length;
+        if (count <= 5)
+        {
+            $scope.isCollapse =false;
+            return true;
+        }
+
+        if (!$scope.isCollapse){
+            return true;
+        }
+
+        var startIndex = 4;
+        var endIndex = count - 3;
+
+        if (index == endIndex)
+        {
+            item.collapse = true;
+            item.collapseCount = endIndex-startIndex +1;
+            return true;
+        }
+
+        if (index < startIndex || index > endIndex){
+            return true;
+        }
+        else{
+            return false;
+        }
+    };
+
 });

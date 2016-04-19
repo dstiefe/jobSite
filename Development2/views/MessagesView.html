@@ -26,44 +26,60 @@
                 </div>
 
                 <accordion close-others="oneAtATime" >
-                        <accordion-group ng-repeat="_message in messages track by $index" is-open="_message.open" >
-                            <accordion-heading ng-click="_message.open = !_message.open">
-                                <div>
-                                <span class="pull-left">Message From: {{_message.from | limitTo: 20}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                                <span class="text-center">{{_message.subject | limitTo: 50}}&nbsp;</span>
-                                <span class="pull-right">&nbsp;{{ _message.createDate*1000 | date : "MMMM d - yyyy" }}&nbsp;&nbsp;&nbsp;<i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-up': _message.open, 'glyphicon-chevron-down': !_message.open}"></i></span>
+                        <accordion-group ng-repeat="_message in messages | filter: collapseFilter track by $index" is-open="_message.open" ng-click="showAllItems(_message)">
+
+                            <div ng-if="isCollapse && _message.collapse">
+
+                                <accordion-heading >
+
+                                    <div>
+
+                                        <span class="text-center" ><hr style="margin:0px;width: 100%;" />{{_message.collapseCount}}  older messages<hr style="margin:0px;width: 100%;" /></span>
+
                                     </div>
-                            </accordion-heading>
-                            <p>Message From: {{_message.from}}</p>
-                            <p>To: {{_message.to}}</p>
-                            <p>Subject: {{_message.subject}}</p>
-                            <p>{{_message.body}}</p>
-                            <p ng-show="!_message.showReply"><a href="" style="color: darkcyan;" ng-click="_message.showReply=true">Reply</a></p>
+                                </accordion-heading>
 
-                            <div ng-show="_message.showReply" class="col-xs-12" style="background-color: #DEEBF7;">
-                                <br />
-                                <div class="alert alert-success" role="alert" ng-show="_message.successMessage">Successfully sended!</div>
-                                <div class="alert alert-danger" role="alert" ng-show="_message.errorMessage">Error occured. {{_message.errorMessage}}</div>
-
-                                <form name="replyForm_{{$index}}" ng-submit="reply(_message)" novalidate>
-
-                                    <div class="form-group">
-                                        To: {{toUserName}}
-                                    </div>
-
-                                    <div class="form-group">
-                                        <textarea cols="40" rows="5" ng-model="_message.replyBody" placeholder="Message" name="replyBody_{{$index}}" id="replyBody_{{$index}}" class="form-control" required></textarea>
-                                        <span class="color-theme" ng-show="replyForm_{{$index}}.replyBody_{{$index}}.$error.required">Message is required.</span>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <button class="btn btn-primary btn-md" type="submit">Reply</button>
-                                        <button type="button" ng-click="replyCancel(_message)" class="btn btn-default btn-md">Cancel Reply</button>
-                                    </div>
-
-                                </form>
                             </div>
 
+                            <div ng-if="! (isCollapse && _message.collapse)">
+
+                                <accordion-heading>
+                                    <div>
+                                    <span class="pull-left">Message From: {{_message.from | limitTo: 20}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                    <span class="text-center">{{_message.subject | limitTo: 50}}&nbsp;</span>
+                                    <span class="pull-right">&nbsp;{{ _message.createDate*1000 | date : "MMMM d - yyyy" }}&nbsp;&nbsp;&nbsp;<i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-up': _message.open, 'glyphicon-chevron-down': !_message.open}"></i></span>
+                                        </div>
+                                </accordion-heading>
+                                <p>Message From: {{_message.from}}</p>
+                                <p>To: {{_message.to}}</p>
+                                <p>Subject: {{_message.subject}}</p>
+                                <p>{{_message.body}}</p>
+                                <p ng-show="!_message.showReply"><a href="" style="color: darkcyan;" ng-click="_message.showReply=true">Reply</a></p>
+                                <div ng-show="_message.showReply" class="col-xs-12" style="background-color: #DEEBF7;">
+                                    <br />
+                                    <div class="alert alert-success" role="alert" ng-show="_message.successMessage">Successfully sended!</div>
+                                    <div class="alert alert-danger" role="alert" ng-show="_message.errorMessage">Error occured. {{_message.errorMessage}}</div>
+
+                                    <form name="replyForm_{{$index}}" ng-submit="reply(_message)" novalidate>
+
+                                        <div class="form-group">
+                                            To: {{toUserName}}
+                                        </div>
+
+                                        <div class="form-group">
+                                            <textarea cols="40" rows="5" ng-model="_message.replyBody" placeholder="Message" name="replyBody_{{$index}}" id="replyBody_{{$index}}" class="form-control" required></textarea>
+                                            <span class="color-theme" ng-show="replyForm_{{$index}}.replyBody_{{$index}}.$error.required">Message is required.</span>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <button class="btn btn-primary btn-md" type="submit">Reply</button>
+                                            <button type="button" ng-click="replyCancel(_message)" class="btn btn-default btn-md">Cancel Reply</button>
+                                        </div>
+
+                                    </form>
+                                </div>
+
+                            </div>
                         </accordion-group>
                 </accordion>
             </div>

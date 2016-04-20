@@ -1,6 +1,7 @@
 /**
  * Created by Van on 03.02.2016.
  */
+//Controller for working with screenings
 angular
     .module('Jobsite').controller("ScreeningsController", function($scope,  $http, $timeout, $location, ScreeningsService) {
 

@@ -4,6 +4,7 @@
 /**
  * Created by Van on 23.02.2016.
  */
+//Controller for manage tags
 angular.module('Jobsite').controller('ManageTagsController', function ($scope, $modalInstance, JobsService, ScreeningsService, $sce, $timeout, $document, screening,$filter) {
 
     $scope.screening = screening;

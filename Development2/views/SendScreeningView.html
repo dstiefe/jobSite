@@ -1,6 +1,7 @@
 <div class="inmodal">
     <div class="color-line"></div>
     <div class="modal-header">
+
         <div style="position:absolute; right: 30px; top: 10px;">
             <a ng-click="onClose()" ><span class="glyphicon close-icon hoverClick" style="font-size: 30px; color: red;">×</span></a>
         </div>
@@ -9,18 +10,17 @@
             {{resume.firstName}} {{resume.lastName}}
         </div>
 
-
-
         <div class="pull-right">
             {{job.title}}
         </div>
-
 
     </div>
     <div class="modal-body">
 
         <div class="alert alert-success" role="alert" ng-show="successMessage">Successfully notified!</div>
+
         <div class="alert alert-danger" role="alert" ng-show="errorMessage">Error occured</div>
+
         <div class="row">
             <div class="col-md-4">
                 <label>Screenings Taken</label>
@@ -41,11 +41,14 @@
                 </select>
             </div>
         </div>
+
     </div>
+
     <div class="modal-footer">
         <div class="text-right m-t-xs">
             <button ng-click="notify()" class="btn btn-success" ng-disabled="screeningsToTakeSelected.length == 0">Notify Candidate</button>
             <button ng-click="onClose()" class="btn btn-primary">Close</button>
         </div>
     </div>
+
 </div>

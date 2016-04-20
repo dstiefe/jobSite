@@ -4,6 +4,7 @@
 /**
  * Created by Van on 23.02.2016.
  */
+//Controller for sending bulk-messages
 angular.module('Jobsite').controller('MessagesBulkController', function ($scope,  JobsService, $state, InterviewsService, MessagesService,JobsService, $sce, $timeout, $document, $state) {
 
     $scope.selectedJobId = '';

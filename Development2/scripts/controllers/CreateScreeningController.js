@@ -1,6 +1,7 @@
 /**
  * Created by Van on 03.02.2016.
  */
+//Controller for creating screening
 angular.module('Jobsite').controller("CreateScreeningController", function($scope,  $http, $timeout, $location, ScreeningsService, CategoriesService, JobsService, $state, $stateParams, $modal) {
 
     $scope.id = $stateParams.id;

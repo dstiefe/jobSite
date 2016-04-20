@@ -1,6 +1,7 @@
 /**
  * Created by Van on 28.03.2016.
  */
+//Controller for showing cover
 angular.module('Jobsite').controller('ShowCoverController', function ($scope, $modalInstance, JobsService, $state,  $sce, $timeout, JobsService, $document, resume, jobId) {
 
     $scope.resume = resume;

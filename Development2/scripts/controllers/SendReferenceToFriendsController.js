@@ -1,6 +1,7 @@
 /**
  * Created by Van on 10.02.2016.
  */
+//Controller for sending reference to friends
 angular.module('Jobsite').controller('SendReferenceToFriendsController', function ($scope,  JobsService, ScreeningsService, $sce, $timeout, $document, ReferralService, RESOURCES) {
 
     $scope.job = {};

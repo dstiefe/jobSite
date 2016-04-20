@@ -1,6 +1,7 @@
 /**
  * Created by Van on 03.02.2016.
  */
+//Controller for editing screening
 angular.module('Jobsite').controller("EditScreeningController", function($scope,  $http, $timeout, $location, ScreeningsService, CategoriesService, JobsService, $state, $stateParams) {
 
     $scope.id = $stateParams.id;

@@ -1,12 +1,7 @@
 /**
  * Created by Van on 04.03.2016.
  */
-/**
- * Created by Van on 03.03.2016.
- */
-/**
- * Created by Van on 03.02.2016.
- */
+//Controller for assingning referrals
 angular.module('Jobsite').controller("ReferralAssignController", function($scope,  $http, $timeout, $location,$filter, ReferralService, JobsService, $state, $stateParams) {
 
     $scope.myReferralId = $stateParams.id;

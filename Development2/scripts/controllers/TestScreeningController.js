@@ -1,7 +1,7 @@
 /**
  * Created by Van on 04.02.2016.
  */
-
+//Controller for screening test
 angular.module('Jobsite').controller("TestScreeningController", function($scope, $rootScope,  $http, $timeout, $location, ScreeningsService, CategoriesService, ResumesService, $state, $stateParams) {
 
     var timeStarted = false;

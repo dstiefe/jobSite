@@ -1,9 +1,7 @@
 /**
  * Created by Van on 04.02.2016.
  */
-/**
- * Created by Van on 03.02.2016.
- */
+//Controller for starting screening test
 angular.module('Jobsite').controller("StartTestScreeningController", function($scope,  $http, $timeout, $location, AuthService, ScreeningsService, CategoriesService, ResumesService, $state, $stateParams) {
 
 

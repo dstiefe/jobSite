@@ -1,6 +1,7 @@
 /**
  * Created by Van on 04.04.2016.
  */
+//Controller for sending referral
 angular.module('Jobsite').controller('SendReferralPartialController', function ($scope,  JobsService, ScreeningsService, $sce, $timeout, $document, ReferralService, RESOURCES) {
 
     $scope.job = {};

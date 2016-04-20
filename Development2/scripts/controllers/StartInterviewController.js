@@ -1,6 +1,7 @@
 /**
  * Created by Van on 07.03.2016.
  */
+//Controller for starting interview
 angular.module('Jobsite').controller("StartInterviewController", function($scope,  $http, $timeout, $location, AuthService, InterviewsService, CategoriesService, ResumesService, $state, $stateParams) {
 
     $scope.jobId =   $stateParams.jobId;

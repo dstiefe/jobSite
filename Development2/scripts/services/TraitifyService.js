@@ -1,6 +1,7 @@
 /**
  * Created by Van on 25.03.2016.
  */
+//Service for working with traitify
 angular.module('Jobsite').factory('TraitifyService', ['$http', '$q', 'RESOURCES','ValiDatedTokenObject', function ($http, $q, RESOURCES, ValiDatedTokenObject) {
 
     ValiDatedTokenObject.setValiDatedTokenObject(JSON.parse(sessionStorage.getItem("ValiDatedTokenObject")));

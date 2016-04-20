@@ -2,6 +2,7 @@
  * Created by Van on 05.01.2016.
  */
 
+//Authorization service
 angular.module('Jobsite').factory("AuthService", ['$http', '$q', 'ValiDatedTokenObject', 'RESOURCES', function ($http, $q, ValiDatedTokenObject, RESOURCES) {
 
     function isInArray(value, array) {

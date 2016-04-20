@@ -1,6 +1,7 @@
 /**
  * Created by Van on 23.02.2016.
  */
+//Controller for sending screening
 angular.module('Jobsite').controller('SendScreeningController', function ($scope, $modalInstance, JobsService, ScreeningsService, $sce, $timeout, $document, resume, jobId) {
 
     $scope.resume = resume;

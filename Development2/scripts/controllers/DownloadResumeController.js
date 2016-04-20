@@ -4,6 +4,7 @@
 /**
  * Created by Van on 17.01.2016.
  */
+//Controller for downloading resume
 angular.module('Jobsite').controller('DownloadResumeController', function ($scope, ResumesService, $sce, $timeout, $stateParams) {
 
 

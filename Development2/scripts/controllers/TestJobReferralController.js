@@ -1,7 +1,7 @@
 /**
  * Created by Van on 04.02.2016.
  */
-
+//Controller for testing reference
 angular.module('Jobsite').controller("TestJobReferralController", function($scope, $rootScope,  $http, $timeout, $location, ReferralService, CategoriesService, ResumesService, $state, $stateParams) {
 
 

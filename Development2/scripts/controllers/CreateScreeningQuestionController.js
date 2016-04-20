@@ -1,6 +1,7 @@
 /**
  * Created by Van on 03.02.2016.
  */
+//Controller for creating screening question
 angular.module('Jobsite').controller("CreateScreeningQuestionController", function($scope,  $http, $timeout, $location, ScreeningsService, $state, $stateParams, RESOURCES, $filter) {
 
     $scope.id = $stateParams.id;

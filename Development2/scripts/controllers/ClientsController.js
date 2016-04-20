@@ -1,3 +1,4 @@
+//Controller for working with clients
 angular.module('Jobsite').controller("ClientsController", function($scope,  $http, $timeout, $location, RESOURCES,ClientsService) {
 
     $scope.currentPage = 1;

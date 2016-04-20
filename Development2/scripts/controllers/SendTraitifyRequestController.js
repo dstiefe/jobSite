@@ -1,6 +1,7 @@
 /**
  * Created by Van on 25.03.2016.
  */
+//Controller for traitify request
 angular.module('Jobsite').controller('SendTraitifyRequestController', function ($scope, $modalInstance, JobsService, TraitifyService, $sce, $timeout, $document, resume, jobId) {
 
     $scope.resume = resume;

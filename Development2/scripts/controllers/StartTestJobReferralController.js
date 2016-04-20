@@ -1,6 +1,7 @@
 /**
  * Created by Van on 07.03.2016.
  */
+//Controller for starting test reference
 angular.module('Jobsite').controller("StartTestJobReferralController", function($scope,  $http, $timeout, $location, AuthService, ReferralService, CategoriesService, ResumesService, $state, $stateParams) {
 
     $scope.jobId =   $stateParams.jobId;

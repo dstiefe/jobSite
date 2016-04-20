@@ -1,6 +1,7 @@
 /**
  * Created by Van on 10.04.2016.
  */
+// Service for working with messages
 angular.module('Jobsite').factory('MessagesService', ['$http', '$q', 'RESOURCES','ValiDatedTokenObject', function ($http, $q, RESOURCES, ValiDatedTokenObject) {
     ValiDatedTokenObject.setValiDatedTokenObject(JSON.parse(sessionStorage.getItem("ValiDatedTokenObject")));
     var serviceBase = RESOURCES.API_BASE_PATH;

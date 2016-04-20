@@ -1,6 +1,7 @@
 /**
  * Created by Van on 17.01.2016.
  */
+//Controller for working resumes
 angular.module('Jobsite').controller("ResumesController", function($scope, AuthService, $location, SearchResumesParameters, $modal, ResumesService) {
 
     $scope.currentPage = 1;

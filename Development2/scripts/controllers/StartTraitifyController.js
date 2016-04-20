@@ -1,7 +1,7 @@
 /**
  * Created by Van on 25.03.2016.
  */
-
+//Controller for starting traitify test
 angular.module('Jobsite').controller("StartTraitifyController", function($scope,  $http, $timeout, $location, AuthService, TraitifyService, $state, $stateParams) {
 
 

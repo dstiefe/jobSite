@@ -1,6 +1,7 @@
 /**
  * Created by Van on 23.02.2016.
  */
+//Controller for sending interview
 angular.module('Jobsite').controller('SendInterviewController', function ($scope, $modalInstance, JobsService, $state, InterviewsService, $sce, $timeout, $document, resume, jobId) {
 
     $scope.resume = resume;

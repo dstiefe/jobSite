@@ -1,3 +1,4 @@
+//Controller for searching jobs
 angular
     .module('Jobsite').controller("searchjobController", function($scope, ValiDatedTokenObject, $location,$http, $timeout, RESOURCES, JobsService, $filter) {
 

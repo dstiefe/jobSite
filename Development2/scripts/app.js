@@ -44,20 +44,19 @@ var clientId ="P600Us6Y476QiK331u5yEzb22dpX_y6NS75!9I-a";
         'luegg.directives'
     ]).constant('RESOURCES', (function() {
 
-            // Define your variable
-        var EmployeeTypes = [
-             {value: "FullTime", name: "Full Time"},
-            {value: "PartTime", name: "Part Time"},
-             {value: "Contract", name: "Contract"},
-             {value: "Project", name: "Project"}
-        ];
+            var EmployeeTypes = [
+                 {value: "FullTime", name: "Full Time"},
+                {value: "PartTime", name: "Part Time"},
+                 {value: "Contract", name: "Contract"},
+                 {value: "Project", name: "Project"}
+            ];
 
-        var ScreeningQuestionTypes = [
-            {value: "MultipleChoice", name: "Multiple/Choice"},
-            {value: "TrueFalse", name: "True/False"},
-            {value: "FillIn", name: "Fill In"},
-            {value: "LikertScale", name: "Likert Scale"},
-        ];
+            var ScreeningQuestionTypes = [
+                {value: "MultipleChoice", name: "Multiple/Choice"},
+                {value: "TrueFalse", name: "True/False"},
+                {value: "FillIn", name: "Fill In"},
+                {value: "LikertScale", name: "Likert Scale"},
+            ];
 
             var WorkingRelationshipTypes = [
                 {value: "Colleague", name: "Colleague"},
@@ -67,7 +66,7 @@ var clientId ="P600Us6Y476QiK331u5yEzb22dpX_y6NS75!9I-a";
                 {value: "CharacterReference ", name: "Character Reference"}
             ];
 
-            // Use the variable in your constants
+            // constants
             return {
                 EMPLOYEE_TYPES: EmployeeTypes,
                 SCREENING_QUESTION_TYPES: ScreeningQuestionTypes,
@@ -78,15 +77,18 @@ var clientId ="P600Us6Y476QiK331u5yEzb22dpX_y6NS75!9I-a";
                 TRAITIFY_HOST: 'api-sandbox.traitify.com',
                 TRAITIFY_VERSION: 'v1'
             }
+
         })())
+
         .config(['cfpLoadingBarProvider', function(cfpLoadingBarProvider) {
+            //loading bar config
             cfpLoadingBarProvider.includeSpinner = true;
             cfpLoadingBarProvider.includeBar = false;
             cfpLoadingBarProvider.spinnerTemplate = '<div id="outer" style="width:100%;position: absolute; top: 63px; "><div class="progress" style=" margin: 0 auto;  width: 200px; height: 10px; z-index: 9999999999;"><div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"><span class="sr-only"></span></div></div></div>';
 
         }])
         .config(['$provide', function($provide){
-            // this demonstrates how to register a new tool and add it to the default toolbar
+            // text-editor config
             $provide.decorator('taOptions', ['taRegisterTool','$delegate', function(taRegisterTool, taOptions){
                 taOptions.toolbar = [
                     [],

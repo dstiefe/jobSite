@@ -1,6 +1,7 @@
 /**
  * Created by Van on 02.04.2016.
  */
+//Controller for working with user dashboard
 angular.module('Jobsite').controller("UserDashboardController", function ($rootScope, $scope, $stateParams, ValiDatedTokenObject, locationHistoryService, $location, $modal, $http, $timeout, AuthService, JobsService, ReferralService, RESOURCES, cfpLoadingBar) {$scope.role = AuthService.authentication.isAdministrator ? "Admin" : "User";
 
     var jobId = $stateParams.jobId;

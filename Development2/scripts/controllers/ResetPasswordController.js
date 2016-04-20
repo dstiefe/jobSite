@@ -1,6 +1,8 @@
 /**
  * Created by Van on 28.01.2016.
  */
+
+//Controller for reseting passwords
 angular.module('Jobsite').controller("ResetPasswordController", function($scope, $http, $timeout, ValiDatedTokenObject, $location, AuthService, RESOURCES) {
     var serviceBase = RESOURCES.API_BASE_PATH;
 

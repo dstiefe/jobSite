@@ -1,6 +1,7 @@
 /**
  * Created by Van on 22.03.2016.
  */
+//Controller for traitify
 angular.module('Jobsite').controller("TraitifyController", function($scope, $rootScope,  $http, $timeout, $location,  $state, TraitifyService, $stateParams, RESOURCES) {
 
 

@@ -1,7 +1,7 @@
 angular
     .module('Jobsite')
     .controller('ApplyJobController', ApplyJobController);
-
+//Controller for appling job
 function ApplyJobController($scope,  ValiDatedTokenObject, $http, $location, $modalInstance, ResumesService, RESOURCES,jobId) {
     var serviceBase = RESOURCES.API_BASE_PATH;
     $scope.jobId = jobId;

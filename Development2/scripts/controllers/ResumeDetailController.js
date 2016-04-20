@@ -1,6 +1,7 @@
 /**
  * Created by Van on 17.01.2016.
  */
+//Controller for showing resume detail
 angular.module('Jobsite').controller('ResumeDetailController', function ($scope, $modalInstance, ResumesService, $sce, $timeout, $document, resume, text) {
 
     $scope.searchText = (!angular.isUndefinedOrNull(text))? text :'';

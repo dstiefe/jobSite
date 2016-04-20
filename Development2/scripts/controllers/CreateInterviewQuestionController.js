@@ -1,6 +1,7 @@
 /**
  * Created by Van on 03.02.2016.
  */
+//Controller for creating interview question
 angular.module('Jobsite').controller("CreateInterviewQuestionController", function($scope,  $http, $timeout, $location, InterviewsService, $state, $stateParams, RESOURCES) {
 
     $scope.id = $stateParams.id;

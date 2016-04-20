@@ -1,6 +1,7 @@
 /**
  * Created by Van on 09.02.2016.
  */
+//Controller for showing test result
 angular.module('Jobsite').controller('TestResultController', function ($scope, $modalInstance, JobsService, ScreeningsService, $sce, $timeout, $document, resume, jobId) {
 
     $scope.resume = resume;

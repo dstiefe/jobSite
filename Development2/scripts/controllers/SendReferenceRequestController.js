@@ -1,6 +1,7 @@
 /**
  * Created by Van on 23.02.2016.
  */
+//Controller for sending reference request
 angular.module('Jobsite').controller('SendReferenceRequestController', function ($scope, $modalInstance, JobsService, ReferralService, $sce, $timeout, $document, resume, jobId) {
 
     $scope.resume = resume;

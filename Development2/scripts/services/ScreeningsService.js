@@ -1,6 +1,7 @@
 /**
  * Created by Van on 02.02.2016.
  */
+//Service for working with screenings
 angular.module('Jobsite').factory('ScreeningsService', ['$http', '$q', 'RESOURCES','ValiDatedTokenObject', function ($http, $q, RESOURCES, ValiDatedTokenObject) {
 
     ValiDatedTokenObject.setValiDatedTokenObject(JSON.parse(sessionStorage.getItem("ValiDatedTokenObject")));

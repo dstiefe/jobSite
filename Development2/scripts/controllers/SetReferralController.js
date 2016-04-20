@@ -1,6 +1,7 @@
 /**
  * Created by Van on 09.02.2016.
  */
+//Controller for setting referral
 angular.module('Jobsite').controller('SetReferralController', function ($scope, $modalInstance, JobsService, ScreeningsService, $sce, $timeout, $document, referralFeePercent, referralFeeAmount, jobTitle) {
 
     $scope.referralFeePercent = referralFeePercent;

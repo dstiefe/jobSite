@@ -1,9 +1,7 @@
 /**
  * Created by Van on 03.03.2016.
  */
-/**
- * Created by Van on 03.02.2016.
- */
+//Controller for assigning screenings
 angular.module('Jobsite').controller("ScreeningAssignController", function($scope,  $http, $timeout, $location,$filter, ScreeningsService, JobsService, $state, $stateParams) {
 
     $scope.myScreeningId = $stateParams.id;

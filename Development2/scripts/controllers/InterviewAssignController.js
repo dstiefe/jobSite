@@ -7,6 +7,7 @@
 /**
  * Created by Van on 03.02.2016.
  */
+//Controller for assigning interviews
 angular.module('Jobsite').controller("InterviewAssignController", function($scope,  $http, $timeout, $location,$filter, InterviewsService, JobsService, $state, $stateParams) {
 
     $scope.myInterviewId = $stateParams.id;

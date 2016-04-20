@@ -1,3 +1,4 @@
+//Controller for showing job detail
 angular
     .module('Jobsite').controller("ViewJobDetailsController", function ($rootScope, $scope,  ValiDatedTokenObject, $location,$stateParams, $modal, $http, $location, $sce, JobsService, AuthService) {
         $scope.loading = false;

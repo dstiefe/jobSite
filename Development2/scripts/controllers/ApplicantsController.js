@@ -1,6 +1,7 @@
 /**
  * Created by Van on 16.01.2016.
  */
+//Controller for working with applicants
 angular.module('Jobsite').controller("ApplicantsController", function($scope, $http, $timeout, ValiDatedTokenObject, $location,$state, AuthService, RESOURCES, $stateParams, ResumesService, ScreeningsService, $modal) {
     var serviceBase = RESOURCES.API_BASE_PATH;
     var jobId = $stateParams.id;

@@ -4,6 +4,7 @@
 /**
  * Created by Van on 03.02.2016.
  */
+//Controller for editing interview
 angular.module('Jobsite').controller("EditInterviewController", function($scope,  $http, $timeout, $location, InterviewsService, CategoriesService, JobsService, $state, $stateParams) {
 
     $scope.id = $stateParams.id;

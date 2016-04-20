@@ -1,7 +1,8 @@
 /// <reference path="angular.min.js" />  
 /// <reference path="Module.js" />  
-/// <reference path="Service.js" /> 
+/// <reference path="Service.js" />
 
+//Controller for working job list
 angular
     .module('Jobsite').controller("JobListController", function($scope,  $http, $timeout, $location, ValiDatedTokenObject,RESOURCES) {
         /*ValiDatedTokenObject.ValiDatedTokenObject = JSON.parse(sessionStorage.getItem("ValiDatedTokenObject"));

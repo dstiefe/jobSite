@@ -1,4 +1,5 @@
-﻿angular
+﻿//Controller for associating accounts
+angular
     .module('Jobsite').controller('associateController', ['$scope', '$rootScope','$location','$timeout','AuthService', function ($scope, $rootScope, $location,$timeout, AuthService) {
 
     $scope.savedSuccessfully = false;

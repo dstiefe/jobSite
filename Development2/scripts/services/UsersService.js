@@ -1,6 +1,7 @@
 /**
  * Created by Van on 26.02.2016.
  */
+//Service for working with users
 angular.module('Jobsite').factory('UsersService', ['$http', '$q', 'RESOURCES','ValiDatedTokenObject', function ($http, $q, RESOURCES, ValiDatedTokenObject) {
     ValiDatedTokenObject.setValiDatedTokenObject(JSON.parse(sessionStorage.getItem("ValiDatedTokenObject")));
     var serviceBase = RESOURCES.API_BASE_PATH;

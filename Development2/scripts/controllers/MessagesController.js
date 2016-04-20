@@ -1,6 +1,8 @@
 /**
  * Created by Van on 23.02.2016.
  */
+
+//Controller for sending messages
 angular.module('Jobsite').controller('MessagesController', function ($scope, $modalInstance, JobsService,ResumesService, $state, InterviewsService, MessagesService, AuthService, $sce, $timeout, $document, resume, jobId, resumeId, job) {
 
 

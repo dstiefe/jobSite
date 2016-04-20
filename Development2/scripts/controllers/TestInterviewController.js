@@ -2,6 +2,7 @@
  * Created by Van on 04.02.2016.
  */
 
+//Controller for testing interview
 angular.module('Jobsite').controller("TestInterviewController", function($scope, $rootScope,  $http, $timeout, $location, InterviewsService, CategoriesService, ResumesService, $state, $stateParams) {
 
 

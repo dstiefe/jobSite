@@ -1,6 +1,7 @@
 /**
  * Created by Van on 17.01.2016.
  */
+//Service for working with referrals
 angular.module('Jobsite').factory('ReferralService', ['$http', '$q', 'RESOURCES','ValiDatedTokenObject', function ($http, $q, RESOURCES, ValiDatedTokenObject) {
     ValiDatedTokenObject.setValiDatedTokenObject(JSON.parse(sessionStorage.getItem("ValiDatedTokenObject")));
     var serviceBase = RESOURCES.API_BASE_PATH;

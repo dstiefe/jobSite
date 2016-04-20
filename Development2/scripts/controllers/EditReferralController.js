@@ -4,6 +4,7 @@
 /**
  * Created by Van on 03.02.2016.
  */
+//Controller for editing referral
 angular.module('Jobsite').controller("EditReferralController", function($scope,  $http, $timeout, $location, ReferralService, CategoriesService, JobsService, $state, $stateParams) {
 
     $scope.id = $stateParams.id;

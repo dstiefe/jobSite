@@ -1,6 +1,7 @@
 /**
  * Created by Van on 17.01.2016.
  */
+//Controller for searching resumes
 angular.module('Jobsite').controller("SearchResumesController", function($scope, AuthService, $location, SearchResumesParameters, ResumesService, $modal) {
 
     $scope.isAuth = AuthService.authentication.isAuth;

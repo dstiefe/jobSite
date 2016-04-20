@@ -1,7 +1,7 @@
 /**
  * Created by Van on 23.02.2016.
  */
-
+//Controller for working with referrals
 angular.module('Jobsite').controller('ReferralsController', function ($scope, JobsService, ReferralService, $sce, $timeout, $document) {
 
 

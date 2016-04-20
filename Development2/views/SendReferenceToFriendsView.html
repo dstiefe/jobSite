@@ -1,39 +1,27 @@
-
 <div ng-show="!referenceId">
-
     <div class="panel panel-success col-xs-3 small-panel small-panel-success" ng-repeat="reference in job.references| filter:{ isNew: true }">
         <div class="panel-body small-panel-body">
             <p>{{reference.name}}</p>
             <a class="btn btn-success btn-xs btn-footer"  ng-click="sendReferenceToFriends(reference)">Start</a>
         </div>
     </div>
-
     <div class="panel panel-info col-xs-3 small-panel small-panel-info" ng-repeat="reference in job.references | filter:{ isNew: false }">
         <div class="panel-body small-panel-body">
             <p>{{reference.name}}</p>
             <b>Taken</b>
         </div>
     </div>
-
     <p ng-show="(data.references).length == 0" class="col-xs-12">
         Not found Peer Reviews
     <p>
-
 </div>
-
 <div ng-show="referenceId">
     <form name="sendForm" ng-submit="onSave(sendForm.$valid)" novalidate>
-
-
-
-
-
             <div class="row">
                 <div class="form-group col-xs-12" style="margin: 0;">
                     You have provided {{friendsCount}} of 2 peer review requests
                 </div>
             </div>
-
             <div class="row">
                 <div class="form-group col-xs-12" style="padding: 0;margin: 0;">
 
@@ -96,7 +84,6 @@
 
 
             </div>
-
             <div class="row">
                 <div class="form-group  col-xs-6 "  style="padding: 3px;">
                     <div class="alert alert-danger" style="display:inline-block;padding: 5px;" role="alert" ng-hide='!message'>{{message}}</div>
@@ -109,13 +96,5 @@
                     <button type="submit" class="btn btn-success btn-sm btn-block" ng-disabled="friendsCount>=2">Send</button>
                 </div>
             </div>
-
-
-
-
-
-
     </form>
 </div>
-
-

@@ -2,6 +2,7 @@
  * Created by Van on 06.04.2016.
  */
 
+//Controller for creating client
 angular.module('Jobsite').controller("CreateClientController", function($scope,  $http, $timeout, $location, ClientsService,  $state, $stateParams) {
     $scope.id = $stateParams.id;
     $scope.client = {};

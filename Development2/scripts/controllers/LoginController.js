@@ -2,7 +2,7 @@
 /// <reference path="Module.js" />  
 /// <reference path="Service.js" />  
 
-
+//Controller for logging
 angular.module('Jobsite').controller("Login", function($scope, $rootScope, $location, locationHistoryService, ValiDatedTokenObject, AuthService, RESOURCES, $modal, $timeout) {
 
     if(window.location.href.indexOf("register") > -1) {

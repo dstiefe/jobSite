@@ -1,6 +1,7 @@
 /**
  * Created by Van on 26.02.2016.
  */
+//Controller for creating/editing resume
 angular.module('Jobsite').controller('CreateOrEditResumeController', function ($scope, $modalInstance, UsersService, ResumesService, $sce, $timeout, resumeId) {
 
     $scope.id = resumeId;

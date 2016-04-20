@@ -2,6 +2,7 @@
  * Created by Van on 23.02.2016.
  */
 
+//Controller for working with interviews
 angular.module('Jobsite').controller('InterviewsController', function ($scope, JobsService, InterviewsService, $sce, $timeout, $document) {
 
     $scope.currentPage = 1;

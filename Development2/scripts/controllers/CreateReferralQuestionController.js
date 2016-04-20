@@ -1,6 +1,7 @@
 /**
  * Created by Van on 03.02.2016.
  */
+//Controller for creating referral question
 angular.module('Jobsite').controller("CreateReferralQuestionController", function($scope,  $http, $timeout, $location, ReferralService, $state, $stateParams, RESOURCES) {
 
     $scope.id = $stateParams.id;

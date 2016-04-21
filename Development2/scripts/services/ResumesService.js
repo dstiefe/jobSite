@@ -3,7 +3,9 @@
  */
 //Service for working with resumes
 angular.module('Jobsite').factory('ResumesService', ['$http', '$q', 'RESOURCES','ValiDatedTokenObject', function ($http, $q, RESOURCES, ValiDatedTokenObject) {
+
     ValiDatedTokenObject.setValiDatedTokenObject(JSON.parse(sessionStorage.getItem("ValiDatedTokenObject")));
+
     var serviceBase = RESOURCES.API_BASE_PATH;
 
     var resumesServiceFactory = {};
@@ -264,26 +266,42 @@ angular.module('Jobsite').factory('ResumesService', ['$http', '$q', 'RESOURCES',
         });
     };
 
+    //search resumes
     resumesServiceFactory.searchResumes = _searchResumes;
+    //search into resume
     resumesServiceFactory.searchIntoResume = _searchIntoResume;
+    // search into page resume
     resumesServiceFactory.searchIntoPageResume = _searchIntoPageResume;
+    // get page url
     resumesServiceFactory.getPageUrl = _getPageUrl;
+    // count of searched resumes
     resumesServiceFactory.searchResumesCount = _searchResumesCount;
+    // get native url
     resumesServiceFactory.getNativeUrl = _getNativeUrl;
+    // get pdf url
     resumesServiceFactory.gePdfUrl = _getPdfUrl;
+    // get resume
     resumesServiceFactory.getResume = _getResume;
+    // get my resumes
     resumesServiceFactory.getMyResumes = _getMyResumes;
+    // delete resume
     resumesServiceFactory.deleteResume = _deleteResume;
+    // create resume
     resumesServiceFactory.postResume = _postResume;
+    // update resume
     resumesServiceFactory.putResume = _putResume;
+    // apply to job by existing resume
     resumesServiceFactory.applyToJobByExistResume = _applyToJobByExistResume;
+    // apply to job
     resumesServiceFactory.applyToJob = _applyToJob;
+    // upload resume
     resumesServiceFactory.uploadResume = _uploadResume;
+    // get applicant
     resumesServiceFactory.getApplicant = _getApplicant;
-
+    // add admin tags
     resumesServiceFactory.addAdminTags = _addAdminTags;
+    // add admin notes
     resumesServiceFactory.addAdminNotes = _addAdminNotes;
-
 
     return resumesServiceFactory;
 }]);

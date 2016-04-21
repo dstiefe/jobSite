@@ -212,10 +212,16 @@ angular.module('Jobsite').factory('ScreeningsService', ['$http', '$q', 'RESOURCE
             return results;
         });
     };
+
+    //Create screening
     screeningsServiceFactory.postScreening = _postScreening;
+    // Update screening
     screeningsServiceFactory.putScreening = _putScreening;
+    // Delete screening
     screeningsServiceFactory.deleteScreening = _deleteScreening;
+    // Get screening
     screeningsServiceFactory.getScreening = _getScreening;
+    // Get my screenings
     screeningsServiceFactory.getMyScreenings = _getMyScreenings;
 
     screeningsServiceFactory.postScreeningQuestion = _postScreeningQuestion;

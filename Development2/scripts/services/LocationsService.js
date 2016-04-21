@@ -3,10 +3,12 @@
  */
 //Service for working with locations
 angular.module('Jobsite').factory('LocationsService', ['$http', '$q', 'RESOURCES','ValiDatedTokenObject', function ($http, $q, RESOURCES, ValiDatedTokenObject) {
+
     ValiDatedTokenObject.setValiDatedTokenObject(JSON.parse(sessionStorage.getItem("ValiDatedTokenObject")));
+
     var serviceBase = RESOURCES.API_BASE_PATH;
 
-    var jobsServiceFactory = {};
+    var locationsServiceFactory = {};
 
     var _getLocations = function () {
 
@@ -18,7 +20,6 @@ angular.module('Jobsite').factory('LocationsService', ['$http', '$q', 'RESOURCES
             return results;
         });
     };
-
     var _getLocation = function (id) {
         return $http.get(serviceBase + 'locations/'+id,{
             headers: {
@@ -28,7 +29,6 @@ angular.module('Jobsite').factory('LocationsService', ['$http', '$q', 'RESOURCES
             return results;
         });
     };
-
     var _suggestLocations = function (text, parentId, level, count) {
         params={};
 
@@ -58,9 +58,12 @@ angular.module('Jobsite').factory('LocationsService', ['$http', '$q', 'RESOURCES
         });
     };
 
-    jobsServiceFactory.getLocations = _getLocations;
-    jobsServiceFactory.getLocation = _getLocation;
-    jobsServiceFactory.suggestLocations = _suggestLocations;
+    // Get locations
+    locationsServiceFactory.getLocations = _getLocations;
+    // Get location
+    locationsServiceFactory.getLocation = _getLocation;
+    // Suggest locations
+    locationsServiceFactory.suggestLocations = _suggestLocations;
 
-    return jobsServiceFactory;
+    return locationsServiceFactory;
 }]);

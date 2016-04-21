@@ -3,7 +3,9 @@
  */
 // Service for working with clients
 angular.module('Jobsite').factory('ClientsService', ['$http', '$q', 'RESOURCES','ValiDatedTokenObject', function ($http, $q, RESOURCES, ValiDatedTokenObject) {
+
     ValiDatedTokenObject.setValiDatedTokenObject(JSON.parse(sessionStorage.getItem("ValiDatedTokenObject")));
+
     var serviceBase = RESOURCES.API_BASE_PATH;
 
     var clientServiceFactory = {};
@@ -65,10 +67,15 @@ angular.module('Jobsite').factory('ClientsService', ['$http', '$q', 'RESOURCES',
         });
     };
 
+    // Get clients
     clientServiceFactory.getClients = _getClients;
+    // Delete client
     clientServiceFactory.deleteClient = _deleteClient;
+    // Get client
     clientServiceFactory.getClient = _getClient;
+    // Update Client
     clientServiceFactory.putClient = _putClient;
+    //Create Client
     clientServiceFactory.postClient = _postClient;
 
     return clientServiceFactory;

@@ -2,7 +2,7 @@
  * Created by Van on 02.04.2016.
  */
 //Controller for working with admin dashboard
-angular.module('Jobsite').controller("AdminDashboardController", function ($rootScope, $scope, ValiDatedTokenObject, locationHistoryService, $location, $modal, $http, $timeout, AuthService, JobsService, ReferralService, RESOURCES, cfpLoadingBar) {
+angular.module('Jobsite').controller("AdminDashboardController", function ($rootScope, $scope, ValiDatedTokenObject, $location, $modal, $http, $timeout, AuthService, JobsService, ReferralService, RESOURCES, cfpLoadingBar) {
     if (!AuthService.authentication.isAdministrator)
     {
         $location.path("/login");

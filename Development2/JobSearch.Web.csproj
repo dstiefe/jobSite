@@ -2717,12 +2717,11 @@
     <Content Include="scripts\services\AuthService.js" />
     <Content Include="scripts\services\CategoriesService.js" />
     <Content Include="scripts\services\JobsService.js" />
-    <Content Include="scripts\services\locationHistoryService.js">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="scripts\services\LocationsService.js" />
     <Content Include="scripts\services\ReferralService.js" />
-    <Content Include="scripts\services\RegistrationService.js">
+
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="scripts\services\ResumesService.js" />

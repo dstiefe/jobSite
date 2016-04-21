@@ -3,7 +3,9 @@
  */
 //Service for working with referrals
 angular.module('Jobsite').factory('ReferralService', ['$http', '$q', 'RESOURCES','ValiDatedTokenObject', function ($http, $q, RESOURCES, ValiDatedTokenObject) {
+
     ValiDatedTokenObject.setValiDatedTokenObject(JSON.parse(sessionStorage.getItem("ValiDatedTokenObject")));
+
     var serviceBase = RESOURCES.API_BASE_PATH;
 
     var referralServiceFactory = {};
@@ -31,7 +33,6 @@ angular.module('Jobsite').factory('ReferralService', ['$http', '$q', 'RESOURCES'
             return results;
         });
     };
-
     var _getMyJobReferrals = function () {
         return $http.get(serviceBase + 'references/my',
             {
@@ -100,7 +101,6 @@ angular.module('Jobsite').factory('ReferralService', ['$http', '$q', 'RESOURCES'
             return results;
         });
     };
-
     var _getReferralQuestionsByJobReferralId = function (referralId) {
         return $http.get(serviceBase + 'references/'+referralId+'/questions/',
             {
@@ -112,7 +112,6 @@ angular.module('Jobsite').factory('ReferralService', ['$http', '$q', 'RESOURCES'
             return results;
         });
     };
-
     var _getReferralQuestionById = function (referralId, questionId) {
         return $http.get(serviceBase + 'references/'+referralId+'/questions/'+questionId,
             {
@@ -124,7 +123,6 @@ angular.module('Jobsite').factory('ReferralService', ['$http', '$q', 'RESOURCES'
             return results;
         });
     };
-
     var _putReferralQuestion = function (referralId, questionId, model) {
         return $http.put(serviceBase + 'references/'+referralId+'/questions/'+questionId,
             model,
@@ -137,7 +135,6 @@ angular.module('Jobsite').factory('ReferralService', ['$http', '$q', 'RESOURCES'
             return results;
         });
     };
-
     var _deleteReferralQuestion = function (referralId, questionId) {
         return $http.delete(serviceBase + 'references/'+referralId+'/questions/'+questionId,
             {
@@ -149,7 +146,6 @@ angular.module('Jobsite').factory('ReferralService', ['$http', '$q', 'RESOURCES'
             return results;
         });
     };
-
     var _sendReferenceRequestToResume = function (jobId, resumeId, model) {
         return $http.post(serviceBase + 'jobs/'+jobId+'/resumes/'+resumeId+'/references/',
             model,
@@ -162,7 +158,6 @@ angular.module('Jobsite').factory('ReferralService', ['$http', '$q', 'RESOURCES'
             return results;
         });
     };
-
     var _sendReferenceToFriends = function (model) {
         return $http.post(serviceBase + 'references/friends',
             model,
@@ -175,7 +170,6 @@ angular.module('Jobsite').factory('ReferralService', ['$http', '$q', 'RESOURCES'
             return results;
         });
     };
-
     var _getReferenceCountToFriends  = function(jobId, resumeId, referenceId){
         return $http.get(serviceBase + 'jobs/'+jobId+'/resumes/'+resumeId+'/references/'+referenceId+'/friends/count',{
             headers: {
@@ -201,7 +195,6 @@ angular.module('Jobsite').factory('ReferralService', ['$http', '$q', 'RESOURCES'
             return results;
         });
     };
-
     var _getReferenceByResumeId = function (jobId, resumeId, referenceId) {
         return $http.get(serviceBase + 'jobs/'+jobId+'/resumes/'+resumeId+'/references/'+referenceId,
             {
@@ -213,7 +206,6 @@ angular.module('Jobsite').factory('ReferralService', ['$http', '$q', 'RESOURCES'
             return results;
         });
     };
-
     var _getReferenceQuestions = function (jobId, resumeId, referenceId) {
         return $http.get(serviceBase + 'jobs/'+jobId+'/resumes/'+resumeId+'/references/'+referenceId+'/questions',
             {
@@ -225,7 +217,6 @@ angular.module('Jobsite').factory('ReferralService', ['$http', '$q', 'RESOURCES'
             return results;
         });
     };
-
     var _setAnswersOnReferenceQuestions = function (jobId, resumeId, referenceId,model) {
         return $http.post(serviceBase + 'jobs/'+jobId+'/resumes/'+resumeId+'/references/'+referenceId+'/questions/result',
             model,
@@ -239,27 +230,43 @@ angular.module('Jobsite').factory('ReferralService', ['$http', '$q', 'RESOURCES'
         });
     };
 
+    // Create referral
     referralServiceFactory.postReferral = _postReferral;
+    // Get referrals
     referralServiceFactory.getReferrals = _getReferrals;
-
+    // Get my references
     referralServiceFactory.getMyJobReferrals = _getMyJobReferrals;
+    // Delete reference
     referralServiceFactory.deleteJobReferral = _deleteJobReferral;
+    // Get reference
     referralServiceFactory.getJobReferral = _getJobReferral;
+    // Update reference
     referralServiceFactory.putJobReferral = _putJobReferral;
+    // Create reference
     referralServiceFactory.postJobReferral = _postJobReferral;
+    // Create reference question
     referralServiceFactory.postReferralQuestion = _postReferralQuestion;
-
+    // Get reference questions by reference ID
     referralServiceFactory.getReferralQuestionsByJobReferralId  = _getReferralQuestionsByJobReferralId;
+    // Get reference question by ID
     referralServiceFactory.getReferralQuestionById = _getReferralQuestionById;
+    // Update reference question
     referralServiceFactory.putReferralQuestion = _putReferralQuestion;
+    // Delete reference question
     referralServiceFactory.deleteReferralQuestion = _deleteReferralQuestion;
+    // Send reference request to resume
     referralServiceFactory.sendReferenceRequestToResume = _sendReferenceRequestToResume;
+    // Send references to friends
     referralServiceFactory.sendReferenceToFriends = _sendReferenceToFriends;
+    // Get references count
     referralServiceFactory.getReferenceCountToFriends = _getReferenceCountToFriends;
+    // Get references
     referralServiceFactory.getReferences = _getReferences;
-
+    // Get references by resume ID
     referralServiceFactory.getReferenceByResumeId = _getReferenceByResumeId;
+    // Get reference questions
     referralServiceFactory.getReferenceQuestions = _getReferenceQuestions;
+    // Set answer on reference question
     referralServiceFactory.setAnswersOnReferenceQuestions = _setAnswersOnReferenceQuestions;
 
     return referralServiceFactory;

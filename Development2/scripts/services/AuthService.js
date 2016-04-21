@@ -8,17 +8,14 @@ angular.module('Jobsite').factory("AuthService", ['$http', '$q', 'ValiDatedToken
     function isInArray(value, array) {
         return array.indexOf(value) > -1;
     }
-
     var serviceBase = RESOURCES.API_BASE_PATH;
     var authServiceFactory = {};
-
     var _authentication = {
         isAuth: false,
         userName: "",
         isUser: false,
         isAdministrator:false
     };
-
     var _externalAuthData = {
         provider: "",
         userName: "",
@@ -27,6 +24,7 @@ angular.module('Jobsite').factory("AuthService", ['$http', '$q', 'ValiDatedToken
         firstName: "",
         lastName: ""
     };
+
     var _getReferences = function(){
         var referralObj = sessionStorage.getItem("reference_friend_ids");
         var referralsArr =[];
@@ -249,19 +247,35 @@ angular.module('Jobsite').factory("AuthService", ['$http', '$q', 'ValiDatedToken
         });
     };
 
+    // Registration method
     authServiceFactory.saveRegistration = _saveRegistration;
+
+    // Authorization method
     authServiceFactory.login = _login;
+
+    // Log out method
     authServiceFactory.logOut = _logOut;
+
+    // Fill Authorization Data from storage
     authServiceFactory.fillAuthData = _fillAuthData;
+
+    // Authorization Data
     authServiceFactory.authentication = _authentication;
 
+    // Get Access Token
     authServiceFactory.obtainAccessToken = _obtainAccessToken;
+
+    // External Authorization
     authServiceFactory.externalAuthData = _externalAuthData;
+
+    // External Registration
     authServiceFactory.registerExternal = _registerExternal;
+
+    // Reset password
     authServiceFactory.resetPasswordToken = _resetPasswordToken;
+
+    // Reset password. Verify token
     authServiceFactory.resetPassword = _resetPassword;
-
-
 
     return authServiceFactory;
 }]);

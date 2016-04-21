@@ -1,12 +1,7 @@
 //Controller for adding job
 angular.module('Jobsite').controller("AddjobformController", function($scope,  $sce, $location, $http, $timeout, $filter, ValiDatedTokenObject, RESOURCES, $stateParams, CategoriesService, LocationsService, JobsService, $compile, $modal, ClientsService) {
-//https://github.com/zensh/ui-autocomplete
+
         $scope.id  = $stateParams.id;
-
-    /* config object */
-
-
-
         $scope.locationState = {
             id: '',
             name: '',
@@ -14,7 +9,6 @@ angular.module('Jobsite').controller("AddjobformController", function($scope,  $
             label:''
             // some other property
         };
-
         $scope.locationCity = {
             id: '',
             name: '',
@@ -22,17 +16,13 @@ angular.module('Jobsite').controller("AddjobformController", function($scope,  $
             label:''
             // some other property
         };
-
-    $scope.adminClientSelected = {
+        $scope.adminClientSelected = {
         id: '',
         name: '',
         value: '',
         label:''
         // some other property
     };
-
-
-
         $scope.locationStateOption = {
             options: {
                 html: false,
@@ -61,8 +51,6 @@ angular.module('Jobsite').controller("AddjobformController", function($scope,  $
             },
             methods: {}
         };
-
-
         $scope.locationStateOption.events = {
             change: function( event, ui ) {
                 $scope.locationCity.id='';
@@ -78,7 +66,6 @@ angular.module('Jobsite').controller("AddjobformController", function($scope,  $
 
             }
         };
-
         $scope.locationCityOption = {
             options: {
                 html: false,
@@ -107,8 +94,7 @@ angular.module('Jobsite').controller("AddjobformController", function($scope,  $
             },
             methods: {}
         };
-
-    $scope.adminClientOption = {
+        $scope.adminClientOption = {
         options: {
             html: false,
             focusOpen: true,
@@ -134,10 +120,8 @@ angular.module('Jobsite').controller("AddjobformController", function($scope,  $
         methods: {}
     };
 
-
         $scope.EmployeeTypes = RESOURCES.EMPLOYEE_TYPES;
         $scope.categoryID = "";
-
         $scope.posteddate = (new Date()).getTime() / 1000;
         $scope.experience = "";
         $scope.jobtype = "";
@@ -166,14 +150,13 @@ angular.module('Jobsite').controller("AddjobformController", function($scope,  $
         }, function (error) {
             console.log(error.data.message);
         });
-
-    ClientsService.getClients().then(function (results) {
+        ClientsService.getClients().then(function (results) {
         $scope.clients = results.data;
     }, function (error) {
         console.log(error.data.message);
     });
 
-    if ($scope.id != "") {
+        if ($scope.id != "") {
             JobsService.getJob($scope.id).then(function (results) {
                 response = results.data;
                 $scope.categoryID = response["categoryId"];
@@ -324,7 +307,7 @@ angular.module('Jobsite').controller("AddjobformController", function($scope,  $
                 console.log(error.data.message);
             });
         }
-    $scope.$back = function() {
+        $scope.$back = function() {
         window.history.back();
     };
         $scope.setReferral = function() {

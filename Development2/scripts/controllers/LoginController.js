@@ -3,7 +3,7 @@
 /// <reference path="Service.js" />  
 
 //Controller for logging
-angular.module('Jobsite').controller("Login", function($scope, $rootScope, $location, locationHistoryService, ValiDatedTokenObject, AuthService, RESOURCES, $modal, $timeout) {
+angular.module('Jobsite').controller("Login", function($scope, $rootScope, $location, ValiDatedTokenObject, AuthService, RESOURCES, $modal, $timeout) {
 
     if(window.location.href.indexOf("register") > -1) {
         $scope.tabs = [{active: false}, {active: true }];

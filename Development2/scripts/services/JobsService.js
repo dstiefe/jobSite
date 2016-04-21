@@ -3,7 +3,9 @@
  */
 // Service for working with jobs
 angular.module('Jobsite').factory('JobsService', ['$http', '$q', 'RESOURCES','ValiDatedTokenObject', function ($http, $q, RESOURCES, ValiDatedTokenObject) {
+
     ValiDatedTokenObject.setValiDatedTokenObject(JSON.parse(sessionStorage.getItem("ValiDatedTokenObject")));
+
     var serviceBase = RESOURCES.API_BASE_PATH;
 
     var jobsServiceFactory = {};
@@ -135,7 +137,6 @@ angular.module('Jobsite').factory('JobsService', ['$http', '$q', 'RESOURCES','Va
             return results;
         });
     };
-
     var _getJobsApplied = function () {
         return $http.get(serviceBase + 'jobs/all/applied',{
             headers: {
@@ -147,12 +148,19 @@ angular.module('Jobsite').factory('JobsService', ['$http', '$q', 'RESOURCES','Va
         });
     };
 
+    // Advanced search jobs
     jobsServiceFactory.searchAdvancedJobs = _searchAdvancedJobs;
+    // Get job
     jobsServiceFactory.getJob = _getJob;
+    // Update job
     jobsServiceFactory.putJob = _putJob;
+    // Create job
     jobsServiceFactory.postJob = _postJob;
+    // Delete job
     jobsServiceFactory.deleteJob = _deleteJob;
+    // Get my jobs
     jobsServiceFactory.getMyJobs = _getMyJobs;
+    // Get jobs applied
     jobsServiceFactory.getJobsApplied = _getJobsApplied;
 
     return jobsServiceFactory;

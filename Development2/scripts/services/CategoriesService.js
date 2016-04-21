@@ -3,7 +3,9 @@
  */
 // Service for working with categories
 angular.module('Jobsite').factory('CategoriesService', ['$http', '$q', 'RESOURCES','ValiDatedTokenObject', function ($http, $q, RESOURCES, ValiDatedTokenObject) {
+
     ValiDatedTokenObject.setValiDatedTokenObject(JSON.parse(sessionStorage.getItem("ValiDatedTokenObject")));
+
     var serviceBase = RESOURCES.API_BASE_PATH;
 
     var jobsServiceFactory = {};
@@ -19,6 +21,7 @@ angular.module('Jobsite').factory('CategoriesService', ['$http', '$q', 'RESOURCE
         });
     };
 
+    // Get categories
     jobsServiceFactory.getCategories = _getCategories;
 
     return jobsServiceFactory;

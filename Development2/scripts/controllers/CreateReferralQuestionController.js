@@ -24,11 +24,6 @@ angular.module('Jobsite').controller("CreateReferralQuestionController", functio
     $scope.numOptionsLikertScale =[3,5,7,9];
     $scope.numOptionsSelected = '';
 
-
-
-
-
-
     ReferralService.getJobReferral($scope.id).then(function (results) {
         var res = results.data;
         $scope.questionsCount = res.questionsCount;

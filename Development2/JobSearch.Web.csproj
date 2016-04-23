@@ -3544,6 +3544,7 @@
     <Content Include="libs\ui-select\LICENSE" />
     <Content Include="libs\ui-select\package.json" />
     <Content Include="libs\ui-select\README.md" />
+    <None Include="Properties\PublishProfiles\Legal.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -3565,6 +3566,11 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <FilesToIncludeForPublish>AllFilesInProjectFolder</FilesToIncludeForPublish>
     <ExcludeGeneratedDebugSymbol>true</ExcludeGeneratedDebugSymbol>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Legal|AnyCPU'">
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>LEGAL</DefineConstants>
+    <FilesToIncludeForPublish>AllFilesInProjectFolder</FilesToIncludeForPublish>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />

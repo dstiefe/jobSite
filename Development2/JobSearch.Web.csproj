@@ -2717,13 +2717,8 @@
     <Content Include="scripts\services\AuthService.js" />
     <Content Include="scripts\services\CategoriesService.js" />
     <Content Include="scripts\services\JobsService.js" />
-    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="scripts\services\LocationsService.js" />
     <Content Include="scripts\services\ReferralService.js" />
-
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="scripts\services\ResumesService.js" />
     <Content Include="scripts\services\ScreeningsService.js" />
     <Content Include="scripts\services\SearchResumesParameters.js" />
@@ -2781,9 +2776,6 @@
     </Content>
     <Content Include="views\ReferralAssign.html" />
     <Content Include="views\Referrals.html" />
-    <Content Include="views\Register.html">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="views\resetpassword.html" />
     <Content Include="views\resetpasswordverify.html" />
     <Content Include="views\ResumeDetailView.html" />

@@ -98,7 +98,7 @@ angular.module('Jobsite').controller("AddjobformController", function($scope,  $
         options: {
             html: false,
             focusOpen: true,
-            onlySelectValid: true,
+            onlySelectValid: false,
             source: function (request, response) {
                 var res = $scope.clients;
                 if(request.term.length !=0) {
@@ -249,6 +249,8 @@ angular.module('Jobsite').controller("AddjobformController", function($scope,  $
         $scope.saveChanges = function(isValid) {
 
             if (!isValid || !$scope.locationCity.id){
+                console.log("not valid");
+                console.log($scope.locationCity.id);
                 return;
             }
             if (!angular.isUndefined($scope.aboutUsResultContent)) {

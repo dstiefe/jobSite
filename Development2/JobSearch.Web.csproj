@@ -2623,6 +2623,8 @@
     <Content Include="libs\ui-select\dist\select.js" />
     <Content Include="libs\ui-select\dist\select.min.css" />
     <Content Include="libs\ui-select\dist\select.min.js" />
+    <Content Include="Properties\PublishProfiles\Daytal.pubxml.user" />
+    <Content Include="Properties\PublishProfiles\Legaltal.pubxml.user" />
     <Content Include="README.txt" />
     <Content Include="scripts\app.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -3544,7 +3546,8 @@
     <Content Include="libs\ui-select\LICENSE" />
     <Content Include="libs\ui-select\package.json" />
     <Content Include="libs\ui-select\README.md" />
-    <None Include="Properties\PublishProfiles\Legal.pubxml" />
+    <None Include="Properties\PublishProfiles\Daytal.pubxml" />
+    <None Include="Properties\PublishProfiles\Legaltal.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -3556,7 +3559,7 @@
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Production|AnyCPU'">
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Daytal|AnyCPU' ">
     <OutputPath>bin\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <Optimize>true</Optimize>
@@ -3567,9 +3570,9 @@
     <FilesToIncludeForPublish>AllFilesInProjectFolder</FilesToIncludeForPublish>
     <ExcludeGeneratedDebugSymbol>true</ExcludeGeneratedDebugSymbol>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Legal|AnyCPU'">
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Legaltal|AnyCPU' ">
     <OutputPath>bin\</OutputPath>
-    <DefineConstants>LEGAL</DefineConstants>
+    <DefineConstants>LEGALTAL</DefineConstants>
     <FilesToIncludeForPublish>AllFilesInProjectFolder</FilesToIncludeForPublish>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

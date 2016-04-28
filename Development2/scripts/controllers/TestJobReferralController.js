@@ -81,7 +81,11 @@ angular.module('Jobsite').controller("TestJobReferralController", function($scop
                 $scope.successMessage='Successfully saved!';
 
                 $timeout(function() {
-                    $state.go('dashboard');
+                    $state.go('finishestsjobreferral', {
+                        jobId: $scope.jobId,
+                        resumeId:  $scope.resumeId,
+                        jobReferralId: $scope.jobReferralId
+                    });
                 }, 1000);
 
             }, function (error) {

@@ -455,6 +455,17 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
             }
         })
 
+        .state('finishestsjobreferral', {
+            url: "/jobs/:jobId/resumes/:resumeId/references/:jobReferralId/test/finish",
+            templateUrl: "views/FinishTestJobReferral.html",
+            data: {
+                pageTitle: 'Finish test reference',
+                permissions: {
+                    only: ['User'],
+                }
+            }
+        })
+
         .state('traitify', {
             url: "/jobs/:jobId/resumes/:resumeId/traitify/:traitifyId/test",
             templateUrl: "views/Traitify.html",

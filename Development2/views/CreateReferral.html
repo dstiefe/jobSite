@@ -43,11 +43,8 @@
                                                 <div class="form-group">
                                                     <label for="jobsIds">Jobs</label>
 
-                                                    <select  id="jobsIds"  name="jobsIds" multiple="true" ng-model="referral.jobsIds" class="form-control" ng-change="jobsChanged()" required ng-options="job.id as job.title for job in jobs">
+                                                    <select  id="jobsIds"  name="jobsIds" multiple="true" ng-model="referral.jobsIds" class="form-control" ng-change="jobsChanged()" ng-options="job.id as job.title for job in jobs">
                                                      </select>
-
-
-                                                    <span class="color-theme" ng-show="createReferralForm.jobsIds.$error.required">Jobs is required.</span>
                                                 </div>
 
 

@@ -5,8 +5,8 @@
  */
 
 
-//var apiBasePath = 'http://ec2-52-90-116-49.compute-1.amazonaws.com:81/legalapi_dev/api/v1/'; // legaltal api
-var apiBasePath = 'http://ec2-52-90-116-49.compute-1.amazonaws.com:81/jobapi_dev/api/v1/'; // daytal api
+var apiBasePath = 'http://ec2-52-90-116-49.compute-1.amazonaws.com:81/legalapi_dev/api/v1/'; // legaltal api
+//var apiBasePath = 'http://ec2-52-90-116-49.compute-1.amazonaws.com:81/jobapi_dev/api/v1/'; // daytal api
 //var apiBasePath = 'http://localhost:41656/api/v1/'; //local api
 
 var clientId ="P600Us6Y476QiK331u5yEzb22dpX_y6NS75!9I-a";
@@ -41,7 +41,8 @@ var clientId ="P600Us6Y476QiK331u5yEzb22dpX_y6NS75!9I-a";
         'bcherny/formatAsCurrency',
         'angular-loading-bar',
         'angularSpectrumColorpicker',
-        'luegg.directives'
+        'luegg.directives',
+        'rzModule' // slider
     ]).constant('RESOURCES', (function() {
 
             var EmployeeTypes = [
@@ -58,6 +59,14 @@ var clientId ="P600Us6Y476QiK331u5yEzb22dpX_y6NS75!9I-a";
                 {value: "LikertScale", name: "Likert Scale"},
             ];
 
+            var ReferencesQuestionTypes = [
+                {value: "MultipleChoice", name: "Multiple/Choice"},
+                {value: "TrueFalse", name: "True/False"},
+                {value: "FillIn", name: "Fill In"},
+                {value: "LikertScale", name: "Likert Scale"},
+                {value: "Grade", name: "Grade"},
+            ];
+
             var WorkingRelationshipTypes = [
                 {value: "Colleague", name: "Colleague"},
                 {value: "DirectSupervisor", name: "Direct Supervisor"},
@@ -70,6 +79,7 @@ var clientId ="P600Us6Y476QiK331u5yEzb22dpX_y6NS75!9I-a";
             return {
                 EMPLOYEE_TYPES: EmployeeTypes,
                 SCREENING_QUESTION_TYPES: ScreeningQuestionTypes,
+                REFERENCES_QUESTION_TYPES: ReferencesQuestionTypes,
                 WORKING_RELATIONSHIP_TYPES: WorkingRelationshipTypes,
                 API_BASE_PATH: apiBasePath,
                 CLIENT_ID: clientId,

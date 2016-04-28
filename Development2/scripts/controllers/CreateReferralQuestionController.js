@@ -18,7 +18,7 @@ angular.module('Jobsite').controller("CreateReferralQuestionController", functio
 
     };
     $scope.referralQuestion.tags = [];
-    $scope.ScreeningQuestionTypes = RESOURCES.SCREENING_QUESTION_TYPES;
+    $scope.ScreeningQuestionTypes = RESOURCES.REFERENCES_QUESTION_TYPES;
     $scope.referralQuestion.options =[];
     $scope.referralQuestion.optionsDescriptions = {};
     $scope.numOptionsLikertScale =[3,5,7,9];

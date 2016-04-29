@@ -61,9 +61,10 @@ angular.module('Jobsite').controller("FinishTestJobReferralController", function
     _initEmailObjects();
 
     $scope.onSave = function(isValid) {
-        $scope.message ='';
+        $scope.successMessage='';
+        $scope.errorMessage ='';
         if (!isValid){
-            $scope.message ='Check input data!';
+            $scope.errorMessage ='Check input data!';
             return;
         }
         var isFill = false;
@@ -78,7 +79,7 @@ angular.module('Jobsite').controller("FinishTestJobReferralController", function
 
         if (!isFill)
         {
-            $scope.message ='You do not fill emails!';
+            $scope.errorMessage ='You do not fill emails!';
             return;
         }
 
@@ -94,10 +95,14 @@ angular.module('Jobsite').controller("FinishTestJobReferralController", function
         };
 
         ReferralService.sendReferenceToFriends(postsavedata).then(function (results) {
-            $state.go('dashboard');
+            $scope.successMessage='References sended successfully!';
+            $timeout(function() {
+                $scope.successMessage='';
+                $state.go('dashboard');
+            }, 1000);
 
         }, function (error) {
-            $scope.message ='Error occured!';
+            $scope.errorMessage ='Error occured!';
             console.log(error.data.message);
         });
 

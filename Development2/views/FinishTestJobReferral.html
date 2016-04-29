@@ -29,10 +29,15 @@
 
                     <form name="sendForm" ng-submit="onSave(sendForm.$valid)" novalidate>
 
-                    <div class="row"  ng-hide='!message'>
+                    <div class="row"  ng-hide='!errorMessage'>
                         <div class="form-group col-sm-12">
-                                <div class="alert alert-danger" role="alert">{{message}}</div>
+                                <div class="alert alert-danger" role="alert">{{errorMessage}}</div>
+                        </div>
+                    </div>
 
+                    <div class="row"  ng-hide='!successMessage'>
+                        <div class="form-group col-sm-12">
+                            <div class="alert alert-success" role="alert">{{successMessage}}</div>
                         </div>
                     </div>
 

@@ -44,12 +44,13 @@ function pwCheck() {
 
 
 
-function backHandler($window,$document) {
+function backHandler($window,$rootScope) {
     return {
         restrict: 'A',
         link: function (scope, elem, attrs) {
             elem.bind('click', function () {
-                $window.history.back();
+               // $window.history.back();
+                $rootScope.back();
             });
         }
     };

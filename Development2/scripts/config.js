@@ -4,21 +4,7 @@
  *
  */
 
-function configState($stateProvider, $urlRouterProvider, $compileProvider, $provide) {
-
-
-    $provide.decorator('$document', function($delegate){
-
-        $delegate.getReferrer = function() {return document.referrer;};
-
-        // alternative you can create a property
-        // Object.defineProperty($delegate, 'referrer', {
-        //   get: function() { return document.referrer; }
-        // });
-
-        return $delegate;
-    });
-
+function configState($stateProvider, $urlRouterProvider, $compileProvider) {
 
     // Optimize load start with remove binding information inside the DOM element
     $compileProvider.debugInfoEnabled(true);
@@ -95,7 +81,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider, $prov
                 pageTitle: 'Job Management',
                 permissions: {
                     only: ['Admin'],
-                    //   redirectTo: 'login'
+                    redirectTo: 'login'
                 }
             }
         })
@@ -108,7 +94,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider, $prov
                 pageTitle: 'Jobs List',
                 permissions: {
                     only: ['Admin'],
-                    //   redirectTo: 'login'
+                    redirectTo: 'login'
                 }
             }
         })
@@ -164,7 +150,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider, $prov
                 pageTitle: 'Apply Job',
                 permissions: {
                     only: ['User'],
-                    //  redirectTo: 'login'
+                    redirectTo: 'login'
                 }
             }
         })
@@ -189,6 +175,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider, $prov
                 pageTitle: 'Search Resumes Home',
                 permissions: {
                     only: ['Admin'],
+                    redirectTo: 'login'
                 }
             }
         })
@@ -201,6 +188,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider, $prov
                 pageTitle: 'Search Resumes',
                 permissions: {
                     only: ['Admin'],
+                    redirectTo: 'login'
                 }
             }
         })
@@ -228,6 +216,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider, $prov
                 pageTitle: 'Screenings',
                 permissions: {
                     only: ['Admin'],
+                    redirectTo: 'login'
                 }
             }
         })
@@ -239,6 +228,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider, $prov
                 pageTitle: 'Create Screening',
                 permissions: {
                     only: ['Admin'],
+                    redirectTo: 'login'
                 }
             }
         })
@@ -250,6 +240,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider, $prov
                 pageTitle: 'Edit Screening',
                 permissions: {
                     only: ['Admin'],
+                    redirectTo: 'login'
                 }
             }
         })
@@ -261,6 +252,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider, $prov
                 pageTitle: 'Edit Screening Info',
                 permissions: {
                     only: ['Admin'],
+                    redirectTo: 'login'
                 }
             }
         })
@@ -275,6 +267,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider, $prov
                 pageTitle: 'Create Screening Question',
                 permissions: {
                     only: ['Admin'],
+                    redirectTo: 'login'
                 }
             }
         })
@@ -289,6 +282,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider, $prov
                 pageTitle: 'Edit Screening Question',
                 permissions: {
                     only: ['Admin'],
+                    redirectTo: 'login'
                 }
             }
         })
@@ -311,6 +305,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider, $prov
                 pageTitle: 'Screening test',
                 permissions: {
                     only: ['User'],
+                    redirectTo: 'login'
                 }
             }
         })
@@ -322,6 +317,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider, $prov
                 pageTitle: 'Finish screening tests',
                 permissions: {
                     only: ['User'],
+                    redirectTo: 'login'
                 }
             }
         })
@@ -333,6 +329,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider, $prov
                 pageTitle: 'Resumes',
                 permissions: {
                     only: ['User'],
+                    redirectTo:'login'
                 }
             }
         })
@@ -344,6 +341,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider, $prov
                 pageTitle: 'References',
                 permissions: {
                     only: ['Admin'],
+                    redirectTo: 'login'
                 }
             }
         })
@@ -355,6 +353,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider, $prov
                 pageTitle: 'Create Reference',
                 permissions: {
                     only: ['Admin'],
+                    redirectTo: 'login'
                 }
             }
         })
@@ -366,6 +365,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider, $prov
                 pageTitle: 'Edit Reference',
                 permissions: {
                     only: ['Admin'],
+                    redirectTo: 'login'
                 }
             }
         })
@@ -377,6 +377,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider, $prov
                 pageTitle: 'Edit Reference Info',
                 permissions: {
                     only: ['Admin'],
+                    redirectTo: 'login'
                 }
             }
         })
@@ -391,6 +392,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider, $prov
                 pageTitle: 'Create Reference Question',
                 permissions: {
                     only: ['Admin'],
+                    redirectTo: 'login'
                 }
             }
         })
@@ -405,6 +407,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider, $prov
                 pageTitle: 'Edit Reference Question',
                 permissions: {
                     only: ['Admin'],
+                    redirectTo: 'login'
                 }
             }
         })
@@ -428,6 +431,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider, $prov
                 pageTitle: 'Screening Assign',
                 permissions: {
                     only: ['Admin'],
+                    redirectTo: 'login'
                 }
             }
         })
@@ -439,6 +443,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider, $prov
                 pageTitle: 'Reference Assign',
                 permissions: {
                     only: ['Admin'],
+                    redirectTo: 'login'
                 }
             }
         })
@@ -465,6 +470,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider, $prov
                 pageTitle: 'Reference test',
                 permissions: {
                     only: ['User'],
+                    redirectTo: 'login'
                 }
             }
         })
@@ -476,6 +482,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider, $prov
                 pageTitle: 'Finish test reference',
                 permissions: {
                     only: ['User'],
+                    redirectTo: 'login'
                 }
             }
         })
@@ -487,6 +494,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider, $prov
                 pageTitle: 'Traitify test',
                 permissions: {
                     only: ['User'],
+                    redirectTo: 'login'
                 }
             }
         })
@@ -509,6 +517,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider, $prov
                 pageTitle: 'Traitify finish test',
                 permissions: {
                     only: ['User'],
+                    redirectTo: 'login'
                 }
             }
         })
@@ -520,6 +529,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider, $prov
                 pageTitle: 'Interviews',
                 permissions: {
                     only: ['Admin'],
+                    redirectTo: 'login'
                 }
             }
         })
@@ -531,6 +541,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider, $prov
                 pageTitle: 'Create Interview',
                 permissions: {
                     only: ['Admin'],
+                    redirectTo: 'login'
                 }
             }
         })
@@ -542,6 +553,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider, $prov
                 pageTitle: 'Edit Interview',
                 permissions: {
                     only: ['Admin'],
+                    redirectTo: 'login'
                 }
             }
         })
@@ -553,6 +565,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider, $prov
                 pageTitle: 'Edit Interview Info',
                 permissions: {
                     only: ['Admin'],
+                    redirectTo: 'login'
                 }
             }
         })
@@ -567,6 +580,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider, $prov
                 pageTitle: 'Create Interview Question',
                 permissions: {
                     only: ['Admin'],
+                    redirectTo: 'login'
                 }
             }
         })
@@ -581,6 +595,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider, $prov
                 pageTitle: 'Edit Interview Question',
                 permissions: {
                     only: ['Admin'],
+                    redirectTo: 'login'
                 }
             }
         })
@@ -592,6 +607,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider, $prov
                 pageTitle: 'Interview Assign',
                 permissions: {
                     only: ['Admin'],
+                    redirectTo: 'login'
                 }
             }
         })
@@ -603,6 +619,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider, $prov
                 pageTitle: 'Interview test',
                 permissions: {
                     only: ['Admin'],
+                    redirectTo: 'login'
                 }
             }
         })
@@ -615,6 +632,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider, $prov
                 pageTitle: 'Clients',
                 permissions: {
                     only: ['Admin'],
+                    redirectTo: 'login'
                 }
             }
         })
@@ -627,6 +645,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider, $prov
                 pageTitle: 'Create Client',
                 permissions: {
                     only: ['Admin'],
+                    redirectTo: 'login'
                 }
             }
         })
@@ -639,6 +658,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider, $prov
                 pageTitle: 'Edit Client',
                 permissions: {
                     only: ['Admin'],
+                    redirectTo: 'login'
                 }
             }
         })
@@ -650,6 +670,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider, $prov
                 pageTitle: 'Bulk Message',
                 permissions: {
                     only: ['Admin'],
+                    redirectTo: 'login'
                 }
             }
         })
@@ -659,7 +680,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider, $prov
 angular
     .module('Jobsite')
     .config(configState)
-    .run(function($rootScope, $state, editableOptions, Permission, ValiDatedTokenObject, AuthService) {
+    .run(function($rootScope, $location, $state, editableOptions, Permission, ValiDatedTokenObject, AuthService) {
 
         $rootScope.numberWithCommas = function (x) {
             var parts = x.toString().split(".");
@@ -718,8 +739,24 @@ angular
                 return false;
             });
 
+
+
+        var history = [];
+        $rootScope.$on('$locationChangeSuccess', function() {
+            history.push($location.$$path);
+            if (history.length > 5) history = history.slice(history.length - 5, 5);
+        });
+
+        $rootScope.back = function () {
+            var prevUrl = history.length > 1 ? history.splice(-2)[0] : "/";
+            $rootScope.$apply(function() {
+                $location.path('/');
+                //  history = []; //Delete history array after going back
+            });
+        };
+
     });
 
 angular.isUndefinedOrNull = function(val) {
     return angular.isUndefined(val) || val === null
-}
+};

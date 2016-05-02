@@ -169,7 +169,5 @@ angular.module('Jobsite').controller("CreateReferralQuestionController", functio
             }
         }
     };
-    $scope.$back = function() {
-        window.history.back();
-    };
+
 });

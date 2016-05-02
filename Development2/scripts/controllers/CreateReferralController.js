@@ -69,8 +69,6 @@ angular.module('Jobsite').controller("CreateReferralController", function($scope
             $state.go('referrals');
         }
     }
-    $scope.$back = function() {
-        window.history.back();
-    };
+
 
 });

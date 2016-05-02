@@ -4,7 +4,21 @@
  *
  */
 
-function configState($stateProvider, $urlRouterProvider, $compileProvider) {
+function configState($stateProvider, $urlRouterProvider, $compileProvider, $provide) {
+
+
+    $provide.decorator('$document', function($delegate){
+
+        $delegate.getReferrer = function() {return document.referrer;};
+
+        // alternative you can create a property
+        // Object.defineProperty($delegate, 'referrer', {
+        //   get: function() { return document.referrer; }
+        // });
+
+        return $delegate;
+    });
+
 
     // Optimize load start with remove binding information inside the DOM element
     $compileProvider.debugInfoEnabled(true);

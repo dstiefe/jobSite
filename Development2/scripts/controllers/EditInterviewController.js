@@ -40,9 +40,7 @@ angular.module('Jobsite').controller("EditInterviewController", function($scope,
         $scope.predicate = predicate;
         $scope.reverse = !$scope.reverse;
     };
-    $scope.$back = function() {
-        window.history.back();
-    };
+
     $scope.deleterecords = function(data) {
         InterviewsService.deleteInterviewQuestion(data.interviewId, data.id).then(function (results) {
             _getInterviewQuestions();

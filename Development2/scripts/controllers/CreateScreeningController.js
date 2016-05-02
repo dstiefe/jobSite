@@ -88,10 +88,6 @@ angular.module('Jobsite').controller("CreateScreeningController", function($scop
 
     };
 
-    $scope.$back = function() {
-        window.history.back();
-    };
-
     $scope.manageTags = function() {
 
         var modalInstance = $modal.open({

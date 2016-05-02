@@ -69,8 +69,5 @@ angular.module('Jobsite').controller("CreateInterviewController", function($scop
             $state.go('interviews');
         }
     }
-    $scope.$back = function() {
-        window.history.back();
-    };
 
 });

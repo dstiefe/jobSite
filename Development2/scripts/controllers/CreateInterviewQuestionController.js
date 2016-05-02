@@ -174,7 +174,5 @@ angular.module('Jobsite').controller("CreateInterviewQuestionController", functi
             }
         }
     };
-    $scope.$back = function() {
-        window.history.back();
-    };
+
 });

@@ -40,9 +40,7 @@ angular.module('Jobsite').controller("EditReferralController", function($scope, 
         $scope.predicate = predicate;
         $scope.reverse = !$scope.reverse;
     };
-    $scope.$back = function() {
-        window.history.back();
-    };
+
     $scope.deleterecords = function(data) {
         ReferralService.deleteReferralQuestion(data.jobReferralId, data.id).then(function (results) {
             _getReferralQuestions();

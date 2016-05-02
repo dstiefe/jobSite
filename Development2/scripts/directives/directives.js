@@ -44,7 +44,7 @@ function pwCheck() {
 
 
 
-function backHandler($window) {
+function backHandler($window,$document) {
     return {
         restrict: 'A',
         link: function (scope, elem, attrs) {

@@ -84,6 +84,11 @@ angular.module('Jobsite').controller('MessagesController', function ($scope, $mo
             $scope.successMessage = true;
             $scope.newMessage.subject ='';
             $scope.newMessage.body ='';
+
+            $scope.selectedMessageTemplate = {};
+            $scope.isSaveTemplate = false;
+            $scope.nameTemplate = '';
+
             $timeout(function() {
                 $scope.successMessage =false;
             }, 1000);

@@ -147,6 +147,18 @@ angular.module('Jobsite').factory('JobsService', ['$http', '$q', 'RESOURCES','Va
             return results;
         });
     };
+    var _changeActivity = function (id, data) {
+        return $http.put(serviceBase + 'jobs/'+id+'/activity',
+            data ,
+            {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': ValiDatedTokenObject.getValiDatedTokenObject().token_type+" "+ValiDatedTokenObject.getValiDatedTokenObject().access_token
+                }
+            }).then(function (results) {
+            return results;
+        });
+    };
 
     // Advanced search jobs
     jobsServiceFactory.searchAdvancedJobs = _searchAdvancedJobs;
@@ -162,6 +174,7 @@ angular.module('Jobsite').factory('JobsService', ['$http', '$q', 'RESOURCES','Va
     jobsServiceFactory.getMyJobs = _getMyJobs;
     // Get jobs applied
     jobsServiceFactory.getJobsApplied = _getJobsApplied;
-
+    // Change activity job
+    jobsServiceFactory.changeActivity = _changeActivity;
     return jobsServiceFactory;
 }]);

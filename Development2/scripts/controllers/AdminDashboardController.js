@@ -47,10 +47,17 @@ angular.module('Jobsite').controller("AdminDashboardController", function ($root
         $scope.setPage = function (pageNo) {
             $scope.currentPage = pageNo;
         };
+
+        $scope.changeActivity= function (job, isInActive) {
+
+            var data = {'isInActive':isInActive};
+
+            JobsService.changeActivity(job.id, data).then(function (results) {
+                job.isInActive = isInActive;
+            }, function (error) {
+                console.log(error.data.message);
+            });
+
+        };
     }
-
-
-
-
-
 });

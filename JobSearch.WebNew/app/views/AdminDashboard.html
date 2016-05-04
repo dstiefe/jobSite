@@ -1,0 +1,107 @@
+<div class="row">
+    <div class="col-lg-12">
+
+        <h3 class="headertable" style="margin: 0;padding: 0.7em 1em 1em 0.8em;">
+            {{headingmessage}}
+        </h3>
+    </div>
+</div>
+
+<div class="row">
+    <div ng-show="!list.length && !isLoading" class="col-lg-12" style="" ng-cloak>
+        <h1>{{jobsNotFoundMessage}}</h1>
+    </div>
+</div>
+
+<div class="row">
+    <br />
+    <div class="col-lg-6" ng-repeat="data in list | startFrom:(currentPage-1)*entryLimit | limitTo:entryLimit | orderBy:'-publishedDate'">
+        <div class="panel panel-default">
+            <div class="panel-heading" style="height: 56px;">
+
+                <div class="pull-left">
+                    <h3 class="panel-title">{{data.title}}({{data.location}})</h3>
+                            <span class="dateHeader">
+                                <span>Date Created: </span>{{data.publishedDate*1000 | date : "M/d/yyyy"}}
+                            </span>
+                </div>
+
+
+
+              <div class="btn-group pull-right" style="margin: 0 10px;" >
+                    <a class="btn btn-default dropdown-toggle"
+                            data-toggle="dropdown"
+                            ng-click='open=!open'
+                    style="border-color:#3498db;">
+                        <i class="fa fa-bars text-info"></i>
+                    </a>
+                    <div class="row dropdown-menu list-inline hdropdown bigmenu animated flipInX" style="margin-left: -300px; width: 300px;">
+
+                        <div class="col-xs-6" ng-click="$parent.open =!$parent.open">
+                            <a href="" title="Delete job" alt="Delete job" ng-click="deleterecords(data.id)">
+                                <i class="pe-7s-trash" style="color: red;"></i>
+                                <h5>Delete</h5>
+                            </a>
+                        </div>
+
+                        <div class="col-xs-6" ng-click="$parent.open =!$parent.open" >
+
+                            <a href="" title="Active job" alt="Active job" ng-click="changeActivity(data, false)" ng-show="data.isInActive">
+                                <i class="fa fa-eye text-info"></i>
+                                <h5>Active</h5>
+                            </a>
+
+                            <a href="" title="Deactive job" alt="Deactive job" ng-click="changeActivity(data, true)"  ng-hide="data.isInActive">
+                                <i class="fa fa-eye-slash text-info"></i>
+                                <h5>Deactive</h5>
+                            </a>
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <a class="btn btn-primary pull-right" ui-sref="applicants({id:data.id})">
+                    {{viewtext}}
+                    <span class="badge badge-success" ng-show="data.applicantsCount > 0">{{data.applicantsCount}}</span>
+                </a>
+
+
+
+                        <span class="label label-success pull-right" ng-show="(data.referralFeePercent >0 || data.data.referralFeeAmount > 0)" style="background-color: #5cb85c; font-size: 14px; padding: 10px;margin:0 10px;">
+                            $$ Referral
+                        </span>
+
+                <div class="clearfix"></div>
+
+            </div>
+            <div class="panel-body crop" ng-bind-html="data.description"></div>
+            <div class="panel-footer" style="height: 50px;padding-top: 5px;" >
+                        <span class="label label-info label-footer" ng-repeat="screening in data.screenings">
+                            {{screening.name}}
+                            <span class="badge badge-success" ng-show="screening.applicantsCount > 0" >{{screening.applicantsCount}}</span>
+                        </span>
+
+                         <span class="label label-success label-footer" ng-repeat="reference in data.references" >
+                            {{reference.name}}
+                        </span>
+
+                       <span class="label label-warning label-footer" ng-repeat="traitify in data.traitifies" >
+                            {{traitify.name}}
+                        </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row" ng-show="list.length > 0">
+
+    <div class="col-md-9 col-lg-offset-1" ng-show="list.length > 0">
+        <div pagination="" ng-model="currentPage" ng-change="changed()" boundary-links="true" total-items="filteredItems" items-per-page="entryLimit" class="pagination-small" previous-text="&laquo;" next-text="&raquo;"></div>
+    </div>
+    <div class="col-md-1">
+        PageSize: <select ng-model="entryLimit" class="form-control" ng-options="c for c in entryLimits">
+    </select>
+    </div>
+    <div class="col-md-1"> </div>
+</div>

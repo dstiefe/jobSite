@@ -1,0 +1,9 @@
+﻿<div class="container" ng-include="'views/head.html'"></div>
+
+<div class="container" ng-controller="dashboardController" >
+
+    <div class="container" ng-include="'views/AdminDashboard.html'" ng-controller="AdminDashboardController" ng-if="role == 'Admin'"></div>
+
+    <div class="container" ng-include="'views/UserDashboard.html'" ng-controller="UserDashboardController" ng-if="role == 'User'"></div>
+</div>
+

@@ -1,0 +1,39 @@
+.page-content {
+    margin-bottom: 20px;
+}
+
+.box {
+    background-color: #E4E4E4;
+    padding: 10px;
+}
+
+.box-header {
+    background-color: #3C4F60;
+    padding: 12px 15px;
+}
+.box-header span{
+    color: #FFF;
+}
+.box-header h3,
+.box-header h3 small {
+    color: #FFF;
+}
+.box-header h4, .box-header h4 small {
+    color: #FFF;
+}
+.box-description {
+    margin-top: 10px;
+    background-color: #FFF;
+    padding: 12px 15px;
+    border-top:  3px solid #525050;
+}
+
+.color-theme {
+    color: #ef4034;
+}
+
+ul.list-group.mailbox-list li a {
+    padding-top: 2px;
+}
+
+

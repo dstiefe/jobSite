@@ -1,0 +1,316 @@
+
+.modal.modal-fullscreen {
+    /* Maximize the main wrappers on the screen */
+    /* Make the parent wrapper of the modal box a full-width block */
+    /* Remove borders and effects on the content */
+    /**
+       * /!\ By using this feature, you force the header and footer to be placed
+       * in an absolute position. You must handle by yourself the margin of the
+       * content.
+       */
+}
+.modal.modal-fullscreen .modal-dialog,
+.modal.modal-fullscreen .modal-content {
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+.modal.modal-fullscreen .modal-dialog {
+    margin: 0;
+    width: 100%;
+}
+.modal.modal-fullscreen .modal-content {
+    border: none;
+    -moz-border-radius: 0;
+    border-radius: 0;
+    -webkit-box-shadow: inherit;
+    -moz-box-shadow: inherit;
+    -o-box-shadow: inherit;
+    box-shadow: inherit;
+}
+.modal.modal-fullscreen.force-fullscreen {
+    /* Remove the padding inside the body */
+}
+.modal.modal-fullscreen.force-fullscreen .modal-body {
+    padding: 0;
+}
+.modal.modal-fullscreen.force-fullscreen .modal-header,
+.modal.modal-fullscreen.force-fullscreen .modal-footer {
+    left: 0;
+    position: absolute;
+    right: 0;
+}
+.modal.modal-fullscreen.force-fullscreen .modal-header {
+    top: 0;
+}
+.modal.modal-fullscreen.force-fullscreen .modal-footer {
+    bottom: 0;
+}
+.color-line {
+margin-top:1px;
+}
+
+/**/
+.panel.panel-success.panel-success_popup {
+    margin: 0;
+    position: absolute;
+    top: 0px;
+    left: 0;
+    right: 0;
+    width: 100%;
+    min-height: 100%;
+    z-index: 1300;
+    overflow: scroll;
+}
+.panel-heading.panel-heading_custom {
+    padding: 0 15px;
+}
+.open-document-container {
+    position: relative;
+    border-left: 1px solid  rgb(68,84,106);
+}
+.panel-body {
+    white-space: normal;
+}
+
+
+
+.panel-custom {
+    margin-left: 20px;
+    border-color: #ddd;
+    background-color: rgba(230, 235, 232, 0.29);
+}
+
+.panel-custom > .panel-heading {
+    margin-left: 20px;
+    margin-right: 20px;
+    color: #333;
+    border-color: #766F6F;
+}
+
+.panel-box {
+    margin-left: 20px;
+    background-color: rgba(230, 235, 232, 0.29);
+}
+
+.panel-box > .panel-heading {
+    color: #333;
+}
+
+.panel-box > .panel-body {
+    color: #333;
+    border: 1px solid #766F6F !important;
+    padding: 4px 5px;
+
+}
+.jas{
+    color:red;
+}
+
+.big-gliphs {
+    font-size: 40px;
+}
+
+.open-document-container {
+    position: relative;
+    border-left: 1px solid rgb(68,84,106);
+}
+
+.content-of-document {
+    width: 90%;
+    min-height: 1000px;
+}
+
+.content-of-document.short {
+    width: 75%;
+}
+
+.right-panel {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 10%;
+    padding: 5px;
+    border-left: 1px solid rgb(68,84,106);
+    max-width: 70px;
+}
+
+
+.right-panel.wide {
+    width: 18.5%;
+    max-width: 19%;
+}
+.right-panel > .right-panel-buttons > a > .glyphicon {
+    display: block;
+    margin: 15px auto;
+    cursor: pointer;
+    font-size: 25px;
+    color: #79A736;
+}
+.right-panel > .right-panel-buttons > .glyphicon {
+    display: block;
+    margin: 15px auto;
+    cursor: pointer;
+    font-size: 25px;
+    color: #79A736;
+}
+.right-panel > .right-panel-buttons > .glyphicon.glyphicon-pushpin {
+    display: none;
+}
+.right-panel > .panel {
+    display: none;
+    min-width: 212px;
+}
+
+.right-panel.wide > .right-panel-buttons {
+    white-space: nowrap;
+    text-align: left;
+    width: 100%;
+    margin: 15px 0;
+    border-top: 1px solid rgb(68,84,106);
+    border-bottom: 1px solid rgb(68,84,106);
+}
+.right-panel.wide > .right-panel-buttons> a > .glyphicon {
+    display: inline-block;
+    margin: 15px 5px;
+}
+.right-panel.wide > .right-panel-buttons > .glyphicon {
+    display: inline-block;
+    margin: 15px 5px;
+}
+
+.right-panel.wide > .right-panel-buttons > .glyphicon.glyphicon-pushpin {
+    display: inline-block;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+}
+
+.right-panel.wide > .right-panel-buttons > .glyphicon.glyphicon-pushpin.lock {
+    color: rgb(63, 87, 28);
+}
+
+.right-panel.wide > .panel {
+    display: block;
+}
+
+.right-panel .list-group-item {
+    white-space: normal;
+}
+
+.document-go-here {
+    width:1140px;
+    margin: 0 auto;
+}
+
+.right-panel-buttons {
+    width: 25px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.glyphicon-image img {
+    width: 25px;
+    vertical-align: top;
+}
+
+.transition-class {
+    -webkit-transition: all .3s ease-out;
+    -moz-transition: all .3s ease-out;
+    -o-transition: all .3s ease-out;
+    transition: all .3s ease-out;
+}
+
+.input-at-header {
+    margin: 17px 0;
+}
+
+.panel-heading.panel-heading_custom {
+    padding: 0 15px;
+}
+.panel.panel-success.panel-success_popup {
+    margin: 0;
+    position: absolute;
+    top: 0px;
+    left: 0;
+    right: 0;
+    width: 100%;
+    min-height: 100%;
+    z-index: 1300;
+    overflow: scroll;
+}
+
+.navbar.navbar-inverse.navbar-fixed-top {
+    border-color: #fff;
+    background-color: #fff;
+}
+
+#myModal {
+
+}
+
+.disabled_button_form.btn-primary[disabled]
+{
+    background-color: #f8f5f0;
+    border-color: #dfd7ca;
+    pointer-events: none;
+    cursor: default;
+}
+.scroller-for-popup {
+
+}
+.close-icon {
+    font-size: 42px;
+    color: white;
+    margin: 10px;
+    cursor: pointer;
+    font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+}
+
+.native-view-button-open {
+
+    font-size: 38px;
+    display: inline;
+    padding: 0;
+    margin-top: 15px;
+    display: none;
+
+}
+
+#native-view-box {
+    display: none;
+}
+
+.pdfViewer {
+    width: 1140px;
+    height: 1350px;
+    border: 0;
+    /*display: none;*/
+}
+
+.imgViewer {
+    max-width: 1140px;
+    max-height: 1350px;
+    width: auto;
+    height: auto;
+    border: 0;
+    display: none;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.resume_detail_view_color{
+    background-color: rgb(68,84,106) !important;
+    border-color: transparent !important;
+}
+
+#detailViewPage > .panel-heading {
+    color: white !important;
+}
+.resume_detail_view_color.panel-heading {
+    color: white !important;
+}

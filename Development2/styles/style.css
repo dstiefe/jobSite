@@ -4858,3 +4858,6 @@ border: none;
     line-height: 44px;
     display: inline-block;
 }
+.i-checks{
+    opacity: 1 !important;
+}

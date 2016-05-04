@@ -18,14 +18,6 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
     });
 
     $stateProvider
-    // Dashboard - Main page
-        .state('test', {
-            url: "/test",
-            templateUrl: "views/Test.html",
-            data: {
-                pageTitle: 'Test'
-            }
-        })
 
         // Dashboard - Main page
         .state('dashboard', {

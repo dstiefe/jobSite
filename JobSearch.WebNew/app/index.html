@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html ng-app="Jobsite">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Page title set in pageTitle directive -->
+    <title page-title></title>
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!--<link rel="shortcut icon" type="image/ico" href="favicon.ico" />-->
+
+    <!-- build:css styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/textAngular/dist/textAngular.css" />
+    <link rel="stylesheet" href="bower_components/angular-loading-bar/build/loading-bar.css" />
+    <link rel="stylesheet" href="bower_components/spectrum/spectrum.css" />
+    <link rel="stylesheet" href="bower_components/angularjs-slider/dist/rzslider.css" />
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="bower_components/pixeden-stroke-7-icon/pe-icon-7-stroke/dist/pe-icon-7-stroke.css" />
+    <link rel="stylesheet" href="bower_components/angular-xeditable/dist/css/xeditable.css" />
+    <link rel="stylesheet" href="bower_components/metisMenu/dist/metisMenu.css" />
+    <link rel="stylesheet" href="bower_components/components-font-awesome/css/font-awesome.css" />
+    <link rel="stylesheet" href="bower_components/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- bower:fonts -->
+    <!-- endbower -->
+
+
+    <!-- build:css({.tmp,app}) styles/style.css -->
+
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/Addjobform.css">
+    <link rel="stylesheet" href="styles/social-buttons.css">
+    <link rel="stylesheet" href="styles/resumes.css" />
+
+    <!-- endbuild -->
+
+
+</head>
+<!-- Body -->
+<!-- appCtrl controller with serveral data used in theme on diferent view -->
+<!-- landing-scrollspy is directive for scrollspy used in landing page -->
+
+<body ng-controller="appCtrl" class="{{$state.current.data.specialClass}}" landing-scrollspy tour backdrop="true">
+<div class="container"  >
+    <!-- Simple splash screen-->
+    <div class="splash">
+        <div class="color-line"></div>
+        <div class="splash-title">
+            <h1>Jobs Search</h1>
+            <p>Loading ...</p><img src="images/loading-bars.svg" width="64" height="64" /> </div>
+    </div>
+    <!--[if lt IE 7]>
+    <p class="alert alert-danger">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+
+    <div class="container-fluid container-inner">
+        <!-- Page view wrapper -->
+        <div ui-view autoscroll="true">
+        </div>
+    </div>
+
+
+
+    <footer id="footer">
+        <div class="container-fluid">
+
+     <span class="pull-right">
+
+        </span> &copy;2016 Jobs Search
+        </div>
+    </footer>
+</div>
+
+
+
+
+
+    <!--
+ You need to include this script on any page that has a Google Map.
+ When using Google Maps on your own site you MUST signup for your own API key at:
+ https://developers.google.com/maps/documentation/javascript/tutorial#api_key
+ After your sign up replace the key in the URL below..
+-->
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDQTpXj82d8UpCi97wzo_nKXL7nYrd4G70"></script>
+<!-- build:js scripts/vendor.js -->
+<!-- bower:js -->
+<script src="bower_components/jquery/dist/jquery.js"></script>
+
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-route/angular-route.js"></script>
+<script src="bower_components/angular-loader/angular-loader.js"></script>
+<script src="bower_components/angular-mocks/angular-mocks.js"></script>
+<script src="bower_components/rangy/rangy-core.js"></script>
+<script src="bower_components/rangy/rangy-classapplier.js"></script>
+<script src="bower_components/rangy/rangy-highlighter.js"></script>
+<script src="bower_components/rangy/rangy-selectionsaverestore.js"></script>
+<script src="bower_components/rangy/rangy-serializer.js"></script>
+<script src="bower_components/rangy/rangy-textrange.js"></script>
+<script src="bower_components/textAngular/dist/textAngular.js"></script>
+<script src="bower_components/textAngular/dist/textAngular-sanitize.js"></script>
+<script src="bower_components/textAngular/dist/textAngularSetup.js"></script>
+<script src="bower_components/ui-autocomplete/autocomplete.js"></script>
+<script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+<script src="bower_components/angular-permission/dist/angular-permission.js"></script>
+<script src="bower_components/momentjs/moment.js"></script>
+<script src="bower_components/humanize-duration/humanize-duration.js"></script>
+<script src="bower_components/angular-timer/dist/angular-timer.js"></script>
+<script src="bower_components/format-as-currency/dist/format-as-currency.js"></script>
+<script src="bower_components/angular-loading-bar/build/loading-bar.js"></script>
+<script src="bower_components/spectrum/spectrum.js"></script>
+<script src="bower_components/angular-spectrum-colorpicker/dist/angular-spectrum-colorpicker.min.js"></script>
+<script src="bower_components/angularjs-scroll-glue/src/scrollglue.js"></script>
+<script src="bower_components/angularjs-slider/dist/rzslider.js"></script>
+<script src="bower_components/angular-animate/angular-animate.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+<script src="bower_components/holderjs/holder.js"></script>
+<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+<script src="bower_components/angular-xeditable/dist/js/xeditable.js"></script>
+<script src="bower_components/metisMenu/dist/metisMenu.js"></script>
+<script src="bower_components/iCheck/icheck.min.js"></script>
+<script src="bower_components/jquery-sparkline/dist/jquery.sparkline.js"></script>
+<!-- endbower -->
+<!-- endbuild -->
+    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+<script src="scripts/app.js"></script>
+<script src="scripts/config.js"></script>
+<script src="scripts/homer.js"></script>
+
+
+<script src="scripts/dashboard.js"></script>
+
+<script src="scripts/services/ValiDatedTokenObjectService.js"></script>
+
+<script src="scripts/services/AuthService.js"></script>
+<script src="scripts/services/ResumesService.js"></script>
+<script src="scripts/services/JobsService.js"></script>
+<script src="scripts/services/LocationsService.js"></script>
+<script src="scripts/services/CategoriesService.js"></script>
+<script src="scripts/services/SearchResumesParameters.js"></script>
+<script src="scripts/services/ScreeningsService.js"></script>
+<script src="scripts/services/ReferralService.js"></script>
+<script src="scripts/services/UsersService.js"></script>
+<script src="scripts/services/TraitifyService.js"></script>
+<script src="scripts/services/InterviewsService.js"></script>
+<script src="scripts/services/ClientsService.js"></script>
+<script src="scripts/services/MessagesService.js"></script>
+
+<script src="scripts/filters/startFromFilter.js"></script>
+<script src="scripts/filters/SrcFilter.js"></script>
+<script src="scripts/directives/directives.js"></script>
+<script src="scripts/directives/contenteditableDirective.js"></script>
+<script src="scripts/controllers/main.js"></script>
+<script src="scripts/controllers/AddjobformController.js"></script>
+
+<script src="scripts/controllers/JobListController.js"></script>
+<script src="scripts/controllers/LoginController.js"></script>
+<script src="scripts/controllers/searchjobsController.js"></script>
+<script src="scripts/controllers/ViewJobDetailsController.js"></script>
+<script src="scripts/controllers/ApplyJobController.js"></script>
+<script src="scripts/controllers/associateController.js"></script>
+<script src="scripts/controllers/HeaderController.js"></script>
+<script src="scripts/controllers/ApplicantsController.js"></script>
+<script src="scripts/controllers/SearchResumesController.js"></script>
+<script src="scripts/controllers/SearchResumesHomeController.js"></script>
+<script src="scripts/controllers/ResumeDetailController.js"></script>
+<script src="scripts/controllers/ResetPasswordController.js"></script>
+<script src="scripts/controllers/ResetPasswordVerifyController.js"></script>
+<script src="scripts/controllers/ScreeningsController.js"></script>
+<script src="scripts/controllers/CreateScreeningController.js"></script>
+<script src="scripts/controllers/CreateScreeningQuestionController.js"></script>
+<script src="scripts/controllers/StartTestScreeningController.js"></script>
+<script src="scripts/controllers/FinishTestScreeningController.js"></script>
+<script src="scripts/controllers/TestScreeningController.js"></script>
+<script src="scripts/controllers/TestResultController.js"></script>
+<script src="scripts/controllers/SetReferralController.js"></script>
+<script src="scripts/controllers/SendReferralController.js"></script>
+<script src="scripts/controllers/SendScreeningController.js"></script>
+<script src="scripts/controllers/ResumesController.js"></script>
+<script src="scripts/controllers/ReferralsController.js"></script>
+<script src="scripts/controllers/DownloadResumeController.js"></script>
+<script src="scripts/controllers/CreateOrEditResumeController.js"></script>
+<script src="scripts/controllers/CreateReferralController.js"></script>
+<script src="scripts/controllers/CreateReferralQuestionController.js"></script>
+<script src="scripts/controllers/EditScreeningController.js"></script>
+<script src="scripts/controllers/ScreeningAssignController.js"></script>
+<script src="scripts/controllers/EditReferralController.js"></script>
+<script src="scripts/controllers/ReferralAssignController.js"></script>
+<script src="scripts/controllers/SendReferenceRequestController.js"></script>
+<script src="scripts/controllers/SendReferenceToFriendsController.js"></script>
+<script src="scripts/controllers/StartTestJobReferralController.js"></script>
+<script src="scripts/controllers/TestJobReferralController.js"></script>
+<script src="scripts/controllers/AgreementController.js"></script>
+<script src="scripts/controllers/TraitifyController.js"></script>
+
+<script src="scripts/controllers/StartTraitifyController.js"></script>
+<script src="scripts/controllers/FinishTraitifyController.js"></script>
+<script src="scripts/controllers/SendTraitifyRequestController.js"></script>
+<script src="scripts/controllers/InterviewsController.js"></script>
+<script src="scripts/controllers/EditInterviewController.js"></script>
+<script src="scripts/controllers/CreateInterviewController.js"></script>
+<script src="scripts/controllers/InterviewAssignController.js"></script>
+<script src="scripts/controllers/CreateInterviewQuestionController.js"></script>
+<script src="scripts/controllers/SendInterviewController.js"></script>
+<script src="scripts/controllers/TestInterviewController.js"></script>
+<script src="scripts/controllers/ShowCoverController.js"></script>
+<script src="scripts/controllers/SelectLoginRegisterController.js"></script>
+<script src="scripts/controllers/UserDashboardController.js"></script>
+<script src="scripts/controllers/AdminDashboardController.js"></script>
+<script src="scripts/controllers/SendReferralPartialController.js"></script>
+<script src="scripts/controllers/ClientsController.js"></script>
+<script src="scripts/controllers/CreateClientController.js"></script>
+<script src="scripts/controllers/ManageTagsController.js"></script>
+<script src="scripts/controllers/MessagesController.js"></script>
+<script src="scripts/controllers/MessagesBulkController.js"></script>
+<script src="scripts/controllers/FinishTestJobReferralController.js"></script>
+
+
+<!-- endbuild -->
+
+<script src="https://cdn.traitify.com/js/widgets/v1.js"></script>
+    <!--Google API-->
+    <script src="https://apis.google.com/js/api:client.js"></script>
+    <!--End Google API-->
+
+
+</body>
+
+</html>

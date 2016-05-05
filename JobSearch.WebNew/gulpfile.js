@@ -34,7 +34,7 @@ gulp.task('html', ['styles'], function() {
 
   var assets = $.useref.assets({searchPath: '{.tmp,app}'});
 
-  return gulp.src('app/**/*.html')
+  return gulp.src('app/*/*.html')
     .pipe(assets)
     .pipe($.if('*.js', $.ngAnnotate()))
     .pipe($.if('*.js', $.uglify()))
@@ -61,6 +61,15 @@ gulp.task('images', function() {
        //   interlaced: true
        // })))
        .pipe(gulp.dest('dist/Properties'));
+ });
+
+ gulp.task('pdf-viewer', function() {
+   return gulp.src('app/pdf-viewer/**/*')
+       // .pipe($.cache($.imagemin({
+       //   progressive: true,
+       //   interlaced: true
+       // })))
+       .pipe(gulp.dest('dist/pdf-viewer'));
  });
 
 gulp.task('fonts', function() {
@@ -120,7 +129,7 @@ gulp.task('test', function(done) {
 gulp.task('wiredep', function() {
   var wiredep = require('wiredep').stream;
   var exclude = [
-//    'bootstrap',
+   // 'bootstrap',
   //  'jquery',
     'es5-shim',
     'json3',
@@ -155,7 +164,7 @@ gulp.task('watch', ['connect'], function() {
   gulp.watch('bower.json', ['wiredep']);
 });
 
-gulp.task('builddist', ['jshint',  'html', 'images', 'fonts', 'extras','properties'],
+gulp.task('builddist', ['jshint',  'html', 'images', 'fonts', 'extras','properties','pdf-viewer'],
   function() {
   return gulp.src('dist/**/*').pipe($.size({title: 'build', gzip: true}));
 });

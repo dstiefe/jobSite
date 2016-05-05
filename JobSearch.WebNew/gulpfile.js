@@ -178,3 +178,29 @@ gulp.task('docs', [], function() {
     .pipe($.ngdocs.process())
     .pipe(gulp.dest('./docs'));
 });
+
+
+
+ gulp.task('connectprod', ['styles'], function() {
+   var serveStatic = require('serve-static');
+   var serveIndex = require('serve-index');
+   var app = require('connect')()
+
+
+       .use(serveStatic('dist'))
+       // paths to bower_components should be relative to the current file
+       // e.g. in app/index.html you should use ../bower_components
+       .use(serveIndex('dist'));
+
+   require('http').createServer(app)
+       .listen(9000)
+       .on('listening', function() {
+         console.log('Started connect web server on http://localhost:9000');
+       });
+ });
+
+ gulp.task('prod', ['connectprod'], function() {
+   if (argv.open) {
+     require('opn')('http://localhost:9000');
+   }
+ });

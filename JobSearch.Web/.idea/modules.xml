@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/JobSearch.Web.iml" filepath="$PROJECT_DIR$/.idea/JobSearch.Web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/JobSearch.WebNew.iml" filepath="$PROJECT_DIR$/.idea/JobSearch.WebNew.iml" />
     </modules>
   </component>
 </project>

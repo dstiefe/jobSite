@@ -1,21 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <title>'Hello, world!' base64 example</title>
-</head>
-<body>
-
-<h1>'Hello, world!' example</h1>
-
-<canvas id="the-canvas" style="border:1px  solid black"></canvas>
-
-<!-- for legacy browsers we need to use compatibility.js -->
-<script src="../../web/compatibility.js"></script>
-
-<script src="../../build/pdf.js"></script>
-
-<script id="script">
+<!DOCTYPE html> <html> <head> <meta charset=UTF-8> <title>'Hello, world!' base64 example</title> </head> <body> <h1>'Hello, world!' example</h1> <canvas id=the-canvas style="border:1px solid black"></canvas>  <script src=../../web/compatibility.js></script> <script src=../../build/pdf.js></script> <script id=script>
   // atob() is used to convert base64 encoded PDF to binary-like data.
   // (See also https://developer.mozilla.org/en-US/docs/Web/API/WindowBase64/
   // Base64_encoding_and_decoding.)
@@ -68,14 +51,7 @@
       page.render(renderContext);
     });
   });
-</script>
-
-<hr>
-<h2>JavaScript code:</h2>
-<pre id="code"></pre>
-<script>
+</script> <hr> <h2>JavaScript code:</h2> <pre id=code></pre> <script>
   document.getElementById('code').textContent =
     document.getElementById('script').text;
-</script>
-</body>
-</html>
+</script> </body> </html> 

@@ -29,6 +29,15 @@
     "iCheck": "^1.0.2",
     "jquery-sparkline": "^2.1.3",
     "components-font-awesome": "^4.6.1",
-    "awesome-bootstrap-checkbox": "^0.3.7"
+    "awesome-bootstrap-checkbox": "^0.3.7",
+    "jquery-ui": "^1.11.4"
+  },
+  "overrides": {
+    "jquery-ui": {
+      "main": [
+        "jquery-ui.min.js",
+        "themes/overcast/jquery-ui.min.css"
+      ]
+    }
   }
 }

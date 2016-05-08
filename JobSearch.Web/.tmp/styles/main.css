@@ -11371,3 +11371,6 @@ ul.h-list li:hover a {
 .i-checks {
   opacity: 1 !important;
 }
+.border-around {
+  border: solid 1px #ccc;
+}

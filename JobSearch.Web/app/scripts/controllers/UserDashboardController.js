@@ -2,7 +2,7 @@
  * Created by Van on 02.04.2016.
  */
 //Controller for working with user dashboard
-angular.module('Jobsite').controller("UserDashboardController", function ($rootScope, $scope, $stateParams, ValiDatedTokenObject, $location, $modal, $http, $timeout, AuthService, JobsService, ReferralService, RESOURCES, cfpLoadingBar) {$scope.role = AuthService.authentication.isAdministrator ? "Admin" : "User";
+angular.module('Jobsite').controller("UserDashboardController", function ($rootScope, $scope, $stateParams, ValiDatedTokenObject, $location, $modal, $q, $http, $timeout, AuthService, JobsService, ReferralService, RESOURCES, cfpLoadingBar) {$scope.role = AuthService.authentication.isAdministrator ? "Admin" : "User";
 
     var jobId = $stateParams.jobId;
     var resumeId =   $stateParams.resumeId;
@@ -34,32 +34,54 @@ angular.module('Jobsite').controller("UserDashboardController", function ($rootS
 
         $scope.activeTab = 'JobDescription';
 
-        JobsService.getJobsApplied().then(function (results) {
-            $scope.list = results.data;
 
-            ReferralService.getReferrals().then(function (results2) {
-                $scope.list = $scope.list.concat(results2.data);
-                ReferralService.getReferences().then(function (results3) {
-                    $scope.list = $scope.list.concat(results3.data);
+        var promise1 = JobsService.getJobsApplied();
+        var promise2 = ReferralService.getReferrals();
+        var promise3 = ReferralService.getReferences();
 
-                    for(var i= 0; i< $scope.list.length; i++)
-                        $scope.list[i].activeTab = 0;
+        $q.all([promise1, promise2, promise3]).then(function(results){
+            $scope.list = [];
+            $scope.list = $scope.list.concat(results[0].data, results[1].data, results[2].data);
 
-                    _pageCalc();
-                    $scope.isLoading = false;
-                }, function (error) {
-                    console.log(error.data.message);
-                    $scope.isLoading = false;
-                });
-            }, function (error) {
-                console.log(error.data.message);
-                $scope.isLoading = false;
-            });
+            for(var i= 0; i< $scope.list.length; i++)
+                $scope.list[i].activeTab = 0;
+
+            _pageCalc();
+
+            $scope.isLoading = false;
 
         }, function (error) {
             console.log(error.data.message);
             $scope.isLoading = false;
         });
+
+        //JobsService.getJobsApplied().then(function (results) {
+        //    $scope.list = results.data;
+        //    ReferralService.getReferrals().then(function (results2) {
+        //        $scope.list = $scope.list.concat(results2.data);
+        //        ReferralService.getReferences().then(function (results3) {
+        //            $scope.list = $scope.list.concat(results3.data);
+        //
+        //            for(var i= 0; i< $scope.list.length; i++)
+        //                $scope.list[i].activeTab = 0;
+        //
+        //            _pageCalc();
+        //            $scope.isLoading = false;
+        //        }, function (error) {
+        //            console.log(error.data.message);
+        //            $scope.isLoading = false;
+        //        });
+        //    }, function (error) {
+        //        console.log(error.data.message);
+        //        $scope.isLoading = false;
+        //    });
+        //}, function (error) {
+        //    console.log(error.data.message);
+        //    $scope.isLoading = false;
+        //});
+
+
+
 
         $scope.setPage = function (pageNo) {
             $scope.currentPage = pageNo;

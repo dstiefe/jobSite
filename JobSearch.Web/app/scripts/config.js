@@ -742,7 +742,7 @@ angular
         $rootScope.back = function () {
             var prevUrl = history.length > 1 ? history.splice(-2)[0] : "/";
             $rootScope.$apply(function() {
-                $location.path('/');
+                $location.path(prevUrl);
                 //  history = []; //Delete history array after going back
             });
         };

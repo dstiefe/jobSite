@@ -33,7 +33,7 @@ angular.module('Jobsite').controller("AdminDashboardController", function ($root
 
         $scope.deleterecords = function (id) {
             console.log(id);
-            $http({ method: 'DELETE', url: serviceBase + 'jobs/' + id, headers: { 'Content-Type': 'application/json', 'Connection': 'keep-alive', 'Authorization': ValiDatedTokenObject.getValiDatedTokenObject().token_type + " " + ValiDatedTokenObject.getValiDatedTokenObject().access_token } }).
+            $http({ method: 'DELETE', url: serviceBase + 'jobs/' + id, headers: { 'Content-Type': 'application/json', 'Authorization': ValiDatedTokenObject.getValiDatedTokenObject().token_type + " " + ValiDatedTokenObject.getValiDatedTokenObject().access_token } }).
             success(function (response) {
                 JobsService.getMyJobs().then(function (results) {
                     $scope.list = results.data;

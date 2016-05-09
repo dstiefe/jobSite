@@ -24,7 +24,6 @@ angular
             url: serviceBase + 'jobs/my',
             headers: {
                 'Content-Type': 'application/json',
-                'Connection': 'keep-alive',
                 'Authorization': ValiDatedTokenObject.getValiDatedTokenObject().token_type+" "+ValiDatedTokenObject.getValiDatedTokenObject().access_token
             }
         }
@@ -44,7 +43,6 @@ angular
                 url: serviceBase + 'jobs/' + id,
                 headers: {
                     'Content-Type': 'application/json',
-                    'Connection': 'keep-alive',
                     'Authorization': ValiDatedTokenObject.getValiDatedTokenObject().token_type+" "+ValiDatedTokenObject.getValiDatedTokenObject().access_token
                 }
             }).

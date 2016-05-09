@@ -53,7 +53,14 @@ gulp.task('images', function() {
     // })))
     .pipe(gulp.dest('dist/images'));
 });
-
+ gulp.task('stylesimages', function() {
+   return gulp.src('app/styles/images/**/*')
+       // .pipe($.cache($.imagemin({
+       //   progressive: true,
+       //   interlaced: true
+       // })))
+       .pipe(gulp.dest('dist/styles/images'));
+ });
  gulp.task('properties', function() {
    return gulp.src('app/Properties/**/*')
        // .pipe($.cache($.imagemin({
@@ -164,7 +171,7 @@ gulp.task('watch', ['connect'], function() {
   gulp.watch('bower.json', ['wiredep']);
 });
 
-gulp.task('builddist', ['jshint',  'html', 'images', 'fonts', 'extras','properties','pdf-viewer'],
+gulp.task('builddist', ['jshint',  'html', 'images', 'fonts', 'extras','properties','pdf-viewer','stylesimages'],
   function() {
   return gulp.src('dist/**/*').pipe($.size({title: 'build', gzip: true}));
 });

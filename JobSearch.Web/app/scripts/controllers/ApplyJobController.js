@@ -26,7 +26,6 @@ function ApplyJobController($scope,  ValiDatedTokenObject, $http, $location, $mo
         url: serviceBase + 'account/userinfo',
         headers: {
             'Content-Type': 'application/json',
-            'Connection': 'keep-alive',
             'Authorization': ValiDatedTokenObject.getValiDatedTokenObject().token_type+" "+ValiDatedTokenObject.getValiDatedTokenObject().access_token
         }
     }

@@ -29,7 +29,6 @@ angular.module('Jobsite').controller("ApplicantsController", function($scope, $h
             url: serviceBase + 'jobs/'+ jobId +'/resumes',
             headers: {
                 'Content-Type': 'application/json',
-                'Connection': 'keep-alive',
                 'Authorization': ValiDatedTokenObject.getValiDatedTokenObject().token_type+" "+ValiDatedTokenObject.getValiDatedTokenObject().access_token
             }
         };
@@ -57,7 +56,6 @@ angular.module('Jobsite').controller("ApplicantsController", function($scope, $h
                 url: serviceBase + 'jobs/' + id,
                 headers: {
                     'Content-Type': 'application/json',
-                    'Connection': 'keep-alive',
                     'Authorization': ValiDatedTokenObject.getValiDatedTokenObject().token_type+" "+ValiDatedTokenObject.getValiDatedTokenObject().access_token
                 }
             }).

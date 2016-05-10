@@ -24,7 +24,7 @@
                                      ng-options="job.id as job.title for job in jobs"
                                      required
                             >
-                                <option value="">Select Job</option>
+                                <option  value="">Select Job</option>
                             </select>
                             <span class="color-theme" ng-show="sendForm.selectedJobId.$error.required">Job is required.</span>
                         </div>
@@ -36,7 +36,7 @@
                                      class="form-control"
                                      ng-change="messageTemplateChanged()"
                                      ng-options="messageTemplate as messageTemplate.name for messageTemplate in messageTemplates">
-                                <option value="">Insert Template</option>
+                                <option  value="">Insert Template</option>
                             </select>
                         </div>
 

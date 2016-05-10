@@ -41,7 +41,7 @@ gulp.task('html', ['styles'], function() {
     .pipe($.if('*.css', cssChannel()))
     .pipe(assets.restore())
     .pipe($.useref())
-    .pipe($.if('*.html', $.minifyHtml({conditionals: true, loose: true})))
+    .pipe($.if('*.html', $.minifyHtml({conditionals: true, loose: true, empty:true})))
     .pipe(gulp.dest('dist'));
 });
 

@@ -2,9 +2,8 @@
  * Created by Van on 17.01.2016.
  */
 //Service for working with locations
-angular.module('Jobsite').factory('LocationsService', ['$http', '$q', 'RESOURCES','ValiDatedTokenObject', function ($http, $q, RESOURCES, ValiDatedTokenObject) {
+angular.module('Jobsite').factory('LocationsService', ['$http', '$q', 'RESOURCES', function ($http, $q, RESOURCES) {
 
-    ValiDatedTokenObject.setValiDatedTokenObject(JSON.parse(sessionStorage.getItem("ValiDatedTokenObject")));
 
     var serviceBase = RESOURCES.API_BASE_PATH;
 

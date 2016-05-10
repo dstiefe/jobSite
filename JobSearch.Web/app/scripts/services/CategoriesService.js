@@ -2,10 +2,7 @@
  * Created by Van on 17.01.2016.
  */
 // Service for working with categories
-angular.module('Jobsite').factory('CategoriesService', ['$http', '$q', 'RESOURCES','ValiDatedTokenObject', function ($http, $q, RESOURCES, ValiDatedTokenObject) {
-
-    ValiDatedTokenObject.setValiDatedTokenObject(JSON.parse(sessionStorage.getItem("ValiDatedTokenObject")));
-
+angular.module('Jobsite').factory('CategoriesService', ['$http', '$q', 'RESOURCES',function ($http, $q, RESOURCES) {
     var serviceBase = RESOURCES.API_BASE_PATH;
 
     var jobsServiceFactory = {};

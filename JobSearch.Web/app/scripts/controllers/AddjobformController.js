@@ -1,5 +1,5 @@
 //Controller for adding job
-angular.module('Jobsite').controller("AddjobformController", function($scope,  $sce, $location, $http, $timeout, $filter, ValiDatedTokenObject, RESOURCES, $stateParams, CategoriesService, LocationsService, JobsService, $compile, $modal, ClientsService) {
+angular.module('Jobsite').controller("AddjobformController", function($scope,  $sce, $location, $http, $timeout, $filter, RESOURCES, $stateParams, CategoriesService, LocationsService, JobsService, $compile, $modal, ClientsService) {
 
         $scope.id  = $stateParams.id;
         $scope.locationState = {

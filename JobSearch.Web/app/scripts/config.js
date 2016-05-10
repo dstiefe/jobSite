@@ -672,13 +672,17 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
 angular
     .module('Jobsite')
     .config(configState)
-    .run(function($rootScope, $location, $state, editableOptions, Permission, ValiDatedTokenObject, AuthService) {
+    .config(function ($httpProvider) {
+        $httpProvider.interceptors.push('AuthInterceptorService');
+    })
+    .run(function($rootScope, $location, $state, editableOptions, Permission, AuthService) {
+
 
         $rootScope.numberWithCommas = function (x) {
             var parts = x.toString().split(".");
             parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
             return parts.join(".");
-        }
+        };
 
         AuthService.fillAuthData();
 
@@ -687,51 +691,14 @@ angular
 
         // Define anonymous role
         Permission.defineRole('anonymous', function (stateParams) {
-                if (!sessionStorage.getItem("ValiDatedTokenObject"))
-                {
-                    return true;
-                }
-
-                ValiDatedTokenObject.setValiDatedTokenObject(JSON.parse(sessionStorage.getItem("ValiDatedTokenObject")));
-                if (!ValiDatedTokenObject.getValiDatedTokenObject())
-                {
-                    return true;
-                }
-                return false;
+                return !AuthService.authentication.isAuth;
             })
             .defineRole('User', function (stateParams) {
-                if (!sessionStorage.getItem("ValiDatedTokenObject"))
-                {
-                    return false;
-                }
-
-                ValiDatedTokenObject.setValiDatedTokenObject(JSON.parse(sessionStorage.getItem("ValiDatedTokenObject")));
-                if (ValiDatedTokenObject.getValiDatedTokenObject())
-                {
-                    var role = ValiDatedTokenObject.getValiDatedTokenObject().roles;
-                    if(role == 'User') {
-                        return true;
-                    }
-                }
-                return false;
+                return AuthService.authentication.isAuth && AuthService.authentication.isUser;
             })
             .defineRole('Admin', function (stateParams) {
-                if (!sessionStorage.getItem("ValiDatedTokenObject"))
-                {
-                    return false;
-                }
-                ValiDatedTokenObject.setValiDatedTokenObject(JSON.parse(sessionStorage.getItem("ValiDatedTokenObject")));
-                if (ValiDatedTokenObject.getValiDatedTokenObject())
-                {
-                    var role = ValiDatedTokenObject.getValiDatedTokenObject().roles;
-                    if(role == 'Admin') {
-                        return true;
-                    }
-                }
-                return false;
+                return AuthService.authentication.isAuth && AuthService.authentication.isAdministrator;
             });
-
-
 
         var history = [];
         $rootScope.$on('$locationChangeSuccess', function() {

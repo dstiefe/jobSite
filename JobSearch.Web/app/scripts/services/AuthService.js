@@ -3,7 +3,7 @@
  */
 
 //Authorization service
-angular.module('Jobsite').factory("AuthService", ['$http', '$q', 'ValiDatedTokenObject', 'RESOURCES', function ($http, $q, ValiDatedTokenObject, RESOURCES) {
+angular.module('Jobsite').factory("AuthService", ['$http', '$q', '$cookies', 'RESOURCES', function ($http, $q, $cookies, RESOURCES) {
 
     function isInArray(value, array) {
         return array.indexOf(value) > -1;
@@ -14,7 +14,7 @@ angular.module('Jobsite').factory("AuthService", ['$http', '$q', 'ValiDatedToken
         isAuth: false,
         userName: "",
         isUser: false,
-        isAdministrator:false
+        isAdministrator: false
     };
     var _externalAuthData = {
         provider: "",
@@ -23,6 +23,17 @@ angular.module('Jobsite').factory("AuthService", ['$http', '$q', 'ValiDatedToken
         email: "",
         firstName: "",
         lastName: ""
+    };
+
+    var _saveToken = function (data, rememberMe){
+        rememberMe = typeof rememberMe !== 'undefined' ? rememberMe : true;
+        if (rememberMe){
+            var expireDate = new Date (new Date().getTime() + (1000 * data.expires_in));
+            $cookies.putObject('ValiDatedTokenObject', data,{'expires': expireDate});
+        }else{
+            sessionStorage.setItem("ValiDatedTokenObject", JSON.stringify(data));
+        }
+
     };
 
     var _getReferences = function(){
@@ -49,10 +60,7 @@ angular.module('Jobsite').factory("AuthService", ['$http', '$q', 'ValiDatedToken
         model.referenceIds = _getReferences();
 
         if (_authentication.isUser && model.referenceIds.length > 0){
-            $http.post(serviceBase + 'tracking/references', model,  {headers: {
-                'Content-Type': 'application/json',
-                'Authorization': ValiDatedTokenObject.getValiDatedTokenObject().token_type+" "+ValiDatedTokenObject.getValiDatedTokenObject().access_token
-            }}).then(function (response) {
+            $http.post(serviceBase + 'tracking/references', model).then(function (response) {
                 _deleteReferences();
                 return response;
             });
@@ -85,10 +93,7 @@ angular.module('Jobsite').factory("AuthService", ['$http', '$q', 'ValiDatedToken
         model.referralIds = _getReferrals();
 
         if (_authentication.isUser && model.referralIds.length > 0){
-            $http.post(serviceBase + 'tracking/referrals', model,  {headers: {
-                'Content-Type': 'application/json',
-                    'Authorization': ValiDatedTokenObject.getValiDatedTokenObject().token_type+" "+ValiDatedTokenObject.getValiDatedTokenObject().access_token
-            }}).then(function (response) {
+            $http.post(serviceBase + 'tracking/referrals', model).then(function (response) {
                 _deleteReferrals();
                 return response;
             });
@@ -118,8 +123,8 @@ angular.module('Jobsite').factory("AuthService", ['$http', '$q', 'ValiDatedToken
 
             response['isUser'] = isUser;
             response['isAdministrator'] = isAdministrator;
-            ValiDatedTokenObject.setValiDatedTokenObject(response);
-            sessionStorage.setItem("ValiDatedTokenObject", JSON.stringify(ValiDatedTokenObject.getValiDatedTokenObject()));
+
+            _saveToken(response, loginData.rememberMe);
 
             _authentication.isAuth = true;
             _authentication.userName = loginData.userName;
@@ -142,6 +147,7 @@ angular.module('Jobsite').factory("AuthService", ['$http', '$q', 'ValiDatedToken
 
     var _logOut = function () {
 
+        $cookies.remove("ValiDatedTokenObject");
         sessionStorage.removeItem("ValiDatedTokenObject");
 
         _authentication.isAuth = false;
@@ -152,11 +158,16 @@ angular.module('Jobsite').factory("AuthService", ['$http', '$q', 'ValiDatedToken
     };
 
     var _fillAuthData = function () {
-        var authData = sessionStorage.getItem("ValiDatedTokenObject")
-        if (authData) {
-            ValiDatedTokenObject.setValiDatedTokenObject(JSON.parse(authData));
-            authData = ValiDatedTokenObject.getValiDatedTokenObject();
+        var authData = $cookies.getObject("ValiDatedTokenObject");
 
+        if (!authData){
+            var authDataObjStr = sessionStorage.getItem("ValiDatedTokenObject");
+            if (authDataObjStr){
+                authData = JSON.parse(authDataObjStr);
+            }
+        }
+
+        if (authData) {
             _authentication.isAuth = true;
             _authentication.userName = authData.userName;
             if (!authData.isUser){
@@ -183,9 +194,7 @@ angular.module('Jobsite').factory("AuthService", ['$http', '$q', 'ValiDatedToken
 
             response['isUser'] = isUser;
             response['isAdministrator'] = isAdministrator;
-            ValiDatedTokenObject.setValiDatedTokenObject(response);
-            sessionStorage.setItem("ValiDatedTokenObject", JSON.stringify(ValiDatedTokenObject.getValiDatedTokenObject()));
-
+            _saveToken(response);
             _authentication.isAuth = true;
             _authentication.userName = response.userName;
             _authentication.isUser = isUser;
@@ -216,9 +225,7 @@ angular.module('Jobsite').factory("AuthService", ['$http', '$q', 'ValiDatedToken
 
             response['isUser'] = isUser;
             response['isAdministrator'] = isAdministrator;
-            ValiDatedTokenObject.setValiDatedTokenObject(response);
-            sessionStorage.setItem("ValiDatedTokenObject", JSON.stringify(ValiDatedTokenObject.getValiDatedTokenObject()));
-
+            _saveToken(response);
             _authentication.isAuth = true;
             _authentication.userName = response.userName;
             _authentication.isUser = isUser;

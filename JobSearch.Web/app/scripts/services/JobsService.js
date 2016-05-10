@@ -2,9 +2,7 @@
  * Created by Van on 17.01.2016.
  */
 // Service for working with jobs
-angular.module('Jobsite').factory('JobsService', ['$http', '$q', 'RESOURCES','ValiDatedTokenObject', function ($http, $q, RESOURCES, ValiDatedTokenObject) {
-
-    ValiDatedTokenObject.setValiDatedTokenObject(JSON.parse(sessionStorage.getItem("ValiDatedTokenObject")));
+angular.module('Jobsite').factory('JobsService', ['$http', '$q', 'RESOURCES', function ($http, $q, RESOURCES) {
 
     var serviceBase = RESOURCES.API_BASE_PATH;
 
@@ -62,9 +60,6 @@ angular.module('Jobsite').factory('JobsService', ['$http', '$q', 'RESOURCES','Va
         }
 
         return $http.get(serviceBase + 'jobs/search_andavnced',{
-            headers: {
-                'Content-Type': 'application/json'
-            },
             params: params
         }).then(function (results) {
             return results;
@@ -72,90 +67,43 @@ angular.module('Jobsite').factory('JobsService', ['$http', '$q', 'RESOURCES','Va
     };
     var _getJob = function (id, referralId) {
 
-        var token ='';
-        if (ValiDatedTokenObject.getValiDatedTokenObject()!=null)
-        {
-            token = ValiDatedTokenObject.getValiDatedTokenObject().token_type+" "+ValiDatedTokenObject.getValiDatedTokenObject().access_token;
-        }
+
         params={};
         if (typeof referralId !== 'undefined' && referralId !==''&& referralId !=null)
         {
             params['referralId'] = referralId;
         }
-        return $http.get(serviceBase + 'jobs/'+id,{
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': token
-            },
-            params: params
-        }).then(function (results) {
+        return $http.get(serviceBase + 'jobs/'+id).then(function (results) {
             return results;
         });
     };
     var _putJob = function (id, job) {
-        return $http.put(serviceBase + 'jobs/'+id,
-            job ,
-            {
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': ValiDatedTokenObject.getValiDatedTokenObject().token_type+" "+ValiDatedTokenObject.getValiDatedTokenObject().access_token
-            }
-        }).then(function (results) {
+        return $http.put(serviceBase + 'jobs/'+id, job ).then(function (results) {
             return results;
         });
     };
     var _postJob = function (job) {
-        return $http.post(serviceBase + 'jobs',
-            job ,
-            {
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': ValiDatedTokenObject.getValiDatedTokenObject().token_type+" "+ValiDatedTokenObject.getValiDatedTokenObject().access_token
-                }
-            }).then(function (results) {
+        return $http.post(serviceBase + 'jobs',job).then(function (results) {
             return results;
         });
     };
     var _deleteJob = function (id) {
-        return $http.delete(serviceBase + 'jobs/'+id,
-            {
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': ValiDatedTokenObject.getValiDatedTokenObject().token_type+" "+ValiDatedTokenObject.getValiDatedTokenObject().access_token
-                }
-            }).then(function (results) {
+        return $http.delete(serviceBase + 'jobs/'+id).then(function (results) {
             return results;
         });
     };
     var _getMyJobs = function () {
-        return $http.get(serviceBase + 'jobs/my',{
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': ValiDatedTokenObject.getValiDatedTokenObject().token_type+" "+ValiDatedTokenObject.getValiDatedTokenObject().access_token
-            }
-        }).then(function (results) {
+        return $http.get(serviceBase + 'jobs/my').then(function (results) {
             return results;
         });
     };
     var _getJobsApplied = function () {
-        return $http.get(serviceBase + 'jobs/all/applied',{
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': ValiDatedTokenObject.getValiDatedTokenObject().token_type+" "+ValiDatedTokenObject.getValiDatedTokenObject().access_token
-            }
-        }).then(function (results) {
+        return $http.get(serviceBase + 'jobs/all/applied').then(function (results) {
             return results;
         });
     };
     var _changeActivity = function (id, data) {
-        return $http.put(serviceBase + 'jobs/'+id+'/activity',
-            data ,
-            {
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': ValiDatedTokenObject.getValiDatedTokenObject().token_type+" "+ValiDatedTokenObject.getValiDatedTokenObject().access_token
-                }
-            }).then(function (results) {
+        return $http.put(serviceBase + 'jobs/'+id+'/activity',data).then(function (results) {
             return results;
         });
     };

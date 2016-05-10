@@ -2,7 +2,7 @@
  * Created by Van on 16.01.2016.
  */
 //Controller for working with applicants
-angular.module('Jobsite').controller("ApplicantsController", function($scope, $http, $timeout, ValiDatedTokenObject, $location,$state, AuthService, RESOURCES, $stateParams, ResumesService, ScreeningsService, $modal) {
+angular.module('Jobsite').controller("ApplicantsController", function($scope, $http, $timeout, $location,$state, AuthService, RESOURCES, $stateParams, ResumesService, ScreeningsService, $modal) {
     var serviceBase = RESOURCES.API_BASE_PATH;
     var jobId = $stateParams.id;
     var resumeId =   $stateParams.resumeId;
@@ -26,11 +26,7 @@ angular.module('Jobsite').controller("ApplicantsController", function($scope, $h
         $scope.jobScreenings = [];
         var req = {
             method: 'GET',
-            url: serviceBase + 'jobs/'+ jobId +'/resumes',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': ValiDatedTokenObject.getValiDatedTokenObject().token_type+" "+ValiDatedTokenObject.getValiDatedTokenObject().access_token
-            }
+            url: serviceBase + 'jobs/'+ jobId +'/resumes'
         };
 
         $scope.screeningsItems = 0;
@@ -53,11 +49,7 @@ angular.module('Jobsite').controller("ApplicantsController", function($scope, $h
         $scope.deleterecords = function(id) {
             $http({
                 method: 'DELETE',
-                url: serviceBase + 'jobs/' + id,
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': ValiDatedTokenObject.getValiDatedTokenObject().token_type+" "+ValiDatedTokenObject.getValiDatedTokenObject().access_token
-                }
+                url: serviceBase + 'jobs/' + id
             }).
             success(function(response) {
                 $http(req).then(function(data) {

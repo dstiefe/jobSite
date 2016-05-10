@@ -3,30 +3,20 @@
 /// <reference path="Service.js" />
 
 //Controller for working job list
-angular
-    .module('Jobsite').controller("JobListController", function($scope,  $http, $timeout, $location, ValiDatedTokenObject,RESOURCES) {
-        /*ValiDatedTokenObject.ValiDatedTokenObject = JSON.parse(sessionStorage.getItem("ValiDatedTokenObject"));
-         if (ValiDatedTokenObject.ValiDatedTokenObject == null || ValiDatedTokenObject.ValiDatedTokenObject.access_token == "") {
-            $location.path("/login");
-        }*/
+angular.module('Jobsite').controller("JobListController", function($scope,  $http, $timeout, $location, RESOURCES, AuthService) {
+
     var serviceBase = RESOURCES.API_BASE_PATH;
         $scope.currentPage = 1;
-        if (sessionStorage.getItem("ValiDatedTokenObject") == null || sessionStorage.getItem("ValiDatedTokenObject")=="") {
+
+        if (!AuthService.authentication.isAuth) {
             $location.path("/login");
         }
-         ValiDatedTokenObject.setValiDatedTokenObject(JSON.parse(sessionStorage.getItem("ValiDatedTokenObject")));
-        if (ValiDatedTokenObject.getValiDatedTokenObject() == null || ValiDatedTokenObject.getValiDatedTokenObject().access_token == "") {
-            $location.path("/login");
-        }
-        $scope.role = ValiDatedTokenObject.getValiDatedTokenObject().roles;
+
+        $scope.role = AuthService.authentication.isAdministrator?"Admin":"User";
         var req = {
             method: 'GET',
-            url: serviceBase + 'jobs/my',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': ValiDatedTokenObject.getValiDatedTokenObject().token_type+" "+ValiDatedTokenObject.getValiDatedTokenObject().access_token
-            }
-        }
+            url: serviceBase + 'jobs/my'
+        };
         $http(req).then(function(data) {
             if (data.status == "200") {
                 $scope.list = data.data;
@@ -40,11 +30,7 @@ angular
             console.log(id);
             $http({
                 method: 'DELETE',
-                url: serviceBase + 'jobs/' + id,
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': ValiDatedTokenObject.getValiDatedTokenObject().token_type+" "+ValiDatedTokenObject.getValiDatedTokenObject().access_token
-                }
+                url: serviceBase + 'jobs/' + id
             }).
             success(function(response) {
                 $http(req).then(function(data) {
@@ -74,4 +60,4 @@ angular
             $scope.reverse = !$scope.reverse;
         };
 
-    })
+    });

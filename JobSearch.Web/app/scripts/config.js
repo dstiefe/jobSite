@@ -692,17 +692,24 @@ angular.module('Jobsite')
             });
 
         var history = [];
-        $rootScope.$on('$locationChangeSuccess', function() {
-            history.push($location.$$path);
-            if (history.length > 5) history = history.slice(history.length - 5, 5);
+        $rootScope.$on('$locationChangeSuccess', function(event, url, oldUrl, state, oldState) {
+
+            if ($location.$$absUrl != oldUrl ){
+                history.push($location.$$path);
+                if (history.length > 5) history = history.slice(history.length - 5, 6);
+            }
+
         });
 
         $rootScope.back = function () {
-            var prevUrl = history.length > 1 ? history.splice(-2)[0] : "/";
+
+            history = history.slice(0, -1); //remove current page
+            var prevUrl = history.length > 1 ? history.slice(-1)[0] : "/";
             $rootScope.$apply(function() {
                 $location.path(prevUrl);
                 //  history = []; //Delete history array after going back
             });
+
         };
 
     });

@@ -1,11 +1,4 @@
-/**
- * HOMER - Responsive Admin Theme
- * Copyright 2015 Webapplayers.com
- *
- */
-
-angular
-    .module('Jobsite')
+angular.module('Jobsite')
     .directive('pageTitle', pageTitle)
     .directive('sideNavigation', sideNavigation)
     .directive('minimalizaMenu', minimalizaMenu)
@@ -20,8 +13,6 @@ angular
     .directive('customOnChange', fileUploadHandler)
     .directive('back', backHandler)
     .directive("pwCheck", pwCheck)
-
-
 
 function pwCheck() {
     return {
@@ -39,11 +30,6 @@ function pwCheck() {
     };
 }
 
-
-
-
-
-
 function backHandler($window,$rootScope) {
     return {
         restrict: 'A',
@@ -55,7 +41,6 @@ function backHandler($window,$rootScope) {
         }
     };
 }
-
 
 function fileUploadHandler() {
     return {
@@ -145,7 +130,6 @@ function minimalizaMenu($rootScope) {
     };
 };
 
-
 /**
  * sparkline - Directive for Sparkline chart
  */
@@ -206,7 +190,6 @@ function icheck($timeout) {
         }
     };
 }
-
 
 /**
  * panelTools - Directive for panel tools elements in right corner of panel
@@ -362,9 +345,6 @@ function animatePanel($timeout,$state) {
                 }, animateTime)
 
             });
-
-
-
         }
     }
 }
@@ -380,5 +360,3 @@ function landingScrollspy(){
         }
     }
 }
-
-

@@ -185,6 +185,12 @@ angular.module('Jobsite').factory('ResumesService', ['$http', '$q', 'RESOURCES',
         });
     };
 
+    var _getApplicants = function(jobId){
+        return $http.get(serviceBase + 'jobs/'+jobId+'/resumes/').then(function (results) {
+            return results;
+        });
+    };
+
     //search resumes
     resumesServiceFactory.searchResumes = _searchResumes;
     //search into resume
@@ -221,6 +227,8 @@ angular.module('Jobsite').factory('ResumesService', ['$http', '$q', 'RESOURCES',
     resumesServiceFactory.addAdminTags = _addAdminTags;
     // add admin notes
     resumesServiceFactory.addAdminNotes = _addAdminNotes;
+    // add admin notes
+    resumesServiceFactory.getApplicants = _getApplicants;
 
     return resumesServiceFactory;
 }]);

@@ -6,9 +6,9 @@ angular.module('Jobsite').controller('CreateOrEditResumeController', function ($
 
     $scope.id = resumeId;
 
-    $scope.resume ={};
+    $scope.resume = {};
     $scope.resume.tags = [];
-    $scope.loading =false;
+    $scope.loading = false;
     $scope.message = '';
     UsersService.getMyInfo().then(function (results) {
         $scope.user = results.data;
@@ -20,7 +20,7 @@ angular.module('Jobsite').controller('CreateOrEditResumeController', function ($
         ResumesService.getResume($scope.id).then(function (results) {
             var res = results.data;
             $scope.resume.title = res.title;
-            $scope.resume.description =res.description;
+            $scope.resume.description = res.description;
             $scope.resume.tags = res.tags;
             if ($scope.resume.tags == null)
                 $scope.resume.tags = [];
@@ -33,7 +33,7 @@ angular.module('Jobsite').controller('CreateOrEditResumeController', function ($
         });
     }
 
-    $scope.uploadFile = function(event) {
+    $scope.uploadFile = function (event) {
 
         $scope.loading = true;
 
@@ -53,13 +53,13 @@ angular.module('Jobsite').controller('CreateOrEditResumeController', function ($
     };
 
 
-    $scope.onClose = function() {
+    $scope.onClose = function () {
         $modalInstance.close();
     };
 
-    $scope.saveChanges = function(isValid) {
+    $scope.saveChanges = function (isValid) {
 
-        if (!isValid ||  !$scope.resume.originalFilename){
+        if (!isValid || !$scope.resume.originalFilename) {
             $scope.message = "You don't fill all fields";
             return;
         }
@@ -73,7 +73,7 @@ angular.module('Jobsite').controller('CreateOrEditResumeController', function ($
                 console.log(error.data.message);
             });
         }
-        else{
+        else {
             ResumesService.postResume($scope.resume).then(function (results) {
                 $modalInstance.close({
                     'isUpdated': true
@@ -84,16 +84,15 @@ angular.module('Jobsite').controller('CreateOrEditResumeController', function ($
         }
 
     };
-    $scope.addtags = function() {
+    $scope.addtags = function () {
         if ($scope.resume.tags.indexOf($scope.tag) == -1) {
             $scope.resume.tags.push($scope.tag);
             $scope.tag = "";
         }
     };
-    $scope.removetag = function(index) {
+    $scope.removetag = function (index) {
         $scope.resume.tags.splice(index - 1, 1);
     };
-
 
 
 });

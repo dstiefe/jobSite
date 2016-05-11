@@ -1,17 +1,17 @@
 ﻿//Controller for associating accounts
-angular.module('Jobsite').controller('associateController', ['$scope', '$rootScope','$location','$timeout','AuthService', function ($scope, $rootScope, $location,$timeout, AuthService) {
+angular.module('Jobsite').controller('associateController', ['$scope', '$rootScope', '$location', '$timeout', 'AuthService', function ($scope, $rootScope, $location, $timeout, AuthService) {
 
-    if (AuthService.authentication.isAuth){
+    if (AuthService.authentication.isAuth) {
         $location.path('/dashboard');
     }
-    else{
+    else {
 
         $scope.savedSuccessfully = false;
         $scope.message = "";
 
         $scope.registerData = {
             userName: AuthService.externalAuthData.userName,
-            email:AuthService.externalAuthData.email,
+            email: AuthService.externalAuthData.email,
             provider: AuthService.externalAuthData.provider,
             externalAccessToken: AuthService.externalAuthData.externalAccessToken,
             firstName: AuthService.externalAuthData.firstName,
@@ -21,7 +21,6 @@ angular.module('Jobsite').controller('associateController', ['$scope', '$rootSco
         };
 
         $scope.registerExternal = function () {
-
 
 
             AuthService.registerExternal($scope.registerData).then(function (response) {
@@ -42,10 +41,10 @@ angular.module('Jobsite').controller('associateController', ['$scope', '$rootSco
             var timer = $timeout(function () {
                 $timeout.cancel(timer);
                 var return_url = sessionStorage.getItem("return_url");
-                if(return_url != null){
+                if (return_url != null) {
                     sessionStorage.removeItem("return_url");
                     $location.path(return_url);
-                }else{
+                } else {
                     $location.path('/dashboard');
                 }
 

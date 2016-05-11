@@ -10,8 +10,8 @@ angular.module('Jobsite').controller('SendScreeningController', function ($scope
     $scope.screeningsToTake = [];
     $scope.screeningsAll = [];
     $scope.screeningsToTakeSelected = [];
-    $scope.successMessage =false;
-    $scope.errorMessage =false;
+    $scope.successMessage = false;
+    $scope.errorMessage = false;
 
     JobsService.getJob(jobId).then(function (results) {
         response = results.data;
@@ -23,36 +23,33 @@ angular.module('Jobsite').controller('SendScreeningController', function ($scope
 
     ScreeningsService.getMyScreenings().then(function (results) {
         response = results.data;
-        $scope.screeningsAll =   response.filter(function(item) {
+        $scope.screeningsAll = response.filter(function (item) {
             return item.jobsIds.indexOf(jobId) != -1;
         });
 
-        $scope.screeningsTaken =   $scope.screeningsAll.filter(function(item) {
+        $scope.screeningsTaken = $scope.screeningsAll.filter(function (item) {
             if ($scope.resume.screeningIds == null)
                 return false;
             return item.jobsIds.indexOf(jobId) != -1 && $scope.resume.screeningIds.indexOf(item.id) != -1;
         });
 
-        $scope.screeningsToTake =   $scope.screeningsAll.filter(function(item) {
+        $scope.screeningsToTake = $scope.screeningsAll.filter(function (item) {
             if ($scope.resume.screeningIds == null)
                 return true;
             return item.jobsIds.indexOf(jobId) != -1 && $scope.resume.screeningIds.indexOf(item.id) == -1;
         });
-
-
     }, function (error) {
         console.log(error.data.message);
     });
 
-
-    $scope.onClose = function() {
+    $scope.onClose = function () {
         $modalInstance.close();
     };
 
-    $scope.notify = function() {
+    $scope.notify = function () {
         ScreeningsService.sendScreeningsToResume(jobId, $scope.resume.id, {"screeningIds": $scope.screeningsToTakeSelected}).then(function (results) {
             $scope.successMessage = true;
-            $timeout(function() {
+            $timeout(function () {
                 $modalInstance.close();
             }, 1000);
         }, function (error) {

@@ -1,12 +1,3 @@
-/**
- * HOMER - Responsive Admin Theme
- * Copyright 2015 Webapplayers.com
- *
- * Sweet Alert Directive
- * Official plugin - http://tristanedwards.me/sweetalert
- * Angular implementation inspiring by https://github.com/oitozero/ngSweetAlert
- */
-
 
 function sweetAlert($timeout, $window) {
     var swal = $window.swal;

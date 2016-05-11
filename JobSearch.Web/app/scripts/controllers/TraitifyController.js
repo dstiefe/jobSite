@@ -2,8 +2,7 @@
  * Created by Van on 22.03.2016.
  */
 //Controller for traitify
-angular.module('Jobsite').controller("TraitifyController", function($scope, $rootScope,  $http, $timeout, $location,  $state, TraitifyService, $stateParams, RESOURCES) {
-
+angular.module('Jobsite').controller("TraitifyController", function ($scope, $rootScope, $http, $timeout, $location, $state, TraitifyService, $stateParams, RESOURCES) {
 
     $scope.jobId = $stateParams.jobId;
     $scope.resumeId = $stateParams.resumeId;
@@ -21,25 +20,15 @@ angular.module('Jobsite').controller("TraitifyController", function($scope, $roo
         personalityTraits: {target: ".personality-traits"}
     }); // Example selector for widget target
 
-    traitify.slideDeck.onFinished(function(){
+    traitify.slideDeck.onFinished(function () {
         TraitifyService.finishTraitify($scope.jobId, $scope.resumeId, $scope.traitifyId).then(function (results) {
-            $state.go('traitifyfinish', {'resumeId': $scope.resumeId, 'traitifyId': $scope.traitifyId, 'jobId':$scope.jobId});
+            $state.go('traitifyfinish', {
+                'resumeId': $scope.resumeId,
+                'traitifyId': $scope.traitifyId,
+                'jobId': $scope.jobId
+            });
         }, function (error) {
             console.log(error.data.message);
         });
     });
-
-    //traitify = Traitify.ui.load("results", assessmentId, ".traitify-widget"); // Example selector for widget target
-    //traitify.onInitialize(function(){
-    //    console.log(traitify.data.get("PersonalityTypes"));
-    //    console.log("Initialized");
-    //})
-    //traitify = Traitify.ui.load("personalityTypes", assessmentId, ".traitify-widget"); // Example selector for widget target
-    //traitify.onInitialize(function(){
-    //    console.log(traitify.data.get("PersonalityTypes"));
-    //    console.log("Initialized!");
-    //})
-    //
-
-
 });

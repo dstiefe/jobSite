@@ -2,10 +2,10 @@
  * Created by Van on 04.02.2016.
  */
 //Controller for screening test
-angular.module('Jobsite').controller("TestScreeningController", function($scope, $rootScope,  $http, $timeout, $location, ScreeningsService, CategoriesService, ResumesService, $state, $stateParams) {
+angular.module('Jobsite').controller("TestScreeningController", function ($scope, $rootScope, $http, $timeout, $location, ScreeningsService, CategoriesService, ResumesService, $state, $stateParams) {
 
     var timeStarted = false;
-    var _startTimer = function (){
+    var _startTimer = function () {
         if (!timeStarted) {
             $scope.$broadcast('timer-start');
             $scope.timerRunning = true;
@@ -16,7 +16,7 @@ angular.module('Jobsite').controller("TestScreeningController", function($scope,
         }
     }
 
-    var _stopTimer = function() {
+    var _stopTimer = function () {
         if ((timeStarted) && ($scope.timerRunning)) {
             $scope.$broadcast('timer-stop');
             $scope.timerRunning = false;
@@ -43,62 +43,59 @@ angular.module('Jobsite').controller("TestScreeningController", function($scope,
     $scope.resultQuestion = {};
 
     ScreeningsService.getScreeningByResumeId($scope.jobId, $scope.resumeId, $scope.screeningId).then(function (results) {
-        $scope.screening  = results.data;
+        $scope.screening = results.data;
         _getQuestion();
     }, function (error) {
         console.log(error.data.message);
     });
 
-    var _getQuestion = function(){
+    var _getQuestion = function () {
         $scope.currentQuestionNumber++;
         ScreeningsService.getScreeningQuestionByResumeId($scope.jobId, $scope.resumeId, $scope.screeningId, $scope.currentQuestionNumber).then(function (results) {
-            $scope.screeningQuestion  = results.data;
+            $scope.screeningQuestion = results.data;
 
         }, function (error) {
             console.log(error.data.message);
         });
     }
 
+    $scope.saveChanges = function (isValid) {
 
-
-    $scope.saveChanges = function(isValid) {
-
-        if (!isValid){
+        if (!isValid) {
             return;
         }
         _stopTimer();
 
-        if ($scope.screeningQuestion.type == 'TrueFalse'){
+        if ($scope.screeningQuestion.type == 'TrueFalse') {
 
             $scope.resultQuestion.answerText = '';
             $scope.resultQuestion.answerOption = 0;
-            $scope.resultQuestion.answerBoolean =  $scope.resultQuestion.answerBoolean == 'true';
+            $scope.resultQuestion.answerBoolean = $scope.resultQuestion.answerBoolean == 'true';
         }
 
-        if ($scope.screeningQuestion.type == 'MultipleChoice'){
+        if ($scope.screeningQuestion.type == 'MultipleChoice') {
 
             $scope.resultQuestion.answerText = '';
             $scope.resultQuestion.answerBoolean = false;
-            $scope.resultQuestion.answerOption =  parseInt($scope.resultQuestion.answerOption);
+            $scope.resultQuestion.answerOption = parseInt($scope.resultQuestion.answerOption);
         }
 
-        if ($scope.screeningQuestion.type == 'FillIn'){
+        if ($scope.screeningQuestion.type == 'FillIn') {
 
             $scope.resultQuestion.answerOption = 0;
             $scope.resultQuestion.answerBoolean = false;
-
         }
 
-        var timeseconds1 =  $scope.millis / 1000;
+        var timeseconds1 = $scope.millis / 1000;
 
         $scope.resultQuestion.timeToComplete = timeseconds1 - timeseconds0;
 
         timeseconds0 = timeseconds1;
 
-        ScreeningsService.setResultOnScreeningQuestion($scope.jobId, $scope.resumeId, $scope.screeningId, $scope.screeningQuestion.id, $scope.resultQuestion ).then(function (results) {
-            if ($scope.saveAndExit){
+        ScreeningsService.setResultOnScreeningQuestion($scope.jobId, $scope.resumeId, $scope.screeningId, $scope.screeningQuestion.id, $scope.resultQuestion).then(function (results) {
+            if ($scope.saveAndExit) {
                 $state.go('finishtestscreening');
-            }else{
+            } else {
                 $scope.resultQuestion = {};
                 _getQuestion();
                 _startTimer();

@@ -71,7 +71,7 @@ function appCtrl($http, $scope, $timeout) {
     $scope.totalItems = 64;
     $scope.currentPage = 4;
 
-    $scope.setPage = function(pageNo) {
+    $scope.setPage = function (pageNo) {
         $scope.currentPage = pageNo;
     };
 
@@ -80,14 +80,14 @@ function appCtrl($http, $scope, $timeout) {
      */
     $scope.states = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware', 'Florida', 'Georgia', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana', 'Maine', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire', 'New Jersey', 'New Mexico', 'New York', 'North Dakota', 'North Carolina', 'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island', 'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'];
     // Any function returning a promise object can be used to load values asynchronously
-    $scope.getLocation = function(val) {
+    $scope.getLocation = function (val) {
         return $http.get('http://maps.googleapis.com/maps/api/geocode/json', {
             params: {
                 address: val,
                 sensor: false
             }
-        }).then(function(response) {
-            return response.data.results.map(function(item) {
+        }).then(function (response) {
+            return response.data.results.map(function (item) {
                 return item.formatted_address;
             });
         });
@@ -99,7 +99,7 @@ function appCtrl($http, $scope, $timeout) {
     $scope.rate = 7;
     $scope.max = 10;
 
-    $scope.hoveringOver = function(value) {
+    $scope.hoveringOver = function (value) {
         $scope.overStar = value;
         $scope.percent = 100 * (value / this.max);
     };
@@ -223,10 +223,10 @@ function appCtrl($http, $scope, $timeout) {
 
     $scope.stanimation = 'bounceIn';
     $scope.runIt = true;
-    $scope.runAnimation = function() {
+    $scope.runAnimation = function () {
 
         $scope.runIt = false;
-        $timeout(function() {
+        $timeout(function () {
             $scope.runIt = true;
         }, 100)
 

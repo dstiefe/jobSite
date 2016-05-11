@@ -2,7 +2,7 @@
  * Created by Van on 17.01.2016.
  */
 //Controller for searching resumes
-angular.module('Jobsite').controller("SearchResumesController", function($scope, AuthService, $location, SearchResumesParameters, ResumesService, $modal) {
+angular.module('Jobsite').controller("SearchResumesController", function ($scope, AuthService, $location, SearchResumesParameters, ResumesService, $modal) {
 
     $scope.isAuth = AuthService.authentication.isAuth;
     $scope.isAdministrator = AuthService.authentication.isAdministrator;
@@ -20,7 +20,7 @@ angular.module('Jobsite').controller("SearchResumesController", function($scope,
     $scope.maxSize = 5;
 
     $scope.search = function () {
-         skip = ($scope.currentPage - 1) * $scope.itemsPerPage;
+        skip = ($scope.currentPage - 1) * $scope.itemsPerPage;
 
         ResumesService.searchResumes($scope.searchText, skip, $scope.itemsPerPage).then(function (results) {
             $scope.resumes = results.data;
@@ -45,7 +45,7 @@ angular.module('Jobsite').controller("SearchResumesController", function($scope,
             templateUrl: 'views/ResumeDetailView.html',
             controller: 'ResumeDetailController',
             //size: 'fullscreen',
-            windowClass : 'modal-fullscreen',
+            windowClass: 'modal-fullscreen',
             resolve: {
                 resume: function () {
                     return data;
@@ -57,7 +57,7 @@ angular.module('Jobsite').controller("SearchResumesController", function($scope,
         });
     };
 
-    $scope.pageChanged = function() {
+    $scope.pageChanged = function () {
         _search();
     };
 

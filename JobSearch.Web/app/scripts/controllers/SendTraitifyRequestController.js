@@ -5,8 +5,8 @@
 angular.module('Jobsite').controller('SendTraitifyRequestController', function ($scope, $modalInstance, JobsService, TraitifyService, $sce, $timeout, $document, resume, jobId) {
 
     $scope.resume = resume;
-    $scope.successMessage =false;
-    $scope.errorMessage =false;
+    $scope.successMessage = false;
+    $scope.errorMessage = false;
     $scope.slectedDeck = '';
 
     JobsService.getJob(jobId).then(function (results) {
@@ -22,14 +22,14 @@ angular.module('Jobsite').controller('SendTraitifyRequestController', function (
         console.log(error.data.message);
     });
 
-    $scope.onClose = function() {
+    $scope.onClose = function () {
         $modalInstance.close();
     };
 
-    $scope.notify = function() {
+    $scope.notify = function () {
         TraitifyService.sendTraitify(jobId, $scope.resume.id, {"type": $scope.slectedDeck.type}).then(function (results) {
             $scope.successMessage = true;
-            $timeout(function() {
+            $timeout(function () {
                 $modalInstance.close();
             }, 1000);
         }, function (error) {

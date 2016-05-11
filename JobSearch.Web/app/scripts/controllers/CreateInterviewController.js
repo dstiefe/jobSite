@@ -2,7 +2,7 @@
  * Created by Van on 03.02.2016.
  */
 //Controller for creating interview
-angular.module('Jobsite').controller("CreateInterviewController", function($scope,  $http, $timeout, $location, InterviewsService, CategoriesService, JobsService, $state, $stateParams) {
+angular.module('Jobsite').controller("CreateInterviewController", function ($scope, $http, $timeout, $location, InterviewsService, CategoriesService, JobsService, $state, $stateParams) {
 
     $scope.id = $stateParams.id;
     $scope.interview = {};
@@ -24,20 +24,18 @@ angular.module('Jobsite').controller("CreateInterviewController", function($scop
         InterviewsService.getInterview($scope.id).then(function (results) {
 
             var res = results.data;
-
             $scope.interview.title = res.title;
-            $scope.interview.description =res.description;
+            $scope.interview.description = res.description;
             $scope.interview.categoryId = res.categoryId;
-            $scope.interview.jobsIds =res.jobsIds;
-
+            $scope.interview.jobsIds = res.jobsIds;
 
         }, function (error) {
             console.log(error.data.message);
         });
     }
 
-    $scope.saveChanges = function(isValid) {
-        if (!isValid){
+    $scope.saveChanges = function (isValid) {
+        if (!isValid) {
             return;
         }
 
@@ -48,24 +46,24 @@ angular.module('Jobsite').controller("CreateInterviewController", function($scop
                 console.log(error.data.message);
             });
         }
-        else{
+        else {
             InterviewsService.postInterview($scope.interview).then(function (results) {
-                if ($scope.saveAndExit){
+                if ($scope.saveAndExit) {
                     $state.go('interviews');
-                }else{
+                } else {
                     $state.go('createinterviewquestion', {'id': results.data.id});
                 }
             }, function (error) {
                 console.log(error.data.message);
             });
         }
-    }
+    };
 
-    $scope.cancel = function() {
-        if (!angular.isUndefined($scope.id) && $scope.id != '')
-        {
-            $state.go('editinterview', {'id': $scope.id});}
-        else{
+    $scope.cancel = function () {
+        if (!angular.isUndefined($scope.id) && $scope.id != '') {
+            $state.go('editinterview', {'id': $scope.id});
+        }
+        else {
             $state.go('interviews');
         }
     }

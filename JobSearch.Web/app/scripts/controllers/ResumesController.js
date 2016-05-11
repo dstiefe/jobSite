@@ -2,11 +2,12 @@
  * Created by Van on 17.01.2016.
  */
 //Controller for working resumes
-angular.module('Jobsite').controller("ResumesController", function($scope, AuthService, $location, SearchResumesParameters, $modal, $timeout, ResumesService) {
+angular.module('Jobsite').controller("ResumesController", function ($scope, AuthService, $location, SearchResumesParameters, $modal, $timeout, ResumesService) {
 
     $scope.currentPage = 1;
+    $scope.entryLimits = [5, 10, 20, 50, 100];
 
-    function getResumes(){
+    function getResumes() {
         ResumesService.getMyResumes().then(function (results) {
             $scope.list = results.data;
             $scope.currentPage = 1; //current page
@@ -17,9 +18,10 @@ angular.module('Jobsite').controller("ResumesController", function($scope, AuthS
             console.log(error.data.message);
         });
     }
+
     getResumes();
 
-    $scope.deleterecords = function(id) {
+    $scope.deleterecords = function (id) {
         ResumesService.deleteResume(id).then(function (results) {
             getResumes();
         }, function (error) {
@@ -27,36 +29,36 @@ angular.module('Jobsite').controller("ResumesController", function($scope, AuthS
         });
     };
 
-    $scope.setPage = function(pageNo) {
+    $scope.setPage = function (pageNo) {
         $scope.currentPage = pageNo;
     };
 
-    $scope.filter = function() {
-        $timeout(function() {
+    $scope.filter = function () {
+        $timeout(function () {
             $scope.filteredItems = $scope.filtered.length;
         }, 10);
     };
 
-    $scope.sort_by = function(predicate) {
+    $scope.sort_by = function (predicate) {
         $scope.predicate = predicate;
         $scope.reverse = !$scope.reverse;
     };
-    $scope.arrayEmptyJob= function(item) {
+    $scope.arrayEmptyJob = function (item) {
 
         //if (!angular.isUndefined(item.jobId)&& item.jobId != null && item.jobId != '')  {
-        if (!angular.isUndefined(item.title)&& item.title != null && item.title != '')  {
+        if (!angular.isUndefined(item.title) && item.title != null && item.title != '') {
             return true;
         } else {
             return false;
         }
     };
-    $scope.createOrEditResume = function(id) {
+    $scope.createOrEditResume = function (id) {
 
         var modalInstance = $modal.open({
             animation: true,
             templateUrl: 'views/CreateOrEditResume.html',
             controller: 'CreateOrEditResumeController',
-            size : 'lg',
+            size: 'lg',
             resolve: {
                 resumeId: function () {
                     return id;
@@ -66,10 +68,9 @@ angular.module('Jobsite').controller("ResumesController", function($scope, AuthS
 
         modalInstance.result.then(function (res) {
 
-           if (!angular.isUndefined(res) && res!=null && !angular.isUndefined(res.isUpdated) && res.isUpdated!=null && res.isUpdated)
-           {
-               getResumes();
-           }
+            if (!angular.isUndefined(res) && res != null && !angular.isUndefined(res.isUpdated) && res.isUpdated != null && res.isUpdated) {
+                getResumes();
+            }
 
         }, function () {
             console.log('Modal dismissed at: ' + new Date());

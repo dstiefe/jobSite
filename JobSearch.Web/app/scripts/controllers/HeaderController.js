@@ -5,5 +5,4 @@ angular.module('Jobsite').controller("HeaderController", function($scope, AuthSe
     $scope.isActive = function (viewLocation) {
         return viewLocation === $location.path();
     };
-
 })

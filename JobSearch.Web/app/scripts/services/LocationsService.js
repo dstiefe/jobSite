@@ -4,30 +4,23 @@
 //Service for working with locations
 angular.module('Jobsite').factory('LocationsService', ['$http', '$q', 'RESOURCES', function ($http, $q, RESOURCES) {
 
-
     var serviceBase = RESOURCES.API_BASE_PATH;
 
     var locationsServiceFactory = {};
 
     var _getLocations = function () {
 
-        return $http.get(serviceBase + 'locations',{
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        }).then(function (results) {
+        return $http.get(serviceBase + 'locations').then(function (results) {
             return results;
         });
     };
+
     var _getLocation = function (id) {
-        return $http.get(serviceBase + 'locations/'+id,{
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        }).then(function (results) {
+        return $http.get(serviceBase + 'locations/' + id).then(function (results) {
             return results;
         });
     };
+
     var _suggestLocations = function (text, parentId, level, count) {
         params={};
 
@@ -48,9 +41,6 @@ angular.module('Jobsite').factory('LocationsService', ['$http', '$q', 'RESOURCES
             params['count'] = count;
         }
         return $http.get(serviceBase + 'locations/suggest',{
-            headers: {
-                'Content-Type': 'application/json'
-            },
             params: params
         }).then(function (results) {
             return results;

@@ -2,57 +2,52 @@ angular
     .module('Jobsite')
     .controller('ApplyJobController', ApplyJobController);
 //Controller for appling job
-function ApplyJobController($scope,  $http, $location, $modalInstance, ResumesService, RESOURCES,jobId, AuthService) {
+function ApplyJobController($scope, $http, $location, $modalInstance, ResumesService, RESOURCES, jobId, AuthService, UsersService) {
     var serviceBase = RESOURCES.API_BASE_PATH;
     $scope.jobId = jobId;
     $scope.includeCoverLetter = false;
     $scope.selectedResume = '';
     $scope.resumeFileUrl = '';
     $scope.resumeOriginalFilename = '';
-    $scope.loading =false;
+    $scope.loading = false;
 
-    if (!AuthService.authentication.isAuth)
-    {
+    if (!AuthService.authentication.isAuth) {
         $location.path("/login");
     }
 
     ResumesService.getMyResumes().then(function (results) {
         $scope.resumes = results.data;
-     }, function (error) {
+    }, function (error) {
         console.log(error.data.message);
     });
 
-    var req = {
-        method: 'GET',
-        url: serviceBase + 'account/userinfo'
-    }
-    $scope.role = AuthService.authentication.isAdministrator? "Admin": "User";
-    $http(req).then(function(data) {
-        if (data.status == "200") {
-            $scope.accountFirstName = data.data.firstName;
-            $scope.accountLastName = data.data.lastName;
-            $scope.accountEmail = data.data.email;
-        }
-    });
+    $scope.role = AuthService.authentication.isAdministrator ? "Admin" : "User";
 
+    UsersService.accountInfo().then(function (results) {
+        $scope.accountFirstName = results.data.firstName;
+        $scope.accountLastName = results.data.lastName;
+        $scope.accountEmail = results.data.email;
+    }, function (error) {
+        console.log(error.data.message);
+    });
 
     // Initial step
     $scope.step = 1;
 
     // Wizard functions
     $scope.wizard = {
-        show: function(number) {
+        show: function (number) {
             $scope.step = number;
         },
-        next: function() {
+        next: function () {
             $scope.step++;
         },
-        prev: function() {
+        prev: function () {
             $scope.step--;
         }
     };
 
-    $scope.uploadFile = function(event) {
+    $scope.uploadFile = function (event) {
         $scope.loading = true;
         var file = event.target.files[0];
 
@@ -65,20 +60,20 @@ function ApplyJobController($scope,  $http, $location, $modalInstance, ResumesSe
                     'Content-Type': undefined
                 }
             })
-            .success(function(response) {
+            .success(function (response) {
                 $scope.resumeFileUrl = response.storageLocationNative;
                 $scope.resumeOriginalFilename = response.originalFilename;
                 $scope.wizard.next();
                 $scope.loading = false;
             })
-            .error(function(response) {
+            .error(function (response) {
                 $scope.loading = false;
                 alert('Resume upload failed');
             });
 
     };
 
-    $scope.onSubmit = function() {
+    $scope.onSubmit = function () {
         $scope.loading = true;
 
         var postresumedata = {
@@ -91,8 +86,8 @@ function ApplyJobController($scope,  $http, $location, $modalInstance, ResumesSe
             "email": $scope.accountEmail
         };
 
-        if ($scope.resumeFileUrl){
-            ResumesService.applyToJob($scope.jobId ,postresumedata).then(function (results) {
+        if ($scope.resumeFileUrl) {
+            ResumesService.applyToJob($scope.jobId, postresumedata).then(function (results) {
                 var response = results.data;
                 $scope.jobAppliedDate = response.applyDate;
                 $scope.step = 3;
@@ -102,8 +97,8 @@ function ApplyJobController($scope,  $http, $location, $modalInstance, ResumesSe
                 console.log(error.data.message);
                 $scope.loading = false;
             });
-        }else{
-            ResumesService.applyToJobByExistResume($scope.jobId ,postresumedata).then(function (results) {
+        } else {
+            ResumesService.applyToJobByExistResume($scope.jobId, postresumedata).then(function (results) {
                 var response = results.data;
                 $scope.jobAppliedDate = response.applyDate;
                 $scope.step = 3;
@@ -116,7 +111,7 @@ function ApplyJobController($scope,  $http, $location, $modalInstance, ResumesSe
         }
     };
 
-    $scope.onClose = function() {
+    $scope.onClose = function () {
         $modalInstance.close();
     }
 

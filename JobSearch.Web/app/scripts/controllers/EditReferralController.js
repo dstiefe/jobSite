@@ -1,14 +1,12 @@
 /**
- * Created by Van on 04.03.2016.
- */
-/**
  * Created by Van on 03.02.2016.
  */
 //Controller for editing referral
-angular.module('Jobsite').controller("EditReferralController", function($scope,  $http, $timeout, $location, ReferralService, CategoriesService, JobsService, $state, $stateParams) {
+angular.module('Jobsite').controller("EditReferralController", function ($scope, $http, $timeout, $location, ReferralService, CategoriesService, JobsService, $state, $stateParams) {
 
     $scope.id = $stateParams.id;
     $scope.currentPage = 1;
+    $scope.entryLimits = [5, 10, 20, 50, 100];
     $scope.entryLimit = 10;
 
     ReferralService.getJobReferral($scope.id).then(function (results) {
@@ -17,7 +15,7 @@ angular.module('Jobsite').controller("EditReferralController", function($scope, 
         console.log(error.data.message);
     });
 
-    var _getReferralQuestions =  function() {
+    var _getReferralQuestions = function () {
         ReferralService.getReferralQuestionsByJobReferralId($scope.id).then(function (results) {
             $scope.referralQuestions = results.data;
 
@@ -33,15 +31,15 @@ angular.module('Jobsite').controller("EditReferralController", function($scope, 
 
     _getReferralQuestions();
 
-    $scope.setPage = function(pageNo) {
+    $scope.setPage = function (pageNo) {
         $scope.currentPage = pageNo;
     };
-    $scope.sort_by = function(predicate) {
+    $scope.sort_by = function (predicate) {
         $scope.predicate = predicate;
         $scope.reverse = !$scope.reverse;
     };
 
-    $scope.deleterecords = function(data) {
+    $scope.deleterecords = function (data) {
         ReferralService.deleteReferralQuestion(data.jobReferralId, data.id).then(function (results) {
             _getReferralQuestions();
         }, function (error) {

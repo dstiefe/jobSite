@@ -2,7 +2,7 @@
  * Created by Van on 03.02.2016.
  */
 //Controller for creating referral
-angular.module('Jobsite').controller("CreateReferralController", function($scope,  $http, $timeout, $location, ReferralService, CategoriesService, JobsService, $state, $stateParams) {
+angular.module('Jobsite').controller("CreateReferralController", function ($scope, $http, $timeout, $location, ReferralService, CategoriesService, JobsService, $state, $stateParams) {
 
     $scope.id = $stateParams.id;
     $scope.referral = {};
@@ -26,9 +26,9 @@ angular.module('Jobsite').controller("CreateReferralController", function($scope
             var res = results.data;
 
             $scope.referral.title = res.title;
-            $scope.referral.description =res.description;
+            $scope.referral.description = res.description;
             $scope.referral.categoryId = res.categoryId;
-            $scope.referral.jobsIds =res.jobsIds;
+            $scope.referral.jobsIds = res.jobsIds;
 
 
         }, function (error) {
@@ -36,8 +36,8 @@ angular.module('Jobsite').controller("CreateReferralController", function($scope
         });
     }
 
-    $scope.saveChanges = function(isValid) {
-        if (!isValid){
+    $scope.saveChanges = function (isValid) {
+        if (!isValid) {
             return;
         }
 
@@ -48,11 +48,11 @@ angular.module('Jobsite').controller("CreateReferralController", function($scope
                 console.log(error.data.message);
             });
         }
-        else{
+        else {
             ReferralService.postJobReferral($scope.referral).then(function (results) {
-                if ($scope.saveAndExit){
+                if ($scope.saveAndExit) {
                     $state.go('referrals');
-                }else{
+                } else {
                     $state.go('createreferralquestion', {'id': results.data.id});
                 }
             }, function (error) {
@@ -61,11 +61,11 @@ angular.module('Jobsite').controller("CreateReferralController", function($scope
         }
     }
 
-    $scope.cancel = function() {
-        if (!angular.isUndefined($scope.id) && $scope.id != '')
-        {
-            $state.go('editreferral', {'id': $scope.id});}
-        else{
+    $scope.cancel = function () {
+        if (!angular.isUndefined($scope.id) && $scope.id != '') {
+            $state.go('editreferral', {'id': $scope.id});
+        }
+        else {
             $state.go('referrals');
         }
     }

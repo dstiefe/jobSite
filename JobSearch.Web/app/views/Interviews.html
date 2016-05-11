@@ -71,14 +71,7 @@
                             <div pagination="" ng-model="currentPage" ng-change="changed()" boundary-links="true" total-items="filteredItems" items-per-page="entryLimit" class="pagination-small" previous-text="&laquo;" next-text="&raquo;"></div>
                         </div>
                         <div class="col-md-1">
-                            <br /> PageSize:
-                            <select ng-model="entryLimit" class="form-control">
-                                <option>5</option>
-                                <option>10</option>
-                                <option>20</option>
-                                <option>50</option>
-                                <option>100</option>
-                            </select>
+                            <br /> PageSize: <select ng-model="entryLimit" class="form-control" ng-options="c for c in entryLimits"></select>
                         </div>
                     </div>
 

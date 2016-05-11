@@ -2,7 +2,7 @@
  * Created by Van on 03.02.2016.
  */
 //Controller for editing screening
-angular.module('Jobsite').controller("EditScreeningController", function($scope,  $http, $timeout, $location, ScreeningsService, CategoriesService, JobsService, $state, $stateParams) {
+angular.module('Jobsite').controller("EditScreeningController", function ($scope, $http, $timeout, $location, ScreeningsService, CategoriesService, JobsService, $state, $stateParams) {
 
     $scope.id = $stateParams.id;
     $scope.currentPage = 1;
@@ -15,7 +15,7 @@ angular.module('Jobsite').controller("EditScreeningController", function($scope,
         console.log(error.data.message);
     });
 
-    var _getScreeningQuestions =  function() {
+    var _getScreeningQuestions = function () {
         ScreeningsService.getScreeningQuestionsByScreeningId($scope.id).then(function (results) {
             $scope.screeningQuestions = results.data;
 
@@ -30,16 +30,15 @@ angular.module('Jobsite').controller("EditScreeningController", function($scope,
     };
     _getScreeningQuestions();
 
-
-    $scope.setPage = function(pageNo) {
+    $scope.setPage = function (pageNo) {
         $scope.currentPage = pageNo;
     };
-    $scope.sort_by = function(predicate) {
+    $scope.sort_by = function (predicate) {
         $scope.predicate = predicate;
         $scope.reverse = !$scope.reverse;
     };
 
-    $scope.deleterecords = function(data) {
+    $scope.deleterecords = function (data) {
         ScreeningsService.deleteScreeningQuestion(data.screeningId, data.id).then(function (results) {
             _getScreeningQuestions();
         }, function (error) {

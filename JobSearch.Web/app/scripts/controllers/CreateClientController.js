@@ -3,7 +3,7 @@
  */
 
 //Controller for creating client
-angular.module('Jobsite').controller("CreateClientController", function($scope,  $http, $timeout, $location, ClientsService,  $state, $stateParams) {
+angular.module('Jobsite').controller("CreateClientController", function ($scope, $http, $timeout, $location, ClientsService, $state, $stateParams) {
     $scope.id = $stateParams.id;
     $scope.client = {};
 
@@ -17,12 +17,10 @@ angular.module('Jobsite').controller("CreateClientController", function($scope, 
         }, function (error) {
             console.log(error.data.message);
         });
-
     }
 
-    $scope.saveChanges = function(isValid) {
-        console.log('isValid='+isValid);
-        if (!isValid){
+    $scope.saveChanges = function (isValid) {
+        if (!isValid) {
             return;
         }
 
@@ -33,7 +31,7 @@ angular.module('Jobsite').controller("CreateClientController", function($scope, 
                 console.log(error.data.message);
             });
         }
-        else{
+        else {
             ClientsService.postClient($scope.client).then(function (results) {
                 $state.go('clients');
             }, function (error) {
@@ -42,7 +40,7 @@ angular.module('Jobsite').controller("CreateClientController", function($scope, 
         }
     };
 
-    $scope.cancel = function() {
+    $scope.cancel = function () {
         $state.go('clients');
     };
 });

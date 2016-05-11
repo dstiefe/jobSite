@@ -1,9 +1,3 @@
-/**
- * HOMER - Responsive Admin Theme
- * version 1.8
- *
- */
-
 function configState($stateProvider, $urlRouterProvider, $compileProvider) {
 
     // Optimize load start with remove binding information inside the DOM element
@@ -666,17 +660,14 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
                 }
             }
         })
-
 }
 
-angular
-    .module('Jobsite')
+angular.module('Jobsite')
     .config(configState)
     .config(function ($httpProvider) {
         $httpProvider.interceptors.push('AuthInterceptorService');
     })
     .run(function($rootScope, $location, $state, editableOptions, Permission, AuthService) {
-
 
         $rootScope.numberWithCommas = function (x) {
             var parts = x.toString().split(".");

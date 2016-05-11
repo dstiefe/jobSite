@@ -10,8 +10,8 @@ angular.module('Jobsite').controller('SendReferenceRequestController', function 
     $scope.referencesToTake = [];
     $scope.referencesAll = [];
     $scope.referencesToTakeSelected = [];
-    $scope.successMessage =false;
-    $scope.errorMessage =false;
+    $scope.successMessage = false;
+    $scope.errorMessage = false;
 
     JobsService.getJob(jobId).then(function (results) {
         response = results.data;
@@ -23,17 +23,17 @@ angular.module('Jobsite').controller('SendReferenceRequestController', function 
 
     ReferralService.getMyJobReferrals().then(function (results) {
         response = results.data;
-        $scope.referencesAll = response.filter(function(item) {
-               return item.jobsIds.indexOf(jobId) != -1;
+        $scope.referencesAll = response.filter(function (item) {
+            return item.jobsIds.indexOf(jobId) != -1;
         });
 
-        $scope.referencesTaken =   $scope.referencesAll.filter(function(item) {
+        $scope.referencesTaken = $scope.referencesAll.filter(function (item) {
             if ($scope.resume.referencesIds == null)
                 return false;
             return item.jobsIds.indexOf(jobId) != -1 && $scope.resume.referencesIds.indexOf(item.id) != -1;
         });
 
-        $scope.referencesToTake =   $scope.referencesAll.filter(function(item) {
+        $scope.referencesToTake = $scope.referencesAll.filter(function (item) {
             if ($scope.resume.referencesIds == null)
                 return true;
             return item.jobsIds.indexOf(jobId) != -1 && $scope.resume.referencesIds.indexOf(item.id) == -1;
@@ -45,14 +45,14 @@ angular.module('Jobsite').controller('SendReferenceRequestController', function 
     });
 
 
-    $scope.onClose = function() {
+    $scope.onClose = function () {
         $modalInstance.close();
     };
 
-    $scope.notify = function() {
+    $scope.notify = function () {
         ReferralService.sendReferenceRequestToResume(jobId, $scope.resume.id, {"jobReferralIds": $scope.referencesToTakeSelected}).then(function (results) {
             $scope.successMessage = true;
-            $timeout(function() {
+            $timeout(function () {
                 $modalInstance.close();
             }, 1000);
         }, function (error) {

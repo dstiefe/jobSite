@@ -3,14 +3,14 @@
  */
 
 //Controller for verify reseting passwords
-angular.module('Jobsite').controller("ResetPasswordVerifyController", function($scope, $http, $timeout, $location, AuthService, RESOURCES) {
+angular.module('Jobsite').controller("ResetPasswordVerifyController", function ($scope, $http, $timeout, $location, AuthService, RESOURCES) {
     var serviceBase = RESOURCES.API_BASE_PATH;
 
     var searchObject = $location.search();
 
-    $scope.password='';
-    $scope.confirmPassword='';
-    $scope.error_Description ='';
+    $scope.password = '';
+    $scope.confirmPassword = '';
+    $scope.error_Description = '';
     $scope.success_Description = '';
 
     var startTimer = function () {
@@ -21,17 +21,16 @@ angular.module('Jobsite').controller("ResetPasswordVerifyController", function($
         }, 2000);
     };
 
-    $scope.ChangePassword = function(isValid){
-        $scope.error_Description ='';
+    $scope.ChangePassword = function (isValid) {
+        $scope.error_Description = '';
         $scope.success_Description = '';
-        if (!isValid){
+        if (!isValid) {
             return;
         }
-        if ($scope.password != $scope.confirmPassword){
+        if ($scope.password != $scope.confirmPassword) {
             $scope.error_Description = "Passwords does not match!";
             return;
         }
-
 
         var data = {
             newPassword: $scope.password,
@@ -53,7 +52,6 @@ angular.module('Jobsite').controller("ResetPasswordVerifyController", function($
             $scope.error_Description = "Failed to reset password due to: " + errors.join(' ');
         });
     };
-
 
 
 });

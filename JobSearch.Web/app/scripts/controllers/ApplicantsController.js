@@ -3,6 +3,7 @@
  */
 //Controller for working with applicants
 angular.module('Jobsite').controller("ApplicantsController", function($scope, $http, $timeout, $location,$state, AuthService, RESOURCES, $stateParams, ResumesService, ScreeningsService, $modal) {
+
     var serviceBase = RESOURCES.API_BASE_PATH;
     var jobId = $stateParams.id;
     var resumeId =   $stateParams.resumeId;
@@ -21,23 +22,20 @@ angular.module('Jobsite').controller("ApplicantsController", function($scope, $h
     }
     else
     {
-
-
         $scope.jobScreenings = [];
-        var req = {
-            method: 'GET',
-            url: serviceBase + 'jobs/'+ jobId +'/resumes'
-        };
 
         $scope.screeningsItems = 0;
-        $http(req).then(function(data) {
-            if (data.status == "200") {
-                $scope.list = data.data;
-                $scope.currentPage = 1; //current page
-                $scope.entryLimit = 10; //max no of items to display in a page
-                $scope.filteredItems = $scope.list.length; //Initially for no filter
-                $scope.totalItems = $scope.list.length;
-            }
+
+        ResumesService.getApplicants(jobId).then(function (results) {
+
+            $scope.list = results.data;
+            $scope.currentPage = 1; //current page
+            $scope.entryLimit = 10; //max no of items to display in a page
+            $scope.filteredItems = $scope.list.length; //Initially for no filter
+            $scope.totalItems = $scope.list.length;
+
+        }, function (error) {
+            console.log(error.data.message);
         });
 
         ScreeningsService.getScreeningsByJobId(jobId).then(function (results) {
@@ -46,25 +44,6 @@ angular.module('Jobsite').controller("ApplicantsController", function($scope, $h
             console.log(error.data.message);
         });
 
-        $scope.deleterecords = function(id) {
-            $http({
-                method: 'DELETE',
-                url: serviceBase + 'jobs/' + id
-            }).
-            success(function(response) {
-                $http(req).then(function(data) {
-                    if (data.status == "200") {
-                        $scope.list = data.data;
-                        console.log($scope.list);
-                        $scope.currentPage = 1; //current page
-                        $scope.entryLimit = 10; //max no of items to display in a page
-                        $scope.filteredItems = $scope.list.length; //Initially for no filter
-                        $scope.totalItems = $scope.list.length;
-                    }
-                });
-            });
-
-        };
         $scope.setPage = function(pageNo) {
             $scope.currentPage = pageNo;
         };
@@ -102,22 +81,6 @@ angular.module('Jobsite').controller("ApplicantsController", function($scope, $h
                 console.log(error.data.message);
             });
         };
-
-        //$scope.testResultsViewShow = function(data) {
-        //        var modalInstance = $modal.open({
-        //            animation: true,
-        //            templateUrl: 'views/TestResult.html',
-        //            controller: 'TestResultController',
-        //            size : 'lg',
-        //            resolve: {
-        //                resume: function () {
-        //                    return data;
-        //                },
-        //                jobId: function () {
-        //                    return jobId;
-        //                }
-        //            }});
-        //};
 
         $scope.arrayNotEmpty = function(item) {
             var len = item.passedScreeningIds  == null ? 0: item.passedScreeningIds.length;
@@ -245,12 +208,5 @@ angular.module('Jobsite').controller("ApplicantsController", function($scope, $h
             _showMessenger(jobId, data.id, data);
 
         };
-
-
     }
-
-
-
-
-
 });

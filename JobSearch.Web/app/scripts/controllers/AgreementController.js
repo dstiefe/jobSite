@@ -12,7 +12,6 @@ angular.module('Jobsite').controller('AgreementController', function ($scope, $m
         console.log(error.data.message);
     });
 
-
     ScreeningsService.getTestResultsByResumeId(jobId, $scope.resume.id).then(function (results) {
         response = results.data;
         $scope.results = response;

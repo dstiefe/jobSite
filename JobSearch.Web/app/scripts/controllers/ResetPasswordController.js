@@ -3,18 +3,18 @@
  */
 
 //Controller for reseting passwords
-angular.module('Jobsite').controller("ResetPasswordController", function($scope, $http, $timeout, $location, AuthService, RESOURCES) {
+angular.module('Jobsite').controller("ResetPasswordController", function ($scope, $http, $timeout, $location, AuthService, RESOURCES) {
     var serviceBase = RESOURCES.API_BASE_PATH;
 
-    $scope.usernameOrEmail='';
+    $scope.usernameOrEmail = '';
 
-    $scope.error_Description='';
-    $scope.success_Description='';
+    $scope.error_Description = '';
+    $scope.success_Description = '';
 
-    $scope.ResetPassword = function(isValid){
-        $scope.error_Description='';
-        $scope.success_Description='';
-        if (!isValid){
+    $scope.ResetPassword = function (isValid) {
+        $scope.error_Description = '';
+        $scope.success_Description = '';
+        if (!isValid) {
             return;
         }
 
@@ -24,7 +24,7 @@ angular.module('Jobsite').controller("ResetPasswordController", function($scope,
 
 
         AuthService.resetPasswordToken(data).then(function (results) {
-            $scope.success_Description= 'We sent a password-reset link to your email!';
+            $scope.success_Description = 'We sent a password-reset link to your email!';
         }, function (response) {
 
             var errors = [];

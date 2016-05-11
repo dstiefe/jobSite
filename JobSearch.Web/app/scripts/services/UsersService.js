@@ -14,7 +14,14 @@ angular.module('Jobsite').factory('UsersService', ['$http', '$q', 'RESOURCES',fu
         });
     };
 
+    var _accountInfo = function(){
+        return $http.get(serviceBase + 'account/userinfo').then(function (results) {
+            return results;
+        });
+    };
+
     usersServiceFactory.getMyInfo = _getMyInfo;
+    usersServiceFactory.accountInfo = _accountInfo;
 
     return usersServiceFactory;
 }]);

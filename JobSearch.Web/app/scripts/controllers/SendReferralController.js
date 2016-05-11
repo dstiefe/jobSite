@@ -4,18 +4,14 @@
 //Controller for sending referral
 angular.module('Jobsite').controller('SendReferralController', function ($scope, $modalInstance, JobsService, ScreeningsService, $sce, $timeout, $document, ReferralService, jobId, jobTitle, referralText) {
 
-
-
-   $scope.referralText = referralText;
-
+    $scope.referralText = referralText;
 
     $scope.emailObjects = [];
-    for(var i=0; i < 1; i++)
-    {
+    for (var i = 0; i < 1; i++) {
         $scope.emailObjects.push({
-            'email':'',
-            'firstName':'',
-            'lastName':''
+            'email': '',
+            'firstName': '',
+            'lastName': ''
         });
     }
 
@@ -23,50 +19,47 @@ angular.module('Jobsite').controller('SendReferralController', function ($scope,
     $scope.jobTitle = jobTitle;
     $scope.jobId = jobId;
 
-    $scope.message ='';
-    $scope.onClose = function() {
+    $scope.message = '';
+    $scope.onClose = function () {
         $modalInstance.close();
     };
 
-    $scope.addRecepient= function() {
+    $scope.addRecepient = function () {
 
-        if ($scope.emailObjects.length>=3)
+        if ($scope.emailObjects.length >= 3)
             return;
 
         $scope.emailObjects.push({
-            'email':'',
-            'firstName':'',
-            'lastName':''
+            'email': '',
+            'firstName': '',
+            'lastName': ''
         });
     };
 
-    $scope.removeRecepient= function(i) {
+    $scope.removeRecepient = function (i) {
 
-        if ($scope.emailObjects.length<=1)
+        if ($scope.emailObjects.length <= 1)
             return;
 
         $scope.emailObjects.splice(i, 1);
 
     };
-    $scope.onSave = function(isValid) {
-        $scope.message ='';
-        if (!isValid){
-            $scope.message ='Check input data!';
+    $scope.onSave = function (isValid) {
+        $scope.message = '';
+        if (!isValid) {
+            $scope.message = 'Check input data!';
             return;
         }
         var isFill = false;
-        for(var i = 0; i < $scope.emailObjects.length; i++)
-        {
-           var emailObject = $scope.emailObjects[i];
-           if (!angular.isUndefined(emailObject.email) && emailObject.email != null && emailObject.email != '')
-           {
-               isFill  = true;
-           }
+        for (var i = 0; i < $scope.emailObjects.length; i++) {
+            var emailObject = $scope.emailObjects[i];
+            if (!angular.isUndefined(emailObject.email) && emailObject.email != null && emailObject.email != '') {
+                isFill = true;
+            }
         }
 
-        if (!isFill)
-        {
-            $scope.message ='You do not fill emails!';
+        if (!isFill) {
+            $scope.message = 'You do not fill emails!';
             return;
         }
         var postsavedata = {
@@ -76,7 +69,7 @@ angular.module('Jobsite').controller('SendReferralController', function ($scope,
         ReferralService.postReferral(postsavedata).then(function (results) {
             $modalInstance.close();
         }, function (error) {
-            $scope.message ='Error occured!';
+            $scope.message = 'Error occured!';
             console.log(error.data.message);
         });
 

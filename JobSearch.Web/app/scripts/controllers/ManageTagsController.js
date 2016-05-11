@@ -5,17 +5,15 @@
  * Created by Van on 23.02.2016.
  */
 //Controller for manage tags
-angular.module('Jobsite').controller('ManageTagsController', function ($scope, $modalInstance, JobsService, ScreeningsService, $sce, $timeout, $document, screening,$filter) {
+angular.module('Jobsite').controller('ManageTagsController', function ($scope, $modalInstance, JobsService, ScreeningsService, $sce, $timeout, $document, screening, $filter) {
 
     $scope.screening = screening;
 
     $scope.tags = $scope.screening.tags;
 
-    if (!$scope.tags || $scope.tags.length == 0){
+    if (!$scope.tags || $scope.tags.length == 0) {
 
         $scope.tags = [];
-
-
     }
 
     $scope.types = [
@@ -24,36 +22,33 @@ angular.module('Jobsite').controller('ManageTagsController', function ($scope, $
     ];
 
     $scope.type = '';
-    $scope.levels = [1,2,3];
+    $scope.levels = [1, 2, 3];
     $scope.level = '';
 
     $scope.name = '';
-    $scope.parentName= '';
+    $scope.parentName = '';
     $scope.parents = [];
 
     $scope.levelTags = [];
     $scope.errorMessage = '';
 
-    $scope.onClose = function() {
+    $scope.onClose = function () {
         $modalInstance.close();
     };
 
-
-
-    var _getParentLevelByName = function(parentName){
-        var parent =  $filter('filter')($scope.parents, { name:parentName})[0];
+    var _getParentLevelByName = function (parentName) {
+        var parent = $filter('filter')($scope.parents, {name: parentName})[0];
         return parseInt(parent.level);
     };
 
-    var _isExistTag = function(tag) {
-        var res = $filter('filter')($scope.tags, { name: tag.name, level: tag.level, parentName: tag.parentName });
+    var _isExistTag = function (tag) {
+        var res = $filter('filter')($scope.tags, {name: tag.name, level: tag.level, parentName: tag.parentName});
         return res.length > 0;
     };
 
-    $scope.addTag = function(isValid) {
-        console.log('add tag');
+    $scope.addTag = function (isValid) {
         $scope.errorMessage = '';
-        if (!isValid){
+        if (!isValid) {
             $scope.errorMessage = 'You don\'t fill all fields';
             return;
         }
@@ -64,12 +59,12 @@ angular.module('Jobsite').controller('ManageTagsController', function ($scope, $
             level: 1
         };
 
-        if ($scope.parentName && $scope.parentName != ''){
+        if ($scope.parentName && $scope.parentName != '') {
             tag.parentName = $scope.parentName;
             tag.level = _getParentLevelByName($scope.parentName) + 1;
         }
 
-        if (_isExistTag(tag)){
+        if (_isExistTag(tag)) {
             $scope.errorMessage = 'Tag with same name already exist!';
             return;
         }
@@ -85,24 +80,24 @@ angular.module('Jobsite').controller('ManageTagsController', function ($scope, $
 
     };
 
-    $scope.onSave = function(isValid) {
+    $scope.onSave = function (isValid) {
         console.log('on save');
         $modalInstance.close({
             'tags': $scope.tags
         });
     };
 
-    $scope.levelChanged = function() {
-        $scope.parents = $filter('filter')($scope.tags, { level: $scope.level , isCategory: true});
+    $scope.levelChanged = function () {
+        $scope.parents = $filter('filter')($scope.tags, {level: $scope.level, isCategory: true});
         $scope.parentName = '';
     };
 
-    $scope.parentChanged= function() {
+    $scope.parentChanged = function () {
         $scope.levelTags = [];
-        if ($scope.parentName){
+        if ($scope.parentName) {
             var level = _getParentLevelByName($scope.parentName) + 1;
-            var res = $filter('filter')($scope.tags, { parentName: $scope.parentName , level: level});
-            for (var i=0;i<res.length;i++){
+            var res = $filter('filter')($scope.tags, {parentName: $scope.parentName, level: level});
+            for (var i = 0; i < res.length; i++) {
                 $scope.levelTags.push(res[i].name);
             }
         }

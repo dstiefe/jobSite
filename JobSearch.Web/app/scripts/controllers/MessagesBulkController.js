@@ -1,19 +1,16 @@
 /**
- * Created by Van on 18.04.2016.
- */
-/**
  * Created by Van on 23.02.2016.
  */
 //Controller for sending bulk-messages
-angular.module('Jobsite').controller('MessagesBulkController', function ($scope,  JobsService, $state, InterviewsService, MessagesService,JobsService, $sce, $timeout, $document, $state) {
+angular.module('Jobsite').controller('MessagesBulkController', function ($scope, JobsService, $state, InterviewsService, MessagesService, JobsService, $sce, $timeout, $document, $state) {
 
     $scope.selectedJobId = '';
 
     $scope.successMessage = false;
     $scope.errorMessage = '';
-    $scope.newMessage={
-        subject:'',
-        body:''
+    $scope.newMessage = {
+        subject: '',
+        body: ''
     };
     $scope.selectedMessageTemplate = {};
     $scope.isSaveTemplate = false;
@@ -33,21 +30,21 @@ angular.module('Jobsite').controller('MessagesBulkController', function ($scope,
     });
 
 
-    var _sendMessage = function(){
+    var _sendMessage = function () {
 
-        var request ={
+        var request = {
             jobId: $scope.selectedJobId,
-            subject:$scope.newMessage.subject,
-            body:$scope.newMessage.body
+            subject: $scope.newMessage.subject,
+            body: $scope.newMessage.body
         };
 
         MessagesService.sendBulkMessage(request).then(function (results) {
 
             $scope.successMessage = true;
-            $scope.newMessage.subject ='';
-            $scope.newMessage.body ='';
+            $scope.newMessage.subject = '';
+            $scope.newMessage.body = '';
 
-            $timeout(function() {
+            $timeout(function () {
                 $scope.successMessage = false;
                 $state.go('dashboard');
             }, 1000);
@@ -59,26 +56,24 @@ angular.module('Jobsite').controller('MessagesBulkController', function ($scope,
 
     };
 
-    $scope.send = function(isValid) {
+    $scope.send = function (isValid) {
         $scope.successMessage = false;
         $scope.errorMessage = '';
-        if (!isValid){
+        if (!isValid) {
             $scope.errorMessage = "You don't fill mandatory fields";
             return;
         }
-        console.log('send');
-        if ($scope.isSaveTemplate && !$scope.nameTemplate){
+
+        if ($scope.isSaveTemplate && !$scope.nameTemplate) {
             $scope.errorMessage = "You don't fill Name Template";
             return;
         }
 
-        console.log('send');
-
-        if ($scope.isSaveTemplate){
-            var requestTemp ={
+        if ($scope.isSaveTemplate) {
+            var requestTemp = {
                 name: $scope.nameTemplate,
-                subject:$scope.newMessage.subject,
-                body:$scope.newMessage.body
+                subject: $scope.newMessage.subject,
+                body: $scope.newMessage.body
             };
             MessagesService.postMessageTemplate(requestTemp).then(function (results) {
                 var messageTemplate = results.data;
@@ -90,21 +85,20 @@ angular.module('Jobsite').controller('MessagesBulkController', function ($scope,
                 console.log(error.data.message);
             });
         }
-        else{
+        else {
             _sendMessage();
         }
     };
 
-    $scope.cancel = function() {
-        console.log('cancel');
+    $scope.cancel = function () {
         $state.go('dashboard');
     };
 
-    $scope.messageTemplateChanged = function(messageTemplate) {
-        if ($scope.selectedMessageTemplate){
+    $scope.messageTemplateChanged = function (messageTemplate) {
+        if ($scope.selectedMessageTemplate) {
             $scope.newMessage.subject = $scope.selectedMessageTemplate.subject;
             $scope.newMessage.body = $scope.selectedMessageTemplate.body;
-        }else{
+        } else {
             $scope.newMessage.subject = '';
             $scope.newMessage.body = '';
         }

@@ -1,9 +1,3 @@
-/**
- * HOMER - Responsive Admin Theme
- * version 1.8
- *
- */
-
 function configState($stateProvider, $urlRouterProvider, $compileProvider) {
 
     // Optimize load start with remove binding information inside the DOM element
@@ -666,17 +660,14 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
                 }
             }
         })
-
 }
 
-angular
-    .module('Jobsite')
+angular.module('Jobsite')
     .config(configState)
     .config(function ($httpProvider) {
         $httpProvider.interceptors.push('AuthInterceptorService');
     })
     .run(function($rootScope, $location, $state, editableOptions, Permission, AuthService) {
-
 
         $rootScope.numberWithCommas = function (x) {
             var parts = x.toString().split(".");
@@ -701,17 +692,24 @@ angular
             });
 
         var history = [];
-        $rootScope.$on('$locationChangeSuccess', function() {
-            history.push($location.$$path);
-            if (history.length > 5) history = history.slice(history.length - 5, 5);
+        $rootScope.$on('$locationChangeSuccess', function(event, url, oldUrl, state, oldState) {
+
+            if ($location.$$absUrl != oldUrl ){
+                history.push($location.$$path);
+                if (history.length > 5) history = history.slice(history.length - 5, 6);
+            }
+
         });
 
         $rootScope.back = function () {
-            var prevUrl = history.length > 1 ? history.splice(-2)[0] : "/";
+
+            history = history.slice(0, -1); //remove current page
+            var prevUrl = history.length > 1 ? history.slice(-1)[0] : "/";
             $rootScope.$apply(function() {
                 $location.path(prevUrl);
                 //  history = []; //Delete history array after going back
             });
+
         };
 
     });

@@ -13,14 +13,13 @@ angular.module('Jobsite').controller('TestResultController', function ($scope, $
         console.log(error.data.message);
     });
 
-
     ScreeningsService.getTestResultsByResumeId(jobId, $scope.resume.id).then(function (results) {
         response = results.data;
         $scope.results = response;
     }, function (error) {
         console.log(error.data.message);
     });
-    $scope.onClose = function() {
+    $scope.onClose = function () {
         $modalInstance.close();
     }
 

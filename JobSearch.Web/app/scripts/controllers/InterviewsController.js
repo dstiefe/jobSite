@@ -17,9 +17,9 @@ angular.module('Jobsite').controller('InterviewsController', function ($scope, J
         console.log(error.data.message);
     });
 
-    $scope.deleterecords = function(record) {
+    $scope.deleterecords = function (record) {
         InterviewsService.deleteInterview(record.id).then(function (results) {
-            $scope.list.splice( $scope.list.indexOf(record), 1 );
+            $scope.list.splice($scope.list.indexOf(record), 1);
             $scope.filteredItems = $scope.list.length; //Initially for no filter
             $scope.totalItems = $scope.list.length;
         }, function (error) {
@@ -27,17 +27,17 @@ angular.module('Jobsite').controller('InterviewsController', function ($scope, J
         });
     };
 
-    $scope.setPage = function(pageNo) {
+    $scope.setPage = function (pageNo) {
         $scope.currentPage = pageNo;
     };
 
-    $scope.filter = function() {
-        $timeout(function() {
+    $scope.filter = function () {
+        $timeout(function () {
             $scope.filteredItems = $scope.filtered.length;
         }, 10);
     };
 
-    $scope.sort_by = function(predicate) {
+    $scope.sort_by = function (predicate) {
         $scope.predicate = predicate;
         $scope.reverse = !$scope.reverse;
     };

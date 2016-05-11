@@ -7,8 +7,8 @@ angular.module('Jobsite').controller('SendInterviewController', function ($scope
     $scope.resume = resume;
     $scope.interviews = [];
     $scope.interviewSelected = '';
-    $scope.successMessage =false;
-    $scope.errorMessage =false;
+    $scope.successMessage = false;
+    $scope.errorMessage = false;
 
     JobsService.getJob(jobId).then(function (results) {
         response = results.data;
@@ -19,18 +19,18 @@ angular.module('Jobsite').controller('SendInterviewController', function ($scope
 
     InterviewsService.getInterviews().then(function (results) {
         response = results.data;
-        $scope.interviews = response.filter(function(item) {
-               return item.jobsIds.indexOf(jobId) != -1;
+        $scope.interviews = response.filter(function (item) {
+            return item.jobsIds.indexOf(jobId) != -1;
         });
     }, function (error) {
         console.log(error.data.message);
     });
 
-    $scope.onClose = function() {
+    $scope.onClose = function () {
         $modalInstance.close();
     };
 
-    $scope.notify = function() {
+    $scope.notify = function () {
         InterviewsService.notifyInterviewCandidate(jobId, $scope.resume.id).then(function (results) {
             $scope.successMessage = true;
         }, function (error) {
@@ -38,17 +38,21 @@ angular.module('Jobsite').controller('SendInterviewController', function ($scope
         });
     };
 
-    $scope.startInterview = function(isValid) {
-        if (!isValid ){
+    $scope.startInterview = function (isValid) {
+        if (!isValid) {
             $scope.errorMessage = true;
             return;
         }
 
         InterviewsService.sendInterviewRequestToResume(jobId, $scope.resume.id, {"interviewId": $scope.interviewSelected}).then(function (results) {
-        //    $scope.successMessage = true;
-            $timeout(function() {
+            //    $scope.successMessage = true;
+            $timeout(function () {
                 $modalInstance.close();
-                $state.go('testinterview', {'jobId':jobId, 'resumeId': $scope.resume.id, 'interviewId': $scope.interviewSelected});
+                $state.go('testinterview', {
+                    'jobId': jobId,
+                    'resumeId': $scope.resume.id,
+                    'interviewId': $scope.interviewSelected
+                });
 
             }, 1000);
         }, function (error) {

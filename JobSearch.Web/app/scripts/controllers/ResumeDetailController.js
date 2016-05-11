@@ -4,17 +4,17 @@
 //Controller for showing resume detail
 angular.module('Jobsite').controller('ResumeDetailController', function ($scope, $modalInstance, ResumesService, $sce, $timeout, $document, resume, text) {
 
-    $scope.searchText = (!angular.isUndefinedOrNull(text))? text :'';
+    $scope.searchText = (!angular.isUndefinedOrNull(text)) ? text : '';
     $scope.id = resume.parentDocumentId;
     $scope.resumeSource = '';
     $scope.currentPage = resume.pageNumber;
     $scope.totalPages = resume.totalPages;
     $scope.resume = resume;
-    if ($scope.resume.adminTags == null){
-        $scope.resume.adminTags=[];
+    if ($scope.resume.adminTags == null) {
+        $scope.resume.adminTags = [];
     }
-    if ($scope.resume.adminNotes== null){
-        $scope.resume.adminNotes=[];
+    if ($scope.resume.adminNotes == null) {
+        $scope.resume.adminNotes = [];
     }
 
     $scope.itemsPerPage = 1;
@@ -25,13 +25,13 @@ angular.module('Jobsite').controller('ResumeDetailController', function ($scope,
     $scope.adminTag = '';
     $scope.adminNote = '';
 
-    function SetEmailLink(){
-        var host = location.protocol + '//'  + location.host;
-        if (location.pathname.indexOf('JobSearch.Web') != -1){
+    function SetEmailLink() {
+        var host = location.protocol + '//' + location.host;
+        if (location.pathname.indexOf('JobSearch.Web') != -1) {
             host = location.protocol + '//' + location.host + '/JobSearch.Web';
         }
-        var url= host + '/index.html#/download_resume/'+ $scope.id;
-        $scope.emailLink = "mailto:?subject=Resume&body="+encodeURIComponent(url);
+        var url = host + '/index.html#/download_resume/' + $scope.id;
+        $scope.emailLink = "mailto:?subject=Resume&body=" + encodeURIComponent(url);
     }
 
     SetEmailLink();
@@ -40,8 +40,8 @@ angular.module('Jobsite').controller('ResumeDetailController', function ($scope,
     var _getResumeSource = function () {
         ResumesService.getPageUrl($scope.id, $scope.currentPage).then(function (results) {
             var _url = results.data.content;
-            var host = location.protocol + '//'  + location.host;
-            if (location.pathname.indexOf('JobSearch.Web') != -1){
+            var host = location.protocol + '//' + location.host;
+            if (location.pathname.indexOf('JobSearch.Web') != -1) {
                 host = location.protocol + '//' + location.host + '/JobSearch.Web';
             }
             var viewrUrl = host + "/pdf-viewer/web/viewer.html?file=" + window.escape(_url) + "#page=1&zoom=page-fit&search=" + $scope.searchText + "&phrase=false&hlall=true";
@@ -58,11 +58,11 @@ angular.module('Jobsite').controller('ResumeDetailController', function ($scope,
             $scope.resume = results.data;
             $scope.currentPage = $scope.resume.pageNumber;
             $scope.totalPages = $scope.resume.totalPages;
-            if ($scope.resume.adminTags == null){
-                $scope.resume.adminTags=[];
+            if ($scope.resume.adminTags == null) {
+                $scope.resume.adminTags = [];
             }
-            if ($scope.resume.adminNotes== null){
-                $scope.resume.adminNotes=[];
+            if ($scope.resume.adminNotes == null) {
+                $scope.resume.adminNotes = [];
             }
             _getResumeSource();
         }, function (error) {
@@ -70,11 +70,11 @@ angular.module('Jobsite').controller('ResumeDetailController', function ($scope,
         });
     };
 
-    $scope.pageChanged = function() {
+    $scope.pageChanged = function () {
         _getResumeSource();
     };
 
-    $scope.ClickOnNeighborsPage = function(page, total) {
+    $scope.ClickOnNeighborsPage = function (page, total) {
         $scope.currentPage = page;
         _getResumeSource();
     };
@@ -88,7 +88,7 @@ angular.module('Jobsite').controller('ResumeDetailController', function ($scope,
             var _url = results.data.content;
 
             var downloadLink = angular.element('<a></a>');
-            downloadLink.attr('href',_url);
+            downloadLink.attr('href', _url);
             downloadLink[0].click();
 
         }, function (error) {
@@ -96,7 +96,7 @@ angular.module('Jobsite').controller('ResumeDetailController', function ($scope,
         });
     };
 
-    $scope.openShare = function() {
+    $scope.openShare = function () {
         $scope.shareBoxVisible = true;
     };
 
@@ -105,7 +105,7 @@ angular.module('Jobsite').controller('ResumeDetailController', function ($scope,
             $scope.shareBoxVisible = false;
         }
     }
-    $scope.printElem = function() {
+    $scope.printElem = function () {
 
 
         var getMyFrame = document.getElementById('pdfViewer');
@@ -131,13 +131,13 @@ angular.module('Jobsite').controller('ResumeDetailController', function ($scope,
         return true;
     };
 
-    $scope.addAdminTag = function() {
+    $scope.addAdminTag = function () {
         if ($scope.resume.adminTags.indexOf($scope.adminTag) == -1) {
 
 
-            var req =  $scope.resume.adminTags.slice(0);
+            var req = $scope.resume.adminTags.slice(0);
             req.push($scope.adminTag);
-            var data ={
+            var data = {
                 'Tags': req
             };
 
@@ -150,14 +150,14 @@ angular.module('Jobsite').controller('ResumeDetailController', function ($scope,
 
         }
     };
-    $scope.removeAdminTag = function(index) {
+    $scope.removeAdminTag = function (index) {
 
-        var req =  $scope.resume.adminTags.slice(0);
+        var req = $scope.resume.adminTags.slice(0);
         req.splice(index, 1);
-        var data ={
+        var data = {
             'Tags': req
         };
-        ResumesService.addAdminTags($scope.id, $scope.currentPage,data).then(function (results) {
+        ResumesService.addAdminTags($scope.id, $scope.currentPage, data).then(function (results) {
             $scope.resume.adminTags.splice(index, 1);
         }, function (error) {
             console.log(error.data.message);
@@ -166,12 +166,12 @@ angular.module('Jobsite').controller('ResumeDetailController', function ($scope,
     };
 
 
-    $scope.addAdminNote = function() {
+    $scope.addAdminNote = function () {
         if ($scope.resume.adminNotes.indexOf($scope.adminNote) == -1) {
 
-            var req =  $scope.resume.adminNotes.slice(0);
+            var req = $scope.resume.adminNotes.slice(0);
             req.push($scope.adminNote);
-            var data ={
+            var data = {
                 'Notes': req
             };
 
@@ -185,11 +185,11 @@ angular.module('Jobsite').controller('ResumeDetailController', function ($scope,
 
         }
     };
-    $scope.removeAdminNote = function(index) {
+    $scope.removeAdminNote = function (index) {
 
-        var req =  $scope.resume.adminNotes.slice(0);
+        var req = $scope.resume.adminNotes.slice(0);
         req.splice(index, 1);
-        var data ={
+        var data = {
             'Notes': req
         };
         ResumesService.addAdminNotes($scope.id, $scope.currentPage, data).then(function (results) {

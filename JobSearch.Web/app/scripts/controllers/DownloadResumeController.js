@@ -1,7 +1,4 @@
 /**
- * Created by Van on 26.02.2016.
- */
-/**
  * Created by Van on 17.01.2016.
  */
 //Controller for downloading resume

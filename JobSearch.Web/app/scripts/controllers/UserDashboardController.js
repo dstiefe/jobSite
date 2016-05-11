@@ -2,14 +2,15 @@
  * Created by Van on 02.04.2016.
  */
 //Controller for working with user dashboard
-angular.module('Jobsite').controller("UserDashboardController", function ($rootScope, $scope, $stateParams,  $location, $modal, $q, $http, $timeout, AuthService, JobsService, ReferralService, RESOURCES, cfpLoadingBar) {$scope.role = AuthService.authentication.isAdministrator ? "Admin" : "User";
+angular.module('Jobsite').controller("UserDashboardController", function ($rootScope, $scope, $stateParams, $location, $modal, $q, $http, $timeout, AuthService, JobsService, ReferralService, RESOURCES, cfpLoadingBar) {
+
+    $scope.role = AuthService.authentication.isAdministrator ? "Admin" : "User";
 
     var jobId = $stateParams.jobId;
-    var resumeId =   $stateParams.resumeId;
-    var messageshow =   $stateParams.messageshow;
+    var resumeId = $stateParams.resumeId;
+    var messageshow = $stateParams.messageshow;
 
-
-    if (!AuthService.authentication.isAuth && messageshow == 1 && resumeId && jobId){
+    if (!AuthService.authentication.isAuth && messageshow == 1 && resumeId && jobId) {
         $location.search('jobId', jobId);
         $location.search('resumeId', resumeId);
         $location.search('messageshow', messageshow);
@@ -17,8 +18,7 @@ angular.module('Jobsite').controller("UserDashboardController", function ($rootS
         $location.path("/login");
     }
 
-    if (!AuthService.authentication.isUser)
-    {
+    if (!AuthService.authentication.isUser) {
         $location.path("/login");
     }
     else {
@@ -34,16 +34,15 @@ angular.module('Jobsite').controller("UserDashboardController", function ($rootS
 
         $scope.activeTab = 'JobDescription';
 
-
         var promise1 = JobsService.getJobsApplied();
         var promise2 = ReferralService.getReferrals();
         var promise3 = ReferralService.getReferences();
 
-        $q.all([promise1, promise2, promise3]).then(function(results){
+        $q.all([promise1, promise2, promise3]).then(function (results) {
             $scope.list = [];
             $scope.list = $scope.list.concat(results[0].data, results[1].data, results[2].data);
 
-            for(var i= 0; i< $scope.list.length; i++)
+            for (var i = 0; i < $scope.list.length; i++)
                 $scope.list[i].activeTab = 0;
 
             _pageCalc();
@@ -55,45 +54,16 @@ angular.module('Jobsite').controller("UserDashboardController", function ($rootS
             $scope.isLoading = false;
         });
 
-        //JobsService.getJobsApplied().then(function (results) {
-        //    $scope.list = results.data;
-        //    ReferralService.getReferrals().then(function (results2) {
-        //        $scope.list = $scope.list.concat(results2.data);
-        //        ReferralService.getReferences().then(function (results3) {
-        //            $scope.list = $scope.list.concat(results3.data);
-        //
-        //            for(var i= 0; i< $scope.list.length; i++)
-        //                $scope.list[i].activeTab = 0;
-        //
-        //            _pageCalc();
-        //            $scope.isLoading = false;
-        //        }, function (error) {
-        //            console.log(error.data.message);
-        //            $scope.isLoading = false;
-        //        });
-        //    }, function (error) {
-        //        console.log(error.data.message);
-        //        $scope.isLoading = false;
-        //    });
-        //}, function (error) {
-        //    console.log(error.data.message);
-        //    $scope.isLoading = false;
-        //});
-
-
-
-
         $scope.setPage = function (pageNo) {
             $scope.currentPage = pageNo;
         };
 
-
-        var _showMessenger = function(jobId, resumeId, job){
+        var _showMessenger = function (jobId, resumeId, job) {
             var modalInstance = $modal.open({
                 animation: true,
                 templateUrl: 'views/MessagesView.html',
                 controller: 'MessagesController',
-                size : 'lg',
+                size: 'lg',
                 resolve: {
                     resume: function () {
                         return null;
@@ -110,17 +80,16 @@ angular.module('Jobsite').controller("UserDashboardController", function ($rootS
                 }
             });
 
-            if (job!=null){
+            if (job != null) {
                 modalInstance.result.then(function (res) {
                     job.messagesCount = 0;
                 }, function () {
                     job.messagesCount = 0;
                 });
             }
-
         };
 
-        if (messageshow == 1 && resumeId && jobId){
+        if (messageshow == 1 && resumeId && jobId) {
             _showMessenger(jobId, resumeId, null);
         }
 
@@ -128,6 +97,4 @@ angular.module('Jobsite').controller("UserDashboardController", function ($rootS
             _showMessenger(data.id, data.resumeId, data);
         };
     }
-
-
 });

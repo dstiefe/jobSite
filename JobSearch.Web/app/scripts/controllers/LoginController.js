@@ -1,29 +1,25 @@
-/// <reference path="angular.min.js" />  
-/// <reference path="Module.js" />  
-/// <reference path="Service.js" />  
-
 //Controller for logging
-angular.module('Jobsite').controller("Login", function($scope, $rootScope, $location, AuthService, RESOURCES, $modal, $timeout) {
+angular.module('Jobsite').controller("Login", function ($scope, $rootScope, $location, AuthService, RESOURCES, $modal, $timeout) {
 
-    if (AuthService.authentication.isAuth){
+    if (AuthService.authentication.isAuth) {
         $location.path('/dashboard');
     }
-    else{
+    else {
 
-        if(window.location.href.indexOf("register") > -1) {
-            $scope.tabs = [{active: false}, {active: true }];
+        if (window.location.href.indexOf("register") > -1) {
+            $scope.tabs = [{active: false}, {active: true}];
         }
-        else{
-            $scope.tabs = [{active: true}, {active: false }];
+        else {
+            $scope.tabs = [{active: true}, {active: false}];
         }
 
-        $scope.loginData ={
-            userName:'',
-            password:'',
+        $scope.loginData = {
+            userName: '',
+            password: '',
             rememberMe: true
         };
 
-        $scope.registerData ={
+        $scope.registerData = {
             firstName: '',
             lastName: '',
             email: '',
@@ -34,37 +30,37 @@ angular.module('Jobsite').controller("Login", function($scope, $rootScope, $loca
             isEmployer: false
         };
 
-        $scope.login = function(isValid) {
-            $scope.successRegisterMessage='';
+        $scope.login = function (isValid) {
+            $scope.successRegisterMessage = '';
             $scope.errorRegisterDescription = '';
-            $scope.errorLoginDescription ='';
+            $scope.errorLoginDescription = '';
             if (!isValid) {
                 $scope.errorLoginDescription = "Please, fill out all fields!";
                 return;
             }
             AuthService.login($scope.loginData).then(function (response) {
                     var return_url = sessionStorage.getItem("return_url");
-                    if(return_url != null){
+                    if (return_url != null) {
                         sessionStorage.removeItem("return_url");
                         $location.path(return_url);
-                    }else{
+                    } else {
                         $location.path('/dashboard');
                     }
                 },
                 function (err) {
-                    if (err != null){
+                    if (err != null) {
                         $scope.errorLoginDescription = err.error_description;
                     }
-                    else{
+                    else {
                         $scope.errorLoginDescription = "Internal Server Error";
                     }
                 });
         };
 
-        $scope.register = function(isValid) {
-            $scope.successRegisterMessage='';
+        $scope.register = function (isValid) {
+            $scope.successRegisterMessage = '';
             $scope.errorRegisterDescription = '';
-            $scope.errorLoginDescription ='';
+            $scope.errorLoginDescription = '';
             if (!isValid) {
                 $scope.errorRegisterDescription = "Please, fill out all fields!";
                 return;
@@ -72,11 +68,11 @@ angular.module('Jobsite').controller("Login", function($scope, $rootScope, $loca
             AuthService.saveRegistration($scope.registerData).then(function (response) {
 
 
-                    $scope.successRegisterMessage="You have successfully register";
+                    $scope.successRegisterMessage = "You have successfully register";
 
-                    $timeout(function() {
-                        $scope.successRegisterMessage='';
-                        $scope.tabs = [{active: true}, {active: false }];
+                    $timeout(function () {
+                        $scope.successRegisterMessage = '';
+                        $scope.tabs = [{active: true}, {active: false}];
                     }, 1000);
                 },
                 function (response) {
@@ -87,7 +83,7 @@ angular.module('Jobsite').controller("Login", function($scope, $rootScope, $loca
                             errors.push(response.data.ModelState[key][i]);
                         }
                     }
-                    $scope.errorRegisterDescription ="Failed to register user due to: " + errors.join(' ');
+                    $scope.errorRegisterDescription = "Failed to register user due to: " + errors.join(' ');
 
                 });
         };
@@ -96,7 +92,7 @@ angular.module('Jobsite').controller("Login", function($scope, $rootScope, $loca
 
             var redirectUri = location.protocol + '//' + location.host + '/authcomplete.html';
 
-            if (location.pathname.indexOf('JobSearch.Web') != -1){
+            if (location.pathname.indexOf('JobSearch.Web') != -1) {
                 redirectUri = location.protocol + '//' + location.host + '/JobSearch.Web/authcomplete.html';
             }
             //
@@ -133,13 +129,16 @@ angular.module('Jobsite').controller("Login", function($scope, $rootScope, $loca
                 }
                 else {
                     //Obtain access token and redirect to orders
-                    var externalData = { provider: fragment.provider, externalAccessToken: fragment.external_access_token };
+                    var externalData = {
+                        provider: fragment.provider,
+                        externalAccessToken: fragment.external_access_token
+                    };
                     AuthService.obtainAccessToken(externalData).then(function (response) {
                             var return_url = sessionStorage.getItem("return_url");
-                            if(return_url != null){
+                            if (return_url != null) {
                                 sessionStorage.removeItem("return_url");
                                 $location.path(return_url);
-                            }else{
+                            } else {
                                 $location.path('/dashboard');
                             }
 
@@ -152,22 +151,22 @@ angular.module('Jobsite').controller("Login", function($scope, $rootScope, $loca
             });
         };
 
-        var showHelpWindow = function(templateName) {
+        var showHelpWindow = function (templateName) {
             var modalInstance = $modal.open({
                 animation: true,
                 templateUrl: templateName,
-                controller: function(){
+                controller: function () {
 
                 },
-                size : 'lg'
+                size: 'lg'
             });
         };
 
-        $scope.showTerms = function() {
+        $scope.showTerms = function () {
             showHelpWindow('views/TermsView.html');
         };
 
-        $scope.showPrivacy= function() {
+        $scope.showPrivacy = function () {
             showHelpWindow('views/PrivacyView.html');
         };
 

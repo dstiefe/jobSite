@@ -3,16 +3,16 @@
  */
 
 //Controller for sending messages
-angular.module('Jobsite').controller('MessagesController', function ($scope, $modalInstance, JobsService,ResumesService, $state, InterviewsService, MessagesService, AuthService, $sce, $timeout, $document, resume, jobId, resumeId, job) {
+angular.module('Jobsite').controller('MessagesController', function ($scope, $modalInstance, JobsService, ResumesService, $state, InterviewsService, MessagesService, AuthService, $sce, $timeout, $document, resume, jobId, resumeId, job) {
 
 
     $scope.jobId = jobId;
     $scope.resumeId = resumeId;
     $scope.successMessage = false;
     $scope.errorMessage = '';
-    $scope.newMessage={
-        subject:'',
-        body:''
+    $scope.newMessage = {
+        subject: '',
+        body: ''
     };
     $scope.selectedMessageTemplate = {};
     $scope.isSaveTemplate = false;
@@ -20,30 +20,30 @@ angular.module('Jobsite').controller('MessagesController', function ($scope, $mo
     $scope.isAdmin = AuthService.authentication.isAdministrator;
 
 
-        if ($scope.isAdmin){
-            if (resume != null){
-                $scope.resume = resume;
+    if ($scope.isAdmin) {
+        if (resume != null) {
+            $scope.resume = resume;
+            $scope.toUserName = $scope.resume.firstName + ' ' + $scope.resume.lastName;
+        }
+        else {
+            ResumesService.getResume($scope.resumeId).then(function (results) {
+                response = results.data;
+                $scope.resume = response;
                 $scope.toUserName = $scope.resume.firstName + ' ' + $scope.resume.lastName;
-            }
-            else{
-                ResumesService.getResume($scope.resumeId).then(function (results) {
-                    response = results.data;
-                    $scope.resume = response;
-                    $scope.toUserName = $scope.resume.firstName + ' ' + $scope.resume.lastName;
-                }, function (error) {
-                    console.log(error.data.message);
-                });
-            }
+            }, function (error) {
+                console.log(error.data.message);
+            });
         }
-        else{
-            $scope.toUserName = 'Emplorer';
-        }
+    }
+    else {
+        $scope.toUserName = 'Emplorer';
+    }
 
 
-    if (job != null){
+    if (job != null) {
         $scope.job = job;
     }
-    else{
+    else {
         JobsService.getJob($scope.jobId).then(function (results) {
             response = results.data;
             $scope.job = response;
@@ -54,8 +54,8 @@ angular.module('Jobsite').controller('MessagesController', function ($scope, $mo
 
     MessagesService.getMessages($scope.jobId, $scope.resumeId).then(function (results) {
         $scope.messages = results.data;
-        if ($scope.messages.length>0){
-            $scope.messages[$scope.messages.length-1].open=true;
+        if ($scope.messages.length > 0) {
+            $scope.messages[$scope.messages.length - 1].open = true;
         }
 
     }, function (error) {
@@ -69,28 +69,28 @@ angular.module('Jobsite').controller('MessagesController', function ($scope, $mo
     });
 
 
-    var _sendMessage = function(){
+    var _sendMessage = function () {
 
-        var request ={
+        var request = {
             jobId: $scope.jobId,
             resumeId: $scope.resumeId,
-            subject:$scope.newMessage.subject,
-            body:$scope.newMessage.body
+            subject: $scope.newMessage.subject,
+            body: $scope.newMessage.body
         };
         MessagesService.sendMessage(request).then(function (results) {
             var message = results.data;
             $scope.messages.push(message);
 
             $scope.successMessage = true;
-            $scope.newMessage.subject ='';
-            $scope.newMessage.body ='';
+            $scope.newMessage.subject = '';
+            $scope.newMessage.body = '';
 
             $scope.selectedMessageTemplate = {};
             $scope.isSaveTemplate = false;
             $scope.nameTemplate = '';
 
-            $timeout(function() {
-                $scope.successMessage =false;
+            $timeout(function () {
+                $scope.successMessage = false;
             }, 1000);
 
         }, function (error) {
@@ -100,26 +100,24 @@ angular.module('Jobsite').controller('MessagesController', function ($scope, $mo
 
     };
 
-    $scope.send = function(isValid) {
+    $scope.send = function (isValid) {
         $scope.successMessage = false;
         $scope.errorMessage = '';
-        if (!isValid){
+        if (!isValid) {
             $scope.errorMessage = "You don't fill mandatory fields";
             return;
         }
 
-        if ($scope.isSaveTemplate && !$scope.nameTemplate){
+        if ($scope.isSaveTemplate && !$scope.nameTemplate) {
             $scope.errorMessage = "You don't fill Name Template";
             return;
         }
 
-        console.log('send');
-
-        if ($scope.isSaveTemplate){
-            var requestTemp ={
+        if ($scope.isSaveTemplate) {
+            var requestTemp = {
                 name: $scope.nameTemplate,
-                subject:$scope.newMessage.subject,
-                body:$scope.newMessage.body
+                subject: $scope.newMessage.subject,
+                body: $scope.newMessage.body
             };
             MessagesService.postMessageTemplate(requestTemp).then(function (results) {
                 var messageTemplate = results.data;
@@ -131,41 +129,39 @@ angular.module('Jobsite').controller('MessagesController', function ($scope, $mo
                 console.log(error.data.message);
             });
         }
-        else{
+        else {
             _sendMessage();
         }
     };
 
-    $scope.cancel = function() {
-        console.log('cancel');
+    $scope.cancel = function () {
         $modalInstance.close();
     };
 
-    $scope.onClose = function() {
-        console.log('close');
+    $scope.onClose = function () {
         $modalInstance.close();
     };
 
-    $scope.messageTemplateChanged = function(messageTemplate) {
-       if ($scope.selectedMessageTemplate){
-          $scope.newMessage.subject = $scope.selectedMessageTemplate.subject;
-          $scope.newMessage.body = $scope.selectedMessageTemplate.body;
-       }else{
-           $scope.newMessage.subject = '';
-           $scope.newMessage.body = '';
-       }
+    $scope.messageTemplateChanged = function (messageTemplate) {
+        if ($scope.selectedMessageTemplate) {
+            $scope.newMessage.subject = $scope.selectedMessageTemplate.subject;
+            $scope.newMessage.body = $scope.selectedMessageTemplate.body;
+        } else {
+            $scope.newMessage.subject = '';
+            $scope.newMessage.body = '';
+        }
     };
 
 
-    $scope.reply = function( message) {
+    $scope.reply = function (message) {
         message.successMessage = false;
         message.errorMessage = '';
-        if (!message.replyBody){
+        if (!message.replyBody) {
             message.errorMessage = "You don't fill mandatory fields";
             return;
         }
 
-        var request ={
+        var request = {
             jobId: message.jobId,
             resumeId: message.resumeId,
             subject: message.subject,
@@ -176,9 +172,9 @@ angular.module('Jobsite').controller('MessagesController', function ($scope, $mo
 
             $scope.messages.push(results.data);
 
-            message.replyBody='';
-            message.showReply=false;
-            $timeout(function() {
+            message.replyBody = '';
+            message.showReply = false;
+            $timeout(function () {
                 message.successMessage = true;
             }, 1000);
 
@@ -189,49 +185,46 @@ angular.module('Jobsite').controller('MessagesController', function ($scope, $mo
 
     };
 
-    $scope.replyCancel = function( message) {
+    $scope.replyCancel = function (message) {
         message.successMessage = false;
         message.errorMessage = '';
-        message.replyBody='';
-        message.showReply=false;
+        message.replyBody = '';
+        message.showReply = false;
     };
 
     $scope.isCollapse = true;
-    $scope.showAllItems = function(message) {
-        if (message.collapse){
-            console.log('showAllItems');
-            message.collapse =false;
+    $scope.showAllItems = function (message) {
+        if (message.collapse) {
+            message.collapse = false;
             $scope.isCollapse = false;
         }
 
     };
 
-    $scope.collapseFilter = function(item, index, array) {
+    $scope.collapseFilter = function (item, index, array) {
         var count = array.length;
-        if (count <= 5)
-        {
-            $scope.isCollapse =false;
+        if (count <= 5) {
+            $scope.isCollapse = false;
             return true;
         }
 
-        if (!$scope.isCollapse){
+        if (!$scope.isCollapse) {
             return true;
         }
 
         var startIndex = 4;
         var endIndex = count - 3;
 
-        if (index == endIndex)
-        {
+        if (index == endIndex) {
             item.collapse = true;
-            item.collapseCount = endIndex-startIndex +1;
+            item.collapseCount = endIndex - startIndex + 1;
             return true;
         }
 
-        if (index < startIndex || index > endIndex){
+        if (index < startIndex || index > endIndex) {
             return true;
         }
-        else{
+        else {
             return false;
         }
     };

@@ -2,7 +2,7 @@
  * Created by Van on 02.04.2016.
  */
 //Controller for working with admin dashboard
-angular.module('Jobsite').controller("AdminDashboardController", function ($rootScope, $scope, ValiDatedTokenObject, $location, $modal, $http, $timeout, AuthService, JobsService, ReferralService, RESOURCES, cfpLoadingBar) {
+angular.module('Jobsite').controller("AdminDashboardController", function ($rootScope, $scope, $location, $modal, $http, $timeout, AuthService, JobsService, ReferralService, RESOURCES, cfpLoadingBar) {
     if (!AuthService.authentication.isAdministrator)
     {
         $location.path("/login");
@@ -33,7 +33,7 @@ angular.module('Jobsite').controller("AdminDashboardController", function ($root
 
         $scope.deleterecords = function (id) {
             console.log(id);
-            $http({ method: 'DELETE', url: serviceBase + 'jobs/' + id, headers: { 'Content-Type': 'application/json', 'Authorization': ValiDatedTokenObject.getValiDatedTokenObject().token_type + " " + ValiDatedTokenObject.getValiDatedTokenObject().access_token } }).
+            $http({ method: 'DELETE', url: serviceBase + 'jobs/' + id}).
             success(function (response) {
                 JobsService.getMyJobs().then(function (results) {
                     $scope.list = results.data;

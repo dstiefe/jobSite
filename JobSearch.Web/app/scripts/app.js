@@ -25,7 +25,8 @@ var clientId ="P600Us6Y476QiK331u5yEzb22dpX_y6NS75!9I-a";
         'angular-loading-bar',
         'angularSpectrumColorpicker',
         'luegg.directives',
-        'rzModule' // slider
+        'rzModule', // slider
+        'ngCookies'
     ]).constant('RESOURCES', (function() {
 
             var EmployeeTypes = [

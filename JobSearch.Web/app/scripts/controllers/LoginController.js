@@ -3,7 +3,7 @@
 /// <reference path="Service.js" />  
 
 //Controller for logging
-angular.module('Jobsite').controller("Login", function($scope, $rootScope, $location, ValiDatedTokenObject, AuthService, RESOURCES, $modal, $timeout) {
+angular.module('Jobsite').controller("Login", function($scope, $rootScope, $location, AuthService, RESOURCES, $modal, $timeout) {
 
     if (AuthService.authentication.isAuth){
         $location.path('/dashboard');
@@ -19,7 +19,8 @@ angular.module('Jobsite').controller("Login", function($scope, $rootScope, $loca
 
         $scope.loginData ={
             userName:'',
-            password:''
+            password:'',
+            rememberMe: true
         };
 
         $scope.registerData ={

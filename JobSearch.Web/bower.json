@@ -30,7 +30,8 @@
     "components-font-awesome": "^4.6.1",
     "awesome-bootstrap-checkbox": "^0.3.7",
     "jquery-ui": "^1.11.4",
-    "angular-scroll-glue": "^2.0.6"
+    "angular-scroll-glue": "^2.0.6",
+    "angular-cookies": "^1.5.5"
   },
   "overrides": {
     "jquery-ui": {

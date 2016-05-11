@@ -3,7 +3,7 @@
  */
 
 //Controller for reseting passwords
-angular.module('Jobsite').controller("ResetPasswordController", function($scope, $http, $timeout, ValiDatedTokenObject, $location, AuthService, RESOURCES) {
+angular.module('Jobsite').controller("ResetPasswordController", function($scope, $http, $timeout, $location, AuthService, RESOURCES) {
     var serviceBase = RESOURCES.API_BASE_PATH;
 
     $scope.usernameOrEmail='';

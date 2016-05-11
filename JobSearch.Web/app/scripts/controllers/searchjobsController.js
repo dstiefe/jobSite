@@ -1,10 +1,9 @@
 //Controller for searching jobs
 angular
-    .module('Jobsite').controller("searchjobController", function($scope, ValiDatedTokenObject, $location,$http, $timeout, RESOURCES, JobsService, $filter) {
+    .module('Jobsite').controller("searchjobController", function($scope, $location,$http, $timeout, RESOURCES, JobsService, $filter,AuthService) {
 
-        if (sessionStorage.getItem("ValiDatedTokenObject") == null) { } else {
-            ValiDatedTokenObject.setValiDatedTokenObject(JSON.parse(sessionStorage.getItem("ValiDatedTokenObject")));
-            $scope.role = ValiDatedTokenObject.getValiDatedTokenObject().roles;
+    if (AuthService.authentication.isAuth) {
+            $scope.role = AuthService.authentication.isAdministrator?"Admin":"User";
         }
 
         $scope.searchtext = "";

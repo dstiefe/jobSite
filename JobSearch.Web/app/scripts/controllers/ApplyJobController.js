@@ -2,7 +2,7 @@ angular
     .module('Jobsite')
     .controller('ApplyJobController', ApplyJobController);
 //Controller for appling job
-function ApplyJobController($scope,  ValiDatedTokenObject, $http, $location, $modalInstance, ResumesService, RESOURCES,jobId) {
+function ApplyJobController($scope,  $http, $location, $modalInstance, ResumesService, RESOURCES,jobId, AuthService) {
     var serviceBase = RESOURCES.API_BASE_PATH;
     $scope.jobId = jobId;
     $scope.includeCoverLetter = false;
@@ -10,7 +10,8 @@ function ApplyJobController($scope,  ValiDatedTokenObject, $http, $location, $mo
     $scope.resumeFileUrl = '';
     $scope.resumeOriginalFilename = '';
     $scope.loading =false;
-    if ( ValiDatedTokenObject.getValiDatedTokenObject()==null)
+
+    if (!AuthService.authentication.isAuth)
     {
         $location.path("/login");
     }
@@ -23,13 +24,9 @@ function ApplyJobController($scope,  ValiDatedTokenObject, $http, $location, $mo
 
     var req = {
         method: 'GET',
-        url: serviceBase + 'account/userinfo',
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': ValiDatedTokenObject.getValiDatedTokenObject().token_type+" "+ValiDatedTokenObject.getValiDatedTokenObject().access_token
-        }
+        url: serviceBase + 'account/userinfo'
     }
-    $scope.role = ValiDatedTokenObject.getValiDatedTokenObject().roles;
+    $scope.role = AuthService.authentication.isAdministrator? "Admin": "User";
     $http(req).then(function(data) {
         if (data.status == "200") {
             $scope.accountFirstName = data.data.firstName;
@@ -65,8 +62,7 @@ function ApplyJobController($scope,  ValiDatedTokenObject, $http, $location, $mo
         $http.post(uploadUrl, fd, {
                 transformRequest: angular.identity,
                 headers: {
-                    'Content-Type': undefined,
-                    'Authorization': ValiDatedTokenObject.getValiDatedTokenObject().token_type+" "+ValiDatedTokenObject.getValiDatedTokenObject().access_token
+                    'Content-Type': undefined
                 }
             })
             .success(function(response) {

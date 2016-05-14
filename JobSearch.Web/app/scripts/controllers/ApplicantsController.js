@@ -8,6 +8,7 @@ angular.module('Jobsite').controller("ApplicantsController", function($scope, $h
     var jobId = $stateParams.id;
     var resumeId =   $stateParams.resumeId;
     var messageshow =   $stateParams.messageshow;
+    $scope.entryLimits = [5, 10, 20, 50, 100];
 
     if (!AuthService.authentication.isAuth && messageshow == 1 && resumeId){
         $location.search('resumeId', resumeId);

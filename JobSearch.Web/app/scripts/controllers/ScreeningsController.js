@@ -6,6 +6,7 @@ angular
     .module('Jobsite').controller("ScreeningsController", function ($scope, $http, $timeout, $location, ScreeningsService) {
 
     $scope.currentPage = 1;
+    $scope.entryLimits = [5, 10, 20, 50, 100];
 
     ScreeningsService.getMyScreenings().then(function (results) {
         $scope.list = results.data;

@@ -5,6 +5,7 @@
 angular.module('Jobsite').controller("ResumesController", function ($scope, AuthService, $location, SearchResumesParameters, $modal, $timeout, ResumesService) {
 
     $scope.currentPage = 1;
+    $scope.entryLimits = [5, 10, 20, 50, 100];
 
     function getResumes() {
         ResumesService.getMyResumes().then(function (results) {

@@ -6,6 +6,7 @@
 angular.module('Jobsite').controller('InterviewsController', function ($scope, JobsService, InterviewsService, $sce, $timeout, $document) {
 
     $scope.currentPage = 1;
+    $scope.entryLimits = [5, 10, 20, 50, 100];
 
     InterviewsService.getInterviews().then(function (results) {
         $scope.list = results.data;

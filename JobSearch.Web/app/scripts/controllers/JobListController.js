@@ -3,6 +3,7 @@ angular.module('Jobsite').controller("JobListController", function ($scope, $htt
 
     var serviceBase = RESOURCES.API_BASE_PATH;
     $scope.currentPage = 1;
+    $scope.entryLimits = [5, 10, 20, 50, 100];
 
     if (!AuthService.authentication.isAuth) {
         $location.path("/login");

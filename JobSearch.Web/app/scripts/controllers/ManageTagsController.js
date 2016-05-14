@@ -81,8 +81,7 @@ angular.module('Jobsite').controller('ManageTagsController', function ($scope, $
     };
 
     $scope.onSave = function (isValid) {
-        console.log('on save');
-        $modalInstance.close({
+          $modalInstance.close({
             'tags': $scope.tags
         });
     };

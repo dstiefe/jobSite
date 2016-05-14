@@ -6,6 +6,7 @@ angular.module('Jobsite').controller("EditScreeningController", function ($scope
 
     $scope.id = $stateParams.id;
     $scope.currentPage = 1;
+    $scope.entryLimits = [5, 10, 20, 50, 100];
     $scope.entryLimit = 10;
 
 

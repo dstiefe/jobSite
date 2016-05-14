@@ -5,6 +5,7 @@
 angular.module('Jobsite').controller('ReferralsController', function ($scope, JobsService, ReferralService, $sce, $timeout, $document) {
 
     $scope.currentPage = 1;
+    $scope.entryLimits = [5, 10, 20, 50, 100];
 
     ReferralService.getMyJobReferrals().then(function (results) {
         $scope.list = results.data;

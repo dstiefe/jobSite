@@ -2,7 +2,7 @@
  * Created by Van on 03.02.2016.
  */
 //Controller for creating referral
-angular.module('Jobsite').controller("CreateReferralController", function ($scope, $http, $timeout, $location, ReferralService, CategoriesService, JobsService, $state, $stateParams) {
+angular.module('Jobsite').controller("CreateReferralController", function ($scope, $http, $timeout, $location, ReferralService, CategoriesService, JobsService, $state, $stateParams, $modal) {
 
     $scope.id = $stateParams.id;
     $scope.referral = {};
@@ -29,6 +29,7 @@ angular.module('Jobsite').controller("CreateReferralController", function ($scop
             $scope.referral.description = res.description;
             $scope.referral.categoryId = res.categoryId;
             $scope.referral.jobsIds = res.jobsIds;
+            $scope.referral.tags = res.tags;
 
 
         }, function (error) {
@@ -59,7 +60,7 @@ angular.module('Jobsite').controller("CreateReferralController", function ($scop
                 console.log(error.data.message);
             });
         }
-    }
+    };
 
     $scope.cancel = function () {
         if (!angular.isUndefined($scope.id) && $scope.id != '') {
@@ -68,7 +69,33 @@ angular.module('Jobsite').controller("CreateReferralController", function ($scop
         else {
             $state.go('referrals');
         }
-    }
+    };
+
+    $scope.manageTags = function () {
+
+        var modalInstance = $modal.open({
+            animation: true,
+            templateUrl: 'views/ManageTags.html',
+            controller: 'ManageTagsController',
+            size: 'md',
+            resolve: {
+                screening: function () {
+                    return $scope.referral;
+                }
+            }
+        });
+
+        modalInstance.result.then(function (res) {
+            if (res) {
+                $scope.referral.tags = res.tags;
+            }
+
+
+        }, function () {
+            console.log('Modal dismissed at: ' + new Date());
+        });
+
+    };
 
 
 });

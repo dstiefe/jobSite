@@ -50,7 +50,9 @@
                                     <td  ng-bind-html="data.title"></td>
                                     <td>{{data.category}}</td>
                                     <td>
-                                        {{ data.tags.join()}}
+                                        <span ng-repeat="tag in data.tags">
+                                            {{tag.name}}
+                                        </span>
                                     </td>
                                     <td>
                                         {{ data.modifyDate*1000 | date : "M/d/yyyy" }}

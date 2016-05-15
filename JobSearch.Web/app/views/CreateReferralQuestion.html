@@ -163,14 +163,16 @@
                                                     id="selectedTag_{{$index}}"
                                                     name="selectedTag_{{$index}}"
 
-                                                    class="form-control"
                                                     ng-init="referenceTagChilds=getChildsTags(referenceTag)"
-                                                    ng-model="$parent.referralQuestion.tags[$index]"
                                                     class="form-control"
-
+                                                    ng-model="$parent.referralQuestion.tags[$index]"
                                             >
                                                 <option value="">Select {{referenceTag.name}}</option>
-                                                <option ng-repeat="_option in referenceTagChilds" ng-selected="$parent.screeningQuestion.tags.indexOf(_option.parentName+'/'+_option.name)!=-1" value="{{_option.parentName}}/{{_option.name}}">{{_option.parentName}} / {{_option.name}}</option>
+                                                <option ng-repeat="_option in referenceTagChilds"
+                                                        ng-selected="$parent.referralQuestion.tags.indexOf(_option.parentName+'/'+_option.name)!=-1"
+                                                        value="{{_option.parentName}}/{{_option.name}}">
+                                                    {{_option.parentName}} / {{_option.name}}
+                                                </option>
                                             </select>
                                             <br />
                                         </div>

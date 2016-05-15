@@ -179,7 +179,9 @@
 
                                             >
                                                 <option value="">Select {{screeningTag.name}}</option>
-                                                <option ng-repeat="_option in screeningTagChilds" ng-selected="$parent.screeningQuestion.tags.indexOf(_option.parentName+'/'+_option.name)!=-1" value="{{_option.parentName}}/{{_option.name}}">{{_option.parentName}} / {{_option.name}}</option>
+                                                <option ng-repeat="_option in screeningTagChilds"
+                                                        ng-selected="$parent.screeningQuestion.tags.indexOf(_option.parentName+'/'+_option.name)!=-1"
+                                                        value="{{_option.parentName}}/{{_option.name}}">{{_option.parentName}} / {{_option.name}}</option>
                                             </select>
 
 

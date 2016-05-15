@@ -46,6 +46,14 @@ angular.module('Jobsite').controller("TestJobReferralController", function ($sco
         ReferralService.getReferenceQuestions($scope.jobId, $scope.resumeId, $scope.jobReferralId).then(function (results) {
             $scope.referenceQuestions = results.data;
             _setQuestion();
+
+            for (var i=0;i<$scope.referenceQuestions.length;i++){
+                $scope.resultQuestions[i] = {
+                    referenceQuestionId: $scope.referenceQuestions[i].id,
+                    answerOption: 50
+                }
+            }
+
         }, function (error) {
             console.log(error.data.message);
         });

@@ -146,20 +146,7 @@
                                         <span class="color-theme" ng-show="createQuestionReferralForm.type.$error.required">Question Type is required.</span>
                                     </div>
 
-
-                                    <div class="form-group">
-                                        <label for="tags">Tags</label>
-                                        <input class="form-control" style="width:70%;float:right;" ng-model="tag" id="tags" type="text"  ng-enter="addtags()"><a href="" ng-click="addtags()"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
-                                        <br>
-                                        <br>
-
-                                        <ul class="list-group">
-                                            <li class="list-group-item" ng-repeat="tagname in referralQuestion.tags">{{ tagname }}<a style="float:right;" href="" ng-click="removetag($index)"  ><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></a></li>
-                                        </ul>
-                                    </div>
-
-
-                                    <div class="form-group" ng-if="mode == 'edit'">
+                                       <div class="form-group" ng-if="mode == 'edit'">
                                         <label for="sort">Order</label>
                                         <input type="number" min="0" step="1"  ng-model="referralQuestion.sort" class="form-control" id="sort" name="sort" placeholder="Set Order">
 

@@ -2,7 +2,7 @@
  * Created by Van on 03.02.2016.
  */
 //Controller for creating referral question
-angular.module('Jobsite').controller("CreateReferralQuestionController", function ($scope, $http, $timeout, $location, ReferralService, $state, $stateParams, RESOURCES) {
+angular.module('Jobsite').controller("CreateReferralQuestionController", function ($scope, $http, $timeout, $location, ReferralService, $state, $stateParams, RESOURCES, $filter) {
 
     $scope.id = $stateParams.id;
     $scope.type = $stateParams.type;
@@ -25,6 +25,11 @@ angular.module('Jobsite').controller("CreateReferralQuestionController", functio
     ReferralService.getJobReferral($scope.id).then(function (results) {
         var res = results.data;
         $scope.questionsCount = res.questionsCount;
+
+        $scope.referencesTags = res.tags;
+        if ($scope.referencesTags == null) {
+            $scope.referencesTags = [];
+        }
     }, function (error) {
         console.log(error.data.message);
     });
@@ -115,7 +120,19 @@ angular.module('Jobsite').controller("CreateReferralQuestionController", functio
 
     $scope.cancel = function () {
         $state.go('referrals');
-    }
+    };
+    $scope.getChildsTags = function (rootTag) {
+
+        var childs = $filter('filter')($scope.referencesTags, {parentName: rootTag.name}, true);
+        if (childs != null && childs.length > 0) {
+            for (var i = 0; i < childs.length; i++) {
+                if (childs[i].isCategory) {
+                    childs = childs.concat($scope.getChildsTags(childs[i]));
+                }
+            }
+        }
+        return $filter('filter')(childs, {isCategory: false}, true);
+    };
 
     $scope.changedQuestionType = function () {
         if ($scope.referralQuestion.type == 'TrueFalse') {

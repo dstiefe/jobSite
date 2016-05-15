@@ -129,8 +129,7 @@
                                         </div>
 
                                     </div>
-                                </div>
-                                <div class="col-md-6">
+
                                     <div class="form-group">
                                         <label for="type">Question Type</label>
                                         <select
@@ -165,6 +164,33 @@
                                         <input type="number" min="0" step="1"  ng-model="referralQuestion.sort" class="form-control" id="sort" name="sort" placeholder="Set Order">
 
                                     </div>
+
+                                </div>
+                                <div class="col-md-6">
+
+                                    <div class="form-group">
+                                        <label for="tags">Tags</label>
+
+                                        <div ng-repeat="referenceTag in referencesTags | filter:{ level: 1, isCategory: true } track by $index">
+                                            <select
+                                                    id="selectedTag_{{$index}}"
+                                                    name="selectedTag_{{$index}}"
+
+                                                    class="form-control"
+                                                    ng-init="referenceTagChilds=getChildsTags(referenceTag)"
+                                                    ng-model="$parent.referralQuestion.tags[$index]"
+                                                    class="form-control"
+
+                                            >
+                                                <option value="">Select {{referenceTag.name}}</option>
+                                                <option ng-repeat="_option in referenceTagChilds" ng-selected="$parent.screeningQuestion.tags.indexOf(_option.parentName+'/'+_option.name)!=-1" value="{{_option.parentName}}/{{_option.name}}">{{_option.parentName}} / {{_option.name}}</option>
+                                            </select>
+                                            <br />
+                                        </div>
+
+                                    </div>
+
+
 
                                 </div>
                             </div>

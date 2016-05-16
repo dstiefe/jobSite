@@ -1,5 +1,7 @@
 <div class="inmodal">
+
     <div class="color-line"></div>
+
     <div class="modal-header">
         <div style="position:absolute; right: 30px; top: 10px;">
             <a ng-click="onClose()" ><span class="glyphicon close-icon hoverClick" style="font-size: 30px; color: red;">×</span></a>
@@ -8,7 +10,6 @@
         <div class="pull-left">
             Manage Tags
         </div>
-
     </div>
 
     <form name="addTagForm" ng-submit="addTag(addTagForm.$valid)" novalidate>
@@ -44,13 +45,11 @@
                     <option value="">Select Parent</option>
                     <option ng-repeat="_parent in parents" value="{{_parent.name}}" >{{_parent.name}}</option>
                 </select>
-                <!--<select id="parentName" name="parentName" ng-model="parentName" class="form-control"  ng-change="parentChanged()">-->
-                    <!--<option value="">Select Parent</option>-->
-                    <!--<option ng-repeat="_parent in parents" value="{{_parent.name}}" ng-selected="parentName == _parent.name">{{_parent.name}}</option>-->
-                <!--</select>-->
             </div>
         </div>
+
         <br />
+
         <div class="row">
             <div class="col-md-6 form-group">
                 <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add tag</button>
@@ -69,13 +68,14 @@
         </div>
 
     </div>
+
     </form>
+
     <div class="modal-footer">
         <div class="text-right m-t-xs">
             <button type="submit" class="btn btn-success" ng-click="onSave()">Save</button>
             <button ng-click="onClose()" class="btn btn-primary">Cancel</button>
         </div>
     </div>
-
 
 </div>

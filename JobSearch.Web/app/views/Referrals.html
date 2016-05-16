@@ -43,14 +43,16 @@
                                 <th>Reference Category&nbsp;<a ng-click="sort_by('category');"><i class="glyphicon glyphicon-sort"></i></a></th>
                                 <th>Reference tags&nbsp;<a ng-click="sort_by('tags');"><i class="glyphicon glyphicon-sort"></i></a></th>
                                 <th>Created date&nbsp;<a ng-click="sort_by('modifyDate');"><i class="glyphicon glyphicon-sort"></i></a></th>
-                                <th>Admin </th>
+                                <th style="width: 200px;">Admin </th>
                                 </thead>
                                 <tbody>
                                 <tr ng-repeat="data in filtered = (list | filter:search | orderBy : predicate :reverse) | startFrom:(currentPage-1)*entryLimit | limitTo:entryLimit">
                                     <td  ng-bind-html="data.title"></td>
                                     <td>{{data.category}}</td>
                                     <td>
-                                        {{ data.tags.join()}}
+                                        <span ng-repeat="tag in data.tags">
+                                            {{tag.name}}
+                                        </span>
                                     </td>
                                     <td>
                                         {{ data.modifyDate*1000 | date : "M/d/yyyy" }}

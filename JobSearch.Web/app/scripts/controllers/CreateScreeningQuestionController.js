@@ -40,6 +40,39 @@ angular.module('Jobsite').controller("CreateScreeningQuestionController", functi
         console.log(error.data.message);
     });
 
+    var _getAllChildsTags = function (rootTag) {
+
+        var childs = $filter('filter')($scope.screeningTags, {parentName: rootTag.name}, true);
+        if (childs != null && childs.length > 0) {
+            for (var i = 0; i < childs.length; i++) {
+                if (childs[i].isCategory) {
+                    childs = childs.concat($scope.getChildsTags(childs[i]));
+                }
+            }
+        }
+        return childs;
+    };
+
+    $scope.getChildsTags = function (rootTag) {
+        var childs =_getAllChildsTags(rootTag);
+        return $filter('filter')(childs, {isCategory: false}, true);
+    };
+
+    var _checkTagInRoot = function (item, root) {
+            var childs = _getAllChildsTags(root);
+            var itemsSplit = item.split('/');
+            for (var i = 0; i < childs.length; i++) {
+                if (itemsSplit.length > 1){
+                    if (childs[i].parentName == itemsSplit[0] && childs[i].name == itemsSplit[1]) {
+                        return true;
+                    }
+                }
+                if (childs[i].name == itemsSplit[0]) {
+                        return true;
+                    }
+      }
+        return false;
+    };
 
     if ($scope.mode == 'edit') {
         ScreeningsService.getScreeningQuestionById($scope.id, $scope.questionId).then(function (results) {
@@ -61,24 +94,33 @@ angular.module('Jobsite').controller("CreateScreeningQuestionController", functi
                 $scope.selectedOption = $scope.screeningQuestion.answerOption.toString();
             }
 
+
+            if (results.data.tags == null) {
+                $scope.screeningQuestion.tags = [];
+            }else{
+
+                var resTags = angular.copy(results.data.tags);
+                var roots = $filter('filter')($scope.screeningTags, { level: 1, isCategory: true}, true);
+                for (var i=0; i<roots.length; i++){
+                    var root = roots[i];
+                    var item = $.grep(resTags, function(item, index) {
+                        return _checkTagInRoot(item, root);
+                    });
+                    if (item ){
+                        $scope.screeningQuestion.tags[i] = item[0];
+                    }else{
+                        $scope.screeningQuestion.tags[i] = '';
+                    }
+                }
+            }
+
+
         }, function (error) {
             console.log(error.data.message);
         });
     }
 
 
-    $scope.getChildsTags = function (rootTag) {
-
-        var childs = $filter('filter')($scope.screeningTags, {parentName: rootTag.name}, true);
-        if (childs != null && childs.length > 0) {
-            for (var i = 0; i < childs.length; i++) {
-                if (childs[i].isCategory) {
-                    childs = childs.concat($scope.getChildsTags(childs[i]));
-                }
-            }
-        }
-        return $filter('filter')(childs, {isCategory: false}, true);
-    };
 
 
     $scope.saveChanges = function (isValid) {
@@ -100,6 +142,7 @@ angular.module('Jobsite').controller("CreateScreeningQuestionController", functi
         if ($scope.screeningQuestion.type == 'FillIn') {
             $scope.screeningQuestion.options = [];
         }
+
 
         if ($scope.mode == 'edit') {
 

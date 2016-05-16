@@ -55,6 +55,8 @@ angular.module('Jobsite').factory("AuthService", ['$http', '$q', '$cookies', 'RE
 
     var _trackReferences = function(){
 
+        var deferred = $q.defer();
+
         var model = {};
 
         model.referenceIds = _getReferences();
@@ -62,11 +64,17 @@ angular.module('Jobsite').factory("AuthService", ['$http', '$q', '$cookies', 'RE
         if (_authentication.isUser && model.referenceIds.length > 0){
             $http.post(serviceBase + 'tracking/references', model).then(function (response) {
                 _deleteReferences();
-                return response;
+                deferred.resolve(response);
+            }, function(err){
+                deferred.reject(err);
             });
         }else{
             _deleteReferences();
+            deferred.resolve(null);
         }
+
+        //return the promise
+        return deferred.promise;
     };
 
     var _getReferrals = function(){
@@ -132,9 +140,12 @@ angular.module('Jobsite').factory("AuthService", ['$http', '$q', '$cookies', 'RE
             _authentication.isAdministrator = isAdministrator;
 
             _trackReferrals();
-            _trackReferences();
 
-            deferred.resolve(response);
+            _trackReferences().then(function(resolve){
+                deferred.resolve(response);
+            }, function(err){
+                deferred.reject(err);
+            });
 
         }).error(function (err, status) {
             _logOut();
@@ -201,9 +212,13 @@ angular.module('Jobsite').factory("AuthService", ['$http', '$q', '$cookies', 'RE
             _authentication.isAdministrator = isAdministrator;
 
             _trackReferrals();
-            _trackReferences();
 
-            deferred.resolve(response);
+            _trackReferences().then(function(resolve){
+                deferred.resolve(response);
+            }, function(err){
+                deferred.reject(err);
+            });
+
 
         }).error(function (err, status) {
             _logOut();

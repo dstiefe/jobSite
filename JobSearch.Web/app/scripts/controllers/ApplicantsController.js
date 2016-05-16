@@ -2,7 +2,7 @@
  * Created by Van on 16.01.2016.
  */
 //Controller for working with applicants
-angular.module('Jobsite').controller("ApplicantsController", function($scope, $http, $timeout, $location,$state, AuthService, RESOURCES, $stateParams, ResumesService, ScreeningsService, $modal) {
+angular.module('Jobsite').controller("ApplicantsController", function($scope, $http, $timeout, $location,$state, AuthService, RESOURCES, $stateParams, ResumesService, ScreeningsService, JobsService, $modal) {
 
     var serviceBase = RESOURCES.API_BASE_PATH;
     var jobId = $stateParams.id;
@@ -208,6 +208,10 @@ angular.module('Jobsite').controller("ApplicantsController", function($scope, $h
         $scope.sendMessage = function(data) {
             _showMessenger(jobId, data.id, data);
 
+        };
+
+        $scope.downloadReport = function() {
+            JobsService.downloadReportByJobId(jobId);
         };
     }
 });

@@ -23,6 +23,7 @@ angular.module('Jobsite').factory("AuthInterceptorService", ['$q', '$injector', 
         'responseError': function(response) {
             if(response.status === 401 || response.status === 403) {
                 var authService = $injector.get('AuthService');
+                debugger;
                 authService.logOut();
                 $location.path('/login').search('returnUrl', $location.path());
             }

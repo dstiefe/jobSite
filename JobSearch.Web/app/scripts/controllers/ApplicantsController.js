@@ -19,7 +19,7 @@ angular.module('Jobsite').controller("ApplicantsController", function($scope, $h
 
     if (!AuthService.authentication.isAdministrator)
     {
-        $location.path("/login");
+        $location.path("/logout");
     }
     else
     {

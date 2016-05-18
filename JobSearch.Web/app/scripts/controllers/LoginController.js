@@ -2,7 +2,9 @@
 angular.module('Jobsite').controller("Login", function ($scope, $rootScope, $location, AuthService, RESOURCES, $modal, $timeout) {
 
     if (AuthService.authentication.isAuth) {
+        debugger;
         $location.path('/dashboard');
+
     }
     else {
 

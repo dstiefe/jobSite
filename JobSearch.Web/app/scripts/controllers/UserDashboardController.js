@@ -3,7 +3,7 @@
  */
 //Controller for working with user dashboard
 angular.module('Jobsite').controller("UserDashboardController", function ($rootScope, $scope, $stateParams, $location, $modal, $q, $http, $timeout, AuthService, JobsService, ReferralService, RESOURCES, cfpLoadingBar) {
-
+    debugger;
     $scope.role = AuthService.authentication.isAdministrator ? "Admin" : "User";
 
     var jobId = $stateParams.jobId;
@@ -19,7 +19,8 @@ angular.module('Jobsite').controller("UserDashboardController", function ($rootS
     }
 
     if (!AuthService.authentication.isUser) {
-        $location.path("/login");
+        debugger;
+        $location.path("/logout");
     }
     else {
         $scope.entryLimits = [5, 10, 15, 20, 25];

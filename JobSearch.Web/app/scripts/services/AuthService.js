@@ -60,7 +60,7 @@ angular.module('Jobsite').factory("AuthService", ['$http', '$q', '$cookies', 'RE
         var model = {};
 
         model.referenceIds = _getReferences();
-
+debugger;
         if (_authentication.isUser && model.referenceIds.length > 0){
             $http.post(serviceBase + 'tracking/references', model).then(function (response) {
                 _deleteReferences();
@@ -157,7 +157,7 @@ angular.module('Jobsite').factory("AuthService", ['$http', '$q', '$cookies', 'RE
     };
 
     var _logOut = function () {
-
+        debugger;
         $cookies.remove("ValiDatedTokenObject");
         sessionStorage.removeItem("ValiDatedTokenObject");
 

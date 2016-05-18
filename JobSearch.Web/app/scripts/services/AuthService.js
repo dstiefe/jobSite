@@ -60,7 +60,6 @@ angular.module('Jobsite').factory("AuthService", ['$http', '$q', '$cookies', 'RE
         var model = {};
 
         model.referenceIds = _getReferences();
-debugger;
         if (_authentication.isUser && model.referenceIds.length > 0){
             $http.post(serviceBase + 'tracking/references', model).then(function (response) {
                 _deleteReferences();
@@ -157,7 +156,6 @@ debugger;
     };
 
     var _logOut = function () {
-        debugger;
         $cookies.remove("ValiDatedTokenObject");
         sessionStorage.removeItem("ValiDatedTokenObject");
 
@@ -298,6 +296,8 @@ debugger;
 
     // Reset password. Verify token
     authServiceFactory.resetPassword = _resetPassword;
+
+    authServiceFactory.trackReferences =_trackReferences;
 
     return authServiceFactory;
 }]);

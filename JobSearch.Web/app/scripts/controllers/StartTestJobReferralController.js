@@ -11,6 +11,25 @@ angular.module('Jobsite').controller("StartTestJobReferralController", function 
     $scope.userName = $stateParams.userName;
     $scope.reference = {};
 
+    $scope.isDisabledStart = false;
+    $scope.error_message = '';
+
+    if (AuthService.authentication.isAdministrator) {
+        $location.path("/logout");
+    }
+
+    var _getReferences = function (){
+        ReferralService.getReferenceByResumeId($scope.jobId, $scope.resumeId, $scope.jobReferralId).then(function (results) {
+            $scope.reference = results.data;
+            if ($scope.reference.questionsCount == 0) {
+                $scope.error_message = 'Reference does not have any questions! Please try again later!';
+                $scope.isDisabledStart = true;
+            }
+        }, function (error) {
+            console.log(error.data.message);
+        });
+    };
+
     var referralObj = sessionStorage.getItem("reference_friend_ids");
     var referralsArr = [];
     if (referralObj != null) {
@@ -23,42 +42,43 @@ angular.module('Jobsite').controller("StartTestJobReferralController", function 
         referralsArr.push(reference_friend_id);
         sessionStorage.setItem("reference_friend_ids", JSON.stringify(referralsArr));
 
-        var path = $location.path();
-        sessionStorage.setItem("return_url", path);
-
-        $state.transitionTo('login');
-    }
-    else {
-        $scope.isDisabledStart = false;
-        $scope.error_message = '';
-
-        ReferralService.getReferenceByResumeId($scope.jobId, $scope.resumeId, $scope.jobReferralId).then(function (results) {
-            $scope.reference = results.data;
-            if ($scope.reference.questionsCount == 0) {
-                $scope.error_message = 'Reference does not have any questions! Please try again later!';
-                $scope.isDisabledStart = true;
-            }
-        }, function (error) {
-            console.log(error.data.message);
-        });
-
-        $scope.start = function () {
-            $scope.error_message = '';
-            if ($scope.reference.questionsCount == 0) {
-                $scope.error_message = 'Reference does not have any questions!';
-                return;
-            }
-            if (!$scope.reference.isPassed) {
-                $state.go('testsjobreferral', {
-                    'jobId': $scope.jobId,
-                    'resumeId': $scope.resumeId,
-                    'jobReferralId': $scope.jobReferralId
-                });
-            } else {
-                $scope.error_message = 'You have already passed reference!';
-            }
+        if (!AuthService.authentication.isUser) {
+            var path = $location.path();
+            sessionStorage.setItem("return_url", path);
+            $state.transitionTo('logout');
+        }else{
+            AuthService.trackReferences().then(function(response){
+                _getReferences();
+            }, function(error){
+                console.log(error.data.message);
+            });
         }
     }
+    else {
+        if (!AuthService.authentication.isUser) {
+            $location.path("/logout");
+        }else{
+            _getReferences();
+        }
+    }
+
+    $scope.start = function () {
+        $scope.error_message = '';
+        if ($scope.reference.questionsCount == 0) {
+            $scope.error_message = 'Reference does not have any questions!';
+            return;
+        }
+        if (!$scope.reference.isPassed) {
+            $state.go('testsjobreferral', {
+                'jobId': $scope.jobId,
+                'resumeId': $scope.resumeId,
+                'jobReferralId': $scope.jobReferralId
+            });
+        } else {
+            $scope.error_message = 'You have already passed reference!';
+        }
+    }
+
 });
 
 Array.prototype.diff = function (a) {

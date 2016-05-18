@@ -3,9 +3,7 @@
  */
 //Controller for working with admin dashboard
 angular.module('Jobsite').controller("AdminDashboardController", function ($rootScope, $scope, $location, $modal, $http, $timeout, AuthService, JobsService, ReferralService, RESOURCES, cfpLoadingBar) {
-    debugger;
     if (!AuthService.authentication.isAdministrator) {
-        debugger;
         $location.path("/logout");
     }
     else {

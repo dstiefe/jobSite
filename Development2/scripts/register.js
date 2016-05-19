@@ -75,7 +75,7 @@ function Validation() {
 // Angular JS controller
 angular.module('Jobsite').controller("Registration", function ($scope, AuthService) {
 
-    $scope.IsEmployer = vIsEmployer;
+
 
     $scope.Register = function () {
         var UserInfo =
@@ -85,7 +85,7 @@ angular.module('Jobsite').controller("Registration", function ($scope, AuthServi
             Email: $('#txtEmail').val(),
             UserName: $scope.username,
             password: $scope.password,
-            IsEmployer: $('#IsEmployer').is(':checked'),
+            IsEmployer: false,
         }
 
         

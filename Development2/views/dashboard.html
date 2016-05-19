@@ -22,7 +22,7 @@
                 <br />
             <div class="col-lg-6" ng-repeat="data in list | startFrom:(currentPage-1)*entryLimit | limitTo:entryLimit | orderBy:'-publishedDate'">
                 <div class="panel panel-default" ng-if="!data.recepients && !data.referenceId">
-                    <div class="panel-heading">
+                    <div class="panel-heading" style="height: 56px;">
 
                         <div class="pull-left">
                             <h3 class="panel-title">{{data.title}}({{data.location}})</h3>
@@ -84,7 +84,7 @@
                     </div>
                 </div>
                 <div class="panel panel-info" ng-if="data.recepients">
-                    <div class="panel-heading">
+                    <div class="panel-heading" style="height: 56px;">
                         <div class="pull-left">
                             <h3 class="panel-title">{{data.jobName}}({{data.location}})</h3>
                             <span class="dateHeader">
@@ -109,7 +109,7 @@
                     </div>
                 </div>
                 <div class="panel panel-success" ng-if="data.referenceId">
-                    <div class="panel-heading">
+                    <div class="panel-heading" style="height: 56px;">
 
                         <a class="btn btn-info pull-right" href="#viewjobdetails?id={{data.jobId}}">
                            View Job

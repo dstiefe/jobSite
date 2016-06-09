@@ -20,7 +20,7 @@
             <div class="panel-heading" style="height: 56px;">
 
                 <div class="pull-left">
-                    <h3 class="panel-title">{{data.title}}({{data.location}})</h3>
+                    <h3 class="panel-title">{{data.title}}<span ng-show="data.location">({{data.location}})</span></h3>
                             <span class="dateHeader">
                                 <span>Date Created: </span>{{data.publishedDate*1000 | date : "M/d/yyyy"}}
                             </span>

@@ -15,7 +15,7 @@
                 <div class="panel-heading" style="height: 56px; overflow: hidden;">
 
                     <div class="pull-left"  style="max-width:80%;">
-                        <h3 class="panel-title ellipsis" >{{data.title}}({{data.location}})</h3>
+                        <h3 class="panel-title ellipsis" >{{data.title}}<span ng-show="data.location">({{data.location}})</span></h3>
                         <span class="dateHeader ellipsis">
                                 <span>Date Applied: </span>{{data.publishedDate*1000 | date : "M/d/yyyy"}}
                         </span>
@@ -127,7 +127,7 @@
 
                 <div class="panel-heading" style="height: 56px; overflow: hidden;">
                     <div class="pull-left" style="width:100%">
-                        <h3 class="panel-title ellipsis">{{data.jobName}}({{data.location}})</h3>
+                        <h3 class="panel-title ellipsis">{{data.jobName}}<span ng-show="data.location">({{data.location}})</span></h3>
                             <span class="dateHeader ellipsis">
                                 <span>Date Created: </span>{{data.modifyDate*1000 | date : "M/d/yyyy"}}
                             </span>
@@ -200,7 +200,7 @@
 
                 <div class="panel-heading" style="height: 56px; overflow: hidden;">
                     <div class="pull-left" style="width:100%">
-                        <h3 class="panel-title ellipsis">{{data.jobName}}({{data.jobLocation}})</h3>
+                        <h3 class="panel-title ellipsis">{{data.jobName}}<span ng-show="data.location">({{data.location}})</span></h3>
                     </div>
                     <div class="clearfix"></div>
                 </div>

@@ -27,7 +27,7 @@ angular.module('Jobsite').controller("AddjobformController", function ($scope, $
         options: {
             html: false,
             focusOpen: false,
-            onlySelectValid: true,
+            onlySelectValid: false,
             source: function (request, response) {
                 if (request.term.length == 0)
                     return;
@@ -193,17 +193,20 @@ angular.module('Jobsite').controller("AddjobformController", function ($scope, $
             $scope.referralFeePercent = response["referralFeePercent"];
             $scope.referralFeeAmount = response["referralFeeAmount"];
 
-            LocationsService.getLocation($scope.locationCity.id).then(function (results) {
-                res = results.data;
-                $scope.locationState = {
-                    id: res.parentId,
-                    name: res.fullName.split('/')[0],
-                    value: res.fullName.split('/')[0],
-                    // some other property
-                };
-            }, function (error) {
-                console.log(error.data.message);
-            });
+            if ($scope.locationCity.id){
+                LocationsService.getLocation($scope.locationCity.id).then(function (results) {
+                    res = results.data;
+                    $scope.locationState = {
+                        id: res.parentId,
+                        name: res.fullName.split('/')[0],
+                        value: res.fullName.split('/')[0],
+                        // some other property
+                    };
+                }, function (error) {
+                    console.log(error.data.message);
+                });
+            }
+
 
             $scope.adminClientSelected.id = response["adminClientId"];
             if ($scope.adminClientSelected.id) {
@@ -243,9 +246,8 @@ angular.module('Jobsite').controller("AddjobformController", function ($scope, $
         $scope.tags.splice(index - 1, 1);
     };
     $scope.saveChanges = function (isValid) {
-
-        if (!isValid || !$scope.locationCity.id) {
-            console.log($scope.locationCity.id);
+        console.log(isValid);
+        if (!isValid || ($scope.locationState.id && !$scope.locationCity.id)) {
             return;
         }
         if (!angular.isUndefined($scope.aboutUsResultContent)) {

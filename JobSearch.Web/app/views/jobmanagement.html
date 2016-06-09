@@ -112,7 +112,7 @@
                                                         <label for="locationCity">Location</label>
                                                         <input type="text" class="form-control"  ng-model="locationState"  ui-autocomplete="locationStateOption" placeholder="State abbreviation"  />
                                                         <input type="text" class="form-control"  ng-model="locationCity" id="locationCity" ui-autocomplete="locationCityOption" placeholder="City" ng-if="locationState.id"  />
-                                                        <span class="color-theme" ng-show="!locationCity.id">Location is required.</span>
+                                                        <span class="color-theme" ng-show="locationState.id && !locationCity.id">Location is required.</span>
                                                         <br>
                                                         <label for="tags">Tags</label>
                                                         <input class="form-control" style="width:70%;float:right;" ng-model="tag" id="tags" type="text"  ng-enter="addtags()"><a href="" ng-click="addtags()"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>

@@ -120,7 +120,7 @@
                                     <tbody>
                                     <tr ng-repeat="data in list ">
                                         <td data-ng-bind-html="data.title"></td>
-                                        <td class="text-info font-bold" data-ng-bind-html="data.location"></td>
+                                        <td class="text-info font-bold" data-ng-bind-html="(data.location) && data.location || 'ANY'"></td>
                                         <td>
                                             {{ data.publishedDate*1000 | date : "M/d/yyyy" }}
                                         </td>

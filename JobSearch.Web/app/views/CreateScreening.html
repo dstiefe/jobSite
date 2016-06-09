@@ -44,7 +44,7 @@
                                                 <div class="form-group">
                                                     <label for="jobsIds">Jobs</label>
 
-                                                    <select  id="jobsIds"  name="jobsIds" multiple="true" ng-model="screening.jobsIds" class="form-control" ng-change="jobsChanged()" required ng-options="job.id as job.title for job in jobs">
+                                                    <select  id="jobsIds"  name="jobsIds" multiple="true" ng-model="screening.jobsIds" class="form-control" ng-change="jobsChanged()" required ng-options="job.id as job.title+' - '+job.idLong for job in jobs">
                                                      </select>
 
 

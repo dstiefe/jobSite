@@ -31,7 +31,7 @@
                                     <tr ng-repeat="data in jobs">
                                         <td><input type="radio" ng-model="$parent.selectedJobId" ng-value="data.id" /></td>
                                         <td>
-                                            {{ data.title }}
+                                            {{ data.title + ' - ' + data.idLong }}
                                         </td>
                                     </tr>
                                     </tbody>
@@ -60,7 +60,7 @@
                                     <tr ng-repeat="data in screenings | filter: jobExist | orderBy:'sort'">
                                         <td><input type="radio" /></td>
                                         <td>
-                                            {{ data.title }}
+                                            {{ data.title}}
                                         </td>
                                     </tr>
                                     </tbody>

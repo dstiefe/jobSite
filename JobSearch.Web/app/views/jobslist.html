@@ -48,7 +48,7 @@
                                         </thead>
                                         <tbody>
                                             <tr ng-repeat="data in filtered = (list | filter:search | orderBy : predicate :reverse) | startFrom:(currentPage-1)*entryLimit | limitTo:entryLimit">
-                                                <td  ng-bind-html="data.title | trustedHtml | limitHtml:200"></td>
+                                                <td  ng-bind-html="data.title+' - '+data.idLong | trustedHtml | limitHtml:200"></td>
                                                 <td>{{data.category}}</td>
                                                 <td class="text-info font-bold">{{ (data.location) && data.location || 'ANY' }}</td>
                                                 <td>

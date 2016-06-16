@@ -24,6 +24,8 @@ angular.module('Jobsite').controller('SendReferenceRequestController', function 
     ReferralService.getMyJobReferrals().then(function (results) {
         response = results.data;
         $scope.referencesAll = response.filter(function (item) {
+            if (item.jobsIds == null)
+                return false;
             return item.jobsIds.indexOf(jobId) != -1;
         });
 

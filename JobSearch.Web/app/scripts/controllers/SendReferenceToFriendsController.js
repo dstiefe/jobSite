@@ -32,7 +32,7 @@ angular.module('Jobsite').controller('SendReferenceToFriendsController', functio
         }
         ReferralService.getReferenceCountToFriends($scope.job.id, $scope.job.resumeId, $scope.referenceId).then(function (results) {
             $scope.friendsCount = results.data.content;
-            $scope.reference.isNew = $scope.friendsCount < 2;
+            $scope.reference.isNew = $scope.friendsCount == 0;
         }, function (error) {
             $scope.message = 'Error occured!';
             console.log(error.data.message);

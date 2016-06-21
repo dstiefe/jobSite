@@ -21,7 +21,7 @@ angular.module('Jobsite').controller("FinishTestJobReferralController", function
     };
     $scope.addRecepient = function () {
 
-        if ($scope.emailObjects.length >= 3)
+        if ($scope.emailObjects.length >= 2)
             return;
 
         $scope.emailObjects.push({
@@ -36,7 +36,7 @@ angular.module('Jobsite').controller("FinishTestJobReferralController", function
 
     $scope.removeRecepient = function (i) {
 
-        if ($scope.emailObjects.length <= 2)
+        if ($scope.emailObjects.length <= 1)
             return;
 
         $scope.emailObjects.splice(i, 1);
@@ -44,7 +44,7 @@ angular.module('Jobsite').controller("FinishTestJobReferralController", function
     };
     var _initEmailObjects = function () {
         $scope.emailObjects = [];
-        for (var i = 0; i < 2; i++) {
+        for (var i = 0; i < 1; i++) {
             $scope.emailObjects.push({
                 'email': '',
                 'firstName': '',

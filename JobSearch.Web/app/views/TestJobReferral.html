@@ -108,13 +108,10 @@
                                                   ng-init="$parent.resultQuestions[$parent.currentIndexQuestion].answerOption = ($parent.resultQuestions[$parent.currentIndexQuestion].answerOption == null)?$parent.slider.value:$parent.resultQuestions[$parent.currentIndexQuestion].answerOption;"
 
                                         ></rzslider>
-
+                                        <span class="strongLabel">Strongly Agree</span>
                                         <input type="hidden"  ng-model="$parent.resultQuestions[$parent.currentIndexQuestion].referenceQuestionId" value="{{question.id}}" ng-init="$parent.resultQuestions[$parent.currentIndexQuestion].referenceQuestionId=question.id"   />
 <div>
-    &lt; 70  = D <br />
-    71 – 80   = C <br />
-    81 – 90   = B <br />
-    91 – 100 = A <br />
+   How much do you agree?
 
 </div>
                                     </div>

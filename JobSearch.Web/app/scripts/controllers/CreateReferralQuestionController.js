@@ -22,6 +22,8 @@ angular.module('Jobsite').controller("CreateReferralQuestionController", functio
     $scope.numOptionsLikertScale = [3, 5, 7, 9];
     $scope.numOptionsSelected = '';
 
+    $scope.GradeQuestionSubTypes = RESOURCES.GRADE_QUESTION_SUB_TYPES;
+
     var _getAllChildsTags = function (rootTag) {
 
         var childs = $filter('filter')($scope.referencesTags, {parentName: rootTag.name}, true);
@@ -82,18 +84,22 @@ angular.module('Jobsite').controller("CreateReferralQuestionController", functio
                 $scope.referralQuestion.tags = [];
             }else{
                 var resTags = angular.copy(results.data.tags);
-                var roots = $filter('filter')($scope.referencesTags, { level: 1, isCategory: true}, true);
-                for (var i=0; i<roots.length; i++){
-                    var root = roots[i];
-                    var item = $.grep(resTags, function(item, index) {
-                        return _checkTagInRoot(item, root);
-                    });
-                    if (item ){
-                        $scope.referralQuestion.tags[i] = item[0];
-                    }else{
-                        $scope.referralQuestion.tags[i] = '';
+                if ($scope.referencesTags!=null){
+                    var roots = $filter('filter')($scope.referencesTags, { level: 1, isCategory: true}, true);
+                    for (var i=0; i<roots.length; i++){
+                        var root = roots[i];
+                        var item = $.grep(resTags, function(item, index) {
+                            return _checkTagInRoot(item, root);
+                        });
+                        if (item ){
+                            $scope.referralQuestion.tags[i] = item[0];
+                        }else{
+                            $scope.referralQuestion.tags[i] = '';
+                        }
                     }
                 }
+
+
             }
 
 

@@ -1,6 +1,6 @@
 
-var apiBasePath = 'http://ec2-52-90-116-49.compute-1.amazonaws.com:81/legalapi_dev/api/v1/'; // legaltal api
-//var apiBasePath = 'http://ec2-52-90-116-49.compute-1.amazonaws.com:81/jobapi_dev/api/v1/'; // daytal api
+//var apiBasePath = 'http://ec2-52-90-116-49.compute-1.amazonaws.com:81/legalapi_dev/api/v1/'; // legaltal api
+var apiBasePath = 'http://ec2-52-90-116-49.compute-1.amazonaws.com:81/jobapi_dev/api/v1/'; // daytal api
 //var apiBasePath = 'http://localhost:41656/api/v1/'; //local api
 
 var clientId ="P600Us6Y476QiK331u5yEzb22dpX_y6NS75!9I-a";
@@ -53,12 +53,17 @@ var clientId ="P600Us6Y476QiK331u5yEzb22dpX_y6NS75!9I-a";
                 {value: "CharacterReference ", name: "Character Reference"}
             ];
 
+            var GradeQuestionSubTypes = [
+                {value: "Normal", name: "Normal"},
+                {value: "Inverse", name: "Inverse"},
+            ];
             // constants
             return {
                 EMPLOYEE_TYPES: EmployeeTypes,
                 SCREENING_QUESTION_TYPES: ScreeningQuestionTypes,
                 REFERENCES_QUESTION_TYPES: ReferencesQuestionTypes,
                 WORKING_RELATIONSHIP_TYPES: WorkingRelationshipTypes,
+                GRADE_QUESTION_SUB_TYPES: GradeQuestionSubTypes,
                 API_BASE_PATH: apiBasePath,
                 CLIENT_ID: clientId,
                 TRAITIFY_PUBLIC_KEY: 'm8rrmi54uig26dapmnv6bstak9',

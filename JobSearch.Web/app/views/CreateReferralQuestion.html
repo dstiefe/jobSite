@@ -130,6 +130,34 @@
 
                                     </div>
 
+
+                                    <div class="form-group" ng-if="referralQuestion.type == 'Grade'">
+                                        <label for="option">Grade Order</label>
+
+                                        <div class="row">
+                                            <div class="col-xs-12">
+
+                                                <select id="gradeQuestionSubType"
+                                                        name="gradeQuestionSubType"
+                                                        ng-model="referralQuestion.gradeQuestionSubType"
+                                                        ng-init="referralQuestion.gradeQuestionSubType = referralQuestion.gradeQuestionSubType || GradeQuestionSubTypes[0].value"
+                                                        ng-options="_type.value as _type.name for _type in GradeQuestionSubTypes"
+                                                        class="form-control"
+                                                        required
+                                                        >
+                                                </select>
+
+                                                <span class="color-theme" ng-show="createQuestionReferralForm.gradeQuestionSubType.$error.required">Order is required.</span>
+
+
+                                            </div>
+                                        </div>
+
+
+
+                                    </div>
+
+
                                     <div class="form-group">
                                         <label for="type">Question Type</label>
                                         <select

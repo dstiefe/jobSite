@@ -26,7 +26,9 @@ angular.module('Jobsite').controller("StartTestJobReferralController", function 
                 $scope.isDisabledStart = true;
             }
         }, function (error) {
-            console.log(error.data.message);
+            console.log(error.data);
+            $scope.error_message = error.data;
+            $scope.isDisabledStart = true;
         });
     };
 

@@ -18,6 +18,8 @@ angular.module('Jobsite').controller("TestJobReferralController", function ($sco
     $scope.question = {};
     $scope.state = '';
 
+    $scope.isLoading = true;
+
     $scope.slider = {
         value: 50,
         options: {
@@ -43,22 +45,30 @@ angular.module('Jobsite').controller("TestJobReferralController", function ($sco
 
     ReferralService.getReferenceByResumeId($scope.jobId, $scope.resumeId, $scope.jobReferralId).then(function (results) {
         $scope.reference = results.data;
-        ReferralService.getReferenceQuestions($scope.jobId, $scope.resumeId, $scope.jobReferralId).then(function (results) {
-            $scope.referenceQuestions = results.data;
-            _setQuestion();
 
-            for (var i=0;i<$scope.referenceQuestions.length;i++){
-                $scope.resultQuestions[i] = {
-                    referenceQuestionId: $scope.referenceQuestions[i].id,
-                    answerOption: 50
+        ReferralService.getReferenceQuestions($scope.jobId, $scope.resumeId, $scope.jobReferralId).then(function (results) {
+
+            $scope.isLoading = false;
+            $timeout(function() {
+
+                $scope.referenceQuestions = results.data;
+                _setQuestion();
+                for (var i=0;i<$scope.referenceQuestions.length;i++){
+                    $scope.resultQuestions[i] = {
+                        referenceQuestionId: $scope.referenceQuestions[i].id,
+                        answerOption: 50
+                    }
                 }
-            }
+
+            }, 10);
 
         }, function (error) {
             console.log(error.data.message);
+            $scope.isLoading = false;
         });
     }, function (error) {
         console.log(error.data.message);
+        $scope.isLoading = false;
     });
 
     $scope.saveChanges = function (isValid) {

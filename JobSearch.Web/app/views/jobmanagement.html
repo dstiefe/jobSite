@@ -78,10 +78,15 @@
                                         <div class="col-sm-9">
                                             <div class="box-description">
                                                 <h3>JOB DESCRIPTION</h3>
-                                                <div ng-show="jobDescriptionContentEditable" text-angular ng-model="jobDescriptionResultContent" required name="demo-editor" ta-text-editor-class="border-around" ta-html-editor-class="border-around"></div>
+
+
+
+                                                <div ng-show="jobDescriptionContentEditable" text-angular ng-model="jobDescriptionResultContent" data-ng-required required name="demo-editor" ta-text-editor-class="border-around" ta-html-editor-class="border-around"></div>
                                                 <a ng-hide="jobDescriptionContentEditable" data-ng-click="toggleEdit('jobDescriptionContentEditable')"> <i class="fa fa-edit fa-lg pull-right"></i></a>
                                                 <div ng-hide="jobDescriptionContentEditable" name="jobDescriptionResultContent" ng-model="jobDescriptionResultContent" ng-bind-html="jobDescriptionContent" strip-br="true" contenteditable="{{jobDescriptionContentEditable}}" required></div>
+
                                                 <span class="color-theme" ng-show="userForm.jobDescriptionResultContent.$error.required">JOB DESCRIPTION is required.</span>
+
                                             </div>
                                             <div class="box-description">
                                                 <h3>JOB REQUIREMENTS</h3>

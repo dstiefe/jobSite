@@ -5,6 +5,9 @@ var apiBasePath = 'http://ec2-52-90-116-49.compute-1.amazonaws.com:81/jobapi_dev
 
 var clientId ="P600Us6Y476QiK331u5yEzb22dpX_y6NS75!9I-a";
 (function () {
+
+
+
     angular.module('Jobsite', [
         'ui.router',                // Angular flexible routing
         'ngSanitize',               // Angular-sanitize

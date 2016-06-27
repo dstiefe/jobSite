@@ -52,3 +52,10 @@ angular.module('Jobsite').filter('limitHightlightHtml', function() {
             return changedString;
         }
 });
+
+angular.module('Jobsite').filter('htmlToPlaintext', function() {
+        return function(text) {
+            return  text ? String(text).replace(/<[^>]+>/gm, '') : '';
+        };
+    }
+);

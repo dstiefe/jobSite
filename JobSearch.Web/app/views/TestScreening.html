@@ -58,8 +58,10 @@
 
                                         <div class="form-group" ng-if="screeningQuestion.type == 'FillIn'">
 
-                                            <div  text-angular ng-model="$parent.resultQuestion.answerText" name="answerText" id="answerText" ta-text-editor-class="border-around" ta-html-editor-class="border-around" style="background-color: #fff;" required></div>
-                                            <span class="color-theme" ng-show="resultScreeningForm.answerText.$error.required">Answer Text is required.</span>
+                                            <div  text-angular ng-model="$parent.resultQuestion.answerText" name="answerText" id="answerText" ta-text-editor-class="border-around" ta-html-editor-class="border-around" style="background-color: #fff;" required>
+                                                <p><br /></p>
+                                            </div>
+                                            <span class="color-theme" ng-show="isEmptyOrSpacesHtml($parent.resultQuestion.answerText)">Answer Text is required.</span>
 
 
                                         </div>

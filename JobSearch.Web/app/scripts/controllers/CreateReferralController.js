@@ -2,8 +2,8 @@
  * Created by Van on 03.02.2016.
  */
 //Controller for creating referral
-angular.module('Jobsite').controller("CreateReferralController", function ($scope, $http, $timeout, $location, ReferralService, CategoriesService, JobsService, $state, $stateParams, $modal) {
-
+angular.module('Jobsite').controller("CreateReferralController", function ($scope, $http, $timeout, $location, ReferralService, CategoriesService, JobsService, $state, $stateParams, $modal, CommonService) {
+    $scope.isEmptyOrSpacesHtml = CommonService.isEmptyOrSpacesHtml;
     $scope.id = $stateParams.id;
     $scope.referral = {};
     $scope.referral.sort = 0;
@@ -38,7 +38,8 @@ angular.module('Jobsite').controller("CreateReferralController", function ($scop
     }
 
     $scope.saveChanges = function (isValid) {
-        if (!isValid) {
+        if (!isValid||
+            CommonService.isEmptyOrSpacesHtml($scope.referral.description)) {
             return;
         }
 

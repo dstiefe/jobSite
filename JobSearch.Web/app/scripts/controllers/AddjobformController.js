@@ -1,5 +1,6 @@
 //Controller for adding job
-angular.module('Jobsite').controller("AddjobformController", function ($scope, $sce, $location, $http, $timeout, $filter, RESOURCES, $stateParams, CategoriesService, LocationsService, JobsService, $compile, $modal, ClientsService) {
+angular.module('Jobsite').controller("AddjobformController", function ($scope, $sce, $location, $http, $timeout, $filter, RESOURCES, $stateParams, CategoriesService, LocationsService, JobsService, $compile, $modal, ClientsService, CommonService) {
+    $scope.isEmptyOrSpacesHtml = CommonService.isEmptyOrSpacesHtml;
 
     $scope.id = $stateParams.id;
     $scope.locationState = {
@@ -145,6 +146,8 @@ angular.module('Jobsite').controller("AddjobformController", function ($scope, $
     $scope.referralFeePercent = null;
     $scope.referralFeeAmount = null;
 
+
+
     CategoriesService.getCategories().then(function (results) {
         $scope.categories = results.data;
     }, function (error) {
@@ -247,9 +250,16 @@ angular.module('Jobsite').controller("AddjobformController", function ($scope, $
     };
     $scope.saveChanges = function (isValid) {
         console.log(isValid);
-        if (!isValid || ($scope.locationState.id && !$scope.locationCity.id)) {
+
+        if (!isValid ||
+            ($scope.locationState.id && !$scope.locationCity.id) ||
+            CommonService.isEmptyOrSpacesHtml($scope.jobDescriptionResultContent) ||
+            CommonService.isEmptyOrSpacesHtml($scope.aboutUsResultContent) ||
+            CommonService.isEmptyOrSpacesHtml($scope.jobRequirementsResultContent)
+        ) {
             return;
         }
+
         if (!angular.isUndefined($scope.aboutUsResultContent)) {
             $scope.aboutUsHtmlContent = $scope.aboutUsResultContent;
         }

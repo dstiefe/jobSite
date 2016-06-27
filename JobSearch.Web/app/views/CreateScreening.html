@@ -26,8 +26,10 @@
 
                                                 <div class="form-group">
                                                     <label for="description">Description</label>
-                                                    <div  text-angular ng-model="screening.description" name="description" id="description" ta-text-editor-class="border-around" ta-html-editor-class="border-around" style="background-color: #fff;" required></div>
-                                                    <span class="color-theme" ng-show="createScreeningForm.description.$error.required">Description is required.</span>
+                                                    <div  text-angular ng-model="screening.description" name="description" id="description" ta-text-editor-class="border-around" ta-html-editor-class="border-around" style="background-color: #fff;" required>
+                                                        <p><br /></p>
+                                                    </div>
+                                                    <span class="color-theme" ng-show="isEmptyOrSpacesHtml(screening.description)">Description is required.</span>
                                                 </div>
 
                                             </div>

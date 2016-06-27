@@ -2,8 +2,8 @@
  * Created by Van on 03.02.2016.
  */
 //Controller for creating interview
-angular.module('Jobsite').controller("CreateInterviewController", function ($scope, $http, $timeout, $location, InterviewsService, CategoriesService, JobsService, $state, $stateParams) {
-
+angular.module('Jobsite').controller("CreateInterviewController", function ($scope, $http, $timeout, $location, InterviewsService, CategoriesService, JobsService, $state, $stateParams, CommonService) {
+    $scope.isEmptyOrSpacesHtml = CommonService.isEmptyOrSpacesHtml;
     $scope.id = $stateParams.id;
     $scope.interview = {};
     $scope.interview.sort = 0;
@@ -35,7 +35,8 @@ angular.module('Jobsite').controller("CreateInterviewController", function ($sco
     }
 
     $scope.saveChanges = function (isValid) {
-        if (!isValid) {
+        if (!isValid ||
+            CommonService.isEmptyOrSpacesHtml($scope.interview.description) ) {
             return;
         }
 

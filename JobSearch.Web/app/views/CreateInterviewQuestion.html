@@ -87,7 +87,9 @@
 
                                     <div class="form-group" ng-if="interviewQuestion.type == 'FillIn'">
                                         <label for="answerText">Answer Text</label>
-                                        <div  text-angular ng-model="$parent.interviewQuestion.answerText" name="answerText" id="answerText" ta-text-editor-class="border-around" ta-html-editor-class="border-around" style="background-color: #fff;"></div>
+                                        <div  text-angular ng-model="$parent.interviewQuestion.answerText" name="answerText" id="answerText" ta-text-editor-class="border-around" ta-html-editor-class="border-around" style="background-color: #fff;">
+                                            <p><br /></p>
+                                        </div>
                                      </div>
 
                                     <div class="form-group" ng-if="interviewQuestion.type == 'LikertScale'">

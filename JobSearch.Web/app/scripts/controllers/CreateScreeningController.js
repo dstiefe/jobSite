@@ -2,8 +2,8 @@
  * Created by Van on 03.02.2016.
  */
 //Controller for creating screening
-angular.module('Jobsite').controller("CreateScreeningController", function ($scope, $http, $timeout, $location, ScreeningsService, CategoriesService, JobsService, $state, $stateParams, $modal) {
-
+angular.module('Jobsite').controller("CreateScreeningController", function ($scope, $http, $timeout, $location, ScreeningsService, CategoriesService, JobsService, $state, $stateParams, $modal, CommonService) {
+    $scope.isEmptyOrSpacesHtml = CommonService.isEmptyOrSpacesHtml;
     $scope.id = $stateParams.id;
     $scope.screening = {};
     $scope.screening.sort = 0;
@@ -42,7 +42,8 @@ angular.module('Jobsite').controller("CreateScreeningController", function ($sco
     }
 
     $scope.saveChanges = function (isValid) {
-        if (!isValid) {
+        if (!isValid ||
+            CommonService.isEmptyOrSpacesHtml($scope.screening.description) ) {
             return;
         }
 

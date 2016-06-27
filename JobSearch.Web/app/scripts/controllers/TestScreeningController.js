@@ -2,8 +2,8 @@
  * Created by Van on 04.02.2016.
  */
 //Controller for screening test
-angular.module('Jobsite').controller("TestScreeningController", function ($scope, $rootScope, $http, $timeout, $location, ScreeningsService, CategoriesService, ResumesService, $state, $stateParams) {
-
+angular.module('Jobsite').controller("TestScreeningController", function ($scope, $rootScope, $http, $timeout, $location, ScreeningsService, CategoriesService, ResumesService, $state, $stateParams, CommonService) {
+    $scope.isEmptyOrSpacesHtml = CommonService.isEmptyOrSpacesHtml;
     var timeStarted = false;
     var _startTimer = function () {
         if (!timeStarted) {
@@ -64,7 +64,7 @@ angular.module('Jobsite').controller("TestScreeningController", function ($scope
         if (!isValid) {
             return;
         }
-        _stopTimer();
+
 
         if ($scope.screeningQuestion.type == 'TrueFalse') {
 
@@ -82,9 +82,15 @@ angular.module('Jobsite').controller("TestScreeningController", function ($scope
 
         if ($scope.screeningQuestion.type == 'FillIn') {
 
+            if ( CommonService.isEmptyOrSpacesHtml($scope.resultQuestion.answerText) ) {
+                return;
+            }
+
             $scope.resultQuestion.answerOption = 0;
             $scope.resultQuestion.answerBoolean = false;
         }
+
+        _stopTimer();
 
         var timeseconds1 = $scope.millis / 1000;
 

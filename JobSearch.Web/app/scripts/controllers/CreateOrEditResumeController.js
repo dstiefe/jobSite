@@ -2,8 +2,8 @@
  * Created by Van on 26.02.2016.
  */
 //Controller for creating/editing resume
-angular.module('Jobsite').controller('CreateOrEditResumeController', function ($scope, $modalInstance, UsersService, ResumesService, $sce, $timeout, resumeId) {
-
+angular.module('Jobsite').controller('CreateOrEditResumeController', function ($scope, $modalInstance, UsersService, ResumesService, $sce, $timeout, resumeId, CommonService) {
+    $scope.isEmptyOrSpacesHtml = CommonService.isEmptyOrSpacesHtml;
     $scope.id = resumeId;
 
     $scope.resume = {};
@@ -59,7 +59,10 @@ angular.module('Jobsite').controller('CreateOrEditResumeController', function ($
 
     $scope.saveChanges = function (isValid) {
 
-        if (!isValid || !$scope.resume.originalFilename) {
+        if (!isValid ||
+            !$scope.resume.originalFilename||
+            CommonService.isEmptyOrSpacesHtml($scope.resume.description)
+        ) {
             $scope.message = "You don't fill all fields";
             return;
         }

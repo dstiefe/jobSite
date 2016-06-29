@@ -77,7 +77,7 @@ angular.module('Jobsite').controller("StartTestJobReferralController", function 
                 'jobReferralId': $scope.jobReferralId
             });
         } else {
-            $scope.error_message = 'You have already passed reference!';
+            $scope.error_message = 'Already completed reference - thank you!';
         }
     }
 

@@ -47,14 +47,21 @@ angular.module('Jobsite').controller('SendScreeningController', function ($scope
     };
 
     $scope.notify = function () {
+
         ScreeningsService.sendScreeningsToResume(jobId, $scope.resume.id, {"screeningIds": $scope.screeningsToTakeSelected}).then(function (results) {
             $scope.successMessage = true;
+
+            if ($scope.resume.screeningIds == null)
+                $scope.resume.screeningIds = [];
+            $scope.resume.screeningIds  = $scope.resume.screeningIds .concat($scope.screeningsToTakeSelected);
+
             $timeout(function () {
                 $modalInstance.close();
             }, 1000);
         }, function (error) {
             $scope.errorMessage = true;
         });
+
     };
 
 

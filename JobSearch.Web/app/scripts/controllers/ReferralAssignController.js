@@ -41,7 +41,7 @@ angular.module('Jobsite').controller("ReferralAssignController", function ($scop
     };
 
     $scope.jobAlreadyAssign = function (item) {
-        if ($scope.myReferral.jobsIds.indexOf(item.id) != -1) {
+        if ($scope.myReferral.jobsIds == null || $scope.myReferral.jobsIds.indexOf(item.id) != -1) {
             return false;
         } else {
             return true;
@@ -49,7 +49,7 @@ angular.module('Jobsite').controller("ReferralAssignController", function ($scop
     };
 
     $scope.jobExist = function (item) {
-        if (item.jobsIds.indexOf($scope.selectedJobId) != -1) {
+        if (item.jobsIds == null || item.jobsIds.indexOf($scope.selectedJobId) != -1) {
             return true;
         } else {
             return false;
@@ -57,7 +57,12 @@ angular.module('Jobsite').controller("ReferralAssignController", function ($scop
     };
 
     $scope.addMyReferral = function () {
-        if ($scope.myReferral.jobsIds.indexOf($scope.selectedJobId) == -1) {
+
+        if ($scope.myReferral.jobsIds == null){
+            $scope.myReferral.jobsIds = [];
+        }
+
+        if ( $scope.myReferral.jobsIds.indexOf($scope.selectedJobId) == -1) {
             var sort = $scope.myReferral.sort;
 
             var _screenings = _getReferralsByJobId();

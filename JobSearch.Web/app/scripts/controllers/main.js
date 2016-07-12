@@ -68,7 +68,7 @@ function appCtrl($http, $scope, $timeout) {
     /**
      * Pagination - used for pagination in components view
      */
-    $scope.totalItems = 64;
+    $scope.totalItems = 0;
     $scope.currentPage = 4;
 
     $scope.setPage = function (pageNo) {

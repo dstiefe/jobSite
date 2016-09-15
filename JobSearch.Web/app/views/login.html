@@ -12,11 +12,12 @@
                 <div class="panel-body">
     <tabset justified="true">
         <tab heading="Login" active="tabs[0].active">
-
+            <br />
             <form name="loginForm" ng-submit="login(loginForm.$valid)" novalidate>
 
                 <div class="row">
                     <div class="form-group col-sm-12">
+
                         <div class="alert alert-danger" role="alert" ng-hide='!errorLoginDescription'>{{errorLoginDescription}}</div>
                     </div>
                 </div>
@@ -67,7 +68,7 @@
 
         </tab>
         <tab heading="Register"  active="tabs[1].active">
-
+            <br />
             <form name="registerForm" ng-submit="register(registerForm.$valid)" novalidate>
 
                 <div class="row">

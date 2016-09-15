@@ -8,8 +8,9 @@ angular
     .module('Jobsite')
     .controller('appCtrl', appCtrl);
 
-function appCtrl($http, $scope, $timeout) {
+function appCtrl($http, $scope, $timeout, RESOURCES) {
 
+    $scope.siteName =  RESOURCES.SITE_NAME;
     // For iCheck purpose only
     $scope.checkOne = true;
 

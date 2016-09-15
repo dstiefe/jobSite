@@ -6525,6 +6525,7 @@ ul.list-group.mailbox-list li a {
 }
 .color-theme {
   color: #ef4034;
+  font-size: 12px;
 }
 ul.list-group.mailbox-list li a {
   padding-top: 2px;

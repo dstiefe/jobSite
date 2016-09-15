@@ -46,7 +46,7 @@
                         </ul>
                         <a href="" ng-click="categoriesLimit=categories.length;" ng-show="categoriesLimit<categories.length" style="color: darkblue;">Show more</a>
                         <a href="" ng-click="categoriesLimit=categoriesLimitConst;" ng-show="categoriesLimit>=categories.length && categories.length > categoriesLimitConst" style="color: darkblue;">Show less</a>
-                        <hr>
+
                         <h3><b>Location</b></h3>
                         <ul class="list-group mailbox-list">
                             <li class="list-group-item" ng-repeat="location in locations| limitTo:locationsLimit"><a ng-click="searchbylocation(location.id)" href="#"><span data-ng-bind-html="location.location"></span> ({{ location.count}})</a></li>
@@ -70,7 +70,7 @@
 
                         Date from: <p class="input-group">
 
-                        <input type="text" class="form-control" datepicker-popup="yyyy/MM/dd" ng-change="searchByFilter()" ng-model="dateFrom" is-open="status0.opened"  close-text="Close" />
+                        <input type="text" class="form-control" placeholder="Date fromc"  datepicker-popup="yyyy/MM/dd" ng-change="searchByFilter()" ng-model="dateFrom" is-open="status0.opened"  close-text="Close" />
               <span class="input-group-btn">
                 <button type="button" class="btn btn-default" ng-click="open0($event)"><i class="glyphicon glyphicon-calendar"></i></button>
               </span>
@@ -78,7 +78,7 @@
 
 
                         Date to: <p class="input-group">
-                        <input type="text" class="form-control" datepicker-popup="yyyy/MM/dd" ng-model="dateTo" ng-change="searchByFilter()" is-open="status1.opened"   close-text="Close" />
+                        <input type="text" class="form-control" placeholder="Date to" datepicker-popup="yyyy/MM/dd" ng-model="dateTo" ng-change="searchByFilter()" is-open="status1.opened"   close-text="Close" />
               <span class="input-group-btn">
                 <button type="button" class="btn btn-default" ng-click="open1($event)"><i class="glyphicon glyphicon-calendar"></i></button>
               </span>

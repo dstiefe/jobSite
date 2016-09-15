@@ -1,7 +1,7 @@
 <div class="container" ng-include="'views/head.html'"></div>
 <div class="container" ng-controller="CreateInterviewQuestionController">
         <ol class="breadcrumb">
-            <li><a   href="" back>Go Back</a></li>
+            <li><a ui-sref="editinterview({id: id})">Go Back</a></li>
             <li class="active" ng-if="mode == 'edit'">Edit Interview Quesion</li>
             <li class="active" ng-if="mode == 'create'">Create Interview Quesion</li>
         </ol>

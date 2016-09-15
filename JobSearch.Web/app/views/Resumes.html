@@ -8,21 +8,21 @@
   <li class="active">Resumes</li>
  </ol>
 
- <div  class="row" id="header" style="margin:0 auto; width:95%; padding-top: 15px; padding-bottom: 15px;">
+ <div  class="filter row" id="header">
 
   <div class="col-sm-2">
    <div class="form-group">
-    <h3 style="margin-top:0px;"> Resumes:</h3>
+    <h3 style="margin-top:2px;"> Resumes:</h3>
    </div>
   </div>
 
-  <div class="col-sm-7">
+  <div class="col-sm-8">
    <div class="form-group">
     <input type="text" ng-model="search" ng-change="filter()" placeholder="Filter" class="form-control" />
    </div>
   </div>
 
-  <div class="col-sm-3">
+  <div class="col-sm-2">
    <div class="form-group">
     <a class="btn btn-info btn-primary" href="" ng-click="createOrEditResume()">Create Resume</a>
    </div>
@@ -75,7 +75,8 @@
    <div pagination="" ng-model="currentPage" ng-change="changed()" boundary-links="true" total-items="filteredItems" items-per-page="entryLimit" class="pagination-small" previous-text="&laquo;" next-text="&raquo;"></div>
   </div>
   <div class="col-sm-2">
-   <br />PageSize: <select ng-model="entryLimit" class="form-control" ng-options="c for c in entryLimits"></select>
+    <label for="entryLimit">PageSize:</label>
+    <select id="entryLimit" name="entryLimit" ng-model="entryLimit" class="form-control entry_limit" ng-options="c for c in entryLimits" ></select>
   </div>
   </div>
 

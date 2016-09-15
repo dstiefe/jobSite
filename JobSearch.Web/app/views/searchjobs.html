@@ -9,24 +9,22 @@
     <!-- Main Wrapper -->
     <br />
 
-        <div  class="row" id="header" style="margin:0 auto; width:95%; padding-top: 15px; padding-bottom: 15px;">
+        <div  class="header_search row" id="header">
 
             <div class="col-sm-1">
-                <div class="form-group">
-                <h3 style="margin-top:0px;"> Jobs:</h3>
-                </div>
+               
+                <h3> Jobs:</h3>
+               
             </div>
 
-            <div class="col-sm-9">
-                <div class="form-group">
+            <div class="col-sm-9">     
                 <input type="text" class="form-control" ng-model="searchtext"  ng-enter="searchjob()" placeholder="Job Title or Category or Location">
-                </div>
             </div>
 
             <div class="col-sm-2">
-                <div class="form-group">
+                
                     <a class="btn btn-primary btn-block " ng-click="searchjob()" href="#">Search</a>
-                </div>
+              
 
             </div>
 
@@ -51,6 +49,8 @@
                         <ul class="list-group mailbox-list">
                             <li class="list-group-item" ng-repeat="location in locations| limitTo:locationsLimit"><a ng-click="searchbylocation(location.id)" href="#"><span data-ng-bind-html="location.location"></span> ({{ location.count}})</a></li>
                         </ul>
+
+                           
                         <a href="" ng-click="locationsLimit=locations.length;" ng-show="locationsLimit<locations.length" style="color: darkblue;">Show more</a>
                         <a href="" ng-click="locationsLimit=locationsLimitConst;" ng-show="locationsLimit>=locations.length && locations.length > locationsLimitConst" style="color: darkblue;">Show less</a>
                         <h3><b>Employee Type</b></h3>
@@ -93,18 +93,14 @@
         </div>
         <div class="col-sm-9">
             <div class="hpanel">
-                <div class="panel-body">
+                <div class="panel-body" style="padding-bottom: 5px;">
                     <div class="row">
-                        <div class="col-sm-6">
-
-                            PageSize: <select ng-model="itemsPerPage" ng-change="pageSizeChanged()" class="form-control" ng-options="c for c in entryLimits">
-                        </select>
-                        </div>
-                        <div class="col-sm-6" style="vertical-align:bottom;text-align:right">
-                            <h5>{{ totalItems}} Total Jobs</h5>
-                            <br /><br />
+                        
+                        <div class="col-sm-12" >
+                            <h5 class="pull-right">{{ totalItems}} Total Jobs</h5>                         
                         </div>
                     </div>
+                    <br />
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="table-responsive">
@@ -135,9 +131,24 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div ng-show="totalItems>0" class="col-sm-12" style="">
-                        <pagination total-items="totalItems"  ng-change="pageChanged()" ng-model="currentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" rotate="false" num-pages="numPages" items-per-page="itemsPerPage"></pagination>
-                    </div>
+                        
+                        
+                        <div class="col-sm-12" >
+                          
+                               <pagination ng-show="totalItems>0" total-items="totalItems"  ng-change="pageChanged()" ng-model="currentPage" max-size="maxSize" class="pagination-sm pull-left" boundary-links="true" rotate="false" num-pages="numPages" items-per-page="itemsPerPage"></pagination>
+                     
+                        <div class="pull-right">
+                                <label for="entryLimit">PageSize:</label>
+                            <select id="entryLimit" name="entryLimit" ng-model="itemsPerPage" ng-change="pageSizeChanged()"  class="form-control entry_limit" ng-options="c for c in entryLimits" ></select>
+                            </div>
+                        
+
+                        </div>
+                        
+                        
+                     
+                     
+                        
                     </div>
 
                 </div>

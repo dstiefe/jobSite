@@ -11,7 +11,8 @@ gulp.task('styles', function() {
     .pipe($.plumber())
     .pipe($.less())
     .pipe($.autoprefixer({browsers: ['last 1 version']}))
-    .pipe(gulp.dest('.tmp/styles'));
+    .pipe(gulp.dest('.tmp/styles'))
+    ;
 });
 
 gulp.task('jshint', function() {

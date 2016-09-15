@@ -2245,7 +2245,7 @@ th {
 .table > thead > tr > td,
 .table > tbody > tr > td,
 .table > tfoot > tr > td {
-  padding: 8px;
+  padding: 8px 8px 0px 8px;
   line-height: 1.42857143;
   vertical-align: top;
   border-top: 1px solid #ddd;
@@ -4560,7 +4560,7 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
 .pagination {
   display: inline-block;
   padding-left: 0;
-  margin: 20px 0;
+  margin: 0 !important;
   border-radius: 4px;
 }
 .pagination > li {
@@ -6529,4 +6529,37 @@ ul.list-group.mailbox-list li a {
 }
 ul.list-group.mailbox-list li a {
   padding-top: 2px;
+}
+
+.forgot_link{
+  font-size: 14px;
+  text-decoration: underline;
+}
+.remember_login{
+  font-size: 14px;
+}
+.entry_limit{
+  display: inline !important;
+  width: auto;
+}
+.filter{
+  margin:0 auto; padding-top: 15px;
+}
+
+.pagination {
+  display: inline-block;
+  padding-left: 0;
+  margin: 0 !important;
+  border-radius: 4px;
+}
+
+.header_search{
+  padding: 20px !important;
+}
+.header_search h3{
+  margin: 0 !important;
+}
+
+.filter{
+    margin:0 auto; padding-top: 15px;
 }

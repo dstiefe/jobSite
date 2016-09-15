@@ -10624,7 +10624,7 @@ ul.h-list {
 }
 ul.mailbox-list li a,
 ul.h-list li a {
-  padding: 10px 15px;
+  padding: 2px 15px;
   display: block;
 }
 ul.mailbox-list li a i,
@@ -11433,4 +11433,31 @@ textarea.ta-bind {
 }
 ul.list-group.mailbox-list li a {
   padding-top: 2px;
+}
+.forgot_link {
+  font-size: 14px;
+  text-decoration: underline;
+}
+.remember_login {
+  font-size: 14px;
+}
+.entry_limit {
+  display: inline !important;
+  width: auto;
+}
+.filter {
+  margin: 0 auto;
+  padding-top: 15px;
+}
+.pagination {
+  display: inline-block;
+  padding-left: 0;
+  margin: 0 !important;
+  border-radius: 4px;
+}
+.header_search {
+  padding: 20px !important;
+}
+.header_search h3 {
+  margin: 0 !important;
 }

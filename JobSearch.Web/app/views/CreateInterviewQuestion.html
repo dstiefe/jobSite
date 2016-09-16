@@ -45,7 +45,7 @@
                                         Create Questions &amp; Answer Key
                                     </div>
 
-                                    <div class="form-group">
+                                    <div class="form-group" ng-class="{ 'has-error': createQuestionInterviewForm.text.$invalid && createQuestionInterviewForm.text.$dirty }">
                                         <label for="text">Question</label>
                                         <input type="text" class="form-control" ng-model="interviewQuestion.text" id="text" name="text" placeholder="Enter Question" required />
                                         <span class="color-theme" ng-show="createQuestionInterviewForm.text.$error.required">Question is required.</span>
@@ -56,6 +56,21 @@
                                         <input type="text" class="form-control" ng-model="interviewQuestion.textOptional" id="textOptional" name="textOptional" placeholder="Enter Question Help (Optional)"  />
                                     </div>
 
+                                    <div class="form-group" ng-class="{ 'has-error': createQuestionInterviewForm.type.$invalid && createQuestionInterviewForm.type.$dirty }">
+                                        <label for="type">Question Type</label>
+                                        <select
+                                                id="type"
+                                                name="type"
+                                                ng-model="interviewQuestion.type"
+                                                required
+                                                class="form-control"
+                                                ng-change="changedQuestionType()"
+                                        >
+                                            <option value="">Select Question Type</option>
+                                            <option ng-repeat="_type in ScreeningQuestionTypes" ng-selected="_type.value==interviewQuestion.type" value="{{_type.value}}">{{_type.name}}</option>
+                                        </select>
+                                        <span class="color-theme" ng-show="createQuestionInterviewForm.type.$error.required">Question Type is required.</span>
+                                    </div>
 
                                     <div class="form-group" ng-show="interviewQuestion.type == 'MultipleChoice'">
                                              <label for="option">Possible answer</label>
@@ -92,7 +107,7 @@
                                         </div>
                                      </div>
 
-                                    <div class="form-group" ng-if="interviewQuestion.type == 'LikertScale'">
+                                    <div class="form-group" ng-if="interviewQuestion.type == 'LikertScale'" ng-class="{ 'has-error': createQuestionInterviewForm.numOptionsSelected.$invalid && createQuestionInterviewForm.numOptionsSelected.$dirty }">
                                         <label for="type">Number of Options </label>
 
                                         <select id="numOptionsSelected"
@@ -107,7 +122,7 @@
                                         <span class="color-theme" ng-show="createQuestionInterviewForm.numOptionsSelected.$error.required">Number of Options is required.</span>
 
                                     </div>
-                                    <div class="form-group" ng-if="interviewQuestion.type == 'LikertScale' && numOptionsSelected">
+                                    <div class="form-group" ng-if="interviewQuestion.type == 'LikertScale' && numOptionsSelected" ng-class="{ 'has-error': createQuestionInterviewForm.optionsDescriptions0.$invalid && createQuestionInterviewForm.optionsDescriptions0.$dirty }">
 
                                         <div class="row">
                                             <div class="col-xs-4" style="text-align: right">
@@ -120,39 +135,32 @@
 
                                         </div>
 
+
+
+                                    </div>
+                                    <div class="form-group" ng-if="interviewQuestion.type == 'LikertScale' && numOptionsSelected" ng-class="{ 'has-error': createQuestionInterviewForm.optionsDescriptionsL.$invalid && createQuestionInterviewForm.optionsDescriptionsL.$dirty }">
+
+
                                         <div class="row">
                                             <div class="col-xs-4" style="text-align: right">
                                                 {{interviewQuestion.options[interviewQuestion.options.length-1]}} =
                                             </div>
                                             <div class="col-xs-8">
-                                                 <input type="text" ng-model="interviewQuestion.optionsDescriptions[numOptionsSelected]" id="optionsDescriptionsL"  name="optionsDescriptionsL" required class="form-control"  />
+                                                <input type="text" ng-model="interviewQuestion.optionsDescriptions[numOptionsSelected]" id="optionsDescriptionsL"  name="optionsDescriptionsL" required class="form-control"  />
                                                 <span class="color-theme" ng-show="createQuestionInterviewForm.optionsDescriptionsL.$error.required">Option is required.</span>
                                             </div>
                                         </div>
 
                                     </div>
+
                                 </div>
                                 <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="type">Question Type</label>
-                                        <select
-                                                id="type"
-                                                name="type"
-                                                ng-model="interviewQuestion.type"
-                                                required
-                                                class="form-control"
-                                                ng-change="changedQuestionType()"
-                                        >
-                                            <option value="">Select Question Type</option>
-                                            <option ng-repeat="_type in ScreeningQuestionTypes" ng-selected="_type.value==interviewQuestion.type" value="{{_type.value}}">{{_type.name}}</option>
-                                        </select>
-                                        <span class="color-theme" ng-show="createQuestionInterviewForm.type.$error.required">Question Type is required.</span>
-                                    </div>
+
 
 
                                     <div class="form-group">
                                         <label for="tags">Tags</label>
-                                        <input class="form-control" style="width:70%;float:right;" ng-model="tag" id="tags" type="text"  ng-enter="addtags()"><a href="" ng-click="addtags()"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
+                                        <input class="form-control" placeholder="Enter Tag" style="width:70%;float:right;" ng-model="tag" id="tags" type="text"  ng-enter="addtags()"><a href="" ng-click="addtags()"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
                                         <br>
                                         <br>
 
@@ -177,11 +185,11 @@
                                         Cancel
                                     </button>
 
-                                    <button class="btn btn-primary btn-lg" type="submit" alt="Save and continue" title="Save and continue">
+                                    <button class="btn btn-primary btn-lg" type="submit" alt="Save and continue" title="Save and continue" ng-disabled="createQuestionInterviewForm.$invalid">
                                         Add New Question
                                     </button>
 
-                                    <button class="btn btn-primary btn-lg" type="submit" alt="Save and exit" title="Save and exit" ng-click="$parent.saveAndExit=true">
+                                    <button class="btn btn-primary btn-lg" type="submit" alt="Save and exit" title="Save and exit" ng-click="$parent.saveAndExit=true" ng-disabled="createQuestionInterviewForm.$invalid">
                                         Save
                                     </button>
 

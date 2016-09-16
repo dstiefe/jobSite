@@ -61,17 +61,20 @@
                                     </tbody>
                                 </table>
                             </div>
-                            <div class="col-md-12" ng-show="filteredItems == 0">
-                                <div class="col-md-12">
-                                    <h4>No questions found</h4>
+                            
+                            <div class="col-md-12 pagination-footer">
+                                <div ng-show="filteredItems == 0"><h4>No questions found</h4></div>
+                                
+                                <div ng-show="filteredItems > 0">
+                                    <div pagination="" ng-model="currentPage" ng-change="changed()" boundary-links="true" total-items="filteredItems" items-per-page="entryLimit" class="pagination-small pull-left" previous-text="&laquo;" next-text="&raquo;"></div>
+
+
+                                    <div class="pull-right">
+                                        <label for="entryLimit">PageSize:</label>
+                                        <select id="entryLimit" name="entryLimit" ng-model="entryLimit" class="form-control entry_limit" ng-options="c for c in entryLimits" ></select>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-10" ng-show="filteredItems > 0  && filteredItems > entryLimit">
-                                <div pagination="" ng-model="currentPage" ng-change="changed()" boundary-links="true" total-items="filteredItems" items-per-page="entryLimit" class="pagination-small" previous-text="&laquo;" next-text="&raquo;"></div>
-                            </div>
-                            <div class="col-md-2">
-                                PageSize: <select ng-model="entryLimit" class="form-control" ng-options="c for c in entryLimits"></select>
-                            </div>
+                            </div>    
                         </div>
                     </div>
                 </div>

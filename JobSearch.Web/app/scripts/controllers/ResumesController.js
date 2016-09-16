@@ -38,7 +38,8 @@ angular.module('Jobsite').controller("ResumesController", function ($scope, Auth
             $scope.filteredItems = $scope.filtered.length;
         }, 10);
     };
-
+    $scope.predicate = 'modifyDate';
+    $scope.reverse =true;
     $scope.sort_by = function (predicate) {
         $scope.predicate = predicate;
         $scope.reverse = !$scope.reverse;

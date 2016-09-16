@@ -86,7 +86,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
         })
 
         // Login
-        .state('login', {
+        .state('login', { // <-
             url: "/login",
             templateUrl: "views/login.html",
             data: {
@@ -94,7 +94,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
             }
         })
 
-        .state('associate', {
+        .state('associate', { // <-
             url: "/associate",
             templateUrl: "views/associate.html",
             data: {
@@ -103,7 +103,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
         })
 
         // Register
-        .state('register', {
+        .state('register', { // <-
             url: "/register",
             templateUrl: "views/login.html",
             data: {
@@ -129,7 +129,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
         })
 
         // ApplyJob
-        .state('applyjob', {
+        .state('applyjob', { // <-
             url: "/applyjob",
             templateUrl: "views/applyjob.html",
             data: {
@@ -141,7 +141,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
             }
         })
 
-        .state('applicants', {
+        .state('applicants', { // <-
             url: "/applicants/:id?resumeId&messageshow",
             templateUrl: "views/applicants.html",
             data: {
@@ -219,7 +219,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
             }
         })
 
-        .state('editscreening', {
+        .state('editscreening', { 
             url: "/screenings/:id/edit",
             templateUrl: "views/EditScreening.html",
             data: {
@@ -231,7 +231,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
             }
         })
 
-        .state('editscreeninginfo', {
+        .state('editscreeninginfo', { // <-
             url: "/screenings/:id/info/edit",
             templateUrl: "views/CreateScreening.html",
             data: {
@@ -243,7 +243,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
             }
         })
 
-        .state('createscreeningquestion', {
+        .state('createscreeningquestion', { 
             url: "/screenings/:id/questions/create",
             templateUrl: "views/CreateScreeningQuestion.html",
             params: {
@@ -258,7 +258,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
             }
         })
 
-        .state('editscreeningquestion', {
+        .state('editscreeningquestion', { // <-
             url: "/screenings/:id/questions/:questionId/edit",
             templateUrl: "views/CreateScreeningQuestion.html",
             params: {
@@ -273,7 +273,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
             }
         })
 
-        .state('starttestscreening', {
+        .state('starttestscreening', { // <-
             url: "/jobs/:jobId/resumes/:id/screenings/:screeningId/start",
             templateUrl: "views/StartTestScreening.html",
             data: {
@@ -284,7 +284,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
             }
         })
 
-        .state('testscreening', {
+        .state('testscreening', { // <-
             url: "/jobs/:jobId/resumes/:id/screenings/:screeningId/test",
             templateUrl: "views/TestScreening.html",
             data: {
@@ -296,7 +296,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
             }
         })
 
-        .state('finishtestscreening', {
+        .state('finishtestscreening', { // <-
             url: "/resumes/screenings/finish",
             templateUrl: "views/FinishTestScreening.html",
             data: {
@@ -332,7 +332,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
             }
         })
 
-        .state('createreferral', {
+        .state('createreferral', { 
             url: "/references/create",
             templateUrl: "views/CreateReferral.html",
             data: {
@@ -398,7 +398,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
             }
         })
 
-        .state('download_resume', {
+        .state('download_resume', { // <-
             url: "/download_resume/:id",
             templateUrl: "views/DownloadResume.html",
             data: {
@@ -410,7 +410,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
             }
         })
 
-        .state('assignscreening', {
+        .state('assignscreening', { // <-
             url: "/screenings/:id/assign",
             templateUrl: "views/ScreeningAssign.html",
             data: {
@@ -422,7 +422,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
             }
         })
 
-        .state('assignreferral', {
+        .state('assignreferral', { // <-
             url: "/references/:id/assign",
             templateUrl: "views/ReferralAssign.html",
             data: {
@@ -434,7 +434,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
             }
         })
 
-        .state('starttestjobreferral', {
+        .state('starttestjobreferral', { // <-
             url: "/jobs/:jobId/resumes/:resumeId/references/:jobReferralId/start?reference_friend_id",
             templateUrl: "views/StartTestJobReferral.html",
             params: {
@@ -449,7 +449,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
             }
         })
 
-        .state('testsjobreferral', {
+        .state('testsjobreferral', { // <-
             url: "/jobs/:jobId/resumes/:resumeId/references/:jobReferralId/test",
             templateUrl: "views/TestJobReferral.html",
             data: {
@@ -461,7 +461,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
             }
         })
 
-        .state('finishestsjobreferral', {
+        .state('finishestsjobreferral', { // <-
             url: "/jobs/:jobId/resumes/:resumeId/references/:jobReferralId/test/finish",
             templateUrl: "views/FinishTestJobReferral.html",
             data: {
@@ -473,7 +473,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
             }
         })
 
-        .state('traitify', {
+        .state('traitify', { // <-
             url: "/jobs/:jobId/resumes/:resumeId/traitify/:traitifyId/test",
             templateUrl: "views/Traitify.html",
             data: {
@@ -485,7 +485,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
             }
         })
 
-        .state('traitifystart', {
+        .state('traitifystart', { // <-
             url: "/jobs/:jobId/resumes/:resumeId/traitify/:traitifyId/start",
             templateUrl: "views/TraitifyStart.html",
             data: {
@@ -496,7 +496,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
             }
         })
 
-        .state('traitifyfinish', {
+        .state('traitifyfinish', { // <-
             url: "/jobs/:jobId/resumes/:resumeId/traitify/:traitifyId/finish",
             templateUrl: "views/TraitifyFinish.html",
             data: {
@@ -586,7 +586,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
             }
         })
 
-        .state('assigninterview', {
+        .state('assigninterview', { 
             url: "/interviews/:id/assign",
             templateUrl: "views/InterviewAssign.html",
             data: {
@@ -598,7 +598,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
             }
         })
 
-        .state('testinterview', {
+        .state('testinterview', { // <-
             url: "/jobs/:jobId/resumes/:resumeId/interviews/:interviewId/test",
             templateUrl: "views/TestInterview.html",
             data: {
@@ -649,7 +649,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
             }
         })
 
-        .state('bulkemails', {
+        .state('bulkemails', { // <-
             url: "/messages/bulk",
             templateUrl: "views/MessagesBulk.html",
             data: {

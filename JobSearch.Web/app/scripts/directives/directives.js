@@ -13,6 +13,7 @@ angular.module('Jobsite')
     .directive('customOnChange', fileUploadHandler)
     .directive('back', backHandler)
     .directive("pwCheck", pwCheck)
+    .directive("showErrors", showErrors)
 
 function pwCheck() {
     return {
@@ -360,3 +361,27 @@ function landingScrollspy(){
         }
     }
 }
+
+
+function showErrors(){
+    return {
+        restrict: 'A',
+
+        link: function (scope, el, attrs, formCtrl) {
+            console.log('res');
+            // find the text box element, which has the 'name' attribute
+            var inputEl   = el[0].querySelector("[name]");
+            // convert the native text box element to an angular element
+            var inputNgEl = angular.element(inputEl);
+            // get the name on the text box so we know the property to check
+            // on the form controller
+            var inputName = inputNgEl.attr('name');
+
+            // only apply the has-error class after the user leaves the text box
+            inputNgEl.bind('blur', function() {
+                el.toggleClass('has-error', formCtrl[inputName].$invalid);
+            })
+        }
+    }
+}
+

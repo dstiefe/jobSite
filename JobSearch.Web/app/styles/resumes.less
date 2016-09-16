@@ -32,7 +32,7 @@
 }
 .modal.modal-fullscreen.force-fullscreen {
     /* Remove the padding inside the body */
-}
+}resumes
 .modal.modal-fullscreen.force-fullscreen .modal-body {
     padding: 0;
 }
@@ -284,11 +284,24 @@ margin-top:1px;
     display: none;
 }
 
+
 .pdfViewer {
-    width: 1140px;
     height: 1350px;
     border: 0;
+    width: 1140px;
     /*display: none;*/
+}
+
+@media all and (max-width: 1230px) {
+    .pdfViewer {
+         width: 900px;
+    }
+}
+
+@media (min-width: 1230px) and (max-width: 1300px) {
+    .pdfViewer {
+         width: 950px;
+    }
 }
 
 .imgViewer {

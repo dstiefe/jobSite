@@ -6523,7 +6523,7 @@ ul.list-group.mailbox-list li a {
 .modal.modal-fullscreen.force-fullscreen {
   /* Remove the padding inside the body */
 }
-.modal.modal-fullscreen.force-fullscreen .modal-body {
+resumes .modal.modal-fullscreen.force-fullscreen .modal-body {
   padding: 0;
 }
 .modal.modal-fullscreen.force-fullscreen .modal-header,
@@ -6730,10 +6730,20 @@ ul.list-group.mailbox-list li a {
   display: none;
 }
 .pdfViewer {
-  width: 1140px;
   height: 1350px;
   border: 0;
+  width: 1140px;
   /*display: none;*/
+}
+@media all and (max-width: 1230px) {
+  .pdfViewer {
+    width: 900px;
+  }
+}
+@media (min-width: 1230px) and (max-width: 1300px) {
+  .pdfViewer {
+    width: 950px;
+  }
 }
 .imgViewer {
   max-width: 1140px;
@@ -7644,7 +7654,7 @@ ul.list-group.mailbox-list li a {
   font-weight: 300;
 }
 .modal-header {
-  padding: 40px 30px;
+  padding: 20px 30px 40px;
   background: #f7f9fa;
 }
 .modal-body {
@@ -10900,7 +10910,7 @@ ul.h-list li:hover a {
 }
 .crop {
   overflow: hidden;
-  height: 100px;
+  height: 150px;
   line-height: 20px;
 }
 ​ .badge-success {
@@ -10958,7 +10968,6 @@ ul.h-list li:hover a {
   padding: 11px 25px;
   font-size: 17px;
   line-height: 1.3333333;
-  /*width: 100% !important;*/
   width: 500px !important;
 }
 .searchresumeform button {
@@ -11445,14 +11454,10 @@ ul.list-group.mailbox-list li a {
   display: inline !important;
   width: auto;
 }
-.filter {
-  margin: 0 auto;
-  padding-top: 15px;
-}
 .pagination {
   display: inline-block;
   padding-left: 0;
-  margin: 0 !important;
+  margin: 0;
   border-radius: 4px;
 }
 .header_search {
@@ -11460,4 +11465,27 @@ ul.list-group.mailbox-list li a {
 }
 .header_search h3 {
   margin: 0 !important;
+}
+.red_text {
+  color: #ef4034;
+}
+@media (max-width: 1200px) {
+  .searchresumeform input {
+    width: 100% !important;
+  }
+}
+.pagination-footer {
+  margin-bottom: 20px;
+}
+#share_box {
+  font-size: 20px;
+  width: 320px;
+  position: absolute;
+  right: 5px;
+  border: 1px solid lightgray;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 25px;
+  margin-top: -5px;
+  background-color: white;
 }

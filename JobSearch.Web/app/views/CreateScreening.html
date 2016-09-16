@@ -2,7 +2,8 @@
 <div class="container" ng-controller="CreateScreeningController">
 
         <ol class="breadcrumb">
-            <li><a ui-sref="screenings">Go Back</a></li>
+            <li ng-if="!id"><a ui-sref="screenings">Go Back</a></li>
+            <li ng-if="id"><a ui-sref="editscreening({id:id})">Go Back</a></li>
             <li class="active" ng-if="id">Edit Screening Info</li>
             <li class="active" ng-if="!id">Create Screening</li>
         </ol>
@@ -16,9 +17,17 @@
                                 <div class="panel-body">
                                     <form name="createScreeningForm" ng-submit="saveChanges(createScreeningForm.$valid)" novalidate>
                                         <div class="row">
+
+
+                                           <div class="col-md-12">
+                                                    <div class="form-group">
+                                                    <div class="alert alert-danger" role="alert" ng-hide='!isError'>{{errorDescription}}</div>
+                                                    </div>
+                                            </div>
+
                                             <div class="col-md-6">
 
-                                                <div class="form-group">
+                                                <div class="form-group" ng-class="{ 'has-error': createScreeningForm.title.$error.required && createScreeningForm.title.$dirty  }" >
                                                     <label for="title">Title</label>
                                                     <input type="text" class="form-control" ng-model="screening.title" id="title" name="title" placeholder="Enter Title" required />
                                                     <span class="color-theme" ng-show="createScreeningForm.title.$error.required">Title is required.</span>
@@ -34,16 +43,16 @@
 
                                             </div>
                                             <div class="col-md-6">
-                                                <div class="form-group">
+                                                <div class="form-group"   ng-class="{ 'has-error': createScreeningForm.categoryId.$error.required && createScreeningForm.categoryId.$dirty }">
                                                     <label for="categoryId">Category</label>
-                                                    <select ng-model="screening.categoryId" class="form-control" id="categoryId" name="categoryId" required>
+                                                    <select ng-model="screening.categoryId" class="form-control" id="categoryId" name="categoryId" required >
                                                         <option value="">Select Category</option>
                                                         <option ng-repeat="category in categories" ng-selected="category.id==categoryId" value="{{category.id}}">{{category.name}}</option>
                                                     </select>
                                                     <span class="color-theme" ng-show="createScreeningForm.categoryId.$error.required">Category is required.</span>
                                                 </div>
 
-                                                <div class="form-group">
+                                                <div class="form-group"  ng-class="{ 'has-error': createScreeningForm.jobsIds.$error.required && createScreeningForm.jobsIds.$dirty}">
                                                     <label for="jobsIds">Jobs</label>
 
                                                     <select  id="jobsIds"  name="jobsIds" multiple="true" ng-model="screening.jobsIds" class="form-control" ng-change="jobsChanged()" required ng-options="job.id as job.title+' - '+job.idLong for job in jobs">
@@ -52,11 +61,11 @@
 
                                                     <span class="color-theme" ng-show="createScreeningForm.jobsIds.$error.required">Jobs is required.</span>
                                                 </div>
-                                                <div class="form-group">
+                                                <div class="form-group"  ng-class="{ 'has-error': createScreeningForm.sort.$invalid && createScreeningForm.sort.$dirty}">
                                                     <label for="sort">Order</label>
                                                     <input type="number" min="0" step="1"  ng-model="screening.sort" class="form-control" id="sort" name="sort" placeholder="Set Order">
                                                 </div>
-                                                <div class="form-group">
+                                                <div class="form-group"  ng-class="{ 'has-error': (createScreeningForm.timeToComplete.$error.required ||  createScreeningForm.timeToComplete.$invalid) && createScreeningForm.timeToComplete.$dirty}">
                                                     <label for="timeToComplete">Time (in minutes)</label>
                                                     <input type="number" min="0.5" step="0.5"  ng-model="screening.timeToComplete" class="form-control" id="timeToComplete" name="timeToComplete" placeholder="Estimated Time to Complete" required />
                                                     <span class="color-theme" ng-show="createScreeningForm.timeToComplete.$error.required">Time is required.</span>
@@ -68,7 +77,7 @@
                                                 </div>
 
                                                 <div class="form-group">
-                                                            <input type="checkbox" ng-model="screening.isAutoSend" /> Send Screening once candidate applies
+                                                            <input type="checkbox" ng-model="screening.isAutoSend" id="isAutoSend" /> <label for="isAutoSend">Send Screening once candidate applies</label>
                                                 </div>
                                             </div>
                                         </div>
@@ -79,11 +88,11 @@
                                                     <span class="glyphicon glyphicon glyphicon-ban-circle" aria-hidden="true" ></span>
                                                 </button>
 
-                                                <button class="btn btn-primary btn-lg" type="submit" alt="Save and exit" title="Save and exit" ng-click="saveAndExit=true">
+                                                <button class="btn btn-primary btn-lg" type="submit"  ng-disabled="createScreeningForm.$invalid" alt="Save and exit" title="Save and exit" ng-click="saveAndExit=true">
                                                     <span class="glyphicon glyphicon glyphicon-ok" aria-hidden="true" ></span>
                                                 </button>
 
-                                                <button class="btn btn-primary btn-lg" type="submit" alt="Save and continue" title="Save and continue"  ng-if="!id">
+                                                <button class="btn btn-primary btn-lg" type="submit" ng-disabled="createScreeningForm.$invalid"  alt="Save and continue" title="Save and continue"  ng-if="!id">
                                                     <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
                                                 </button>
                                             </div>

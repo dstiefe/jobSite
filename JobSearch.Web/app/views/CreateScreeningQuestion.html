@@ -47,7 +47,7 @@
                                     <div class="form-group" ng-if="mode == 'edit'">
                                         Edit Question &amp; Answer Key
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group" ng-class="{ 'has-error': createQuestionScreeningForm.text.$error.required && createQuestionScreeningForm.text.$dirty }" >
                                         <label for="text">Question</label>
                                         <input type="text" class="form-control" ng-model="screeningQuestion.text" id="text" name="text" placeholder="Enter Question" required />
                                         <span class="color-theme" ng-show="createQuestionScreeningForm.text.$error.required">Question is required.</span>
@@ -58,7 +58,7 @@
                                         <input type="text" class="form-control" ng-model="screeningQuestion.textOptional" id="textOptional" name="textOptional" placeholder="Enter Question Help (Optional)"  />
                                     </div>
 
-                                    <div class="form-group">
+                                    <div class="form-group" ng-class="{ 'has-error': createQuestionScreeningForm.type.$error.required && createQuestionScreeningForm.type.$dirty}">
                                         <label for="type">Question Type</label>
                                         <select
                                                 id="type"
@@ -109,7 +109,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="form-group" ng-if="screeningQuestion.type == 'LikertScale'">
+                                    <div class="form-group" ng-if="screeningQuestion.type == 'LikertScale'" ng-class="{ 'has-error': createQuestionScreeningForm.numOptionsSelected.$error.required && createQuestionScreeningForm.numOptionsSelected.$dirty }">
                                         <label for="type">Number of Options </label>
 
                                         <select id="numOptionsSelected"
@@ -124,7 +124,7 @@
                                         <span class="color-theme" ng-show="createQuestionScreeningForm.numOptionsSelected.$error.required">Number of Options is required.</span>
 
                                     </div>
-                                    <div class="form-group" ng-if="screeningQuestion.type == 'LikertScale' && numOptionsSelected">
+                                    <div class="form-group" ng-if="screeningQuestion.type == 'LikertScale' && numOptionsSelected" ng-class="{ 'has-error': createQuestionScreeningForm.optionsDescriptions0.$error.required && createQuestionScreeningForm.optionsDescriptions0.$dirty }">
 
                                         <div class="row">
                                             <div class="col-xs-4" style="text-align: right">
@@ -132,17 +132,22 @@
                                             </div>
                                             <div class="col-xs-8">
                                                 <input type="text" ng-model="screeningQuestion.optionsDescriptions[1]" id="optionsDescriptions0"  name="optionsDescriptions0" class="form-control" required />
-                                                <span class="color-theme" ng-show="createQuestionScreeningForm.optionsDescriptions0.$error.required">Optionsis required.</span>
+                                                <span class="color-theme" ng-show="createQuestionScreeningForm.optionsDescriptions0.$error.required">Option is required.</span>
                                             </div>
 
                                         </div>
+
+
+                                    </div>
+
+                                    <div class="form-group" ng-if="screeningQuestion.type == 'LikertScale' && numOptionsSelected" ng-class="{ 'has-error': createQuestionScreeningForm.optionsDescriptionsL.$error.required && createQuestionScreeningForm.optionsDescriptionsL.$dirty}">
 
                                         <div class="row">
                                             <div class="col-xs-4" style="text-align: right">
                                                 {{screeningQuestion.options[screeningQuestion.options.length-1]}} =
                                             </div>
                                             <div class="col-xs-8">
-                                                 <input type="text" ng-model="screeningQuestion.optionsDescriptions[numOptionsSelected]" id="optionsDescriptionsL"  name="optionsDescriptionsL" required class="form-control"  />
+                                                <input type="text" ng-model="screeningQuestion.optionsDescriptions[numOptionsSelected]" id="optionsDescriptionsL"  name="optionsDescriptionsL" required class="form-control"  />
                                                 <span class="color-theme" ng-show="createQuestionScreeningForm.optionsDescriptionsL.$error.required">Option is required.</span>
                                             </div>
                                         </div>
@@ -155,20 +160,10 @@
                                       <br />
                                     </div>
 
-                                    <div class="form-group">
+                                    <div class="form-group" ng-show="screeningTags.length > 0 ">
                                         <label for="tags">Tags</label>
 
                                         <div ng-repeat="screeningTag in screeningTags | filter:{ level: 1, isCategory: true } track by $index">
-
-                                            <!--<select  id="selectedTag_{{$index}}"-->
-                                                     <!--name="selectedTag_{{$index}}"-->
-                                                     <!--required-->
-                                                     <!--class="form-control"-->
-                                                     <!--ng-init="screeningTagChilds=getChildsTags(screeningTag)"-->
-                                                     <!--ng-model="$parent.screeningQuestion.tags[$index]"-->
-                                                     <!--ng-options="_option.name as (_option.parentName +' / '+ _option.name) for  _option in screeningTagChilds">-->
-                                                <!--<option value="">Select {{screeningTag.name}}</option>-->
-                                            <!--</select>-->
 
                                             <select
                                                     id="selectedTag_{{$index}}"
@@ -177,9 +172,7 @@
                                                     class="form-control"
                                                     ng-init="screeningTagChilds=getChildsTags(screeningTag)"
                                                     ng-model="$parent.screeningQuestion.tags[$index]"
-                                                    class="form-control"
-
-                                            >
+                                                    class="form-control">
                                                 <option value="">Select {{screeningTag.name}}</option>
                                                 <option ng-repeat="_option in screeningTagChilds"
                                                         ng-selected="$parent.screeningQuestion.tags.indexOf(_option.parentName+'/'+_option.name)!=-1"
@@ -190,14 +183,6 @@
                                             <br />
                                         </div>
 
-                                        <!--<input class="form-control" style="width:70%;float:right;" ng-model="tag" id="tags" type="text"  ng-enter="addtags()"><a href="" ng-click="addtags()"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>-->
-                                        <!--<br>-->
-                                        <!--<br>-->
-                                        <!--<ul class="list-group">-->
-                                            <!--<li class="list-group-item" ng-repeat="tagname in screeningQuestion.tags">{{ tagname }}<a style="float:right;" href="" ng-click="removetag($index)"  ><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></a></li>-->
-                                        <!--</ul>-->
-
-
                                     </div>
 
                                     <div class="form-group" ng-if="mode == 'edit'">
@@ -205,7 +190,7 @@
                                         <input type="number" min="0" step="1"  ng-model="screeningQuestion.sort" class="form-control" id="sort" name="sort" placeholder="Set Order">
                                     </div>
 
-                                    <div class="form-group" ng-if="screeningQuestion.type == 'MultipleChoice' || screeningQuestion.type == 'TrueFalse'">
+                                    <div class="form-group" ng-if="screeningQuestion.type == 'MultipleChoice' || screeningQuestion.type == 'TrueFalse'"  ng-class="{ 'has-error': createQuestionScreeningForm.selectedOption.$error.required  && createQuestionScreeningForm.selectedOption.$dirty}">
                                         <label for="selectedOption">Correct Answer</label>
                                         <select  id="selectedOption"
                                                  name="selectedOption"
@@ -215,8 +200,8 @@
                                                  ng-options="idx as _option for (idx, _option) in $parent.screeningQuestion.options">
                                             <option value="">Select correct answer</option>
                                         </select>
-                                        <span id="helpBlock" class="help-block">Please, fill out possible answers and select correct answer</span>
-                                        <span class="color-theme" ng-show="createQuestionScreeningForm.selectedOption.$error.required">Correct Answer Type is required.</span>
+
+                                        <span class="color-theme" ng-show="createQuestionScreeningForm.selectedOption.$error.required">Please, fill out possible answers and select correct answer</span>
                                     </div>
 
                                 </div>
@@ -228,11 +213,11 @@
                                         Cancel
                                     </button>
 
-                                    <button class="btn btn-primary btn-lg" type="submit" alt="Save and continue" title="Save and continue" >
+                                    <button class="btn btn-primary btn-lg" type="submit" alt="Save and continue" title="Save and continue"  ng-disabled="createQuestionScreeningForm.$invalid">
                                         Add New Question
                                     </button>
 
-                                    <button class="btn btn-primary btn-lg" type="submit" alt="Save and exit" title="Save and exit" ng-click="$parent.saveAndExit=true" >
+                                    <button class="btn btn-primary btn-lg" type="submit" alt="Save and exit" title="Save and exit" ng-click="$parent.saveAndExit=true"  ng-disabled="createQuestionScreeningForm.$invalid">
                                         Save
                                     </button>
 

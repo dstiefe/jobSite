@@ -4557,12 +4557,7 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
 .breadcrumb > .active {
   color: #777777;
 }
-.pagination {
-  display: inline-block;
-  padding-left: 0;
-  margin: 0 !important;
-  border-radius: 4px;
-}
+
 .pagination > li {
   display: inline;
 }
@@ -6546,12 +6541,6 @@ ul.list-group.mailbox-list li a {
   margin:0 auto; padding-top: 15px;
 }
 
-.pagination {
-  display: inline-block;
-  padding-left: 0;
-  margin: 0 !important;
-  border-radius: 4px;
-}
 
 .header_search{
   padding: 20px !important;
@@ -6562,4 +6551,13 @@ ul.list-group.mailbox-list li a {
 
 .filter{
     margin:0 auto; padding-top: 15px;
+}
+
+.red_text{
+  color: #ef4034;
+}
+@media (max-width:1200px) {
+  .searchresumeform input {
+    width: auto !important;
+  }
 }

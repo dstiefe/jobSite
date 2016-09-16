@@ -6,7 +6,7 @@
         </div>
     </div>
 
-    <div class="row">
+    <div>
         <br />
         <div class="col-lg-3 col-md-4 col-sm-6 col-user" ng-repeat="data in list | startFrom:(currentPage-1)*entryLimit | limitTo:entryLimit | orderBy:'-publishedDate'">
 
@@ -247,14 +247,11 @@
         </div>
     </div>
 
-    <div class="row"   ng-show="list.length > 0">
+    <div class="col-md-12 pagination-footer">
+        <div ng-show="filteredItems > 0" pagination="" ng-model="currentPage" ng-change="changed()" boundary-links="true" total-items="filteredItems" items-per-page="entryLimit" class="pagination-small pull-left" previous-text="&laquo;" next-text="&raquo;"></div>
 
-        <div class="col-md-9 col-lg-offset-1" ng-show="list.length > 0">
-            <div pagination="" ng-model="currentPage" ng-change="changed()" boundary-links="true" total-items="filteredItems" items-per-page="entryLimit" class="pagination-small" previous-text="&laquo;" next-text="&raquo;"></div>
-        </div>
-        <div class="col-md-2" style="margin-top: 20px;">
+        <div class="pull-right">
             <label for="entryLimit">PageSize:</label>
             <select id="entryLimit" name="entryLimit" ng-model="entryLimit" class="form-control entry_limit" ng-options="c for c in entryLimits" ></select>
         </div>
-        <div class="col-md-1"> </div>
     </div>

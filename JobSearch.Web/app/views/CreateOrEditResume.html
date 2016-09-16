@@ -1,12 +1,13 @@
 <div class="inmodal">
     <div class="color-line"></div>
     <div class="modal-header">
-        <div style="position:absolute; right: 30px; top: 10px;">
-            <a ng-click="onClose()" ><span class="glyphicon close-icon hoverClick" style="font-size: 30px; color: red;">×</span></a>
-        </div>
-
         <div class="pull-left">
             {{user.lastName}}&nbsp;{{user.firstName}}
+        </div>
+        
+        <div class="pull-right">
+            <a ng-click="onClose()">
+                <span class="glyphicon close-icon hoverClick" style="margin-top:-4px; font-size: 30px; color: red;">×</span></a>
         </div>
 
     </div>
@@ -37,7 +38,7 @@
                     <div class="form-group resume">
                         <label for="tags">Tags</label><div class="help-tip tags"><p>Tagging helps us find your resume:  Examples are Data Analytics, Machine Learning, Java</p></div> 
                         <br class="clear">
-                        <input class="form-control" style="width:90%;float:right;" ng-model="tag" id="tags" type="text" ng-enter="addtags()"><a href="" ng-click="addtags()"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
+                        <input class="form-control" placeholder="Enter Tag"  style="width:90%;float:right;" ng-model="tag" id="tags" type="text" ng-enter="addtags()"><a href="" ng-click="addtags()"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
                         <br>
                         <br>
 
@@ -48,7 +49,7 @@
                     <div class="form-group">
                         <label ng-show="resume.originalFilename">Uploaded Resume File Name:&nbsp;{{resume.originalFilename}}</label>
                         <br />
-                        <label for="exampleInputFile">save/upload</label>
+                        <label for="exampleInputFile">Save/Upload</label>
                         <input type="file" id="exampleInputFile" custom-on-change="uploadFile" accept="application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" />
                         <progressbar class="progress-striped active" max="100" value="100" type="info" ng-show="loading">Loading...Please wait.</progressbar>
                     </div>

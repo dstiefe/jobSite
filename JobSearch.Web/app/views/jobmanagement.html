@@ -24,25 +24,6 @@
                     <button class="btn btn-primary  btn-block btn-md" type="submit">Save Changes</button>
                 </div>
             </div>
-        <!--<div style="margin:0 auto; width:95%;">-->
-            <!--<div class="col-md-8">-->
-            <!--</div>-->
-            <!--<div class="col-md-2">-->
-                <!--<div class="clear">-->
-                    <!--<br />-->
-                <!--</div>-->
-                <!--<button ng-hide="id == ''" data-ng-click="removechanges()" class=" btn btn-danger btn-md pull-right">Delete Job</button>-->
-            <!--</div>-->
-            <!--<div class="col-md-2">-->
-                <!--<div class="clear">-->
-                    <!--<br />-->
-                    <!--<button style="margin:0 -25px 0 0;" class="btn btn-primary btn-md pull-right" type="submit">Save Changes</button>-->
-                <!--</div>-->
-            <!--</div>-->
-            <!--<div class="col-md-1">-->
-                <!--<br />&nbsp;-->
-            <!--</div>-->
-        <!--</div>-->
 
 
             <div style="height:25px;clear:both;">
@@ -139,7 +120,7 @@
                                                         <span class="color-theme" ng-show="locationState.id && !locationCity.id">Location is required.</span>
                                                         <br>
                                                         <label for="tags">Tags</label>
-                                                        <input class="form-control" style="width:70%;float:right;" ng-model="tag" id="tags" type="text"  ng-enter="addtags()"><a href="" ng-click="addtags()"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
+                                                        <input class="form-control" style="width:70%;float:right;" placeholder="Enter Tag" ng-model="tag" id="tags" type="text"  ng-enter="addtags()"><a href="" ng-click="addtags()"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
                                                         <br>
                                                         <br>
 
@@ -155,7 +136,7 @@
                                             <div class="box-description">
                                                 <h3>JOB SNAPSHOT</h3>
                                                 <p>
-                                                    <i class="fa fa-clock-o"></i> Employee Type
+                                                    <i class="fa fa-clock-o"></i> <label for="employeeType">Employee Type</label>
                                                     <br>
                                                         <span class="color-theme">
                                                     <select
@@ -174,28 +155,28 @@
                                                 </span>
                                                 </p>
                                                 <p>
-                                                    <i class="fa fa-map-marker"></i> Location:
+                                                    <i class="fa fa-map-marker"></i> <label for="location_label">Location</label>
                                                     <br>
-                                                    <span class="color-theme">{{ locationCity.name }}</span>
+                                                    <span class="red_text" id="location_label">{{ locationCity.name }}</span>
                                                 </p>
                                                 <p>
-                                                    <i class="fa fa-suitcase"></i> Experience
+                                                    <i class="fa fa-suitcase"></i> <label for="experience">Experience</label>
                                                     <br>
                                                     <span class="color-theme">
-                                                        <input type="text" id="experience" name="experience" ng-model="experience">
+                                                        <input type="text" class="form-control" id="experience" placeholder="Enter Experience" name="experience" ng-model="experience">
                                                         <br />
 
                                                     </span>
                                                 </p>
                                                 <p>
-                                                    <i class="fa fa-calendar"></i> Date Posted
+                                                    <i class="fa fa-calendar"></i> <label for="data_posted">Date Posted</label>
                                                     <br>
-                                                    <span class="color-theme">{{ posteddate*1000 | date : "M/d/yyyy" }}</span>
+                                                    <span class="red_text" id="data_posted">{{ posteddate*1000 | date : "M/d/yyyy" }}</span>
                                                 </p>
                                             </div>
 
                                             <div class="box-description">
-                                                <h3>CLIENT INFOT</h3>
+                                                <h3>CLIENT INFO</h3>
                                                 <label for="adminClientSelected">Client Filter</label>
                                                 <input type="text" class="form-control"  ng-model="adminClientSelected" id="adminClientSelected" name="adminClientSelected"  ui-autocomplete="adminClientOption" placeholder="Enter Client Company Name"  />
 

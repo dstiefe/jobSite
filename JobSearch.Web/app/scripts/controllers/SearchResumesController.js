@@ -58,7 +58,7 @@ angular.module('Jobsite').controller("SearchResumesController", function ($scope
     };
 
     $scope.pageChanged = function () {
-        _search();
+        $scope.search();
     };
 
 

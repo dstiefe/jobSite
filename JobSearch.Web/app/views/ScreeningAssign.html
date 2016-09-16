@@ -29,9 +29,9 @@
                                     <caption><h2>Job List</h2></caption>
                                     <tbody>
                                     <tr ng-repeat="data in jobs">
-                                        <td><input type="radio" ng-model="$parent.selectedJobId" ng-value="data.id" /></td>
+                                        <td><input type="radio" ng-model="$parent.selectedJobId" ng-value="data.id" id="job_{{data.id}}" /></td>
                                         <td>
-                                            {{ data.title + ' - ' + data.idLong }}
+                                            <label for="job_{{data.id}}">{{ data.title + ' - ' + data.idLong }}</label>
                                         </td>
                                     </tr>
                                     </tbody>
@@ -58,9 +58,10 @@
                                     </caption>
                                     <tbody>
                                     <tr ng-repeat="data in screenings | filter: jobExist | orderBy:'sort'">
-                                        <td><input type="radio" /></td>
+                                        <td><input type="radio" id="screening_{{data.id}}" /></td>
                                         <td>
-                                            {{ data.title}}
+
+                                            <label for="screening_{{data.id}}">{{ data.title}}</label>
                                         </td>
                                     </tr>
                                     </tbody>

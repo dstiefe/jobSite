@@ -44,13 +44,13 @@
                                 <tr ng-repeat="data in filtered = (list | filter:search | orderBy : predicate :reverse) | startFrom:(currentPage-1)*entryLimit | limitTo:entryLimit">
                                     <td  ng-bind-html="data.title"></td>
                                     <td>{{data.category}}</td>
-                                    <td>
+                                    <td  style="max-width:50%">
                                         {{ data.tags.join()}}
                                     </td>
                                     <td>
                                         {{ data.modifyDate*1000 | date : "M/d/yyyy" }}
                                     </td>
-                                    <td style="max-width: 100px;">
+                                    <td style="width:176px;">
                                         <a ui-sref="editinterview({id:data.id})" class="btn btn-info btn-warning"><span class="glyphicon glyphicon-edit"></span> Edit</a>&nbsp;<a ng-click="deleterecords(data)" class="btn btn-info btn-danger"><span class="glyphicon glyphicon-remove"></span> Delete</a>
                                     </td>
                                 </tr>
@@ -58,32 +58,28 @@
                             </table>
                         </div>
 
-                        <div class="col-md-12" ng-show="filteredItems == 0">
-                            <div class="col-md-12">
-                                <h4>No Interviews found</h4>
+                        <div class="col-md-12 pagination-footer" >
+                            <div ng-show="filteredItems == 0"><h4>No Interviews found</h4></div>
+
+                            <div ng-show="filteredItems > 0">
+                                <div pagination=""
+                                     ng-model="currentPage"
+                                     ng-change="changed()"
+                                     boundary-links="true"
+                                     total-items="filteredItems"
+                                     items-per-page="entryLimit"
+                                     class="pagination-small pull-left"
+                                     previous-text="&laquo;"
+                                     next-text="&raquo;"></div>
+
+                                <div class="pull-right">
+                                    <label for="entryLimit">PageSize:</label>
+                                    <select id="entryLimit" name="entryLimit" ng-model="entryLimit" class="form-control entry_limit" ng-options="c for c in entryLimits" ></select>
+                                </div>
                             </div>
                         </div>
-
-                        <div class="col-md-12" >
-
-                            <div ng-show="filteredItems > 0" pagination="" ng-model="currentPage" ng-change="changed()" boundary-links="true" total-items="filteredItems" items-per-page="entryLimit" class="pagination-small pull-left" previous-text="&laquo;" next-text="&raquo;"></div>
-
-                            <div class="pull-right">
-                                <label for="entryLimit">PageSize:</label>
-                                <select id="entryLimit" name="entryLimit" ng-model="entryLimit" class="form-control entry_limit" ng-options="c for c in entryLimits" ></select>
-                            </div>
-
-                        </div>
-
-
-
                     </div>
-
-
-
     <!-- Right sidebar -->
-
-
 </div>
 
 

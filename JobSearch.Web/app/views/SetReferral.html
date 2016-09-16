@@ -1,15 +1,16 @@
 <div class="inmodal">
     <div class="color-line"></div>
     <div class="modal-header">
-        <div style="position:absolute; right: 30px; top: 10px;">
-            <a ng-click="onClose()" ><span class="glyphicon close-icon hoverClick" style="font-size: 30px; color: red;">×</span></a>
-        </div>
-
         <div class="pull-left">
             {{jobTitle}}
         </div>
-
+        
+        <div class="pull-right">
+            <a ng-click="onClose()">
+                <span class="glyphicon close-icon hoverClick" style="margin-top:-4px; font-size: 30px; color: red;">×</span></a>
+        </div>
     </div>
+    
     <div class="modal-body">
         <div class="alert alert-danger" role="alert" ng-hide='!message'>{{message}}</div>
 
@@ -38,7 +39,7 @@
         <div class="row">
             <div class="col-sm-12">
                 <label class="checkbox-inline">
-                    <input type="checkbox" ng-model="agreeTerm" />  Agree To Terms<br /> <a href="#">view terms</a>
+                    <input type="checkbox" ng-model="agreeTerm" />  Agree To Terms<br /> <a class="">view terms</a>
                 </label>
             </div>
         </div>

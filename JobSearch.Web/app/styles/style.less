@@ -437,7 +437,7 @@
 }
 
 .modal-header {
-    padding: 40px 30px;
+    padding: 20px 30px 40px;
     background: #f7f9fa
 }
 
@@ -4402,7 +4402,7 @@ ul.h-list li:hover a {
     /*position: relative;*/
     /*border-bottom: 1px solid #e4e5e7*/
 }
-.crop {overflow:hidden;height:100px;line-height:20px;}​
+.crop {overflow:hidden;height:150px;line-height:20px;}​
 
 .badge-success {
     background-color: #5cb85c;
@@ -4468,7 +4468,6 @@ ul.h-list li:hover a {
     padding: 11px 25px;
     font-size: 17px;
     line-height: 1.3333333;
-    /*width: 100% !important;*/
     width: 500px !important;
 }
 
@@ -4943,14 +4942,10 @@ ul.list-group.mailbox-list li a {
     width: auto;
 }
 
-.filter{
-    margin:0 auto; padding-top: 15px;
-}
-
 .pagination {
     display: inline-block;
     padding-left: 0;
-    margin: 0 !important;
+    margin: 0;
     border-radius: 4px;
 }
 .header_search{
@@ -4958,4 +4953,33 @@ ul.list-group.mailbox-list li a {
 }
 .header_search h3{
     margin: 0 !important;
+}
+
+.red_text{
+    color: #ef4034;
+}
+
+
+@media (max-width:1200px) {
+    .searchresumeform input {
+        width: 100% !important;
+    }
+}
+
+
+.pagination-footer {    
+    margin-bottom: 20px;    
+}
+
+#share_box {
+    font-size: 20px; 
+    width: 320px; 
+    position: absolute; 
+    right: 5px; 
+    border: 1px solid lightgray; 
+    padding-top: 10px; 
+    padding-bottom: 10px; 
+    padding-left: 25px; 
+    margin-top: -5px; 
+    background-color: white;
 }

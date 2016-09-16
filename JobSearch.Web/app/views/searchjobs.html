@@ -9,31 +9,26 @@
     <!-- Main Wrapper -->
     <br />
 
-        <div  class="header_search row" id="header">
-
+        <div class="header_search row" id="header">
             <div class="col-sm-1">
-               
                 <h3> Jobs:</h3>
-               
             </div>
 
-            <div class="col-sm-9">     
+
+            <div class="col-sm-9">
                 <input type="text" class="form-control" ng-model="searchtext"  ng-enter="searchjob()" placeholder="Job Title or Category or Location">
             </div>
 
             <div class="col-sm-2">
-                
-                    <a class="btn btn-primary btn-block " ng-click="searchjob()" href="#">Search</a>
-              
-
+                <a class="btn btn-primary btn-block " ng-click="searchjob()" href="#">Search</a>
             </div>
-
         </div>
+    
     <br />
 
     <div class="row">
         <div class="col-sm-3">
-            <!--<div class="btn btn-primary btn-block m-b-md col-sm-12">Narrow Search</div>-->
+
             <div class="narrowsearch-container">
 
                 <div class="hpanel">
@@ -91,9 +86,10 @@
                 </div>
             </div>
         </div>
+        
         <div class="col-sm-9">
             <div class="hpanel">
-                <div class="panel-body" style="padding-bottom: 5px;">
+                <div class="panel-body">
                     <div class="row">
                         
                         <div class="col-sm-12" >
@@ -130,25 +126,29 @@
                             </div>
                         </div>
                     </div>
+                    
                     <div class="row">
-                        
-                        
                         <div class="col-sm-12" >
-                          
-                               <pagination ng-show="totalItems>0" total-items="totalItems"  ng-change="pageChanged()" ng-model="currentPage" max-size="maxSize" class="pagination-sm pull-left" boundary-links="true" rotate="false" num-pages="numPages" items-per-page="itemsPerPage"></pagination>
-                     
-                        <div class="pull-right">
-                                <label for="entryLimit">PageSize:</label>
-                            <select id="entryLimit" name="entryLimit" ng-model="itemsPerPage" ng-change="pageSizeChanged()"  class="form-control entry_limit" ng-options="c for c in entryLimits" ></select>
-                            </div>
-                        
+                            <pagination
+                                    ng-show="totalItems>0"
+                                    total-items="totalItems"
+                                    ng-change="pageChanged()"
+                                    ng-model="currentPage"
+                                    max-size="maxSize"
+                                    class="pagination-small pull-left"
+                                    boundary-links="true"
+                                    rotate="false"
+                                    num-pages="numPages"
+                                    items-per-page="itemsPerPage">
+                            </pagination>
 
+
+                     
+                            <div class="pull-right">
+                                <label for="entryLimit">PageSize:</label>
+                                <select id="entryLimit" name="entryLimit" ng-model="itemsPerPage" ng-change="pageSizeChanged()"  class="form-control entry_limit" ng-options="c for c in entryLimits" ></select>
+                            </div>
                         </div>
-                        
-                        
-                     
-                     
-                        
                     </div>
 
                 </div>

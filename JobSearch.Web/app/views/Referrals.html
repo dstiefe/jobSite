@@ -7,29 +7,27 @@
     <!-- Main Wrapper -->
 
     <br />
-    <div id="header" style="margin:0 auto; width:95%;">
+    <div class="header_search row" id="header">
         <div class="col-md-2">
-            <h3 style="margin: 0;padding: 0.7em 1em 1em 0.8em;"> References:</h3>
+            <h3> References:</h3>
         </div>
+        
         <div class="col-md-8">
-            <div class="clear">
-                <br />
-            </div>
             <input type="text" ng-model="search" ng-change="filter()" placeholder="Filter" class="form-control" />
         </div>
-        <div class="col-md-1">
-            <div class="clear">
-                <br />
-            </div><a class="btn btn-info btn-primary" ui-sref="createreferral">Create Reference</a></div>
+        
+        <div class="col-md-2">
+            <a class="btn btn-info btn-primary" ui-sref="createreferral">Create Reference</a>
+        </div>
     </div>
+    
     <section id="content">
-        <div class="container">
+        <div>
             <div class="right_col" role="main">
-                <div class="row">
+                <div>
 
                     <div class="row">
                         <div class="col-md-12" style="text-align:right; padding-right: 15px;">
-                            <br />
                             <br />
                             <h5>Filtered {{ filtered.length }} of {{ totalItems}} Total References</h5>
                         </div>
@@ -43,13 +41,13 @@
                                 <th>Reference Category&nbsp;<a ng-click="sort_by('category');"><i class="glyphicon glyphicon-sort"></i></a></th>
                                 <th>Reference tags&nbsp;<a ng-click="sort_by('tags');"><i class="glyphicon glyphicon-sort"></i></a></th>
                                 <th>Created date&nbsp;<a ng-click="sort_by('modifyDate');"><i class="glyphicon glyphicon-sort"></i></a></th>
-                                <th style="width: 200px;">Admin </th>
+                                <th>Admin</th>
                                 </thead>
                                 <tbody>
                                 <tr ng-repeat="data in filtered = (list | filter:search | orderBy : predicate :reverse) | startFrom:(currentPage-1)*entryLimit | limitTo:entryLimit">
                                     <td  ng-bind-html="data.title"></td>
                                     <td>{{data.category}}</td>
-                                    <td>
+                                    <td style="max-width:50%">
                                         <span ng-repeat="tag in data.tags">
                                             {{tag.name}}
                                         </span>
@@ -57,24 +55,27 @@
                                     <td>
                                         {{ data.modifyDate*1000 | date : "M/d/yyyy" }}
                                     </td>
-                                    <td>
+                                    <td style="width:180px;">
                                         <a ui-sref="editreferral({id:data.id})" class="btn btn-info btn-warning"><span class="glyphicon glyphicon-edit"></span> Edit</a>&nbsp;<a ng-click="deleterecords(data)" class="btn btn-info btn-danger"><span class="glyphicon glyphicon-remove"></span> Delete</a>
                                     </td>
                                 </tr>
                                 </tbody>
                             </table>
-                        </div>
-                        <div class="col-md-12" ng-show="filteredItems == 0">
-                            <div class="col-md-12">
-                                <h4>No References found</h4>
+                        </div> 
+                        
+                        <div class="col-md-12 pagination-footer">
+                            <div ng-show="filteredItems == 0"><h4>No References found</h4></div>
+                            
+                            <div ng-show="filteredItems > 0">
+                                <div pagination="" ng-model="currentPage" ng-change="changed()" boundary-links="true" total-items="filteredItems" items-per-page="entryLimit" class="pagination-small pull-left" previous-text="&laquo;" next-text="&raquo;"></div>
+
+                                <div class="pull-right">
+                                    <label for="entryLimit">PageSize:</label>
+                                    <select id="entryLimit" name="entryLimit" ng-model="entryLimit" class="form-control entry_limit" ng-options="c for c in entryLimits" ></select>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-md-10" ng-show="filteredItems > 0">
-                            <div pagination="" ng-model="currentPage" ng-change="changed()" boundary-links="true" total-items="filteredItems" items-per-page="entryLimit" class="pagination-small" previous-text="&laquo;" next-text="&raquo;"></div>
-                        </div>
-                        <div class="col-md-1">
-                            <br /> PageSize: <select ng-model="entryLimit" class="form-control" ng-options="c for c in entryLimits"></select>
-                        </div>
+                        
                     </div>
 
                 </div>
@@ -82,8 +83,6 @@
         </div>
     </section>
     <!-- Right sidebar -->
-
-
 </div>
 
 

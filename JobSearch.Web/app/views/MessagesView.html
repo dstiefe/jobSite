@@ -1,20 +1,20 @@
 <div class="inmodal">
     <div class="color-line"></div>
     <div class="modal-header">
-
-        <div style="position:absolute; right: 30px; top: 10px;">
-            <a ng-click="onClose()" ><span class="glyphicon close-icon hoverClick" style="font-size: 30px; color: red;">×</span></a>
-        </div>
-
         <div class="pull-left">
             {{toUserName}}
         </div>
 
         <div class="pull-right">
+            <a ng-click="onClose()">
+                <span class="glyphicon close-icon hoverClick" style="margin-top:-4px; font-size: 30px; color: red;">×</span></a>
+        </div>
+        
+        <div class="pull-right">
             {{job.title}}
         </div>
-
     </div>
+    
     <div class="modal-body">
 
 

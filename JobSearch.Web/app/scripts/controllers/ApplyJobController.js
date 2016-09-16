@@ -10,7 +10,12 @@ function ApplyJobController($scope, $http, $location, $modalInstance, ResumesSer
     $scope.resumeFileUrl = '';
     $scope.resumeOriginalFilename = '';
     $scope.loading = false;
+    $scope.currentPage = 1;
 
+        $scope.sort_by = function (predicate) {
+        $scope.predicate = predicate;
+        $scope.reverse = !$scope.reverse;
+    };
     if (!AuthService.authentication.isAuth) {
         $location.path("/login");
     }

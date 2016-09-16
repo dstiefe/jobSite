@@ -7,7 +7,8 @@ angular.module('Jobsite').controller("CreateScreeningController", function ($sco
     $scope.id = $stateParams.id;
     $scope.screening = {};
     $scope.screening.sort = 0;
-    //$scope.screening.tags = [];
+    $scope.isError = false;
+    $scope.errorDescription = '';
 
     CategoriesService.getCategories().then(function (results) {
         $scope.categories = results.data;
@@ -44,14 +45,18 @@ angular.module('Jobsite').controller("CreateScreeningController", function ($sco
     $scope.saveChanges = function (isValid) {
         if (!isValid ||
             CommonService.isEmptyOrSpacesHtml($scope.screening.description) ) {
+            $scope.isError = true;
+            $scope.errorDescription = 'Please, check input data';
             return;
         }
-
+        $scope.isError = false;
         if (!angular.isUndefined($scope.id) && $scope.id != '') {
             ScreeningsService.putScreening($scope.id, $scope.screening).then(function (results) {
                 $state.go('editscreening', {'id': $scope.id});
             }, function (error) {
                 console.log(error.data.message);
+                $scope.isError = true;
+                $scope.errorDescription = 'The application has encountered an unknown error. It doesn\'t appear to have affected your data, but our technical staff have been automatically notified and will be looking into this with the utmost urgency.';
             });
         }
         else {
@@ -63,6 +68,8 @@ angular.module('Jobsite').controller("CreateScreeningController", function ($sco
                 }
             }, function (error) {
                 console.log(error.data.message);
+                $scope.isError = true;
+                $scope.errorDescription = 'The application has encountered an unknown error. It doesn\'t appear to have affected your data, but our technical staff have been automatically notified and will be looking into this with the utmost urgency.';
             });
         }
     };

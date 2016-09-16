@@ -212,17 +212,20 @@ angular.module('Jobsite').controller("CreateScreeningQuestionController", functi
             $scope.option = '';
             $scope.selectedOption = '';
             $scope.screeningQuestion.optionsDescriptions = {};
+            $scope.numOptionsSelected = '';
         } else if ($scope.screeningQuestion.type == 'LikertScale') {
 
             $scope.screeningQuestion.options = [];
             $scope.option = '';
             $scope.selectedOption = '';
             $scope.screeningQuestion.optionsDescriptions = {};
+            $scope.numOptionsSelected = '';
         } else {
             $scope.screeningQuestion.options = [];
             $scope.option = '';
             $scope.selectedOption = '';
             $scope.screeningQuestion.optionsDescriptions = {};
+            $scope.numOptionsSelected = '';
         }
     };
 

@@ -1,7 +1,8 @@
 <div class="container" ng-include="'views/head.html'"></div>
 <div class="container" ng-controller="CreateInterviewController">
         <ol class="breadcrumb">
-            <li><a ui-sref="interviews">Go Back</a></li>
+            <li ng-if="!id"><a ui-sref="interviews">Go Back</a></li>
+            <li ng-if="id"><a ui-sref="editinterview({id:id})">Go Back</a></li>
             <li class="active" ng-if="id">Edit Interview Info</li>
             <li class="active" ng-if="!id">Create Interview</li>
         </ol>
@@ -16,13 +17,13 @@
                                         <div class="row">
                                             <div class="col-md-6">
 
-                                                <div class="form-group">
+                                                <div class="form-group" ng-class="{ 'has-error': createInterviewForm.title.$invalid &&createInterviewForm.title.$dirty }">
                                                     <label for="title">Title</label>
                                                     <input type="text" class="form-control" ng-model="interview.title" id="title" name="title" placeholder="Enter Title" required />
                                                     <span class="color-theme" ng-show="createInterviewForm.title.$error.required">Title is required.</span>
                                                 </div>
 
-                                                <div class="form-group">
+                                                <div class="form-group" ng-class="{ 'has-error': createInterviewForm.description.$invalid &&createInterviewForm.description.$dirty }">
                                                     <label for="description">Description</label>
                                                     <div  text-angular ng-model="interview.description" name="description" id="description" ta-text-editor-class="border-around" ta-html-editor-class="border-around" style="background-color: #fff;" required>
                                                         <p><br /></p>
@@ -32,7 +33,7 @@
 
                                             </div>
                                             <div class="col-md-6">
-                                                <div class="form-group">
+                                                <div class="form-group" ng-class="{ 'has-error': createInterviewForm.categoryId.$invalid &&createInterviewForm.categoryId.$dirty }">
                                                     <label for="categoryId">Category</label>
                                                     <select ng-model="interview.categoryId" class="form-control" id="categoryId" name="categoryId" required>
                                                         <option value="">Select Category</option>
@@ -41,7 +42,7 @@
                                                     <span class="color-theme" ng-show="createInterviewForm.categoryId.$error.required">Category is required.</span>
                                                 </div>
 
-                                                <div class="form-group">
+                                                <div class="form-group" ng-class="{ 'has-error': createInterviewForm.jobsIds.$invalid &&createInterviewForm.jobsIds.$dirty }">
                                                     <label for="jobsIds">Jobs</label>
 
                                                     <select  id="jobsIds"  name="jobsIds" multiple="true" ng-model="interview.jobsIds" class="form-control" ng-change="jobsChanged()" required ng-options="job.id as job.title+' - '+job.idLong for job in jobs">
@@ -61,11 +62,11 @@
                                                     <span class="glyphicon glyphicon glyphicon-ban-circle" aria-hidden="true" ></span>
                                                 </button>
 
-                                                <button class="btn btn-primary btn-lg" type="submit" alt="Save and exit" title="Save and exit" ng-click="saveAndExit=true">
+                                                <button class="btn btn-primary btn-lg" type="submit" alt="Save and exit" title="Save and exit" ng-click="saveAndExit=true" ng-disabled="createInterviewForm.$invalid">
                                                     <span class="glyphicon glyphicon glyphicon-ok" aria-hidden="true" ></span>
                                                 </button>
 
-                                                <button class="btn btn-primary btn-lg" type="submit" alt="Save and continue" title="Save and continue"  ng-if="!id">
+                                                <button class="btn btn-primary btn-lg" type="submit" alt="Save and continue" title="Save and continue"  ng-if="!id" ng-disabled="createInterviewForm.$invalid">
                                                     <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
                                                 </button>
                                             </div>

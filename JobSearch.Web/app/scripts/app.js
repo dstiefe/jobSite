@@ -1,6 +1,6 @@
 
-var apiBasePath = 'http://ec2-52-90-116-49.compute-1.amazonaws.com:81/legalapi_dev/api/v1/'; // legaltal api
-//var apiBasePath = 'http://ec2-52-90-116-49.compute-1.amazonaws.com:81/jobapi_dev/api/v1/'; // daytal api
+var apiBasePath = 'http://ec2-52-87-162-38.compute-1.amazonaws.com:81/legalapi_dev/api/v1/'; // legaltal api
+//var apiBasePath = 'http://http://ec2-52-87-162-38.compute-1.amazonaws.com:81/jobapi_dev/api/v1/'; // daytal api
 //var apiBasePath = 'http://localhost:41656/api/v1/'; //local api
 //var siteName = 'Daytal';
 var siteName = 'Legaltal';

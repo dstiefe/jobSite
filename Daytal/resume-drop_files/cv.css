@@ -1,0 +1,15 @@
+body{
+	background:#fff!important;
+}
+.cv{
+	padding-top: 140px!important;
+}
+#main-nav{
+	border-bottom: 1px solid silver;
+}
+#site-nav li a:hover{
+	color: #8aaad9!important;
+}
+#skills{
+padding-top: 120px!important;
+}

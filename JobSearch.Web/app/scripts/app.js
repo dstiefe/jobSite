@@ -1,9 +1,9 @@
 
-var apiBasePath = 'http://ec2-52-87-162-38.compute-1.amazonaws.com:81/legalapi_dev/api/v1/'; // legaltal api
-//var apiBasePath = 'http://http://ec2-52-87-162-38.compute-1.amazonaws.com:81/jobapi_dev/api/v1/'; // daytal api
+//var apiBasePath = 'http://34.193.117.95:82/api/v1/'; // legaltal api
+var apiBasePath = 'http://34.193.117.95:81/api/v1/'; // daytal api
 //var apiBasePath = 'http://localhost:41656/api/v1/'; //local api
-//var siteName = 'Daytal';
-var siteName = 'Legaltal';
+var siteName = 'Daytal';
+//var siteName = 'Legaltal';
 
 var clientId ="P600Us6Y476QiK331u5yEzb22dpX_y6NS75!9I-a";
 (function () {

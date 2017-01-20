@@ -164,13 +164,13 @@
   <div class="col-lg-6" ng-repeat="data in resumes"  >
    <div class="panel panel-default">
     <div class="panel-heading">
-
-        <h3 class="panel-title pull-left"><a href="" ng-click="detailViewShow(data)">{{data.firstName}} {{data.lastName}}</a></h3>
+     <h3 class="panel-title pull-left"><a href="" ng-click="detailViewShow(data)"><span ng-if="data.title">{{data.title}}</span><span ng-if="!data.title">{{data.firstName}} {{data.lastName}}</span></a></h3>
+        <!--<h3 class="panel-title pull-left"><a href="" ng-click="detailViewShow(data)">{{data.firstName}} {{data.lastName}}</a></h3>-->
         <i class="fa fa-file-pdf-o pull-right fa-lg"></i>
 
         <div class="media pull-right">
                                            <span class="pull-left">
-                                               <img class="media-object" src="http://ec2-52-87-162-38.compute-1.amazonaws.com:82/images/book.png" >
+                                               <img class="media-object" src="/images/book.png" >
                                                <span class="badge pull-right">{{data.totalPages}}</span>
                                            </span>
         </div>
